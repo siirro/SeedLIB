@@ -1,0 +1,141 @@
+@charset "utf-8";
+@import url("/include/css/common/default.css");
+@import url("/include/css/common/common.css");
+@import url("/include/css/common/button.css");
+@import url("/include/css/common/board.css");
+@import url("layout.css");
+@import url("/include/css/common/contents.css");
+@import url("/include/booksearch/css/unified_search.css");
+@import url("/include/booksearch/css/search.css");
+@import url("/include/booksearch/css/new_search.css");
+
+#container.sub {position: relative;}
+.sVisualWrap {display: block; position: absolute; left: 0; top: 0; width: 100%; height: 159px; background: #f4f4f4;}
+.sVisualWrap .sVisual {max-width: 1240px; height: 100%; margin: 0 auto; background: url(/include/image/common/svisual_img.png) no-repeat right top;}
+.sVisualWrap .sVisual h3 {display: none;}
+
+/* 인사말 */
+.greeting {background: url(/include/image/intro/contents/greeting_bg.png) no-repeat 0 0;}
+.greeting .slogan {font-family: 'S-Core Dream 5'; font-size: 1.294em; color: #fff; line-height: 1.4; text-shadow: 0 2px 2px rgba(0, 0, 0, .2); padding: 25px 60px 98px; margin-bottom: 40px;}
+.greeting .slogan span {display: inline-block; font-size: 1.882em; text-indent: -4px;}
+.greeting .txtWrap {padding: 0 30px;}
+.greeting .txtWrap .txtTop {font-size: 1.294em; color: #444; font-weight: 500; line-height: 1.4; padding-bottom: 25px; margin-bottom: 25px; position: relative;}
+.greeting .txtWrap .txtTop::after {content: ""; position: absolute; left: 0; bottom: 0; width: 32px; height: 2px; background-color: #4e4e4e;}
+.greeting .txtWrap .txtBottom {font-size: 1.059em; color: #444; font-weight: 500; padding-top: 20px; text-align: right;}
+
+/* 연혁 */
+.historyList {overflow:hidden; position:relative;}
+.historyList::before {content:""; display:block; position:absolute; top:10px; left:95px; bottom:13px; border-left:1px solid #6a65bd;}
+.historyList li {overflow:hidden; position:relative; padding-left:100px; }
+.historyList li + li {margin-top:20px;}
+.historyList .year {position:absolute; left:0; top:0; min-width:100px; font-size:1.563em; line-height:1; color:#4d47ac; background:url(/include/image/intro/contents/bul_history.png) no-repeat right center;}
+.historyList li dl {overflow:hidden; position:relative; font-size:1.125em;}
+.historyList li dl dt {position:absolute; left:0; top:0; min-width:48px; padding-left:30px; color:#333;}
+.historyList li dl dd {color:#777;}
+
+/* 도서관현황 */
+.publicLibWrap {position: relative; overflow: hidden; padding: 25px 0;}
+.publicLibWrap .publicMap {float: left; margin-left: 96px; width: 401px; height: 361px; background: url(/include/image/intro/contents/publicMap.png) no-repeat 0 0; position: relative;}
+.publicLibWrap .publicMap .lib {position: absolute; left: 0; top: 0; width: 50px; height: 50px; line-height: 50px; font-size: 0.941em; font-weight: 500; color: #fff; text-align: center; border-radius: 50%; transition: all .3s; z-index: 1;}
+.publicLibWrap .publicMap .lib:hover {transform: scale(1.25); z-index: 2;}
+.publicLibWrap .publicMap .lib.seoksu{left: 78px; top: 78px;}
+.publicLibWrap .publicMap .lib.manan {left: 136px; top: 180px;}
+.publicLibWrap .publicMap .lib.bakdal {left: 39px; top: 192px;}
+.publicLibWrap .publicMap .lib.pyeongchon {left: 311px; top: 146px;}
+.publicLibWrap .publicMap .lib.hogye {left: 190px; top: 208px;}
+.publicLibWrap .publicMap .lib.bisan {left: 213px; top: 130px;}
+.publicLibWrap .publicMap .lib.child {left: 239px; top: 187px;}
+.publicLibWrap .publicMap .lib.beolmal {left: 308px; top: 235px;}
+.publicLibWrap .publicMap .lib.gwanyang {left: 288px; top: 97px;}
+.publicLibWrap .publicMap .lib.samdeok {left: 109px; top: 227px;}
+
+.publicLibWrap .publicInfo {float: left; margin-left: 50px; padding-top: 70px;}
+.publicLibWrap .publicInfo .txt1 {font-size: 1.529em; color: #444; font-weight: 500; margin-bottom: 10px;}
+.publicLibWrap .publicInfo .txt2 {font-size: 1.176em; margin-bottom: 20px;}
+.publicLibWrap .publicInfo .txt3 {font-size: 0.941em; color: #777;}
+
+
+.publicLib-list {border-top: 2px solid #666; margin-top: 35px;}
+.publicLib-list > li {position: relative; padding: 20px 145px 20px 130px; border-bottom: 1px solid #e2e2e2;}
+.publicLib-list > li .lib {display:inline-block; min-width: 60px; font-style: normal; font-size: 1.176em; line-height: 1.5; color:#fff; text-align: center; border: solid 1px #ddd;}
+.publicLib-list > li .btn {position: absolute; top: 50%; right: 30px; margin-top: -19px; font-size: 0.941em;}
+
+
+@media screen and (max-width:1024px) {
+	.sVisualWrap {height: 129px;}
+
+	.publicLibWrap {padding: 0;}
+	.publicLibWrap .publicMap {float: none; margin: 0 auto;}
+	.publicLibWrap .publicInfo {float: left; width: 100%; margin-left: 0; padding: 30px; box-sizing: border-box;}
+
+	.publicLib-list {margin-top: 20px;}
+	.publicLib-list > li {padding: 15px 10px 10px 10px;}
+	.publicLib-list > li .lib {display: inline-block; margin-bottom: 5px;}
+	.publicLib-list > li .btn {top: 13px; right: 10px; margin-top: 0; padding: 3px 10px;}
+}
+
+@media screen and (max-width:800px) {
+	.sVisualWrap {height: 126px;}
+}
+
+@media screen and (max-width:640px) {
+	.sVisualWrap {height: 114px;}
+
+	.greeting {background-size: 640px auto; background-position: -40px top;}
+	.greeting .slogan {padding: 40px 0 0 40px; margin-bottom: 25px; height: 180px; box-sizing: border-box;}
+	.greeting .slogan span {font-size: 1.636em;}
+	.greeting .txtWrap {padding: 0 20px;}
+
+	.historyList::before {left: 80px;}
+	.historyList li {padding-left: 85px;}
+	.historyList li + li {margin-top: 10px;}
+	.historyList .year {min-width: 85px;}
+	.historyList li dl + dl {margin-top: 5px;}
+	.historyList li dl dt {padding-left: 20px;}
+	.historyList li dl dd {padding-left: 82px;}
+
+	.publicLibWrap .publicMap {width: 340px; height: 306px; background-size: 100%;}
+	.publicLibWrap .publicMap .lib {width: 42px; height: 42px; line-height: 42px; font-size: 0.941em; letter-spacing: -0.5px;}
+	.publicLibWrap .publicMap .lib.seoksu{left: 66px; top: 66px;}
+	.publicLibWrap .publicMap .lib.manan {left: 115px; top: 152px;}
+	.publicLibWrap .publicMap .lib.bakdal {left: 33px; top: 163px;}
+	.publicLibWrap .publicMap .lib.pyeongchon {left: 264px; top: 124px;}
+	.publicLibWrap .publicMap .lib.hogye {left: 162px; top: 176px;}
+	.publicLibWrap .publicMap .lib.bisan {left: 181px; top: 110px;}
+	.publicLibWrap .publicMap .lib.child {left: 203px; top: 159px;}
+	.publicLibWrap .publicMap .lib.beolmal {left: 261px; top: 199px;}
+	.publicLibWrap .publicMap .lib.gwanyang {left: 245px; top: 82px;}
+	.publicLibWrap .publicMap .lib.samdeok {left: 92px; top: 193px;}
+	.publicLibWrap .publicInfo {padding: 20px 10px;}
+	.publicLibWrap .publicInfo .txt1 {margin-bottom: 7px;}
+	.publicLibWrap .publicInfo .txt2 {margin-bottom: 10px;}
+
+	.publicLib-list {margin-top: 5px;}
+}
+
+@media screen and (max-width:480px) {
+	.sVisualWrap {height: 112px;}
+
+	.greeting .slogan {padding: 45px 0 0 30px; margin-bottom: 20px;}
+	.greeting .txtWrap {padding: 0 10px;}
+	.greeting .txtWrap .txtTop {padding-bottom: 20px; margin-bottom: 20px;}
+
+	.historyList::before {bottom: 34px;}
+	.historyList li dl dt {position: relative;}
+	.historyList li dl dd {padding-left: 20px;}
+}
+
+@media screen and (max-width:375px) {
+	.sVisualWrap {height: 108px;}
+}
+
+@media screen and (min-width:640px) {
+	.historyList li dl + dl {margin-top: 13px;}
+	.historyList li dl dt {min-width: 48px; padding-left: 30px;}
+	.historyList li dl dd {padding-left: 108px;}
+}
+
+@media screen and (min-width:1025px) {
+	.publicLib-list > li .lib {display: table; position: absolute; top: 50%; left: 0; z-index: 10; margin-top: -40px; width: 100px;}
+	.publicLib-list > li .lib span {display: table-cell; width: 100%; height: 80px; font-style: normal; line-height: 1.1; vertical-align: middle;}
+}
