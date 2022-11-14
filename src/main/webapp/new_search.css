@@ -1,0 +1,657 @@
+input[type='checkbox'].check {position: absolute; left: -9999px; width: 0; height: 0; overflow: hidden;}
+input[type='checkbox'].check + label {display: inline-block; padding-left: 23px; background: url('/include/booksearch/image/common/chkB_off.png') left 50% no-repeat;}
+input[type='checkbox'].check + label span {color: #444; vertical-align: 1px;}
+input[type='checkbox']:checked.check + label {cursor: pointer; background-image: url('/include/booksearch/image/common/chkB_on.png');}
+input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline: 1px dotted #000;}
+
+/* 다국어 입력기 */
+.worldwordBox {position: relative;}
+.worldwordBox .worldword {clear: both; overflow: hidden; width: 100%;}
+.worldwordBox .worldword ul.language {clear: both; overflow: hidden; background: #fff; margin-bottom: 20px;}
+.worldwordBox .worldword ul.language li {float: left; width: 14.285714%; height: 40px; line-height: 40px; color: #646464; text-align: center; position: relative; border: 1px solid #ddd; border-left: none; box-sizing: border-box;}
+.worldwordBox .worldword ul.language li:nth-child(1), .worldwordBox .worldword ul.language li:nth-child(8) {border-left: 1px solid #ddd;}
+.worldwordBox .worldword ul.language li:nth-child(n+8) {border-top: none;}
+.worldwordBox .worldword ul.language li a {position: absolute; left: -1px; top: -1px; width: 100%; height: 38px; line-height: 38px;}
+.worldwordBox .worldword ul.language li a:hover, .worldwordBox .worldword ul.language li a:focus {text-decoration: none;}
+.worldwordBox .worldword ul.language li a.selected {border: 1px solid #222; color: #444;}
+.worldwordBox .worldword .languageContents {clear: both; overflow: hidden; width: 589px; margin: 0 auto;}
+.worldwordBox .worldword .languageContents ul {clear: both; overflow: hidden; border:none;}
+.worldwordBox .worldword .languageContents ul li {clear: none; float: left; width: 29px; height: 29px; margin: 0; border:1px solid #b8dbe4;}
+.worldwordBox .worldword .languageContents ul li a {display: block; width:100%; margin: 0; padding: 0; color: #787878; font-size: 12px; text-align: center; line-height: 28px; border: none; background: #eef7fc;}
+.worldwordBox .worldword .languageContents ul li a:hover, .worldwordBox .worldword .languageContents ul li a:focus {color: #fff; font-size: 14px; text-decoration: none; font-weight: bold; background: #0066cc;}
+.worldwordBox .worldwordBox_close {position: absolute; top: 5px; right: 16px; width: 23px; height: 23px;}
+.worldwordBox .worldwordBox_close a {width: 23px; height: 23px; margin: 0; padding: 0; background: none;}
+
+.worldwordBox .worldword select {display: none;}
+
+
+/* 통합검색 */
+.searchWrap {border: none;}
+.searchFormWeb {min-height: auto; border-bottom: 2px solid #666;}
+.searchWrap .searchToparea {position: relative; padding: 0;}
+.searchWrap .searchToparea .searchBardiv {position: relative; padding: 18px 20px;}
+.searchWrap .searchToparea .searchBardiv .searchTit {position: absolute; left: 40px; top: 18px; height: 54px; line-height: 54px; font-size: 1.176em; font-weight: 500; color: #fff;}
+.searchWrap .searchToparea .searchBardiv .searchSel {position: absolute; left: 20px; top: 18px;}
+.searchWrap .searchToparea .searchBardiv .searchSel select {width: 120px; border: none; height: 54px; line-height: 54px;}
+.searchWrap .searchToparea .searchBardiv .searchInputbox {position: relative; margin: 0 130px 0; padding-right: 54px; border: none; box-sizing: border-box; z-index: 1001;}
+.searchWrap .searchToparea .searchBardiv.smart .searchInputbox {margin: 0 0 0 130px;}
+.searchWrap .searchToparea .searchBardiv.hope .searchInputbox {margin: 0 130px 0 0;}
+.searchWrap .searchToparea .searchBardiv.home .searchInputbox {margin: 0 130px 0 0; padding-right: 0;}
+.searchWrap .searchToparea .searchBardiv .searchInputbox input[type="text"] {border: none; width:100%; height: 54px; line-height: 54px; font-size: 1.176em; padding: 0 10px;}
+.searchWrap .searchToparea .searchBardiv .searchInputbox .unifiedSearchbtn {position: absolute; right: 0; top: 0; width: 54px; height: 54px; background: #fff url(/include/image/common/btn_search.png) 50% 50% no-repeat; border: none;}
+.searchWrap .searchToparea .searchBardiv .btn {position: absolute; right: 20px; top: 18px; min-width: 120px; font-size: 1.176em; font-weight: 500; line-height: 54px; background-color: #000;}
+.searchWrap .searchToparea .innerSearch {padding: 10px 0 8px;}
+.searchWrap .searchToparea .innerSearch input[type='checkbox'].check + label {font-size: 0.941em;}
+.searchWrap .searchToparea .searchUtilWrap {position: absolute; right: 0; bottom: 0;}
+.searchWrap .searchToparea .searchUtilWrap ol li {float: left; border: none; margin: 0;}
+.searchWrap .searchToparea .searchUtilWrap ol li a {display: block; padding: 10px 43px 9px 15px; font-size: 1em; color: #444; position: relative;}
+.searchWrap .searchToparea .searchUtilWrap ol li a.on {background: none;}
+.searchWrap .searchToparea .searchUtilWrap ol li a.sh_util01:before, .searchWrap .searchToparea .searchUtilWrap ol li a.sh_util03:before {display: none;}
+.searchWrap .searchToparea .searchUtilWrap ol li a:after {content: ''; position: absolute; right: 15px; top: 50%; margin-top: -9px; width: 18px; height: 18px; background: url(../img/unified/down_bulet.png) 50% 50% no-repeat;}
+.searchWrap .searchToparea .searchUtilWrap ol li a.on:after {background: url('../img/unified/up_bulet.png') 50% 50% no-repeat;}
+
+.searchBotarea {background-color: #f6f6f6;}
+.searchBotarea .divSelect {padding: 30px 60px; display: none; position: relative;}
+.searchBotarea .divSelect.current {display: block;}
+.searchBotarea .divSelect > div .comment_p {position: absolute; right: 60px; top: 30px; font-size: 11px;}
+.searchBotarea .divSelect > div .box_check:first-child {padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #dedede;}
+    
+
+/* 고급검색 */
+.searchWrap .searchToparea .searchBardiv.detail {padding: 40px 30px 50px; background: none; border: 1px solid #ddd; border-top-width: 2px;}
+.searchBardiv .detailSearch {padding-left: 178px; position: relative; border: none;}
+.searchBardiv .detailSearch dt {position: absolute; left: 0; top: 0; width: 148px; line-height: 190px; font-size: 1.176em; color: #444; font-weight: 500; text-align: center; background-color: #f8f8f8;}
+.searchBardiv .detailSearch dd + dd {margin-top: 10px;}
+.searchBardiv .detailSearch dd:first-child {margin-top:0;}
+.searchBardiv .detailSearch dd input[type="text"] {width: 100%; padding:0 10px; box-sizing: border-box;}
+
+.searchdetailWrap {margin-top: 40px;}
+.detailSettingWrap {background-color: #f8f8f8; border: 1px solid #ddd; padding: 34px 45px; position: relative;}
+.detailSettingWrap .data-type-select{position: relative; padding-left: 110px; padding-bottom: 15px; border-bottom: 2px solid #ddd;}
+.detailSettingWrap .data-type-select dt{position: absolute; left: 0; top: 0; font-size: 1.059em; color:#444; font-weight: 500;}
+.detailSettingWrap .data-type-select dd{display: inline-block; margin-right: 20px; color: #444;}
+
+.detailDataInput {margin-top: 35px; overflow: hidden;}
+.detailDataInput dl {padding-left: 70px; position: relative; box-sizing: border-box;}
+.detailDataInput dl + dl {margin-top: 10px;}
+.detailDataInput dl dt {position: absolute; left: 0; top: 0; line-height: 40px; font-size: 1.059em; color:#444; font-weight: 500;}
+.detailDataInput dl dd select {width: 100%;}
+.detailDataInput dl dd input[type="text"] {width:100%; padding: 0 10px; box-sizing: border-box;}
+.detailDataInput dl.halfWidth1 {width: calc(50% - 50px); float: left;}
+.detailDataInput dl.halfWidth2 {width: calc(50% - 50px); float: right;}
+.detailDataInput dl.devideWidth1 {width: calc(50% - 50px); float: left; margin-right: 50px;}
+.detailDataInput dl.devideWidth1 dd [type="text"] {width: calc(50% - 10px); float: left;}
+.detailDataInput dl.devideWidth1 dd span {width: 20px; float: left; text-align: center; line-height: 36px;}
+.detailDataInput dl.devideWidth2 {width: calc(28% - 20px); float: left; padding-left: 80px; margin-right: 20px;}
+.detailDataInput dl.devideWidth3 {width: 22%; float: left; padding-left: 50px;}
+
+
+/* 검색결과 리스트 */
+.searchResultWrap {margin-top: 30px;}
+
+.searchBotarea .divSelect a.btn {position: absolute; right: 60px; top: 29px; padding: 1px 13px 2px;}
+
+.listSetting {position: relative; overflow: hidden;}
+
+.result_screen {float: left; color: #646464; padding: 3px 0; margin-bottom: 20px;}
+.result_screen.home {width: 100%; padding: 0 10px 10px; margin-bottom: 0; border-bottom: 2px solid #666;}
+.result_screen strong, .result_screen span {color: #d93131;}
+
+.listStyleType {float: right;}
+.listStyleType .HanChange {display: inline-block; vertical-align: top;}
+.listStyleType select {min-width: 130px; height: 36px; line-height: 36px;}
+.listStyleType select.numSel {min-width: 70px;}
+.listStyleType .btn {height: 36px; line-height: 36px; padding: 0 10px;}
+.listStyleType span, .listStyleType .btnSetWeb a {display: inline-block; width: 36px; height: 36px; vertical-align: top; color: #666; text-align: center; line-height: 36px; cursor: pointer;background-color: #fff; border: 1px solid #ddd; box-sizing: border-box;}
+.listStyleType span.on {background-color: #ddd;}
+.listStyleType span.langHan {margin-left: -4px; margin-right: 5px;}
+
+.listStyleType .btnSetmob {display: none;}
+.listStyleType .btnSetWeb {display: inline-block; vertical-align: top;}
+.listStyleType span.mobPasit {border: 1px solid #ddd; text-indent: -9999px; margin-left: 2px; background: url('../img/unified/ico_mobpasit.png') 50% 50% no-repeat;}
+.listStyleType a.listTypeList {border: 1px solid #ddd; text-indent: -9999px; margin-left: 6px; background: url('/include/booksearch/image/common/ico_list.png') 50% 50% no-repeat;}
+.listStyleType a.listTypeCard {border: 1px solid #ddd; margin-left: -4px; text-indent: -9999px; background: url('/include/booksearch/image/common/ico_card.png') 50% 50% no-repeat;}
+.listStyleType a.listTypeList.on, .listStyleType a.listTypeCard.on, .listStyleType span.mobPasit.on {background-color:#ddd;}
+
+.pasitNavi a {display: block; color:#444; line-height: 50px; background-color: #f8f8f8; text-align: center; position: relative;}
+.pasitNavi a span::after {content: ''; display: inline-block; width: 28px; height: 7px; vertical-align: 3px; background: url('../img/unified/down_bulet.png') right 50% no-repeat;}
+.pasitNavi a.on span::after {background:url('../img/unified/up_bulet.png') right 50% no-repeat}
+
+.category_tit {position: relative; z-index: 20; min-height: 50px; padding: 0 80px 0 190px; background-color: #fff; box-sizing: border-box;}
+.category_tit .selc_object a {vertical-align: top;}
+
+.finder_area {position: relative; border-top: solid 2px #666; border-bottom: 1px solid #aeaeae; display: none;}
+.finder_area.open {display: block;}
+.finder {position: relative; z-index: 10; zoom: 1;}
+.finder:after {display: block; clear: both; content: '';}
+.searchResultWrap .finder_col {position: relative; clear: both; padding-left: 190px; border-bottom: 1px solid #ddd;}
+.searchResultWrap .finder_col .finder_tit {position: absolute; left: 0; top: 0; width: 162px; padding-left: 28px; line-height: 50px; font-weight: normal; color: #444; background-color: #f8f8f8;}
+.searchResultWrap .finder_col .btn_extend {display: block; overflow: hidden; position: absolute; top: 50%; right: 20px; width: 20px; height: 20px; margin-top: -10px;}
+.searchResultWrap .finder_col .btn_extend span {display: inline-block; overflow: hidden; width: 20px; height: 20px; background: url('/include/booksearch/image/common/ico_finderMore.png') 0 0 no-repeat; line-height: 9999px; vertical-align: top;}
+.searchResultWrap .finder_col.on {background-color: #f8f8f8;}
+.searchResultWrap .finder_col.on .btn_extend span {background-image: url('/include/booksearch/image/common/ico_finderMore_on.png');}
+.searchResultWrap .finder_col .finder_list {overflow: hidden; position: relative; max-height: 30px; min-height: 30px; padding: 10px 0; background-color: #fff;}
+.searchResultWrap .finder_col .finder_list:after {content: ''; display: block; clear: both;}
+.searchResultWrap .finder_col .finder_list li {position: relative; float: left; width: calc(20% - 5px); box-sizing: border-box; cursor: pointer;}
+.searchResultWrap .finder_col .finder_list li.year_wrap {width: auto;}
+.searchResultWrap .finder_col .finder_list li input[type="checkbox"]{position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;}
+.searchResultWrap .finder_col .finder_list li a .fa-search{background: url('../img/unified/days_lens.png') 50% 50% no-repeat;}
+.searchResultWrap .finder_col .finder_list li a {display: inline-block; position: relative;}
+.searchResultWrap .finder_col .finder_list li .text_over {display: inline-block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 90%; text-align: center; cursor: pointer;}
+.searchResultWrap .finder_col .finder_list li input + label {display: inline-block; position: relative; padding: 1px 0 2px; margin: 0px 9px; vertical-align: middle; color: #646464;}
+.searchResultWrap .finder_col .finder_list li input[type='checkbox']:checked + label:not(.facet_remove) {border-radius: 30px; background-color: #000; color: #ffffff;}
+/* .searchResultWrap .finder_col .finder_list li input ~ label.facet_remove {cursor: pointer; display: none; overflow: visible; position: absolute; right: 5px; top: -4px; width: 17px; height: 18px; background: url('/img/aq/delete.png') no-repeat; vertical-align: top; content: '';} */
+.searchResultWrap .finder_col .finder_list li:hover input[type='checkbox']:checked ~ label.facet_remove {display: block;}
+.searchResultWrap .finder_col .finder_list li:nth-child(n+6) {visibility:hidden}
+.searchResultWrap .finder_col.on .finder_list {max-height: none;}
+.searchResultWrap .finder_col.on .finder_list li:nth-child(n+6) {visibility:visible}
+.searchResultWrap .finder_col .finder_list .year_search {padding-left: 20px; line-height: 30px; vertical-align: top;}
+.searchResultWrap .finder_col .finder_list .year_search input {width: 60px; height: 30px; border: 1px solid #ddd; box-sizing: border-box; text-align: center; vertical-align: top;}
+.searchResultWrap .finder_col .finder_list .year_search span {line-height: 30px; vertical-align: top;}
+.searchResultWrap .finder_col .finder_list .year_search button {width: 30px; height: 30px; border: 1px solid #ddd; margin: 0 0 0 3px; background: #f8f8f8 url(/include/image/common/btn_search.png) 50% 50% no-repeat; background-size: 18px;}
+
+.category_tit a {cursor: pointer;}
+.category_tit > p {width: 190px; position: absolute; left: 0; top: 0;}
+.searchResultWrap .category_tit .clear {width: 100%; padding-left: 28px; line-height: 50px; box-sizing: border-box; color: #444;}
+.searchResultWrap .category_tit .clear .ico_clear {display: inline-block; overflow: hidden; width: 20px; height: 20px; margin: -2px 0 0 56px; background: url("/include/booksearch/image/common/ico_reset.png") center center no-repeat; vertical-align: middle;}
+.searchResultWrap .category_tit .clear, .searchResultWrap .category_tit .del {display: inline-block; overflow: hidden; vertical-align: middle;}
+.category_tit > .selc_object {padding: 9px 0;}
+.category_tit > .selc_object a {display: inline-block; padding: 0 10px; color: #444; border: 1px solid #e6e6e6; border-radius: 30px; margin: 1px 5px;}
+.category_tit .del {width: 9px; height: 9px; margin: -4px 0 0 7px; background: url("/include/booksearch/image/common/ico_thisdel.png") center center no-repeat; line-height: 9999px;}
+.category_tit .btn {position: absolute; right: 10px; top: 50%; height: 36px; line-height: 36px; padding: 0 10px; margin-top: -18px;}
+
+
+/* 검색결과 리스트 - listViewStyle */
+.bookList {margin-top: 20px;}
+.bookList.hope {margin-top: 0;}
+.bookList.listViewStyle .bookEventWrap {display: none;}
+.bookList.listViewStyle .listWrap:after {content: ''; display: block; clear: both;}
+.bookList.listViewStyle .listWrap > li {position: relative;}
+.bookList.listViewStyle .listWrap > li + li {margin-top: 20px;}
+.bookList.listViewStyle .listWrap > li .bookArea {position: relative; border: 1px solid #e2e2e2; padding: 30px 25px;}
+.bookList.listViewStyle .listWrap > li .bookImg {position: absolute; left: 25px; top: 30px; width: 150px; height: 210px; box-sizing: border-box;}
+.bookList.listViewStyle .listWrap > li .bookImg a {display: block; height: 100%;}
+.bookList.listViewStyle .listWrap > li .bookImg img {display: block; width: 100%; height: 100%; border: 1px solid #dcdcdc;}
+
+.bookList.listViewStyle .listWrap > li .bookData {margin-left: 170px; min-height: 210px; position: relative; padding-bottom: 40px; box-sizing: border-box;}
+.bookList.listViewStyle .listWrap > li .bookData.smart {padding-bottom: 0;}
+.bookList.listViewStyle .listWrap > li .bookData .book_kind {display: inline-block; padding: 0 5px; border: 1px solid #a4a4a4; background-color: #f8f8f8; border-radius: 20px; font-size: 0.882em; color: #444; vertical-align: 1px; margin-right: 5px;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_name {display: none; margin-bottom: 10px; font-size: 1.176em; color: #444; font-weight: 500;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_name.on {display: inline-block;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_name span, .highlight {color: #d93131 !important;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner p {color: #646464;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li {margin: 1px 0;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li:nth-child(1), .bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li:nth-child(2) {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.kor, .bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.han  {display: none;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.kor.on, .bookList.listViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.han.on {display: block;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers {margin-bottom: 5px;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers span {display: inline-block; position: relative; margin-left: 6px; padding-left: 10px;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers span::before {content: ''; position: absolute; left: 0; top: 50%; width: 1px; height: 14px; margin-top: -6px; background-color: #c2c2c2;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers span:first-child {margin-left: 0; padding-left: 0;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers span:first-child::before {display: none;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_libInfo span {display: inline-block; position: relative; margin-right: 6px; padding-right: 10px;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_libInfo span::before {content: ''; position: absolute; right: 0; top: 50%; width: 1px; height: 14px; margin-top: -6px; background-color: #c2c2c2;}
+.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_libInfo span:last-child::before {display: none;}
+
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo {position: absolute; left: 0; bottom: 0;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol:after {content: ''; display: block; clear: both;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li {float: left; margin-right: 10px;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a {position: relative; display: block; color: #444; padding-left: 15px; min-width: 110px; height: 30px;line-height: 28px; border: 1px solid #a5a5a5; box-sizing: border-box;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a {padding-left: 0; text-align: center;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px; height: 7px; background: url("../img/unified/down_bulet.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a.on::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px;height: 7px; background: url("../img/unified/up_bulet.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a::after {display: none;}
+
+/* 검색결과 리스트 - 희망도서신청 */
+.bookList.listViewStyle.hope .listWrap {margin-left: -20px;}
+.bookList.listViewStyle.hope .listWrap > li {position: relative; float: left; width: calc(50% - 20px); margin-left: 20px;}
+.bookList.listViewStyle.hope .listWrap > li + li {margin-top: 0;}
+.bookList.listViewStyle.hope .listWrap > li:nth-child(n+3) {margin-top: 20px;}
+.bookList.listViewStyle.hope .listWrap > li .bookArea {padding: 20px;}
+.bookList.listViewStyle.hope .listWrap > li .bookImg {left: 20px; top: 20px;}
+
+.bookList.listViewStyle.hope .listWrap > li .bookData {padding-bottom: 20px;}
+.bookList.listViewStyle.hope .listWrap > li .bookData .book_dataInner .book_name1 {overflow: hidden; margin-bottom: 0; height: 52px; line-height: 1.3;  margin-bottom: 10px; font-size: 1.176em; color: #444; font-weight: 500;}
+
+.bookList.listViewStyle.hope .listWrap li .bookData .btn {position: absolute; right: 0; bottom: 0; padding: 3px 15px;}
+
+/* 검색결과 리스트 - cardViewStyle */
+.bookList.cardViewStyle .booklistNum, .bookList.cardViewStyle .book_kind, .bookList.cardViewStyle .bookUserData, .bookList.cardViewStyle .bookData, .bookList.cardViewStyle .bookData .book_libInfo, .bookList.cardViewStyle .bookDetailLayer {display: none;}
+.bookList.cardViewStyle .bookDetailInfo {display: block;}
+
+.bookList.cardViewStyle .listWrap {margin-left: -28px;}
+.bookList.cardViewStyle .listWrap:after {content: ''; display: block; clear: both;}
+.bookList.cardViewStyle .listWrap > li {width: calc(25% - 28px); margin-left: 28px; margin-bottom: 30px; float: left; position: relative;}
+.bookList.cardViewStyle .listWrap > li .bookImg {position: relative; z-index: 1;}
+.bookList.cardViewStyle .listWrap > li .bookImg a {display: block; position: relative; padding-top: 140%; border: 1px solid #dcdcdc; box-sizing: border-box;}
+.bookList.cardViewStyle .listWrap > li .bookImg a img {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+
+.bookList.cardViewStyle .listWrap > li .bookData {position: absolute; left: 0; top: 0; bottom: 0; width: 100%; padding: 35px 15px 0; z-index: 2; box-sizing: border-box;}
+.bookList.cardViewStyle .listWrap > li .bookData > a {display: block; position: absolute; left: 0; top: 0; right: 0; height: 100%; z-index: 1;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_name {display: none; color: #fff; height: 60px; overflow: hidden; font-size: 1.063em; -webkit-box-orient: vertical; word-wrap: break-word; -webkit-line-clamp: 2;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_name.on {display: block;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_writers {display: block; color: #cececd; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; white-space: nowrap; margin-top: 10px; font-size: 0.941em;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_publish {position: absolute; left: 17px; bottom: 30px; display: block; color: #aba7a5; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; white-space: nowrap; font-size: 0.941em;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_publish span {display: block;}
+
+.bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li {display: block; color: #cececd; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; white-space: nowrap; margin-top: 5px; font-size: 0.941em; padding-left: 0; background: none;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li span {color: #cececd;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.kor, .bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.han  {display: none;}
+.bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.kor.on, .bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list > li.han.on {display: block;}
+
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo {position: absolute; right: 17px; bottom: 30px; z-index: 3;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol:after {content: ''; display: block; clear: both;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li {float: left;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li:nth-child(1), .bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li:nth-child(2) {display: none;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li a {background-color: rgba(255,255,255, .2);  display:block; width: 48px; height: 48px; text-indent: -9999px; position: relative;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li a:before {content: ''; position: absolute; left: 0; top: 0; width: 48px; height: 48px;}
+.bookList.cardViewStyle .listWrap > li .bookDetailInfo ol li a.btn_mylibrary:before {background:url("../img/unified/ico_have1.png") center center no-repeat;}
+.bookList.cardViewStyle .listWrap > li:hover .bookDetailInfo {display: block;}
+
+.bookList.cardViewStyle .listWrap > li:hover .bookImg:before, .bookList.cardViewStyle .listWrap > li.on .bookImg:before{content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: #000; opacity: 0.8; z-index: 2;}
+.bookList.cardViewStyle .listWrap > li:hover .bookData, .bookList.cardViewStyle .listWrap > li.on .bookData {display: block;}
+.bookList.cardViewStyle .listWrap > li:hover .bookData .cardViewLinkBtn, .bookList.cardViewStyle .listWrap > li.on .bookData .cardViewLinkBtn {display: block;}
+.bookList.cardViewStyle .listWrap > li:hover .bookData + .btn_mylibrary, .bookList.cardViewStyle .listWrap > li.on .bookData + .btn_mylibrary {z-index: 3;}
+
+.bookDetailLayer {display: none; padding: 15px 32px 25px; border: 1px solid #dedede; border-top: none;}
+.bookDetailLayer.open {display: block;}
+/* 소장정보 */
+.thisBook-libraryselecter {padding-left: 130px; padding-right: 20px; position: relative; height: 26px; overflow: hidden;}
+.thisBook-libraryselecter.open {height: auto;}
+.thisBook-libraryselecter p {position: absolute; left: 0; top: 0;}
+.thisBook-libraryselecter p a::before {content: ""; display: inline; padding-left: 25px; background: url(/include/booksearch/image/common/chkB_off.png) 0 50% no-repeat;}
+.thisBook-libraryselecter p a.on::before {background-image: url(/include/booksearch/image/common/chkB_on.png);}
+.thisBook-libraryselecter > a {display: inline-block; padding: 0 11px; margin-right: 1px; margin-bottom: 5px; font-size: 0.882em; color: #fff; border-radius: 26px; background-color: #5b5b5b; cursor: pointer; vertical-align: middle;}
+.thisBook-libraryselecter > a.MA.on, .thisBook-libraryselecter > a.seoksu.on {background-color:#0080ab !important} /* 석수도서관 */
+.thisBook-libraryselecter > a.MI.on, .thisBook-libraryselecter > a.manan.on {background-color:#727316 !important} /* 만안도서관 */
+.thisBook-libraryselecter > a.MH.on, .thisBook-libraryselecter > a.samdeok.on {background-color:#85695b !important} /* 삼덕도서관 */
+.thisBook-libraryselecter > a.ME.on, .thisBook-libraryselecter > a.bakdal.on {background-color:#d8510e !important} /* 박달도서관 */
+.thisBook-libraryselecter > a.MB.on, .thisBook-libraryselecter > a.pyeongchon.on {background-color:#0e8388 !important} /* 평촌도서관 */
+.thisBook-libraryselecter > a.MG.on, .thisBook-libraryselecter > a.gwanyang.on {background-color:#e85f61 !important} /* 관양도서관 */
+.thisBook-libraryselecter > a.MC.on, .thisBook-libraryselecter > a.bisan.on {background-color:#438a05 !important} /* 비산도서관 */
+.thisBook-libraryselecter > a.MD.on, .thisBook-libraryselecter > a.hogye.on {background-color:#20416a !important} /* 호계도서관 */
+.thisBook-libraryselecter > a.MJ.on, .thisBook-libraryselecter > a.child.on {background-color:#f4619d !important} /* 어린이도서관 */
+.thisBook-libraryselecter > a.MF.on, .thisBook-libraryselecter > a.beolmal.on {background-color:#a563c0 !important} /* 벌말도서관 */
+.thisBook-libraryselecter .listDropdown {width: 20px; height: 24px; position: absolute; right: 0;top: 0; text-indent: -9999px; background: url("../img/unified/down_bulet.png") center center no-repeat; cursor: pointer;}
+.thisBook-libraryselecter .listDropdown.on{background: url("../img/unified/up_bulet.png") center center no-repeat;}
+
+.thisBook-libraryList {margin-top: 5px;}
+.tblWrap.scrollTable {display: block; max-height: 305px; overflow: auto;}
+.tblWrap.scrollTable td a.print {display: inline-block; width: 25px; height: 25px; background: url(/include/booksearch/image/common/ico_print.png) no-repeat center center; vertical-align: -6px;}
+
+
+/* 상세정보 */
+.bookDataDiv {min-height: 266px; position: relative; padding: 30px 30px 30px 250px; margin-bottom: 30px; border: 1px solid #ddd;}
+.bookDataDiv .viewTab {display: none;}
+.bookDataDiv .viewTab.open {display: block;}
+.bookDataDiv .ico-bookLable > span {display: inline-block; min-width: 68px; height: 24px; padding-left: 7px; padding-right: 15px; font-size: 0.882em; line-height: 24px; color:#fff; margin-right: 5px; margin-bottom: 10px; position: relative; box-sizing: border-box;}
+.bookDataDiv .ico-bookLable > span::before {content: ''; position: absolute; right: 0; top: 0; width: 0px; height: 0px; border-top: 12px solid transparent; border-right: 10px solid #fff; border-bottom: 12px solid transparent;}
+.bookDataDiv .ico-bookLable > span.label_intrest {background-color: #4d47ac;}
+.bookDataDiv .ico-bookLable > span.label_tropy {background-color: #09a85a;}
+.bookDataDiv .bookImg {position: absolute; left: 30px; top: 30px; width: 190px; height: 264px;}
+.bookDataDiv .bookImg img {width: 100%; height: 100%; border: 1px solid #e2e2e2;}
+.bookDataDiv .book_name {font-size: 1.176em; color: #444; font-weight: 500; margin-bottom: 5px; padding-right:25px;}
+
+.bookDataDiv .btn_optionView {position: absolute; right: 20px; top: 30px; width: 22px; height: 30px; display: block; cursor: pointer; background: url(/include/booksearch/image/common/ico_hiddenoption.png) center center no-repeat; z-index:3;}
+.bookDataDiv .btn_optionView + ul {display: none; position: absolute; right: 28px; top: 70px; width: 160px; border: 1px solid #e2e2e2; background-color: #fff; box-sizing: border-box;  z-index:4;}
+.bookDataDiv .btn_optionView.on + ul {display: block;}
+.bookDataDiv .btn_optionView + ul li {font-size: 0.941em; color: #464646; line-height: 40px; padding-left: 15px;}
+.bookDataDiv .btn_optionView + ul li a {display:block;}
+.bookDataDiv .btn_optionView + ul li:hover {background-color: #f8f8f8; text-decoration: underline;}
+
+.bookDataDiv .bookEventWrap {position:absolute;top:28px;right:50px;z-index:3;}
+.bookDataDiv .bookEventWrap a {display:block;width:34px;height:34px;position:relative;box-sizing:border-box;color:#4b4b4b;font-weight:normal;}
+.bookDataDiv .bookEventWrap a:before{content:'';position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;}
+.bookDataDiv .bookEventWrap a.btn_myLib:before{background:url("../img/unified/ico_have_on.png") #e8e8e8 center center no-repeat;}
+.bookDataDiv .bookEventWrap a.btn_myLib:hover:before{background:url("../img/unified/ico_have.png") #2661e7 center center no-repeat;}
+
+.bookDataDiv .simpleView {position: relative;}
+.bookDataDiv .simpleView .book_publisher {color: #646464; margin-bottom: 15px;}
+.bookDataDiv .simpleView .book_publisher span {display: inline-block; position: relative; margin-right: 6px; padding-right: 10px;}
+.bookDataDiv .simpleView .book_publisher span::before {content: ''; position: absolute; right: 0; top: 50%; width: 1px; height: 14px; margin-top: -6px; background-color: #c2c2c2;}
+.bookDataDiv .simpleView .book_publisher span:last-child::before {display: none;}
+
+.bookDataDiv .simpleView .thisBookCategory {margin-bottom: 25px;}
+.bookDataDiv .simpleView .thisBookCategory dl dt {display: inline-block; font-size: 0.882em; color: #4d47ac; padding: 4px 5px; line-height: 18px; box-sizing: border-box; margin-right: 5px; vertical-align: top; background-color: #ebeafb;}
+.bookDataDiv .simpleView .thisBookCategory dl dd {display: inline-block; vertical-align: top;}
+.bookDataDiv .simpleView .thisBookCategory dl dd span {display: inline-block; position: relative;  vertical-align: top; line-height: 24px;}
+.bookDataDiv .simpleView .thisBookCategory dl dd span::after {content: ''; display: inline-block; width: 5px; height: 10px; margin: 0 8px; background: url(/include/image/common/ico_naviArrow.png) 0 0 no-repeat; vertical-align: 1px;}
+.bookDataDiv .simpleView .thisBookCategory dl dd span:last-child::after {display: none;}
+
+.bookDataDiv .simpleView .keyword {overflow: hidden; position: relative; padding-top: 25px; border-top: 1px solid #e2e2e2;}
+.bookDataDiv .simpleView .keyword > div {float: left; min-width: 88px; height: 30px; font-size: 0.882em; line-height: 28px; color: #444; text-align: center; margin-right: 10px; margin-bottom: 10px; position: relative; background-color: #eee; box-sizing: border-box;}
+.bookDataDiv .simpleView .keyword > div::before {content: ''; position: absolute; right: -10px; top: 0; width: 0px; height: 0px; border-top: 15px solid transparent; border-left: 10px solid #eee; border-bottom: 15px solid transparent;}
+.bookDataDiv .simpleView .keyword ul {float: right; width: calc(100% - 105px);}
+.bookDataDiv .simpleView .keyword li {float: left; font-size: 0.882em; color: #444; line-height: 28px; padding: 0 10px; margin-right: 10px; margin-bottom: 10px; text-align: center; border: 1px solid #e6e6e6; border-radius: 30px;}
+
+.bookDataDiv .marcWrap {margin-top: 10px;}
+.bookDataDiv .marcWrap select {min-width: 180px;}
+.bookDataDiv .marcWrap .marc_data_wrap {margin-top: 10px;}
+.bookDataDiv .marcWrap .marc_data_wrap table {width: 100%; color: #777;}
+.bookDataDiv .marcWrap .marc_data_wrap table tr td {padding: 1px 0;}
+
+/* 상세페이지 하단 정보 */
+.dropBookData {position: relative; margin-bottom: 50px;}
+.dropBookData .htitle {border-bottom: 1px solid #e2e2e2; padding-bottom: 15px; margin-bottom: 20px;}
+.dropBookData .htitle span {font-size: 0.708em; color: #646464; font-weight: normal; padding-left: 10px;}
+.dropBookData .htitle span img {margin: 0 5px}
+.dropContainerBox {display: block;}
+.dropContainerBox .graphBox {min-height: 300px; border: 1px solid #e2e2e2; background-color: #f8f8f8; padding: 20px; box-sizing: border-box;}
+.dropContainerBox .recommendLibrary {margin-bottom: 5px;}
+.dropContainerBox .recommendLibrary select {min-width: 200px;}
+
+.bookInformation {color: #646464; padding: 0 5px;}
+
+/* 상세페이지 슬라이드 */
+.swipeGallery {position: relative;}
+.swipeGallery .bookData {display: none;}
+.swipeGallery .swiper-button-prev {position: absolute; left: 0; top: 50%; margin-top: -30px; width: 60px; height: 60px; background: url("/include/booksearch/image/common/swipe_left.png") rgba(0,0,0,.6) center center no-repeat; z-index:3; text-indent: -9999px; cursor: pointer;}
+.swipeGallery .swiper-button-next {position: absolute; right: 0; top: 50%; margin-top: -30px; width: 60px; height: 60px; background: url("/include/booksearch/image/common/swipe_right.png") rgba(0,0,0,.6) center center no-repeat; z-index:3; text-indent: -9999px; cursor: pointer;}
+.swipeGallery .swiper01 .swiper-slide {padding-top: 15px;}
+.swipeGallery .swiper-slide .bookImg {/* width: 172px; height: 241px; */ position: relative; z-index: 1;}
+.swipeGallery .swiper-slide .bookImg img {width: 100%; height: 100%;}
+.swipeGallery .swiper01 .swiper-slide.now .bookImg {top: -15px;}
+.swipeGallery .swiper01 .swiper-slide.now::after {content: ""; position: absolute; left: 50%; bottom: 0; margin-left: -5px; border-bottom: 10px solid #666; border-right: 8px solid transparent; border-left: 8px solid transparent;}
+.swipeGallery .swiper-slide:hover .bookImg:before, .swipeGallery .swiper-slide a:focus .bookImg:before {content: ''; position: absolute; left: 0;  right:0; top: 0; bottom: 0; background-color: #000; opacity: 0.8;}
+.swipeGallery .swiper-slide .bookImg img {width: 100%; height: 100%; border: 1px solid #e2e2e2; box-sizing: border-box;}
+
+.swipeGallery .swiper-slide .bookData {width: 100%; position: absolute; left: 0; top: 0; bottom: 0; padding: 30px 15px 0; z-index: 2; box-sizing: border-box;}
+.swipeGallery .swiper-slide .bookData > a {position: absolute; left: 0; top: 0; right: 0; height: 100%; z-index: 1;}
+.swipeGallery .swiper-slide:hover .bookData, .swipeGallery .swiper-slide a:focus + .bookData {display: block;}
+.swipeGallery .swiper-slide .bookData .book_name {color: #fff; height: 60px; overflow: hidden; font-size: 1.063em; -webkit-box-orient: vertical; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2;}
+.swipeGallery .swiper-slide .bookData .book_writers {margin-top: 10px; font-size: 0.940em; text-align: left;}
+.swipeGallery .swiper-slide .bookData .book_writers .bk_writer {display: block; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; white-space: nowrap; color: #cececd; margin-bottom: 35px;}
+.swipeGallery .swiper-slide .bookData .book_writers .bk_publish {display: block; color: #aba7a5;}
+
+
+/* 연속간행물 - 권호정보 */
+.dataInfo {display: none;}
+.dataInfo.open {display: block;}
+
+
+/* 주제별검색 */
+.searchBotarea.kdcArea .divSelect {display: block; border-top: 2px solid #444; padding: 30px 35px; position: relative; margin-bottom: 40px;}
+.searchBotarea.kdcArea .divSelect a.btn {position: absolute; right: 35px; top: 29px; padding: 1px 13px 2px;}
+
+
+/* 상세페이지 통계자료 */
+.dropContainerBox .graphBox .graphTab li {float: left; padding: 2px 10px; background-color: #fff; font-size: 0.941em;}
+.dropContainerBox .graphBox .graphTab li + li {margin-left: 5px;}
+.dropContainerBox .graphBox .graphTab li.on {color: #fff;}
+.dropContainerBox .graphBox .graphCon {margin-top: 10px;}
+.dropContainerBox .graphBox .graphCon .highcharts-figure {padding-top: 10px; background-color: #fff;}
+
+
+/* 홈페이지 검색 결과 리스트 */
+.homeResultWrap {overflow: hidden; position: relative; margin-top: 40px;}
+.homeResultWrap .titleArea {overflow: hidden; position: relative; padding: 30px; background-color: #f7f7f7;}
+.homeResultWrap .titleArea h5 {float: left; font-size: 1.294em; font-weight: 500; color: #222; line-height: 22px;}
+.homeResultWrap .titleArea p {float: right; font-size: 0.941em; font-weight: 500; color: #777; line-height: 22px; padding-left: 17px; position: relative;}
+.homeResultWrap .titleArea p::before {content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 14px; margin-top: -6px; background-color: #cfcfd1;}
+.homeResultWrap .resultArea {overflow: hidden; position: relative;}
+.homeResultWrap .resultArea span.kwd {color: #d93131;}
+.homeResultWrap .resultArea.dir ul {padding: 20px 30px 0;}
+.homeResultWrap .resultArea.board ul li {padding: 30px; border-bottom: 1px solid #e2e2e2;}
+.homeResultWrap .resultArea.board ul li dt {overflow: hidden; margin-bottom: 18px;}
+.homeResultWrap .resultArea.board ul li dt h5 {float: left; width: calc(100% - 90px); font-size: 1.176em; font-weight: 500; color: #444; line-height: 22px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.homeResultWrap .resultArea.board ul li dt p {float: right; color: #888; line-height: 22px;}
+.homeResultWrap .resultArea.board ul li dd.info {overflow: hidden; height: 54px;}
+.homeResultWrap .resultArea.board ul li dd.info1 {overflow: hidden; padding-top: 8px;}
+.homeResultWrap .resultArea.board ul li dd.info1 span {float: left; position: relative; margin-right: 26px; margin-left: -13px; color: #777; padding-left: 13px;}
+.homeResultWrap .resultArea.board ul li dd.info1 span::before {content: ""; display: block; position: absolute; top: 50%; left: -1px; width: 1px; height: 14px; margin-top: -6px; background-color: #c2c2c2;}
+.homeResultWrap .resultArea.board ul li dd.path {margin-top: 10px;}
+.homeResultWrap .resultArea.board ul li dd.path::before {content: ""; display: inline; padding: 2px 0 3px 33px; background: url(/include/booksearch/image/common/ico_home.png) left 50% no-repeat;}
+.homeResultWrap .btn {float: right; padding: 0 15px 0 20px; margin-top: 20px; color: #444; background-color: #fff; border: 1px solid #a5a5a5;}
+
+@media screen and (max-width:1024px) {
+	.worldwordBox .worldword .languageContents {width: 100%;}
+
+	.searchWrap .searchToparea .searchBardiv {padding: 15px 20px;}
+	.searchWrap .searchToparea .searchBardiv .searchTit {left: 25px; top: 15px; height: 40px; line-height: 40px;}
+	.searchWrap .searchToparea .searchBardiv .searchSel {top: 15px;}
+	.searchWrap .searchToparea .searchBardiv .searchSel select {width: 90px; height: 40px; line-height: 40px;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox {margin: 0 110px 0 95px; padding-right: 40px;}
+	.searchWrap .searchToparea .searchBardiv.smart .searchInputbox {margin: 0 0 0 95px;}
+	.searchWrap .searchToparea .searchBardiv.hope .searchInputbox, .searchWrap .searchToparea .searchBardiv.home .searchInputbox {margin: 0 110px 0 0;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox input[type="text"] {height: 40px; line-height: 40px;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox .unifiedSearchbtn {width: 40px; height: 40px;}
+	.searchWrap .searchToparea .searchBardiv .btn {top: 15px; min-width: 100px; line-height: 40px;}
+
+	.tab_wrap_search, .autoSearch {left: 0; top: 55px; width: 100%; padding: 0 130px 0 115px; box-sizing: border-box;}
+
+	.searchBotarea .divSelect {padding: 20px 30px;}
+	.searchBotarea .divSelect a.btn {right: 30px; top: 19px;}
+
+	.swipeGallery .listWrap > li .bookData,
+	.swipeGallery .listWrap > li:hover .bookData,
+	.swipeGallery .listWrap > li:hover .bookImg:before {display: none;}
+
+	.swipeGallery .swiper01 .swiper-slide .listWrap > li {margin-bottom: 15px;}
+	.swipeGallery .swiper01 .swiper-slide .listWrap > li.now .bookImg {height: auto !important; top: auto;}
+	.swipeGallery .swiper01 .swiper-slide .listWrap > li.now::after {bottom: -14px;}
+}
+
+@media screen and (max-width:800px) {
+	.searchWrap .searchToparea .searchBardiv .searchTit {display: none !important;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox {margin-left: 0;}
+	.tab_wrap_search, .autoSearch {padding-left: 20px;}
+
+	.box_check ol.smart-list li {width: 33.33%;}
+
+	.detailDataInput dl.halfWidth1 {width: calc(50% - 20px);}
+	.detailDataInput dl.halfWidth2 {width: calc(50% - 20px);}
+	.detailDataInput dl.devideWidth1 {width: calc(50% - 20px); margin-right: 0;}
+	.detailDataInput dl.devideWidth2 {width: calc(50% - 20px); float: right; padding-left: 70px; margin-right: 0;}
+	.detailDataInput dl.devideWidth3 {width: calc(50% - 2px); float: left; padding-left: 70px;}
+
+	.result_screen {float: none; margin-bottom: 10px;}
+	.result_screen + div {margin-bottom: 10px;}
+	
+	/* 검색결과 리스트 - 희망도서신청 */
+	.bookList.listViewStyle.hope .listWrap {margin-left: 0;}
+	.bookList.listViewStyle.hope .listWrap > li {width: 100%; margin-left: 0;}
+	.bookList.listViewStyle .listWrap > li + li {margin-top: 15px;}
+	.bookList.listViewStyle.hope .listWrap > li:nth-child(n+2) {margin-top: 15px;}
+	.bookList.listViewStyle.hope .listWrap > li .bookArea {padding: 20px;}
+	.bookList.listViewStyle.hope .listWrap > li .bookImg {left: 20px; top: 20px;}
+
+	.bookList.listViewStyle.hope .listWrap > li .bookData {padding-bottom: 20px;}
+	.bookList.listViewStyle.hope .listWrap > li .bookData .book_dataInner .book_name {margin-bottom: 0; height: 48px; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+	.bookList.listViewStyle.hope .listWrap li .bookData .btn {position: absolute; right: 0; bottom: 0; padding: 3px 15px;}
+
+	.bookList.cardViewStyle .listWrap {margin-left: -20px;}
+	.bookList.cardViewStyle .listWrap > li {width: calc(33.33% - 20px); margin-left: 20px; margin-bottom: 25px;}
+
+	.swipeGallery .swiper-button-prev {margin-top: -15px; width: 30px; height: 30px;}
+	.swipeGallery .swiper-button-next {margin-top: -15px; width: 30px; height: 30px;}
+	.swipeGallery .listWrap {margin-left: -15px;}
+	.swipeGallery .listWrap > li {width: calc(25% - 15px); margin-left: 15px;}
+	.swipeGallery .listWrap > li:nth-child(5) {display: none;}
+}
+
+@media screen and (max-width:640px) {
+	.searchWrap .searchToparea .searchBardiv {padding: 10px 15px;}
+	.searchWrap .searchToparea .searchBardiv .searchSel {left: 15px; top: 10px;}
+	.searchWrap .searchToparea .searchBardiv .searchSel select {height: 36px; line-height: 36px;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox {margin: 0; padding-right: 36px;}
+	.searchWrap .searchToparea .searchBardiv.hope .searchInputbox, .searchWrap .searchToparea .searchBardiv.home .searchInputbox {margin: 0 86px 0 0;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox input[type="text"] {height: 36px; line-height: 36px;}
+	.searchWrap .searchToparea .searchBardiv .searchInputbox .unifiedSearchbtn {width: 36px; height: 36px;}
+	.searchWrap .searchToparea .searchBardiv .btn {display: none;}
+	.searchWrap .searchToparea .searchBardiv.hope .btn, .searchWrap .searchToparea .searchBardiv.home .btn {display: block; top: 10px; right: 15px; min-width: 80px; height: 36px; line-height: 36px;}
+	.searchWrap .searchToparea .innerSearch input[type='checkbox'].check + label {background-position-y: 3px; background-size: 16px; padding-left: 20px;}
+
+	.worldwordBox {width: auto; padding: 10px; left: 0 !important;}
+	.worldwordBox .worldword ul.language, .worldwordBox .worldword .languageContents {width: auto;}
+	.worldwordBox .worldword .language.webLang {display: none;}
+	.worldwordBox .worldword .mobLang {height: 36px; width: 100%; display: block; margin-bottom: 10px;}
+
+	.tab_wrap_search, .autoSearch {top: 46px; padding: 0 15px;}
+	.tab_wrap_search .tab li {line-height: 45px;}
+	.tab_wrap_search .tab_con .popular_search, .autoSearch ul {padding: 15px 0;}
+	.tab_wrap_search .tab_con .popular_search li, .autoSearch ul li {padding: 3px 20px;}
+	.tab_wrap_search .tab_con .popular_search.p2 li a {padding: 0 0 0 22px;}
+	.tab_wrap_search .tab_con .popular_search.p2 li .keyword_date {top: 4px; left: 20px; width: 20px;}
+	.tab_wrap_search .button_wrap {padding: 10px 20px;}
+
+	.box_check ol.smart-list li {width: 50%;}
+
+	.searchBotarea .divSelect {padding: 15px 20px;}
+	.searchBotarea .divSelect a.btn {right: 20px; top: 14px;}
+	.searchBotarea .divSelect > div .box_check:first-child {padding-bottom: 10px; margin-bottom: 8px;}
+
+	.searchWrap .searchToparea .searchBardiv.detail {padding: 20px 20px 45px;}
+	.searchBardiv .detailSearch {padding-left: 105px;}
+	.searchBardiv .detailSearch dt {width: 90px; line-height: 151px;}
+	.searchBardiv .detailSearch dd + dd {margin-top: 5px;}
+
+	.searchResultWrap {margin-top: 20px;}
+	.result_screen.home {padding-bottom: 5px;}
+	.detailSettingWrap {padding: 20px;}
+	.detailSettingWrap .data-type-select {padding-left: 80px; padding-bottom: 10px;}
+
+	.detailDataInput {margin-top: 20px;}
+	.detailDataInput dl dt {line-height: 34px;}
+	.detailDataInput dl.halfWidth1, .detailDataInput dl.halfWidth2, .detailDataInput dl.devideWidth1, .detailDataInput dl.devideWidth2, .detailDataInput dl.devideWidth3 {width: 100%; float: left;}
+
+	.result_screen {width: 100%; padding: 0 0 5px;}
+
+	.listStyleType .btnSetmob {display: inline-block; vertical-align: top;}
+	.listStyleType .btnSetWeb {display: none;}
+	.listStyleType select {min-width: 80px; height: 34px; line-height: 34px;}
+	.listStyleType select.orderSel {min-width: 95px;}
+	.listStyleType select.numSel {min-width: 55px;}
+	.listStyleType .btn {height: 34px; line-height: 34px;}
+	.listStyleType span {width: 34px; height: 34px; line-height: 34px;}
+	.listStyleType span.langHan {margin-right: 2px;}
+
+  	.listStyleType span.listTypeList {margin-left: -4px;}
+  
+  	/* 검색결과 제한 */
+  	.finder_area {position: fixed; top: 0; bottom: 0; right: 0; left: 0; z-index: 9999; margin-bottom: 0; border-bottom: none;}
+
+  	.pasit_dim {position: absolute; left: 0; right: -12px; top: 0; bottom: 0; background-color: rgba(0,0,0,.6);}
+  	.pasit_dim:before {content:''; position: absolute; left: 40px; top: 0; width: 30px; height: 30px; background-image: url("../img/unified/ico_closebtn.png"); background-position: center center; background-repeat: no-repeat; background-size: 14px;}
+  
+  	.finder {overflow-y: auto; position: absolute; left: 70px; right: 0; top: 78px; bottom: 0;}
+
+  	.category_tit {position: absolute; top: 0; right: 0; left: 70px; padding-left: 0; padding: 0;}
+	.category_tit > p {position: relative; width: auto; left: auto; top: auto; padding: 6px 0 7px; text-align: right;}
+	.category_tit > p:before {content: '검색결과 제한'; position: absolute; left: 15px; top: 7px; color: #444;}
+	.category_tit > p:after {display: none;}
+	.category_tit > .selc_object{white-space: nowrap; overflow-x: auto; min-height: 46px; position: relative; padding: 9px 35px 9px 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; box-sizing: border-box;}
+	.category_tit > .selc_object a {margin-right: 0;}
+	.category_tit .btn {right: 5px; top: 39px; height: 32px; line-height: 32px; padding: 0 5px; margin-top: 0;}
+  
+  	.searchResultWrap .finder_col {padding-left: 0;}
+	.searchResultWrap .finder_col.year {padding: 0;}
+	.searchResultWrap .finder_col .finder_tit {width: 100%; position: relative; padding-left: 15px; line-height: 45px; box-sizing: border-box;}
+  	.searchResultWrap .finder_col .btn_extend span {display: none;}
+ 	.searchResultWrap .finder_col .finder_tit:before {content: ''; position: absolute; right: 15px; top: 50%; margin-top: -10px; width: 20px; height: 20px; background: url('/include/booksearch/image/common/ico_finderMore.png') 0 0 no-repeat;}
+	.searchResultWrap .finder_col.on .finder_tit:before {background-image: url("/include/booksearch/image/common/ico_finderMore_on.png");}
+	.searchResultWrap .finder_col .finder_list {height: 0; max-height: none; min-height: auto; padding: 0; margin: 0; border-top: 0;}
+	.searchResultWrap .finder_col.on .finder_list {height: auto;}
+	.searchResultWrap .finder_col .finder_list li {width: auto; float: none; padding: 1px 0; min-height: 37px; margin-bottom: 0; border-top: 1px solid #e2e2e2;}
+	.searchResultWrap .finder_col .finder_list:first-child li {border-top: 0;}
+	.searchResultWrap .finder_col .finder_list li input[type='checkbox'] + label {height: 34px; line-height: 34px; position: relative;}
+	.searchResultWrap .finder_col .finder_list li input[type='checkbox'] + label:before {content: ''; position: absolute; right: 20px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; background-color: #bad2f9;}
+	.searchResultWrap .finder_col .finder_list li input[type='checkbox']:checked + label:before {background: url("../img/unified/ico_check_mob.png") #fff center center no-repeat;;}
+	.searchResultWrap .finder_col .finder_list li input[type='checkbox']:checked + label:not(.facet_remove) {background-color: initial; border: 0;}
+	.searchResultWrap .finder_col .finder_list li .text_over{text-align: left ;color:#646464; width: auto; display: block; margin: 0; padding:0 20px;}
+	.searchResultWrap .finder_col .finder_list .year_search{padding-top: 3px; line-height: 1.4; padding-left: 15px;}
+
+ 	.searchResultWrap .category_tit .clear {width: auto; margin-right: 15px; line-height: 1.4;}
+  	.searchResultWrap .category_tit .clear .ico_clear {width: 18px; height: 18px; margin: -4px 0 0 5px; background-size: 100%;}
+
+  	/* 검색결과 리스트 */
+  	.booklistNum, .bookDetailInfo, .listStyleType .HanChange, .pasitNavi {display: none;}
+	.mobnone{display:none !important;}
+  	.bookList {margin-top: 0;}
+  	.bookList.listViewStyle .listWrap > li .bookArea {padding: 10px;}
+	.bookList.listViewStyle .listWrap > li .bookImg {width: 90px; height: 126px; top: 10px; left: 10px;}
+ 	.bookList.listViewStyle .listWrap > li .bookData {margin-left: 105px; min-height: 128px; padding-bottom: 0;}
+ 	.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_name {margin: 5px 0; overflow: hidden; width: 100%;}
+ 	.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_writers, .bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_publish {display: block;}
+ 	.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_publish {margin-bottom: 5px;}
+  	.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_publish span:first-child {margin-left: 0; padding-left: 0;}
+  	.bookList.listViewStyle .listWrap > li .bookData .book_dataInner .book_publish span:first-child::before {display: none;}
+
+ 	.bookList.cardViewStyle .listWrap {margin-left: -13px;}
+  	.bookList.cardViewStyle .listWrap > li {width: calc(50% - 13px); margin-left: 13px; margin-bottom: 15px;}
+  	.bookList.cardViewStyle .listWrap > li .bookImg {width: auto; height: auto;}
+  	.bookList.cardViewStyle .listWrap > li:hover .bookImg:before{display:none;}
+  	.bookList.cardViewStyle .listWrap > li .bookImg img {display: block; width: 100%; height: 100%; border: 1px solid #dcdcdc;}
+
+	.bookList.cardViewStyle .listWrap > li .bookData {display: block; position: relative; padding: 10px 0; width: auto;}
+	.bookList.cardViewStyle .listWrap > li .bookData > a {width: 0; height: 0;}
+	.bookList.cardViewStyle .listWrap > li .bookData .book_name {color: #444; height: 45px;}
+	.bookList.cardViewStyle .listWrap > li .bookData .book_writers, .bookList.cardViewStyle .listWrap > li .bookData .book_publish {display:none;}
+	.bookList.cardViewStyle .listWrap > li .bookDetailInfo, .bookList.cardViewStyle .listWrap > li:hover .bookDetailInfo {display: none;}
+	.bookList.cardViewStyle .listWrap > li .bookData .book_dataInner .dot-list {display:none;}
+
+	.searchBotarea.kdcArea .divSelect {padding: 20px 25px; margin-bottom: 25px;}
+	.searchBotarea.kdcArea .divSelect a.btn {right: 25px; top: 18px;}
+
+	.bookList.listViewStyle.hope .listWrap > li .bookData .book_dataInner .book_name1 {height: 45px;}
+
+	/* 상세정보 */
+	.ico-bookLable, .btn_optionView, .thisBookCategory, .bookSocialData, .skbook_contentView, .keyword {display:none !important;}
+
+	.bookDataDiv {padding: 10px; margin: 0 0 20px; min-height: 165px;}
+	.bookDataDiv .book_name {padding-right: 0; margin-bottom: 10px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; white-space: nowrap;}
+	.bookDataDiv .bookImg {width: 90px; height: 126px; left: 10px; top: 45px;}
+	.bookDataDiv .bookEventWrap{top:auto;bottom:10px;right:10px;}
+	.bookDataDiv .simpleView {padding-left: 110px; min-height: 128px; padding-bottom: 0;}
+	.bookDataDiv .simpleView .book_publisher span {display: block; margin-top: 5px; margin-right: 0; padding-right: 0;}
+	.bookDataDiv .simpleView .book_publisher span::before {display: none;}
+	.bookDataDiv .simpleView .bookButton {margin-top:10px;}
+	.bookDataDiv .simpleView .bookButton a {display:inline-block;height:30px;line-height:30px;padding:0 12px;background-color:rgba(255,255,255, .7);font-size:12px;color:#7e7e7e;border-radius:20px;}
+	.bookDataDiv .simpleView .bookButton a.btn_directGo{padding-left:30px;background:url("../img/unified/ico_book.png") rgba(255,255,255, .7) left 10px center no-repeat;}
+
+	/* 홈페이지 검색 결과 리스트 */
+	.homeResultWrap {margin-top: 20px;}
+	.homeResultWrap .titleArea {padding: 15px;}
+	.homeResultWrap .resultArea.dir ul {padding: 10px 15px 0;}
+	.homeResultWrap .resultArea.board ul li {padding: 15px;}
+	.homeResultWrap .resultArea.board ul li dt {margin-bottom: 13px;}
+	.homeResultWrap .resultArea.board ul li dt h5 {width: calc(100% - 85px);}
+	.homeResultWrap .resultArea.board ul li dt p {float: right; color: #888; line-height: 22px;}
+	.homeResultWrap .resultArea.board ul li dd.info {height: 45px;}
+	.homeResultWrap .resultArea.board ul li dd.info1 {padding-top: 5px;}
+	.homeResultWrap .resultArea.board ul li dd.path::before {padding: 2px 0 3px 30px; background-size: 23px;}
+	.homeResultWrap .btn {padding: 2px 15px 2px 20px; margin-top: 15px;}
+}
+
+@media screen and (max-width:480px) {
+	.searchWrap .searchToparea .searchBardiv .searchSel select {width: 70px; padding: 0 23px 0 5px;}
+	.searchWrap .searchToparea .searchBardiv.smart .searchInputbox {margin: 0 0 0 75px;}
+
+	.searchWrap .searchToparea .searchUtilWrap ol li a {padding: 10px 35px 9px 10px;}
+	.searchWrap .searchToparea .searchUtilWrap ol li a:after {right: 12px;}
+
+	.swipeGallery .swiper02 .swiper-slide .bookData, .swipeGallery .swiper03 .swiper-slide .bookData {padding-top: 15px;}
+	.swipeGallery .swiper-slide .bookData .book_name {height: 50px;}
+	.swipeGallery .swiper-slide .bookData .book_writers .bk_publish {display: none;}
+}
+
+@media screen and (max-width:375px) {
+	.searchWrap .searchToparea .innerSearch input[type='checkbox'].check + label {background-position-y: 1px; padding-bottom: 1px;}
+
+	.searchWrap .searchToparea .searchBardiv .searchInputbox input[type="text"] {padding-left: 40px;}
+
+	.listStyleType select {min-width: 70px; height: 32px; line-height: 32px; padding-left: 5px;}
+	.listStyleType select.orderSel {min-width: 80px;}
+	.listStyleType select.numSel {min-width: 45px;}
+	.listStyleType .btn {height: 32px; line-height: 32px;}
+  	.listStyleType span {width: 32px; height: 32px; line-height: 32px;}
+  
+	.bookList.cardViewStyle .listWrap > li .bookData .book_name {height: 37px;}
+	.bookList.listViewStyle.hope .listWrap > li .bookData .book_dataInner .book_name1 {height: 38px;}
+	  
+	input[type='checkbox'].check + label {background-size: 17px; padding-left: 21px;}
+
+	.swipeGallery .swiper-slide .bookData .book_name {height: 38px;}
+
+	.homeResultWrap .resultArea.board ul li dd.info {height: 36px;}
+}

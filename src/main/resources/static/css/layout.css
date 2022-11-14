@@ -114,8 +114,8 @@
 .naviandtitle {overflow: hidden; position: relative;}
 .naviandtitle h3 {font-family: 'S-Core Dream 6'; font-size: 2.125em; line-height: 1; color: #222; margin-top: 5px;}
 .naviandtitle .navi {font-size: 1.125em; color: #444; margin-top: 20px; line-height: 1.3;}
-.naviandtitle .navi a {display: inline-block; width: 25px; height: 25px; background: url(/include/image/common/ico_home.png) 0 0 no-repeat; vertical-align: top;}
-.naviandtitle .navi i.arrow {display: inline-block; width: 5px; height: 10px; margin: 0 10px; background: url(/include/image/common/ico_naviArrow.png) 0 0 no-repeat; vertical-align: 2px;}
+.naviandtitle .navi a {display: inline-block; width: 25px; height: 25px; margin-right: 5px; background: url("/images/home.png") 0 0 no-repeat; vertical-align: top;}
+.naviandtitle .navi i.arrow {display: inline-block; width: 10px; height: 10px; margin: 0 10px; background: url("/images/naviArrow.png") 0 0 no-repeat; vertical-align: 2px;}
 
 /* 배너 */
 #bannerWrap {overflow: hidden; position: relative; background-color:#fff; border-top: 2px solid #ebebeb;}

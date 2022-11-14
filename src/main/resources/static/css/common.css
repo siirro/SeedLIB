@@ -158,7 +158,7 @@
 .topPopupWrap .topPopupClose {display: inline-block; padding: 0 5px;}
 
 /* top button */
-#btnTopScroll {display:inline-block; position:fixed; right:15px; bottom:35px; min-width:30px; min-height:30px; z-index:9999; line-height:0; padding:10px; background:url(/include/image/button/btn_top.png)no-repeat center; display:none;}
+#btnTopScroll {display:inline-block; position:fixed; right:15px; bottom:35px; min-width:30px; min-height:30px; z-index:9999; line-height:0; padding:10px; background:url(/include/image/button/btn_top.png) no-repeat center; display:none;}
 
 /* form element */
 .form-ele {display: inline-block; width: 100%; vertical-align: middle; box-sizing: border-box;}
@@ -354,7 +354,7 @@ p.dot span {position: absolute; top: 0; right: 0}
 .summaryDesc {overflow: hidden; position: relative; margin-bottom: 40px; padding: 10px; background: url(/include/image/common/bg_pattern.png) 0 0; }
 .summaryDesc .innerBox {display: table; width: 100%; background-color: #fff; padding: 15px 0; box-sizing: border-box;}
 .summaryDesc .innerBox.noImg {padding: 15px;}
-.summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/include/image/common/ico_summary.png) no-repeat 0 0; border-radius:50%;}
+.summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/images/ico_book.png) no-repeat 0 0;}
 
 .summaryDesc .img + .desc {display: table-cell; width: 100%; height: 100px; padding: 0 20px 0 163px;}
 .summaryDesc .desc {word-break: keep-all; vertical-align: middle; color: #464646; font-size: 1.059em; letter-spacing: -0.75px;}
