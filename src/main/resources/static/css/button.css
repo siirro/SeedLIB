@@ -24,7 +24,7 @@
 .btn.view[target="_blank"]::before {display: none;}
 .btn.view[target="_blank"]::after {content: ""; display: inline; padding-left: 18px; background: url(/include/image/button/ico_blank.png) 100% 50% no-repeat;}
 .btn.view1[target="_blank"]::before {content: ""; display: inline; padding: 2px 0 2px 30px; background: url(/include/image/button/ico_view.png) 0 50% no-repeat;}
-.btn.write::before {content:" ";display: inline; padding: 2px 0 4px 27px; background: url(/include/image/button/ico_write.png) 0 50% no-repeat;}
+.btn.write::before {content:" ";display: inline; padding: 2px 0 4px 27px; background: url(/images/pen.png) 0 50% no-repeat;}
 .btn.commit::before {content: "";display: inline; padding-left: 30px; background: url(/include/image/button/ico_commit.png) 0 50% no-repeat;}
 .btn.back::after {content: "";display: inline; padding-left: 30px; background: url(/include/image/button/ico_back.png) 100% 50% no-repeat;}
 .btn.new::after {content: "";display: inline; padding-left: 20px; background: url(/include/image/button/ico_blank.png) 100% 50% no-repeat;}
