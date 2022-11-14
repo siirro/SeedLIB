@@ -9,12 +9,7 @@
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
-  	</typeAliases>
 
-  
- <typeAliases>
-		
-		
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
 		 

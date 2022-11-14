@@ -62,9 +62,10 @@ public class MemberController {
 
 		
 		
-			@PostMapping("agree")
-			public String agree(ModelAndView mv) throws Exception{
-				return "redirect:./join";
+	@PostMapping("agree")
+	public String agree(ModelAndView mv) throws Exception{
+	
+		return "redirect:./join";
 		}  
 
 	
