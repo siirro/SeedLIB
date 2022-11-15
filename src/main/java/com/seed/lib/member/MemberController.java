@@ -30,12 +30,13 @@ public class MemberController {
 		return "";
 		
 	}
-	@GetMapping("loginout")
-	public String getLogout(HttpSession session) throws Exception{
+	 
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session)throws Exception{
+		System.out.println("로그아웃 실행");
 		session.invalidate();
-		
-		return "Redirect:../";
-		
+		return "redirect: /";
 	}
 	
 			
@@ -60,13 +61,6 @@ public class MemberController {
 		
 	}
 
-		
-		
-	@PostMapping("agree")
-	public String agree(ModelAndView mv) throws Exception{
-	
-		return "redirect:./join";
-		}  
 
 	
 }
