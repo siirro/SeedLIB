@@ -220,9 +220,13 @@
 							</table>
 						</div>
 					</form>
-					<div class="btnGroup">
-						<a href="#btn" id="listBtn" class="btn cncl">취소</a> <a href="#btn"
-							id="registBtn" class="btn themeBtn">신청확인</a>
+
+					<!-- 서치영역 끝 -->
+					<!-- 페이징 -->
+					<div class="pagingWrap">
+						<p class="pagination">
+						</p>
+
 					</div>
 					<!-- End Of the Real Contents-->
 				</div>

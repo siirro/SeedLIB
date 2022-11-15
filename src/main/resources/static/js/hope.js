@@ -1,7 +1,18 @@
 let pageNum = 1;
 let is_end = false;
-let searchParam = "";
+let query = "";
 let apiKey = "";
+let startRow="";
+let perBlock=5;
+let totalPage="";
+let startNum="";
+let lastNum="";
+let pre="";
+let next="";
+let totalCount = "";
+
+
+
 function getKey(){
     $.ajax({
             type:"GET",
@@ -17,8 +28,8 @@ function getKey(){
 
 
 $("#searchBtn").click(function(){
-    searchParam = $("#query").val();
-    if(searchParam!=""){
+    query = $("#query").val();
+    if(query!=""){
        getKey();
        getSearch();            
     } else{
@@ -27,12 +38,21 @@ $("#searchBtn").click(function(){
     }
 })
 
-$("#btn-paging-next").click(function(){
+$("#next").click(function(){
     if(!is_end){
         pageNum += 1;
+        getKey();
         getSearch();
     }    
 })   
+
+$("#previous").click(function(){
+    if(pageNum>=1){
+        pageNum =  pageNum-1;
+        getKey();
+        getSearch();
+    }    
+})
 
 $("#btn-paging-last").click(function(){
     if(is_end){
@@ -43,27 +63,24 @@ $("#btn-paging-last").click(function(){
 
 function getSearch(){
     getKey();
-    searchParam = $("#query").val();
+    query = $("#query").val();
                 $.ajax({
                     type:"GET",
                     url:"https://dapi.kakao.com/v3/search/book?target=title",
                     headers:{Authorization: "KakaoAK "+apiKey},
                     data:{
-                        query:searchParam,
+                        query:query,
                         page:pageNum
                     },success : function(data){
                         console.log(data);
                         is_end=data.meta.is_end;
-                        if(data.meta.total_count>10){
-                            let searchBTN = '<button type="button" class="btn-paging first" id="btn-paging-first"><span class="blind">맨 첫 페이지로 가기</span></button>';
-                            searchBTN = searchBTN+'<button type="button" class="btn-paging prev" id="btn-paging-prev"><span class="blind">이전 10개 보기</span></button>';
-                            searchBTN = searchBTN+'<button type="button" class="btn-paging next" id="btn-paging-next"><span class="blind">다음 10개 보기</span></button>';
-                            searchBTN = searchBTN+'<button type="button" class="btn-paging last" id="btn-paging-last"><span class="blind">맨 마지막 페이지로 가기</span></button>'
-                            $(".paging").append(searchBTN);
+                        totalCount = data.meta.total_count;
+                        if(totalCount>10){
+                            paging(totalCount);
                         }
                            let searchArr = [];
                            searchArr.push(data.documents);
-                           let searchResult="'<strong>"+searchParam+"</strong>'에 대한 검색결과 총 <span>"+data.meta.total_count+"</span> 건"
+                           let searchResult="'<strong>"+query+"</strong>'에 대한 검색결과 총 <span>"+data.meta.total_count+"</span> 건"
                            $(".result_screen").append(searchResult);
                            $.each(searchArr[0], (function(index, item){
                                 let searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
@@ -75,19 +92,55 @@ function getSearch(){
                 })
             }
 
-function paging(pre, startNum, next, lastNum){
+function paging(totalCount){
 
+    startRow = (pageNum-1)*10;
+    let totalPage = totalCount/10;
+    if(totalCount%10!=0){
+        totalPage++;
+    }
+
+    this.totalPage = totalPage;
+
+    if(pageNum>totalPage){
+        pageNum=totalPage;
+    }
+
+    let totalBlock = totalPage/perBlock;
+
+    if(totalPage%perBlock!=0){
+        totalBlock++;
+    }
+
+    let curBlock = pageNum/perBlock;
+    if(pageNum%perBlock!=0){
+        curBlock++;
+    }
+
+    startNum = (curBlock-1)*perBlock+1;
+    lastNum = curBlock*perBlock;
+
+    if(curBlock==totalBlock){
+        lastNum = totalPage;
+    }
+
+    if(curBlock>1){
+        pre=true;
+    }
+
+    if(curBlock<totalBlock){
+        next=true;
+    }
+    console.log("page: ",pageNum,"totalcount: ",totalCount,"totalpage: ",totalPage,"totalblock: ",totalBlock,"startnum: ",startNum,"startrow: ",startRow)
+    
+    let r = '<li class="page-item ${"'+pre+'"?":""disabled"">';
+    r=r+'<a class="page-link" id="previous" href="https://dapi.kakao.com/v3/search/book?target=title&query='+query+'&page='+pageNum+'">Previous</a></li>'
+    r=r+'<li class="page-item"><a class="page-link" href="https://dapi.kakao.com/v3/search/book?target=title&query='+query+'&page='+pageNum+'"></a></li>'
+    r=r+'<li class="page-item ${"'+next+'?"":""disabled"}">'
+    r=r+'<a class="page-link" id="next" href="https://dapi.kakao.com/v3/search/book?target=title&query='+query+'&page='+pageNum+'">Next</a></li>'
+    $(".pagination").append(r);
 }
 
 
-//             <li class="page-item ${pager.pre?'':'disabled'}">
-//                             <a class="page-link" href="https://dapi.kakao.com/v3/search/book?target=title&query='+searchParam+'%EA%B0%95&page=1">Previous</a>
-//                           </li>
-//                               <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-//                                   <li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a> </li>
-//                               </c:forEach>
-//                           <li class="page-item ${pager.next?'':'disabled'}">
-//                             <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
-//                           </li>
 
 // https://dapi.kakao.com/v3/search/book?target=title&query=%EA%B0%95&page=1

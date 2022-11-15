@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping("/member/*")
 public class MemberController {
 	
@@ -21,36 +24,37 @@ public class MemberController {
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
+		log.info("get 진입");
 				
 	}
 	
 	@PostMapping("login")
 	public String getLogin(MemberVO memberVO) throws Exception{
+		log.info("login 성공");
 		
-		return "";
-		
-	}
-	@GetMapping("loginout")
-	public String getLogout(HttpSession session) throws Exception{
-		session.invalidate();
-		
-		return "Redirect:../";
+		return "member/login";
 		
 	}
+	 
 	
 			
 	@GetMapping("join")	
-	public void setJoin() throws Exception{
-			
+	public void setJoin(MemberVO memberVO) throws Exception{
+			memberVO.getUserName();
 		
 	}
 	
 	
 	@PostMapping("join")	
-	public String setJoin(MemberVO memberVO) throws Exception{
-				int result = memberService.setJoin(memberVO);
+	public ModelAndView setJoin(MemberVO memberVO, ModelAndView mv) throws Exception{
+		memberVO.getUserName();
+		log.info("조인조인조인");
+		int result = memberService.setJoin(memberVO);
+		mv.addObject("memberVO", memberVO);
 		
-		return "Redirect:../";
+		mv.setViewName("redirect:./");
+		
+		return mv;
 	}
 
 
@@ -58,15 +62,10 @@ public class MemberController {
 	@GetMapping("agree")
 	public void agree() throws Exception{
 		
+		log.info("agree 성공");
+		
 	}
 
-		
-		
-	@PostMapping("agree")
-	public String agree(ModelAndView mv) throws Exception{
-	
-		return "redirect:./join";
-		}  
 
 	
 }

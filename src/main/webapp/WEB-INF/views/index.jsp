@@ -24,7 +24,6 @@
 </head>
 <body>
 
-
 <div id="wrap">
 
 <c:import url="./temp/header.jsp"></c:import>
@@ -3041,6 +3040,13 @@
 
 
 <script src="/js/indexcopy.js"></script>
+=======
+<h1>main</h1>
+<a href="/test">test</a>
+<a href="/hope/setHope">희망도서 신청하기</a>
+<a href="/hopeList">HOPELIST</a>
+<a href="/member/login"> 로그인 </a>
+
 </body>
 
 </html>
