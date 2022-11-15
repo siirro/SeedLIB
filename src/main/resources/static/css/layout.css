@@ -26,6 +26,14 @@
 #headerInner {position: relative; z-index: 99;}
 
 #snb, .searchWrap .searchToparea .searchBardiv, .chart-pop h4 {
+	
+	/* background: linear-gradient(to right, #9be15d, #00e3ae); */
+	background-image: linear-gradient(to right, #9be15d, #00e3ae);
+	
+
+	
+	/* \
+	
 	background: rgba(107, 100, 190, 1);
 	background: -moz-linear-gradient(left, rgba(107, 100, 190, 1) 0%, rgba(107, 100, 190, 1) 30%, rgba(0, 170, 81, 1) 73%, rgba(0, 175, 81, 1) 100%);
 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(107, 100, 190, 1)), color-stop(30%, rgba(107, 100, 190, 1)), color-stop(73%, rgba(0, 170, 81, 1)), color-stop(100%, rgba(0, 175, 81, 1)));
@@ -33,7 +41,7 @@
 	background: -o-linear-gradient(left, rgba(107, 100, 190, 1) 0%, rgba(107, 100, 190, 1) 30%, rgba(0, 170, 81, 1) 73%, rgba(0, 175, 81, 1) 100%);
 	background: -ms-linear-gradient(left, rgba(107, 100, 190, 1) 0%, rgba(107, 100, 190, 1) 30%, rgba(0, 170, 81, 1) 73%, rgba(0, 175, 81, 1) 100%);
 	background: linear-gradient(to right, rgba(107, 100, 190, 1) 0%, rgba(107, 100, 190, 1) 30%, rgba(0, 170, 81, 1) 73%, rgba(0, 175, 81, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b64be', endColorstr='#00af51', GradientType=1);
+	 */filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b64be', endColorstr='#00af51', GradientType=1);
 }
 
 /*logo*/
@@ -43,7 +51,7 @@
 /* gnb */
 #indexNavi {overflow: hidden; position: absolute; top: 40px; left: 0; z-index: 98; width: 100%; background-color: #fff;}
 #submenuArea {overflow: hidden; position: absolute; top: 100px; z-index: 88; width: 100%; height: 265px; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec; background: #fff;}
-#topmenu {position: relative; width: 1240px; height: 100px; margin: 0 auto; padding: 0 50px 0 310px; word-break: break-all; box-sizing: border-box;}
+#topmenu {position: relative; width: 1370px; height: 100px; margin: 0 auto; padding: 0 50px 0 310px; word-break: break-all; box-sizing: border-box;}
 #topmenu > li {float: left; position: relative; line-height: 1.4;}
 #topmenu > li > a {display: block; text-align: center; line-height: 100px; font-size: 1.375em; letter-spacing: -1px; padding: 0 26px;}
 #topmenu > li > a strong {font-weight: normal;}
@@ -90,7 +98,7 @@
 
 /* lnb */
 #lnbNav {float: left; width: 240px;}
-#lnbNav h2 {position: relative; font-family: 'S-Core Dream 5'; font-size: 1.750em; line-height: 142px; color: #fff; text-align: center; background: #6b64be url(/include/image/common/lnb_bg.png) no-repeat 0 bottom;}
+#lnbNav h2 {position: relative; font-family: 'S-Core Dream 5'; font-size: 1.750em; line-height: 142px; color: #fff; text-align: center; background-image: linear-gradient(to right, #9be15d, #00e3ae);}
 #lnb a:focus {text-decoration: underline;}
 #lnb a[target="_blank"] {background-image: none !important;}
 #lnb a[target="_blank"]::after {content: ""; display: inline; padding-right: 22px; background: url(/include/image/button/ico_blank_hover.png) 100% 50% no-repeat;}
@@ -213,7 +221,7 @@
 	#blackBG {top: 140px;}
 	#indexColumn {height: 140px;}
 	#headerInner, #contentGroup, .sectionGroup, .footerInner {width: 1240px; margin: 0 auto;}
-	#logo {position: absolute; top: 25px; left: 0; z-index: 99;}
+	#logo {position: absolute; top: 8px; left: 0; z-index: 99;}
 
 	#contentcore {float: right; width: 960px;}
 	.naviandtitle {height: 109px;}
