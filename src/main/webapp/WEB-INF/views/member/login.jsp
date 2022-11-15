@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,6 +95,9 @@
                                     <div class="loginGroup clearfix">
                                         <div class="loginArea">
                                             <div class="inpArea">
+                                            
+                                            
+                                            
                                                 <label for="userId"><span class="blind">아이디</span></label>
                                                 <input type="text" id="userId" name="userName" placeholder="아이디">
                                             </div>
@@ -101,6 +105,8 @@
                                                 <label for="userPw"><span class="blind">비밀번호</span></label>
                                                 <input type="password" id="userPw" name="password" placeholder="비밀번호">
                                             </div>
+                                          
+                                
                                             <input type="submit" id="loginBtn" title="로그인" value="로그인" class="btnLogin themeBtn">
                                             <div class="checkArea clearfix">
                                                 <a href="/intro/memberFindIdCertify.do">아이디 찾기</a>
