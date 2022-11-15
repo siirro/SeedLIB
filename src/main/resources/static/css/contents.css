@@ -1,0 +1,451 @@
+@charset "utf-8";
+
+/* login */
+.loginWrap {text-align:center; padding: 7px; background:url(/include/image/contents/bg_pattern.png) 0 0;}
+.loginForm {background-color:#fff;}
+.loginGroup {display:inline-block; padding:70px 0 50px;}
+.loginGroup .loginArea {position: relative; min-width: 480px; padding-left: 180px; background: url(/include/image/contents/img_login.png) no-repeat 0 0;}
+.loginGroup .loginArea .inpArea {position: relative; width: calc(100% - 130px); height: 50px; border: 1px solid #ddd; box-sizing: border-box; background-color: #fff;}
+.loginGroup .loginArea .inpArea input {width: 100%; height: 48px; padding: 0 10px; line-height: 48px; border: none;}
+.loginGroup .loginArea .inpArea input::placeholder {font-size: 1.063em; color: #777;}
+.loginGroup .loginArea .inpArea input::-ms-input-placeholder {font-size: 1.063em; color: #777;}
+.loginGroup .loginArea .inpArea input::-webkit-input-placeholder {font-size: 1.063em; color: #777;}
+.loginGroup .loginArea .inpArea + .inpArea {margin-top:10px}
+.loginGroup .loginArea .inpArea + .inpArea label {background:url(/include/image/common/ico_loginPW.png) 0 0 no-repeat;}
+.loginGroup .loginArea .btnLogin {display: block; position: absolute; top: 0; right: 0; width: 120px; height: 110px; padding: 0; font-size: 1.176em; color:#fff; text-align: center; background-color: #555;}
+.loginWrap .checkArea {overflow:hidden; max-width:700px; margin:20px 0 0 10px; text-align:left;}
+.loginWrap .checkArea a {display:inline-block; position:relative; font-size:1.063em; line-height:1; color:#666; vertical-align:middle; }
+.loginWrap .checkArea a + a::before {content:"";display:inline-block;width:1px;height:13px;margin:2px 20px;vertical-align:middle;background:#ccc}
+.loginDesc,.joinDesc {clear:both; padding: 20px 25px; text-align: left; background-color: #f8f8f8;}
+
+.loginBottom {position: relative; margin-top: 40px;}
+.loginBottom .btn {font-size: 1.176em;}
+
+/* find ID/PW */
+.findWrap {text-align: center; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0;}
+.findForm {background-color: #fff;}
+.findGroup {display: inline-block; padding: 50px 0;}
+.findGroup .findArea {position: relative; min-width: 530px;}
+.findGroup .findArea .inpArea {position: relative; width: calc(100% - 130px); height: 50px; border: 1px solid #ddd; box-sizing: border-box; background-color: #fff;}
+.findGroup .findArea .inpArea input {width: 100%; height: 48px; padding: 0 10px; line-height: 48px; border: none;}
+.findGroup .findArea .inpArea input::placeholder {font-size: 1.063em; color: #777;}
+.findGroup .findArea .inpArea input::-ms-input-placeholder {font-size: 1.063em; color: #777;}
+.findGroup .findArea .inpArea input::-webkit-input-placeholder {font-size: 1.063em; color: #777;}
+.findGroup .findArea .inpArea + .inpArea {margin-top: 10px;}
+.findGroup .findArea .btnLogin {display: block; position: absolute; top: 0; right: 0; width: 120px; height: 110px; padding: 0; font-size: 1.176em; color:#fff; text-align: center; background-color: #555;}
+.findGroup .findArea .findDesc {margin-top: 10px; text-align: left;}
+
+.findResult {position: relative; padding: 30px; text-align: left;}
+.findResult .findIdArea {position: relative; padding: 25px; margin-top: 27px; background-color: #f8f8f8;}
+.findResult .findIdArea dl {overflow: hidden;}
+.findResult .findIdArea dl dt {font-size: 1.063em; line-height: 50px; padding-left: 10px; background-color: #fff; box-sizing: border-box;}
+.findResult .findIdArea dl dd .btn {min-width: 180px; padding: 0; font-size: 1.063em; line-height: 50px;}
+
+/* 비밀번호 확인 */
+.findGroup .pwChkArea {position: relative; min-width: 480px; min-height: 130px; padding-left: 180px; background: url(/include/image/contents/img_login.png) 0 50% no-repeat;}
+.findGroup .pwChkArea.memout {background: url(/include/image/contents/img_out.png) 0 50% no-repeat;}
+.findGroup .pwChkArea .inpArea {position: relative; width: calc(100% - 150px); height: 40px; line-height: 40px; font-size: 1.125em; color: #777; padding-left: 90px;box-sizing: border-box; background-color: #fff; text-align: left;}
+.findGroup .pwChkArea .inpArea label {position: absolute; top: 0; left: 0;width: 90px; height: 40px; color: #464646; line-height: 40px; text-align: left;}
+.findGroup .pwChkArea .inpArea input {width: 100%; height: 40px; padding: 0 10px 0 5px; line-height: 40px; border: none; color: #777;}
+.findGroup .pwChkArea .inpArea + .inpArea {margin-top: 10px;}
+.findGroup .pwChkArea .inpArea.bdon, .findGroup .pwChkArea .inpArea.bdon label {height: 50px; line-height: 50px;}
+.findGroup .pwChkArea .inpArea.bdon input {border: 1px solid #ddd; height: 50px; line-height: 50px;}
+.findGroup .pwChkArea .btnLogin {display: block; position: absolute; bottom: 30px; right: 0; width: 140px; padding: 0; font-size: 1.063em; line-height: 50px; color: #fff; text-align: center; border: 0; background-color: #555;}
+.findGroup .pwChkArea.memout .btnLogin {bottom: 47px;}
+.findGroup .pwChkArea .findDesc {margin-top: 10px; font-size: 1.063em; text-align: left;}
+
+/* agree */
+.agreeForm .title {margin: 30px 0 10px; font-weight: normal; font-size: 1.333em; color: #464646;}
+.agreeForm ~ .btnGroup .btn {min-width: 150px;}
+.agreeBox {padding: 20px; min-height: 200px; border: solid 1px #e2e2e2;}
+.agreeBox.scrollBox {overflow: auto; height: 280px;}
+.agreeBox h4 {font-size: 1.176em; color: #444;}
+.agreeCheck {margin-bottom:30px; font-size:1.063em; }
+.agreeCheck input {vertical-align:middle}
+
+/* certy */
+.certifyWrap {display: flex; overflow: hidden; position: relative; margin-top: 15px;}
+.certifyWrap.join {margin-top: 40px;}
+.certifyWrap img {display: block; margin: 0 auto 20px;}
+.certifyWrap .certifyBox {float: left; width: calc(50% - 10px); height: 100%; text-align: center; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0; box-sizing: border-box;}
+.certifyWrap .certifyBox ~ .certifyBox {margin-left: 20px;}
+.certifyWrap .certifyInner {background-color: #fff; padding: 40px 0;}
+.certifyWrap .certifyInner .subtext {margin-top:15px;}
+.certifyWrap .title {font-weight: 500; font-size: 1.412em; line-height: 1; color: #222;}
+.certifyWrap .title span {display: inline-block; font-size: 0.833em; margin-bottom: 15px;}
+.certifyWrap .desc {min-height: 40px; padding: 30px;}
+.certifyWrap.join .desc {min-height: 81px;}
+.certifyWrap .idInput {padding-bottom: 30px;}
+.certifyWrap .idInput label {display: inline-block; line-height: 40px; padding-right: 10px; vertical-align: top;}
+.certifyWrap .certifyBox .btn {display: block; width: 100%; max-width: 230px; margin: 0 auto; padding: 10px 0 10px 25px; font-size: 1.063em; text-align: center;}
+.certifyWrap.join .certifyBox .btn {padding: 10px 0;}
+.certifyWrap .certifyBox .btn.niceM {background: #1ea953 url(/include/image/common/ico_certify_1.png) no-repeat 20px center;}
+.certifyWrap .certifyBox .btn.niceI {background: #1ea953 url(/include/image/common/ico_certify_2.png) no-repeat 20px center;}
+.certifyWrap.memberType .desc {max-width:100%}
+
+/* site map */
+#sitemap, #smapmenu {overflow: hidden;}
+#sitemap #submenuArea, #smapmenu > li > a .en, #smapmenu > li .MkSub, #smapmenu > li .MkTab  {display: none;}
+#smapmenu {display: flex; flex-flow: wrap; margin-left: -20px;}
+#smapmenu > li {display: flex; width: calc(33.33% - 20px); margin-left: 20px; flex-direction: column; margin-bottom: 20px;}
+#smapmenu > li > a {display: block; padding: 15px 0; font-size: 1.294em; font-weight: 500; color: #444; text-align: center; box-sizing: border-box; background-color: #eaeaea; border-bottom: none;}
+#smapmenu > li > ul {overflow: hidden; padding: 20px 0; border: 1px solid #eaeaea; align-items: center;}
+#smapmenu > li > ul > li {flex-basis: 100%; padding: 0; box-sizing: border-box;}
+#smapmenu > li > ul > li > a {display: block; font-size: 1.059em; text-align: center; padding: 0;}
+#smapmenu > li > ul li a:hover, #smapmenu > li > ul li a:focus {text-decoration: underline;}
+
+/* my library */
+.myPageWrap {overflow: hidden;}
+.myInfoBox {overflow: hidden; position: relative; margin-bottom: 40px; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0; }
+.myInner {background-color: #fcfdfe; padding: 10px;}
+.myTop {overflow: hidden; position: relative; background-color: #f2f2f2; padding: 15px 280px 15px 20px;}
+.myInfoBox .title .name {font-size: 1.235em; font-weight: 500; color: #464646; display: inline-block;}
+.myInfoBox .title .name + b {color: #d93131; white-space: nowrap;}
+.myInfoBox .btnModify {position: absolute; top: 50%; right: 15px; margin-top: -15px;}
+.myInfoBox .btnModify a.btn {height: 30px; line-height: 30px; padding: 0 10px; vertical-align: top;}
+.myInfoBox .myInfo {clear: both; position: relative; min-height: 130px; padding: 30px 20px 15px; padding-left: 160px;}
+.myInfoBox .myInfo .memType {overflow:hidden; position:absolute; top:30px; left:8px; border-radius:50%}
+.myInfoBox .myInfo .memType strong {display: table-cell; width: 130px; height: 130px; font-size: 1.353em; line-height: 1.4; color: #fff; text-align: center; vertical-align: middle;}
+.myInfoBox .myInfo .memType strong.typeA {background-color: #6a65bd}
+.myInfoBox .myInfo .memType strong.typeB {background-color: #777}
+.myInfoBox .myInfo .memType strong.typeC {background-color: #d93131}
+.myInfoBox .myInfo .memType strong span {display: block; font-weight: normal; font-size: 0.652em;}
+.myInfoBox .myInfo .memType + .myInfoList {display: table-cell; width: 100%; height: 130px; word-break: keep-all; vertical-align: middle;}
+.myInfoList i {display: inline-block; font-size: 0.824em; color: #ccc; font-style: normal; vertical-align: 2px; padding: 0 8px;}
+.myInfoBox .barcode {position: relative; margin-top: 15px; text-align: center;}
+.myState {margin-left: -8px}
+.myState li {float: left; width: calc(25% - 8px); margin-left: 8px; margin-bottom: 8px;}
+.myState li a {display: block; position: relative; padding: 20px; line-height: 1.3; border: 1px solid #e2e2e2;min-height:68px;}
+.myState li a.red {border: 1px solid #d93131;}
+.myState li a strong {font-size: 1.059em; color:#666; font-weight: normal;}
+.myState li a .num {position: absolute; top: 50%; right: 20px; margin-top: -15px; font-weight: 700; font-size: 1.412em; line-height: 30px; color: #333; text-align: center;}
+.myState li a.red strong, .myState li a.red .num {color: #d93131;}
+.myState li a:hover .num, .myState li a:focus .num {text-decoration: underline;}
+.myState li .ref{font-size:0.944em;}
+
+.barcodeWrap{position:relative;}
+.barcodeWrap .coution{color:#d93131;text-align:center;margin-top:10px;}
+.barcodeWrap .barcodeFamily{text-align:center;}
+.barcodeWrap .barcodeFamily .name{margin-bottom:10px;}
+.barcodeWrap .barcodeFamily .num{letter-spacing:2px;margin-top:2px;}
+.barcodeWrap .btnSlideNext, .barcodeWrap .btnSlidePrev{display:none;width:30px;height:30px;position:absolute;top:50%;transform:translateY(-50%);z-index:20001;}
+.barcodeWrap .btnSlideNext{background:url("/include/image/button/btn_arrowNext.png") no-repeat 0 0;right:10px;}
+.barcodeWrap .btnSlidePrev{background:url("/include/image/button/btn_arrowPrev.png") no-repeat 0 0;left:10px;}
+.barcodeWrap .btnSlidePrev.swiper-button-disabled,
+.barcodeWrap .btnSlideNext.swiper-button-disabled{opacity:.35;pointer-events:none;}
+
+/* 온라인 회원증 발급완료 */
+.onlineMemWrap {position: relative; border: 1px solid #cfcfcf;}
+.onlineMemWrap .topArea {font-size: 1.412em; font-weight: 500; color: #fff; text-align: center; padding: 10px 0;}
+.onlineMemWrap .conArea {padding: 40px;}
+.onlineMemWrap .conArea h5 {font-size: 1.235em; color: #444;}
+.onlineMemWrap .conArea h5::before {content: ""; display: inline-block; width: 4px; height: 18px; background-color: #4d47ac; margin-right: 8px; vertical-align: -1px;}
+.onlineMemWrap .conArea h5 + ul {padding-left: 12px; margin-top: 15px; border-bottom: 1px solid #f2f2f2; padding-bottom: 30px; margin-bottom: 35px;}
+.onlineMemWrap .conArea li {font-size: 1.059em; margin: 5px 0;}
+.onlineMemWrap .conArea li span {display: inline-block; min-width: 90px; position: relative; margin-right: 20px;}
+.onlineMemWrap .conArea li span::after {content: ""; position: absolute; right: 0; top: 50%; width: 2px; height: 16px; margin-top: -7px; background-color: #dfdfdf;}
+.onlineMemWrap .refArea {padding: 20px 40px; background-color: #f4f4f4;}
+.onlineMemWrap .conArea .none {font-size: 1.176em; border-bottom: 1px solid #f2f2f2; padding-bottom: 30px; margin-bottom: 35px; text-align: center;}
+.onlineMemWrap .conArea .none strong {color: #222; text-decoration: underline;}
+.onlineMemWrap .conArea .none span {color: #d93131;}
+
+/* 조직도 */
+.organWrap {overflow: hidden; padding: 30px 0;}
+.organWrap h4, .organWrap h5 {position: relative; color: #fff; text-align: center; font-weight: normal;}
+.organWrap h4, .organWrap h5 {max-width: 300px; line-height: 82px; margin:0 auto; }
+.organWrap h4::before {content: ""; display: block; position: absolute; top: 82px; left: 50%; width: 1px; height: 222px; background-color: #e7e7e7;}
+.organWrap h4 {font-size: 1.529em; background-color: #4d47ac;}
+.organWrap h4::after {content: ""; display: block; position: absolute; bottom: -3px; left: 50%; width: 7px; height: 7px; margin-left: -3px; background-color: #4d47ac; border-radius: 100%; -webkit-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); -moz-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5);}
+.organWrap h5 {font-size: 1.412em; background-color: #8f8bc5;}
+.organList {position: relative; overflow: hidden; padding-top: 80px}
+.organList li .box {position: relative;}
+.organList li .box::before {content: ""; display: block; position: absolute; top: 50%; width: 50%; height: 1px; background-color: #e7e7e7}
+.organList li:nth-child(1) .box::before {left: 50%;}
+.organList li:nth-child(2) .box::before {right: 50%;}
+.organList li .box h5::after {content: ""; display: block; position: absolute; top: 50%; width: 7px; height: 7px; margin-top: -3px; background-color: #4d47ac; border-radius: 100%; -webkit-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); -moz-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5);}
+.organList li:nth-child(1) .box h5::after {right: -3px;}
+.organList li:nth-child(2) .box h5::after {left: -3px;}
+.organList.col-2 > ul > li {float: left; width: 50%;}
+
+.organList.col-5 {padding-top: 60px;}
+.organList.col-5 > ul {margin-left: -10px; border-top: 1px solid #e7e7e7; position: relative;}
+.organList.col-5 > ul::before {content: ""; display: block; position: absolute; top: -1px; left: 0; width: calc(8% + 9px); height: 1px; background-color: #fff;}
+.organList.col-5 > ul::after {content: ""; display: block; position: absolute; top: -1px; right: 0; width: calc(8% - 3px); height: 1px; background-color: #fff;}
+.organList.col-5 > ul > li {float: left; width: calc(16.6666666% - 10px); margin-left: 10px; position: relative; padding-top: 60px;}
+.organList.col-5 > ul > li::before {content: ""; display: block; position: absolute; bottom: 50%; left: 50%; width: 1px; height: 50%; background-color: #e7e7e7}
+.organList.col-5 > ul > li .box1 {display: table; position: relative; width: 100%; line-height: 1.4; background-color: #f4f4f4; border-top: 2px solid #777;}
+.organList.col-5 > ul > li:nth-child(n+4) .box1 {background-color: #efeeff;}
+.organList.col-5 > ul > li .box1 p {display: table-cell; width:100%; height: 62px; letter-spacing: -0.05em; font-size: 1.176em; color: #444; vertical-align: middle; text-align: center;}
+.organList.col-5 > ul > li .box1::after {content: ""; display: block; position: absolute; top: -4px; left: 50%; width: 7px; height: 7px; margin-left: -3px; background-color: #4d47ac; border-radius: 100%; -webkit-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); -moz-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5);}
+
+.organList.col-7 {padding-top: 60px;}
+.organList.col-7 > ul {margin-left: -10px; border-top: 1px solid #e7e7e7; position: relative;}
+.organList.col-7 > ul::before {content: ""; display: block; position: absolute; top: -1px; left: 0; width: calc(7.1428571% + 5px); height: 1px; background-color: #fff;}
+.organList.col-7 > ul::after {content: ""; display: block; position: absolute; top: -1px; right: 0; width: calc(7.1428571% - 6px); height: 1px; background-color: #fff;}
+.organList.col-7 > ul > li {float: left; width: calc(14.285714% - 10px); margin-left: 10px; position: relative; padding-top: 60px;}
+.organList.col-7 > ul > li::before {content: ""; display: block; position: absolute; bottom: 50%; left: 50%; width: 1px; height: 50%; background-color: #e7e7e7}
+.organList.col-7 > ul > li .box1 {display: table; position: relative; width: 100%; line-height: 1.4; background-color: #f4f4f4; border-top: 2px solid #777;}
+.organList.col-7 > ul > li:nth-child(n+3) .box1 {background-color: #efeeff;}
+.organList.col-7 > ul > li .box1 p {display: table-cell; width:100%; height: 62px; letter-spacing: -0.05em; font-size: 1.176em; color: #444; vertical-align: middle; text-align: center;}
+.organList.col-7 > ul > li .box1::after {content: ""; display: block; position: absolute; top: -4px; left: 50%; width: 7px; height: 7px; margin-left: -3px; background-color: #4d47ac; border-radius: 100%; -webkit-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); -moz-box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5); box-shadow: 0px 0px 0px 7px rgba(255,255,255,.5);}
+
+/* 찾아오시는길 맵 */
+.locationMap {margin-bottom: 40px;}
+
+/* 독서마라톤 참가방법 리스트 */
+.marathon-list > li {border: 1px solid #e2e2e2;}
+.marathon-list > li + li {margin-top: 10px;}
+.marathon-list > li dl {display: table; width: 100%;}
+.marathon-list > li dt {display: table-cell; width: 230px; font-size: 1.176em; font-weight: 500; color: #222; background-color: #f7f7f7; vertical-align: middle; padding-left: 30px; box-sizing: border-box;}
+.marathon-list > li dd {display: table-cell; width: calc(100% - 230px); height: 88px; vertical-align: middle; padding-left: 30px; box-sizing: border-box;}
+
+/* 독서마라톤 코스신청 */
+.contbox1 {padding: 30px 30px 10px; margin-top: 5px; background-color: #f7f7f7;}
+.contbox1 .buttonBox {overflow: hidden; margin-left: -20px;}
+.contbox1 .button {position: relative; float: left; width: calc(50% - 20px); margin-left: 20px; margin-bottom: 20px;}
+.contbox1 .button input {position: absolute; top: 0; left: -20px; opacity: 0;}
+.contbox1 .button label {display: block; padding: 30px 0; background-color: #fff;}
+.contbox1 .button .tit {display: block; padding: 0 25px 20px; font-size: 1.294em; line-height: 1.2; color: #333; letter-spacing: -0.5px;}
+.contbox1 .button .tit.apply {padding: 0 25px 10px;}
+.contbox1 .button .tit span {color: #777;}
+.contbox1 .button .bar {display: block; width: 100%; height: 3px; background-color: #f1f1f1;}
+.contbox1 .button .bar span {display: block; height: 3px; background-color: #009d8a;}
+.contbox1 .button:nth-child(1) .bar span {width: 11.9%;}
+.contbox1 .button:nth-child(2) .bar span {width: 23.8%;}
+.contbox1 .button:nth-child(3) .bar span {width: 50%;}
+.contbox1 .button:nth-child(4) .bar span {width: 100%;}
+.contbox1 .button .info {display: block; padding: 15px 25px 0;}
+.contbox1 .button .info.apply {display: block; padding: 0 25px 0;}
+.contbox1 .button .info i {display: inline-block; font-style: normal; padding: 0 10px; opacity: .5; font-size: 0.706em; vertical-align: 2px;}
+
+
+/* 도서관관련법규 */
+.lawBox {overflow: hidden; position: relative; padding: 10px 30px 10px 20px; border: 1px solid #e2e2e2;}
+.lawBox:after {content: ""; display: block; clear: both;}
+.lawBox .txtArea {float: left; padding: 3px 0 3px 12px; background: url(/include/image/common/bul_dash.png) 0 16px no-repeat;}
+.lawBox .btnArea {float: right;}
+.lawBox .btnArea .btn {padding: 0 15px 0 0; background: #fff url(/include/image/contents/law_arr.png) no-repeat right center; color: #777;}
+.lawBox + .lawBox {margin-top: 10px;}
+
+/* 스마트영어도서관 */
+.smarEngStep {margin-top: 20px;}
+.smarEngStep li {text-align: center;}
+.smarEngStep li:nth-child(1) {background-color: #f7f7fd;}
+.smarEngStep li:nth-child(2) {background-color: #ebebfa;}
+.smarEngStep li:nth-child(3) {background-color: #d8d8f7;}
+.smarEngStep li strong {display: block; font-size: 1.176em;}
+
+/* 가족오락관 */
+.familyStep {margin-top: 20px;}
+.familyStep li {text-align: center; font-size: 0.941em;}
+.familyStep li:nth-child(1) {background-color: #f7f7fd;}
+.familyStep li:nth-child(2) {background-color: #ebebfa;}
+.familyStep li:nth-child(3) {background-color: #e1e1fb;}
+.familyStep li:nth-child(4) {background-color: #d8d8f7;}
+.familyStep li strong {display: block; font-size: 1.176em; color: #333;}
+.familyStep li strong span {font-style: normal; font-size: 0.875em;}
+
+/* 모바일앱 - 리브로피아 */
+.mobileList {margin: 15px 0 15px -20px;}
+.mobileList li {float: left; width: calc(33.33% - 20px); margin-left: 20px; text-align: center; font-size: 0.941em;}
+.mobileList li img {border: 1px solid #e2e2e2;}
+
+.libropiaImg {margin-top: 10px;}
+.libropiaImg li {float: left; margin-right: 10px;}
+
+/* 원문/학술정보 참여기관 리스트 */
+.db_list {margin-left: -20px;}
+.db_list li {float: left; width: calc(33.33% - 20px); margin-left: 20px; line-height: 50px; border: 1px solid #ddd; box-sizing: border-box; text-align: center; margin-top: 10px;}
+
+/* 한 도시 한 책 읽기 */
+.oneCityBook td {padding:15px;}
+.oneCityBook td a {font-weight:500; color:#222;}
+.oneCityBook td img {width:250px; margin-top:10px;}
+
+@media screen and (max-width:1024px){
+	.loginBottom .btn {margin-top: 10px; width: 100%;}
+
+	.findResult .findIdArea dl dd .btn {margin-top: 8px;}
+	.findResult .findIdArea dl dd .btn {float: left; width: calc(100%/2 - 4px); min-width: auto; line-height: 50px;}
+	.findResult .findIdArea dl dd .btn + .btn {margin-left: 8px;}
+}
+@media screen and (max-width:860px){
+	.organList.non::after {content:"";display:none;}
+}
+@media screen and (max-width:800px){
+	.loginGroup .loginArea, .findGroup .findArea, .findGroup .pwChkArea {min-width:auto}
+	.findGroup .pwChkArea {min-width:380px; padding-left:160px;}
+	.loginWrap .checkArea a + a::before {margin:2px 14px}
+	.loginBottom {margin-top: 30px;}
+
+	.certifyWrap {display: block;}
+	.certifyWrap.join {margin-top: 20px;}
+	.certifyWrap .certifyInner {padding: 25px 0;}
+    .certifyWrap .certifyBox {float: none; width: auto;}
+	.certifyWrap .certifyBox ~ .certifyBox {margin: 10px 0 0;}
+	.certifyWrap .title span {margin-bottom: 10px;}
+	.certifyWrap .desc {padding: 20px; min-height: auto;}
+	.certifyWrap.join .desc {min-height: auto;}
+	.certifyWrap .desc br {display: none;}
+	.certifyWrap .idInput {padding-bottom: 20px;}
+
+	.myState li {width: calc(50% - 8px);}
+	.myState li a{min-height:58px;}
+
+	.marathon-list > li dt {width: 155px; padding-left: 15px;}
+	.marathon-list > li dd {width: calc(100% - 155px); height: 88px; padding: 0 15px;}
+
+	.organWrap h4, .organWrap h5 {max-width: 250px;}
+
+	.lawBox .txtArea {background-position-y: 14px;}
+
+	.smarEngStep li {padding: 10px 0;}
+	.familyStep li {padding: 10px 0;}
+
+	.contbox1 {padding: 20px; margin-top: 10px;}
+	.contbox1 .buttonBox {margin-left: 0;}
+	.contbox1 .button {width: 100%; margin-left: 0; margin-bottom: 10px;}
+	.contbox1 .button:last-child {margin-bottom: 0;}
+	.contbox1 .button label {padding: 20px 0;}
+	.contbox1 .button .tit {padding: 0 20px 15px;}
+	.contbox1 .button .info {padding: 10px 20px 0;}
+
+	.db_list {margin-left: -10px;}
+	.db_list li {width: calc(50% - 10px); margin-left: 10px; line-height: 40px;}
+}
+@media screen and (max-width:640px){
+	.loginGroup, .findGroup {display: block; padding: 20px;}
+	.loginGroup .loginArea, .loginGroup .loginArea .inpArea, .findGroup .findArea,.findGroup .findArea .inpArea, .findGroup .pwChkArea,.findGroup .pwChkArea .inpArea {min-width: 100%; box-sizing: border-box;}
+	.loginGroup .loginArea {padding-left: 150px;}
+	.loginGroup .loginArea .btnLogin, .findGroup .findArea .btnLogin {position: relative; top: inherit; right: inherit; width: 100%; margin-top: 10px; height: 50px;}
+	.findGroup .findArea .btnLogin br {display: none;}
+	.findGroup .pwChkArea .btnLogin,.findGroup .pwChkArea.memout .btnLogin {position: relative; bottom: 0; right: inherit; width: 100%; margin-top: 10px; line-height: 50px}
+	.loginDesc,.joinDesc {padding:20px}
+
+	.findResult .findIdArea {margin-top: 15px; padding: 15px;}
+	.findResult .findIdArea dl dt {line-height: 40px;}
+	.findResult .findIdArea dl dd .btn {line-height: 40px;}
+
+	.findResult {padding: 20px;}
+
+	.loginWrap .checkArea a {float:none;}
+	.loginWrap .checkArea a + a::before {margin:2px 8px}
+
+	.certifyWrap .idInput label {line-height: 34px;}
+
+	#smapmenu {margin-left: -15px;}
+	#smapmenu > li {width: calc(50% - 15px); margin-left: 15px; margin-bottom: 15px;}
+	#smapmenu > li > ul {padding: 10px 0;}
+
+	.myTop {padding: 10px;}
+	.myInfoBox .title {text-align: center; line-height:1.2;}
+	.myInfoBox .btnModify {position: relative; top: auto; right: auto; width: 100%; margin-top: 7px; text-align: center;}
+	.myInfoBox {margin-bottom: 25px;}
+	
+	/* 210317 수정 */
+	/* .myInfoBox .myInfo {padding: 20px 10px 10px;}
+    .myInfoBox .myInfo .memType {position: relative; top: auto; left: auto; width: 100px; margin: 0 auto 10px;} */
+	.myInfoBox .myInfo {padding: 20px 0 0 115px;min-height:110px;}
+	.myInfoBox .myInfo .memType{position:absolute;left:0;top:18px;}
+	/* //210317 수정 */
+    
+	.myInfoBox .myInfo .memType strong {width: 100px; height: 100px;}
+    .myInfoBox .myInfo .memType + .myInfoList {display: block; height: auto;}
+    .myInfoBox .myInfo .myInfoList p {text-align: center;}
+	.myState li div {padding: 10px 12px; line-height: 1.3;}
+
+	.onlineMemWrap .topArea {padding: 5px 0;}
+	.onlineMemWrap .conArea {padding: 20px;}
+	.onlineMemWrap .conArea h5::before {height: 16px; margin-right: 6px; vertical-align: -1px;}
+	.onlineMemWrap .conArea h5 + ul {padding-left: 10px; margin-top: 5px; padding-bottom: 15px; margin-bottom: 20px;}
+	.onlineMemWrap .conArea li span {min-width: 77px;}
+	.onlineMemWrap .conArea li span::after {height: 15px;}
+	.onlineMemWrap .refArea {padding: 15px 20px;}
+	.onlineMemWrap .conArea .none {padding-bottom: 15px; margin-bottom: 20px;}
+
+	.organWrap {padding: 10px 0 30px;}
+	.organWrap h4, .organWrap h5 {max-width: 180px; line-height: 50px;}
+	.organWrap h5 {font-size: 1.294em;}
+	.organWrap h4::before {top: 50px; height: 110px;}
+	.organList {padding-top: 30px;}
+	.organList.col-5, .organList.col-7 {padding-top: 30px;}
+	.organList.col-5 > ul > li, .organList.col-7 > ul > li {padding-top: 30px;}
+	.organList.col-7 > ul > li .box1 p {height: 146px; padding: 10px 30%; line-height: 1.2; box-sizing: border-box;}
+
+	.locationMap {margin-bottom: 30px;}
+
+	.lawBox {padding: 10px 15px;}
+	.lawBox .txtArea {background-position-y: 13px;}
+
+	.libropiaImg {margin-left: -10px;}
+	.libropiaImg li {width: calc(50% - 10px); margin: 0 0 0 10px;}
+}
+@media screen and (max-width:480px){
+	.loginGroup .loginArea, .findGroup .pwChkArea, .findGroup .pwChkArea.memout {padding: 150px 0 0; background-position: 50% 0;}
+	.loginWrap .checkArea {text-align: center;}
+	.loginWrap .checkArea a {float: none; font-size: 1em; vertical-align: top;}
+	.loginWrap .checkArea a + a::before {margin: 2px 10px;}
+
+	.loginGroup .loginArea .inpArea, .findGroup .findArea .inpArea {height: 40px;}
+	.loginGroup .loginArea .inpArea + .inpArea, .findGroup .findArea .inpArea + .inpArea {margin-top: 6px;}
+	.loginGroup .loginArea .inpArea input, .findGroup .findArea .inpArea input {height: 38px; line-height: 38px;}
+	.loginGroup .loginArea .btnLogin, .findGroup .findArea .btnLogin {height: 40px; margin-top: 6px;}
+
+	.findGroup .pwChkArea .inpArea + .inpArea {margin-top: 6px;}
+	.findGroup .pwChkArea .inpArea.bdon, .findGroup .pwChkArea .inpArea.bdon label {height: 40px;line-height: 40px;}
+	.findGroup .pwChkArea .inpArea.bdon input {height: 40px; line-height: 40px;}
+	.findGroup .pwChkArea .btnLogin, .findGroup .pwChkArea.memout .btnLogin {line-height: 40px; margin-top: 6px;}
+
+	#smapmenu > li > ul {min-height: 80px;}
+
+	.marathon-list > li dt {display: block; width: 100%; padding: 5px 15px;}
+	.marathon-list > li dd {display: block; width: 100%; height: auto; padding: 5px 15px;}
+
+	.organWrap h5 {max-width: 140px; line-height: 1.1; padding: 3px 0;}
+	.organList.col-7 > ul > li .box1 p {height: 146px; padding: 10px 23%;}
+
+	.locationMap {margin-bottom: 20px;}
+
+	.db_list {margin-left: 0;}
+	.db_list li {width: 100%; margin-left: 0; margin-top: 5px; line-height: 36px;}
+}
+@media screen and (max-width:375px){
+	.loginWrap .checkArea a {margin:8px 0 0}
+
+	.myState li .not a {margin-top:-14px}
+
+	.organList.col-7 > ul > li .box1 p {height: 130px;}
+
+	.lawBox .txtArea {background-position-y: 11px;}
+}
+
+@media screen and (min-width:640px){
+	/* .findArea {padding-right:110px} */
+	.findArea .btnOk {padding: 0 15px;font-size: 1.125em; min-width:96px; line-height:44px;}
+	.findArea,.findArea .inpArea label,.findArea .inpArea input {display:inline-block}
+	.findArea .inpArea ~ .btn {position:absolute;right:-25px;bottom:0;margin:0;padding:0 15px;font-size:1.125em;line-height:44px}
+}
+@media screen and (min-width:800px){
+	.organWrap {padding: 50px 0;}
+
+	.smarEngStep, .familyStep {display: flex;}
+	.smarEngStep li {display: flex; flex-basis: 33.3%; height: 124px; align-items: center; justify-content: center; text-align: center; color: #222; position: relative; padding-left: 30px;}
+	.smarEngStep li::after {content: ""; position: absolute; right: -35px; top: 0; border-left: 35px solid #fff; border-top: 62px solid transparent; border-bottom: 62px solid transparent; z-index: 999;}
+	.smarEngStep li:nth-child(1)::after {border-left-color: #f7f7fd;}
+	.smarEngStep li:nth-child(2)::after {border-left-color: #ebebfa;}
+	.smarEngStep li:nth-child(3)::after {display: none;}
+
+	.familyStep li {display: flex; flex-basis: 25%; height: 124px; align-items: center; justify-content: center; text-align: center; color: #222; position: relative; padding-left: 30px; padding-top: 5px;}
+	.familyStep li::after {content: ""; position: absolute; right: -35px; top: 0; border-left: 35px solid #fff; border-top: 62px solid transparent; border-bottom: 62px solid transparent; z-index: 999;}
+	.familyStep li:nth-child(1)::after {border-left-color: #f7f7fd;}
+	.familyStep li:nth-child(2)::after {border-left-color: #ebebfa;}
+	.familyStep li:nth-child(3)::after {border-left-color: #e1e1fb;}
+	.familyStep li:nth-child(4)::after {display: none;}
+	.familyStep li p {height: 50px; display: flex; align-items: center;}
+}
+@media screen and (min-width:1025px){
+	.loginBottom .btn {position: absolute; right: 0; bottom: 8px;}
+
+	.findResult .findIdArea dl dt {float: left; width: 400px;}
+	.findResult .findIdArea dl dd {float: right;}
+}

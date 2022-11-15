@@ -3,6 +3,7 @@ package com.seed.lib.hope;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HopeController {
 	
+	@Value("${kakao.api.key}")
+	private String apiKey;
+	
 	@Autowired
 	private HopeService hopeService;
 	
@@ -27,7 +31,12 @@ public class HopeController {
 
 	@GetMapping("setHope")
 	public void setHope()throws Exception{
-		log.info("hope");
+	}
+	
+	@GetMapping("searchHope")
+	@ResponseBody
+	public String searchHope(String result) throws Exception{
+		return apiKey;
 	}
 	
 	@PostMapping("setHope")

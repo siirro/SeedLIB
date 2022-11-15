@@ -4,9 +4,7 @@
 @import url("/css/button.css");
 @import url("/css/board.css");
 @import url("/css/layout.css");
-@import url("/css/contents.css");
-/* @import url("/include/booksearch/css/unified_search.css");
-@import url("/include/booksearch/css/search.css");*/
+@import url("/css/unified_search.css");
 @import url("/css/new_search.css");
 
 #container.sub {position: relative;}

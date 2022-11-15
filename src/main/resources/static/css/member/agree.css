@@ -1,0 +1,852 @@
+@charset "utf-8";
+@font-face{
+	font-family:NanumSquareR;
+	src:url(../../../style/font/NanumSquareR.eot);
+    src:local('※'), url(../../../style/font/NanumSquareR.woff) format('woff');
+}
+@font-face{
+	font-family:NotoSansR;
+	src:url(../../../style/font/notokr-regular.eot);
+    src:local('※'), url(../../../style/font/notokr-regular.woff) format('woff');
+}
+@font-face{
+	font-family:NanumBarunGothic;
+	src:url(../../../style/font/NanumBarunGothic.eot);
+    src:local('※'), url(../../../style/font/NanumBarunGothic.woff) format('woff');
+}
+
+body{height:100%;background-color:#f5f6f7}
+
+/* Login */
+.loginForm{position:relative;width:460px;margin:0 auto;height:100%;padding-bottom:50px;background-color:#f5f6f7}
+.loginForm.agreeForm{width:768px;}
+.loginForm .goMain{position:absolute;top:7px;left:0;}
+.loginForm .goMain img{vertical-align:top}
+/* .loginForm form{width:460px;margin:0 auto} */
+.loginForm .langSelect{margin:60px 0 35px;text-align:right}
+.loginForm .langSelect select{width:95px;height:30px;border:1px solid #ccc}
+.loginForm .langSelect > a{display:inline-block;height:28px;padding:0 5px;background-color:#fff;border:1px solid #ccc;line-height:30px;color:#1a4079;font-weight:600;vertical-align:top}
+.loginForm .logo{float:none;text-align:center}
+.loginForm .inputFields{margin:50px 0 15px;border-bottom:1px solid #e4e4e5}
+.loginForm .inputFields .inputId input{width:100%;height:49px;border:1px solid #dadada;text-indent:13px}
+.loginForm .inputFields .inputPw{margin:14px 0 22px}
+.loginForm .inputFields .inputPw input{width:100%;height:49px;border:1px solid #dadada;text-indent:13px}
+.noLoginAlert{position:relative;margin-bottom:20px;padding:10px 10px 10px 40px;border:1px solid #f11515;color:#f11515;background-color:#fff}
+.noLoginAlert img{position:absolute;top:10px;left:10px}
+.noLoginAlert .noLogin{margin-top:5px}
+.noLoginAlert .noLogin a{color:#f11515;text-decoration:underline}
+.loginForm .inputFields .inputSubmit input{width:100%;padding:15px 0;background:none;border:none;background-color:#1a4079;color:#fff;font-size:24px;cursor:pointer}
+.loginForm .inputFields .saveId{margin:15px 0 37px}
+.loginForm .inputFields .saveId label{color:#4f4f4f;font-size:15px}
+.loginForm .loginMenu{text-align:center}
+.loginForm .loginMenu a{margin-left:15px;color:#838383;font-size:14px}
+.loginForm .loginMenu a:first-child{margin-left:0}
+.loginForm .loginBg{width:460px;height:169px;margin:50px 0 36px;background:url(../../../image/ko/local/home/loginBg.jpg) no-repeat 0 0}
+.loginForm .loginFooter{padding-top:20px;border-top:1px solid #e2e2e2}
+.loginForm .loginFooter .menu{margin:18px 0 25px}
+.loginForm .loginFooter .menu a{margin-left:10px;color:#595959;font-size:13px}
+.loginForm .loginFooter .menu a.privacy{margin-left:0;color:#b8222d}
+.loginForm .loginFooter .address{color:#686868;font-size:12px}
+.loginForm .loginFooter .address p{margin-bottom:3px}
+@media screen and (min-width:0) and (max-width:767px){
+	.loginForm{width:300px}
+	.loginForm.agreeForm{width:300px;}
+	.loginForm .loginBg{width:300px}
+}
+.loginForm .agreeBtn {
+	text-align: center;
+}
+/* 회원가입 - 약관 동의 */
+.join1{margin-top:35px;font-family:NanumBarunGothic, sans-serif}
+.join1 .agreeArea{margin-bottom:27px;padding:15px;background-color:#fff;border:1px solid #dadada}
+.join1 .agreementAll{position:relative;margin-top:20px;padding-top:15px;border-top:1px solid #f0f0f0;color:#000;font-size:15px;line-height:20px;font-weight:600;text-align:center}
+/*
+.join1 .agreementAll label{position:absolute;top:50%;right:0;width:23px;height:23px;margin-top:-5px;border:none;background:url(../../../image/ko/local/home/checkBoxBg.png) no-repeat 0 0;cursor:pointer}
+.join1 .agreementAll label input{display:none}
+.join1 .agreementAll label.on{background-image:url(../../../image/ko/local/home/checkBoxBgOn.png)}
+*/
+.join1 .agreementAll label{position:absolute;top:50%;right:0;margin-top:0;border:none;cursor:pointer}
+.join1 .agreementAll label input{}
+/*
+.join1 .agreementAll label {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 23px;
+    height: 23px;
+    margin-top: -5px;
+    border: none;
+    cursor: pointer;
+}
+.join1 .agreementAll label input {
+    width: 23px;
+    height: 23px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    background: url(../../../image/ko/local/home/checkBoxBg.png) no-repeat 0 0;
+}
+.join1 .agreementAll label.on input {
+    width: 23px;
+    height: 23px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    background: url(../../../image/ko/local/home/checkBoxBgOn.png) no-repeat 0 0;
+}
+*/
+
+.join1 .agreement{position:relative;}
+.join1 .agreement .agreeTit{margin:15px 0}
+.join1 .agreement .agreeTit span{color:#878787;font-size:12px}
+.join1 .agreement .agreeTit span.essential{color:#cc0f21}
+.join1 .agreement > div{height:88px;padding:10px;background-color:#f7f7f7;border:1px solid #f0f0f0;overflow-y:scroll}
+/*
+.join1 label.check{position:absolute;top:0;right:0;width:23px;height:23px;border:none;background:url(../../../image/ko/local/home/checkBoxBg.png) no-repeat 0 0;cursor:pointer}
+.join1 label.check input{display:none}
+.join1 label.check.on{background-image:url(../../../image/ko/local/home/checkBoxBgOn.png)}
+*/
+.join1 label.check{position:absolute;top:0;right:0;border:none;cursor:pointer}
+.join1 label.check input{} 
+.join1 .agreement .agreeTit.tail {
+	text-align: right;
+	margin-right: 18px;
+}
+
+.join1 label.check {
+	top: 157px;
+}
+/*
+.join1 label.check {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 23px;
+    height: 23px;
+    border: none;
+    cursor: pointer;
+}
+.join1 label.check input {
+	width: 23px;
+    height: 23px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    background: url(../../../image/ko/local/home/checkBoxBg.png) no-repeat 0 0;
+}
+.join1 label.check.on input {
+	width: 23px;
+    height: 23px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    background: url(../../../image/ko/local/home/checkBoxBgOn.png) no-repeat 0 0;
+}
+*/
+
+.agreeBtn .noAgree{display:inline-block;width:210px;height:58px;margin-right:15px;color:#1a4079;font-size:20px;border:1px solid #1a4079;vertical-align:top;line-height:58px;text-align:center;background-color:#fff}
+.agreeBtn .agree{line-height:60px;width:229px;height:60px;color:#fff;font-size:20px;border:none;background-color:#1a4079;;vertical-align:top;text-align:center}
+@media screen and (min-width:0) and (max-width:767px){
+	.agreeBtn .noAgree{width:135px}
+	.agreeBtn .agree{width:135px}
+}
+.agreeBtn2{overflow:hidden;text-align:center}
+.agreeBtn2 .noAgree{float:left;width:218px;margin:0 5px;height:58px;color:#1a4079;font-size:20px;border:1px solid #1a4079;vertical-align:top;line-height:58px;text-align:center;background-color:#fff}
+.agreeBtn2 .noAgree2{float:left;width:218px;margin:0 5px;height:58px;color:#fff;font-size:20px;border:1px solid #1a4079;vertical-align:top;line-height:58px;text-align:center;background-color:#1a4079}
+.agreeBtn2 .agree{display:inline-block;line-height:60px;width:452px;height:60px;margin-bottom:10px;color:#fff;font-size:20px;border:none;background-color:#1a4079;;vertical-align:top;text-align:center}
+.agreeBtn2 .link{display:inline-block;width:30%;margin-top:20px;text-align:center;text-decoration:underline;color:#484142;font-size:16px;font-family:NotoSansR, sans-serif}
+@media screen and (min-width:0) and (max-width:767px){
+	.agreeBtn2 .agree{width:100%}
+	.agreeBtn2 .noAgree{width:99%;margin:0 0 10px}
+	.agreeBtn2 .noAgree2 {width: 99%;margin: 0 0 10px}
+}
+
+/* Table */
+.agreeTable table{width:100%;border-collapse:collapse;border-top:1px solid #c5c8cf}
+.agreeTable table tr{border-left:2px solid #f7f7f7}
+.agreeTable table th{border-bottom:1px solid #c5c8cf;border-left:1px solid #c5c8cf;}
+.agreeTable table td{border-bottom:1px solid #c5c8cf;border-left:1px solid #c5c8cf;}
+
+/* 회원가입 - 정보입력 */
+.join2{margin-top:20px;font-family:NanumBarunGothic, sans-serif}
+.join2 .inputIdPw{margin-bottom:11px;background-color:#fff;border:1px solid #dadada}
+.join2 .inputIdPw label{margin-right:20px;font-weight:600}
+.join2 .inputIdPw label span{color:red}
+.join2 .inputIdPw p{padding:0 15px;border-top:1px solid #f0f0f0}
+.join2 .inputIdPw p:first-child{border-top:none}
+.join2 .inputIdPw p.inputPw{padding-right:15px;}
+.join2 .inputIdPw p.inputPw input{width:335px;background:url(../../../image/ko/local/home/passwordBg.png) no-repeat 100% 50%}
+.join2 .inputIdPw p.inputPwRe{padding-right:7px;}
+.join2 .inputIdPw p.inputPwRe input{width:318px;background:url(../../../image/ko/local/home/passwordBg2.png) no-repeat 100% 50%}
+.join2 .inputIdPw input{width:100%;height:48px;border:none;color:#757575}
+.join2 .inputProfile label{display:inline-block;width:110px;color:#2e2e2e;font-size:14px;font-weight:600;text-indent:5px}
+.join2 .inputProfile label span{color:red}
+.join2 .inputProfile .inputTitle{display:inline-block;width:91px;color:#2e2e2e;font-size:14px;text-indent:5px}
+.join2 .inputProfile > div{margin-bottom:11px;border-bottom:1px solid #d0d0d0}
+.join2 .inputProfile > div:first-child{border-bottom:none}
+.join2 .inputProfile > div p{border:1px solid #d0d0d0;border-bottom:none;padding:0 10px;background-color:#fff}
+.join2 .inputProfile > div p.name{background-color:#fafafa}
+.join2 .inputProfile > div input{width:305px;height:48px;border:none;}
+.join2 .inputProfile > div input.email{width:310px}
+.join2 .inputProfile > div input#user_name{width:328px;background-color:#fafafa}
+.join2 .inputProfile > div input#birthd_year{background-color:#fafafa}
+.join2 .inputProfile > div input.textInput{width:348px}
+.join2 .inputProfile > div input.birthday{width:328px;border-top:none}
+.join2 .inputProfile > div select{width:93px;height:48px;border:none;line-height:48px}
+.join2 .inputProfile > div input.phone{width:92px;height:26px;margin-left:5px;padding-left:10px;border-left:1px solid #f0f0f0}
+.join2 .inputProfile > div .addressInput input{width:100%}
+.join2 .inputProfile > div input#addrs{width:235px}
+.join2 .inputProfile > div input#addrs_detail{width:324px}
+.join2 .inputProfile > div .info{margin-bottom:22px;padding-top:10px;border:none;border-top:1px solid #d0d0d0;background:none;color:#535353;font-size:14px}
+.join2 .inputProfile > div .loginBtn1{display:inline-block;margin-bottom:10px;padding:5px 10px;background-color:#006EAF;color:#fff;font-size:13px;line-height:100%}
+.join2 .additionalService{margin:20px 0 60px}
+.join2 .additionalService .serviceTit{margin-bottom:10px;color:#3a3a3a;font-size:16px}
+.join2 .additionalService .detail{color:#7f7f7f;font-size:13px;line-height:18px}
+.join2 .additionalService .detail span{color:#cc0014}
+.join2 .additionalService .receiveAgree{margin-top:10px;margin-bottom:20px;background-color:#fff;border:1px solid #dadada;overflow:hidden}
+.join2 .additionalService .receiveAgree p{width:163px;float:left;position:relative;color:#757575;line-height:51px;padding:0 50px 0 15px;border-top:1px solid #f0f0f0}
+.join2 .additionalService .receiveAgree p:first-child{width:163px;border-top:none;border-right:1px solid #dadada}
+.join2 .additionalService .receiveAgree label{position:absolute;top:3px;right:15px;margin-top:0;border:none;cursor:pointer}
+.join2 .additionalService .receiveAgree label.on{}
+.join2 .additionalService .receiveAgree label input{}
+
+.join2 .joinBtn input{width:100%;height:61px;color:#fff;font-size:20px;border:none;cursor:pointer;background:url(../../../image/ko/local/home/joinBtnBg.png) no-repeat 180px 50% #1a4079;text-indent:20px}
+@media screen and (min-width:0) and (max-width:767px){
+	.join2 .inputIdPw p.inputPw input{width:175px;background:none}
+	.join2 .inputIdPw p.inputPwRe input{width:152px;background:none}
+	
+	.join2 .joinBtn input{background-position:100px 50%}
+	.join2 .inputProfile > div input{width:160px}
+	.join2 .inputProfile > div select{width:51px}
+	.join2 .inputProfile > div input.phone{width:42px;padding-left:5px}
+	.join2 .inputProfile > div input.email{width:165px}
+	.join2 .inputProfile > div input.textInput{width:188px}
+	.join2 .inputProfile > div input#name{width:168px}
+	.join2 .inputProfile > div input.birthday{width:168px}
+	.join2 .inputProfile > div input#addrs{width:75px}
+	.join2 .inputProfile > div input#addrs_detail{width:164px}
+	.join2 .additionalService .receiveAgree p{width:91px;padding-right:45px}
+	.join2 .additionalService .receiveAgree p:first-child{width:86px}
+}
+
+/* 본인인증 */
+.memberType{margin-top:20px;margin-bottom:20px;padding:20px 18px 10px;font-family:NanumBarunGothic, sans-serif;background-color:#fff;border:1px solid #e3e3e3}
+.memberType label{display:inline-block;margin-bottom:10px;width:49%;color:#252525;font-size:14px}
+.memberType span{color:#dc1010}
+.confirm1{margin-bottom:18px;padding:20px 25px;border:1px solid #e3e3e3;background-color:#fff;font-family:NanumBarunGothic, sans-serif}
+.confirm1 .confirmTit{margin-bottom:20px;color:#040404;font-size:16px}
+.confirm1 .detail{color:#717171;font-size:13px;line-height:20px}
+.confirm1 .detail span{color:#dc1010}
+.confirm1 .confirmBtn{margin:25px 0 15px;text-align:center}
+.confirm1 .confirmBtn a{display:inline-block;padding:10px 18px;background-color:#1a4079;font-size:16px;color:#fff}
+.confirm1 .info{color:#040404;font-size:16px;text-align:center}
+.confirm2{margin-bottom:18px;padding:20px 25px;border:1px solid #e3e3e3;background-color:#fff;font-family:NanumBarunGothic, sans-serif}
+.confirm2 .confirmTit{margin-bottom:20px;color:#040404;font-size:16px}
+.confirm2 .detail{color:#717171;font-size:13px;line-height:20px}
+.confirm2 .detail span{color:#dc1010}
+.confirm2 .confirmBtn{margin:25px 0 15px;text-align:center}
+.confirm2 .confirmBtn a{display:inline-block;padding:10px 18px;background-color:#3c465e;font-size:16px;color:#fff}
+.confirm2 .info{color:#040404;font-size:16px;text-align:center}
+.confirm2 .iPin{margin-top:15px;padding-top:15px;border-top:1px solid #ececec}
+.confirm2 .iPin .iPinTit{color:#010101;font-size:14px}
+.confirm2 .iPin .iPinDetail{margin-top:20px;color:#858585;font-size:13px;line-height:20px}
+.confirm2 .iPin .iPinDetail span{color:#e13030}
+.confirm2 .iPin .iPinDetail a{padding:2px 5px;border:1px solid #b4b4b4;color:#707070;font-size:12px}
+
+/* 가입완료 */
+.complete{border-top:1px solid #d9d9d9}
+.complete .successMsg{padding:130px 0 25px;text-align:center;background:url(../../../image/ko/local/home/joinSuccess.png) no-repeat 50% 52px;color:#616161;font-size:30px}
+.complete .message{padding:50px 35px;background-color:#fff;border:1px solid #dadada;font-family:NanumBarunGothic, sans-serif;font-size:14px}
+.complete .message > p{color:#8b8b8b;line-height:22px}
+.complete .message > p:first-child{margin-bottom:10px;color:#474747}
+.complete .message > div{margin:20px 0 0}
+.complete .message > div p{margin-bottom:5px;padding-left:20px;background:url(../../../image/ko/local/guide/guideTitBg1.png) no-repeat 0 0}
+.complete .message > div ul{padding-left:10px}
+.complete .message > div ul li{margin-top:5px;padding-left:10px;background:url(../../../image/ko/local/guide/bullet2.gif) no-repeat 0 5px;font-size:13px;}
+.complete .message > div ul li span{color:#fa4b4b}
+.complete .completeBtn{margin-top:25px}
+.complete .completeBtn input{width:100%;height:61px;color:#fff;font-size:20px;border:none;cursor:pointer;background:url(../../../image/ko/local/home/joinBtnBg.png) no-repeat 180px 50% #1a4079;text-indent:20px}
+@media screen and (min-width:0) and (max-width:767px){
+	.complete .completeBtn input{background-position:100px 50%}
+}
+
+/* 아이디 찾기 */
+.findId{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.findId > p.title{margin-bottom:50px;color:#525252;font-size:25px;text-align:center}
+.findId > p.title span{display:inline-block;padding-top:5px;padding-bottom:5px;padding-left:54px;background:url(../../../image/ko/local/home/findIdBg.png) no-repeat 0 0}
+.findId div{margin-bottom:50px}
+.findId div p{font-size:13px;line-height:24px}
+.findIdList li label{display:block;margin-bottom:25px;color:#030303;font-size:16px}
+.findIdList li > div{display:none}
+.findIdList li.on > div{display:block}
+.membershipInfo{margin-bottom:50px}
+.membershipInfo > div{margin:15px 0}
+.membershipInfo .inputName{border:1px solid #cfcfcf;background-color:#fff;padding:0 15px}	
+.membershipInfo .inputName input{width:100%;border:none;padding:15px 0}
+.membershipInfo .birthday{overflow:hidden}
+.membershipInfo fieldset.birthday{margin:15px 0}
+.membershipInfo .birthday input{float:left;width:112px;margin-left:14px;border:1px solid #cfcfcf;background-color:#fff;padding:15px}
+.membershipInfo .birthday input.first{margin-left:0}
+.membershipInfo input[type="submit"]{width:100%;padding:15px 0;border:none;background-color:#1a4079;color:#fff;font-size:24px;text-align:center}
+@media screen and (min-width:0) and (max-width:767px){
+	.membershipInfo > div{margin-top:0}
+	.membershipInfo .inputName{margin-bottom:10px}
+	.membershipInfo .birthday input{float:none;width:268px;margin:10px 0 0}
+	.membershipInfo .birthday input:first-child{margin-top:0}
+}
+
+/* 비밀번호 재설정 */
+.pwReset .inputPw{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.pwReset .inputPw p.title{margin-bottom:50px;color:#525252;font-size:25px;text-align:center}
+.pwReset .inputPw p.title span{display:inline-block;padding-left:54px;background:url(../../../image/ko/local/home/findIdBg.png) no-repeat 0 0}
+.pwReset .inputPw div{margin-bottom:50px}
+.pwReset .inputPw div p{font-size:13px;line-height:24px}
+.inputPassword{margin-bottom:50px}
+.inputPassword .inputPwTit{margin-bottom:15px;color:#030303;font-size:16px}
+.inputPassword > div{border:1px solid #cfcfcf;background-color:#fff;padding:0 15px}
+.inputPassword > div input{width:100%;border:none;padding:15px 0}
+.confirm .confirmTit{margin-bottom:15px;color:#030303;font-size:16px}
+
+/* 회원탈퇴 */
+.leave{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.leave > p{margin-bottom:50px;color:#525252;font-size:25px;text-align:center}
+.leave > div p.title{color:#030303;font-size:16px;margin-bottom:10px}
+.leave > div p.detail{margin-bottom:-55px}
+
+/* 회원정보 재동의 */
+.infoAgree .again{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.infoAgree .again > p{margin-bottom:50px;color:#525252;font-size:25px;text-align:center}
+.infoAgree .again div{margin-bottom:40px}
+.infoAgree .again div p{font-size:13px;line-height:24px}
+.infoAgree .again div p span{color:#e13030}
+.infoAgree .status{margin-bottom:25px}
+.infoAgree .status > p{margin-bottom:15px;color:#030303;font-size:16px}
+.infoAgree .status .statusTit{margin-bottom:15px;padding:0 0 10px 30px;background:url(../../../image/ko/local/home/loginCheck.png) no-repeat 5px 0;border-bottom:1px solid #d6d6d6;color:#505050;font-size:14px}
+.infoAgree .status .statusTit span{color:#f62f08}
+.infoAgree .status .detail{margin-top:10px;margin-bottom:20px;padding-left:5px;color:#868686;font-size:13px}
+.infoAgree .subTitle1{margin-bottom:15px;color:#030303;font-size:16px;font-weight:normal}
+.infoAgree input[type="submit"]{margin-bottom:20px;width:100%;padding:15px 0;background:none;border:none;background-color:#1a4079;color:#fff;font-size:24px;cursor:pointer}
+
+/* 회원탈퇴안내 */
+.leaveInfo{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.leaveInfo > p{margin-bottom:50px;color:#525252;font-size:25px;text-align:center}
+.leaveInfo > div{margin-bottom:40px}
+.leaveInfo > div p{font-size:13px;line-height:24px}
+.leaveInfo > div p span{color:#e13030}
+.leaveInformation{margin-bottom:40px}
+.leaveInformation > p{margin-bottom:15px;padding-bottom:5px;border-bottom:1px solid #d6d6d6;color:#030303;font-size:16px}
+.leaveInformation > ul > li{margin-top:5px;padding-left:10px;background:url(../../../image/ko/local/home/loginBullet.gif) no-repeat 0 8px;color:#505050}
+.leaveInformation > ul > li:first-child{margin-top:0}
+.leaveInformation > ul > li.point{color:#f13f41}
+.leaveInformation .point{color:#f13f41}
+.leaveInformation .point2{color:#0093d0}
+.leaveInformation > div{margin-top:20px;background-color:#fff;border:1px solid #e4e4e4}
+.leaveInformation > div  p{padding:20px 15px;border-bottom:1px solid #e4e4e4}
+.leaveInformation > div > ul{padding:20px 15px}
+.leaveInformation > div > ul > li{margin-top:5px;padding-left:10px;background:url(../../../image/ko/local/home/loginBullet.gif) no-repeat 0 5px;color:#505050}
+.leaveInformation > div > ul > li:first-child{margin-top:0}
+.leaveInformation table{width:100%;border-collapse:collapse;border-top:3px solid #6f7e8d}
+.leaveInformation table tr{border-left:2px solid #fff}
+.leaveInformation table th{border-bottom:1px solid #c5c8cf;border-left:1px solid #c5c8cf;background:#f1f5fa;font-size:13px;font-weight:normal}
+.leaveInformation table thead th{padding:10px 10px;background-color:#f1f5fa;color:#eff8fc;color:#000;text-align:center}
+.leaveInformation table tbody th{padding:10px 10px;background-color:#f9f9f9;color:#505050;text-align:center}
+.leaveInformation table td{padding:10px 10px;border-bottom:1px solid #c5c8cf;border-left:1px solid #c5c8cf;color:#505050;font-size:13px}
+
+/* 책이음 회원 신청 */
+.requestMemebership{margin:35px 0 0 0;padding-top:25px;border-top:1px solid #dedede}
+.requestMemebership > p{margin-bottom:35px;color:#525252;font-size:25px;text-align:center}
+.requestMemebership > div p{font-size:13px;line-height:24px}
+.requestMemebership > div p span{color:#e13030}
+.requestStep{height:65px;margin:45px 0;background:url(../../../image/ko/local/home/requestStep.jpg) no-repeat 0 0;background-size:100% 65px}
+.requestStep ul li{float:left;width:25%;margin-top:23px;text-align:center;color:#313131}
+.introduce1{margin-bottom:40px}
+.introduce1 > p{margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #d6d6d6;color:#030303;font-size:16px}
+.introduce1 ul li{margin-top:10px;padding-left:10px;background:url(../../../image/ko/local/home/loginBullet.gif) no-repeat 0 6px;color:#8c8c8c;font-size:14px;line-height:20px}
+.introduce1 ul li.first{margin-top:0;color:#505050}
+.introduce1 ul li a{color:#8c8c8c;border-bottom:1px solid #a6a6a6}
+/*
+.introduce2 > p{margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #d6d6d6;color:#030303;font-size:16px}
+*/
+.introduce2 > p{margin:50px 0 0 0;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #d6d6d6;color:#030303;font-size:16px}
+.introduce2 ul{margin-bottom:50px}
+.introduce2 ul li{margin-top:10px;padding-left:10px;background:url(../../../image/ko/local/home/loginBullet.gif) no-repeat 0 6px;color:#505050;line-height:20px}
+.introduce2 ul li.point{color:#f13f41}
+.introduce2 > div{margin-bottom:35px}
+.introduce2 > div p:first-child{margin-bottom:5px;color:#030303;font-size:16px}
+.introduce2 > div p.detail{padding:0 0 10px 30px;background:url(../../../image/ko/local/home/loginCheck.png) no-repeat 5px 4px;color:#505050;font-size:14px}
+.introduce2 > div p.detail span{color:#e02629}
+
+/* 중복버튼 */
+.join2 .inputIdPw .inputId{position:relative}
+.join2 .inputIdPw .inputId input{width:270px}
+.join2 .inputIdPw .loginBtn1{position:absolute;top:13px;right:15px;background-color:#006EAF;padding:5px 10px;color:#fff;font-size:13px;line-height:100%}
+@media screen and (min-width:0) and (max-width:767px){
+	.join2 .inputIdPw .inputId input{width:124px}
+}
+
+/* 우편번호검색 */
+.findAddress{position:relative;min-width:320px;padding-bottom:30px;background-color:#fff;border:1px solid #c6c6c6}
+.findAddress .addressOpt{position:relative;margin:20px 15px 0;padding:10px 45px 10px 115px;border:1px solid #d0d0d0;overflow:hidden}
+.findAddress .addressOpt select{position:absolute;top:8px;left:10px;float:left;height:29px;border:none;line-height:29px}
+.findAddress .addressOpt input{float:left;height:29px;border:none}
+.findAddress .addressOpt input.inputAddress{display:block;width:100%}
+.findAddress .addressOpt input.addressSearch{position:absolute;top:10px;right:10px;width:29px;background:url(../../../image/ko/local/home/addressSearch.png) no-repeat 0 0;text-indent:-9999px;overflow:hidden}
+.findAddress .listInfo{padding:0 15px}
+.findAddress .titleArea{padding:30px 15px 20px;background-color:#ececec}
+.findAddress .titleArea h1{color:#000;font-size:20px;font-weight:normal}
+.findAddress .titleArea p{margin-top:10px;color:#767676;font-size:14px}
+.findAddress .addressList{clear:both;padding:0 15px}
+.findAddress .addressList ul li{position:relative;padding:10px 0;border-bottom:1px dotted #ccc}
+.findAddress .addressList ul li:first-child{border-top:1px dotted #ccc}
+.findAddress .addressList ul li p{margin-top:5px}
+.findAddress .addressList ul li p:first-child{margin-top:0}
+.findAddress .addressList ul li p a.road{color:#fa4b4b}
+.findAddress .addressList ul li p .selJuso{position:absolute;top:50%;right:0;background-color:#006EAF;padding:5px 10px;color:#fff;font-size:13px;line-height:100%;margin-top:-10px}
+.findAddress .addressClose{position:absolute;top:14px;right:15px}
+.findAddress .addressClose img{vertical-align:top}
+
+/* 간편로그인 */
+.useableId{margin:35px 0 40px;padding-top:35px;border-top:1px solid #dedede}
+.useableId p.title{margin-bottom:30px;color:#525252;font-size:25px;text-align:center}
+.useableId .idList{margin-bottom:35px;border:1px solid #cfcfcf;background-color:#fff}
+.useableId .idList a{display:inline-block;color:#0093d0;font-size:16px;vertical-align:top}
+.useableId .idList a.list{width:402px;height:49px;padding:0 10px;border-right:1px solid #dedede;line-height:49px}
+.useableId .idList a img{vertical-align:top}
+.useableId .loginIdList{margin-bottom:35px;text-align:center}
+.useableId .loginIdList a{color:#0093d0;font-size:16px;text-decoration:underline}
+.useableId .loginGuide ul li{margin-top:5px;padding-left:20px;background:url(../../../image/ko/local/home/loginGuideBullet.gif) no-repeat 10px 6px}
+.useableId .loginGuide ul li:first-child{margin-top:0}
+
+/* 책이음서비스 회원 신청 - 상태 */
+.status{margin-bottom:50px}
+.status .statusTit{margin-bottom:15px;color:#030303;font-size:16px}
+.status .statusDetail{padding:0 0 10px 30px;background:url(../../../image/ko/local/home/loginCheck.png) no-repeat 5px 2px;color:#505050;font-size:14px}
+.status .statusDetail span{color:#e02629}
+
+/* sns 로그인 */
+.snsBtnArea {
+	margin: 10px 0;
+}
+
+.snsLoginBtn {
+	width: 225px;
+}
+.snsLoginBtn.naverBtn {
+	float: left;
+}
+
+.snsLoginBtn.kakaoBtn {
+	float: right;
+}
+.snsLoginBtn a, .snsLoginBtn button {
+	height: 45px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	font-size: 16px;
+	padding-left: 18px;
+	cursor: pointer;
+	font-weight: bold;
+	position: relative;
+	border: none;
+}
+.snsBtnArea:after {
+	clear: both;
+	display: block;
+	content: '';
+}
+#naver_id_login_btn {
+	color: white;
+	background: #03C75A;
+}
+#kakao_id_login_btn {
+	color: rgba(0, 0, 0, 0.85);
+	background: #FEE500
+}
+.snsLoginBtn a:before, .snsLoginBtn button:before {
+	content: '';
+	width: 20px;
+	height: 19px;
+	position: absolute;
+	left: 0;
+	margin-left: 18px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#naver_id_login_btn:before {
+	background-image: url(../../../image/ko/local/guide/naver_logo.png);
+	background-size: 20px 19px;
+}
+#kakao_id_login_btn:before {
+	background-image: url(../../../image/ko/local/guide/kakao_logo.png);
+	background-size: 20px 19px;
+}
+
+@media screen and (min-width:0) and (max-width:767px){
+	.useableId .idList a.list{width:242px}
+	.snsLoginBtn {
+		width: auto;
+	}
+	
+	.snsLoginBtn.naverBtn {
+		float: none;
+	}
+	
+	.snsLoginBtn.kakaoBtn {
+		float: none;
+		margin-top: 10px;
+	}
+}
+
+
+/* font */
+@font-face{
+    font-family:NanumBarunGothic;
+    src:url(../../../style/font/NanumBarunGothic.eot);
+    src:local('※'), url(../../../style/font/NanumBarunGothic.woff) format('woff');
+}
+
+/* base */
+html{-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;}
+body{font-family:NanumBarunGothic,sans-serif;font-size:14px;-webkit-text-size-adjust:none;color:#4d4d4d;word-wrap: break-word;}
+em,address{font-style:normal;}
+dl, dt, dd, ul{list-style:none;margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,pre,input,p{margin:0;padding:0}
+img{border:none}
+div, span, ul, li{margin:0;padding:0}
+form, fieldset, blockquote{margin:0;padding:0;border:0}
+legend, caption, hr{position:absolute;width:1px;height:1px;text-indent:-9999px;overflow:hidden}
+caption{position:static;height:0}
+textarea{overflow:auto;-webkit-appearance:none;border-radius:0}
+input{font-family:NanumBarunGothic,sans-serif;}
+input[type="image"]{-webkit-appearance:none;border-radius:0}
+input[type="submit"]{-webkit-appearance:none;border-radius:0}
+input[type="text"]{-webkit-appearance:none;border-radius:0}
+input[type="password"]{-webkit-appearance:none;border-radius:0}
+input[type="checkbox"]{border-radius:0}
+input[type="reset"]{border-radius:0}
+select{border-radius:0}
+input::placeholder {
+  color: #757575;
+}
+input::-webkit-input-placeholder {
+  color: #757575;
+}
+/* ANCHOR */
+a{color:#4c4c4c;text-decoration:none}
+
+a:link{color:#4c4c4c;text-decoration:none}
+a:visited{color:#4c4c4c}
+a:hover{color:#0084d8;text-decoration:none}
+a:active{color:#0084d8;text-decoration:none}
+
+/* 숨김영역 */
+.skip{display:none;width:0;height:0;font-size:0;line-height:0;overflow:hidden;border:0;visibility:hidden}
+
+/* 건너뛰기 */
+#divAccessibility{position:absolute;left:0;top:0;z-index:1}
+#divAccessibility li{float:left}
+#divAccessibility a{position:absolute;width:1px;height:1px;top:-50px;overflow:hidden;text-align:center}
+#divAccessibility a:focus, #divAccessibility a:active{position:absolute;top:32px;width:200px;height:auto;padding:5px;background-color:#fff;border:solid 1px #0079c6;color:#0079c6;z-index:2} 
+
+/* buttons(하단버튼) */
+.buttons{margin:40px 0 0;text-align:center}
+.buttons input, .buttons input[type=button]{
+	height:40px;margin:0 5px;padding:0 19px;border:1px solid #006EAF;background: none;color:#006EAF;cursor:pointer;vertical-align:top;line-height:1.0em;font-size:15px;font-weight:600;overflow:visible;box-sizing: border-box}
+.buttons input.searchBtn{padding:0 21px 0 46px;background:url(../../../image/ko/solution/common/ico/searchBtnBg.png) no-repeat 20px 50% #006EAF;border:none;color:#fff}
+.buttons a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #d9d9d9;color:#505050;font-size:15px;line-height:2.5em;vertical-align:top}
+
+.tempPopup {
+	position: absolute;
+    width: 545px;
+    top: 208px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    text-align: center;
+    /*background: rgb(244,255,249);*/
+}
+
+.tempPopup img {
+	width: 100%;
+}
+
+.tempPopup button {
+	background: url('https://lib.seoul.go.kr/image/ko/local/close_img.png');
+    width: 65px;
+    height: 25px;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.tempPopup .main_popup_checkbox_wrap {
+	position: absolute;
+	right: 8px;
+	bottom: 25px;
+}
+	
+		
+.sub-tab.box {
+    margin-top: 10px;
+}
+.sub-tab li.on a{
+    border-bottom: 3px solid #0092d0;
+}
+.sub-tab li:hover a{
+		border-bottom: 3px solid #0092d0;
+		background: #dbf4ff;
+		color: #0092d0;
+		font-weight:bold;
+}
+.sub-tab li a {
+    font-size: 14px;
+    color: #000;
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 10px;
+     border-bottom: 2px solid #cfcfcf;
+}
+.sub-tab li {
+    display: inline-block;
+    text-align: center;
+    width: 155px;
+   
+    box-sizing: border-box;
+}
+
+.sub-tab li.selected a{
+	background: #dbf4ff;
+    border-bottom: 3px solid #0092d0;
+    color: #0092d0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+	.tempPopup {
+	    position: absolute;
+	    width: 369px;
+	    right: 0;
+	    left: 0;
+	    margin: 0 auto;
+	    z-index: 1000;
+	    background: none;
+	    top: 136px;
+	    text-align: center;
+	    background: none;
+	}
+	
+	.tempPopup img {
+		width: 100%;
+	}
+	
+	.tempPopup button {
+		background: url('https://lib.seoul.go.kr/image/ko/local/close_img.png');
+	    width: 65px;
+	    height: 25px;
+	    border: none;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin-right: 10px;
+	    margin-top: 20px;
+	    cursor: pointer;
+	}
+	
+	.tempPopup .main_popup_checkbox_wrap {
+		position: absolute;
+		bottom: 18px;
+	}
+}
+
+@media (min-width:0) and (max-width:767px){
+	.buttons a,.buttons input{margin:0 2px 5px;padding:0 14px}
+	.buttons input.searchBtn{padding:0 14px 0 39px;background-position:14px 50%}
+	
+	.tempPopup {
+	    position: absolute;
+	    width: 345px;
+	    z-index: 1000;
+	    background: none;
+	    top: 108px;
+	    z-index: 1000;
+	    text-align: center;
+	    background: none;
+	}
+	
+	.tempPopup img {
+		width: 100%;
+	}
+	
+	.tempPopup button {
+		background: url('https://lib.seoul.go.kr/image/ko/local/close_img.png');
+	    width: 65px;
+	    height: 25px;
+	    border: none;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin-right: 10px;
+	    margin-top: 7px;
+	    cursor: pointer;
+	}
+	
+	.tempPopup .main_popup_checkbox_wrap {
+		bottom: 18px;
+	}
+}
+/* paging */
+.paging{clear:both;margin:40px 0 0;text-align:center;}
+.paging a{padding:0 10px}
+.paging > a{display:inline-block;padding:0;border:1px solid #e6e6e6;vertical-align: middle}
+.paging > a img{width:28px;height:28px;vertical-align: middle}
+.paging > a.firstPage{border-right:none}
+.paging > a.lastPage{border-left:none}
+.paging > span{margin:0 10px}
+.paging > span span{padding:0 10px;color:#000;text-decoration:underline}
+.paging > span a{color:#747474}
+
+/* 총 건수, 현재 페이지, 파일다운로드 등 */
+.listInfo{position:relative;margin-bottom:10px;line-height:2.3em;}
+.listInfo > div.listInfo1{float:left;margin-bottom:10px;color:#666}
+.listInfo p{float:left}
+.listInfo .point1{color:#006EAF}
+.listInfo > div.listInfo1 > div{float:left}
+.listInfo > div.listInfo1 .totalCnt{color:#000}
+.listInfo > div.listInfo1 .totalCnt span{font-weight:600}
+.listInfo > div.listInfo1 .pageNum span{font-weight:600}
+.listInfo > div.listInfo2{float:right;margin-bottom:10px}
+.listInfo > div.listInfo2 > div{float:left;margin-left:10px;}
+.listInfo > div.listInfo2 div.fileSend li {float:left;border:1px solid #e6e6e6;border-left:0 none}
+.listInfo > div.listInfo2 div.fileSend li:first-child {border-left:1px solid #e6e6e6}
+.listInfo > div.listInfo2 div.fileSend li a {position:relative;display:block;}
+.listInfo > div.listInfo2 div.fileSend li img {width:38px;height:33px;vertical-align:top}
+
+/* selectBox1 */
+.selectBox1{height:35px;border:1px solid #d1d0cf;background-color:#fff;line-height:29px;}
+
+/* 검색 사용 select */
+/* searchOpt1 */
+.searchOpt1{min-width:90px;height:33px;position:relative;font-size:14px;line-height:13px !important;text-decoration:none;text-align:left;color:#555;vertical-align:middle;background:#fff;display:inline-block;cursor:default;border:1px solid #d1d0cf;padding-right:10px} /* futurenuri */
+.searchOpt1:focus .selectBox-arrow {border-color: #d1d0cf;}
+.searchOpt1 .selectBox-label {height:33px !important;display:inline-block;white-space:nowrap;overflow:hidden;line-height:2.5em;padding-left:10px;padding-right:10px}
+.searchOpt1 .selectBox-arrow {position:absolute;top:0;right:0;width:34px;height:33px;background:url(../../../image/ko/solution/common/ico/selectOpt.png) no-repeat 100% 0;}
+.selectBox-dropdown-menu {position:absolute;z-index:99999;max-height:150px;border:1px solid #bbb;background: #fff;overflow:auto;}
+.selectBox-options,
+.selectBox-options li,
+.selectBox-options li a {list-style:none;display:block;cursor:default;padding:0;margin:0;font-size:14px;color:#919191;}
+.selectBox-options li a {line-height:18px;padding:0 .5em;white-space:nowrap;overflow:hidden;}
+.selectBox-options li.selectBox-hover a {background-color:#eee;}
+.selectBox-options li.selectBox-disabled a {color:#888;background-color:transparent;}
+.selectBox-options li.selectBox-selected a {background-color:#c8def4;}
+.selectBox-options .selectBox-optgroup {color:#666;background:#eee;font-weight:bold;line-height:18px;padding:0 .5em;white-space:nowrap;}
+.selectBox.selectBox-disabled {color: #888 !important;}
+.selectBox-dropdown.selectBox-disabled .selectBox-arrow {border-color: #666;}
+.selectBox-inline.selectBox-disabled {color: #888 !important;}
+.selectBox-inline.selectBox-disabled .selectBox-options A {background-color: transparent !important;}
+
+/* searchOpt2 */
+.searchOpt2{position:relative;height:33px;font-size:14px;line-height:13px !important;text-decoration:none;text-align:left;color:#555;vertical-align:middle;background:#fff;display:inline-block;cursor:default;border:1px solid #e6e6e6;padding-left:5px}
+.searchOpt2:focus .selectBox-arrow {border-color: #d1d0cf;}
+.searchOpt2 .selectBox-label {display:inline-block;white-space:nowrap;overflow:hidden;line-height:2.5em;padding-left:5px}
+.searchOpt2 .selectBox-arrow {position:absolute;top:0;right:0;width:18px;height:33px;background:url(../../../image/ko/solution/common/ico/selectOpt2.png) no-repeat 0 50%;}
+
+/* contentMessage   --  message로  divContents 안 divTabMenu 아래 위치  */
+.contentMsg{margin:20px 0;padding:20px;background-color:#eee;border:1px solid #e6e6e6;color:#333}
+@media screen and (min-width:0px) and (max-width:767px){
+	.contentMsg{margin:0 0 20px}
+}
+.contentMsg img{vertical-align:middle}
+
+/* contentHeader  --  divContent 안에 위치 */
+.contentHeader{margin:20px 0;padding:20px;background-color:#eee;border:1px solid #e6e6e6;color:#333}
+/* contentHeader-모바일 */
+@media screen and (min-width:0px) and (max-width:767px){
+	.contentHeader{margin:0 0 20px}
+}
+
+/* 제한검색 */
+.searchArea{margin:20px 0 30px 0;background-color:#f6f6f6;text-align:center}
+.searchArea input{margin:5px 4px;vertical-align:middle !important}
+.searchArea .typeSelect{margin:0 4px}
+.searchArea .selectBox1{margin:5px 4px}
+.searchArea .limitSearchBtn{display:none;text-align:left}
+.searchArea .limitSearch{display:inline-block;padding:0 20px;background-color:#fff;border:1px solid #808080;height:33px;color:#4c4c4c;vertical-align:top;line-height:2.3em}
+
+/* contentFooter */
+.contentFooter{margin:20px 0;padding:20px;background-color:#eee;border:1px solid #e6e6e6;color:#333}
+
+/* 버튼, input, select, checkBox, 라디오버튼(공통) */
+a.btnType1{display:inline-block;padding:0 20px;background-color:#fff;border:1px solid #808080;height:33px;color:#4c4c4c;vertical-align:top;line-height:2.3em}
+a.btnType2{display:inline-block;font-size:12px;padding:0 7px;border:1px solid #808080;height:23px;color:#4c4c4c;vertical-align:top;line-height:1.7em}
+a.btnType3{display:inline-block;padding:0 20px;border:1px solid #1c7fca;background-color:#248bd8;height:33px;color:#fff;vertical-align:top;line-height:2.3em}
+a.btnType4{display:inline-block;height:33px;padding:0 20px;border:1px solid #0067b3;color:#0067b3;vertical-align:top;line-height:2.3em}
+a.btnType5{display:inline-block;height:33px;border:1px solid #585858;background:url(../../../image/ko/solution/common/ico/limitSearch.gif) no-repeat 15px 50%;line-height:2.3em;color:#4d4d4d;padding:0 20px 0 45px;vertical-align:top;}
+a.btnType6{display:inline-block;padding:0 10px;background-color:#fff;border:1px solid #ccc;height:33px;color:#666;vertical-align:top;line-height:2.3em}
+a.btnType7{padding:0 10px;height:33px;border:1px solid #ccc;background-color:#fff;color:#666;font-size:13px}
+a.btnType8{display:inline-block;padding:0 20px;background-color:#fff;border:1px solid #808080;height:33px;color:#4c4c4c;vertical-align:top;line-height:2.3em}
+a.btnType9{padding:0 10px;border:1px solid #1c7fca;background-color:#248bd8;color:#fff;font-size:13px} /*검색창 작은 버튼*/
+a.btnType10{display:inline-block;height:23px;padding:0 15px;border:1px solid #0067b3;color:#0067b3;vertical-align:top;line-height:24px;} /*모달전용 희망도서신청, 지정도서 신청버튼에 사용*/
+a.btnType11{display:inline-block;height:40px;margin:0 5px;padding:0 40px;background-color:#006EAF;border:none;color:#fff;font-size:15px;line-height:2.8em;vertical-align:top}
+a.btnType12{display:inline-block;height:35px;padding:0 20px;background-color:#006EAF;color:#fff;vertical-align:top;line-height:2.5em}
+
+input.btnType1{font-size:14px;height:35px;padding:0 20px;border:1px solid #808080;color:#4c4c4c;vertical-align:top;background-color:#fff;overflow:visible;}
+input.btnType2{height:33px;padding:0 20px;vertical-align:top;padding:0 7px;border:1px solid #808080;height:23px;color:#4c4c4c;background-color:#fff;font-size:12px;overflow:visible}
+input.btnType3{font-size:14px;height:35px;padding:0 20px;border:1px solid #1c7fca;background-color:#248bd8;color:#fff;overflow:visible;vertical-align:top}
+input.btnType4{font-size:14px;height:35px;padding:0 20px;vertical-align:top;border:1px solid #0067b3;color:#0067b3;background-color:#fff;overflow:visible}
+input.btnType5{height:37px;vertical-align:top;border:none;background:#006EAF;padding:0 50px 0 50px;color:#fff;overflow:visible;cursor:pointer}
+input.btnType6{display:inline-block;padding:0 10px;background-color:#fff;border:1px solid #ccc;height:35px;color:#666;vertical-align:top;line-height:2.3em}
+input.btnType7{padding:0 10px;height:35px;border:1px solid #ccc;background-color:#fff;color:#666;font-size:13px}
+input.btnType8{height:37px;vertical-align:top;border:none;background:#006EAF;padding:0 30px 0 30px;color:#fff;overflow:visible;cursor:pointer}
+
+
+
+input.inputBasic{height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+
+input.inputTextType1{width:210px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+input.inputTextType1:focus{border:1px solid #2ed8de}
+
+input.datePicker{width:80px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:middle;color:#4c4c4c;padding:0 5px}
+span.divide{display:inline-block;padding:10px 0;}
+
+input.inputTextType2{width:125px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+input.inputTextType2:focus{border:1px solid #2ed8de}
+
+
+p.inputTextType3 input{border:none;width:100%;color:#4c4c4c;height:33px;line-height:2.1em}
+input.inputTextType3{width:300px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+input.inputTextType3:focus{border:1px solid #2ed8de}
+
+input.inputTextType4{width:42px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:14px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+
+p.readonly{background-color:#f7f7f7}
+
+input.inputTextType6{width:auto;height:33px;border:1px solid #d1d0cf;padding:0 10px;background-color:#fff;color:#4c4c4c;line-height:2.1em;vertical-align:top}
+
+textarea.txtArea{width:100%;height:70px;border:1px solid #d1d0cf;resize:none}
+
+span.bunch{display:inline-block;margin-right:10px;vertical-align:middle}
+
+input.inputFileType1{height:35px;}
+@media screen and (min-width:0) and (max-width:767px){
+	input.inputTextType1{width:190px;padding:0}
+	input.inputFileType1{width:100%}
+	a.btnType8{display:none}
+}
+
+.accessibility {
+	width: 0; 
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+}
