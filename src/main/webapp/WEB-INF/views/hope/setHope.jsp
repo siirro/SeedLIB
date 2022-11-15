@@ -83,7 +83,7 @@
 					<!-- 서치영역 끝 -->
 					<!-- 페이징 -->
 					<div class="pagingWrap">
-						<p class="paging">
+						<p class="pagination">
 						</p>
 					</div>
                     <nav aria-label="Page navigation">
