@@ -53,7 +53,8 @@
 			<div class="searchToparea">
 				<div class="searchBardiv hope">
 					<div class="searchInputbox">
-						<input type="text" id="query" name="searchKeyword" title="제목을 입력하세요." value="" placeholder="제목을 입력하세요." autocomplete="off">
+                        <input hidden="hidden">
+						<input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="제목을 입력하세요." autocomplete="off">
 						<input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
 					</div>
 					<a href="/seoksu/menu/10108/program/30008/hopeBookApply.do" class="btn input" title="직접입력 설정">직접입력</a>
@@ -79,18 +80,14 @@
 			<ul class="listWrap">
 			</ul>
 		</div>						
-					</form>
-					<!-- 서치영역 끝 -->
-					<!-- 페이징 -->
-					<div class="pagingWrap">
-						<p class="pagination">
-						</p>
-					</div>
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                        </ul>
-                  </nav>
-					<!-- 페이징 끝-->
+			</form>
+			<!-- 서치영역 끝 -->
+			<!-- 페이징 -->
+			<div class="pagingWrap">
+				<p class="pagination">
+				</p>
+			</div>
+			<!-- 페이징 끝-->
         <div>
 
             <form id="registForm" name="registForm" method="post">
@@ -199,6 +196,6 @@
                     </div>
             </div>
 
-         <script src="/js/hope.js"></script>
+         <script defer src="/js/hope.js"></script>
     </body>
 </html>
