@@ -11,5 +11,6 @@
 <a href="/test">test</a>
 <a href="/hope/setHope">희망도서 신청하기</a>
 <a href="/hopeList">HOPELIST</a>
+<a href="/member/login"> 로그인 </a>
 </body>
 </html>
