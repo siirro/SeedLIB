@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
     <link rel="shortcut icon" href="/images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>희망 도서 신청</title>
 </head>
 <body>
@@ -45,10 +46,51 @@
 <!--Forced tab Show Que-->
 
 <!--Real Contents Start-->
-<div class="searchInputbox">
-    <input type="text" id="totalSearchValue" name="searchKeyword" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
-    <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-</div>
+<!-- 서치영역 -->
+<form id="searchForm" name="searchForm" method="get">
+	<div class="searchWrap">
+		<div class="searchFormWeb">
+			<div class="searchToparea">
+				<div class="searchBardiv hope">
+					<div class="searchInputbox">
+						<input type="text" id="query" name="searchKeyword" title="제목을 입력하세요." value="" placeholder="제목을 입력하세요." autocomplete="off">
+						<input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
+					</div>
+					<a href="/seoksu/menu/10108/program/30008/hopeBookApply.do" class="btn input" title="직접입력 설정">직접입력</a>
+				</div>
+				<ul class="dot-list clearfix mt05 mb05">
+					<li>도서명, 저자명, 발행처, ISBN 을 입력하여 도서를 검색하세요.</li>
+					<li>포털사이트 도서 검색을 통해 비치를 희망하는 도서를 검색하고 신청할 수 있습니다.</li>
+					<li>검색결과가 나오지 않을 경우, [직접입력] 을 클릭하여 신청하실 수 있습니다.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		<!-- 서치결과영역 -->
+		<div class="searchResultWrap">
+			<div class="result_box">
+				<div class="listSetting">
+					<div class="result_screen">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bookList listViewStyle hope">
+			<ul class="listWrap">
+			</ul>
+		</div>						
+					</form>
+					<!-- 서치영역 끝 -->
+					<!-- 페이징 -->
+					<div class="pagingWrap">
+						<p class="paging">
+						</p>
+					</div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                        </ul>
+                  </nav>
+					<!-- 페이징 끝-->
         <div>
 
             <form id="registForm" name="registForm" method="post">
@@ -156,6 +198,7 @@
                         </div>
                     </div>
             </div>
-         </div>
+
+         <script src="/js/hope.js"></script>
     </body>
 </html>
