@@ -1,6 +1,7 @@
 package com.seed.lib.book;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -18,5 +19,5 @@ public class BookVO {
 	private String image;
 	private int bCount;
 	
-
+	private List<LibVO> libVOs;
 }
