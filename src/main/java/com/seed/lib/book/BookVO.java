@@ -7,16 +7,16 @@ import lombok.Data;
 @Data
 public class BookVO {
 	
-	private int isbn;
+	private Long isbn;
 	private String title;
 	private String writer;
 	private String publisher;
 	private Date bDate;
 	private String able;
 	private String category;
-	private int quantity;
+	private Long quantity;
 	private String image;
-	private int bCount;
+	private Long bCount;
 	
 
 }
