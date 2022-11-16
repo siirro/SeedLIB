@@ -58,9 +58,11 @@ public class MemberController {
 
 	
 	@GetMapping("agree")
-	public void agree() throws Exception{
+	public String agree() throws Exception{
 		
 		log.info("agree 성공");
+		
+		return "member/agree";
 		
 	}
 
