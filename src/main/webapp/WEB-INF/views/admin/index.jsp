@@ -13,6 +13,7 @@
       type="image/x-icon"
     /> -->
     <title>PlainAdmin Demo | Bootstrap 5 Admin Template</title>
+    <c:import url="../temp/boot.jsp"></c:import>
     <!-- ========== All CSS files linkup ========= -->
 	<link rel="stylesheet" href="/css/admin/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/admin/lineicons.css" />

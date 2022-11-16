@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +13,7 @@
       type="image/x-icon"
     />
     <title>Form Elements | PlainAdmin Demo</title>
+    <c:import url="../../temp/boot.jsp"></c:import>
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="/css/admin/bootstrap.min.css" />
@@ -565,7 +567,7 @@
                   <!-- end input -->
                   <div class="input-style-3">
                     <input type="text" placeholder="Full Name" />
-                    <span class="icon"><i class="lni lni-user"></i></span>
+                    <span class="icon"><i class="bi bi-person"></i></span>
                   </div>
                   <!-- end input -->
                 </div>
@@ -740,7 +742,7 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/admin/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Chart.min.js"></script>
     <script src="assets/js/dynamic-pie-chart.js"></script>
     <script src="assets/js/moment.min.js"></script>
@@ -748,6 +750,6 @@
     <script src="assets/js/jvectormap.min.js"></script>
     <script src="assets/js/world-merc.js"></script>
     <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/js/admin/main.js"></script>
   </body>
 </html>
