@@ -50,8 +50,6 @@ public class MemberController {
 		memberVO.getUserName();
 		log.info("조인조인조인");
 		int result = memberService.setJoin(memberVO);
-		mv.addObject("memberVO", memberVO);
-		
 		mv.setViewName("redirect:./");
 		
 		return mv;
