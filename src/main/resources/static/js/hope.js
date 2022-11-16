@@ -151,6 +151,3 @@ $(".pagination").on("click",".page",function(){
     getKey();
     getSearch(); 
 }) 
-
-
-
