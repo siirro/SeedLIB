@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<!-- CSS & JQUERY -->
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/default.css">
+<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/button.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/sub.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="shortcut icon" href="/images/favicon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <div id="topheader">
 	<div id="indexColumn">

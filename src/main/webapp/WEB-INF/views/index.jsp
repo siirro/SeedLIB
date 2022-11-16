@@ -8,27 +8,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- CSS & JQUERY -->
-<link rel="stylesheet" href="/css/common.css">
-<link rel="stylesheet" href="/css/default.css">
-<link rel="stylesheet" href="/css/board.css">
-<link rel="stylesheet" href="/css/button.css">
-<link rel="stylesheet" href="/css/layout.css">
-<link rel="stylesheet" href="/css/sub.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut icon" href="/images/favicon.png">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 </head>
 <body>
 
-
 <div id="wrap">
 
 <c:import url="./temp/header.jsp"></c:import>
-
 
 		<div id="container" class="main">
 			<section id="section1">
