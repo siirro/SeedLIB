@@ -22,6 +22,7 @@
 			<result column="quantity" property="quantity"/>
 			<result column="image" property="image"/>
 			<result column="bCount" property="bCount"/>
+			<result column="bHeart" property="bHeart"/>
 			
 			<collection property="libVOs" javaType="List" ofType="LibVO">
 				<id column="blNum" property="blNum"/>
