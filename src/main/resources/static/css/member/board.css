@@ -1,0 +1,1049 @@
+@charset "utf-8";
+
+.boardWrap {position: relative;}
+
+.noData, .nodata {width:100%; padding: 30px 0 !important; text-align: center; border-bottom: 1px solid #ddd;}
+
+.openInfo {overflow: hidden; position: relative; padding: 20px; border-bottom: 1px solid #ddd;}
+.openInfo dt {float: left; width: 260px;}
+.openInfo dd {float: right; width: calc(100% - 280px); color: #646464; padding-top: 7px;}
+
+.chk input[type="checkbox"], .chkOn input[type="checkbox"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;}
+.chk input[type="checkbox"] + label, .chkOn input[type="checkbox"] + label {position: relative; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; letter-spacing: -0.5px; line-height: 18px; padding-left: 23px; font-size: 0.895em;}
+.chk input[type="checkbox"] + label:before, .chkOn input[type="checkbox"] + label:before { content: ''; position: absolute; left: 0; top: 3px; width: 18px; height: 18px; background: url(/include/image/board/chk_off.png) no-repeat left top;}
+.chk input[type="checkbox"]:focus + label, .chkOn input[type="checkbox"]:focus + label {outline: 1px dotted #000;}
+.chk input[type="checkbox"]:checked + label:before {background: url(/include/image/board/chk_on.png) no-repeat left top;}
+
+.radi {display: inline-block;}
+.radi input[type="radio"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;}
+.radi input[type="radio"] + label {position: relative; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; letter-spacing: -0.5px; line-height: 18px; padding-left: 23px;}
+.radi input[type="radio"] + label:before { content: ''; position: absolute; left: 0; top: 50%; width: 18px; height: 18px; margin-top: -9px; background: url(/include/image/board/radi_off.png) no-repeat left top;}
+.radi input[type="radio"]:focus + label {outline:1px dotted #000;}
+.radi input[type="radio"]:checked + label:before {background: url(/include/image/board/radi_on.png) no-repeat left top;}
+
+/* board search */
+.pageSearch {overflow:hidden; margin:0 0 35px; padding:10px; text-align:center; background-color:#f2f2f2;}
+.pageSearch .item {overflow:hidden;position:relative;clear:both;text-align:center}
+.pageSearch .selList li {float: left;}
+.pageSearch .selList li + li {margin-left: 5px;}
+.pageSearch .schForm {display:inline-block;vertical-align:top}
+.pageSearch .schForm .inputDateGroup {display:inline-block;vertical-align:top;}
+.pageSearch .schForm .rdoBtnGroup {display:inline-block;vertical-align:top; margin: 0 20px;}
+.pageSearch .schForm .schKwd {width:150px}
+.pageSearch .schForm:only-child .schKew {width:200px}
+.pageSearch > .btn,.pageSearch .inputDate + .btn {vertical-align:top}
+.inputDate {display:inline-block;overflow:hidden;position:relative;padding:0 30px 0 5px;line-height:0;vertical-align:top;border:1px solid #d5d5d5;box-sizing:border-box;background-color:#fff}
+.inputDate input[type="date"],.inputDate input[type="text"] {width:90px;height:38px;margin:0;padding:0;line-height:38px;border:0;text-align:center}
+.inputDate .btnCal,.inputDate .ui-datepicker-trigger {position:absolute;top:50%;right:5px;margin-top:-10px;line-height:0}
+.pageSearch .item .rdoBtnGroup {display: inline-block; vertical-align:top;}
+
+.pageSearch.mybest {text-align:left;}
+.pageSearch.mybest .schForm {display: block;}
+.pageSearch.mybest .schForm .rdoBtnGroup {line-height: 40px;}
+.pageSearch.mybest .schForm .inputDate input[type="text"] {width:120px;}
+.pageSearch.mybest .btn {float: right;}
+
+.familySch{background:#f2f2f2;padding:12px 15px;border:1px solid #ddd;margin-bottom:10px;}
+.familySch .tit{color:#444;}
+.familySch .tit:after{content:"";display:inline-block;width:1px;height:14px;background:#c2c2c2;margin:0 10px 0 14px;}
+.familySch .radiBox .radi{margin-right:10px;}
+
+/* category select */
+.pageCategory {overflow: hidden; margin-bottom: 10px; text-align: right; background-color: #f2f2f2;}
+.pageCategory label.tit {display: inline-block; margin-right: 4px; line-height: 36px; color: #333; vertical-align: middle;}
+.pageCategory select {min-width: 80px; margin-left: 3px; vertical-align: middle;}
+.pageCategory select + .btn {margin-left: 3px;}
+.pageCategory p {line-height: 36px;}
+.pageCategory .item {display: inline-block; vertical-align: top;}
+
+/* board search filter */
+.boardSearchForm {overflow: hidden; margin-bottom: 30px; padding: 20px 20px 20px 10px; background-color: #fafbfd;}
+.boardSearchForm .field::after {content: ""; display: block; clear: both;}
+.boardSearchForm .item {display: block; float: left; position: relative; width: 33.333%; margin-bottom: 10px; padding-left: 80px; box-sizing: border-box;}
+.boardSearchForm .item .tit {position: absolute; top: 0; left: 0; width: 70px; padding-right: 10px; line-height: 32px; text-align: right;}
+.boardSearchForm .item .tit + select:only-child, .boardSearchForm .field .item .tit + input[type="text"]:only-child {display: block;}
+.boardSearchForm .item .schForm {position: relative; padding-left: 105px;}
+.boardSearchForm .item .schForm select.schSel {position: absolute; top: 0; left: 0; width: 100px;}
+.boardSearchForm .item .schForm input.schKwd {width: 100%;}
+.boardSearchForm .item:only-child {float: none; clear: both; width: 100%; padding-right: 0;}
+.boardSearchForm .item.half {width: 50%;}
+.boardSearchForm .item.colspan {width: 66.666%;}
+.boardSearchForm .btnArea {margin-top: 15px; margin-left: 10px; padding-top: 15px; text-align: center; border-top: 1px dotted rgba(0, 0, 0, .1);}
+.boardSearchForm .btnArea a {min-width: 120px; border-radius: 2px;}
+
+/* paging */
+.pagingWrap {position: relative; margin-top: 40px; text-align: center;}
+.paging img {vertical-align: top;}
+.paging span, .paging a {display: inline-block; width: 32px; font-size: 1.125em; color: #777; line-height: 30px; text-align: center; vertical-align: top;}
+.paging span.current {width: 32px; height: 32px; line-height: 32px; color: #fff; border: none; background-color: #464646;}
+.paging a:hover, .paging a:focus, .paging a:active {text-decoration: underline;}
+.paging .btn-paging {width: 30px; height: 30px; line-height: 30px; border: 1px solid #ddd; background: url(/include/image/board/arr_sp.png) 50% 0 no-repeat;}
+.paging .btn-paging.prev {margin-right: 5px; background-position-y: -27px;}
+.paging .btn-paging.next {margin-left: 5px; background-position-y: -52px;}
+.paging .btn-paging.last {background-position-y: -77px;}
+.pagingWrap .btn {padding: 0 15px; line-height: 32px;}
+.pagingWrap .btn:only-child {float: right;} /* 온니 글쓰기(등록)버튼 */
+.pagingWrap .paging ~ .btn {position: absolute; bottom: 0; right: 0;} /* 페이징 + 글쓰기(등록)버튼 */
+.boardWrap ~ form .pageSearch {margin-top: 30px;}
+
+/* board filter */
+.boardFilter {overflow: hidden; position: relative; z-index: 10; padding-bottom: 5px; background-color: #fff;}
+.boardFilter .check {float: left; color: #777; font-size: 1.063em; background-position: 0 50%;}
+.boardFilter .count {float: left; color: #464646; font-size: 1.063em; background-position: 0 50%;}
+.boardFilter .count .bar {color: #ccc; font-size: 0.875rem;}
+.boardFilter .count span {position:relative;}
+.boardFilter .check input {margin: -1px 5px 0 0; vertical-align: middle}
+.boardFilter .sort {float: right;}
+.boardFilter .sort > a {display: inline-block; margin-left: 10px; padding-left: 11px; line-height: 34px; word-break: keep-all; background: url(/include/image/board/line_divide.png) 0 50% no-repeat;}
+.boardFilter .sort div a { padding: 0 10px; line-height: 36px;}
+.boardFilter .sort > a:first-child {margin-left: 0; padding-left:0; background: none;}
+.boardFilter .sort > a.on {text-decoration: underline}
+.boardFilter .sort select {display: inline-block; margin-right: 2px; border: 1px solid #dcdcdc;}
+.boardFilter .sort ~ .count, .boardFilter .sort ~ .check {margin-top: 10px;}
+.boardFilter > .btn {padding: 7px 10px; line-height: 1;}
+.boardFilter > .btn:only-child, .boardFilter > .btn.text, .boardFilter > .btn.xlsx {padding: 1px 6px; font-size: 0.938em; color: #555; border-radius: 3px; border: 1px solid #aaa; background-color: #fff;}
+.boardFilter + .boardFilter {margin-top: 0; padding: 10px 0; border-top: 2px solid #666;}
+.boardFilter + .boardFilter + .article-list {border-top-width: 1px;}
+
+/* basic board list */
+.emptyNote {padding: 10px 0 !important; text-align: center; border-bottom: 1px solid #ddd;}
+.emptyNote p {color: #777;}
+.board-list {table-layout: fixed; border-top: 2px solid #666; empty-cells: show;}
+.board-list col.no, .board-list col.attach {width: 60px}
+.board-list col.writer {width: 160px;}
+.board-list col.hits {width: 70px;}
+.board-list col.lib {width: 60px;}
+.board-list col.state {width: 80px;}
+.board-list col.period {width: 200px;}
+.board-list col.date {width: 120px;}
+.board-list th, .board-list td {padding: 7px 5px; font-weight: normal; line-height: 1.412; text-align: center;}
+.board-list th {border-bottom: 1px solid #666; color: #444;}
+.board-list td {border-bottom: 1px solid #e2e2e2;}
+.board-list thead tr:only-child th {border-top: 0;}
+.board-list tbody tr.top td {background-color: #f8f8f8;}
+.board-list td.title a:hover, .board-list td.title a:focus {text-decoration: underline;}
+.board-list td.title, .board-list td.ta_l {text-align: left;}
+.board-list td.title a {display: inline-block; overflow: hidden; max-width: calc(100% - 45px); font-size: 1.063em; color: #646464; vertical-align: top; text-overflow: ellipsis; white-space: nowrap;}
+.board-list td.title span {display: inline-block; overflow: hidden; max-width: 100%; font-size: 1.063em; color: #646464; vertical-align: top; text-overflow: ellipsis; white-space: nowrap;}
+.board-list td.title img, .board-list td.title b {display: inline-block; vertical-align: -3px;}
+.board-list td.state b, .board-list td.state a {display: inline-block; min-width: 46px; margin: 0 auto; padding: 0 7px; font-weight: normal; font-size: 0.938em; vertical-align: baseline; border-radius: 15px; border: 1px solid #d5d5d5; background-color: #f8f8f8;}
+.board-list td.state b.ready, .board-list td.state a.ready {color: #fff; border: none; background-color: #555;}
+.board-list td.state a:hover, .board-list td.state b:focus {opacity: .7;}
+.board-list td.sort {padding: 10px 5px; text-align: left; color: #006aaa;}
+.board-list td.chkCell {padding:5px 8px; background-color: #f4f4f4;}
+.board-list td span.cnclTxt {display:inline-block; font-size:0.847em; color: #777; line-height: 1.3;}
+.board-list td .lib {display: inline-block; min-width: 45px; padding: 1px 0; font-size: 0.938em; color: #fff; text-align: center; font-style: normal; border-radius: 45px;}
+.board-list td .tblBtn {min-width: 58px;}
+.board-list td .tblBtn + .tblBtn {margin-top: 3px;}
+
+/* basic board view */
+.requTxt {position: absolute; top: -30px; right: 0; font-size: 1.063em;}
+span.essential {padding: 0 2px; vertical-align: -5px;}
+.attach a:hover, .attach a:focus {text-decoration: underline;}
+.readonly {background-color: #f8f8f8;}
+.board-view {table-layout: fixed; border-top: 2px solid #666; empty-cells: show;}
+.board-view th, .board-view td {padding: 6px 10px; text-align: left; border-bottom: 1px solid #e2e2e2;}
+.board-view th {font-weight: normal; text-align: center; background-color: #f8f8f8; color: #464646;}
+.board-view th + th {border-left: 1px solid #d5d5d5}
+.board-view tr:first-child th, .board-view tr:first-child td {border-top: none;}
+.board-view tbody + tbody::before {content:""; display:block; padding-top: 20px;}
+.board-view tbody + tbody tr:first-child th, .board-view tbody + tbody tr:first-child td {border-top: 1px solid #999;}
+.board-view td .tblBtn {font-weight: normal; font-size: 0.938em; vertical-align: baseline;border: 1px solid #999; color: #fff;}
+.board-view td {text-align: left; color: #777;}
+.board-view td span {color: #444;}
+.board-view td.title {font-weight: 500;}
+.board-view td.title .lib {display: inline-block; min-width: 50px; margin-right: 6px; padding: 0 4px; color: #fff; text-align: center; background-color: #555;}
+.board-view td textarea {width: 100%; height: 80px; padding: 5px; resize: none; vertical-align: top; box-sizing: border-box;}
+.board-view td label {display: inline-block; vertical-align: middle;}
+.board-view td label + label {margin-left: 15px;}
+.board-view td span.inputDate {vertical-align: middle; margin-right: 20px;}
+.board-view td.content {padding: 20px 0; vertical-align: top; font-size: 1em;}
+.board-view td.content img {height: auto !important}
+.board-view td.textarea textarea {width: 100%; height: 200px; padding: 10px;}
+.board-view td .desc {margin-bottom: 3px; font-size: 0.875em;}
+.board-view .attach {line-height: 22px;}
+.board-view .attach a:hover, .board-view .attach a:focus {text-decoration: underline;}
+.board-view .attach + .attach {margin-top: 7px;}
+.board-view .attach img {vertical-align: top;}
+.board-view .attach .btn {border-radius: 4px;}
+.board-view .attach .del {display: inline-block; position: relative; width: 18px; height: 18px; margin-left: 3px; line-height: 0; text-indent: -999em; vertical-align: middle; border-radius: 50%; background-color: #ff515d;}
+.board-view .attach .del::before {content: ""; position: absolute; top: 8px; left: 4px; width: 10px; height: 2px; background-color: #fff; transform: rotate(135deg);}
+.board-view .attach .del::after {content: ""; position: absolute; top: 8px; left: 4px; width: 10px; height: 2px; background-color: #fff; transform: rotate(-135deg);}
+.board-view .inpFile {width: 100%; border: 1px solid #ddd;}
+.board-view .inpFile ~ .inpFile {margin-top: 5px;}
+.board-view .btn.btnPop {padding: 0 15px;}
+.inpFullBtn {position: relative; padding-right: 80px;}
+.inpFullBtn .btn {position: absolute; top: 0; right: 0; width: 75px; margin: 0;}
+
+/* next/prev board */
+.prevNext {overflow: hidden; position: relative; margin-top: 40px; padding-left: 20%; border-top: 2px solid #666;}
+.prevNext dt, .prevNext dd {padding: 10px 20px; border-bottom: 1px solid #d5d5d5; box-sizing: border-box;}
+.prevNext dt {position: absolute; left: 0; width: 20%; padding: 10px 0; text-align: center; color: #464646; background-color: #f8f8f8;}
+.prevNext dd {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #777;}
+.prevNext a, .prevNext a {color: #777;}
+.prevNext a:hover, .prevNext a:focus {text-decoration: underline;}
+
+/* board button */
+.boardWrap td > span.ing, .boardWrap td > span.end {display: block; line-height: 20px; color: #fff; border-radius: 20px; background-color: #f8f8f8;}
+.boardWrap td > span.end {line-height: 18px; color: #666; border: 1px solid #d5d5d5;}
+
+/* comment */
+.commentWrap {letter-spacing: 0;}
+.commentWrite {position: relative; margin-bottom: 20px; padding: 10px; border-top: 2px solid #666; background-color: #f8f8f8;}
+.commentWrite .txtarea {position: relative; padding-right: 90px;}
+.commentWrite .txtarea textarea {width: 100%; height: 70px; padding: 5px;}
+.commentWrite .txtarea .btnSave {display: block; position: absolute; top: 0; right: 0;}
+.commentWrite .txtarea .btnSave a {display: block; width: 80px; height: 70px; line-height: 70px; font-size: 1.125em; color: #fff; text-align: center; background-color: #3780ca;}
+.commentWrite .secret {font-size: 0.938em;}
+.commentHead {margin-bottom: 3px; font-size: 0.938em;}
+.commentHead .tit {float: left; color: #464646;}
+.commentHead .byte {float: right; color: #464646;}
+.commentList {margin-top: 5px; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2;}
+.commentList li {overflow: hidden; position: relative; padding: 10px 0 7px 10px; border-top: 1px solid #e2e2e2;}
+.commentList li:after {content: ""; display: block; clear: both;}
+.commentList li:first-child {border-top: 0;}
+.commentList li .userInfo {position: relative; margin-bottom: 5px; line-height: 20px;}
+.commentList li .ratingStar {vertical-align: middle;}
+.commentList li .id {line-height: 1; vertical-align: top; color: #464646;}
+.commentList li .date {position: relative; margin-left: 10px; padding-left: 11px; line-height: 1; vertical-align: top; color: #777;}
+.commentList li .date::before {content: ""; position: absolute; top: 50%; left: 0; height: 10px; margin-top: -5px; border-left: 1px solid #e2e2e2;}
+.commentList li .del {position: absolute; top: 10px; right: 10px; width: 15px; height: 15px; border: solid 1px #ddd;}
+.commentList li .del::before {content: ""; position: absolute; top: 2px; left: 7px; width: 1px; height: 11px; background-color: #999; transform: rotate(45deg);}
+.commentList li .del::after {content: ""; position: absolute; top: 7px; left: 2px; width: 11px; height: 1px; background-color: #999; transform: rotate(45deg);}
+.commentList li.lock {padding: 10px; padding-left: 35px; font-size: 0.938em; color: #888; background: url(/include/image/board/ico_lock.png) 10px 50% no-repeat;}
+
+/* list type board */
+.articleWrap .title {color: #444; font-size: 1.059em;}
+.articleWrap .title a:hover, .articleWrap .title a:focus {text-decoration: underline;}
+.articleWrap .lib {display: inline-block; min-width: 60px; margin: 1px 6px 1px 0; padding: 0 1px; font-size: 0.889em; line-height: 1.5; color: #fff; text-align: center; background-color: #555;}
+.articleWrap .info {overflow: hidden; margin: 2px 0;}
+.articleWrap .info li::after, .lectureWrap .info li::after {content: ""; display: block; clear: both;}
+.articleWrap .info span, .lectureWrap .info span {float: left; position: relative; margin-right: 26px; margin-left: -13px; color: #777; padding-left: 13px;}
+.articleWrap .info span::before, .lectureWrap .info span::before {content: ""; display: block; position: absolute; top: 50%; left: -1px; width: 1px; height: 14px; margin-top: -6px; background-color: #c2c2c2;}
+.articleWrap .info span i {font-style: normal;}
+.articleWrap .info .btn {vertical-align: top;}
+.articleWrap .info .status em {vertical-align: top;}
+.articleWrap .info .status.ing em, .articleWrap .info .applicant.ing span {color: #d93131;}
+.articleWrap .info .status.ready em, .articleWrap .info .applicant.ready span {color: #3c92ea;}
+.articleWrap .info .status.apply em, .articleWrap .info .applicant.wait span {color: #1ea953;}
+.articleWrap .info .status.non em, .articleWrap .info .applicant.non span {color: #f00;}
+.articleWrap .info .status.cncl em, .articleWrap .info .applicant.cncl span {color: #888;}
+.articleWrap .info .status.finish em, .articleWrap .info .applicant.finish span {color: #888;}
+.articleWrap .info .status a.ing, .articleWrap .info .status i.ing {background-color: #fff; color: #646464; border: 1px solid #c8c8c8; font-style: normal;}
+.articleWrap .info .status a.not, .articleWrap .info .status i.not {background-color: #d93131; font-style: normal;}
+.articleWrap .info .status a.cncl {background-color: #e9e9e9; color: #464646;}
+.articleWrap .info .applicant b.not {color: #d93131;}
+.articleWrap .info .status a:hover, .articleWrap .info .status a:focus, .articleWrap .info .status button:hover, .articleWrap .info .status button:focus {text-decoration: underline;}
+.articleWrap .btn, .articleWrap .title .btn {padding: 0 7px; text-decoration: none; vertical-align: baseline;}
+.articleWrap .allChk {padding: 10px 20px; border-top: 2px solid #666; background-color: #f8f8f8;}
+.articleWrap .allChk .chk {position: relative; top: 0; left: 0;}
+.articleWrap .allChk .chk input[type="checkbox"] + label {font-size: 1em;}
+.articleWrap .allChk .chk input[type="checkbox"] + label:before {top: 4px;}
+.articleWrap .allChk + .article-list {border-top: 1px solid #e2e2e2;}
+.article-list, .article-view {border-top: 2px solid #666;}
+.article-list > li {position: relative; padding: 10px 20px; border-bottom: 1px solid #e2e2e2;}
+.article-list.check > li {padding: 10px 20px 10px 35px;}
+.article-list.reserve > li {padding: 10px;}
+.article-list.history > li {padding: 10px;}
+.article-list > li > a {vertical-align: middle;}
+.article-list .chk {position: absolute; top: 18px; left: 20px; margin: 0; line-height: 0; vertical-align: top;}
+.article-view {position: relative; padding: 12px 2px; border-bottom: 1px solid #e2e2e2;}
+.article-view dd.content {min-height: 200px;}
+.article-view dd.content img {height: auto;}
+
+/* 문화강좌(프로그램) */
+.lectureWrap .title {margin-bottom: 10px;}
+.lectureWrap .title a:hover,.lectureWrap .title a:focus,.lectureWrap .status a:hover,.lectureWrap .status a:focus {text-decoration:underline}
+.lecture-list li .title a {display: inline-block; font-size: 1.059em; color: #444; line-height: 1.3; margin-right: 10px; vertical-align: middle;}
+.lecture-list li .title i {display: inline-block; font-size: 0.941em; font-style: normal; line-height: 1.3; padding: 0 10px; border: solid 1px #c8c8c8; color: #646464; vertical-align: middle; border-radius: 20px;}
+.lecture-list li .title i.type {border: solid 1px #c8c8c8; color: #fff; border-radius: 0; padding: 0 5px; vertical-align: top;}
+.lectureWrap .lib {display:inline-block; min-width:60px; margin:1px 6px 1px 0; padding:0 1px; font-style:normal; font-size:1.176em; line-height:1.5; color:#fff; text-align:center; border:solid 1px #ddd;}
+.lecture-list .tblBtn {position:absolute; top:50%; right:20px; margin-top:-16px; width: 71px; padding:0; line-height:30px; text-align:center; font-size:0.882em; border:solid 1px #ddd;}
+.lectureWrap .info {overflow: hidden;}
+.lecture-list {border-top:2px solid #666}
+.lecture-list > li {position:relative; padding:20px 105px 20px 130px; border-bottom:1px solid #e2e2e2;}
+.lecture-list > li .info li {float:left;width:80%;}
+.lecture-list > li .info li:last-child {width:20%;}
+
+.lecture-list.bookCart > li {padding:20px 105px 20px 20px;}
+
+/* 참가자 정보 입력폼 */
+.togetherList td {padding: 0 !important;}
+.togetherList td.ta_l {padding: 10px 0 10px 20px !important;}
+.togetherList ul {padding: 10px 20px 0;}
+.togetherList ul + ul {margin-top: 10px; padding: 0 20px 10px;}
+.togetherList li {float: left; position: relative;}
+.togetherList li + li {margin-left: 40px;}
+.togetherList li:nth-child(1) {padding-left: 60px;}
+.togetherList li:nth-child(2) {padding-left: 80px;}
+.togetherList li:nth-child(3) {padding-left: 60px;}
+.togetherList li:nth-child(4) {padding-left: 60px;}
+.togetherList ul + ul li:nth-child(2) {padding-left: 60px;}
+.togetherList li > strong {position: absolute; left: 0; top: 0; line-height: 40px;}
+
+/* book filter */
+.bookFilterForm {overflow: hidden; margin-bottom: 30px; border: 1px solid #d9d9d9;}
+.bookFilterForm .field {position: relative; padding-left: 70px;}
+.bookFilterForm .field + .field {margin-top: 6px;}
+.bookFilterForm .field .tit {position: absolute; top: 3px; left: 0; font-weight: normal; line-height: 36px; color: #333;}
+.bookFilterForm .field .rdoBtn {float: left; margin: 3px 8px 3px 0;}
+.bookFilterForm .field .rdoBtn:last-child {margin-right: 0;}
+.bookFilterForm .field .rdoBtn label {padding: 0 5px; min-width: 60px;}
+.bookFilterForm .field .rdoBtnGroup {float: left; padding: 4px 0 3px;}
+.bookFilterForm .field .rdoBtnGroup .rdoBtn {margin: -1px 0 0 -1px;}
+.bookFilterForm .field .rdoBtnGroup .rdoBtn label {min-width: 40px; padding: 0 15px; border-radius: 0;}
+.bookFilterForm .field > .form-ele {margin: 3px 0; height: 36px; line-height: 36px;}
+.bookFilterForm .inputDateGroup {float: left; margin: 3px 8px 3px 0;}
+.bookFilterForm .inputDate input {height: 34px; line-height: 34px;}
+.bookFilterForm .btnSearch {margin-top: 15px; text-align: center;}
+.bookFilterForm .btn {padding: 10px 40px; font-size: 1.154em; line-height: 25px; color: #fff; background-color: #666;}
+.filterFormArea {position: relative; padding: 20px;}
+.filterDescArea {padding: 10px 15px; background-color: #f4f4f4;}
+.bookCategory {margin: 30px auto;}
+.bookCategory .htitle {margin-bottom: 5px;}
+.bookCategoryList {padding: 0 10px 10px; border: 1px solid #d9d9d9; border-top: 2px solid #555;}
+.bookCategoryList li {float: left; width: 20%; margin-top: 10px; font-size: 0.923em;}
+.bookCategoryList li a.on {text-decoration: underline;}
+
+/* book list */
+.cover .rank {position: absolute; top: -6px; left: 0; width: 40px; height: 40px; line-height: 40px; font-size: 0.941em; font-weight: 500; color: #fff; text-align: center; background: #535353;}
+.cover .rank:before{content: ''; position: absolute; right: -4px; top: 0; width: 4px; height: 6px; background: url("/include/booksearch/img/unified/ico_labelshadow1.png") no-repeat;}
+.cover .rank.top {background: #d92e3a;}
+.cover .rank.top:before{content: ''; position: absolute; right: -4px; top: 0; width: 4px; height: 6px; background: url("/include/booksearch/img/unified/ico_labelshadow.png") no-repeat;}
+.book-list > li {overflow: hidden; position: relative; padding: 30px; border: 1px solid #e2e2e2;}
+.book-list > li + li {margin-top: 20px;}
+.book-list li.emptyNote {min-height: auto; color: #666;}
+.book-list .thumb {position: absolute; top: 30px; left: 30px;}
+.book-list .thumb .cover {display: inline-block; position: relative; max-width: 150px; height: 210px; line-height: 0; vertical-align: top; border: 1px solid #e2e2e2; background: #f8f8f8 url(/include/image/common/img_none.png) 50% 50% no-repeat;}
+.book-list .thumb img {display: block; width: 100%; height: 100%; box-sizing: border-box;}
+.book-list .thumb img[src$="img_none.png"], .book-view .thumb img[src$="img_none.png"], .thumb-list .thumb img[src$="img_none.png"] {width: 100%; opacity: 0;}
+.book-list .thumb .lib {display: table; position: absolute; top: 0; left: 0; z-index: 10; width: 55px; color: #fff; text-align: center; background-color: #999;}
+.book-list .thumb .lib span {display: table-cell; width: 100%; height: 55px; font-style: normal; font-size: 1.063em; line-height: 1.1; vertical-align: middle;}
+.book-list .bookInfoList {min-height: 216px; margin-left: 170px; position: relative;}
+.book-list .bookInfoList .info > span {float: left; position: relative; margin-right: 8px; padding-right: 9px; color: #646464;}
+.book-list .bookInfoList .info > span::after {content: ""; position: absolute; top: 50%; right: 0; width: 1px; height: 16px; margin-top: -7px; background-color: #ccc;}
+.book-list .bookInfoList .info > span:last-child {margin-right: 0; padding-right: 0;}
+.book-list .bookInfoList .info > span:last-child::after {display: none;}
+.bookInfoList .bookName {margin-bottom: 7px; font-size: 1.176em; color: #333; font-weight: 500;}
+.bookInfoList .bookName.view {font-size: 1.250em; font-weight: 700;}
+.bookInfoList .bookName a:hover, .bookInfoList .bookName:focus {text-decoration: underline;}
+.bookInfoList .tit {font-weight: normal; font-size: 1em;}
+.bookInfoList .tit::after {content: " :";}
+.bookInfoList .info::after {content: ""; display: block; clear: both;}
+.bookInfoList .list {color: #777;}
+.bookInfoList .list span {color: #444;}
+.bookInfoList .list a {text-decoration: underline; font-size: 1.125em;}
+.bookInfoList .list a.btn {text-decoration: none;}
+.bookInfoList .desc {clear: left; margin-top: 13px; padding-top: 13px; padding-left: 0; color: #777; border-top: 1px solid #e2e2e2; background: none;}
+.bookInfoList .btn {clear: left; margin-top: 10px;}
+.viewBookArea {position: relative;}
+.viewBookArea .thumb {position: absolute; top: 0; left: 0;}
+.viewBookArea .thumb .cover {display: inline-block; width: 150px; height: 210px; vertical-align: top; border: 1px solid #e2e2e2; background: #f8f8f8 url(/include/image/common/img_none.png) 50% 50% no-repeat; position: relative;}
+.viewBookArea .thumb .cover img {display: block; width: 100%; height: 100%; box-sizing: border-box;}
+.viewBookArea .thumb .btn {display: block; margin-top: 13px; font-size: 1.125em;}
+.viewBookArea .bookInfoList {min-height: 240px; padding-left: 170px;}
+.viewBookArea .bookInfoList .cont {margin-top: 30px; padding: 20px 15px; font-size: 1.143em; border-top: 1px solid #d9d9d9;}
+.book-view {padding: 30px; border: 1px solid #e2e2e2;}
+.book-view .bookContent {color: #777; margin-top: 30px; padding-top: 25px; border-top: 1px solid #e2e2e2;}
+.book-view .bookContent .author {margin-bottom: 15px; padding-bottom: 10px; font-weight: 600; font-size: 1.143em; border-bottom: 1px dotted #e4e4e4;}
+
+/* thumb list/view */
+.thumb-list {display: flex; flex-wrap: wrap; overflow: hidden;}
+.thumb-list > li {float: left; width: 25%; margin-bottom: 20px; text-align: center; box-sizing: border-box;}
+.thumb-list .thumb {max-width: 200px; margin: 0 auto -7%; padding: 0 11.79245283018868% 19.33962264150943%; box-sizing: border-box; background: url(/include/image/board/bg_book_bar.png) 50% 100% no-repeat; background-size: contain;}
+.thumb-list .thumb .cover {display: block; position: relative; padding-top: 140%; line-height: 0; border: 1px solid #e2e2e2; box-sizing: border-box; background: #f8f8f8 url(/include/image/common/img_none.png) 50% 50% no-repeat;}
+.thumb-list .thumb .cover img {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.thumb-list .thumb .lib {display: table; position: absolute; top: 0; left: 0; z-index: 10; width: 55px; color: #fff; text-align: center; background-color: #999;}
+.thumb-list .thumb .lib span {display: table-cell; width: 100%; height: 55px; font-style: normal; font-size: 1.063em; line-height: 1.1; vertical-align: middle;}
+.thumb-list .tit {display: block; overflow: hidden; position: relative; max-width: 200px; max-height: 3.8em; margin: 0 auto; font-weight: normal; font-size: 1.125em; line-height: 1.3; color: #333; min-height: 3.8em;}
+.thumb-list .txt {display: block; overflow: hidden; font-size: 0.923em; color: #777; text-overflow: ellipsis; white-space: nowrap;}
+.thumb-list .emptyNote {border-top: 1px solid #555;}
+.thumb-view .bookInfoList {min-height: 210px;}
+
+/* webzine list/view */
+.webzine-list {border-top: 1px solid #333;}
+.webzine-list > li {overflow: hidden; position: relative; padding: 25px 0; border-bottom: 1px solid #d9d9d9;}
+.webzine-list .thumb {overflow: hidden; position: absolute; top: 24px; left: 0; width: 150px; height: 200px; border: 1px solid #c9c9c9; background: #ececec url(/include/image/common/bg_photo.jpg) 50% 50% no-repeat;}
+.webzine-list .thumb a, .webzine-list .thumb img {display: block; width: 100%; height: 100%;}
+.webzine-list .thumb i {display: block; position: absolute; top: -1px; left: -1px; width: 55px; height: 27px; line-height: 27px; text-align: center; font-style: normal; color: #fff; background-color: #f2f2f2;}
+.webzine-list .desc {min-height: 200px; margin-left: 180px;}
+.webzine-list .desc > .tit {font-size: 1.222em; color: #333; font-weight: normal;}
+.webzine-list .desc > .tit a:hover, .webzine-list .desc > .tit a:focus {text-decoration: underline;}
+.webzine-list .desc .info {margin-top: 5px; color: #666;}
+.webzine-list .desc .info li {line-height: 24px;}
+.webzine-list .desc .summary {overflow: hidden; max-height: 120px; margin-bottom: 5px; line-height: 24px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;}
+.webzine-list .desc .summary .tit {display: inline-block; margin: 2px; padding: 0 8px; font-weight: normal; line-height: 20px; color: #fff; border-radius: 2px 10px 10px 2px;}
+.webzine-list .desc ul + .summary {max-height: 72px; margin-top: 5px; -webkit-line-clamp: 3;}
+.webzine-list .desc .btnArea {margin-top: 5px;}
+.webzine-list .desc .btnArea .btn {min-width: 60px;}
+.webzine-view {padding: 25px; border: 1px solid #e2e2e2;}
+.webzine-view .webzineSummary {overflow: hidden; position: relative;}
+.webzine-view .webzineSummary .thumb {overflow: hidden; position: absolute; top: 0; left: 0;}
+.webzine-view .webzineSummary .thumb .cover {display: block; width: 150px; height: 200px; background: #ececec url(/include/image/common/bg_photo.jpg) 50% 50% no-repeat;}
+.webzine-view .webzineSummary .thumb .cover img {display: block; width: 100%; height: 100%; border: 1px solid #e2e2e2; box-sizing: border-box;}
+.webzine-view .webzineTbl {min-height: 200px; margin-left: 185px;}
+.webzine-view .webzineTbl table {height: 200px; border-top: 1px solid #e2e2e2;}
+.webzine-view .webzineTbl th, .webzine-view .webzineTbl td {padding: 5px; text-align: left; border-bottom: 1px solid #e2e2e2;}
+.webzine-view .webzineTbl th {word-break: keep-all;}
+.webzineContent {margin-top: 30px;}
+.webzineContent .title {width: 70px; margin-bottom: 10px; font-size: 1.056em; line-height: 32px; text-align: center; border-radius: 15px;}
+.webzine-view ~ .prevNext {border: 1px solid #e2e2e2; border-bottom: 0;}
+.webzine-view ~ .prevNext dt {border-right: 1px solid #e2e2e2; background: none;}
+
+/* movie list */
+.movieWrap {overflow: hidden;}
+.movieWrap .thumb {display: block; float: left;}
+.movieWrap .thumb .cover {display: block; width: 150px; height: 210px; border: 1px solid #e2e2e2; background: #f8f8f8 url(/include/image/common/noimg_movie.png) 50% 50% no-repeat;}
+.movieWrap .thumb img{display: block; width: 100%; height: 100%;}
+.movieWrap .thumb img[src$="img_none.png"] {opacity: 0;}
+.movieWrap .thumb .btn {display: block; margin-top: 10px; font-size: 1.125em;}
+.movieWrap .status {display: inline-block; margin-left: 3px; padding: 3px 5px; line-height: 1; color: #fff; border-radius: 1px; background-color: #666;}
+.movie-list > li, .movie-view {position: relative; padding: 30px; border: 1px solid #e2e2e2;}
+.movie-list > li + li {margin-top: 20px;}
+.movie-list > li.emptyNote {min-height: auto;}
+.movie-list > li::after {content: ""; display: block; clear: both;}
+.movieStory {margin-top: 35px; padding-bottom: 35px; word-break: keep-all; border-bottom: 1px solid #ddd;}
+.movieStory .tit, .movieInfoList dt {margin-bottom: 5px; font-size: 1.176em; font-weight: 500; color: #444;}
+.movieInfoList {float: right; width: calc(100% - 170px);}
+.movieInfoList dt span {display: inline-block; vertical-align: top;}
+.movieInfoList dt img {margin: 0 0 0 2px; vertical-align: -4px;}
+.movieInfoList dd b {display: inline-block; position: relative; margin-left: 10px; padding-left: 10px; font-weight: normal;}
+.movieInfoList dd b::before {content: ''; position: absolute; left: 0; top: 50%; margin-top: -6px; width: 1px; height: 14px; background-color: #c2c2c2;}
+.movieInfoList a:hover, .movieInfoList a:focus {text-decoration: underline;}
+p.story {float: left; width: 100%; margin-top: 35px; padding-top: 30px; border-top: 1px solid #e2e2e2;}
+
+/* reading list */
+.readingWrap {overflow: hidden; border-top: 2px solid #666;}
+.reading-list li {float: left; width: 100%; padding: 30px; border-bottom: 1px solid #e2e2e2; box-sizing: border-box;}
+.reading-list li dl {position: relative;}
+.reading-list li dl dt {float: left;}
+.reading-list li dl dt .lib {display: inline-block; min-width: 110px; line-height: 55px; font-size: 1.176em; font-weight: 500; text-align: center; border: solid 1px #ddd;}
+.reading-list li dl dd {float: right; width: calc(100% - 130px);}
+.reading-list li dl dd .tit {font-size: 1.176em; font-weight: 500; color: #444; margin-top: -5px;}
+.reading-list li dl dd .info {margin-top: 5px;}
+.reading-list li dl dd .info span {position: relative; margin-right: 10px; padding-right: 14px;}
+.reading-list li dl dd .info span::after {content: ""; display: block; position: absolute; top: 50%; right: 0; width: 1px; height: 16px; margin-top: -7px; background-color: #c2c2c2;}
+.reading-list li dl dd .info span:last-child::after {display: none;}
+.reading-list li dl dd .desc {margin-top: 25px;}
+
+/* club list */
+.club-list > li {position: relative; padding: 20px; border: 1px solid #e2e2e2; box-sizing: border-box;}
+.club-list > li + li {margin-top: 20px;}
+.club-list > li .title {display: block; font-weight: normal; font-size: 1.125em; line-height: 1;}
+.club-list > li .info {overflow: hidden; margin-top: 10px;}
+.club-list > li .info ~ .info {margin-top: 0;}
+.club-list > li .info span {display: inline-block; position: relative; margin-right: 14px; margin-left: -10px; padding-left: 11px; word-break: normal;}
+.club-list > li .info span:last-child {margin-right: 0; background: none;}
+.club-list > li .info span::before {content: ""; display: block; position: absolute; top: 50%; left: 1px; width: 1px; height: 10px; margin-top: -5px; background-color: #ccc;}
+.club-list > li .desc {margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e2e2;}
+
+/* exhibition list */
+.exhibition-list > li {overflow: hidden; position: relative; padding: 30px; border: 1px solid #e2e2e2;}
+.exhibition-list > li + li {margin-top: 20px;}
+.exhibition-list li.emptyNote {min-height: auto; color: #666;}
+.exhibition-list .thumb {position: absolute; top: 30px; left: 30px;}
+.exhibition-list .thumb .cover {display: inline-block; position: relative; width: 220px; height: 150px; line-height: 0; vertical-align: top; background-color: #838383;}
+.exhibition-list .thumb img {display: block; width: 100%; height: 100%; box-sizing: border-box;}
+.exhibition-list .thumb img[src$="img_none.png"], .book-view .thumb img[src$="img_none.png"], .thumb-list .thumb img[src$="img_none.png"] {width: 100%; opacity: 0;}
+.exhibition-list .exhiInfoList {min-height: 150px; margin-left: 250px; position: relative;}
+.exhibition-list .exhiInfoList .info p {margin: 3px 0;}
+.exhibition-list .exhiInfoList .info p span {display: inline-block; position: relative; margin-right: 10px; padding-right: 11px; color: #646464;}
+.exhibition-list .exhiInfoList .info p span::after {content: ""; position: absolute; top: 50%; right: 0; width: 1px; height: 16px; margin-top: -7px; background-color: #ccc;}
+.exhiInfoList .exhiName {margin-bottom: 7px; font-size: 1.176em; color: #222; font-weight: 500;}
+.exhiInfoList .exhiName.view {font-size: 1.250em; font-weight: 700;}
+.exhiInfoList .exhiName a:hover, .exhiInfoList .exhiName:focus {text-decoration: underline;}
+.exhiInfoList .info::after {content: ""; display: block; clear: both;}
+
+/* webtoon list */
+.webtoon-list > li {overflow: hidden; position: relative; padding: 30px; border: 1px solid #e2e2e2;}
+.webtoon-list > li + li {margin-top: 20px;}
+.webtoon-list li.emptyNote {min-height: auto; color: #666;}
+.webtoon-list .thumb {position: absolute; top: 30px; left: 30px;}
+.webtoon-list .thumb .cover {display: inline-block; position: relative; width: 160px; height: 210px; line-height: 0; vertical-align: top; border: 1px solid #e2e2e2; background-color: #838383;}
+.webtoon-list .thumb img {display: block; width: 100%; height: 100%; box-sizing: border-box;}
+.webtoon-list .thumb img[src$="img_none.png"], .book-view .thumb img[src$="img_none.png"], .thumb-list .thumb img[src$="img_none.png"] {width: 100%; opacity: 0;}
+.webtoon-list .webtoonInfoList {min-height: 210px; margin-left: 180px; position: relative;}
+.webtoon-list .webtoonInfoList .date {position: absolute; left: 0; bottom: 20px;}
+.webtoon-list .webtoonInfoList .date span {display: inline-block; position: relative; margin-right: 10px; padding-right: 11px; color: #646464;}
+.webtoon-list .webtoonInfoList .date span::after {content: ""; position: absolute; top: 50%; right: 0; width: 1px; height: 16px; margin-top: -7px; background-color: #ccc;}
+.webtoonInfoList .webtoonName {padding: 10px 0; font-size: 1.176em; color: #222; font-weight: 500;}
+.webtoonInfoList .webtoonName a:hover, .webtoonInfoList .exhiName:focus {text-decoration: underline;}
+.webtoonInfoList .info::after {content: ""; display: block; clear: both;}
+
+.webtoonView {position: relative; padding: 15px 10px; border-top: 2px solid #666; border-bottom: 1px solid #e2e2e2;}
+.webtoonView .thumb {position: absolute; top: 15px; left: 10px;}
+.webtoonView .cover {display: inline-block; position: relative; width: 100px; height: 131px; line-height: 0; vertical-align: top; border: 1px solid #e2e2e2; background-color: #838383;}
+.webtoonView dl {padding-left: 120px; position: relative; display: table; width: 100%; box-sizing: border-box;}
+.webtoonView dl dt {display: table-cell; height: 130px; font-size: 1.176em; color: #444; vertical-align: middle;}
+.webtoonView dl dd {position: absolute; right: 0; bottom: 0;}
+.webtoonCon {position: relative; padding: 30px 0; text-align: center; border-bottom: 1px solid #e2e2e2;}
+
+/* calendar */
+.calWrap {position: relative;}
+.calWrap .example {float: right; margin: 6px 0; line-height: 20px;}
+.calWrap .example img {margin: 0 1px 0 9px; vertical-align: top;}
+.calWrap .example span {display: inline-block; font-size: 0.941em; color: #646464; position: relative; padding-left: 25px;}
+.calWrap .example span + span {margin-left: 15px;}
+.calWrap .pin::before {content: ""; position: absolute; left: 0; top: 3px; width: 17px; height: 17px; line-height: 17px; font-size: 12px; color: #fff; margin-right: 8px; text-align: center; border-radius: 50%; vertical-align: 1px;}
+.calWrap .ico-holiday::before {content: "A"; background: #4a44a3;}
+.calWrap .ico-dataholiday::before {content: "R"; background: #09a85a;}
+.calHead {position: relative; margin-bottom: 30px; overflow: hidden; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0;}
+.calHead.calmb {margin-bottom: 20px;}
+.calHead .calInner {position: relative; background-color: #fff; overflow: hidden; padding: 13px;}
+.calHead > .btn {padding: 0 15px; line-height: 32px; vertical-align: top;}
+.calMonth {float: left;}
+.calMonth a {display: inline-block; width: 30px; height: 30px; line-height: 30px; vertical-align: top; border: 1px solid #ddd; background: url(/include/image/board/arr_sp.png) 50% -27px no-repeat;}
+.calMonth a.next {background-position-y: -52px;}
+.calMonth .today {display: inline-block; width: 72px; height: 32px; margin-left: 8px; padding: 0; font-size: 0.882em; color: #646464; line-height: 30px; vertical-align: top; background: #fff;}
+.calMonth .month {display: inline-block; margin: 0 25px; font-size: 1.563em; line-height: 30px; color: #333;}
+.selLib {float: right;}
+.selLib select {height: 32px; line-height: 32px;}
+.selLib .btn {height: 32px; line-height: 32px;}
+.calendar {table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 0px; empty-cells: show; border-top: 2px solid #666; border-left: 1px solid #e2e2e2;}
+.calendar th, .calendar td {font-weight: normal; border-right: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2;}
+.calendar thead th {width: 14.28571428571429%; line-height: 50px; color: #464646; background-color: #f8f8f8;}
+.calendar td {width: 14.28571428571429%; height: 100px; padding: 5px 0; vertical-align: top; empty-cells: show;}
+.calendar td a:hover, .calendar td p:focus {text-decoration: underline;}
+.calendar td .day {display: block; width: 20px; margin-bottom: 6px; padding-left: 5px; line-height: 1;}
+.calendar td.holiday {color: #666;}
+.calendar td.choice {background-color: #edecff;}
+.calendar td.today {background-color: #edecff;}
+.calendar td.today.off {background-color: #fff;}
+.calendar td.today .day {width: auto; text-decoration: underline; margin-bottom: 4px;}
+.calendar td.today .today {display: inline-block; margin-left: 5px; padding: 2px 6px 2px; font-size: 0.750em; line-height: 1.1; color: #fff; border-radius: 10px; background-color: #555;}
+.calendar td.sat .day {color: blue;}
+.calendar td.sun .day {color: red;}
+.calendar td.choice .day {text-decoration: underline;}
+.calendar td p {overflow: hidden; padding: 2px 0 2px 21px; margin: 0 5px; font-size: 0.882em; line-height: 1.2; color: #646464; position: relative;}
+.calendar td p.pin::before {margin-right: 4px;}
+.calendar td p a, .calendar td p span {display: block; overflow: hidden; width: 100%; font-size: 0.938em; line-height: 1; white-space: nowrap;}
+.calendar td p.event, .calendar td p.lecture, .calendar td p.etc  {overflow: hidden; color: #fff;}
+.calendar td p.event {background: url(/include/image/board/ico_cal_event.png) 0 0;}
+.calendar td p.lecture {background: url(/include/image/board/ico_cal_lecture.png) 0 0;}
+.calendar td p.etc {background: url(/include/image/board/ico_cal_etc.png) 0 0;}
+.calendar td .btn {display: block; padding: 2px 0 1px; margin: 0 10px 5px; font-size: 0.938em;}
+.calendar td .btn + .btn {margin-top: 3px;}
+.calendar td p.btn, .calendar td span.btn {color: #555; background-color: #e9e9e9;}
+.calendar td div.info {margin: 0 10px 5px; font-size: 0.882em; line-height: 1.4; color: #646464;}
+
+/* FAQ list */
+.faqList > li + li {margin-top: 10px;}
+.faqList > li > div {position: relative; padding: 10px 20px 10px 55px; color: #464646;}
+.faqList div.q {border: 1px solid #e2e2e2; cursor: pointer;}
+.faqList > li.on div.q {border-color: #ccc;}
+.faqList div.a {border: 1px solid #e2e2e2; border-top: none; background-color: #f8f8f8; color: #777;}
+.faqList .ico {position: absolute; top: 9px; left: 15px; width: 30px; height: 30px; line-height: 28px; font-size: 1.176em; font-weight: 500; color: #fff; text-align: center; background-color: #000; border-radius: 50%;}
+
+/* data table(default) */
+.tblWrap {margin: 5px 0; position: relative;}
+.tblWrap .baseDate {position: absolute; right: 0; top: -43px; color: #777;}
+.tbl {position: relative; border-top: 2px solid #666; background-color: #fff;}
+.tbl th, .tbl td {padding: 10px 2px; color: #464646; text-align: center; word-break: keep-all; border-bottom: 1px solid #e2e2e2; border-left: 1px solid #e2e2e2; empty-cells: show;}
+.tbl td {color: #666;}
+.tbl th {font-weight: normal; background-color: #f8f8f8;}
+/* .tbl thead + tbody th {background-color: #fff;} */
+.tbl tbody td.ta_l {padding-left: 20px;}
+.tbl th:first-child, .tbl td:first-child {border-left: 0;}
+.tbl th.bdr, .tbl td.bdr {border-left: 1px solid #e2e2e2;}
+.tbl thead + tbody th[scope="row"] + td {text-align: center;}
+.tbl tbody + tbody::before {content: ""; display: block; padding-top: 20px;}
+.tbl tbody + tbody tr:first-child th, .tbl tbody + tbody tr:first-child td {border-top: 1px solid #999;}
+.tbl td li {margin: 0;}
+.tbl td li .btn, .tbl td li .tblBtn {vertical-align: inherit;}
+.tbl td.title {text-align: left}
+.tbl td.title a:hover, .tbl td.title:focus {text-decoration: underline;}
+.tbl td.chkCell {padding: 5px 8px; background-color: #f4f4f4;}
+.noWall th, .noWall td, th.noWall, td.noWall {border-left: 0;}
+.narrow th, .narrow td {padding: 10px 5px;}
+.tblScroller {overflow: auto;}
+.tblScroller table {min-width: 700px;}
+.tblScroller .tblLegend {margin: 0;}
+.tblLegend {margin-top: -20px; text-align: right;}
+.tblLegend:after {content: ""; display: block; clear: both;}
+
+/* 설문조사 */
+.surveyWrap .q {padding: 11px 10px; color: #464646; border-top: 2px solid #666; border-bottom: 1px solid #e2e2e2; background-color: #f8f8f8;}
+.surveyWrap .a {margin-bottom: 20px; padding: 15px 12px; color: #777; border-bottom: 1px solid #e2e2e2;}
+.surveyWrap .a li, .surveyWrap .a .subjectiveAnswer {position: relative; width: 100%; box-sizing: border-box;}
+.surveyList .a li + li {margin-top: 4px;}
+.surveyWrap .a .subjectiveAnswer {overflow: hidden;}
+.surveyList .a textarea {width: 100%; height: 80px; padding: 0 4px;}
+.surveyList .a li:after {content: ""; display: block; clear: both;}
+.surveyList .a li input[type="radio"], .surveyList .a li input[type="checkbox"] {margin-top: -4px; vertical-align: middle; margin-right: 4px;}
+.surveyList .a li input[type="text"] {height: 30px; margin-top: -3px; line-height: 28px; vertical-align: top;}
+.surveyInfo {overflow: hidden; position: relative; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0;}
+.surveyInfo .innerBox {display: table; width: 100%; background-color: #fff; padding: 15px 0;}
+.surveyInfo .status {position: absolute; top: 50%; left: 27px; margin-top: -50px; width: 100px; height: 100px; line-height: 100px; font-size: 1.176em; font-weight: 500; color: #555; text-align: center; background-color: #ddd; border-radius:50%;}
+.surveyInfo .status.ing {color: #fff; background-color: #6a65bd;}
+.surveyInfo .desc {display: table-cell; width: 100%; height: 100px; padding: 0 20px 0 140px; vertical-align: middle;}
+.surveyInfo .desc .title {font-size: 1.176em; color: #464646; margin-bottom: 5px;}
+.surveyContent {padding: 25px 10px;}
+.surveyList .multipleChoice .answer{width:calc(100% - 20px);margin:3px 0 0 20px !important;}
+
+/* photo Gallery */
+.boardWrap ~ .photoThumbView {margin-top: 30px; padding-bottom: 10px; border-bottom: 1px solid #e2e2e2;}
+.photoThumbList {overflow: hidden; margin-left: -25px;}
+.photoThumbList li {float: left; width: 33.333%; margin-bottom: 30px;}
+.photoThumbList li .thumbBox {margin-left: 25px; text-align: center; border: 1px solid #e2e2e2; box-sizing: border-box;}
+.photoThumbList li .thumbBox .thumb {display: block; position: relative; padding-top: 66.666%; background: #f8f8f8 url(/include/image/common/bg_photo.jpg) 50% 50% no-repeat; background-size: 48%;}
+.photoThumbList li .thumbBox .thumb img {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.photoThumbList li .thumbBox .tit {overflow: hidden; margin: 15px 0 10px; line-height: 1; color: #464646; text-overflow: ellipsis; white-space: nowrap;}
+.photoThumbList li .thumbBox .txt {display: block; overflow: hidden; margin: 0 20px; font-size: 0.938em; line-height: 1; color: #777; text-overflow: ellipsis; white-space: nowrap;}
+.photoThumbList li .thumbBox .date {display: block; font-size: 0.938em; line-height: 1; color: #777; margin-bottom: 13px;}
+.photoThumbList li.emptyNote {float: none; width: auto; margin-left: 25px; color: #666; line-height: 100px; border-top: 1px solid #e2e2e2;}
+
+.photoContent {clear:both; position: relative; z-index: 99;}
+.photoContent .controls {position: absolute; bottom: 0; left: 0; z-index: 30; width: 108px; height: 36px;}
+.photoContent .controls a {position: absolute; width: 36px; height: 36px; text-indent: -999em; background: url(/include/image/board/btn_gallery.png) 0 0 no-repeat;}
+.photoThumbView {padding: 10px; border: 1px solid #e2e2e2;}
+.photoThumbView .ss-controls a.play {left: 36px; background-position: 0 0;}
+.photoThumbView .ss-controls a.play:hover, .photoThumbView .ss-controls a.play:focus {background-position: -36px 0;}
+.photoThumbView .ss-controls a.pause {left: 36px; background-position: 0 -36px;}
+.photoThumbView .ss-controls a.pause:hover, .photoThumbView .ss-controls a.pause:focus {background-position: -36px -36px;}
+.photoThumbView .nav-controls a.prev {left: 0; background-position: 0 -72px;}
+.photoThumbView .nav-controls a.prev:hover, .photoThumbView .nav-controls a.prev:focus {background-position: -36px -72px;}
+.photoThumbView .nav-controls a.next {right: 0; background-position: 0 -108px;}
+.photoThumbView .nav-controls a.next:hover, .photoThumbView .nav-controls a.next:focus {background-position: -36px -108px;}
+.photoThumbView .slideshow-container {position: relative; clear: both; width: 100%; background-color: #f5f5f5;}
+.photoThumbView .slideshow {display: block;}
+.photoThumbView .slideshow img {width: 100%;}
+.photoNavigation {clear: both; overflow: hidden; position: relative; width: 100%; margin-top: 20px;}
+.photo-navigation {overflow: hidden;}
+.photo-navigation .thumbs {overflow: hidden; position: relative; margin-left: -10px; padding: 0;}
+.photo-navigation .thumbs li {float: left; width: 14.28571428571429%; margin-top: 10px; padding-left: 10px; box-sizing: border-box;}
+.photo-navigation .thumbs li.current img {border: 2px solid #555;}
+.photo-navigation .thumbs a {display: block; overflow: hidden; position: relative; width: 100%; padding-top: 65%;}
+.photo-navigation .thumbs img {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;}
+.photoDesc {padding: 20px 10px; border-bottom: 1px solid #e2e2e2; color: #666;}
+.photoDesc img {height: auto !important;}
+
+/* 관심도서목록 - 책장 */
+.bookCase {position: relative; padding: 15px; margin-bottom: 40px; border: 1px solid #ddd; box-sizing: border-box; text-align: center;}
+.bookCase .make {font-size: 1.176em;}
+.bookCase .make i {display: inline-block; width: 20px; height: 20px; border: 1px solid #ddd; vertical-align: -3px; margin-left: 9px; position: relative; box-sizing: border-box;}
+.bookCase .make i::before {content: ""; position: absolute; left: 50%; top: 50%; width: 2px; height: 10px; margin-left: -1px; margin-top: -5px; background-color: #000;}
+.bookCase .make i::after {content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 2px; margin-left: -5px; margin-top: -1px; background-color: #000;}
+.bookCase .help {position: absolute; right: 15px; top: 15px; color: #fff; min-width: 65px; font-size: 0.941em; line-height: 32px;}
+
+.bookCaseWrap {border-top: 2px solid #666;}
+.bookCaseWrap + .bookCaseWrap {margin-top: 40px;}
+.bookCaseWrap .title {float: left; font-size: 1.412em; line-height: 1; color: #222; font-weight: 500; margin: 20px 0;}
+.bookCaseWrap .more {float: right; font-size: 0.941em; line-height: 24px; color: #646464; margin: 20px 0;}
+.bookCaseWrap .more::after {content: ""; display: inline-block; width: 5px; height: 10px; background: url(/include/image/common/ico_naviArrow.png) no-repeat 0 0; vertical-align: 1px; margin-left: 10px;}
+.bookCaseList {overflow: hidden; margin-left: -25px; clear: both;}
+.bookCaseList li {float: left; width: calc(25% - 25px); margin-left: 25px; margin-bottom: 30px;}
+.bookCaseList.list li {margin-bottom: 0;}
+.bookCaseList li .thumbBox {text-align: center; border: 1px solid #e2e2e2; box-sizing: border-box;}
+.bookCaseList li .thumbBox .thumb {display: block; position: relative; background: #f8f8f8;}
+.bookCaseList li .thumbBox .thumb img {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.bookCaseList li dl dt {overflow: hidden; margin: 15px 0 10px; font-size: 1.059em; color: #444; text-align: center; text-overflow: ellipsis; white-space: nowrap;}
+.bookCaseList li dl dd {overflow: hidden; text-align: center;}
+.bookCaseList li dl dd a.btn {color: #464646;}
+.bookCaseList li.emptyNote {float: none; width: auto; margin-left: 25px; color: #666; line-height: 100px; border-top: 1px solid #e2e2e2;}
+
+/* *** media query *** */
+@media screen and (max-width:1024px){
+	.pageSearch {margin:0 0 20px;}
+	.pageSearch .schForm, .pageSearch .schForm.w1, .pageSearch .schForm.w2 {display:block; padding:0}
+	.pageSearch .schSel, .pageSearch .schForm .schSel, .pageSearch .schForm .schSel1, .pageSearch .schForm .schSel2, .pageSearch .schForm .schKwd, .pageSearch .schForm .schKwd1, .pageSearch .schForm .schKwd2, .pageSearch .schForm .schKwd3, .pageSearch .schForm .schKwd4 {position:relative;top:auto;left:auto;width:100%;margin-bottom:5px}
+	.pageSearch .schForm .schKwd + .btn, .pageSearch .schForm .schKwd1 + .btn, .pageSearch .schForm .schKwd2 + .btn, .pageSearch .schForm .schKwd3 + .btn, .pageSearch .schForm .schKwd4 + .btn, .pageSearch .schForm select + .btn {display:block;position:relative;top:auto;right:auto;}
+
+	.pageSearch .selList {margin-left: -5px;}
+	.pageSearch .selList li {width: calc(25% - 5px); margin-left: 5px;}
+
+	.articleWrap p.info .status em {font-size: 1em;}
+	.articleWrap p.info .status a, .articleWrap p.info .status button {padding: 0 7px; line-height: inherit; color: #fff; text-decoration: none; vertical-align: top; border-radius: 2px; background-color: #666;}
+	.articleWrap p.info .status.apply a, .articleWrap p.info .status.apply button {background-color: #0258ab;}
+	.article-list .chk {top: 15px; left: 10px;}
+	.articleWrap .allChk {padding: 10px 10px;}
+	.articleWrap .info .status {margin-top: 5px;}
+
+	.lecture-list > li {padding: 15px 100px 15px 10px;}
+	.lecture-list .lib {display: inline-block; margin-bottom: 8px;}
+	.lecture-list .lib br {display: none;}
+	.lecture-list a {display: block;}
+	.lecture-list .tblBtn {right: 0;}
+
+	.lecture-list.bookCart > li {padding:15px 80px 15px 10px;}
+
+	.togetherList ul {padding: 10px 10px 0;}
+	.togetherList ul + ul {margin-top: 5px; padding: 0 10px 10px;}
+	.togetherList li {width: 100%; box-sizing: border-box;}
+	.togetherList li + li {margin-left: 0; margin-top: 5px;}
+	.togetherList li:nth-child(n) {padding-left: 80px;}
+	.togetherList ul + ul li:nth-child(2) {padding-left: 80px;}
+	.togetherList li strong {line-height: 34px;}
+
+	.book-list .thumb .cover {min-width: 148px;}
+}
+@media screen and (max-width:800px){
+	th, td {word-break: break-all;}
+
+	.pageSearch .item,.pageSearch .item + .schForm {display:block;text-align:left;overflow:hidden;}
+	.pageSearch .item + .item,.pageSearch .item + .schForm,.pageSearch .inputDateGroup + .btn {margin-top:5px}
+	.pageSearch .item ~ .btn {display:block;}
+	.pageSearch .item .inputDate:first-child {float:left;width:47%}
+	.pageSearch .item .inputDate:nth-child(2) {float:right;width:47%}
+	.pageSearch .item ~ #searchStatus {margin:5px auto}
+	.pageSearch.smalllib select {margin-bottom:5px}
+	.pageSearch.smalllib .btn {display: block;}
+	.pageSearch .form-ele.auto,.pageSearch .form-ele.min,.pageSearch .form-ele.wide {width:100%; max-width:100%;}
+	.pageSearch .form-ele.auto:nth-child(2n+1),.pageSearch .form-ele.min:nth-child(2n+1),.pageSearch .form-ele.wide:nth-child(2n+1) {margin-right:0}
+
+	.pagingWrap {padding: 2px 0; margin-top: 30px;}
+	.paging span, .paging a, .paging span.current {width: 30px; height: 30px; line-height: 30px;}
+	.paging .btn-paging {width: 28px; height: 28px; line-height: 28px;}
+	.paging .btn-paging {background-position-y: -1px;}
+	.paging .btn-paging.prev {background-position-y: -28px;}
+	.paging .btn-paging.next {background-position-y: -53px;}
+	.paging .btn-paging.last {background-position-y: -78px;}
+	.pagingWrap .btn {line-height: 34px;}
+
+	.board-list col.no, .board-list col.attach {width: 50px;}
+	.board-list col.writer {width: 100px;}
+	.board-list col.hits {width: 60px;}
+	.board-list col.date {width: 90px;}
+	.board-list col.period {width: 110px;}
+	.board-list td.period::before {content: ""; display: inline-block; width: 14px;}
+
+	.board-view input ~ input, .board-view input ~ select {margin: 2px 0;}
+
+	.togetherList td.ta_l {padding: 6px 0 6px 10px !important;}
+
+	.openInfo {padding: 20px 10px;}
+	.openInfo dt {float: left; width: 100%; text-align: center;}
+	.openInfo dt img {width: 230px;}
+	.openInfo dd {float: left; width: 100%; text-align: center; padding-top: 5px;}
+
+	.cover .rank {width: 30px; height: 30px; line-height: 30px;}
+	.book-list .thumb .cover, .recommend-list .thumb .cover {max-width: 107px; min-width: 98px; height: 140px; background-size: 70% auto;}
+	.book-list .bookInfoList, .recommend-list .bookInfoList {min-height: 145px; margin-left: 120px;}
+	.book-list .desc {overflow: hidden; height: 75px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-wrap: break-word;}
+
+	.webzine-list > li {padding: 17px 0;}
+	.webzine-list .thumb {top: 20px; width: 111px; height: 148px;}
+	.webzine-list .desc {min-height: 154px; margin-left: 130px;}
+	.webzine-list .desc .summary {max-height: 72px; -webkit-line-clamp: 3;}
+
+	.movieWrap .thumb .cover {width: 120px; height: 167px; background-size: 70% auto;}
+	.movieInfoList {width: calc(100% - 140px);}
+
+	.survey-list .a li::before, .survey-list .a .subjectiveAnswer::before {display: none;}
+	.survey-list .a .txt, .survey-list .a .cnt {float: none; padding: 0;}
+
+	.inputDateArea {display: inline-block; margin-top: 5px; width: 100%;}
+	.inputDateArea.m_100 .inputDate {width: calc(50% - 8px);}
+
+	.faqList > li > div {padding: 11px 20px 11px 50px;}
+	.faqList .ico {top: 9px; left: 12px;}
+
+	.tblWrap .baseDate {top: -40px;}
+}
+@media screen and (max-width:640px){
+	.pageSearch.mybest {text-align: center;}
+	.pageSearch.mybest .btn {float: none;}
+	.pageSearch.mybest .schForm .rdoBtnGroup {line-height: 30px;}
+	.pageSearch .schForm .rdoBtnGroup {display:block; margin: 5px 0;}
+	.pageSearch .schForm .inputDateGroup {display:block; width: 100%; overflow: hidden;}
+	.pageSearch .schForm .inputDate:first-child {float:left; width:47%;}
+	.pageSearch .schForm .inputDate:last-child {float:right; width:47%;}
+	.pageSearch .item .form-ele {margin-bottom:0}
+	.pageSearch .item.inputDateGroup {text-align:center}
+	.pageSearch .item .inputDate + .btn {display:block;margin:5px auto}
+	.pageSearch .item .form-ele ~ .inputDateArea {display:block;overflow:hidden;margin-top:5px; line-height: 34px;}
+	.pageSearch .item .rdoBtnGroup {margin-top:5px;}
+	.inputDate input[type="date"],.inputDate input[type="text"] {height: 32px; line-height: 32px;}
+
+	.pageSearch .selList li {width: calc(50% - 5px);}
+	.pageSearch .selList li:nth-child(n+3) {margin-top: 5px;}
+
+	.form-ele.auto {width: 100%; max-width: 100%;}
+
+	.pagingWrap .btn:only-child, .pagingWrap .paging ~ .btn {float: none; position: relative; right: auto; bottom: auto; padding: 0 20px; line-height: 34px;}
+	.pagingWrap .paging ~ .btn {margin-top: 20px;}
+
+	.article-list .thumb .cover {width: 66px; height: 99px;}
+	.article-list .thumb ~ .cont {padding-left: 76px;}
+	.article-list .cont {height: 99px;}
+	.articleWrap .allChk .chk input[type="checkbox"] + label:before {top: 3px;}
+	.article-list .chk {top: 11px;}
+	.article-list .chk ~ .thumb ~ .cont {padding-left: 100px;}
+	.articleWrap .btn, .articleWrap .title .btn {font-size: 1em; line-height: inherit;}
+
+	.togetherList li:nth-child(n) {padding-left: 70px;}
+	.togetherList ul + ul li:nth-child(2) {padding-left: 70px;}
+
+	.bookFilterForm .field {float: none;}
+	.bookFilterForm .field .rdoBtn label {padding: 0 5px; min-width: 40px;}
+	.bookFilterForm .field .rdoBtnGroup {margin-top: 10px;}
+	.filterFormArea .btn {padding: 5px 40px;}
+
+	.book-list > li {padding: 10px 12px;}
+	.book-list .thumb {top: 12px; left: 12px;}
+	.book-list .thumb .cover {max-width: 92px; min-width: 85px; height: 120px;}
+	.book-list .bookInfoList {min-height: 125px; margin-left: 110px;}
+	.book-list .desc {height: 68px;}
+
+	.viewBookArea .thumb .cover {max-width: 130px; height: 170px;}
+	.viewBookArea .bookInfoList {min-height: 220px; padding-left: 150px;}
+
+	.thumb-list > li {width: 33.333%;}
+	.thumb-list > li .thumb .lib, .book-list > li .thumb .lib {width: 40px;}
+	.thumb-list > li .thumb .lib span, .book-list > li .thumb .lib span {height: 35px; font-size: 0.933em;}
+	.thumb-list > li .tit {font-size: 1em;}
+
+	.webzine-view .webzineSummary .thumb .cover {width: 120px; height: 160px;}
+	.webzine-view .webzineTbl {min-height: 160px; margin-left: 140px;}
+	.webzine-view .webzineTbl table {height: 160px;}
+
+	.club-list {margin-left: 0;}
+	.club-list > li {float: none; width: 100%; margin-left: 0;}
+
+	.exhibition-list > li {padding: 10px 20px;}
+	.exhibition-list > li + li {margin-top: 15px;}
+	.exhibition-list .thumb {position: relative; top: auto; left: auto; text-align: center;}
+	.exhibition-list .exhiInfoList {min-height: auto; margin-left: 0;}
+	.exhibition-list .exhiInfoList .info p {margin: 1px 0;}
+	.exhibition-list .exhiInfoList .info p span::after {height: 14px;}
+	.exhiInfoList .exhiName {margin-top: 10px;}
+
+	.webtoon-list > li {padding: 10px 20px;}
+	.webtoon-list > li + li {margin-top: 15px;}
+	.webtoon-list .thumb {position: relative; top: auto; left: auto; text-align: center;}
+	.webtoon-list .thumb .cover {width: 130px; height: 171px;}
+	.webtoon-list .webtoonInfoList {min-height: auto; margin-left: 0;}
+	.webtoon-list .webtoonInfoList .info {padding-bottom: 5px;}
+	.webtoon-list .webtoonInfoList .date {position: relative; left: auto; bottom: auto;}
+	.webtoonInfoList .webtoonName {padding-bottom: 7px;}
+
+	.webtoonView dl dt {height: 130px; vertical-align: top; padding-top: 10px; box-sizing: border-box;}
+	.webtoonView dl dd {position: absolute; right: 0; bottom: 0;}
+
+	.calMonth, .calWrap .example, .calHead > .btn {float: none !important; text-align: center; margin-bottom: 5px;}
+	.selLib {float: none !important; text-align: center; margin-top: 10px;}
+	.calMonth .month {margin: 0 10px;}
+	.calInner > .btnArea {text-align: center !important;}
+	.calWrap .example {margin: 15px 0 0;}
+	.calWrap .calendar .pin::before {display: none;}
+	.calWrap .boardWrap::before {content: "* 날짜를 선택하면 일정을 아래에서 확인하실 수 있습니다."; display: block; margin-bottom: 5px;}
+	.calHead {margin-bottom: 35px; padding: 10px;}
+	.calendar {font-size: 0.857em;}
+	.calendar td {height: 50px; padding: 2px;}
+	.calendar td .day {width: auto; margin-bottom: 4px; padding: 0 2px;}
+	.calendar td.today .day {margin-bottom: 2px;}
+	.calendar td.today .today {margin: 5px 0 2px; letter-spacing: -0.05em;}
+	.calendar td p {display: block; height: auto; margin-bottom: 2px; white-space: nowrap; padding-left: 0; font-size: 1em;}
+	.calendar td p.pin.ico-a {line-height: 1.2; color: #555; white-space: normal;}
+	.calendar td p.pin.ico-r {line-height: 1.2; color: #999; white-space: normal;}
+	.calendar td p.pin.ico-e a {color: #fff; background-color: #f08062;}
+	.calendar td p.pin.ico-c a {color: #fff; background-color: #53b569;}
+
+	.tblWrap .baseDate {top: -33px;}
+	.tbl th, .tbl td {word-break: normal;}
+	.tbl tbody td.ta_l {padding-left: 10px;}
+	.tblLegend {margin-top: 0;}
+
+	.reading-list li {padding: 15px;}
+	.reading-list li dl dt .lib {min-width: 70px; line-height: 26px;}
+	.reading-list li dl dd {float: left; width: 100%;}
+	.reading-list li dl dd .tit {margin-top: 8px;}
+	.reading-list li dl dd .desc {margin-top: 15px;}
+
+	.surveyInfo .innerBox {padding: 10px 0;}
+	.surveyInfo .status {left: 17px; margin-top: -40px; width: 80px; height: 80px; line-height: 80px;}
+	.surveyInfo .status.ing {color: #fff; background-color: #6a65bd;}
+	.surveyInfo .desc {padding: 0 10px 0 105px; height: 80px;}
+	.surveyContent {padding: 15px 5px;}
+
+	.photoThumbList {margin-left: -15px;}
+	.photoThumbList li {width: 50%; margin-bottom: 15px;}
+	.photoThumbList li .thumbBox {margin-left: 15px;}
+	.photoThumbList li .thumbBox .tit {margin: 10px 15px 0;}
+	.photoThumbList li .thumbBox .date {margin: 7px 15px 10px;}
+	.photo-navigation .thumbs li {width: 20%;}
+
+	.faqList > li > div {padding: 11px 10px 11px 43px;}
+	.faqList .ico {top: 7px; left: 8px;}
+
+	.bookCase {padding: 10px; margin-bottom: 30px; text-align: left;}
+	.bookCase .make {line-height: 26px;}
+	.bookCase .make i {vertical-align: -4px; margin-left: 8px;}
+	.bookCase .help {position: relative; right: auto; top: auto; float: right; line-height: 26px; text-align: center; min-width: 50px;}
+
+	.bookCaseWrap .title {margin: 13px 0;}
+	.bookCaseWrap .more {margin: 13px 0; line-height: 21px;}
+	.bookCaseList {margin-left: -15px;}
+	.bookCaseList li {width: calc(33.33% - 15px); margin-left: 15px; margin-bottom: 20px;}
+	.bookCaseList.list li:nth-child(4) {display: none;}
+}
+@media screen and (max-width:480px){
+	.pageCategory .item {display:block; position: relative; padding-left: 70px; text-align: left;}
+	.pageCategory .item + .item {margin: 5px 0 0;}
+	.pageCategory .item label.tit {position: absolute; top: 0; left: 0; width: 70px; text-align: center;}
+	.pageCategory .item select {display: block; width: 100%; margin: 0;}
+	.pageCategory .item:last-child {padding-right: 60px;}
+	.pageCategory .item:last-child .btn {position: absolute; top: 0; right: 0; width: 55px; margin: 0;}
+
+	.boardSearchForm .item .form-ele ~ .form-ele {margin-top: 5px;}
+	.boardFilter .form-ele ~ .form-ele, .boardFilter .form-ele ~ .btn {display: block; margin: 5px auto 0;}
+
+	.board-list col.state {width: 70px;}
+	.board-list col.writer {width: 70px;}
+
+	.prevNext {padding-left: 80px;}
+	.prevNext dt {width: 80px;}
+
+	.commentWrite .txtarea {padding-right: 0}
+	.commentWrite .txtarea .btnSave {position: relative; top: auto; right: auto; margin-top: 0; text-align: right;}
+	.commentWrite .txtarea .btnSave a {display: block; width: auto; height: auto; font-size: 1em; line-height: 40px;}
+	.commentWrite .secret {position: absolute; bottom: 15px; left: 10px;}
+
+	.bookFilterForm .field {padding-left: 60px;}
+	.bookFilterForm .inputDate input[type="text"] {width: 77px;}
+	.filterFormArea {padding: 15px;}
+
+	.book-list .thumb .cover {max-width: 80px; min-width: 75px; height: 107px;}
+	.book-list .bookInfoList {min-height: 107px; margin-left: 95px;}
+
+	.book-view {padding: 15px;}
+	.book-view .bookContent {padding: 15px 0;}
+
+	.viewBookArea .thumb {position: relative; top: auto; left: auto; margin-top: 10px; margin-bottom: 10px; text-align: center;}
+	.viewBookArea .thumb .btn {max-width: 130px; margin: 10px auto;}
+	.viewBookArea .bookInfoList {min-height: auto; margin: 0; padding: 0;}
+	.viewBookArea .bookInfoList .bookName {clear: both; margin-bottom: 5px;}
+
+	.recommend-list .bookName {overflow: visible; white-space: normal;}
+
+	.webzine-view .webzineSummary .thumb {position: relative; top: inherit; left: inherit;}
+	.webzine-view .webzineSummary .thumb .cover {margin: 0 auto;}
+	.webzine-view .webzineTbl {margin: 15px 0 0;}
+
+	.reading-list li dl dd .info span {display: block; margin-right: 0; padding-right: 0;}
+	.reading-list li dl dd .info span::after {display: none;}
+
+	.movieWrap .thumb .cover {width: 100px; height: 140px;}
+	.movieWrap .thumb .btn {margin-top: 5px; padding: 5px 0; font-size: 1em;}
+	.movieWrap .thumb .btn::before, .movieWrap .thumb .btn::after {display: none;}
+	.movie-list > li {padding: 10px;}
+	.movieInfoList {width: calc(100% - 115px);}
+	.movieInfoList dd, .movieStory p {font-size: 1em;}
+	.movieInfoList dd.story {overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-wrap: break-word;}
+
+	.webzine-list .thumb {width: 83px; height: 111px;}
+	.webzine-list .desc {min-height: 117px; margin-left: 95px;}
+
+	.calMonth .month {margin: 0 10px; font-size: 1.286em;}
+	.calMonth .today {width: 55px;}
+	.calendar td .btn {margin: 0 3px; font-size: 0.938em;}
+	.calendar td.today .today {margin: 0; padding: 1px 3px; font-size: 1em; border-radius: 0;}
+
+	.survey-list .a li input[type="text"] {margin-top: 3px;}
+	.surveyContent dl {padding: 15px 20px;}
+	.surveyContent .desc span ~ span::before {display: none;}
+
+	.photo-navigation .thumbs li {width: 25%;}
+
+	.articleWrap .info span {float: none; display: block;}
+	.articleWrap .sdot-list > li::before, .sdot::before {display: none;}
+
+	.lecture-list > li {padding-right:85px;}
+	.articleWrap .info span, .lectureWrap .info span {width: 100%; margin: 0; padding: 0;}
+
+	.bookCaseWrap + .bookCaseWrap {margin-top: 30px;}
+	.bookCaseList li {width: calc(50% - 15px);}
+	.bookCaseList.list li:nth-child(3) {display: none;}
+
+	.tblWrap .baseDate {position: relative; right: auto; top: auto; text-align: right; margin-bottom: 3px; margin-top: -10px;}
+}
+@media screen and (max-width:375px){
+	.pageSearch .schForm {padding:0}
+	.pageSearch .schForm .schSel {position:relative;top:auto;left:auto;width:100%;margin-bottom:5px}
+	.pageSearch .schForm .schKwd + .btn {margin-top:0;}
+
+	.board-list col.state {width: 60px;}
+	.board-list td .lib {line-height: 18px;}
+
+	.board-view td select + select {margin-top: 4px;}
+
+	.articleWrap .allChk .chk input[type="checkbox"] + label:before {top: 2px;}
+	.article-list .chk {top: 8px;}
+
+	.togetherList li:nth-child(n) {padding-left: 60px;}
+	.togetherList ul + ul li:nth-child(2) {padding-left: 60px;}
+
+	.thumb-list > li {width: 50%;}
+
+	.book-list .thumb .cover {max-width: 80px; min-width: 73px; height: 104px;}
+	.book-list .bookInfoList {min-height: 110px; margin-left: 95px;}
+
+	.movieWrap .thumb .cover {width: 80px; height: 112px;}
+	.movieInfoList {width: calc(100% - 90px);}
+
+	.calendar {font-size: 0.833em;}
+
+	.faqList .ico {top: 5px;}
+
+	.bookCase {padding: 5px 10px; margin-bottom: 20px;}
+	.bookCase .make i {vertical-align: -5px;}
+	.bookCaseWrap .title {margin: 10px 0;}
+	.bookCaseWrap .more {margin: 10px 0; line-height: 18px;}
+}
+@media screen and (min-width:800px){
+	.board-list th, .board-list td {height: 36px;}
+	.board-view th, .board-view td {padding-top: 10px; padding-bottom: 10px;}
+	.board-view td {padding-left: 20px;}
+	.survey-list .a li, .survey-list .a .subjectiveAnswer {padding-right: 140px;}
+	.survey-list .a .cnt {margin-right: -140px;}
+
+	.bookInfoList .btn {position: absolute; right: 0; top: 50%; margin-top: -22px;}
+}
+@media screen and (min-width:1025px) {
+	.pageSearch .selList select {width: 180px;}
+	.pageSearch .schForm .schSel {min-width:180px}
+	.pageSearch .schForm .schSel1 {min-width:130px}
+	.pageSearch .schForm .schSel2 {min-width:90px}
+	.pageSearch .schForm .schKwd {min-width:390px}
+	.pageSearch .schForm .schKwd1 {min-width:480px}
+	.pageSearch .schForm .schKwd2 {min-width:540px}
+	.pageSearch .schForm .schKwd3 {min-width:675px}
+	.pageSearch .schForm .schKwd4 {min-width:725px}
+	/* .pageSearch .schForm:only-child .schKwd,.pageSearch .schForm.mt05 .schKwd {width:320px} */
+	.pageSearch .item .rdoBtnGroup {margin:0 50px;}
+
+	.board-view td.content {padding: 20px;}
+
+	.lecture-list .lib {display:table; position:absolute; top:50%; left:0; z-index:10; margin-top: -40px; width:100px;}
+	.lecture-list .lib span {display:table-cell; width:100%; height:80px; font-style:normal; line-height:1.1; vertical-align:middle;}
+
+	.articleWrap .title {line-height:1.3; margin-bottom:10px;}
+	.articleWrap .info {margin:0;line-height:1.3}
+	.articleWrap .info li {margin: 3px 0;}
+	.articleWrap .info .applicant span {float:none;margin:0;padding-left:0;line-height:22px}
+	.articleWrap .info .applicant span::before {display:none}
+	.article-list > li {padding: 15px 230px 15px 25px;}
+	.article-list.check > li {padding: 15px 110px 15px 45px;}
+	.article-list.reserve > li {padding:15px 110px 15px 20px;}
+	.article-list.history > li {padding:15px 20px;}
+	.article-list .lib {display:table; position:absolute; top:15px; left:0; z-index:10; width:60px; min-width:auto; margin:0; padding:0;}
+	.article-list .lib span {display:table-cell; width:100%; height:44px; font-style:normal; line-height:1.1; vertical-align:middle;}
+	.article-list .applicant {display:table; position:absolute; top:50%; right:115px; width:110px; height:44px; margin-top:-22px; text-align:center;}
+	.article-list .applicant span {display:table-cell; width:100%; height:44px; color:#777; vertical-align:middle}
+	.article-list .applicant br {display:block}
+	.article-list .info li.status {position:absolute; top:50%; right:20px; margin:-15px 0 0 0;}
+	.article-list .info li.status.not {right:10px;}
+	.article-list .info li.status .tblBtn {min-width:80px; padding:0 5px; line-height:30px; text-align:center; font-size:0.938em; }
+
+	.togetherList li.name input, .togetherList li.birth input {width: 140px;}
+	.togetherList li.school input{width: 400px;}
+	.togetherList li.gender select, .togetherList li.grade input {width: 100px;}
+
+	.filterFormArea, .filterDescArea {padding: 25px 40px;}
+	.filterFormArea .btnSearch {right: 40px;}
+
+	.photoThumbView .slideshow-container {width: inherit; height: 500px;}
+	.photoThumbView .slideshow, .photoThumbView .slideshow li {height: 100%;}
+	.photoThumbView .slideshow img {display: block; width: inherit; margin: 0 auto;}
+
+	.book-list .thumb .cover {min-width: 148px;}
+}

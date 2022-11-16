@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* web font */
-@font-face {
+/* @font-face {
 	font-family: 'Noto Sans';
 	font-weight: 100;
 	font-style: normal;
@@ -87,7 +87,7 @@
 		 url(/include/font/NanumSquareB.woff) format('woff'),
 		 url(/include/font/NanumSquareB.ttf) format('truetype');
 	unicode-range: U+0-007F, U+AC00-BEE0, U+BEE2-D7AF, U+1100-11FF, U+000-5FF;
-}
+} */
 
 /* reset */
 html {
