@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/book/*")
 public class BookController {
 
-	@GetMapping("add2")
+	@GetMapping("add")
 	public String setBookAdd()throws Exception{
 		
-		return "admin/book/add2";
+		return "admin/book/add";
 	}
 	
 	@GetMapping("list")
