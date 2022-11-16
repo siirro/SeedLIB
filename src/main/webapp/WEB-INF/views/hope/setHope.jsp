@@ -16,6 +16,50 @@
     <link rel="stylesheet" href="/css/sub.css">
     <link rel="shortcut icon" href="/images/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+
+        .pagination{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .pagDiv{
+            width: 700px;
+        }
+
+        
+        .pageList {
+            list-style:none;
+            padding-left:0px;
+            width: 500px;
+            margin-left: auto;
+            /* margin-right: auto; */
+        }
+
+        .pageSet{
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #pageNext{
+            width: 50px;
+            /* background-color: #77af9c;
+            color: #d7fff1; */
+            color: #45a987;
+
+        }
+
+        #pagePre{
+            width: 50px;
+            color: #45a987;
+        }
+
+    </style>
+
     <title>희망 도서 신청</title>
 </head>
 <body>
@@ -84,8 +128,8 @@
 			<!-- 서치영역 끝 -->
 			<!-- 페이징 -->
 			<div class="pagingWrap">
-				<p class="pagination">
-				</p>
+				<div class="pagination">
+                </div>
 			</div>
 			<!-- 페이징 끝-->
         <div>
@@ -94,7 +138,7 @@
                                 <input type="hidden" name="contentsId" value="">
                                 <input type="hidden" name="applicantUserTel" value="">
                                 <input type="hidden" name="applicantUserEmail" value="">
-                                <h4 class="htitle">신청자 정보</h4>
+                                <div><h4 class="htitle">신청자 정보</h4></div>
                                 <div class="boardWrap">
                                     <table class="board-view">
                                         <caption>희망도서 신청자 정보</caption>

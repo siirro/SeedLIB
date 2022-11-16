@@ -112,30 +112,26 @@ function paging(totalCount){
         next=true;
     }
     console.log("page: ",pageNum,"totalcount: ",totalCount,"totalpage: ",totalPage,"totalblock: ",totalBlock,"startnum: ",startNum,"startrow: ",startRow, "curBlock: ",curBlock, "lastNum: ", lastNum)
-    let r='<button type="button" class="page" id="pagePre" data-num="'+(startNum-5)+'">Previous</button></li>'
-    if(pageNum<lastNum){
+    let r='<div class="pagDiv"><ul class="pageList"><li class="pageSet"><button type="button" class="page" id="pagePre" data-num="'+(startNum-5)+'">이전</button></li>'
+    if(pageNum==totalPage){
+        alert("마지막 페이지입니다")
+    }
+    if(pageNum<=lastNum){
         for(let i=0; i<perBlock; i++){
-            if(pageNum+i<=lastNum){
-                r=r+'<li><button type="button" class="page" id="page" data-num="'+(pageNum+i)+'" value="'+(pageNum+i)+'">'+(pageNum+i)+'</button></li>';
+            if(startNum+i<=lastNum){
+                if(pageNum==startNum+i){
+                    r=r+'<li class="pageSet"><button type="button" style="text-decoration: underline;" class="page" id="page" data-num="'+(startNum+i)+'" value="'+(startNum+i)+'">'+(startNum+i)+'</button></li>';
+                }else{
+                    r=r+'<li class="pageSet"><button type="button" class="page" id="page" data-num="'+(startNum+i)+'" value="'+(startNum+i)+'">'+(startNum+i)+'</button></li>';
+                }
             }else{
                 continue;
             }
         }
-        r=r+'<button type="button" class="page" data-num="'+(lastNum+1)+'" id="pageNext">Next</button></li>'
+        r=r+'<li class="pageSet"><button type="button" class="page" data-num="'+(lastNum+1)+'" id="pageNext">다음</button></li></ul></div>'
     }else{
-        alert("마지막 페이지입니다");
-        pageNum = lastNum;
-        if(startNum!=pageNum){
-            for(let i=0; i<perBlock; i++){
-                if(startNum+i<=lastNum){
-                    r=r+'<li><button type="button" class="page" id="page" data-num="'+(startNum+i)+'" value="'+(startNum+i)+'">'+(startNum+i)+'</button></li>';
-            }else{
-                continue;
-            }
-        }
-    }
-        r=r+'<button type="button" class="page" id="pageNext" data-num="'+(pageNum)+'" value="'+pageNum+'">Next</button></li>'
-    }
+        alert("존재하지 않는 페이지입니다")
+    }    
     $(".pagination").append(r);
 }
 
@@ -145,7 +141,6 @@ $(".pagination").on("click",".page",function(){
     $(".result_screen").empty();
     $(".listWrap").empty();
     pageNum = $(this).attr("data-num");
-    console.log("pN", pageNum);
     if(pageNum<1){
         alert("최신 페이지입니다");
         pageNum = 1;
@@ -157,22 +152,5 @@ $(".pagination").on("click",".page",function(){
     getSearch(); 
 }) 
 
-// $(document).on("click","#pagePre",function(){ 
-//     console.log("page= ",pageNum);
-//     searchResult = "";
-//     $(".pagination").text(searchResult);
-//     $(".result_screen").text(searchResult);
-//     $(".listWrap").text(searchResult);
-//     if(pageNum<=5){
-//         alert("최신 페이지입니다")
-//         pageNum = 1;
-//         getKey();
-//         getSearch();
-//         return;
-//     }else{
-//         pageNum =  pageNum-5;
-//         getKey();
-//         getSearch();
-//     }    
-// })
+
 
