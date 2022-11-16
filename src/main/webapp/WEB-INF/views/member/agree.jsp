@@ -338,7 +338,8 @@
                                 </div>
                             </div>
                             <div class="agreeBtn">
-                                <a href="/" class="noAgree" title="비동의">비동의</a><input type="submit" title="동의" value="동의" class="agree">
+                                <a href="/" class="noAgree" title="비동의">비동의</a>
+                 <input type="submit" title="동의" value="동의" class="agree">
                             </div>
                         </div>
                     

@@ -31,7 +31,7 @@
             <fieldset>
                 <legend>로그인</legend>
                 <div class="langSelect"></div>
-                <p class="logo"><img src="" alt="씨앗도서관"></p>
+                <p class="logo"><img src="/images/favicon.png" alt="씨앗도서관"></p>
                 <div class="join2">
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
@@ -119,25 +119,26 @@
                         </div>
                         <p class="info" style="padding:0 10px;">* 이메일 주소는 회원정보 재동의(2년 주기) 알림에 이용됩니다.</p><br>
                         <div>
-                            <input id="addrs_jibun" name="addrs_jibun" type="hidden" value="">
+                         <!--    <input id="addrs_jibun" name="addrs_jibun" type="hidden" value="">
                             <input id="buld_manage_no" name="buld_manage_no" type="hidden" value="">
                             <input id="zip_code" name="zip_code" type="hidden" value="">
                             <input id="b_dong_code" name="b_dong_code" type="hidden" value="">
-                            <input id="h_dong_code" name="h_dong_code" type="hidden" value="">
+                            <input id="h_dong_code" name="h_dong_code" type="hidden" value=""> -->
                             
                             
                             <p><label for="addrs">기본주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
                                
-                               <input type="text" id="sample2_postcode" placeholder="우편번호">
-                             <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="sample4_execDaumPostcode()" title="우편번호검색 새창으로열림">
-                               
-      					     <input type="text" id="addrs" name="post" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
-                             </p>
+                               <input type="text" id="postcode" name="post" placeholder="우편번호" style="width: 180px;">
+                             <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="joinPostcode()" title="우편번호검색 새창으로열림" style="width: 120px;">
+                             
+      					     <input type="text" id="addess" name="addess1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
+                             </p><!--id="addrs"  -->
              
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                           <span><input type="text" id="addrs_detail" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="">
-                            <input type="text" id="sample2_extraAddress" placeholder="참고항목"></span>
-                            </p>
+                           <input type="text" id="detailAddess" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="">                      
+                                <input type="text" id="extraAddress" placeholder="참고항목">
+                                
+                                 </p>
                        
                         </div>
                     </div>
