@@ -193,3 +193,4 @@
 		$("#topSearchBestKeyword").load("/seoksu/include/topSearchBestKeyword.do");
 	}
 </script>
+<script src="/js/indexcopy.js"></script>
