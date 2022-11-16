@@ -19,6 +19,8 @@ public class MemberVO {
 	private String addess2;
 	private boolean enabled;
 	private boolean loanStatus;
+	private Integer ovMyrCount;
+	private boolean dropStatus;
 	
 	
 	private List<RoleVO> roleVOs;
