@@ -244,6 +244,6 @@
                     </div>
             </div>
 
-         <script defer src="/js/hope.js"></script>
+         <script src="/js/hope.js"></script>
     </body>
 </html>
