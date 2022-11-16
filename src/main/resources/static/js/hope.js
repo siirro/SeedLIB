@@ -12,6 +12,16 @@ let next="";
 let totalCount=0;
 let totalBlock=0;
 let searchResult ="";
+////////////////////////////////////////////////////
+let hTitle="";
+let hWriter="";
+let hPublisher="";
+let datetime="";
+let isbn=0;
+let price=0;
+let searchOne="";
+
+
 
 function getKey(){
     $.ajax({
@@ -71,8 +81,13 @@ function getSearch(){
                            searchResult="'<strong>"+query+"</strong>'에 대한 검색결과 총 <span>"+data.meta.total_count+"</span> 건"
                            $(".result_screen").append(searchResult);
                            $.each(searchArr[0], (function(index, item){
-                                let searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<a href="("'+item.title+'","'+item.authors+'","'+item.publisher+'","'+item.datetime.substr(0,4)+'","'+item.isbn.substr(11,13)+'","'+item.price+'")" id="applyBtn" class="btn">신청</a></div></div></div></li>');
+                                if(item.isbn.length<15){
+                                    searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
+                                    searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                }else{
+                                    searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
+                                    searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                }                                
                                 $(".listWrap").append(searchOne);
                             })
                             )
@@ -81,31 +96,22 @@ function getSearch(){
 }
 
 function paging(totalCount){
-
     pageNum = Number(pageNum);
-
     startRow = (pageNum-1)*10;
     totalPage = Math.ceil(totalCount/10);
- 
     if(pageNum>totalPage){
         pageNum=totalPage;
     }
-
     totalBlock = Math.ceil(totalPage/perBlock);
-
     let curBlock =  Math.ceil(pageNum/perBlock);
-
     startNum = (curBlock-1)*perBlock+1;
     lastNum = curBlock*perBlock;
-
     if(curBlock==totalBlock){
         lastNum = totalPage;
     }
-
     if(curBlock>1){
         pre=true;
     }
-
     if(curBlock<totalBlock){
         next=true;
     }
@@ -133,7 +139,6 @@ function paging(totalCount){
     $(".pagination").append(r);
 }
 
-
 $(".pagination").on("click",".page",function(){ 
     $(".pagination").empty();
     $(".result_screen").empty();
@@ -149,3 +154,17 @@ $(".pagination").on("click",".page",function(){
     getKey();
     getSearch(); 
 }) 
+
+
+
+function hopeApply(title, authors, publisher, datetime, isbn, price){
+    hTitle = title;
+    hWriter=authors;
+    hPublisher=publisher;
+    datetime=datetime.substr(0,4);
+    isbn=isbn;
+    price=price;
+    $("#")
+    console.log("title: ", hTitle, "authors: ",hWriter, "publisher: ",hPublisher, "datetime: ",datetime, "isbn: ",isbn, "price",price);
+
+}
