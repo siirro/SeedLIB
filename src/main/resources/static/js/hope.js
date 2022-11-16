@@ -13,8 +13,6 @@ let totalCount=0;
 let totalBlock=0;
 let searchResult ="";
 
-
-
 function getKey(){
     $.ajax({
             type:"GET",
@@ -74,7 +72,7 @@ function getSearch(){
                            $(".result_screen").append(searchResult);
                            $.each(searchArr[0], (function(index, item){
                                 let searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<a href="("'+item.title+'","'+item.authors+'","'+item.publisher+'","'+item.datetime.substr(0,4)+'","'+item.isbn.substr(11,13)+'","'+item.price+'")" id="applyBtn" class="btn themeBtn">신청</a></div></div></div></li>');
+                                searchOne = searchOne+('<a href="("'+item.title+'","'+item.authors+'","'+item.publisher+'","'+item.datetime.substr(0,4)+'","'+item.isbn.substr(11,13)+'","'+item.price+'")" id="applyBtn" class="btn">신청</a></div></div></div></li>');
                                 $(".listWrap").append(searchOne);
                             })
                             )

@@ -58,6 +58,14 @@ pageEncoding="UTF-8"%>
         color: #45a987;
     }
 
+    .btn{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 3px 15px;
+        background-color: #6b64be !important;
+    }
+
 </style>
 
 <title>희망 도서 신청</title>
