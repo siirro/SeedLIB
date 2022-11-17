@@ -7,8 +7,14 @@
 
 	<!-- 도서 디테일 -->
 	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
-		SELECT B.* FROM BOOK B
-		WHERE B.ISBN = #{isbn}
+		SELECT b.*, b2.*, l.*
+	FROM book b
+	inner join booklib b2 
+	on b.ISBN = b2.ISBN 
+	
+	inner join library l
+			on l.LIBNUM  = b2.LIBNUM 
+	WHERE b.ISBN = #{isbn}
 	</select>
 	
 	<resultMap type="BookVO" id="getDetailResult">

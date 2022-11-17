@@ -1,5 +1,7 @@
 package com.seed.lib.book;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,7 @@ public class BookService {
 	private BookMapper bookMapper;
 	
 	//도서 디테일
-	public BookVO getDetail (BookVO bookVO) throws Exception{
+	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
 		return bookMapper.getDetail(bookVO);
 	}
 }

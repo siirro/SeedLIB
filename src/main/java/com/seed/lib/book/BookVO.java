@@ -11,7 +11,7 @@ public class BookVO {
 	private String writer;
 	private String publisher;
 	private Long bookDate;
-	private String able;
+	private int able;
 	private String category;
 	private Long quantity;
 	private String image;
