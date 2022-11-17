@@ -2,6 +2,7 @@ package com.seed.lib.hope;
 
 import java.sql.Date;
 
+import com.seed.lib.book.LibraryVO;
 import com.seed.lib.util.StatusVO;
 
 import lombok.Data;
@@ -20,4 +21,5 @@ public class HopeVO {
 	private Long isbn;
 	
 	private StatusVO statusVO;
+	private LibraryVO libraryVO;
 }
