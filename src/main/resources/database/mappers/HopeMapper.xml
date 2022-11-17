@@ -5,7 +5,7 @@
 
 <mapper namespace="com.seed.lib.hope.HopeMapper">
 <!-- 희망도서관련 -->
-	<select id="getHaveBook" parameterType="BookVO" resultMap="getHaveBookResult">
+	<select id="getHaveBook" parameterType="BookVO" resultMap="BookVO">
 		SELECT * FROM BOOK B
 			INNER JOIN
 			BOOKLIB BL
@@ -15,7 +15,8 @@
 				ON BL.LIBNUM=L.LIBNUM
 		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
 	</select>
-	
+
+<!-- 희망도서관련 -->
 	<select id="getOverLapBook" parameterType="HopeVO" resultMap="getOverLapBookResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
@@ -30,7 +31,7 @@
 	<select id="getMonth" parameterType="HopeVO" resultType="Int">
 		SELECT COUNT (*) FROM HOPE
 		INNER JOIN
-			HOPSTAT HS
+			HOSTAT HS
 			ON H.HOPNUM=HS.HOPNUM
 				INNER JOIN
 				STATUS S
@@ -56,7 +57,7 @@
 	<select id="getHopeList" parameterType="String" resultMap="HopeVOResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
-			HOPSTAT HS
+			HOSTAT HS
 			ON H.HOPNUM=HS.HOPNUM
 				INNER JOIN
 				STATUS S
