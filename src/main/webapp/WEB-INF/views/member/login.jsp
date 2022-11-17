@@ -11,13 +11,16 @@
 <link rel="stylesheet" href="/css/contents.css">
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/common.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
 </head>
 <body>
 
-    <div id="container" class="sub">
-		
+<div id="wrap">
+
+<c:import url="../temp/header.jsp"></c:import>
+
+    <div id="container" class="sub">		
         <div class="sVisualWrap">
             <div class="sVisual">
                 <h3>로그인</h3>
@@ -89,8 +92,8 @@
         
         <div id="popblackBG"></div>
                             <!--Real Contents Start-->
-                            <div class="loginWrap">
-                                <form name="loginForm" id="loginForm" class="loginForm" method="post">
+                            <div class="loginWrap" >
+                                <form  name="loginForm" id="loginForm" class="loginForm" method="post">
                                     <input type="hidden" name="returnUrl" value="aHR0cHM6Ly9saWIuYW55YW5nLmdvLmtyL2ludHJvL2luZGV4LmRv">
                                     <div class="loginGroup clearfix">
                                         <div class="loginArea">
@@ -127,6 +130,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
 

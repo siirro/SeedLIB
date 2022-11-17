@@ -1,42 +1,69 @@
 
 $("#chkAgreeAll").click(function(e){
     
-   let ch = $(this).prop("checked");
+   let che = $(this).prop("checked");
 
-   $(".check").prop("checked", ch);
+   $(".ch").prop("checked", che);
 
    
 })
 
 
-$(".chkAgree01").click(function(idx, item){
-                let ch = $(item).prop("checked")
+$(".check").click(function(){
+        
+    $("#chkAgreeAll").prop("checked",true)
 
-                console.log(ch)
+$(".check").each(function (item) {
+    let ch = $(item).prop("checked");
 
+
+    if (!ch) {
+        $("#chkAgreeAll").prop("checked", false);
+
+        return false;
+
+    }
+
+})
   
-    })
+ })
+
+
+    $("#join").click(function(){
+        let check01 = $("#chkAgree01").is(":checked"); 
+        let check02 = $("#chkAgree02").is(":checked");
+        let check03 = $("#chkAgree03").is(":checked");
+        let check04 = $("#chkAgree04").is(":checked");
       
 
-        $("#join").click(function(){    
 
-            if($("#chkAgree01").is(":checked") == false){
-                alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;
-            }else if($("#chkAgree02").is(":checked") == false){
-                console.log(chkAgree02)
-                alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;
-            }else if($("#chkAgree03").is(":checked") == false){
-                console.log(chkAgree03)
-                alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;
-            }else if($("#chkAgree04").is(":checked") == false){
-                console.log(chkAgree04)
-                alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;    
-            }else{
-                $("#form").submit();
-            }
-        });    
+        if(check01 === false){ 
+            $("#chkAgree01").focus();
+            alert('개인정보 필수 항목을 동의해주세요.');
+            return false;
+        }
+        if(check02 === false){ 
+            $("#chkAgree02").focus();
+            alert('개인정보 필수 항목을 동의해주세요.');
+            return false;
+        }
+        if(check03 === false){ 
+            $("#chkAgree03").focus();
+            alert('개인정보 필수 항목을 동의해주세요.');
+            return false;
+        }
+        if(check04 === false){ 
+            $("#chkAgree04").focus();
+            alert('개인정보 필수 항목을 동의해주세요.');
+            return false;
+        }
+    });
+        
+
+
+
+
+
+
+
 

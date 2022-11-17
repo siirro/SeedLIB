@@ -39,18 +39,19 @@ public class MemberController {
 	
 			
 	@GetMapping("join")	
-	public void setJoin(MemberVO memberVO) throws Exception{
-			memberVO.getUserName();
+	public void setJoin() throws Exception{
 		
 	}
 	
 	
 	@PostMapping("join")	
-	public ModelAndView setJoin(MemberVO memberVO, ModelAndView mv) throws Exception{
-		memberVO.getUserName();
+	public ModelAndView setJoin(MemberVO memberVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		log.info("조인조인조인");
 		int result = memberService.setJoin(memberVO);
-		mv.setViewName("redirect:./");
+		mv.addObject("memberVO", memberVO);
+		
+		mv.setViewName("member/join");
 		
 		return mv;
 	}

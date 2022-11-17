@@ -13,7 +13,7 @@
 		</insert>
 	
 		<insert id="setJoin" parameterType="MemberVO">
-		INSERT INTO MEMBER (USERNAME,PASSWORD,NAME,EMAIL,BIRTH,PHONE,POST,ADDESS1,ADDESS2)
+		INSERT INTO MEMBER (USERNAME,PASSWORD,NAME,EMAIL,BIRTH,PHONE,POST,ADDESS1,ADDESS2,ENABLED,LOANSTATUS,OVMYRCOUNT,DROPSTATUS)
 		VALUES ( #{userName}, #{password}, #{name}, #{email}, #{birth}, #{phone}, #{post}, #{addess1}, #{addess2},0,0,0,0 )
 		</insert> 
 

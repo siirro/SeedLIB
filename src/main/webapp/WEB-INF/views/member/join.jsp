@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/member/agree.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 </head>
 <body>
  
     <div class="loginForm">
-        <form id="form" name="form" action="./join" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
+        <form id="form" name="form" action="./index" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
      <!--        <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
             <input type="hidden" name="gpin" value="">
             <input type="hidden" name="safeId" value="">
@@ -31,26 +31,30 @@
             <fieldset>
                 <legend>로그인</legend>
                 <div class="langSelect"></div>
-                <p class="logo"><img src="/images/favicon.png" alt="씨앗도서관"></p>
+                <p class="logo"><img src="/images/logo.png" alt="씨앗도서관"></p>
                 <div class="join2">
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" maxlength="15" placeholder="5~15자(영문, 소문자)"><a href="#" onclick="duplCheckId(this);" title="중복확인" class="loginBtn1">중복확인</a>
+                        <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" maxlength="15" placeholder="5~15자(영문, 소문자)">
+                        <button type="button" title="중복확인" class="loginBtn1" id="login_chk">중복확인</button>
+                        <div id="idResult">
+                        </div>
                         <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
                         <span class="error" id="error_web_id2" style="display: none;">이미 존재하는 아이디입니다.</span>
                         </p>
                         <p class="inputPw"><label for="password">비밀번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)"></p>
-                        <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label><input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15"></p>
+                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
+                        <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label>
+                        <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15" required="required"></p>
                         
                         
                     </div>
                     <div class="inputProfile">
                         <div>
                             <p class="name"><label for="user_name">이름</label>
-                            <input type="text" name="name" id="user_name"  class="textInput"></p>
+                            <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
                             <p class="name"><label for="birthd_year">생년월일</label>
-                            <input type="text" name="birth" id="birthd_year" class="textInput birthday"></p>
+                            <input type="text" name="birth" id="birthd_year" class="textInput birthday" required="required"></p>
                             <p>
                                 <label for="phone">휴대폰번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
                                 <select name="phone" title="휴대폰번호 국번 선택" id="phone">
@@ -63,11 +67,11 @@
                                     <option value="000">-없음-</option>
                                 </select>
                                 
-                                    <input id="mobile_no_2" name="phone" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" type="text" maxlength="4" placeholder="앞-4자리">
+                                    <input id="mobile_no_2" name="phone" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" type="text" maxlength="4" placeholder="앞-4자리" required="required">
                                 
                                 
                                 
-                                    <input id="mobile_no_3" name="phone" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');"  type="text"  maxlength="4" placeholder="뒤-4자리">
+                                    <input id="mobile_no_3" name="phone" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');"  type="text"  maxlength="4" placeholder="뒤-4자리" required="required">
                                 
                                 
                                 
@@ -78,7 +82,7 @@
                         <div>
                             <p>
                                 <label for="tel">긴급연락처(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                                <select name="tel_no_1" title="전화번호 국번 선택" id="tel" class="tel">
+                                <select name="tel_no_1" title="전화번호 국번 선택" id="tel" class="tel" required="required">
                                     <option value="">선택</option>
                                     <option value="02">02</option>
                                     <option value="031">031</option>
@@ -104,8 +108,8 @@
                                     <option value="018">018</option>
                                     <option value="019">019</option>
                                 </select>
-                                <input id="tel_no_2" name="tel_no_2" class="phone" title="전화번호 앞자리" onkeyup="fnCheckkNum('tel_no_2');" type="text" value="" maxlength="4" placeholder="앞-4자리">
-                                <input id="tel_no_3" name="tel_no_3" class="phone" title="전화번호 뒷자리" onkeyup="fnCheckkNum('tel_no_3');" type="text" value="" maxlength="4" placeholder="뒤-4자리">
+                                <input id="tel_no_2" name="tel_no_2" class="phone" title="전화번호 앞자리" onkeyup="fnCheckkNum('tel_no_2');" type="text" value="" maxlength="4" placeholder="앞-4자리" required="required">
+                                <input id="tel_no_3" name="tel_no_3" class="phone" title="전화번호 뒷자리" onkeyup="fnCheckkNum('tel_no_3');" type="text" value="" maxlength="4" placeholder="뒤-4자리" required="required">
                                 
                                 
                                 
@@ -113,7 +117,7 @@
                         </div>					
                         <div>
                             <p><label for="email">이메일 주소</label>
-                                <input type="text" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="">
+                                <input type="text" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
                                 
                             </p>
                         </div>
@@ -135,7 +139,7 @@
                              </p><!--id="addrs"  -->
              
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                           <input type="text" id="detailAddess" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="">                      
+                           <input type="text" id="detailAddess" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="" required="required">                      
                                 <input type="text" id="extraAddress" placeholder="참고항목">
                                 
                                  </p>
@@ -150,7 +154,7 @@
                         <p class="detail">씨앗도서관의 소식지 및 유용한 정보를 발송시 받아볼 수 있습니다.</p>
                         <p class="detail"><span>기본서비스(대출/반납. 예약, 연체알림등)와 관련된안내는 수신동의 여부와 관계없이 발송됩니다.</span></p>
                     </div>
-                    <p class="joinBtn"><input type="submit" title="가입하기" value="가입하기"></p>
+                    <p class="joinBtn"><input type="submit" title="가입하기" value="가입하기" id="joinB"></p>
                 </div>
             </fieldset>
             
@@ -163,6 +167,7 @@
     </div>
  
  <script src="/js/addess.js"></script>
+  <script src="/js/join.js"></script>
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </body>
