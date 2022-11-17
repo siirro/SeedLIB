@@ -1,6 +1,42 @@
 @charset "utf-8";
 
 
+/* 배경이미지 */
+.backImg {position: absolute; left: 0; top: 0; width: 100%; height: 349px; z-index: 0;}
+.backImg .popupList {overflow: hidden; height: 100%;}
+.backImg .popupList.thumb {position: relative;}
+.backImg .popupList.thumb > li {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.backImg .popupList.thumb > li:nth-child(1) {background: url(/images/seed.jpg) no-repeat center top; opacity: 0.8;}
+/* .backImg .popupList.thumb > li:nth-child(2) {background: url(/images/library.jpg) no-repeat center top; opacity: 0.5;}
+.backImg .popupList.thumb > li:nth-child(3) {background: url(/images/library.jpg) no-repeat center top; opacity: 0.5;} */
+
+/* 주요서비스 아이콘 */
+/* 서비스 바로가기 */
+.shortcut {overflow: hidden; position: relative; padding: 13px 0 24px;
+	background: linear-gradient(to right, #9be15d, #00e3ae);
+	/* 
+	background: -moz-linear-gradient(left, rgba(104,76,196,1) 0%, rgba(104,76,196,1) 8%, rgba(28,155,100,1) 51%, rgba(246,154,62,1) 97%, rgba(246,154,62,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(104,76,196,1)), color-stop(8%, rgba(104,76,196,1)), color-stop(51%, rgba(28,155,100,1)), color-stop(97%, rgba(246,154,62,1)), color-stop(100%, rgba(246,154,62,1)));
+	background: -webkit-linear-gradient(left, rgba(104,76,196,1) 0%, rgba(104,76,196,1) 8%, rgba(28,155,100,1) 51%, rgba(246,154,62,1) 97%, rgba(246,154,62,1) 100%);
+	background: -o-linear-gradient(left, rgba(104,76,196,1) 0%, rgba(104,76,196,1) 8%, rgba(28,155,100,1) 51%, rgba(246,154,62,1) 97%, rgba(246,154,62,1) 100%);
+	background: -ms-linear-gradient(left, rgba(104,76,196,1) 0%, rgba(104,76,196,1) 8%, rgba(28,155,100,1) 51%, rgba(246,154,62,1) 97%, rgba(246,154,62,1) 100%);
+	background: linear-gradient(to right, rgba(104,76,196,1) 0%, rgba(104,76,196,1) 8%, rgba(28,155,100,1) 51%, rgba(246,154,62,1) 97%, rgba(246,154,62,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#684cc4', endColorstr='#f69a3e', GradientType=1 ); */
+}
+.shortcutList li {float: left; width: 14.28571428571429%; text-align: center;}
+.shortcutList li a {display: block; height: 100%; font-size: 1.125em; font-weight: 500; line-height: 1; color: #fff; letter-spacing: -0.05em; text-shadow: 1px 1px 3px rgba(0,0,0,.5);}
+.shortcutList li .ico {display: block; width: 80px; height: 80px; margin: 0 auto; background: url(/include/image/intro/main/ico_summaryMain.png) 0 0 no-repeat;}
+.shortcutList li.svc1 .ico {background-position-x: 0;} /*독서마라톤*/
+.shortcutList li.svc2 .ico {background-position-x: -80px;} /*스마트도서관*/
+.shortcutList li.svc3 .ico {background-position-x: -160px;} /*전자도서관*/
+.shortcutList li.svc4 .ico {background-position-x: -240px;} /*스마트영어도서관*/
+.shortcutList li.svc5 .ico {background-position-x: -320px;} /*도서관소개*/
+.shortcutList li.svc6 .ico {background-position-x: -400px;} /*이용안내*/
+.shortcutList li.svc7 .ico {background-position-x: -480px;} /*문화행사*/
+.shortcutList li.svc8 .ico {background-position-x: -560px;} /*열람실방문예약*/
+.shortcutList li.svc9 .ico {background-position-x: -640px;} /*스마트도서관*/
+
+
 #container.main {position: relative; width: 100%; z-index: 30; padding: 0; background: none; color: #646464;}
 .sectionGroup {position: relative; max-width: 1240px; margin: 0 auto;}
 .sectionGroup::after {content: ""; display: block; clear: both;}
@@ -287,7 +323,7 @@
 .bookZone .tab > li + li {margin-left: 40px;}
 .bookZone .tab > li a {display: inline-block; font-size: 1.563em; font-weight: 500; color: #777;}
 .bookZone .tab > li.on a {color: #222;}
-.bookList {display: flex; flex-wrap: wrap; margin-left: -70px;}
+.bookList {display: flex; flex-wrap: wrap; margin-left: 0px;}
 .bookList > li {float: left; width: calc(20% - 70px); margin-left: 70px; text-align: center; box-sizing: border-box;}
 .bookList .cover {display: block; position: relative; padding: 0 0 4.761% 0;}
 .bookList .cover a {display: block; position: relative; width: 100%; padding-top: 133.333%;}
