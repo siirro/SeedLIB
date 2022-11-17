@@ -20,12 +20,11 @@
 				<div id="libraryShortcut" class="libSite dropdown">
 					<a href="#open" class="button" title="도서관 바로가기(축소됨)">도서관 바로가기</a>
 					<ul>
-						<li><a href="/">다은도서관</a></li>
 						<li><a href="/">새싹도서관</a></li>
-						<li><a href="/">지혜도서관</a></li>
-						<li><a href="/">대기도서관</a></li>
-						<li><a href="/">효경도서관</a></li>
-						<li><a href="/">소영도서관</a></li>
+						<li><a href="/">쑥쑥도서관</a></li>
+						<li><a href="/">새봄도서관</a></li>
+						<li><a href="/">도란도란도서관</a></li>
+						<li><a href="/">나무도서관</a></li>
 					</ul>
 				</div>
 
