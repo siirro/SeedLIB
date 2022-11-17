@@ -100,50 +100,52 @@ pageEncoding="UTF-8"%>
     </ul>
 </div>
 <!--Forced tab Show Que-->
-
-<!--Real Contents Start-->
-<!-- 서치영역 -->
-<form id="searchForm" name="searchForm" method="get">
-<div class="searchWrap">
-    <div class="searchFormWeb">
-        <div class="searchToparea">
-            <div class="searchBardiv hope">
-                <div class="searchInputbox">
-                    <input hidden="hidden">
-                    <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="제목을 입력하세요." autocomplete="off">
-                    <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
+<div>
+    <!--Real Contents Start-->
+    <!-- 서치영역 -->
+    <form id="searchForm" name="searchForm" method="get">
+    <div class="searchWrap">
+        <div class="searchFormWeb">
+            <div class="searchToparea">
+                <div class="searchBardiv hope">
+                    <div class="searchInputbox">
+                        <input hidden="hidden">
+                        <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="제목을 입력하세요." autocomplete="off">
+                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
+                    </div>
+                    <a href="" class="btn input" id="selfApply" title="직접입력 설정">직접입력</a>
                 </div>
-                <a href="" class="btn input" id="selfApply" title="직접입력 설정">직접입력</a>
+                <ul class="dot-list clearfix mt05 mb05">
+                    <li>도서명, 저자명, 발행처, ISBN 을 입력하여 도서를 검색하세요.</li>
+                    <li>포털사이트 도서 검색을 통해 비치를 희망하는 도서를 검색하고 신청할 수 있습니다.</li>
+                    <li>검색결과가 나오지 않을 경우, [직접입력] 을 클릭하여 신청하실 수 있습니다.</li>
+                </ul>
             </div>
-            <ul class="dot-list clearfix mt05 mb05">
-                <li>도서명, 저자명, 발행처, ISBN 을 입력하여 도서를 검색하세요.</li>
-                <li>포털사이트 도서 검색을 통해 비치를 희망하는 도서를 검색하고 신청할 수 있습니다.</li>
-                <li>검색결과가 나오지 않을 경우, [직접입력] 을 클릭하여 신청하실 수 있습니다.</li>
+        </div>
+    </div>
+        <!-- 서치결과영역 -->
+        <div class="searchResultWrap">
+            <div class="result_box">
+                <div class="listSetting">
+                    <div class="result_screen">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bookList listViewStyle hope">
+            <ul class="listWrap">
             </ul>
-        </div>
-    </div>
-</div>
-    <!-- 서치결과영역 -->
-    <div class="searchResultWrap">
-        <div class="result_box">
-            <div class="listSetting">
-                <div class="result_screen">
+        </div>						
+            </form>
+            <!-- 서치영역 끝 -->
+            <!-- 페이징 -->
+            <div class="pagingWrap">
+                <div class="pagination">
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="bookList listViewStyle hope">
-        <ul class="listWrap">
-        </ul>
-    </div>						
-        </form>
-        <!-- 서치영역 끝 -->
-        <!-- 페이징 -->
-        <div class="pagingWrap">
-            <div class="pagination">
-            </div>
-        </div>
-        <!-- 페이징 끝-->
+            <!-- 페이징 끝-->
+
+</div>
     <div>
         <form id="registForm" name="registForm" action-="setHope" method="post">
                             <div><h4 class="htitle">신청자 정보</h4></div>
@@ -182,10 +184,12 @@ pageEncoding="UTF-8"%>
                                             <td>
                                                 <select name="hopLib" id="hopLib" class="form-ele auto">
                                                     <option value="">도서관선택</option>
-                                                         <option value="씨앗도서관">씨앗도서관</option>
-                                                         <option value="새싹도서관">새싹도서관</option>
-                                                         <option value="열매도서관">열매도서관</option>
-                                                         <option value="뿌리도서관">뿌리도서관</option>
+                                                         <option value="0">씨앗도서관</option>
+                                                         <option value="1">새싹도서관</option>
+                                                         <option value="2">쑥쑥도서관</option>
+                                                         <option value="3">새봄도서관</option>
+                                                         <option value="4">도란도란도서관</option>
+                                                         <option value="5">뿌리도서관</option>
                                                    </select>
                                                 <p class="emp1 ref">해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 선택 불가</p>
                                             </td>

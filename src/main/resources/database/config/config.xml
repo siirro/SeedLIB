@@ -11,7 +11,6 @@
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
   		<typeAlias type="com.seed.lib.util.StatusVO" alias="StatusVO"/>
-  		<typeAlias type="com.seed.lib.book.LibraryVO" alias="LibraryVO"/>
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
