@@ -11,8 +11,8 @@
 <body>
  
     <div class="loginForm">
-        <form id="form" name="form" action="/" method="post" onsubmit="return formValidChk();" onreset="return fnResetForm();">
-            <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
+        <form id="form" name="form" action="./join" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
+     <!--        <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
             <input type="hidden" name="gpin" value="">
             <input type="hidden" name="safeId" value="">
             <input type="hidden" name="user_positn" value="WEB">
@@ -27,11 +27,11 @@
             <input type="hidden" name="birthd_month" value="10">
             <input type="hidden" name="birthd_day" value="07">
             <input type="hidden" name="memberType" value="1">
-            <input type="hidden" name="memberTypeDetail" value="child">
+            <input type="hidden" name="memberTypeDetail" value="child"> -->
             <fieldset>
                 <legend>로그인</legend>
                 <div class="langSelect"></div>
-                <p class="logo"><img src="" alt="씨앗도서관"></p>
+                <p class="logo"><img src="/images/favicon.png" alt="씨앗도서관"></p>
                 <div class="join2">
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
@@ -48,8 +48,9 @@
                     <div class="inputProfile">
                         <div>
                             <p class="name"><label for="user_name">이름</label>
-                            <input type="text" name="name" value="안다은" title="안다은" id="user_name" readonly="readonly" class="textInput"></p>
-                            <p class="name"><label for="birthd_year">생년월일</label><input type="text" value="1996년 10월 07일" title="1996년 10월 07일" id="birthd_year" readonly="readonly" class="textInput birthday"></p>
+                            <input type="text" name="name" id="user_name"  class="textInput"></p>
+                            <p class="name"><label for="birthd_year">생년월일</label>
+                            <input type="text" name="birth" id="birthd_year" class="textInput birthday"></p>
                             <p>
                                 <label for="phone">휴대폰번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
                                 <select name="phone" title="휴대폰번호 국번 선택" id="phone">
@@ -62,11 +63,11 @@
                                     <option value="000">-없음-</option>
                                 </select>
                                 
-                                    <input id="mobile_no_2" name="mobile_no_2" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" readonly="readonly" type="text" value="8917" maxlength="4" placeholder="앞-4자리">
+                                    <input id="mobile_no_2" name="phone" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" type="text" maxlength="4" placeholder="앞-4자리">
                                 
                                 
                                 
-                                    <input id="mobile_no_3" name="mobile_no_3" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');" readonly="readonly" type="text" value="4013" maxlength="4" placeholder="뒤-4자리">
+                                    <input id="mobile_no_3" name="phone" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');"  type="text"  maxlength="4" placeholder="뒤-4자리">
                                 
                                 
                                 
@@ -118,17 +119,27 @@
                         </div>
                         <p class="info" style="padding:0 10px;">* 이메일 주소는 회원정보 재동의(2년 주기) 알림에 이용됩니다.</p><br>
                         <div>
-                            <input id="addrs_jibun" name="post" type="hidden" value="">
+                         <!--    <input id="addrs_jibun" name="addrs_jibun" type="hidden" value="">
                             <input id="buld_manage_no" name="buld_manage_no" type="hidden" value="">
                             <input id="zip_code" name="zip_code" type="hidden" value="">
                             <input id="b_dong_code" name="b_dong_code" type="hidden" value="">
-                            <input id="h_dong_code" name="h_dong_code" type="hidden" value="">
+                            <input id="h_dong_code" name="h_dong_code" type="hidden" value=""> -->
+                            
                             
                             <p><label for="addrs">기본주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                                <input type="text" id="addrs" name="addess1" readonly="readonly" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value=""><a href="/juso/pop/keyword" class="loginBtn1" id="idCheckBtn" target="epost" onclick="return doOpenEpost(this);" title="우편번호검색 새창으로열림">우편번호검색</a>
-                            </p>
+                               
+                               <input type="text" id="postcode" name="post" placeholder="우편번호" style="width: 180px;">
+                             <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="joinPostcode()" title="우편번호검색 새창으로열림" style="width: 120px;">
+                             
+      					     <input type="text" id="addess" name="addess1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
+                             </p><!--id="addrs"  -->
+             
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                            <input type="text" id="addrs_detail" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value=""></p>
+                           <input type="text" id="detailAddess" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="">                      
+                                <input type="text" id="extraAddress" placeholder="참고항목">
+                                
+                                 </p>
+                       
                         </div>
                     </div>
                     <div class="additionalService">
@@ -151,7 +162,8 @@
         </form>
     </div>
  
- 
- 
+ <script src="/js/addess.js"></script>
+ <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </body>
 </html>

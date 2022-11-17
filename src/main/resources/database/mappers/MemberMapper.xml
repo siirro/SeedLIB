@@ -5,10 +5,16 @@
 
 <mapper namespace="com.seed.lib.member.MemberMapper">
 
+
+		<insert id="setMemberRole" parameterType="MemberVO">
+		INSERT INTO MEMBER_ROLE VALUES (#{id}, 
+				(SELECT NUM FROM ROLE WHERE ROLENAME ='MEMBER')
+			)
+		</insert>
 	
 		<insert id="setJoin" parameterType="MemberVO">
-		INSERT INTO MEMBER
-		VALUES ( #{userName}, #{password}, #{name}, #{email}, #{birth}, #{phone}, #{post}, #{addess1}, #{addess2} )
+		INSERT INTO MEMBER (USERNAME,PASSWORD,NAME,EMAIL,BIRTH,PHONE,POST,ADDESS1,ADDESS2)
+		VALUES ( #{userName}, #{password}, #{name}, #{email}, #{birth}, #{phone}, #{post}, #{addess1}, #{addess2},0,0,0,0 )
 		</insert> 
 
   <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
@@ -21,21 +27,25 @@
 		  INNER JOIN
 		  ROLE R 
 		  ON MR.ROLENUM =R.ROLENUM
-		  WHERE M.USERNAME=#{userName}
+		  WHERE M.USERNAME= #{userName}
 		  
 </select>
 		  
 		<resultMap type="MemberVO" id="getLoginResult">
 		<id column="username" property="userName" />
-		<id column="password" property="userName" />
+		<id column="password" property="password" />
 		<result column="name" property="name"/>
+		<result column="birth" property="birth"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
 		<result column="post" property="post"/>
 		<result column="addess1" property="addess1"/>
 		<result column="addess2" property="addess2"/>
+		<result column="enabled" property="enabled"/>
+		<result column="loanstatus" property="loanStatus"/>
+		<result column="ovmyrcount" property="ovMyrCount"/>
+		<result column="dropstatus" property="dropStatus"/>
 		<collection property="roleVOs" javaType="List" ofType="RoleVO">
-			<result column="roleNum" property="roleNum"/>
 			<result column="roleName" property="roleName"/>
 		</collection>
 		</resultMap>

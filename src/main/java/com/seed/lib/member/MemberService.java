@@ -14,6 +14,7 @@ public class MemberService {
 	
 		int result = memberMapper.setJoin(memberVO);
 		
+		
 		return result;
 	}
 	
