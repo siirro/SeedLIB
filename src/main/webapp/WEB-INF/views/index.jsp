@@ -3029,6 +3029,16 @@
 
 
 <script src="/js/indexcopy.js"></script>
+
+
+<h1>main</h1>
+<a href="/test">test</a>
+<a href="/hope/setHope">희망도서 신청하기</a>
+<a href="/hopeList">HOPELIST</a>
+
+<a href="/book/detail">book detail</a>
+<a href="/member/login"> 로그인 </a>
+
 </body>
 
 </html>
