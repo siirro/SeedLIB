@@ -58,12 +58,13 @@ pageEncoding="UTF-8"%>
         color: #45a987;
     }
 
-    .btn{
+    .aplBtn{
         position: absolute;
         right: 0;
         bottom: 0;
         padding: 3px 15px;
-        background-color: #6b64be !important;
+        background-color: #77af9c;
+        color: #d7fff1;
     }
 
 </style>
@@ -143,9 +144,9 @@ pageEncoding="UTF-8"%>
     <div>
 
         <form id="registForm" name="registForm" method="post">
-                            <input type="hidden" name="contentsId" value="">
-                            <input type="hidden" name="applicantUserTel" value="">
-                            <input type="hidden" name="applicantUserEmail" value="">
+                            <input type="hidden" name="userName" value="">
+                            <input type="hidden" name="phone" value="">
+                            <input type="hidden" name="email" value="">
                             <div><h4 class="htitle">신청자 정보</h4></div>
                             <div class="boardWrap">
                                 <table class="board-view">
@@ -157,25 +158,15 @@ pageEncoding="UTF-8"%>
                                     <tbody>
                                         <tr>
                                             <th scope="row">신청자명</th>
-                                            <td>NAME</td>
+                                            <td><input type="text" name="userName" value="id01" readonly></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><label for="mobileNo1">휴대폰번호</label></th>
-                                            <td>
-                                                <div class="numericForm clearfix">
-                                                    
-                                                    
-                                                    <input type="text" id="mobileNo1" name="mobileNo1" value="" maxlength="4" title="휴대폰번호 첫자리" class="form-ele short readonly" style="ime-mode:disabled" readonly="">
-                                                    <span class="hyphen">-</span>
-                                                    <input type="text" id="mobileNo2" name="mobileNo2" value="" maxlength="4" title="휴대폰번호 중간자리" class="form-ele short readonly" style="ime-mode:disabled" readonly="">
-                                                    <span class="hyphen">-</span>
-                                                    <input type="text" id="mobileNo3" name="mobileNo3" value="" maxlength="4" title="휴대폰번호 끝자리" class="form-ele short readonly" style="ime-mode:disabled" readonly="">
-                                                </div>
-                                            </td>
+                                            <th scope="row">휴대폰번호</th>
+                                            <td><input type="text" name="phone" value="01000000000" readonly></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">이메일</th>
-                                            <td><input type="text" id="email" name="email" title="이메일주소 입력" value="" class="form-ele wide" style="ime-mode:disabled" readonly=""></td>
+                                            <td><input type="text" name="email" value="00000@mail.com" readonly></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -190,35 +181,33 @@ pageEncoding="UTF-8"%>
                                         <tr>
                                             <th scope="row"><label for="libCode"><span class="essential">*</span> 신청도서관</label></th>
                                             <td>
-                                                <select name="libCode" id="libCode" class="form-ele auto">
+                                                <select name="libCode" id="hLib" class="form-ele auto">
                                                     <option value="">도서관선택</option>
-                                                         <option value="141077">석수도서관</option>
-                                                         <option value="141027">만안도서관</option>
-                                                         <option value="141573">삼덕도서관</option>
-                                                         <option value="141095">박달도서관</option>
-                                                         <option value="141132">어린이도서관</option>
+                                                         <option value="0">씨앗도서관</option>
+                                                         <option value="1">새싹도서관</option>
+                                                         <option value="2">열매도서관</option>
+                                                         <option value="3">뿌리도서관</option>
                                                    </select>
-                                                <p class="emp1 ref" style="display:none;" id="childText">어린이도서관은 <strong class="emp3">어린이도서만</strong> 신청이 가능합니다.</p>
                                                 <p class="emp1 ref">해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 선택 불가</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="title">희망도서명</label><span class="essential themeFC">*</span></th>
                                             <td>
-                                                <input type="text" id="title" name="title" value="" class="form-ele full">
+                                                <input type="text" id="hTitle" name="hTitle" value="" class="form-ele full">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="author">저자</label><span class="essential themeFC">*</span></th>
-                                            <td><input type="text" id="author" name="author" value="" class="form-ele wide"></td>
+                                            <td><input type="text" id="hWriter" name="hWriter" value="" class="form-ele wide"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="publisher">발행자</label><span class="essential themeFC">*</span></th>
-                                            <td><input type="text" id="publisher" name="publisher" value="" class="form-ele wide"></td>
+                                            <td><input type="text" id="hPublisher" name="hPublisher" value="" class="form-ele wide"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                            <td><input type="text" id="publishYear" name="publishYear" value="" maxlength="4" class="form-ele auto numeric"></td>
+                                            <td><input type="text" id="hDate" name="hDate" value="" maxlength="4" class="form-ele auto numeric"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="isbn">ISBN</label></th>
@@ -232,7 +221,7 @@ pageEncoding="UTF-8"%>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>
-                                            <td><textarea name="requestReason" id="requestReason"></textarea></td>
+                                            <td><textarea name="hMemo" id="hMemo"></textarea></td>
                                         </tr>
                                     </tbody>
                                 </table>
