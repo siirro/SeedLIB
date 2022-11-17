@@ -31,12 +31,8 @@
 				<result column="libName" property="libName"/>
 			</collection>
 	</resultMap>
-
-</mapper>
-=======
-
-<mapper namespace="com.seed.lib.book.BookMapper">
-<!-- 희망도서관련 -->
+	
+	<!-- 희망도서관련 -->
 	<select id="GetHaveBook" parameterType="BookVO" resultMap="BookVO">
 		SELECT * FROM BOOK B
 			INNER JOIN
@@ -47,6 +43,7 @@
 				ON BL.LIBNUM=L.LIBNUM
 		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
 	</select>
-
-</mapper>    
+	
+</mapper>
+  
 
