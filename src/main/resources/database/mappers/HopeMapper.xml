@@ -106,7 +106,7 @@
 		<result column="HOPMEMO" property="hopMemo"/>
 		<result column="HOPDATE" property="HOPDATE"/>
 		<result column="ISBN" property="isbn"/>
-	<association property="libraryVO">
+	<association property="libVO">
 		<id column="LIBNUM" property="libNum"/>
 		<result column="LIBNAME" property="libName"/>
 	</association>

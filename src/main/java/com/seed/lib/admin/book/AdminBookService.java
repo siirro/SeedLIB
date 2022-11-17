@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.seed.lib.book.BookVO;
 
 @Service
-public class BookService {
+public class AdminBookService {
 
 	@Autowired
 	private BookMapperIF bookMapperIF;
