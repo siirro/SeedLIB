@@ -4,4 +4,45 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.seed.lib.book.BookMapper">
-</mapper>    
+
+	<!-- 도서 디테일 -->
+	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
+		SELECT B.* FROM BOOK B
+		WHERE B.ISBN = #{isbn}
+	</select>
+	
+	<resultMap type="BookVO" id="getDetailResult">
+		<id column="isbn" property="isbn" />
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="publisher" property="publisher"/>
+			<result column="bookDate" property="bookDate"/>
+			<result column="able" property="able"/>
+			<result column="category" property="category"/>
+			<result column="quantity" property="quantity"/>
+			<result column="image" property="image"/>
+			<result column="bookCount" property="bookCount"/>
+			<result column="bookHeart" property="bookHeart"/>
+			
+			<collection property="libVOs" javaType="List" ofType="LibVO">
+				<id column="bLibNum" property="bLibNum"/>
+				<result column="libNum" property="libNum"/>
+				<result column="libName" property="libName"/>
+			</collection>
+	</resultMap>
+	
+	<!-- 희망도서관련 -->
+	<select id="GetHaveBook" parameterType="BookVO" resultMap="BookVO">
+		SELECT * FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
+	</select>
+	
+</mapper>
+  
+
