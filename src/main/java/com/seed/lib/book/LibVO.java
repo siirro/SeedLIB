@@ -6,11 +6,10 @@ import lombok.Data;
 public class LibVO {
 	
 	//Book Lib
-	private int blNum;
+	private Long bLibNum;
 	
 	//Library
-	private int lNum;
-	private String lName;
-	private String lPlace;
+	private Long libNum;
+	private String libName;
 
 }
