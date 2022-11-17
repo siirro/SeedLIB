@@ -5,17 +5,68 @@
 
 <mapper namespace="com.seed.lib.hope.HopeMapper">
 <!-- 희망도서관련 -->
+	<select id="getHaveBook" parameterType="BookVO" resultMap="BookVO">
+		SELECT * FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
+	</select>
+
+<!-- 희망도서관련 -->
+	<select id="getOverLapBook" parameterType="HopeVO" resultMap="getOverLapBookResult">
+		SELECT * FROM HOPE H
+			INNER JOIN
+			HOPELIB HL
+			ON H.HOPENUM=HL.HOPENUM
+				INNER JOIN
+				LIBRARY L
+				ON HL.LIBNUM=L.LIBNUM
+		WHERE H.TITLE={#title} AND L.LIBNUM={#libNum}		
+	</select>
+
+	<select id="getMonth" parameterType="HopeVO" resultType="Int">
+		SELECT COUNT (*) FROM HOPE
+		INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+		WHERE USERNAME=#{userName} AND S.STATNUM=0
+	</select>
+
 	<insert id="setHope" parameterType="HopeVO">
 		INSERT HOPE VALUES
-		(0, #{hLib}, #{hTitle}, #{hWriter}, #{hPublisher}, #{userName}, #{hMemo}, SYSDATE(), 0)		
+		(0, #{hopLib}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{userName}, #{hopMemo}, SYSDATE(), #{isbn})		
 	</insert>
+	
+	<insert id="setHopeStat" parameterType="HopeVO">
+		INSERT HOPSTAT VALUES
+		(0, #{hopNum}, 0)
+	</insert>	
+	
+	<insert id="setHopeLib" parameterType="HopeVO">
+		INSERT HOPLIB VALUES
+		(0, #{lNUM}, #{hopNum})
+	</insert>	
 		
-	<select id="getHopeList" parameterType="String" resultType="HopeVO">
-		SELECT * FROM HOPE WHERE USERNAME=#{userName} ORDER BY HNUM DESC 
+	<select id="getHopeList" parameterType="String" resultMap="HopeVOResult">
+		SELECT * FROM HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+		WHERE USERNAME=#{userName} ORDER BY H.HOPNUM DESC 
 	</select>
 	
 	<delete id="setDeleteHope" parameterType="HopeVO">
-		DELETE FROM HOPE WHERE HNUM=#{hNum}
+		DELETE FROM HOPE WHERE HOPNUM=#{hopNum}
 	</delete>
 	
 	
@@ -25,5 +76,39 @@
 		(0, #{dLib}, #{dTitle}, #{dWriter}, #{dPublisher}, #{userName}, #{dMemo}, 0, SYSDATE())		
 	</insert>
 	
-<!-- 열람실예약관련 -->	
+<!-- 열람실예약관련 -->
+
+<!-- resultMap -->
+
+<resultMap type="HopeVO" id="HopeVOResult">
+	<id column="HOPNUM" property="hopNum"/>
+		<result column="HOPLIB" property="hopLib"/>
+		<result column="HOPTITLE" property="hopTitle"/>
+		<result column="HOPWRITER" property="hopWriter"/>
+		<result column="HOPPUBLISHER" property="hopPublisher"/>
+		<result column="USERNAME" property="userName"/>
+		<result column="HOPMEMO" property="hopMemo"/>
+		<result column="HOPDATE" property="HOPDATE"/>
+		<result column="ISBN" property="isbn"/>
+	<association property="statusVO">
+		<id column="STATNUM" property="statNum"/>
+		<result column="STATNAME" property="statName"/>
+	</association>
+</resultMap>	
+
+<resultMap type="HopeVO" id="getOverLapBookResult">
+	<id column="HOPNUM" property="hopNum"/>
+		<result column="HOPLIB" property="hopLib"/>
+		<result column="HOPTITLE" property="hopTitle"/>
+		<result column="HOPWRITER" property="hopWriter"/>
+		<result column="HOPPUBLISHER" property="hopPublisher"/>
+		<result column="USERNAME" property="userName"/>
+		<result column="HOPMEMO" property="hopMemo"/>
+		<result column="HOPDATE" property="HOPDATE"/>
+		<result column="ISBN" property="isbn"/>
+	<association property="libVO">
+		<id column="LIBNUM" property="libNum"/>
+		<result column="LIBNAME" property="libName"/>
+	</association>
+</resultMap>
 </mapper>    
