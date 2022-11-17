@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<!-- 희망도서관련 -->
-	<select id="GetHaveBook" parameterType="BookVO" resultMap="BookVO">
+	<select id="getHaveBook" parameterType="BookVO" resultMap="haveResult">
 		SELECT * FROM BOOK B
 			INNER JOIN
 			BOOKLIB BL
@@ -42,6 +42,25 @@
 				ON BL.LIBNUM=L.LIBNUM
 		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
 	</select>
+	
+	<resultMap type="BookVO" id="haveResult">
+		<id column="isbn" property="isbn" />
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="publisher" property="publisher"/>
+			<result column="bookDate" property="bookDate"/>
+			<result column="able" property="able"/>
+			<result column="category" property="category"/>
+			<result column="quantity" property="quantity"/>
+			<result column="image" property="image"/>
+			<result column="bookCount" property="bookCount"/>
+			<result column="bookHeart" property="bookHeart"/>
+			<result column="num" property="num"/>			
+			<collection property="libVOs" javaType="List" ofType="LibVO">
+				<id column="libNum" property="libNum"/>
+				<result column="libName" property="libName"/>
+			</collection>
+	</resultMap>
 	
 </mapper>
   
