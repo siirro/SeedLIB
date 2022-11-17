@@ -5,18 +5,6 @@
 
 <mapper namespace="com.seed.lib.hope.HopeMapper">
 <!-- 희망도서관련 -->
-	<select id="getHaveBook" parameterType="BookVO" resultMap="BookVO">
-		SELECT * FROM BOOK B
-			INNER JOIN
-			BOOKLIB BL
-			ON B.ISBN=BL.ISBN
-				INNER JOIN
-				LIBRARY L
-				ON BL.LIBNUM=L.LIBNUM
-		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
-	</select>
-
-<!-- 희망도서관련 -->
 	<select id="getOverLapBook" parameterType="HopeVO" resultMap="getOverLapBookResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
@@ -25,7 +13,7 @@
 				INNER JOIN
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
-		WHERE H.TITLE={#title} AND L.LIBNUM={#libNum}		
+		WHERE H.HOPTITLE={#hopTitle} AND L.LIBNUM={#libNum}		
 	</select>
 
 	<select id="getMonth" parameterType="HopeVO" resultType="Int">
@@ -41,7 +29,7 @@
 
 	<insert id="setHope" parameterType="HopeVO">
 		INSERT HOPE VALUES
-		(0, #{hopLib}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{userName}, #{hopMemo}, SYSDATE(), #{isbn})		
+		(0, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName})		
 	</insert>
 	
 	<insert id="setHopeStat" parameterType="HopeVO">
