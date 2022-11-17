@@ -7,20 +7,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- 	<link
+	<link
       rel="shortcut icon"
       href="assets/images/favicon.svg"
       type="image/x-icon"
-    /> -->
+    />
     <title>PlainAdmin Demo | Bootstrap 5 Admin Template</title>
-    <c:import url="../temp/boot.jsp"></c:import>
     <!-- ========== All CSS files linkup ========= -->
-	<link rel="stylesheet" href="/css/admin/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/admin/lineicons.css" />
-    <link rel="stylesheet" href="/css/admin/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
-    <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
-    <link rel="stylesheet" href="/css/admin/main.css" />
+    <c:import url="./temp/css.jsp"></c:import>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -1450,15 +1444,7 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+	<c:import url="./temp/js.jsp"></c:import>
 
     <script>
       // ======== jvectormap activation

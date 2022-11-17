@@ -7,20 +7,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
     <title>Sign Up | PlainAdmin Demo</title>
-    <c:import url="../../temp/boot.jsp"></c:import>
-
     <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="/css/admin/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/admin/lineicons.css" />
-    <link rel="stylesheet" href="/css/admin/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
-    <link rel="stylesheet" href="/css/admin/main.css" />
+    <c:import url="../temp/css.jsp"></c:import>
+
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -575,8 +565,9 @@
                     <div class="row">
                       <div class="col-12">
                         <h6 class="mb-25">ISBN</h6>
-                        <div class="input-style-1">
+                        <div class="input-style-3">
                           <input type="text" name="isbn" placeholder="ISBN을 입력하세요" />
+                          <span class="icon"><i class="lni lni-key"></i></span>
                         </div>
                       </div>
                       <!-- end col -->
@@ -584,7 +575,7 @@
                         <h6 class="mb-25">제목</h6>
                         <div class="input-style-3">
                           <input type="text" name="title" placeholder="책 제목을 입력하세요" />
-                          <span class="icon"><i class="bi bi-person"></i></span>
+                          <span class="icon"><i class="lni lni-library"></i></span>
                         </div>
                       </div>
                       <!-- end col -->
@@ -592,9 +583,7 @@
                         <h6 class="mb-25">저자</h6>
                         <div class="input-style-3">
                           <input type="text" name="writer" placeholder="책의 저자를 입력하세요" />
-                          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                          </svg></span>
+                          <span class="icon"><i class="lni lni-user"></i></span>
                         </div>
                       </div>
                       <!-- end col -->
@@ -602,9 +591,7 @@
                         <h6 class="mb-25">출판사</h6>
                         <div class="input-style-3">
                           <input type="text" name="publisher" placeholder="책의 출판사를 입력하세요" />
-                          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                          </svg></span>
+                          <span class="icon"><i class="lni lni-library"></i></span>
                         </div>
                       </div>
                       <!-- end col -->
@@ -612,15 +599,15 @@
                         <h6 class="mb-25">권수</h6>
                         <div class="input-style-3">
                           <input type="text" name="quantlty" placeholder="책의 수량을 입력하세요" />
-                          <span class="icon"><i class="bi bi-person"></i></span>
+                          <span class="icon"><i class="lni lni-library"></i></span>
                         </div>
                       </div>
                       <!-- end col -->
-                      <h6 class="mb-25">출판연도</h6>
-                      <div class="input-style-2">
-                        <input type="date" name="bDate" />
-                        <span class="icon mr-3"
-                          ><i class="bi bi-calendar-check"></i></span>
+                      <div class="col-12">
+                        <h6 class="mb-25">출판연도</h6>
+                        <div class="input-style-1">
+                          <input type="date" name="bDate" />
+                        </div>
                       </div>
                       <!-- end input -->
                       <!-- ======= select style start ======= -->
@@ -628,6 +615,7 @@
                         <div class="select-style-1">
                           <div class="select-position">
                             <select name="category">
+                              <option value="0">선택안함</option>
                               <option value="000">총류</option>
                               <option value="100">철학</option>
                               <option value="200">종교</option>
@@ -642,37 +630,7 @@
                           </div>
                         </div>
                         <!-- end select -->
-                      <!-- end card -->
                       <!-- ======= select style end ======= -->
-                      <!-- ======= checkbox style start ======= -->
-                      <h6 class="mb-25">대출가능여부</h6>
-                      <div class="col-12">
-                        <div class="form-check checkbox-style checkbox-success mb-30">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="able"
-                            value="1"
-                            id="checkbox-3"
-                          />
-                          <label class="form-check-label" for="checkbox-3">
-                            가능</label
-                          >
-                        </div>
-                        <div class="form-check checkbox-style checkbox-success mb-30">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="able"
-                            value="0"
-                            id="checkbox-3"
-                          />
-                          <label class="form-check-label" for="checkbox-3">
-                            불가능</label
-                          >
-                        </div>
-                      </div>
-                      <!-- ======= checkbox style end ======= -->
                       <!-- end col -->
                       <div class="col-12">
                         <div
@@ -751,14 +709,6 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+	<c:import url="../temp/js.jsp"></c:import>
   </body>
 </html>
