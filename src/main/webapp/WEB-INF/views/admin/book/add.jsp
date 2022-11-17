@@ -556,13 +556,19 @@
             <div class="col-lg-6">
               <div class="signup-wrapper">
                 <div class="form-wrapper">
-                  <h6 class="mb-15">Sign Up Form</h6>
+                  <h6 class="mb-15">도서 정보 입력</h6>
                   <p class="text-sm mb-25">
-                    Start creating the best possible user experience for you
-                    customers.
+                    도서 정보를 빠짐없이 입력해 주세요
                   </p>
                   <form action="#">
                     <div class="row">
+                      <div class="col-12">
+                        <h6 class="mb-25">이미지</h6>
+                        <div class="input-style-3">
+                          <input type="file" name="image" placeholder="ISBN을 입력하세요" />
+                          <span class="icon"><i class="lni lni-camera"></i></span>
+                        </div>
+                      </div>
                       <div class="col-12">
                         <h6 class="mb-25">ISBN</h6>
                         <div class="input-style-3">
