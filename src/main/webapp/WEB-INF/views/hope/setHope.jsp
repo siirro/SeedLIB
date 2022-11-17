@@ -239,6 +239,9 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
         </div>
+<!-- footer -->
+<c:import url="../temp/footer.jsp"></c:import>
+<!-- //footer -->
 
      <script defer src="/js/hope.js"></script>
 </body>
