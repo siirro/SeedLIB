@@ -17,6 +17,8 @@
     <title>희망 도서 신청</title>
 </head>
 <body>
+	<!-- header -->
+    <c:import url="../temp/header.jsp"></c:import>
 <div class="sVisualWrap">
 	<div class="sVisual">
 		<h3>신청안내</h3>

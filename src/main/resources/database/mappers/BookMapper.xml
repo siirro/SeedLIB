@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
     
 <mapper namespace="com.seed.lib.book.BookMapper">
 
@@ -32,3 +33,20 @@
 	</resultMap>
 
 </mapper>
+=======
+
+<mapper namespace="com.seed.lib.book.BookMapper">
+<!-- 희망도서관련 -->
+	<select id="GetHaveBook" parameterType="BookVO" resultMap="BookVO">
+		SELECT * FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
+	</select>
+
+</mapper>    
+
