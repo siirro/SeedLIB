@@ -72,6 +72,8 @@ pageEncoding="UTF-8"%>
 <title>희망 도서 신청</title>
 </head>
 <body>
+<!-- header -->
+    <c:import url="../temp/header.jsp"></c:import>
 <div class="sVisualWrap">
 <div class="sVisual">
     <h3>신청하기</h3>
@@ -79,6 +81,7 @@ pageEncoding="UTF-8"%>
 </div>
 <div id="contentGroup">
    <c:import url="../sideBar/BsideBar.jsp"></c:import>
+
 
 <div id="contentcore">
 <div class="naviandtitle">
@@ -110,7 +113,7 @@ pageEncoding="UTF-8"%>
                     <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="제목을 입력하세요." autocomplete="off">
                     <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
                 </div>
-                <a href="/seoksu/menu/10108/program/30008/hopeBookApply.do" class="btn input" title="직접입력 설정">직접입력</a>
+                <a href="" class="btn input" id="selfApply" title="직접입력 설정">직접입력</a>
             </div>
             <ul class="dot-list clearfix mt05 mb05">
                 <li>도서명, 저자명, 발행처, ISBN 을 입력하여 도서를 검색하세요.</li>
@@ -142,11 +145,7 @@ pageEncoding="UTF-8"%>
         </div>
         <!-- 페이징 끝-->
     <div>
-
-        <form id="registForm" name="registForm" method="post">
-                            <input type="hidden" name="userName" value="">
-                            <input type="hidden" name="phone" value="">
-                            <input type="hidden" name="email" value="">
+        <form id="registForm" name="registForm" action-="setHope" method="post">
                             <div><h4 class="htitle">신청자 정보</h4></div>
                             <div class="boardWrap">
                                 <table class="board-view">
@@ -158,7 +157,7 @@ pageEncoding="UTF-8"%>
                                     <tbody>
                                         <tr>
                                             <th scope="row">신청자명</th>
-                                            <td><input type="text" name="userName" value="id01" readonly></td>
+                                            <td><input type="text" id="userName" name="userName" value="id1" readonly></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">휴대폰번호</th>
@@ -181,12 +180,12 @@ pageEncoding="UTF-8"%>
                                         <tr>
                                             <th scope="row"><label for="libCode"><span class="essential">*</span> 신청도서관</label></th>
                                             <td>
-                                                <select name="libCode" id="hLib" class="form-ele auto">
+                                                <select name="hopLib" id="hopLib" class="form-ele auto">
                                                     <option value="">도서관선택</option>
-                                                         <option value="0">씨앗도서관</option>
-                                                         <option value="1">새싹도서관</option>
-                                                         <option value="2">열매도서관</option>
-                                                         <option value="3">뿌리도서관</option>
+                                                         <option value="씨앗도서관">씨앗도서관</option>
+                                                         <option value="새싹도서관">새싹도서관</option>
+                                                         <option value="열매도서관">열매도서관</option>
+                                                         <option value="뿌리도서관">뿌리도서관</option>
                                                    </select>
                                                 <p class="emp1 ref">해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 선택 불가</p>
                                             </td>
@@ -194,20 +193,20 @@ pageEncoding="UTF-8"%>
                                         <tr>
                                             <th scope="row"><label for="title">희망도서명</label><span class="essential themeFC">*</span></th>
                                             <td>
-                                                <input type="text" id="hTitle" name="hTitle" value="" class="form-ele full">
+                                                <input type="text" id="hopTitle" name="hopTitle" value="" class="form-ele full">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="author">저자</label><span class="essential themeFC">*</span></th>
-                                            <td><input type="text" id="hWriter" name="hWriter" value="" class="form-ele wide"></td>
+                                            <td><input type="text" id="hopWriter" name="hopWriter" value="" class="form-ele wide"></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><label for="publisher">발행자</label><span class="essential themeFC">*</span></th>
-                                            <td><input type="text" id="hPublisher" name="hPublisher" value="" class="form-ele wide"></td>
+                                            <th scope="row"><label for="publisher">출판사</label><span class="essential themeFC">*</span></th>
+                                            <td><input type="text" id="hopPublisher" name="hopPublisher" value="" class="form-ele wide"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                            <td><input type="text" id="hDate" name="hDate" value="" maxlength="4" class="form-ele auto numeric"></td>
+                                            <td><input type="text" id="hYear" name="hYear" value="" maxlength="4" class="form-ele auto numeric"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="isbn">ISBN</label></th>
@@ -221,15 +220,15 @@ pageEncoding="UTF-8"%>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>
-                                            <td><textarea name="hMemo" id="hMemo"></textarea></td>
+                                            <td><textarea name="hopMemo" id="hopMemo"></textarea></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </form>
                         <div class="btnGroup">
-                            <a href="#btn" id="listBtn" class="btn cncl">취소</a>
-                            <a href="#btn" id="registBtn" class="btn themeBtn">신청확인</a>
+                            <a href="../" id="listBtn" class="btn cncl">취소</a>
+                            <button type="button" id="registBtn" class="btn themeBtn">신청</button>
                         </div>
                         <!-- End Of the Real Contents-->
     </div>

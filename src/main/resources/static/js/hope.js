@@ -1,3 +1,4 @@
+///페이징처리///////////////////////////////////////////////////////////
 let pageNum = 1;
 let is_end = false;
 let query = "";
@@ -12,16 +13,21 @@ let next="";
 let totalCount=0;
 let totalBlock=0;
 let searchResult ="";
-////////////////////////////////////////////////////
-let hTitle="";
-let hWriter="";
-let hPublisher="";
+///검색결과입력/////////////////////////////////////////////////
+let hopTitle="";
+let hopWriter="";
+let hopPublisher="";
 let datetime="";
-let isbn=0;
+let isbn="";
 let price=0;
 let searchOne="";
-
-
+///유효성검사///////////////////////////////////////////////////
+let hLibCheck = false;
+let hTitleCheck = false;
+let hWriterCheck = false;
+let hYearCheck = false;
+let isbnCheck = false;
+let hMemoCheck = false;
 
 function getKey(){
     $.ajax({
@@ -39,7 +45,6 @@ function getKey(){
 
 function enterkey(){
     if (window.event.keyCode == 13) {
-
         $("#searchBtn").click();
     }
 }
@@ -47,9 +52,15 @@ function enterkey(){
 $("#searchBtn").click(function(){
     pageNum=1;
     searchResult = "";
-    $(".pagination").text(searchResult);
-    $(".result_screen").text(searchResult);
-    $(".listWrap").text(searchResult);
+    $(".pagination").empty();
+    $(".result_screen").empty();
+    $(".listWrap").empty();
+    $("#hTitle").empty();
+    $("#hWriter").empty();
+    $("#hPublisher").empty();
+    $("#hYear").empty();
+    $("#isbn").empty();
+    $("#price").empty();
     query = $("#query").val();
     if(query!=""){
        getKey();
@@ -155,16 +166,132 @@ $(".pagination").on("click",".page",function(){
     getSearch(); 
 }) 
 
-
-
 function hopeApply(title, authors, publisher, datetime, isbn, price){
-    hTitle = title;
-    hWriter=authors;
-    hPublisher=publisher;
-    datetime=datetime.substr(0,4);
-    isbn=isbn;
-    price=price;
-    $("#")
-    console.log("title: ", hTitle, "authors: ",hWriter, "publisher: ",hPublisher, "datetime: ",datetime, "isbn: ",isbn, "price",price);
+    let check = window.confirm("신청하시겠습니까?");
+    if(check){
+        $(".pagination").empty();
+        $(".result_screen").empty();
+        $(".listWrap").empty();
 
+        hopTitle = title;
+        hopWriter=authors;
+        if(hopWriter.length<1){
+            hopWriter="미상";
+        }
+        hopPublisher=publisher;
+        if(hopPublisher.length<1){
+            hopPublisher="미상";
+        }
+        datetime=datetime.substr(0,4);
+        if(datetime.length<1){
+            datetime=0000;
+        }
+        isbn=isbn;
+        if(isbn.length<1){
+            isbn="0000000000000";
+        }
+        price=price;
+        if(price.length<1){
+            price=0;
+        }
+        $("#hopTitle").val(hopTitle);
+        $("#hopWriter").val(hopWriter);
+        $("#hopPublisher").val(hopPublisher);
+        $("#hYear").val(datetime);
+        $("#isbn").val(isbn);
+        $("#price").val(price);
+        $("#hopTitle").attr("readonly", "true");
+        $("#hopWriter").attr("readonly", "true");
+        $("#hopPublisher").attr("readonly", "true");
+        $("#hYear").attr("readonly", "true");
+        $("#isbn").attr("readonly", "true");
+        $("#price").attr("readonly", "true");
+    } else{
+        return;
+    }
 }
+
+$("#selfApply").click(function(){
+    $("#hopTitle").val("");
+    $("#hopWriter").val("");
+    $("#hopPublisher").val("");
+    $("#hYear").val("");
+    $("#isbn").val("");
+    $("#price").val("");
+    $("#hopTitle").attr("readonly", "false");
+    $("#hopWriter").attr("readonly", "false");
+    $("#hopPublisher").attr("readonly", "false");
+    $("#hopYear").attr("readonly", "false");
+    $("#isbn").attr("readonly", "false");
+    $("#price").attr("readonly", "false");
+})
+
+$("#registBtn").click(function(){
+    let check = window.confirm("신청하시겠습니까?");
+    if(check){
+        hLibCheck = false;
+        hTitleCheck = false;
+        hWriterCheck = false;
+        hMemoCheck = false;
+        console.log($("#hopPublisher").val().length);
+        if($("#hopLib").val()!=""){
+            hLibCheck = true;
+        }
+        console.log($("#hopTitle").val().length)
+        if($("#hopTitle").val().length>0){
+            hTitleCheck = true;
+        }
+        if($("#hopWriter").val().length>0){
+            hWriterCheck = true;
+        }
+        if($("#hopPublisher").val().length<1){
+            $("#hopPublisher").val("미상");
+        }
+        if($("#isbn").val().length<1){
+            $("#isbn").val("0000000000000");
+
+        }
+        if($("#hopMemo").val().length>0){
+            hMemoCheck = true;
+        }
+
+        if(hLibCheck&&hTitleCheck&&hWriterCheck&&hMemoCheck){
+            // $("#registForm").submit();
+            let hopeVO = {
+                hopLib:$("#hopLib").val(),
+                hopTitle:$("#hopTitle").val(),
+                hopWriter:$("#hopWriter").val(),
+                hopPublisher:$("#hopPublisher").val(),
+                isbn:$("#isbn").val(),
+                userName:$("#userName").val(),
+                hopMemo:$("#hopMemo").val()
+            }
+            console.log(hopeVO.hopTitle);
+            $.ajax({
+                type:"POST",
+                url:"/hope/setHope",
+                data: JSON.stringify(hopeVO),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success:function(data){
+                    console.log(data);
+                    alert("희망 도서 신청 완료");
+                    // location.href="../";
+                },error:function(error){
+                    console.log("errorㅠㅠ", data);
+                    console.log(error);
+                    // location.href="./";
+
+                }                
+            })
+        }else{
+            alert("신청 정보를 확인 후 신청해주세요");
+            location.reload();
+            return;
+        }
+    }else{
+        return;
+    }
+})
+
+
