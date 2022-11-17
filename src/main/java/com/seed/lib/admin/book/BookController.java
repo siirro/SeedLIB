@@ -14,5 +14,10 @@ public class BookController {
 		return "admin/book/add";
 	}
 	
+	@GetMapping("list")
+	public String getBookList()throws Exception{
+	
+		return "admin/book/list";
+	}
 	
 }

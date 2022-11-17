@@ -9,8 +9,7 @@ public class LibVO {
 	private int blNum;
 	
 	//Library
-	private int lNum;
-	private String lName;
-	private String lPlace;
+	private int libNum;
+	private String libName;
 
 }
