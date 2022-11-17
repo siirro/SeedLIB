@@ -10,16 +10,13 @@ import com.seed.lib.book.BookVO;
 
 @SpringBootTest
 class AdminBookServiceTest {
-
-	@Autowired
-	private BookVO bookVO;
 	
 	@Autowired
 	private AdminBookService adminBookService;
 	
 	@Test
-	void setBookAddtest() {
-		bookVO.setIsbn(1L);
+	void setBookAddtest() throws Exception {
+		BookVO bookVO = new BookVO();
 		bookVO.setTitle("title");
 		bookVO.setWriter("writer");
 		bookVO.setPublisher("출판사");
@@ -27,7 +24,10 @@ class AdminBookServiceTest {
 		bookVO.setCategory(000L);
 		bookVO.setQuantity(1L);
 		bookVO.setImage("이미지");
-		bookVO.setBookC
+		
+		int result = adminBookService.setBookAdd(bookVO);
+		
+		assertEquals(1, result);
 		
 	}
 
