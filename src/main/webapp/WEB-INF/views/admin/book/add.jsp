@@ -612,7 +612,7 @@
                       <div class="col-12">
                         <h6 class="mb-25">출판연도</h6>
                         <div class="input-style-1">
-                          <input type="date" name="bDate" />
+                          <input type="date" name="bookDate" />
                         </div>
                       </div>
                       <!-- end input -->
