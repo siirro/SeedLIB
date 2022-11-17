@@ -16,19 +16,18 @@
 			<result column="title" property="title"/>
 			<result column="writer" property="writer"/>
 			<result column="publisher" property="publisher"/>
-			<result column="bDate" property="bDate"/>
+			<result column="bookDate" property="bookDate"/>
 			<result column="able" property="able"/>
 			<result column="category" property="category"/>
 			<result column="quantity" property="quantity"/>
 			<result column="image" property="image"/>
-			<result column="bCount" property="bCount"/>
-			<result column="bHeart" property="bHeart"/>
+			<result column="bookCount" property="bookCount"/>
+			<result column="bookHeart" property="bookHeart"/>
 			
 			<collection property="libVOs" javaType="List" ofType="LibVO">
-				<id column="blNum" property="blNum"/>
-				<result column="lNum" property="lNum"/>
-				<result column="lName" property="lName"/>
-				<result column="lPlace" property="lPlace"/>
+				<id column="bLibNum" property="bLibNum"/>
+				<result column="libNum" property="libNum"/>
+				<result column="libName" property="libName"/>
 			</collection>
 	</resultMap>
 
