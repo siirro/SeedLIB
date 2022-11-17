@@ -145,13 +145,13 @@
 	<fieldset>
 		<legend>통합자료 검색영역</legend>
 		<div id="searchBox" class="searchBoxWrap">
-			<p class="logo"><a href="/seoksu/index.do"><img src="/images/logo200.png" alt="씨앗도서관"></a></p>
+			<p class="logo"><a href="/"><img src="/images/logo200.png" alt="씨앗도서관"></a></p>
 			<div class="searchBox">
 				<div class="keywordInput">
 					<label for="topSearchKeyword" class="blind">검색어 입력</label>
 					<input type="text" title="검색어 입력" id="topSearchKeyword" name="searchKeyword" autocomplete="off" placeholder="검색어를 입력하세요.">
-					<a href="#search" id="topSearchBtn" class="btnSearch">검색</a>
-					<a href="/seoksu/searchDetail.do" class="btnDetail themeBtn mobileHide">고급검색</a>
+					<a href="./search" id="topSearchBtn" class="btnSearch">검색</a>
+					<a href="./searchDetail" class="btnDetail themeBtn mobileHide" style="background: linear-gradient(to right, #9be15d, #00e3ae);">고급검색</a>
 				</div>
 			</div>
 			<div id="topSearchBestKeyword" class="keywordPop mobileHide"></div>

@@ -21,13 +21,274 @@
 		<div id="container" class="main">
 			<section id="section1">
 				<h2 class="blind">메인상단</h2>
+
+				<div class="backImg">
+					<ul class="popupList thumb">
+						<li style="z-index: 99; display: list-item;"></li>
+						<li style="display: list-item; z-index: 100;"></li>
+						<li style="display: list-item; z-index: 99;"></li>
+					</ul>
+				</div>
 				<div class="sectionGroup">
-					<p class="slogan"><span>씨앗도서관</span><br>하이루하이루</p>
+					
+
+					<div class="sectionGroup" >
+						<p class="slogan" style="color: white;"><span style="font-size: 52px;"">씨앗도서관</span><br>지식정보화시대의 선도적 도서관으로 도약</p>
+						
+						<!-- 통합검색 -->
+
+
+		<script type="text/javascript" src="/include/booksearch/js/autocom.js"></script>
+
+		<div class="mainSearchWrap">
+			<div class="mainSearchForm clearfix">
+				<form name="mainSearchForm" id="mainSearchForm" method="post">
+					<input type="hidden" name="searchType" value="SIMPLE">
+					<input type="hidden" name="searchManageCode" value="ALL">
+					<fieldset>
+						<legend class="blind">통합검색 영역</legend>
+						<div class="mainSearchKeywordWrap">
+							<div class="mainSearchKeyword">
+								<label for="mainSearchKeyword" class="blind">검색어 입력</label>
+								<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="searchKeyword" placeholder="검색어를 입력하세요">
+								<a href="#search" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
+							</div>
+							<div class="mainAutoSearch" id="atcBox">
+								<ul id="atcList">
+								</ul>
+								<div class="button_wrap">
+									<button type="button"></button>
+									<div class="button_box">
+										<button type="button" class="auto_off" id="atcToggleBtn">자동완성 끄기</button>
+									</div>
+								</div>
+							</div>
+							<a href="/intro/searchDetail.do" class="btnDetail mobileHide">고급검색</a>
+						</div>
+						<div id="mainBestKeyword" class="mainBestKeyword mobileHide">
+		
+		<script>
+			$(function(){
+				//통합검색 인기검색어
+				$(".keywordListWrap").newsTicker({
+					itemHeight: 33,
+					showItems: 1,
+					duration: 4000,
+					prevButton: "#btnDwon",
+					nextButton: "#btnUp"
+				});
+			});
+		</script>
+		<div class="controlArea">
+			<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
+			<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
+		</div>
+		<div class="keywordListWrap" style="height: 33px; overflow: hidden;">
+			<ol class="keywordList" style="margin-top: 0px;">
+						<li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점'); return false;" title="불편한 편의점"><i>1</i>불편한 편의점</a></li>
+			<li><a href="#link" onclick="javascript:fnMainSearchKeyword('흔한남매'); return false;" title="흔한남매"><i>2</i>흔한남매</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('파친코'); return false;" title="파친코"><i>3</i>파친코</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한편의점'); return false;" title="불편한편의점"><i>4</i>불편한편의점</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('하얼빈'); return false;" title="하얼빈"><i>5</i>하얼빈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점 김호연 장편소설 2'); return false;" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('카카오프렌즈'); return false;" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('아버지의 해방일지'); return false;" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('웹툰'); return false;" title="웹툰"><i>9</i>웹툰</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('신라'); return false;" title="신라"><i>10</i>신라</a></li></ol>
+		</div></div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		
+						<!-- //통합검색 -->
+		
+						<!-- 주요서비스 -->
+						<div class="shortcut">
+							<ul class="shortcutList clearfix">
+								<li class="svc1"><a href="/marathon"><i class="ico"></i>독서마라톤</a></li>
+								<li class="svc3"><a href="#ebook" onclick="fnEbookLink();" title="새 창 열림"><i class="ico"></i>전자도서관</a></li>
+								<li class="svc7"><a href="/intro/lectureList.do"><i class="ico"></i>문화행사신청</a></li>
+								<li class="svc4"><a href="/intro/40002/contents.do"><i class="ico"></i>희망도서신청</a></li>
+								<li class="svc9"><a href="/intro/menu/10046/contents/40012/contents.do"><i class="ico"></i>스마트도서관</a></li>
+								<li class="svc6"><a href="/intro/40027/contents.do"><i class="ico"></i>이용안내</a></li>
+								<li class="svc5"><a href="/intro/40028/contents.do"><i class="ico"></i>도서관소개</a></li>
+							</ul>
+						</div>
+						<!-- //주요서비스 -->
+		
+						<!-- 도서관 바로가기 -->
+						
+
+					<form name="ebookForm" method="post" target="_blank" action="https://elib.anyang.go.kr/ebookPlatform/Homepage/SSOLoginDL.do">
+						<input type="hidden" name="libCode" value="141077">
+						<input type="hidden" name="userId" value="">
+						<input type="hidden" name="userName" value="">
+						<input type="hidden" name="smartLogin" value="ID">
+					</form>
+
+					</div>
 
 
 
+<!-- 문화프로그램 시작 -->
+<div class="cultureWrap">
+	<h5>도서관 문화행사</h5>
+	<!-- PC용-->
+	<div class="service-inner mobileHide">
+		<div class="swiper-container swiper-service swiper-container-initialized swiper-container-horizontal" style="cursor: grab;">
+			<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+				
+				<div class="swiper-slide swiper-slide-active" style="width: 750px;">
+					<ul class="cultureList clearfix">
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5607">
+											<dl>
+												<dt>석수도서관
+														<span class="ing">접수중</span>
+												</dt>
+												<dd class="title">[하반기] 창의쑥쑥 그림책 나라</dd>
+												<dd class="info">
+													<span>대상 :</span>어린이
+													<br>
+													<span>접수 :</span>
+													2022.09.06
+													
+														~
+														
+														09.22
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+									
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5606">
+											<dl>
+												<dt>석수도서관
+													
+														<span class="ready">접수예정</span>
+													
+												</dt>
+												<dd class="title">[하반기] 시니어 유튜브 크리에이터</dd>
+												<dd class="info">
+													<span>대상 :</span>성인<br>
+													<span>접수 :</span>
+													
+													2022.09.06
+													
+														~
+														
+														09.27
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+									
+								
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5605">
+											<dl>
+												<dt>석수도서관
+													
+														<span class="end">마감</span>
+													
+												</dt>
+												<dd class="title">[하반기] 영어 그림책 함께 읽기</dd>
+												<dd class="info">
+													<span>대상 :</span>어린이<br>
+													<span>접수 :</span>
+													
+													2022.09.06
+													
+														~
+														
+														09.23
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+									
+								
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5604">
+											<dl>
+												<dt>석수도서관
+													
+														<span class="end">마감</span>
+													
+												</dt>
+												<dd class="title">[하반기] 성인동화구연지도 (자격증반) </dd>
+												<dd class="info">
+													<span>대상 :</span>성인, 누구나<br>
+													<span>접수 :</span>
+													
+													2022.09.06
+													
+														~
+														
+														09.14
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+									
+								
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5603">
+											<dl>
+												<dt>석수도서관
+													
+														<span class="end">마감</span>
+													
+												</dt>
+												<dd class="title">[하반기] 생각이 자라는 미술 (B반)</dd>
+												<dd class="info">
+													<span>대상 :</span>유아<br>
+													<span>접수 :</span>
+													
+													2022.09.06
+													
+														~
+														
+														09.14
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+									
+								
+									<li>
+										<a href="/seoksu/lectureDetail.do?lectureIdx=5602">
+											<dl>
+												<dt>석수도서관
+													
+														<span class="end">마감</span>
+													
+												</dt>
+												<dd class="title">[하반기] 생각이 자라는 미술 (A반)</dd>
+												<dd class="info">
+													<span>대상 :</span>유아<br>
+													<span>접수 :</span>
+													
+													2022.09.06
+													
+														~
+														
+														09.20
+													
+												</dd>
+											</dl>
+										</a>
+									</li>
+					</ul>
+				</div>
+			</div>
+		<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+		
+	</div>
+	<!-- //PC용 -->
 
-
+	
+</div>
+<!-- 문화프로그램 끝 -->
 
 
 <script>
@@ -97,6 +358,7 @@
 	<div class="calendar">
 		<table>
 			<caption>휴관일 및 열람실개방휴관일 안내 일정표</caption>
+
 			<thead>
 				<tr>
 					<th scope="col" class="sun">일</th>
@@ -108,6 +370,7 @@
 					<th scope="col" class="sat">토</th>
 				</tr>
 			</thead>
+
 			<tbody>
 				<tr>
 					<!-- 이렇게하면되나? 자바로 윤년 계산, 달별 일수 계산, -->
@@ -377,15 +640,10 @@
 					</span>
 					<span class="txt">하얼빈 :김훈 장편소설</span>
 				</li>
-			
-		
 </ul>
 <div class="more mobileHide"><a href="/seoksu/libraryPopularBookList.do"><span class="blind">더보기</span></a></div>
-
 	</div>
 	<div id="recommendBook" class="bookListWrap" style="display: none;">
-
-
 <ul class="bookList clearfix">
 				<li>
 					<span class="cover">
@@ -404,49 +662,35 @@
 					</span>
 					<span class="txt">나를 훔쳐 주세요</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=2&amp;recommendBookIdx=3924">
-							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/214/340/21434043.jpg" alt="세븐 테크" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">세븐 테크</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=1&amp;recommendBookIdx=3923">
-							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/223/379/22337911.jpg" alt="아티스트 웨이, 마음의 소리를 듣는 시간" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">아티스트 웨이, 마음의 소리를 듣는 시간</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=5&amp;recommendBookIdx=3922">
 							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/225/599/22559905.jpg" alt="곧 재능 교환이 시작됩니다" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">곧 재능 교환이 시작됩니다</span>
 				</li>
-			
-		
 </ul>
 <div class="more mobileHide"><a href="/seoksu/recommendBookList.do"><span class="blind">더보기</span></a></div>
-
-
 </div>
 	<div id="accessionBook" class="bookListWrap" style="display: none;">
-
-
 <ul class="bookList clearfix">
 				<li>
 					<span class="cover">
@@ -456,7 +700,6 @@
 					</span>
 					<span class="txt">랑랑 형제 떡집</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="#link" onclick="fnAccessionBookDetail('106022576', '9788901253862', 'MO'); return false;">
@@ -465,7 +708,6 @@
 					</span>
 					<span class="txt">정글버스</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="#link" onclick="fnAccessionBookDetail('106022571', '9788925578170', 'MO'); return false;">
@@ -562,42 +804,7 @@
 
 
 <!-- footer -->
-<footer id="footer">
-    <div class="fnbWrap">
-        <div class="footerInner clearfix">
-            <ul class="fnb clearfix">
-                <li><a href="/etc/personalinfo"><span>개인정보처리방침</span></a></li>
-                <li><a href="/etc/emailinfo">이메일추출방지정책</a></li>
-                <li><a href="/intro/law">도서관관련법규</a></li>
-            </ul>
-            <div class="familySite mobileHide">
-                <select name="relateSite" id="relateSite" title="관련기관 사이트 바로가기 선택">
-                    <option value="" selected="selected">관련기관 사이트</option>
-                    <option value="https://www.nl.go.kr/">국립중앙도서관</option>
-                    <option value="http://www.dlibrary.go.kr/">국가전자도서관</option>
-                    <option value="https://www.nlcy.go.kr/NLCY/main/index.do">국립어린이청소년도서관</option>
-                    <option value="https://www.nanet.go.kr/main.do">국회도서관</option>
-                    <option value="https://www.library.kr/cyber/index.do">경기도사이버도서관</option>
-                    <option value="https://memory.library.kr/">경기도메모리</option>
-                    <option value="https://www.nld.go.kr/ableFront/index.jsp">국립중앙장애인도서관</option>
-                </select>
-                <a href="#go" id="btnRelateSite" class="btnGo" title="새창열림">이동</a>
-            </div>
-        </div>
-    </div>
-    <div class="faddWrap">
-        <div class="footerInner clearfix">
-            <div class="fadd">
-            	<address><span>씨앗도서관</span><span>08506 서울특별시 금천구 가산디지털1로 151 이노플렉스 1차 306호</span><span>전화번호 : 02-1234-5555, 6666</span></address>
-                <cite>Copyright 2022. Seed Library All Rights Reserved.</cite>
-            </div>
-        </div>
-    </div>
-    <div>
-        <p id="post-result"></p>
-    </div>
-    
-</footer>
+<c:import url="./temp/footer.jsp"></c:import>
 
 <!-- //footer -->
 
@@ -622,8 +829,6 @@
 <input type="hidden" name="pbInitNo4" id="pbInitNo4" value="0">
 <input type="hidden" name="pbInitNo5" id="pbInitNo5" value="0">
 <iframe name="hiddenFrame" id="hiddenFrame" title="빈프레임" style="display:none;"></iframe> -->
-
-
 
 
 </body>
