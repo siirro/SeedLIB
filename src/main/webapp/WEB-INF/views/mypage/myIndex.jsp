@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/default.css">
+<link rel="stylesheet" href="/css/contents.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/sub.css">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -85,31 +92,7 @@
 <!-- //레이어팝업 -->
 
 <script src="/include/js/clipboard.min.js"></script>
-<script>
-	$('#sns').click(function(e) {
-		$.ajax({
-			type: "POST",
-			url: "/cmmn/share/shortUrl.do",
-			dataType : "json",
-			data: { "url" : "https://lib.anyang.go.kr/intro/index.do"},
-			async: false,
-			error : function (request, status, error){
-				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-			},
-			success: function(data) {
-				//$("#shortUrl").html(data.url);
-				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/intro/index.do" >');
-				$("#sns1").attr('data-clipboard-text', data.url);
-			}
-		});
-	});
 
-	function fnShorturlCopy() {
-		var clipboard = new ClipboardJS('#sns1');
-		alert('단축주소가 복사되었습니다.');
-		return false;
-	}
-</script>
 				<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->
@@ -129,7 +112,7 @@
 							<div class="myInfoBox">
 								<div class="myInner">
 									<div class="myTop">
-										<div class="title"><strong class="name">안다은</strong> 님, 안녕하세요.</div>
+										<div class="title"><strong class="name"> 아이유 </strong> 님, 안녕하세요.</div>
 										<div class="btnModify">
 											
 											
@@ -146,9 +129,9 @@
 										</div>
 										<div class="myInfoList">
 											<ul class="dot-list">
-												<li><span>아이디</span> : rrkdalsfn</li>
-												<li><span>회원가입일</span> : 2022.11.09</li>
-												<li><span>휴대폰번호</span> : 010-8917-4013</li>
+												<li><span>아이디</span> : 아이유 </li>
+												<li><span>회원가입일</span> : 2022.11.17 </li>
+												<li><span>휴대폰번호</span> : 010-1111-1111 </li>
 												
 												<!-- <li><span>회원증번호</span> : </li>
 												<li class="mobileShow"><span class="emp1">※ 모바일회원증 캡처 이미지 사용 불가</span></li>-->
@@ -162,7 +145,7 @@
 											<ul class="barcodeFamily swiper-wrapper">
 												
 												<li class="swiper-slide">
-													<div class="name">안다은</div>
+													<div class="name"> 아이유 </div>
 													<img src="https://www.yslibrary.or.kr/cmmn/barcode/getBarCode.do?width=248&amp;height=75&amp;data=" alt="" width="248" height="75">
 													<div class="num"></div>
 												</li>
@@ -213,6 +196,32 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+	$('#sns').click(function(e) {
+		$.ajax({
+			type: "POST",
+			url: "/cmmn/share/shortUrl.do",
+			dataType : "json",
+			data: { "url" : "https://lib.anyang.go.kr/intro/index.do"},
+			async: false,
+			error : function (request, status, error){
+				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
+			},
+			success: function(data) {
+				//$("#shortUrl").html(data.url);
+				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/intro/index.do" >');
+				$("#sns1").attr('data-clipboard-text', data.url);
+			}
+		});
+	});
+
+	function fnShorturlCopy() {
+		var clipboard = new ClipboardJS('#sns1');
+		alert('단축주소가 복사되었습니다.');
+		return false;
+	}
+</script>
 
 </body>
 </html>

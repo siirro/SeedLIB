@@ -19,6 +19,12 @@ public class MyPageController {
 	@Autowired
 	private HopeService hopeService;
 	
+	
+	@GetMapping("myIndex")
+	public void getIndex() throws Exception{
+		
+	}
+	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(String userName)throws Exception{
 		ModelAndView mv = new ModelAndView();

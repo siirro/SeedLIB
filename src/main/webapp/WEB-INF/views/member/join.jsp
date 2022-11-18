@@ -35,15 +35,15 @@
                 <div class="join2">
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" maxlength="15" placeholder="5~15자(영문, 소문자)">
+                        <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" minlength="5" maxlength="15" placeholder="5~15자(영문(소대문자), 숫자로 조합)">
                         <button type="button" title="중복확인" class="loginBtn1" id="login_chk">중복확인</button>
-                        <div id="idResult">
-                        </div>
-                        <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
+                          
+                          <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
                         <span class="error" id="error_web_id2" style="display: none;">이미 존재하는 아이디입니다.</span>
+                        
                         </p>
                         <p class="inputPw"><label for="password">비밀번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
+                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="10" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
                         <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15" required="required"></p>
                         
