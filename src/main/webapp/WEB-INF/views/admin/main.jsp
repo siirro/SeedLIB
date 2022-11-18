@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +18,8 @@
     <c:import url="./temp/css.jsp"></c:import>
   </head>
   <body>
+  <!-- 구분자는 지정, 단어형식만 맞춰서 하면 됨 -->
+<%--   <fmt:formatDate value="${날짜}" pattern="yyyy-MM-dd HH:mm:ss"/> --%>
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">

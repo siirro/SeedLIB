@@ -14,7 +14,7 @@ class AdminBookServiceTest {
 	@Autowired
 	private AdminBookService adminBookService;
 	
-	@Test
+	//@Test
 	void setBookAddtest() throws Exception {
 		BookVO bookVO = new BookVO();
 		bookVO.setTitle("title");
