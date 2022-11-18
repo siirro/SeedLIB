@@ -13,7 +13,6 @@
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 </head>
 <body>
-
 <div id="wrap">
 
 <c:import url="./temp/header.jsp"></c:import>
@@ -829,7 +828,6 @@
 <input type="hidden" name="pbInitNo4" id="pbInitNo4" value="0">
 <input type="hidden" name="pbInitNo5" id="pbInitNo5" value="0">
 <iframe name="hiddenFrame" id="hiddenFrame" title="빈프레임" style="display:none;"></iframe> -->
-
 
 </body>
 

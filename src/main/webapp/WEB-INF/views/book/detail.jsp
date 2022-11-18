@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>    
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
     <script defer src="/js/common.js"></script>
     <script defer src="/js/bookDetail.js"></script>
     
-	<title>통합검색 : 새싹도서관</title>
+	<title>통합검색 : 씨앗도서관 ☘️ </title>
 </head>
 <body>
 	<div class = "vsc-initialized">
@@ -31,7 +30,7 @@
 			
 			<div id="contentGroup">
 				<!-- 사이드바 -->
-		       <c:import url="../sideBar/BsideBar.jsp"></c:import>
+		       <c:import url="../sideBar/AsideBar.jsp"></c:import>
 				
 				<!-- 메인 내용 -->
 				<div id="contentcore">
@@ -85,14 +84,17 @@
 						
 						<!-- 책 디테일 -->
 						<div class="bookDetailInformation">
+						
+						
 							<div class="bookInforWrap cate_volume">
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
+								<c:forEach var="book" items="${vo}">
 									<div class="bookImg">
-										<img alt="" src="${vo.image}">
+										<img alt="" src="${book.image}">
 									</div>
 
-									<div class="book_name">${vo.title}</div>
+									<div class="book_name">${book.title}</div>
 
 									<a href="#link" class="btn_optionView">
 										<span class="blind">책정보 더보기</span>
@@ -101,34 +103,48 @@
 									<!-- 간략보기 -->
 									<div class="simpleView viewTab open">
 										<div class="book_publisher">
-											<span class="bk_writer">${vo.writer}</span>
-											<span class="bk_publish">${vo.publisher}</span>
-											<span class="bk_date">${vo.bDate}</span>
+											<span class="bk_writer">${book.writer}</span>
+											<span class="bk_publish">${book.publisher}</span>
+											<span class="bk_date">${book.bookDate}</span>
 										</div>
 										
 										<div class="book_publisher">
-											<span class="bk_writer">${vo.isbn}</span>
+											<span class="bk_writer">ISBN : ${book.isbn}</span>
 										</div>
 								
 										<div class="thisBookCategory">
 											<dl>
 												<dt>한국십진분류</dt>
 												<dd>
-													<span><a href="#search" onclick="fnSearchKdc('l600');">${vo.category}</a></span>
+													<span>
+														<a href="#search" onclick="fnSearchKdc('l600');">
+															<c:choose>
+																<c:when test="${book.category eq 1}">철학</c:when>
+																<c:when test="${book.category eq 2}">종교</c:when>
+																<c:when test="${book.category eq 3}">사회과학</c:when>
+																<c:when test="${book.category eq 4}">자연과학</c:when>
+																<c:when test="${book.category eq 5}">기술과학</c:when>
+																<c:when test="${book.category eq 6}">예술</c:when>
+																<c:when test="${book.category eq 7}">언어(어학)</c:when>
+																<c:when test="${book.category eq 8}">문학</c:when>
+																<c:when test="${book.category eq 9}">역사</c:when>
+															</c:choose>
+														</a>
+													</span>
 												</dd>
 											</dl>
 										</div>
 										
 										<div class="keyword">
-											<div>키워드</div>
 											<ul>
 												<li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8949100886', ''); return false" class="btn_myLib" title="내서재 담기 새창열림">책꽂이 담기</a></li>
 												<li><a href="#search" onclick="fnSearchResultKeyword('세계');">좋아요</a></li>
-												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${vo.bHeart} </a></li>
+												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${book.bookHeart} </a></li>
 											</ul>
 										</div>
 									</div>
 									<!-- // 간략보기 -->
+								</c:forEach>
 								</div>
 								
 								<!-- 하단 책 상세정보 -->
@@ -153,9 +169,10 @@
 														<label for="collectionLibraryAll">전체 도서관</label>
 													</p>
 													<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
-														<c:forEach var="lib" items="${vo.libVOs}">
-															<a href="#chk" class="MA" data-name="MA">${lib.lName}</a>
-														</c:forEach>
+													<c:forEach var="book" items="${vo}">
+													<c:forEach var="lib" items="${book.libVOs}">
+														<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
+													</c:forEach></c:forEach>
 													<button type="button" class="listDropdown"><span>리스트 보기</span></button>
 												</div>
 												<div class="thisBook-libraryList">
@@ -183,40 +200,43 @@
 																</tr>
 															</thead>
 															<tbody>
+																
 																<c:forEach var="book" items="${vo}">
+																<c:forEach var="lib" items="${book.libVOs}">
+																	<tr class="MA">
+																		<td>${lib.libName}</td>
+																		
+																		<td>
+																			<c:set var="where" value="${lib.libNum}"/>
+																			<c:set var="able" value="${book.able}"/>
+																			<c:choose>
+																				<c:when test="${where == 0}">
+																				<h4>${able}</h4>
+																					<c:choose>
+																						<c:when test="${able == 1}">
+																							<a href="javascript:;" class="btn white small">대출</a>
+																						</c:when>
+																						<c:when test="${able == 0}">
+																							<a href="javascript:;" class="btn white small">대출예약</a>
+																						</c:when>
+																					</c:choose>
+																				</c:when>
+																			</c:choose>
+																		</td>
+																		<td>대출신청 ${book.able}</td>
+																		<td>예약신청 ${book.able}</td>
+																		<td>
+																			<c:choose>
+																				<c:when test="${where != 0}">
+																					<h1>상호대차 신청</h1>
+																				</c:when>
+																			</c:choose>
+																		</td>
+																		<td>도서관 위치 지도열기</td>
+																	</tr>
 																</c:forEach>
-																<tr class="MA">
-																	<td>${book.libVOs.lName}</td>
-																	
-																	<!-- 도서관 구분 : 새싹도서관일 땐 (대출/예약) | 이외 (상호대차) -->
-																	<td>
-																		<c:set var="my" value="새싹"/>
-																		<c:set var="lib" value="${book.libVOs.lName}"/>
-																		<c:choose>
-																			<c:when test="${lib == my}">
-																				<c:choose>
-																					<c:set var="able" value="${book.able}"/>
-																					<c:when test="${able == 1}">
-																						<a href="javascript:;" onclick="javascript:reservationApplyProc('100359773','EM0000165212'); return false" class="btn white small">대출</a>
-																					</c:when>
-																					<c:when test="${able == 0}">
-																						<a href="javascript:;" onclick="javascript:reservationApplyProc('100359773','EM0000165212'); return false" class="btn white small">대출예약</a>
-																					</c:when>
-																				</c:choose>
-																			</c:when>
-																		</c:choose>
-																	</td>
-																	<td>대출신청 ${book.able}</td>
-																	<td>예약신청 ${book.able}</td>
-																	<td>
-																		<c:choose>
-																			<c:when test="${book.libVOs.lName} != 새싹">
-																				<h1>상호대차 신청</h1>
-																			</c:when>
-																		</c:choose>
-																	</td>
-																	<td>도서관 위치 지도열기</td>
-																</tr>
+																</c:forEach>
+																
 															</tbody>
 														</table>
 													</div>
@@ -252,7 +272,7 @@
 										<c:import url="detailSW.jsp"></c:import>
 									</c:when>
 								</c:choose>
-							</div>
+							</div>	
 						</div>
 						<!-- 책 디테일 끝 -->
 					</div>
