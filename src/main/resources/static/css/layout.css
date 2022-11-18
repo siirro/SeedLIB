@@ -4,7 +4,7 @@
 .lib.child, .lib.MJ{background-color:#eb5a95 !important;}
 
 /* Theme Color : #6b64be*/
-.themeBG, .themeBtn {background-color: #64be79 !important;}
+.themeBG, .themeBtn {background: linear-gradient(to right, #10e2a5, #00ff7f)}
 
 .themeFC {color: #6b64be !important;}
 

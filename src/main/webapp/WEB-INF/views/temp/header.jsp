@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="/css/button.css">
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/sub.css">
-<link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/images/favicon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -87,9 +86,9 @@
 				<li id="gnb2" class="hehehe"> <a href="/seoksu/menu/10123/contents/40005/contents.do"> <em>문화참여</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb2_1"><a href="/seoksu/menu/10124/program/30015/lectureList.do">문화행사신청</a> </li> 
-						<li id="gnb2_2"><a href="/donation/setDonation">도서기증</a> </li> 
-						<li id="gnb2_3"><a href="/hope/hopeInfo">희망도서신청</a></li>
-						<li id="gnb2_4"><a href="/room">열람실예약</a> </li> 
+						<li id="gnb2_2"><a href="/hope/hopeInfo">희망도서신청</a></li>
+						<li id="gnb2_3"><a href="/donation/donInfo">소장도서기증</a></li> 
+						<li id="gnb2_4"><a href="/studyroom">열람실예약</a> </li> 
 					</ul> 
 				</li> 
 				

@@ -43,13 +43,13 @@ pageEncoding="UTF-8"%>
         width: 50px;
         /* background-color: #77af9c;
         color: #d7fff1; */
-        color: #45a987;
+        color: #0cc086;
 
     }
 
     #pagePre{
         width: 50px;
-        color: #45a987;
+        color: #0cc086;
     }
 
     .aplBtn{
@@ -57,8 +57,8 @@ pageEncoding="UTF-8"%>
         right: 0;
         bottom: 0;
         padding: 3px 15px;
-        background-color: #77af9c;
-        color: #d7fff1;
+        background-color: #06e3ab;
+        color: #f3fefa;
     }
 
 </style>
@@ -174,7 +174,7 @@ pageEncoding="UTF-8"%>
                                     <col>
                                     </colgroup><tbody>
                                         <tr>
-                                            <th scope="row"><label for="libCode"><span class="essential">*</span> 신청도서관</label></th>
+                                            <th scope="row"><label for="libCode">신청도서관</label><span class="essential">*</span></th>
                                             <td>
                                                 <select name="hopLib" id="hopLib" class="form-ele auto">
                                                     <option value="">도서관선택</option>

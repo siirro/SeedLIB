@@ -20,67 +20,11 @@
 <div id="contentcore">
 <div class="naviandtitle">
 	<h3>신청안내</h3>
-	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>희망도서신청<i class="arrow"></i>신청안내</div>
-	<div class="snsFarm">
-		<ul class="snsBtnArea clearfix">
-			<li>
-				<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-				<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-					<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/GiUGRpAB"><span class="blind">단축URL</span></a>
-					<a href="#sns2" id="sns2" title="QR코드 레이어팝업 열림" class="snsQr" data-tooltip="chartSns"><span class="blind">QR코드</span></a>
-					<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory"><span class="blind">카카오스토리</span></a>
-					<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter"><span class="blind">트위터</span></a>
-					<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook"><span class="blind">페이스북</span></a>
-				</div>
-			</li>
-			<li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seoksu'); return false;"><span class="blind">현재화면 프린트</span></a></li>
-		</ul>
+	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>희망도서신청<i class="arrow"></i>신청안내
 	</div>
 </div>
 
-<!-- 레이어팝업 -->
-<div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-	<div class="layer-content">
-		<h4>QR코드</h4>
-		<div class="layer-content">
-			<div class="conTxt ta_c" id="qrcodeImg"></div>
-			<div class="conTxt">
-				<p>QR코드 이미지 저장</p>
-				QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-			</div>
-		</div>
-		<a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-	</div>
-</div>
-<!-- //레이어팝업 -->
-
-<script src="/include/js/clipboard.min.js"></script>
-<script>
-	$('#sns').click(function(e) {
-		$.ajax({
-			type: "POST",
-			url: "/cmmn/share/shortUrl.do",
-			dataType : "json",
-			data: { "url" : "https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do"},
-			async: false,
-			error : function (request, status, error){
-				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-			},
-			success: function(data) {
-				//$("#shortUrl").html(data.url);
-				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do" >');
-				$("#sns1").attr('data-clipboard-text', data.url);
-			}
-		});
-	});
-
-	function fnShorturlCopy() {
-		var clipboard = new ClipboardJS('#sns1');
-		alert('단축주소가 복사되었습니다.');
-		return false;
-	}
-</script>
-				<div id="contents" class="contentArea">
+<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->
 <div class="ttabWrap" style="display: block;">
