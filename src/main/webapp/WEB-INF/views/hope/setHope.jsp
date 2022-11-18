@@ -191,7 +191,7 @@ pageEncoding="UTF-8"%>
                                                          <option value="4">도란도란도서관</option>
                                                          <option value="5">뿌리도서관</option>
                                                    </select>
-                                                <p class="emp1 ref">해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 선택 불가</p>
+                                                <p class="emp1 ref" id="titleInfo">해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 신청 불가</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -239,6 +239,9 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
         </div>
+<!-- footer -->
+<c:import url="../temp/footer.jsp"></c:import>
+<!-- //footer -->
 
      <script defer src="/js/hope.js"></script>
 </body>

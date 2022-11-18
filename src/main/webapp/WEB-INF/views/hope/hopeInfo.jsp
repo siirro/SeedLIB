@@ -5,15 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/button.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/sub.css">
     <title>희망 도서 신청</title>
 </head>
 <body>
@@ -121,7 +112,7 @@
 <ul class="dot-list">
 	<li><span>신청기간</span> : 매년 1월 1일부터 당해연도 예산 소진시 까지(마감일 별도 공지)</li>
 	<li><span>신청자격</span> : 씨앗도서관 관외대출회원</li>
-	<li><span>신청권수</span> : <span style="color:#ff0000;"><strong>10개 도서관 통합 1인 월 3권</strong></span></li>
+	<li><span>신청권수</span> : <span style="color:#ff0000;"><strong>6개 도서관 통합 1인 월 3권</strong></span></li>
 	<li><span>소요기간</span> : 2~3주(자료에 따라 달라질 수 있음)</li>
 </ul>
 
@@ -150,16 +141,14 @@
 	※ 제외기준 중 세부적인 부분은 각 도서관 별 장서구성방향에 따라 달라질 수 있습니다.</li>
 </ul>
 
-<h4 class="htitle"><span class="themeFC">구입</span> 진행상황 알림</h4>
+<h4 class="htitle"><span class="themeFC">입고</span> 진행상황 알림</h4>
 
 <ul class="dot-list">
 	<li>희망도서의 처리여부는 [마이페이지&gt;희망도서신청조회] 페이지에서 확인가능합니다.
 	<ul class="dash-list">
-		<li>소장도서 : 이미 도서관에 소장되어 있는 자료</li>
-		<li>선정 : 구입결정 후 주문된 상태</li>
-		<li>처리중 : 납품되어 DB구축 등 자료정리 중인 상태</li>
-		<li>취소 : 희망도서 선정 제외기준에 해당되어 구입 취소 상태(마이페이지-희망도서신청조회 메뉴에서 확인 가능)</li>
-		<li>처리완료 : 자료실에 비치되어 신청자가 우선 이용가능</li>
+		<li>입고완료 : 구입결정 후 주문된 상태</li>
+		<li>신청 중 : 관리자가 신청 내용을 확인하고 검토 중인 상태</li>
+		<li>반려 : 희망도서 선정 제외기준에 해당되어 구입 취소 상태(이와 관련 문의사항은 [도서관 소개-도서관에 바란다] 에서 문의 바람)</li>
 	</ul>
 	</li>
 </ul>
@@ -178,5 +167,8 @@
 				</div>
 			</div>
 			</div>
+<!-- footer -->
+<c:import url="../temp/footer.jsp"></c:import>
+<!-- //footer -->			
 </body>
 </html>

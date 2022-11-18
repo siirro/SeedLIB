@@ -9,6 +9,7 @@
   		
   		<typeAlias type="com.seed.lib.book.BookVO" alias="BookVO"/>
   		<typeAlias type="com.seed.lib.book.LibVO" alias="LibVO"/>
+  		<typeAlias type="com.seed.lib.book.BookLibVO" alias="BookLibVO"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
@@ -19,7 +20,7 @@
 		 
 		 
 		 <typeAlias type="java.util.List" alias="List"/>
-
+		 <typeAlias type="java.util.Map" alias="Map"/>
  
  </typeAliases>
   </configuration>

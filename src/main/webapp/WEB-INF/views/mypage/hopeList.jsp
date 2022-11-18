@@ -130,6 +130,9 @@
 				</div>
 			</div>
 		</div>	
+<!-- footer -->
+<c:import url="../temp/footer.jsp"></c:import>
+<!-- //footer -->
 		<script src="/js/hopeList.js"></script>
 </body>
 </html>

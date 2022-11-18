@@ -7,8 +7,14 @@
 
 	<!-- 도서 디테일 -->
 	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
-		SELECT B.* FROM BOOK B
-		WHERE B.ISBN = #{isbn}
+	SELECT b.*, b2.*, l.*
+	FROM book b
+		inner join booklib b2 
+		on b.ISBN = b2.ISBN 
+	
+		inner join library l
+		on l.LIBNUM  = b2.LIBNUM 
+	WHERE b.ISBN = #{isbn}
 	</select>
 	
 	<resultMap type="BookVO" id="getDetailResult">
@@ -19,29 +25,20 @@
 			<result column="bookDate" property="bookDate"/>
 			<result column="able" property="able"/>
 			<result column="category" property="category"/>
-			<result column="quantity" property="quantity"/>
 			<result column="image" property="image"/>
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
+
+			<association property="bookLibVO" javaType="BookLibVO">
+				<result column="quantity" property="quantity"/>
+			</association>
 			
 			<collection property="libVOs" javaType="List" ofType="LibVO">
-				<id column="bLibNum" property="bLibNum"/>
-				<result column="libNum" property="libNum"/>
+				<id column="libNum" property="libNum"/>
 				<result column="libName" property="libName"/>
 			</collection>
+			
 	</resultMap>
-	
-	<!-- 희망도서관련 -->
-	<select id="GetHaveBook" parameterType="BookVO" resultMap="BookVO">
-		SELECT * FROM BOOK B
-			INNER JOIN
-			BOOKLIB BL
-			ON B.ISBN=BL.ISBN
-				INNER JOIN
-				LIBRARY L
-				ON BL.LIBNUM=L.LIBNUM
-		WHERE B.TITLE={#title} AND L.LIBNUM={#libNum}		
-	</select>
 	
 </mapper>
   
