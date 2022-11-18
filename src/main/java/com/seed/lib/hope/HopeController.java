@@ -86,10 +86,8 @@ public class HopeController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("isbn", hopeVO.getIsbn());
 		map.put("libNum", hopeVO.getLibVO().getLibNum());
-		log.info("@@@@@@@@@@@@@@@@@@LibNum:{}",hopeVO);
 		hopeVO.setIsbn(Long.parseLong(hopeVO.getIsbn().toString()));
 		int result = hopeService.setHope(hopeVO, map);
-		log.info("@@@@@@@@@@RESULT=>{}",result);
 		return result;
 	}
 	

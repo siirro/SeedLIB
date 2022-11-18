@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.seed.lib.util.HdPager;
+
 @Mapper
 public interface HopeMapper {
 
@@ -17,7 +19,8 @@ public interface HopeMapper {
 	public int setHopeLib(Map<String, Object> map) throws Exception;
 	
 	public int setDeleteHope(HopeVO hopeVO) throws Exception;
-	public List<HopeVO> getHopeList(String userName) throws Exception;
+	public Long getTotalCount(HdPager hdPager) throws Exception;
+	public List<HopeVO> getHopeList(HdPager hdPager) throws Exception;
 	
 	
 }

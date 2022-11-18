@@ -47,7 +47,39 @@
 		(0, #{libNum}, #{hopNum})
 	</insert>	
 		
-	<select id="getHopeList" parameterType="String" resultMap="HopeVOResult">
+		
+<!-- 마이페이지 영역 -->
+<sql id="search">
+		 AND L.LIBNUM LIKE CONCAT(#{libNum},'%')
+		 AND
+			<choose>
+				<when test="searchType=='0'">HOPTITLE</when>
+				<when test="searchType=='1'">HOPWRITER</when>
+				<otherwise>HOPPUBLISHER</otherwise>
+			</choose>
+			LIKE CONCAT('%', #{searchKeyword}, '%')
+</sql>
+
+<select id="getTotalCount" parameterType="HdPager" resultType="Long">
+	SELECT COUNT(H.HOPNUM) FROM HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+			INNER JOIN
+			HOPLIB HL
+			ON H.HOPNUM=HL.HOPNUM
+				INNER JOIN
+				LIBRARY L
+				ON HL.LIBNUM=L.LIBNUM
+		WHERE USERNAME=#{userName} <include refid="search"></include>
+		ORDER BY H.HOPNUM DESC 
+</select>
+
+
+	<select id="getHopeList" parameterType="HdPager" resultMap="HopeVOResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
 			HOSTAT HS
@@ -61,7 +93,8 @@
 				INNER JOIN
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
-		WHERE USERNAME=#{userName} ORDER BY H.HOPNUM DESC 
+		WHERE USERNAME=#{userName} <include refid="search"></include>
+		ORDER BY H.HOPNUM DESC 
 	</select>
 	
 	<delete id="setDeleteHope" parameterType="HopeVO">

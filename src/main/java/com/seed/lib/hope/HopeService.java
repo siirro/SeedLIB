@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.util.HdPager;
 
 @Service
 public class HopeService {
@@ -52,7 +53,9 @@ public class HopeService {
 		return hopeMapper.setDeleteHope(hopeVO);
 	}
 	
-	public List<HopeVO> getHopeList(String userName) throws Exception{
-		return hopeMapper.getHopeList(userName);
+	public List<HopeVO> getHopeList(HdPager hdPager) throws Exception{
+		hdPager.makeRow();
+		hdPager.getNum(hopeMapper.getTotalCount(hdPager));
+		return hopeMapper.getHopeList(hdPager);
 	}
 }
