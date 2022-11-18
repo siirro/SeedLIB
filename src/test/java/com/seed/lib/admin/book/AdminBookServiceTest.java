@@ -21,8 +21,6 @@ class AdminBookServiceTest {
 		bookVO.setWriter("writer");
 		bookVO.setPublisher("출판사");
 		bookVO.setBookDate(2022L);
-		bookVO.setCategory(000L);
-		bookVO.setQuantity(1L);
 		bookVO.setImage("이미지");
 		
 		int result = adminBookService.setBookAdd(bookVO);
