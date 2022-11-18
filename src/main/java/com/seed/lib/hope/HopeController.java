@@ -27,9 +27,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HopeController {
 	
-//	@Value("${kakao.api.key}")
-//	private String apiKey;
-//	
+	@Value("${kakao.api.key}")
+	private String apiKey;
+	
 	@Autowired
 	private HopeService hopeService;
 	
@@ -42,11 +42,11 @@ public class HopeController {
 	public void setHope()throws Exception{
 	}
 	
-//	@GetMapping("searchHope")
-//	@ResponseBody
-//	public String searchHope(String result) throws Exception{
-//		return apiKey;
-//	}
+	@GetMapping("searchHope")
+	@ResponseBody
+	public String searchHope(String result) throws Exception{
+		return apiKey;
+	}
 	
 	@PostMapping("bookCheck")
 	@ResponseBody
