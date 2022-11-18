@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import com.seed.lib.book.BookVO;
 
 @Service
-public class BookService {
+public class AdminBookService {
 
 	@Autowired
-	private BookMapperIF bookMapperIF;
+	private AdminBookMapperIF bookMapperIF;
 	
 	public int setBookAdd(BookVO bookVO)throws Exception{
 		return bookMapperIF.setBookAdd(bookVO);

@@ -166,6 +166,7 @@ $(".pagination").on("click",".page",function(){
     getSearch(); 
 }) 
 
+//검색 후 도서 입력
 function hopeApply(title, authors, publisher, datetime, isbn, price){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
@@ -211,6 +212,7 @@ function hopeApply(title, authors, publisher, datetime, isbn, price){
     }
 }
 
+//직접입력
 $("#selfApply").click(function(){
     $("#hopTitle").val("");
     $("#hopWriter").val("");
@@ -226,6 +228,7 @@ $("#selfApply").click(function(){
     $("#price").attr("readonly", "false");
 })
 
+//희망도서신청
 $("#registBtn").click(function(){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
@@ -233,11 +236,9 @@ $("#registBtn").click(function(){
         hTitleCheck = false;
         hWriterCheck = false;
         hMemoCheck = false;
-        console.log($("#hopPublisher").val().length);
         if($("#hopLib").val()!=""){
             hLibCheck = true;
         }
-        console.log($("#hopTitle").val().length)
         if($("#hopTitle").val().length>0){
             hTitleCheck = true;
         }
@@ -254,36 +255,85 @@ $("#registBtn").click(function(){
         if($("#hopMemo").val().length>0){
             hMemoCheck = true;
         }
-
         if(hLibCheck&&hTitleCheck&&hWriterCheck&&hMemoCheck){
             // $("#registForm").submit();
+            let libVO={
+                libNum:$("#hopLib").val()
+            }
             let hopeVO = {
-                hopLib:$("#hopLib").val(),
                 hopTitle:$("#hopTitle").val(),
                 hopWriter:$("#hopWriter").val(),
                 hopPublisher:$("#hopPublisher").val(),
                 isbn:$("#isbn").val(),
                 userName:$("#userName").val(),
-                hopMemo:$("#hopMemo").val()
+                hopMemo:$("#hopMemo").val(),
+                libVO:libVO
             }
-            console.log(hopeVO.hopTitle);
             $.ajax({
                 type:"POST",
-                url:"/hope/setHope",
-                data: JSON.stringify(hopeVO),
+                url:"/hope/bookCheck",
+                data:JSON.stringify(hopeVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success:function(data){
-                    console.log(data);
-                    alert("희망 도서 신청 완료");
-                    // location.href="../";
-                },error:function(error){
-                    console.log("errorㅠㅠ", data);
-                    console.log(error);
-                    // location.href="./";
+                    switch (data) {
+                        case 111:
+                          $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
+                          break;
+                        case 222:
+                          alert("해당 도서관에 이미 신청 중인 도서입니다");
+                          break;
+                        case 333:
+                            alert("이번 달에 신청 가능한 횟수를 초과하였습니다");
+                            location.href="../";
+                            break;  
+                        case 200:
+                            console.log("Num: ", hopeVO.libVO.libNum);
+                            $.ajax({
+                                type:"POST",
+                                url:"/hope/setHope",
+                                data: JSON.stringify(hopeVO),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success:function(data){
+                                    console.log(data);
+                                    alert("희망 도서 신청 완료");
+                                    // location.href="../";
+                                },error:function(error){
+                                    console.log("errorㅠㅠ", data);
+                                    console.log(error);
+                                    // location.href="./";
+                                }                
+                            })
+                            break;
+                      }
+                    // console.log(data);
+                    // if(data==111){
+                    //     $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
+                    // }else if(data==222){
+                    //     alert("해당 도서관에 이미 신청 중인 도서입니다");
+                    // }
+                }
 
-                }                
             })
+
+            // $.ajax({
+            //     type:"POST",
+            //     url:"/hope/setHope",
+            //     data: JSON.stringify(hopeVO),
+            //     contentType: "application/json; charset=utf-8",
+            //     dataType: "json",
+            //     success:function(data){
+            //         console.log(data);
+            //         alert("희망 도서 신청 완료");
+            //         // location.href="../";
+            //     },error:function(error){
+            //         console.log("errorㅠㅠ", data);
+            //         console.log(error);
+            //         // location.href="./";
+
+            //     }                
+            // })
         }else{
             alert("신청 정보를 확인 후 신청해주세요");
             location.reload();

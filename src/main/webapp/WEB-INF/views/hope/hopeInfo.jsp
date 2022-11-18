@@ -5,15 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/button.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/sub.css">
     <title>희망 도서 신청</title>
 </head>
 <body>
@@ -178,5 +169,8 @@
 				</div>
 			</div>
 			</div>
+<!-- footer -->
+<c:import url="../temp/footer.jsp"></c:import>
+<!-- //footer -->			
 </body>
 </html>

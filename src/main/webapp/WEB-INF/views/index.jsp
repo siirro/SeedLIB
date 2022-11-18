@@ -21,817 +21,129 @@
 		<div id="container" class="main">
 			<section id="section1">
 				<h2 class="blind">메인상단</h2>
+
+				<div class="backImg">
+					<ul class="popupList thumb">
+						<li style="z-index: 99; display: list-item;"></li>
+						<li style="display: list-item; z-index: 100;"></li>
+						<li style="display: list-item; z-index: 99;"></li>
+					</ul>
+				</div>
 				<div class="sectionGroup">
-					<p class="slogan"><span>씨앗도서관</span><br>하이루하이루</p>
+					
+
+					<div class="sectionGroup" >
+						<p class="slogan" style="color: white;"><span style="font-size: 52px;"">씨앗도서관</span><br>지식정보화시대의 선도적 도서관으로 도약</p>
+						
+						<!-- 통합검색 -->
+
+
+		<script type="text/javascript" src="/include/booksearch/js/autocom.js"></script>
+
+		<div class="mainSearchWrap">
+			<div class="mainSearchForm clearfix">
+				<form name="mainSearchForm" id="mainSearchForm" method="post">
+					<input type="hidden" name="searchType" value="SIMPLE">
+					<input type="hidden" name="searchManageCode" value="ALL">
+					<fieldset>
+						<legend class="blind">통합검색 영역</legend>
+						<div class="mainSearchKeywordWrap">
+							<div class="mainSearchKeyword">
+								<label for="mainSearchKeyword" class="blind">검색어 입력</label>
+								<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="searchKeyword" placeholder="검색어를 입력하세요">
+								<a href="#search" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
+							</div>
+							<div class="mainAutoSearch" id="atcBox">
+								<ul id="atcList">
+								</ul>
+								<div class="button_wrap">
+									<button type="button"></button>
+									<div class="button_box">
+										<button type="button" class="auto_off" id="atcToggleBtn">자동완성 끄기</button>
+									</div>
+								</div>
+							</div>
+							<a href="/intro/searchDetail.do" class="btnDetail mobileHide">고급검색</a>
+						</div>
+						<div id="mainBestKeyword" class="mainBestKeyword mobileHide">
+		
+		<script>
+			$(function(){
+				//통합검색 인기검색어
+				$(".keywordListWrap").newsTicker({
+					itemHeight: 33,
+					showItems: 1,
+					duration: 4000,
+					prevButton: "#btnDwon",
+					nextButton: "#btnUp"
+				});
+			});
+		</script>
+		<div class="controlArea">
+			<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
+			<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
+		</div>
+		<div class="keywordListWrap" style="height: 33px; overflow: hidden;">
+			<ol class="keywordList" style="margin-top: 0px;">
+						<li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점'); return false;" title="불편한 편의점"><i>1</i>불편한 편의점</a></li>
+			<li><a href="#link" onclick="javascript:fnMainSearchKeyword('흔한남매'); return false;" title="흔한남매"><i>2</i>흔한남매</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('파친코'); return false;" title="파친코"><i>3</i>파친코</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한편의점'); return false;" title="불편한편의점"><i>4</i>불편한편의점</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('하얼빈'); return false;" title="하얼빈"><i>5</i>하얼빈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점 김호연 장편소설 2'); return false;" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('카카오프렌즈'); return false;" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('아버지의 해방일지'); return false;" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('웹툰'); return false;" title="웹툰"><i>9</i>웹툰</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('신라'); return false;" title="신라"><i>10</i>신라</a></li></ol>
+		</div></div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		
+						<!-- //통합검색 -->
+		
+						<!-- 주요서비스 -->
+						<div class="shortcut">
+							<ul class="shortcutList clearfix">
+								<li class="svc1"><a href="/marathon"><i class="ico"></i>독서마라톤</a></li>
+								<li class="svc3"><a href="#ebook" onclick="fnEbookLink();" title="새 창 열림"><i class="ico"></i>전자도서관</a></li>
+								<li class="svc7"><a href="/intro/lectureList.do"><i class="ico"></i>문화행사신청</a></li>
+								<li class="svc4"><a href="/intro/40002/contents.do"><i class="ico"></i>희망도서신청</a></li>
+								<li class="svc9"><a href="/intro/menu/10046/contents/40012/contents.do"><i class="ico"></i>스마트도서관</a></li>
+								<li class="svc6"><a href="/intro/40027/contents.do"><i class="ico"></i>이용안내</a></li>
+								<li class="svc5"><a href="/intro/40028/contents.do"><i class="ico"></i>도서관소개</a></li>
+							</ul>
+						</div>
+						<!-- //주요서비스 -->
+		
+						<!-- 도서관 바로가기 -->
+						
+
+					<form name="ebookForm" method="post" target="_blank" action="https://elib.anyang.go.kr/ebookPlatform/Homepage/SSOLoginDL.do">
+						<input type="hidden" name="libCode" value="141077">
+						<input type="hidden" name="userId" value="">
+						<input type="hidden" name="userName" value="">
+						<input type="hidden" name="smartLogin" value="ID">
+					</form>
+
+					</div>
 
 
 
-
-
+<!-- 문화프로그램 시작 -->
 <div class="cultureWrap">
 	<h5>도서관 문화행사</h5>
 	<!-- PC용-->
 	<div class="service-inner mobileHide">
 		<div class="swiper-container swiper-service swiper-container-initialized swiper-container-horizontal" style="cursor: grab;">
-			<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1500px, 0px, 0px);">
-				<div class="swiper-slide" style="width: 750px;">
+			<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+				
+				<div class="swiper-slide swiper-slide-active" style="width: 750px;">
 					<ul class="cultureList clearfix">
-						
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5863">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ing">접수중</span>
-													
-												</dt>
-												<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/25 금 15:00)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																어린이
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.14
-													
-														~
-														
-														11.24
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5862">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ing">접수중</span>
-													
-												</dt>
-												<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/25 금 11:00)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																어린이
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.14
-													
-														~
-														
-														11.24
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5865">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ing">대기접수</span>
-													
-												</dt>
-												<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/26 토 15:00)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																어린이
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.14
-													
-														~
-														
-														11.25
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5864">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ing">대기접수</span>
-													
-												</dt>
-												<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/26 토 11:00)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																어린이
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.14
-													
-														~
-														
-														11.25
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5885">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ready">접수예정</span>
-													
-												</dt>
-												<dd class="title">[송년의달] 크리스마스 레진아트 키링 만들기 B반 (초등3-5)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.22
-													
-														~
-														
-														12.06
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5884">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ready">접수예정</span>
-													
-												</dt>
-												<dd class="title">[송년의달] 크리스마스 레진아트 키링 만들기 A반 (초등1-2)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.22
-													
-														~
-														
-														12.06
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-										</ul></div><div class="swiper-slide swiper-slide-prev" style="width: 750px;"><ul class="cultureList clearfix">
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5883">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ready">접수예정</span>
-													
-												</dt>
-												<dd class="title">[송년의달] 이유리 작가와 함께하는 어린이 미술탐험 "왜 유명한 거야, 이 그림?"</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.22
-													
-														~
-														
-														12.07
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5882">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="ready">접수예정</span>
-													
-												</dt>
-												<dd class="title">[송년의달] 『좋은아빠혁명』 강은정 작가와의 만남</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-													
-														
-															
-																
-																성인
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.11.22
-													
-														~
-														
-														12.02
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5763">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="end">마감</span>
-													
-												</dt>
-												<dd class="title">[더불어 배우는 다가치 다문화] 다문화 인문학 강좌</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-																
-																누구나
-																
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.10.20
-													
-														~
-														
-														11.04
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5636">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="end">마감</span>
-													
-												</dt>
-												<dd class="title">석수도서관 나의 생애사 쓰기</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-																
-																성인
-																
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.09.16
-													
-														~
-														
-														09.28
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5609">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="end">마감</span>
-													
-												</dt>
-												<dd class="title">[하반기] 생각이 커지는 독서토론 (B반)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.09.06
-													
-														~
-														
-														09.21
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-								
-									<li>
-										<a href="/seoksu/lectureDetail.do?lectureIdx=5608">
-											<dl>
-												<dt>석수도서관
-													
-														<span class="end">마감</span>
-													
-												</dt>
-												<dd class="title">[하반기] 생각이 커지는 독서토론 (A반)</dd>
-												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
-													<span>접수 :</span>
-													
-													2022.09.06
-													
-														~
-														
-														09.21
-													
-												</dd>
-											</dl>
-										</a>
-									</li>
-									
-										</ul></div><div class="swiper-slide swiper-slide-active" style="width: 750px;"><ul class="cultureList clearfix">
-									
-								
 									<li>
 										<a href="/seoksu/lectureDetail.do?lectureIdx=5607">
 											<dl>
 												<dt>석수도서관
-													
-														<span class="end">마감</span>
-													
+														<span class="ing">접수중</span>
 												</dt>
 												<dd class="title">[하반기] 창의쑥쑥 그림책 나라</dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
+													<span>대상 :</span>어린이
 													<br>
 													<span>접수 :</span>
-													
 													2022.09.06
 													
 														~
@@ -843,45 +155,17 @@
 										</a>
 									</li>
 									
-								
 									<li>
 										<a href="/seoksu/lectureDetail.do?lectureIdx=5606">
 											<dl>
 												<dt>석수도서관
 													
-														<span class="end">마감</span>
+														<span class="ready">접수예정</span>
 													
 												</dt>
 												<dd class="title">[하반기] 시니어 유튜브 크리에이터</dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-																
-																성인
-																
-															
-														
-													
-														
-															
-														
-													
-													<br>
+													<span>대상 :</span>성인<br>
 													<span>접수 :</span>
 													
 													2022.09.06
@@ -906,34 +190,7 @@
 												</dt>
 												<dd class="title">[하반기] 영어 그림책 함께 읽기</dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-													
-														
-															
-																
-																어린이
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
+													<span>대상 :</span>어린이<br>
 													<span>접수 :</span>
 													
 													2022.09.06
@@ -958,48 +215,7 @@
 												</dt>
 												<dd class="title">[하반기] 성인동화구연지도 (자격증반) </dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-													
-														
-															
-														
-															
-														
-													
-														
-															
-																
-																성인
-																
-															
-														
-															
-														
-													
-														
-															
-														
-															
-																, 
-																누구나
-																
-															
-														
-													
-													<br>
+													<span>대상 :</span>성인, 누구나<br>
 													<span>접수 :</span>
 													
 													2022.09.06
@@ -1024,34 +240,7 @@
 												</dt>
 												<dd class="title">[하반기] 생각이 자라는 미술 (B반)</dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
+													<span>대상 :</span>유아<br>
 													<span>접수 :</span>
 													
 													2022.09.06
@@ -1076,34 +265,7 @@
 												</dt>
 												<dd class="title">[하반기] 생각이 자라는 미술 (A반)</dd>
 												<dd class="info">
-													<span>대상 :</span>
-													
-													 
-														
-															
-																
-																유아
-																
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-														
-															
-														
-													
-													<br>
+													<span>대상 :</span>유아<br>
 													<span>접수 :</span>
 													
 													2022.09.06
@@ -1116,1044 +278,19 @@
 											</dl>
 										</a>
 									</li>
-									
-								
-							
 					</ul>
 				</div>
 			</div>
 		<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-		<div class="paginationWrap">
-			<div class="swiper-pagination service-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
-			<a href="#play" title="재생" class="button-play service-play" style="display:none;"><span class="blind">재생</span></a>
-			<a href="#stop" title="정지" class="button-stop service-stop"><span class="blind">정지</span></a>
-		</div>
+		
 	</div>
 	<!-- //PC용 -->
 
-	<!-- Mobile용 -->
-	<div class="service-inner mobileShow">
-		<div class="swiper-Mservice swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
-			<div class="swiper-wrapper" style="transition-duration: 300ms;">
-				
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5863">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ing">접수중</span>
-											
-										</dt>
-										<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/25 금 15:00)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-														
-														유아
-														
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-														, 
-														어린이
-														
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-														, 
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.14
-											
-												~
-												
-												11.24
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5862">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ing">접수중</span>
-											
-										</dt>
-										<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/25 금 11:00)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-														
-														유아
-														
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-														, 
-														어린이
-														
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-														, 
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.14
-											
-												~
-												
-												11.24
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5865">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ing">대기접수</span>
-											
-										</dt>
-										<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/26 토 15:00)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-														
-														유아
-														
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-														, 
-														어린이
-														
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-													
-														, 
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.14
-											
-												~
-												
-												11.25
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5864">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ing">대기접수</span>
-											
-										</dt>
-										<dd class="title">[송년의 달, 자연 인형극] "똥장군" (11/26 토 11:00)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-														유아
-														, 
-														어린이
-														, 
-														누구나
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.14
-											
-												~
-												
-												11.25
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5885">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ready">접수예정</span>
-											
-										</dt>
-										<dd class="title">[송년의달] 크리스마스 레진아트 키링 만들기 B반 (초등3-5)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.22
-											
-												~
-												
-												12.06
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5884">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ready">접수예정</span>
-											
-										</dt>
-										<dd class="title">[송년의달] 크리스마스 레진아트 키링 만들기 A반 (초등1-2)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.22
-											
-												~
-												
-												12.06
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5883">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ready">접수예정</span>
-											
-										</dt>
-										<dd class="title">[송년의달] 이유리 작가와 함께하는 어린이 미술탐험 "왜 유명한 거야, 이 그림?"</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.22
-											
-												~
-												
-												12.07
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5882">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="ready">접수예정</span>
-											
-										</dt>
-										<dd class="title">[송년의달] 『좋은아빠혁명』 강은정 작가와의 만남</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-											
-												
-													
-														
-														성인
-														
-													
-												
-													
-												
-											
-												
-													
-												
-													
-														, 
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.11.22
-											
-												~
-												
-												12.02
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5763">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[더불어 배우는 다가치 다문화] 다문화 인문학 강좌</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-														
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.10.20
-											
-												~
-												
-												11.04
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5636">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">석수도서관 나의 생애사 쓰기</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-														
-														성인
-														
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.16
-											
-												~
-												
-												09.28
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5609">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 생각이 커지는 독서토론 (B반)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.21
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5608">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 생각이 커지는 독서토론 (A반)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.21
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5607">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 창의쑥쑥 그림책 나라</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.22
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5606">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 시니어 유튜브 크리에이터</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-														
-														성인
-														
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.27
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5605">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 영어 그림책 함께 읽기</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-											
-												
-													
-														
-														어린이
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.23
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5604">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 성인동화구연지도 (자격증반) </dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-											
-												
-													
-												
-													
-												
-											
-												
-													
-														
-														성인
-														
-													
-												
-													
-												
-											
-												
-													
-												
-													
-														, 
-														누구나
-														
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.14
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5603">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 생각이 자라는 미술 (B반)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-														
-														유아
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.14
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-							<div class="swiper-slide cultureList">
-								<a href="/seoksu/lectureDetail.do?lectureIdx=5602">
-									<dl>
-										<dt>석수도서관
-											
-												<span class="end">마감</span>
-											
-										</dt>
-										<dd class="title">[하반기] 생각이 자라는 미술 (A반)</dd>
-										<dd class="info">
-											<!-- <span>대상 :</span> -->
-											
-											 
-												
-													
-														
-														유아
-														
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-												
-													
-												
-											
-											<br>
-											<span>접수 :</span>
-											
-											2022.09.06
-											
-												~
-												
-												09.20
-											
-										</dd>
-									</dl>
-								</a>
-							</div>
-						
-					
-			</div>
-		<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-		<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
-		<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
-	</div>
-	<!-- //Mobile용 -->
+	
 </div>
+<!-- 문화프로그램 끝 -->
+
+
 <script>
 	$(function(){
 		//문화행사 PC버전
@@ -2197,17 +334,16 @@
 		});
 	});
 </script>
-					<!-- //도서관 문화행사 -->
 
-					<!-- 달력 & 이용안내 -->
-					<div class="guideWrap">
-						<!-- 도서관일정 -->
-						<script>
-							function fnCalendarSearchMonth(searchMonth) {
-								$("#calendarWrap").load("/seoksu/main/include/calendar.do", {searchMonth : searchMonth});
-							}
-						</script>
-						<div id="calendarWrap" class="schedule">
+<!-- 달력 & 이용안내 -->
+<div class="guideWrap">
+	<!-- 도서관일정 -->
+	<script>
+		function fnCalendarSearchMonth(searchMonth) {
+			$("#calendarWrap").load("/seoksu/main/include/calendar.do", {searchMonth : searchMonth});
+		}
+	</script>
+	<div id="calendarWrap" class="schedule">
 
 <div class="top">
 	<h5>도서관달력</h5>
@@ -2222,6 +358,7 @@
 	<div class="calendar">
 		<table>
 			<caption>휴관일 및 열람실개방휴관일 안내 일정표</caption>
+
 			<thead>
 				<tr>
 					<th scope="col" class="sun">일</th>
@@ -2233,137 +370,53 @@
 					<th scope="col" class="sat">토</th>
 				</tr>
 			</thead>
+
 			<tbody>
 				<tr>
-					
-					
-					
-						<td><div></div></td>
-						
-					
-						<td><div></div></td>
-						
-					
-					
-					
-						
-						
-						
-						
+					<!-- 이렇게하면되나? 자바로 윤년 계산, 달별 일수 계산, -->
+						<td>
+							<div></div>
+						</td>
+						<td>
+							<div></div>
+						</td>
 						<td class="">
 							1
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							2
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							3
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							4
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							5
 						</td>
-						
 							</tr>
 							<tr>
-						
-						
-					
-						
-						
-						
-						
 						<td class="sun">
 							6
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
-							
 									<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-07" class="all" title="정기휴관일">7</a></div>
-								
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							8
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							9
 						</td>
-						
-						
-					
-						
-						
-						
 						
 						<td class="">
 							10
 						</td>
 						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							11
 						</td>
-						
-						
-					
-						
-						
-						
 						
 						<td class="">
 							12
@@ -2372,20 +425,9 @@
 							</tr>
 							<tr>
 						
-						
-					
-						
-						
-						
-						
 						<td class="sun">
 							13
 						</td>
-						
-						
-					
-						
-						
 						
 						
 						<td class="">
@@ -2393,7 +435,6 @@
 									<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-14" class="holiday" title="정기휴관일">14</a></div>
 								
 						</td>
-						
 						
 						<td class="">
 							15
@@ -2419,134 +460,51 @@
 							</tr>
 							<tr>
 						
-						
-					
-						
-						
-						
-						
 						<td class="sun">
 							20
 						</td>
 						
-						
-					
-						
-						
-						
-						
 						<td class="">
-							
 									<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-21" class="all" title="정기휴관일">21</a></div>
-								
 						</td>
-						
-						
-					
-						
-						
-						
 						
 						<td class="">
 							22
 						</td>
 						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							23
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							24
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							25
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							26
 						</td>
-						
 							</tr>
 							<tr>
-						
-						
-					
-						
-						
-						
-						
 						<td class="sun">
 							27
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							
 									<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-28" class="holiday" title="정기휴관일">28</a></div>
 								
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							29
 						</td>
-						
-						
-					
-						
-						
-						
-						
 						<td class="">
 							30
 						</td>
-						
-						
-					
-					
-						
 							<td><div></div></td>
 						
 							<td><div></div></td>
 						
 							<td><div></div></td>
-						
-					
 				</tr>
 			</tbody>
 		</table>
@@ -2594,22 +552,6 @@
 					<!-- 북리스트 -->
 					
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 	function fnAccessionBookDetail(speciesKey, isbn, pubFormCode){
 		var form = document.mainBookForm;
@@ -2634,6 +576,14 @@
 	<input type="hidden" name="isbn">
 	<input type="hidden" name="pubFormCode">
 </form>
+
+
+
+
+<!-- 인기도서 추천도서 신착도서 대출베스트 -->
+
+
+
 <div class="bookZone">
 	<ul class="tab book clearfix">
 		<li class="on"><a href="#libraryPopularBook">공공도서관 인기도서</a></li>
@@ -2644,25 +594,8 @@
 	<div id="libraryPopularBook" class="bookListWrap">
 		
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <ul class="bookList clearfix">
 	
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
@@ -2707,116 +640,58 @@
 					</span>
 					<span class="txt">하얼빈 :김훈 장편소설</span>
 				</li>
-			
-		
 </ul>
 <div class="more mobileHide"><a href="/seoksu/libraryPopularBookList.do"><span class="blind">더보기</span></a></div>
-
 	</div>
 	<div id="recommendBook" class="bookListWrap" style="display: none;">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <ul class="bookList clearfix">
-	
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
-							
 									<img src="https://shopping-phinf.pstatic.net/main_3437283/34372834618.20221019120118.jpg" alt="걱정 많은 어른들을 위한 화학 이야기" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">걱정 많은 어른들을 위한 화학 이야기</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=4&amp;recommendBookIdx=3925">
 							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/212/927/21292798.jpg" alt="나를 훔쳐 주세요" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">나를 훔쳐 주세요</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=2&amp;recommendBookIdx=3924">
-							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/214/340/21434043.jpg" alt="세븐 테크" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">세븐 테크</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=1&amp;recommendBookIdx=3923">
-							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/223/379/22337911.jpg" alt="아티스트 웨이, 마음의 소리를 듣는 시간" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">아티스트 웨이, 마음의 소리를 듣는 시간</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="/seoksu/recommendBookDetail.do?searchCategory=5&amp;recommendBookIdx=3922">
 							
 									<img src="https://bookthumb-phinf.pstatic.net/cover/225/599/22559905.jpg" alt="곧 재능 교환이 시작됩니다" onerror="javascript:fnNoImgBook(this);">
-								
 						</a>
 					</span>
 					<span class="txt">곧 재능 교환이 시작됩니다</span>
 				</li>
-			
-		
 </ul>
 <div class="more mobileHide"><a href="/seoksu/recommendBookList.do"><span class="blind">더보기</span></a></div>
-
-
 </div>
 	<div id="accessionBook" class="bookListWrap" style="display: none;">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <ul class="bookList clearfix">
-	
-			
 				<li>
 					<span class="cover">
 						<a href="#link" onclick="fnAccessionBookDetail('106022579', '9788949162485', 'MO'); return false;">
@@ -2825,7 +700,6 @@
 					</span>
 					<span class="txt">랑랑 형제 떡집</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="#link" onclick="fnAccessionBookDetail('106022576', '9788901253862', 'MO'); return false;">
@@ -2834,7 +708,6 @@
 					</span>
 					<span class="txt">정글버스</span>
 				</li>
-			
 				<li>
 					<span class="cover">
 						<a href="#link" onclick="fnAccessionBookDetail('106022571', '9788925578170', 'MO'); return false;">
@@ -2867,26 +740,7 @@
 <div class="more mobileHide"><a href="/seoksu/accessionBookList.do"><span class="blind">더보기</span></a></div></div>
 	<div id="popularBookMonth" class="bookListWrap" style="display: none;">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <ul class="bookList clearfix">
-	
-			
 				<li>
 					<span class="cover">
 						<a href="" onclick="fnPopularBookMonthDetail('19632613', '9788954654753', 'MO'); return false;">
@@ -2931,9 +785,6 @@
 					</span>
 					<span class="txt">(서울 자가에 대기업 다니는) 김 부장 이야기. 1, 김 부장 편</span>
 				</li>
-			
-		
-
 </ul>
 <div class="more mobileHide"><a href="/seoksu/popularBookMonthList.do"><span class="blind">더보기</span></a></div></div>
 </div>
@@ -2951,57 +802,11 @@
 		</div>
 		
 
+
 <!-- footer -->
-<footer id="footer">
-    <div class="fnbWrap">
-        <div class="footerInner clearfix">
-            <ul class="fnb clearfix">
-                <li><a href="/seoksu/40025/contents.do"><span>개인정보처리방침</span></a></li>
-                <li><a href="/seoksu/40026/contents.do">이메일추출방지정책</a></li>
-                <li><a href="/seoksu/40024/contents.do">도서관관련법규</a></li>
-            </ul>
-            <div class="familySite mobileHide">
-                <select name="relateSite" id="relateSite" title="관련기관 사이트 바로가기 선택">
-                    <option value="" selected="selected">관련기관 사이트</option>
-                    <option value="https://www.nl.go.kr/">국립중앙도서관</option>
-                    <option value="http://www.dlibrary.go.kr/">국가전자도서관</option>
-                    <option value="https://www.nlcy.go.kr/NLCY/main/index.do">국립어린이청소년도서관</option>
-                    <option value="https://www.nanet.go.kr/main.do">국회도서관</option>
-                    <option value="https://www.library.kr/cyber/index.do">경기도사이버도서관</option>
-                    <option value="https://memory.library.kr/">경기도메모리</option>
-                    <option value="https://books.nl.go.kr/">책바다</option>
-                    <option value="http://cn.nl.go.kr/chaeknarae/index.do">책나래</option>
-                    <option value="https://books.nl.go.kr/">책이음</option>
-                    <option value="https://www.nl.go.kr/NL/contents/N50203010000.do">사서에게물어보세요</option>
-                    <option value="https://www.nld.go.kr/ableFront/index.jsp">국립중앙장애인도서관</option>
-                </select>
-                <a href="#go" id="btnRelateSite" class="btnGo" title="새창열림">이동</a>
-            </div>
-        </div>
-    </div>
-    <div class="faddWrap">
-        <div class="footerInner clearfix">
-            <div class="fadd">
-            	<address><span>석수도서관</span><span>13905 경기도 안양시 만안구 양화로217번길 34(석수동)</span><span>전화번호 : 031-8045-6105, 6106</span></address>
-                <cite>Copyright 2020. Anyang Municipal Library All Rights Reserved.</cite>
-            </div>
-        </div>
-    </div>
-    <div>
-        <p id="post-result"></p>
-    </div>
-    
-</footer>
+<c:import url="./temp/footer.jsp"></c:import>
 
 <!-- //footer -->
-
-
-<input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
-<input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">
-<input type="hidden" name="pbInitNo3" id="pbInitNo3" value="0">
-<input type="hidden" name="pbInitNo4" id="pbInitNo4" value="0">
-<input type="hidden" name="pbInitNo5" id="pbInitNo5" value="0">
-<iframe name="hiddenFrame" id="hiddenFrame" title="빈프레임" style="display:none;"></iframe>
 
 <script type="text/javascript">
     $(function () {
@@ -3018,17 +823,14 @@
     });
 </script>
 
-<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-<script type="text/javascript">
-	if(!wcs_add) var wcs_add = {};
-	wcs_add["wa"] = "6c8e44062da500";
-	if(window.wcs) {wcs_do();}
-</script>
-	</div>
+<!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
+<input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">
+<input type="hidden" name="pbInitNo3" id="pbInitNo3" value="0">
+<input type="hidden" name="pbInitNo4" id="pbInitNo4" value="0">
+<input type="hidden" name="pbInitNo5" id="pbInitNo5" value="0">
+<iframe name="hiddenFrame" id="hiddenFrame" title="빈프레임" style="display:none;"></iframe> -->
 
 
-
-<script src="/js/indexcopy.js"></script>
 </body>
 
 </html>
