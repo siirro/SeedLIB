@@ -2,9 +2,9 @@
 		<!DOCTYPE mapper
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seed.lib.admin.book.AdminBookMapperIF">
+<mapper namespace="com.seed.lib.admin.book.AdminBookMapper">
 	<insert id="setBookAdd" parameterType="BookVO">
-		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BDATE, ABLE, CATEGORY, QUANTLTY, IMAGE, BOOKCOUNT, BOOKHEART)
-		VALUES (null, #{title}, #{writer}, #{publisher}, #{bDate}, 1, #{category}, #{quantity}, #{image}, 0, 0);
+		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, ABLE, CATEGORY, QUANTLTY, IMAGE, BOOKCOUNT, BOOKHEART, NUM)
+		VALUES (null, #{title}, #{writer}, #{publisher}, #{bDate}, 1, #{category}, #{quantity}, #{image}, 0, 0, 0);
 	</insert>
 </mapper>

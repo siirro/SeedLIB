@@ -9,10 +9,10 @@ import com.seed.lib.book.BookVO;
 public class AdminBookService {
 
 	@Autowired
-	private AdminBookMapperIF bookMapperIF;
+	private AdminBookMapper adminBookMapper;
 	
 	public int setBookAdd(BookVO bookVO)throws Exception{
-		return bookMapperIF.setBookAdd(bookVO);
+		return adminBookMapper.setBookAdd(bookVO);
 	}
 	
 }
