@@ -25,9 +25,6 @@ public class MyPageController {
 		userName = "id1";
 		List<HopeVO> hl = hopeService.getHopeList(userName);
 		mv.addObject("hlist", hl);
-		for(HopeVO h: hl) {
-			System.out.println(h.getHopWriter());			
-		}
 		return mv;
 	}
 	

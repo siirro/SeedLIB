@@ -33,17 +33,17 @@
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
-		INSERT HOPE VALUES
+		INSERT INTO HOPE VALUES
 		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName})		
 	</insert>
 	
 	<insert id="setHopeStat" parameterType="HopeVO">
-		INSERT HOSTAT VALUES
+		INSERT INTO HOSTAT VALUES
 		(0, #{hopNum}, 0)
 	</insert>	
 	
 	<insert id="setHopeLib" parameterType="Map">
-		INSERT HOPLIB VALUES
+		INSERT INTO HOPLIB VALUES
 		(0, #{libNum}, #{hopNum})
 	</insert>	
 		
@@ -55,6 +55,12 @@
 				INNER JOIN
 				STATUS S
 				ON HS.STATNUM=S.STATNUM 
+			INNER JOIN
+			HOPLIB HL
+			ON H.HOPNUM=HL.HOPNUM
+				INNER JOIN
+				LIBRARY L
+				ON HL.LIBNUM=L.LIBNUM
 		WHERE USERNAME=#{userName} ORDER BY H.HOPNUM DESC 
 	</select>
 	
@@ -93,7 +99,6 @@
 
 <resultMap type="HopeVO" id="HopeVOResult">
 	<id column="HOPNUM" property="hopNum"/>
-		<result column="HOPLIB" property="hopLib"/>
 		<result column="HOPTITLE" property="hopTitle"/>
 		<result column="HOPWRITER" property="hopWriter"/>
 		<result column="HOPPUBLISHER" property="hopPublisher"/>
@@ -104,6 +109,10 @@
 	<association property="statusVO">
 		<id column="STATNUM" property="statNum"/>
 		<result column="STATNAME" property="statName"/>
+	</association>
+	<association property="libVO">
+		<id column="LIBNUM" property="libNum"/>
+		<result column="LIBNAME" property="libName"/>
 	</association>
 </resultMap>	
 

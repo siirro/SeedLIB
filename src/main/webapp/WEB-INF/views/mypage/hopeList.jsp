@@ -44,36 +44,13 @@
 							<div class="pageSearch">
 								<div class="schForm" style="display: flex;">
 									<select name="manageCd" id="manageCd" class="schSel">
-										<option value="ALL">도서관 전체</option>
-										
-											<option value="MA">석수도서관</option>
-										
-											<option value="MI">만안도서관</option>
-										
-											<option value="MH">삼덕도서관</option>
-										
-											<option value="ME">박달도서관</option>
-										
-											<option value="MB">평촌도서관</option>
-										
-											<option value="MG">관양도서관</option>
-										
-											<option value="MC">비산도서관</option>
-										
-											<option value="MD">호계도서관</option>
-										
-											<option value="MJ">어린이도서관</option>
-										
-											<option value="MF">벌말도서관</option>
-										
-											<option value="MK">안양역스마트도서관</option>
-										
-											<option value="ML">동안구청스마트도서관</option>
-										
-											<option value="MM">범계스마트도서관</option>
-										
-											<option value="MN">인덕원역스마트도서관</option>
-										
+										<option value="" selected>도서관 전체</option>
+										<option value="0">씨앗도서관</option>
+										<option value="1">새싹도서관</option>
+										<option value="2">쑥쑥도서관</option>
+										<option value="3">새봄도서관</option>
+										<option value="4">도란도란도서관</option>
+										<option value="5">뿌리도서관</option>		
 									</select>
 									<select name="searchType" id="searchType" title="검색방법 선택" class="schSel1">
 										<option value="0">도서명</option>
@@ -100,9 +77,9 @@
 											<span>발행처: ${list.hopPublisher}</span>
 										</li>
 										<li>
-											<span>신청도서관: ${list.hopLib}</span>
+											<span>신청도서관: ${list.libVO.libName}</span>
 											<span>신청일: ${list.hopDate}</span>
-											<span>신청상태: ${list.hopStat}</span>
+											<span>신청상태: ${list.statusVO.statName}</span>
 										</li>										
 										<li class="status"><a href="#btn" onclick="javascript:fnHopeBookCancelProc('106087679','141095'); return false;" class="tblBtn cncl">신청취소</a></li>
 									</ul>
