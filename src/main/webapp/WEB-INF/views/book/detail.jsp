@@ -90,6 +90,7 @@
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
 								<c:forEach var="book" items="${vo}">
+									<c:set var="like" value="${book.mbBookLikeVO}" />
 									<div class="bookImg">
 										<img alt="" src="${book.image}">
 									</div>
@@ -135,11 +136,16 @@
 											</dl>
 										</div>
 										
+										<div class="book_publisher">
+											<span class="bk_writer">대출 횟수 : ${book.bookCount}</span>
+											<span class="bk_publish">추천 순위 : ${book.num}</span>
+										</div>
+										
 										<div class="keyword">
 											<ul>
 												<li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8949100886', ''); return false" class="btn_myLib" title="내서재 담기 새창열림">책꽂이 담기</a></li>
-												<li><a href="#search" onclick="fnSearchResultKeyword('세계');">좋아요</a></li>
-												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${book.bookHeart} </a></li>
+												<li><a href="#search" onclick="bookLikeAdd">좋아요</a></li>
+												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${like.bookLike} </a></li>
 											</ul>
 										</div>
 									</div>
@@ -193,50 +199,67 @@
 																<tr>
 																	<th scope="col">도서관</th>
 																	<th scope="col">대출상태</th>
-																	<th scope="col">대출</th>
-																	<th scope="col">예약</th>
-																	<th scope="col">상호대차</th>
-																	<th scope="col">위치보기</th>
+																	<th scope="col">반납 예정일</th>
+																	<th scope="col">대출 및 예약</th>
+																	<th scope="col">부록</th>
 																</tr>
 															</thead>
 															<tbody>
 																
 																<c:forEach var="book" items="${vo}">
 																<c:forEach var="lib" items="${book.libVOs}">
+																<c:forEach var="bl" items="${book.bookLibVOs}">
+																	<c:set var="where" value="${lib.libNum}"/>
+																	<c:set var="quan" value="${bl.quantity}" />
+																	<c:set var="able" value="${bl.able}" />
+																	
 																	<tr class="MA">
 																		<td>${lib.libName}</td>
 																		
+																		<!-- 씨앗 도서관일 때 : 대출 가능 / 대출 불가능 - 예약
+																			타 도서관일 때 : 상호대차 가능 / 대출 불가능-->
 																		<td>
-																			<c:set var="where" value="${lib.libNum}"/>
-																			<c:set var="able" value="${book.able}"/>
+																			<c:choose>
+																				<c:when test="${able eq 1}">
+																					대출 가능
+																					<h6>(대출 가능 권수 : ${quan})</h6>
+																				</c:when>
+																				<c:when test="${able eq 0}">
+																					대출 불가능
+																				</c:when>
+																			</c:choose>
+																		</td>
+																		
+																		<td>반납 예정일</td>
+																		
+																		<td>
 																			<c:choose>
 																				<c:when test="${where == 0}">
-																				<h4>${able}</h4>
 																					<c:choose>
-																						<c:when test="${able == 1}">
-																							<a href="javascript:;" class="btn white small">대출</a>
+																						<c:when test="${able eq 1}">
+																							<a href="javascript:;" class="btn white small">대출하기</a>
 																						</c:when>
 																						<c:when test="${able == 0}">
 																							<a href="javascript:;" class="btn white small">대출예약</a>
 																						</c:when>
 																					</c:choose>
 																				</c:when>
-																			</c:choose>
-																		</td>
-																		<td>대출신청 ${book.able}</td>
-																		<td>예약신청 ${book.able}</td>
-																		<td>
-																			<c:choose>
+																				
 																				<c:when test="${where != 0}">
-																					<h1>상호대차 신청</h1>
+																					<c:choose>
+																						<c:when test="${able eq 1}">
+																							<a href="javascript:;" class="btn white small">상호대차</a>
+																						</c:when>
+																					</c:choose>
 																				</c:when>
 																			</c:choose>
 																		</td>
-																		<td>도서관 위치 지도열기</td>
+																		
+																		<td>부록 없음</td>
 																	</tr>
 																</c:forEach>
 																</c:forEach>
-																
+																</c:forEach>
 															</tbody>
 														</table>
 													</div>
