@@ -16,6 +16,7 @@ public class BookVO {
 	private String image;
 	private Long bookCount;
 	private Long bookHeart;
+	private Long num;
 	
 	private List<LibVO> libVOs;
 	private BookLibVO bookLibVO;

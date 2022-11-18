@@ -1,0 +1,3 @@
+$("#chkAgreeAll").click(function(){
+    
+})
