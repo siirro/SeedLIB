@@ -8,6 +8,5 @@ public class LibVO {
 	//Library
 	private Long libNum;
 	private String libName;
-	private Long quantity;
 
 }

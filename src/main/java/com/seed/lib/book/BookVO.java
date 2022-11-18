@@ -18,4 +18,5 @@ public class BookVO {
 	private Long bookHeart;
 	
 	private List<LibVO> libVOs;
+	private BookLibVO bookLibVO;
 }

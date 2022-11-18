@@ -212,14 +212,14 @@
 																			<c:choose>
 																				<c:when test="${where == 0}">
 																				<h4>${able}</h4>
-																					<%-- <c:choose>
+																					<c:choose>
 																						<c:when test="${able == 1}">
 																							<a href="javascript:;" class="btn white small">대출</a>
 																						</c:when>
 																						<c:when test="${able == 0}">
 																							<a href="javascript:;" class="btn white small">대출예약</a>
 																						</c:when>
-																					</c:choose> --%>
+																					</c:choose>
 																				</c:when>
 																			</c:choose>
 																		</td>
