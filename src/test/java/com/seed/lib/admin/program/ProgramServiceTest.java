@@ -17,7 +17,7 @@ class ProgramServiceTest {
 	@Autowired
 	private ProgramService programService;
 	
-	@Test
+	//@Test
 	void setProgramAddTest()throws Exception {
 		ProgramVO programVO = new ProgramVO();
 		DateUtil dateUtil = new DateUtil();
