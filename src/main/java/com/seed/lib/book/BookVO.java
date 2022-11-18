@@ -13,7 +13,6 @@ public class BookVO {
 	private Long bookDate;
 	private int able;
 	private String category;
-	private Long quantity;
 	private String image;
 	private Long bookCount;
 	private Long bookHeart;
