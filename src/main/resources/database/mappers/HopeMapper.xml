@@ -99,7 +99,7 @@
 		<result column="HOPPUBLISHER" property="hopPublisher"/>
 		<result column="USERNAME" property="userName"/>
 		<result column="HOPMEMO" property="hopMemo"/>
-		<result column="HOPDATE" property="HOPDATE"/>
+		<result column="HOPDATE" property="hopDate"/>
 		<result column="ISBN" property="isbn"/>
 	<association property="statusVO">
 		<id column="STATNUM" property="statNum"/>
