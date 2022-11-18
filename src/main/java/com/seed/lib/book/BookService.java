@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.seed.lib.util.DetailPager;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -19,5 +21,13 @@ public class BookService {
 	//도서 디테일
 	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
 		return bookMapper.getDetail(bookVO);
+	}
+	
+	public List<BookVO> getDetailSC (DetailPager pager) throws Exception {
+		return bookMapper.getDetailSC (pager);
+	}
+	
+	public List<BookVO> getDetailSW (DetailPager pager) throws Exception {
+		return bookMapper.getDetailSC (pager);
 	}
 }
