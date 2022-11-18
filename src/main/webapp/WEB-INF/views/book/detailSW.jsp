@@ -1,22 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>  
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>    
 
 <div id="bookRelatedSubject" class="dropBookData">
-									<h5 class="htitle">°°Àº ÀÛ°¡ÀÇ µµ¼­</h5>
+									<h5 class="htitle">ê°™ì€ ìž‘ê°€ì˜ ë„ì„œ</h5>
 									<div class="dropContainerBox">
 										<div class="swipeGallery">
 											<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
 												<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 													<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
-														<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');"><div class="bookImg" style="height: 235.2px;"><img alt="(µé½âµé½â Áö±¸¸¦ Èçµå´Â)¹ÙÀÌ·¯½º" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;"></div>
+														<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');"><div class="bookImg" style="height: 235.2px;"><img alt="(ë“¤ì©ë“¤ì© ì§€êµ¬ë¥¼ í”ë“œëŠ”)ë°”ì´ëŸ¬ìŠ¤" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;"></div>
 														<div class="bookData">
 															<div class="book_dataInner">
-																<p class="book_name" title="(µé½âµé½â Áö±¸¸¦ Èçµå´Â)¹ÙÀÌ·¯½º"><strong>(µé½âµé½â Áö±¸¸¦ Èçµå´Â)¹ÙÀÌ·¯½º</strong></p>
+																<p class="book_name" title="(ë“¤ì©ë“¤ì© ì§€êµ¬ë¥¼ í”ë“œëŠ”)ë°”ì´ëŸ¬ìŠ¤"><strong>(ë“¤ì©ë“¤ì© ì§€êµ¬ë¥¼ í”ë“œëŠ”)ë°”ì´ëŸ¬ìŠ¤</strong></p>
 																<p class="book_writers">
-																	<span class="bk_writer">Æú ÀÌ¾ð Å©·Î½º ±Û; ½ºÆ¼ºê ºê¶ó¿î ±×¸²; ½Åµ¿°æ ¿Å±è</span>
-																	<span class="bk_publish">¾Æ¿ïºÏ<br>2022</span>
+																	<span class="bk_writer">í´ ì´ì–¸ í¬ë¡œìŠ¤ ê¸€; ìŠ¤í‹°ë¸Œ ë¸Œë¼ìš´ ê·¸ë¦¼; ì‹ ë™ê²½ ì˜®ê¹€</span>
+																	<span class="bk_publish">ì•„ìš¸ë¶<br>2022</span>
 																</p>
 															</div>
 														</div>

@@ -11,13 +11,13 @@ public class BookVO {
 	private String writer;
 	private String publisher;
 	private Long bookDate;
-	private String able;
-	private Long category;
-	private Long quantity;
+	private int able;
+	private String category;
 	private String image;
 	private Long bookCount;
 	private Long bookHeart;
 	private Long num;
 	
 	private List<LibVO> libVOs;
+	private BookLibVO bookLibVO;
 }
