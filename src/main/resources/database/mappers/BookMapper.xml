@@ -7,13 +7,16 @@
 
 	<!-- 도서 디테일 -->
 	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
-	SELECT b.*, b2.*, l.*
+	SELECT b.*, b2.*, l.*, mbl.*
 	FROM book b
 		inner join booklib b2 
 		on b.ISBN = b2.ISBN 
 	
 		inner join library l
 		on l.LIBNUM  = b2.LIBNUM 
+		
+		inner join mbbooklike mbl
+		on b.ISBN = mbl.ISBN
 	WHERE b.ISBN = #{isbn}
 	</select>
 	
@@ -28,6 +31,10 @@
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
 
+			<association property="mbBookLikeVO" javaType="MbBookLikeVO">
+				<id column="bookLike" property="bookLike"/>
+			</association>
+			
 			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
 				<result column="quantity" property="quantity"/>
 				<result column="able" property="able"/>

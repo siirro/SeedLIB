@@ -90,6 +90,7 @@
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
 								<c:forEach var="book" items="${vo}">
+									<c:set var="like" value="${book.mbBookLikeVO}" />
 									<div class="bookImg">
 										<img alt="" src="${book.image}">
 									</div>
@@ -144,7 +145,7 @@
 											<ul>
 												<li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8949100886', ''); return false" class="btn_myLib" title="내서재 담기 새창열림">책꽂이 담기</a></li>
 												<li><a href="#search" onclick="bookLikeAdd">좋아요</a></li>
-												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${book.bookHeart} </a></li>
+												<li><a href="#search" onclick="fnSearchResultKeyword('미술');">💚 ${like.bookLike} </a></li>
 											</ul>
 										</div>
 									</div>

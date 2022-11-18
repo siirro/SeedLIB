@@ -165,5 +165,19 @@ function reservationApplyProc(bookKey,regNo){
 const likeBtn = document.querySelector("#likeBtn")
 
 function bookLikeAadd (){
+	likeBtn.addEventListener("click", function(){
+		const xhttp = new XMLHttpRequest();
 
+		xhttp.open("POST", "주소");
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("bookHeart="+bookHeart.value);
+		
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				let reslut = this.responseText.trim();
+
+				location.reload();
+			}
+		}
+	});
 }

@@ -19,4 +19,5 @@ public class BookVO {
 	
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
+	private MbBookLikeVO mbBookLikeVO;
 }
