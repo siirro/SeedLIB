@@ -14,7 +14,7 @@ public class ProgramController {
 	
 	@GetMapping("add")
 	public String setProgramAdd()throws Exception{
-		return "";
+		return "admin/program/add";
 	}
 	
 }
