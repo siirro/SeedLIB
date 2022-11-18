@@ -159,3 +159,11 @@ function reservationApplyProc(bookKey,regNo){
         });
     }
 }
+
+
+//좋아요
+const likeBtn = document.querySelector("#likeBtn")
+
+function bookLikeAadd (){
+
+}

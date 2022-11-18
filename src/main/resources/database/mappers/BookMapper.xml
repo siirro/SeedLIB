@@ -23,15 +23,15 @@
 			<result column="writer" property="writer"/>
 			<result column="publisher" property="publisher"/>
 			<result column="bookDate" property="bookDate"/>
-			<result column="able" property="able"/>
 			<result column="category" property="category"/>
 			<result column="image" property="image"/>
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
 
-			<association property="bookLibVO" javaType="BookLibVO">
+			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
 				<result column="quantity" property="quantity"/>
-			</association>
+				<result column="able" property="able"/>
+			</collection>
 			
 			<collection property="libVOs" javaType="List" ofType="LibVO">
 				<id column="libNum" property="libNum"/>
