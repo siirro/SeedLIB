@@ -49,8 +49,8 @@ public class HopeService {
 		}
 	}
 	
-	public int setDeleteHope(HopeVO hopeVO) throws Exception{
-		return hopeMapper.setDeleteHope(hopeVO);
+	public int setUpdateHope(HopeVO hopeVO) throws Exception{
+		return hopeMapper.setUpdateHope(hopeVO);
 	}
 	
 	public List<HopeVO> getHopeList(HdPager hdPager) throws Exception{

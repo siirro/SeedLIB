@@ -51,12 +51,11 @@
 <!-- 마이페이지 영역 -->
 <sql id="search">
 		 AND L.LIBNUM LIKE CONCAT(#{libNum},'%')
-		 AND
-			<choose>
-				<when test="searchType=='0'">HOPTITLE</when>
-				<when test="searchType=='1'">HOPWRITER</when>
+		 AND <choose>
+				<when test="searchType==0">HOPTITLE</when>
+				<when test="searchType==1">HOPWRITER</when>
 				<otherwise>HOPPUBLISHER</otherwise>
-			</choose>
+			 </choose>
 			LIKE CONCAT('%', #{searchKeyword}, '%')
 </sql>
 
@@ -94,12 +93,21 @@
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
 		WHERE USERNAME=#{userName} <include refid="search"></include>
-		ORDER BY H.HOPNUM DESC 
+		ORDER BY HS.STATNUM, H.HOPNUM DESC 
 	</select>
 	
-	<delete id="setDeleteHope" parameterType="HopeVO">
-		DELETE FROM HOPE WHERE HOPNUM=#{hopNum}
-	</delete>
+
+	<update id="setUpdateHope" parameterType="HopeVO">
+		UPDATE HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM
+				SET HS.STATNUM=1
+		WHERE USERNAME=#{userName} AND H.HOPNUM=#{hopNum}
+	</update>
 	
 	
 <!-- 기증도서관련 -->	

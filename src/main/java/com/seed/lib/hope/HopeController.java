@@ -63,7 +63,7 @@ public class HopeController {
 			if(result<1) {
 				//3차 체크
 				result= hopeService.getMonth(hopeVO);
-				if(result<4) {
+				if(result<3) {
 					result=200;					
 				}else {
 					result = 333;

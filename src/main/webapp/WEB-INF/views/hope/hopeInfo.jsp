@@ -159,7 +159,7 @@
 
 <dl class="linkBox">
 	<dt class="txtArea">희망도서신청 또는 조회를 하려면 버튼을 누르세요</dt>
-	<dd class="btnArea"><a class="btn" href="/mypage/hope">신청조회</a> <a class="btn write themeBtn" href="/hope/setHope" onclick="">신청하기</a></dd>
+	<dd class="btnArea"><a class="btn" href="/mypage/hopeList">신청조회</a> <a class="btn write themeBtn" href="/hope/setHope" onclick="">신청하기</a></dd>
 </dl>
 
 					<!-- End Of the Real Contents-->

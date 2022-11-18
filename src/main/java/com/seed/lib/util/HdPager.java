@@ -17,7 +17,7 @@ public class HdPager {
 	private boolean pre;
 	private boolean next;
 	
-	private String searchType;
+	private Long searchType;
 	private String userName;
 	private String searchKeyword;
 	private String libNum;	
@@ -33,9 +33,9 @@ public class HdPager {
 		return this.page;
 	}
 	
-	public String getSearchType() {
+	public Long getSearchType() {
 		if(this.searchType==null) {
-			this.searchType="0";
+			this.searchType=0L;
 		}
 		return this.searchType;
 	}

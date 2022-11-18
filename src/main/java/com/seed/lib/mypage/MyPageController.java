@@ -27,24 +27,19 @@ public class MyPageController {
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
-		log.info("왜 안오냐");
-		log.info("---------------HDPAGER:{}", hdPager.getUserName());
-		log.info("---------------HDPAGER:{}", hdPager.getLibNum());
-		log.info("---------------HDPAGER:{}", hdPager.getSearchKeyword());
-		log.info("---------------HDPAGER:{}", hdPager.getSearchType());
 		ModelAndView mv = new ModelAndView();
-	
-		log.info("---------------HDPAGER:{}", hdPager);
+		hdPager.setUserName("id3");
 		List<HopeVO> hl = hopeService.getHopeList(hdPager);
 		mv.addObject("hlist", hl);
 		mv.addObject("pager", hdPager);
 		return mv;
 	}
 	
-	@PostMapping("hopeDelete")
+	@PostMapping("hopeCancel")
 	@ResponseBody
-	public int setDeleteHope(HopeVO hopeVO) throws Exception{
-		int result = hopeService.setDeleteHope(hopeVO);		
+	public int setDeleteHope(@RequestBody HopeVO hopeVO) throws Exception{
+		log.info("@@@@@@@@@@@@@@@@@@@@@@cancel:{}",hopeVO.getHopNum());
+		int result = hopeService.setUpdateHope(hopeVO);		
 		return result;
 	}
 	

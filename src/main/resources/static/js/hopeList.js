@@ -1,9 +1,5 @@
 console.log("list");
 
-// let userName = "";
-// let searchKeyword = "";
-// let searchType = "";
-// let libNum = "";
 
 
 function enterkey(){
@@ -12,17 +8,35 @@ function enterkey(){
    }
 }
 
-// $("#searchBtn").click(function(){
-//    searchKeyword = $("#searchKeyword").val();
-//    libNum = $("#libNum").val();
-//    searchType = $("#searchType").val();
-//    userName = $("#userName").val();
-//    console.log("ln: ",libNum,"un: ",userName,"st: ",searchType,"sk: ",searchKeyword);
-//    let hdPager = {
-//       searchKeyword:searchKeyword,
-//       libNum:libNum,
-//       searchType:searchType,
-//       userName:userName
-//    }
-
-// })
+$(".status").on("click",".cncl",function(){
+  let cnclNum = $(this).attr("data-num-cncl");
+  console.log(cnclNum);
+  let check = window.confirm("신청 도서를 취소하시겠습니까?");
+  if(check){
+   const hopeVO={
+      userName:$("#userName").val(),
+      hopNum:cnclNum
+   }
+   $.ajax({
+      type:"POST",
+      url:"/mypage/hopeCancel",
+      data:JSON.stringify(hopeVO),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success:function(data){
+         console.log(data);
+         if(data>0){
+            alert("신청이 취소되었습니다");
+            location.href="/mypage/hopeList";
+         }else{
+            alert("존재하지 않는 신청 건입니다");
+            location.href="/mypage/hopeList";
+         }
+      },error:function(data){
+         console.log("errorT.T",data);
+      }
+   })
+  }else{
+      return;
+  }
+})

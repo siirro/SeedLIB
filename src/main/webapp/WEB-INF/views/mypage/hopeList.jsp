@@ -17,6 +17,15 @@
 			width: 20%; 
 			background-color: transparent;
 		}
+
+		.cncl{
+			color: #666;
+			background-color: #e9e9e9;
+			border: 1px solid #e9e9e9;
+			font-size: 1.063em;
+			min-width: 110px;
+			padding: 6px 15px;
+		}
 	</style>
 <title>희망 도서 신청 조회</title>
 </head>
@@ -69,6 +78,21 @@
 					<!-- 게시판 목록 -->
 					<div class="articleWrap">
 						<ul class="article-list reserve">
+							<c:choose>
+								<c:when test="${not empty hlist}">
+								 <!-- <li>신청한 희망 도서는 ${hlist.size()} 권입니다</li> -->
+								</c:when>
+								<c:when test="${empty hlist}">
+									<c:choose>
+										<c:when test="${not empty pager.searchKeyword}">
+								 			<li>[${pager.searchKeyword}] 의 검색 결과가 없습니다</li>
+										</c:when>
+										<c:when test="${empty pager.searchKeyword}">
+								 			<li style="text-align: center;">신청한 희망 도서가 없습니다</li>
+										</c:when>
+									</c:choose>		
+								</c:when>
+							</c:choose>
 							<c:forEach items="${hlist}" var="list">	
 								<li>
 									<p class="title">${list.hopTitle}</p>
@@ -82,7 +106,7 @@
 											<span>신청일: ${list.hopDate}</span>
 											<span>신청상태: ${list.statusVO.statName}</span>
 										</li>										
-										<li class="status"><a href="#btn" onclick="javascript:fnHopeBookCancelProc('106087679','141095'); return false;" class="tblBtn cncl">신청취소</a></li>
+										<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">신청취소</button></li>
 									</ul>
 								</li>
 							</c:forEach>
