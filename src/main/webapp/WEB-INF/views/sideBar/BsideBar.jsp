@@ -8,11 +8,11 @@
           <li id="lnb1_1"><a href="#" class="on">문화행사신청</a> </li>
           <li id="lnb1_2"><a href="/hope/setHope" class="on">희망도서신청</a>
           <li id="lnb1_3"><a href="/donation/donInfo" class="on">소장도서기증</a> </li> 
-          <li id="lnb1_4"><a href="#" class="on">열람실 예약</a>
+          <li id="lnb1_4"><a href="/studyroom/roomInfo" class="on">열람실 조회/신청</a>
           <!-- class="current on" -->
 	           <ul class="MkTab submenu" style="display: block;"> 
-	            <li id="lnb1_4_1"><a href="#">예약 현황 확인</a> </li> 
-	            <li id="lnb1_4_2"><a href="#">열람실 좌석 예약</a> </li> 
+	            <li id="lnb1_4_1"><a href="/studyroom/roomInfo">좌석 현황 확인</a></li> 
+	            <li id="lnb1_4_2"><a href="#">좌석 신청</a></li> 
 	           </ul> </li> 
          </ul>
         </div>

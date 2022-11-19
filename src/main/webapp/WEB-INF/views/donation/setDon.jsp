@@ -36,6 +36,7 @@ pageEncoding="UTF-8"%>
 
     .txt{
     margin-top: 15px;
+    margin-left: 5px;
     line-height: 20px;
     font-size: 16px;
     color: #626262;
@@ -157,17 +158,17 @@ pageEncoding="UTF-8"%>
                                     <p style="position : relative;">
                                         <b><span class="txt_red">(필수항목) </span>개인정보 수집 및 이용</b>에 동의합니다.
                                         &nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="agree01" name="agree1" value="Y" class="normal_input">
+                                        <input type="radio" id="agree01" name="agree1" value="Y" class="agree1" checked="">
                                         <label for="agree01">동의</label>
-                                        <input type="checkbox" id="agree03" name="agree1" value="N" class="normal_input">
+                                        <input type="radio" id="agree03" name="agree1" value="N" class="agree1">
                                         <label for="agree03">미동의</label>
                                     </p>
                                     <p style="position : relative;">
                                         <b><span class="txt_red">(선택항목) </span>개인정보 수집 및 이용</b>에 동의합니다.
                                         &nbsp;&nbsp;&nbsp;
-                                        <input type="checkbox" id="agree02" name="agree2" value="Y" class="normal_input">
+                                        <input type="radio" id="agree02" name="agree2" value="Y" class="agree2" checked>
                                         <label for="agree02">동의</label>
-                                        <input type="checkbox" id="agree04" name="agree2" value="N" class="normal_input">
+                                        <input type="radio" id="agree04" name="agree2" value="N" class="agree2">
                                         <label for="agree04">미동의</label>
                                     </p>
                                 </div>
@@ -242,35 +243,31 @@ pageEncoding="UTF-8"%>
                                     <th scope="row"><label for="donation_method01">기증방법</label><span class="require">*</span></th>
                                     <td>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method01" class="input_radio required-one" name="nldMethod" title="기증방법" value="직접방문" checked="">
+                                            <input type="radio" id="donation_method01" class="donMethod" name="donMethod" title="기증방법" value="직접방문" checked="">
                                             <label for="donation_method01">직접방문</label>
                                         </span>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method02" class="input_radio required-one" name="nldMethod" title="기증방법" value="우편배달">
+                                            <input type="radio" id="donation_method02" class="donMethod" name="donMethod" title="기증방법" value="우편배달">
                                             <label for="donation_method02">우편발송</label>
                                         </span>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method03" class="input_radio required-one" name="nldMethod" title="기증방법" value="택배착불">
-                                            <label for="donation_method03">우체국 택배(착불)</label>
-                                        </span>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method04" class="input_radio required-one" name="nldMethod" title="기증방법" value="담당자와 상담">
+                                            <input type="radio" id="donation_method04" class="donMethod" name="donMethod" title="기증방법" value="담당자와 상담">
                                             <label for="donation_method04">담당자와 상담</label>
                                         </span>
                                     </td>
                                 </tr>  
                                 <tr>
-                                    <th scope="row"><label for="donation_method01">처리 알림 여부</label><span class="require">*</span></th>
+                                    <th scope="row"><label for="donation_alert">처리 알림 여부</label><span class="require">*</span></th>
                                     <td>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method01" class="input_radio required-one" name="nldMethod" title="기증방법" value="직접방문" checked="">
-                                            <label for="donation_method01">수신</label>
+                                            <input type="radio" id="donation_alert01" class="donAlert" name="donAlert" title="알림여부" value="Y" checked="">
+                                            <label for="donation_alert01">수신</label>
                                         </span>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method02" class="input_radio required-one" name="nldMethod" title="기증방법" value="우편배달">
-                                            <label for="donation_method02">미수신</label>
+                                            <input type="radio" id="donation_alert02" class="donAlert" name="donAlert" title="알림여부" value="N">
+                                            <label for="donation_alert02">미수신</label>
                                         </span>
-                                        <p class="emp1 ref">접수 처리가 되면 기재한 이메일로 안내 이메일을 보내드립니다.</p>
+                                        <p class="emp1 ref">접수 처리가 되면 상단의 이메일로 안내 이메일을 보내드립니다.</p>
                                     </td>
                                 </tr>      
                                 <tr>
@@ -283,7 +280,7 @@ pageEncoding="UTF-8"%>
                 </form>
                 <div class="btnGroup">
                     <a href="../" id="listBtn" class="btn cncl">취소</a>
-                    <button type="button" id="registBtn" class="btn themeBtn">신청</button>
+                    <button type="button" id="donBtn" class="btn themeBtn">신청</button>
                 </div>
                 <!-- End Of the Real Contents-->
     </div>
@@ -293,7 +290,7 @@ pageEncoding="UTF-8"%>
 <!-- footer -->
     <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->
-     <script defer src="/js/hope.js"></script>
+     <script defer src="/js/donation.js"></script>
 </body>
 </html>
 
