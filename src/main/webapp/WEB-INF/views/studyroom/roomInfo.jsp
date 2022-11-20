@@ -7,6 +7,9 @@
 <head>
     <title>열람실 현황 조회</title>
 	<style>
+		.seatArea{
+			display: inline-block;
+		}
 		.seatList{
 			float:left;
 			width:70px;
@@ -16,8 +19,7 @@
 			text-align: center;
 		}
 		.seatList:nth-of-type(12n-11){
-			background:red;
-			display:block;
+			background:rgb(255, 0, 0);
 			content:"";
 			clear:left;
 		}
@@ -39,7 +41,7 @@
 <div id="contentcore">
 	<div class="naviandtitle">
 		<h3>열람실 현황 조회</h3>
-		<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>열람실 신청<i class="arrow"></i>현황 조회
+		<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>열람실 예약<i class="arrow"></i>현황 조회
 		</div>
 	</div>
 
@@ -49,21 +51,25 @@
 		<div id="virtSelect" style="display: none;"><a href="#script">탭메뉴</a></div>
 		<ul id="ttab3" class="tnb clearfix"> 
 	    <li id="tnb1_7_1" class="choiced"><a href="/studyroom/roomInfo" class="current" title="선택된 탭" style="min-width: 479px;">좌석 현황조회</a> </li> 
-	    <li id="tnb1_7_2"><a href="/studyroom/setSeat" style="min-width: 479px;">좌석 신청하기</a> </li> 
+	    <li id="tnb1_7_2"><a href="/studyroom/setSeat" style="min-width: 479px;">좌석 예약하기</a> </li> 
 	   </ul>
 	</div>
 	<!--Forced tab Show Que-->
 
-<div style="display: inline-block;">
-	<!-- style="width:100%; word-break:break-all;word-wrap:break-word;" -->
-	<ul>
-		<c:forEach items="${list}" var="r" varStatus="status">
-			<li class="seatList">${r}</li>
-			<c:if test="${(status.index+1)%5 eq 0}">
-				<li class="seatBlank seatList">통로자리</li>
-			</c:if>
-		</c:forEach>
-	</ul>
+<div style="display: inline-block; width:100%; text-align: center;">
+		<!-- style="width:100%; word-break:break-all;word-wrap:break-word;" -->
+		<ul class="seatArea">
+			<c:forEach items="${list}" var="r" varStatus="status">
+				<li class="seatList">${r+1}
+					<div>
+						<button class="resBtn" data-res-num="${r}">예약</button>
+					</div>
+				</li>
+				<c:if test="${(status.index+1)%5 eq 0}">
+					<li class="seatBlank seatList">통</li>
+				</c:if>
+			</c:forEach>
+		</ul>
 </div>
 <div>
 	<dl class="linkBox">
@@ -78,6 +84,7 @@
 </div>
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
-<!-- //footer -->			
+<!-- //footer -->	
+<script src="/js/studyroomRes.js"></script>		
 </body>
 </html>
