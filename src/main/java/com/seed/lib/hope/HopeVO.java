@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 public class HopeVO {
-	private Integer hopNum;
+	private Long hopNum;
 	private String hopTitle;
 	private String hopWriter;
 	private String hopPublisher;

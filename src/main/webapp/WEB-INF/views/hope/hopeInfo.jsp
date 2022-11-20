@@ -20,67 +20,11 @@
 <div id="contentcore">
 <div class="naviandtitle">
 	<h3>신청안내</h3>
-	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>희망도서신청<i class="arrow"></i>신청안내</div>
-	<div class="snsFarm">
-		<ul class="snsBtnArea clearfix">
-			<li>
-				<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-				<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-					<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/GiUGRpAB"><span class="blind">단축URL</span></a>
-					<a href="#sns2" id="sns2" title="QR코드 레이어팝업 열림" class="snsQr" data-tooltip="chartSns"><span class="blind">QR코드</span></a>
-					<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory"><span class="blind">카카오스토리</span></a>
-					<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter"><span class="blind">트위터</span></a>
-					<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook('https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do'); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook"><span class="blind">페이스북</span></a>
-				</div>
-			</li>
-			<li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seoksu'); return false;"><span class="blind">현재화면 프린트</span></a></li>
-		</ul>
+	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>희망도서신청<i class="arrow"></i>신청안내
 	</div>
 </div>
 
-<!-- 레이어팝업 -->
-<div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-	<div class="layer-content">
-		<h4>QR코드</h4>
-		<div class="layer-content">
-			<div class="conTxt ta_c" id="qrcodeImg"></div>
-			<div class="conTxt">
-				<p>QR코드 이미지 저장</p>
-				QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-			</div>
-		</div>
-		<a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-	</div>
-</div>
-<!-- //레이어팝업 -->
-
-<script src="/include/js/clipboard.min.js"></script>
-<script>
-	$('#sns').click(function(e) {
-		$.ajax({
-			type: "POST",
-			url: "/cmmn/share/shortUrl.do",
-			dataType : "json",
-			data: { "url" : "https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do"},
-			async: false,
-			error : function (request, status, error){
-				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-			},
-			success: function(data) {
-				//$("#shortUrl").html(data.url);
-				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/seoksu/menu/10107/contents/40002/contents.do" >');
-				$("#sns1").attr('data-clipboard-text', data.url);
-			}
-		});
-	});
-
-	function fnShorturlCopy() {
-		var clipboard = new ClipboardJS('#sns1');
-		alert('단축주소가 복사되었습니다.');
-		return false;
-	}
-</script>
-				<div id="contents" class="contentArea">
+<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->
 <div class="ttabWrap" style="display: block;">
@@ -112,7 +56,7 @@
 <ul class="dot-list">
 	<li><span>신청기간</span> : 매년 1월 1일부터 당해연도 예산 소진시 까지(마감일 별도 공지)</li>
 	<li><span>신청자격</span> : 씨앗도서관 관외대출회원</li>
-	<li><span>신청권수</span> : <span style="color:#ff0000;"><strong>10개 도서관 통합 1인 월 3권</strong></span></li>
+	<li><span>신청권수</span> : <span style="color:#ff0000;"><strong>6개 도서관 통합 1인 월 3권</strong></span></li>
 	<li><span>소요기간</span> : 2~3주(자료에 따라 달라질 수 있음)</li>
 </ul>
 
@@ -141,16 +85,14 @@
 	※ 제외기준 중 세부적인 부분은 각 도서관 별 장서구성방향에 따라 달라질 수 있습니다.</li>
 </ul>
 
-<h4 class="htitle"><span class="themeFC">구입</span> 진행상황 알림</h4>
+<h4 class="htitle"><span class="themeFC">입고</span> 진행상황 알림</h4>
 
 <ul class="dot-list">
 	<li>희망도서의 처리여부는 [마이페이지&gt;희망도서신청조회] 페이지에서 확인가능합니다.
 	<ul class="dash-list">
-		<li>소장도서 : 이미 도서관에 소장되어 있는 자료</li>
-		<li>선정 : 구입결정 후 주문된 상태</li>
-		<li>처리중 : 납품되어 DB구축 등 자료정리 중인 상태</li>
-		<li>취소 : 희망도서 선정 제외기준에 해당되어 구입 취소 상태(마이페이지-희망도서신청조회 메뉴에서 확인 가능)</li>
-		<li>처리완료 : 자료실에 비치되어 신청자가 우선 이용가능</li>
+		<li>입고완료 : 구입결정 후 주문된 상태</li>
+		<li>신청 중 : 관리자가 신청 내용을 확인하고 검토 중인 상태</li>
+		<li>반려 : 희망도서 선정 제외기준에 해당되어 구입 취소 상태(이와 관련 문의사항은 [도서관 소개-도서관에 바란다] 에서 문의 바람)</li>
 	</ul>
 	</li>
 </ul>
@@ -161,7 +103,7 @@
 
 <dl class="linkBox">
 	<dt class="txtArea">희망도서신청 또는 조회를 하려면 버튼을 누르세요</dt>
-	<dd class="btnArea"><a class="btn" href="/mypage/hope">신청조회</a> <a class="btn write themeBtn" href="/hope/setHope" onclick="">신청하기</a></dd>
+	<dd class="btnArea"><a class="btn" href="/mypage/hopeList">신청조회</a> <a class="btn write themeBtn" href="/hope/setHope" onclick="">신청하기</a></dd>
 </dl>
 
 					<!-- End Of the Real Contents-->

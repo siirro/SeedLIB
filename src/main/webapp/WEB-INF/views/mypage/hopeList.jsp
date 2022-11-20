@@ -17,6 +17,15 @@
 			width: 20%; 
 			background-color: transparent;
 		}
+
+		.cncl{
+			color: #666;
+			background-color: #e9e9e9;
+			border: 1px solid #e9e9e9;
+			font-size: 1.063em;
+			min-width: 110px;
+			padding: 6px 15px;
+		}
 	</style>
 <title>희망 도서 신청 조회</title>
 </head>
@@ -37,52 +46,30 @@
 
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
-					<form name="searchForm" id="searchForm" method="get">
+					<form action="../mypage/hopeList" method="GET">
+						<input type="hidden" id="userName" name="userName" value="id1">
 						<fieldset>
 							<legend class="blind">게시글 검색 영역</legend>
 							<!-- 게시판 검색 -->
 							<div class="pageSearch">
 								<div class="schForm" style="display: flex;">
-									<select name="manageCd" id="manageCd" class="schSel">
-										<option value="ALL">도서관 전체</option>
-										
-											<option value="MA">석수도서관</option>
-										
-											<option value="MI">만안도서관</option>
-										
-											<option value="MH">삼덕도서관</option>
-										
-											<option value="ME">박달도서관</option>
-										
-											<option value="MB">평촌도서관</option>
-										
-											<option value="MG">관양도서관</option>
-										
-											<option value="MC">비산도서관</option>
-										
-											<option value="MD">호계도서관</option>
-										
-											<option value="MJ">어린이도서관</option>
-										
-											<option value="MF">벌말도서관</option>
-										
-											<option value="MK">안양역스마트도서관</option>
-										
-											<option value="ML">동안구청스마트도서관</option>
-										
-											<option value="MM">범계스마트도서관</option>
-										
-											<option value="MN">인덕원역스마트도서관</option>
-										
+									<select name="libNum" id="libNum" class="schSel">
+										<option value="%" selected>도서관 전체</option>
+										<option value="0">씨앗도서관</option>
+										<option value="1">새싹도서관</option>
+										<option value="2">쑥쑥도서관</option>
+										<option value="3">새봄도서관</option>
+										<option value="4">도란도란도서관</option>
+										<option value="5">뿌리도서관</option>		
 									</select>
 									<select name="searchType" id="searchType" title="검색방법 선택" class="schSel1">
-										<option value="0">도서명</option>
+										<option value="0" selected>도서명</option>
 										<option value="1">저자</option>
 										<option value="2">발행처</option>
 									</select>
 									<input hidden="hidden">
 									<input type="text" name="searchKeyword" id="searchKeyword" onkeyup="enterkey()" value="" title="검색어 입력" class="schKwd2" placeholder="검색어를 입력해 주세요">
-									<button type="button" id="searchBtn" class="btn input"><img src="/images/search.png"></button>
+									<button id="searchBtn" class="btn input"><img src="/images/search.png"></button>
 								</div>
 							</div>
 							<!-- //게시판 검색 -->
@@ -91,6 +78,21 @@
 					<!-- 게시판 목록 -->
 					<div class="articleWrap">
 						<ul class="article-list reserve">
+							<c:choose>
+								<c:when test="${not empty hlist}">
+								 <!-- <li>신청한 희망 도서는 ${hlist.size()} 권입니다</li> -->
+								</c:when>
+								<c:when test="${empty hlist}">
+									<c:choose>
+										<c:when test="${not empty pager.searchKeyword}">
+								 			<li>[${pager.searchKeyword}] 의 검색 결과가 없습니다</li>
+										</c:when>
+										<c:when test="${empty pager.searchKeyword}">
+								 			<li style="text-align: center;">신청한 희망 도서가 없습니다</li>
+										</c:when>
+									</c:choose>		
+								</c:when>
+							</c:choose>
 							<c:forEach items="${hlist}" var="list">	
 								<li>
 									<p class="title">${list.hopTitle}</p>
@@ -100,11 +102,11 @@
 											<span>발행처: ${list.hopPublisher}</span>
 										</li>
 										<li>
-											<span>신청도서관: ${list.hopLib}</span>
+											<span>신청도서관: ${list.libVO.libName}</span>
 											<span>신청일: ${list.hopDate}</span>
-											<span>신청상태: ${list.hopStat}</span>
+											<span>신청상태: ${list.statusVO.statName}</span>
 										</li>										
-										<li class="status"><a href="#btn" onclick="javascript:fnHopeBookCancelProc('106087679','141095'); return false;" class="tblBtn cncl">신청취소</a></li>
+										<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">신청취소</button></li>
 									</ul>
 								</li>
 							</c:forEach>
@@ -113,19 +115,10 @@
 					<!-- //게시판 목록 -->
 					<!-- 페이징 -->
 					<div class="pagingWrap">
-						<p class="paging">
-							<span class="current">1</span>
-
-
-						</p>
+						<div class="pagination">
+						</div>
 					</div>
 					<!-- //페이징 -->
-					<!--
-					<dl class="linkBox">
-						<dt class="txtArea">희망도서신청을 하려면 버튼을 누르세요</dt>
-						<dd class="btnArea"><a href="/seoksu/hopeBookSearch.do" class="btn themeBtn">희망도서 신청하기</a></dd>
-					</dl>
-					 -->
 					<!-- End Of the Real Contents-->
 				</div>
 			</div>

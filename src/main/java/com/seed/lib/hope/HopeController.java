@@ -1,8 +1,6 @@
 package com.seed.lib.hope;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.seed.lib.book.BookVO;
-import com.seed.lib.book.LibVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,7 +56,7 @@ public class HopeController {
 			if(result<1) {
 				//3차 체크
 				result= hopeService.getMonth(hopeVO);
-				if(result<4) {
+				if(result<3) {
 					result=200;					
 				}else {
 					result = 333;
@@ -86,10 +79,8 @@ public class HopeController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("isbn", hopeVO.getIsbn());
 		map.put("libNum", hopeVO.getLibVO().getLibNum());
-		log.info("@@@@@@@@@@@@@@@@@@LibNum:{}",hopeVO);
 		hopeVO.setIsbn(Long.parseLong(hopeVO.getIsbn().toString()));
 		int result = hopeService.setHope(hopeVO, map);
-		log.info("@@@@@@@@@@RESULT=>{}",result);
 		return result;
 	}
 	

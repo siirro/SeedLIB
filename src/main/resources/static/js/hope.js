@@ -297,12 +297,12 @@ $("#registBtn").click(function(){
                                 dataType: "json",
                                 success:function(data){
                                     console.log(data);
-                                    alert("희망 도서 신청 완료");
-                                    // location.href="../";
+                                    alert("희망 도서 신청 완료했습니다");
+                                    location.href="../";
                                 },error:function(error){
                                     console.log("errorㅠㅠ", data);
                                     console.log(error);
-                                    // location.href="./";
+                                    location.href="./";
                                 }                
                             })
                             break;
