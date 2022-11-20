@@ -6,15 +6,11 @@
 <mapper namespace="com.seed.lib.member.MemberMapper">
 
 
-		<insert id="setMemberRole" parameterType="MemberVO">
-		INSERT INTO MEMBER_ROLE VALUES (#{id}, 
-				(SELECT NUM FROM ROLE WHERE ROLENAME ='MEMBER')
-			)
-		</insert>
 	
 		<insert id="setJoin" parameterType="MemberVO">
 		INSERT INTO MEMBER (USERNAME,PASSWORD,NAME,EMAIL,BIRTH,PHONE,POST,ADDESS1,ADDESS2,ENABLED,LOANSTATUS,OVMYRCOUNT,DROPSTATUS)
-		VALUES ( #{userName}, #{password}, #{name}, #{email}, #{birth}, #{phone}, #{post}, #{addess1}, #{addess2},0,0,0,0 )
+
+		VALUES ( 2,2,2,2,2,2,2,2,2,0,0,0,0 )
 		</insert> 
 
   <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">

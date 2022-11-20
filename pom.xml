@@ -18,6 +18,20 @@
 		<java.version>11</java.version>
 	</properties>
 		<dependencies>
+		
+		
+		<!-- https://mvnrepository.com/artifact/com.android.tools.build/gradle -->
+<dependency>
+    <groupId>com.android.tools.build</groupId>
+    <artifactId>gradle</artifactId>
+    <version>2.3.0</version>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
@@ -32,15 +46,15 @@
 		     <!-- 버전 삭제 -->
 		</dependency>
 		<!-- social login -->
- 	<dependency>
+ 	<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
-		<!-- spring security -->
+		spring security
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> 
+		</dependency>  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

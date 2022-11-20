@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +14,8 @@
 
 
     <div class="loginForm agreeForm">	
-        <form id="form" method="post" action="./join" onsubmit="return chkAgree('kor');">
-            <input type="hidden" name="agreeYn" id="agreeYn" value="N">
-            <input type="hidden" name="view" value="kor">
-            <fieldset>
+        <form id="form" method="get" action="./join" onsubmit="return chkAgree('kor');">
+        <fieldset>
                 <legend>약관동의</legend>			 
                 	
                 <p class="logo"><a href="/" title="메인화면"><img src="/images/logo.png" alt="씨앗도서관"></a></p>
@@ -345,7 +343,7 @@
     </div>
     
     <script src="/js/agree.js"></script>
-
+<a href="./join">테스트</a>
 
 </body>
 </html>

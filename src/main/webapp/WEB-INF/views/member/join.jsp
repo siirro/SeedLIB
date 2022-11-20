@@ -11,7 +11,7 @@
 <body>
  
     <div class="loginForm">
-        <form id="form" name="form" action="./index" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
+        <form id="form" name="form" action="/" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
      <!--        <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
             <input type="hidden" name="gpin" value="">
             <input type="hidden" name="safeId" value="">
@@ -161,7 +161,7 @@
             
             
             
-            
+
             
         </form>
     </div>

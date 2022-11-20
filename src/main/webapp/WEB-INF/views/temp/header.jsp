@@ -35,8 +35,14 @@
 
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
+						
 						<li><a href="/member/login">로그인</a></li>
 						<li><a href="/member/join">회원가입</a></li>
+						
+						<li><a href="/member/logout">로그아웃</a></li>
+						<li><a href="/mypage/myIndex">마이페이지</a></li>
+						
+						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
 						<li><a href="/test">test</a></li>
 						

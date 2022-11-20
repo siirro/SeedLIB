@@ -29,20 +29,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("login")
-	public String getLogin(MemberVO memberVO) throws Exception{
+	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		log.info("login 성공");
+		memberVO= memberService.getLogin(memberVO);
+		session.setAttribute("memberVO", memberVO);
 		
 		return "member/login";
 		
 	}
 	 
-	
-			
-	@GetMapping("join")	
-	public void setJoin() throws Exception{
-		
-	}
-	
+
 	
 	@PostMapping("join")	
 	public ModelAndView setJoin(MemberVO memberVO) throws Exception{
@@ -56,7 +52,13 @@ public class MemberController {
 		return mv;
 	}
 
-
+	
+	
+	@GetMapping("join")	
+	public void setJoin() throws Exception{
+		
+	}
+	
 	
 	@GetMapping("agree")
 	public String agree() throws Exception{
