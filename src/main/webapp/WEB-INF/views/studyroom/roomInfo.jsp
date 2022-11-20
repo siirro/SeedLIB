@@ -9,6 +9,7 @@
 	<style>
 		.seatArea{
 			display: inline-block;
+			margin-left: 30px;
 		}
 		.seatList{
 			float:left;
@@ -60,7 +61,7 @@
 		<!-- style="width:100%; word-break:break-all;word-wrap:break-word;" -->
 		<ul class="seatArea">
 			<c:forEach items="${list}" var="r" varStatus="status">
-				<li class="seatList">${r+1}
+				<li class="seatList">${r}
 					<div>
 						<button class="resBtn" data-res-num="${r}">예약</button>
 					</div>
