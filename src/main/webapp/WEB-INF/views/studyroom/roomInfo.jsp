@@ -14,10 +14,12 @@
 		.seatList{
 			float:left;
 			width:70px;
-			height:100px;
+			height:60px;
 			background:#000;
 			color:#fff; 
 			text-align: center;
+			margin-right: 5px;
+    		margin-bottom: 10px;
 		}
 		.seatList:nth-of-type(12n-11){
 			background:rgb(255, 0, 0);
