@@ -116,9 +116,9 @@
 										<div class="btnModify">
 											
 											
-												<a href="/intro/untact.do" class="btn">온라인회원증발급</a>
+												<a href="#" class="btn">온라인회원증발급</a>
 											
-											<a href="/intro/mypage/memberModifyCheck.do" class="btn white">회원정보수정</a>
+											<a href="#" class="btn white">회원정보수정</a>
 										</div>
 									</div>
 									<div class="myInfo">

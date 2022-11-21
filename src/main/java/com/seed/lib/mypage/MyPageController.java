@@ -30,6 +30,9 @@ public class MyPageController {
 		
 	}
 	
+
+	
+	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
