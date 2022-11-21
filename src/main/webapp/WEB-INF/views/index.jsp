@@ -208,8 +208,8 @@
 					<h5>회원 로그인</h5>
 					<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
 					<ul class="clearfix">
-						<li><a href="/intro/memberLogin.do">로그인</a></li>
-						<li><a href="/intro/memberJoin.do">회원가입</a></li>
+						<li><a href="/member/login">로그인</a></li>
+						<li><a href="/member/join">회원가입</a></li>
 					</ul>
 					<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
 				</div>

@@ -36,9 +36,6 @@
 						<li><a href="/member/login">로그인</a></li>
 						<li><a href="/member/join">회원가입</a></li>
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
-						<li><a href="/test">test</a></li>
-						
-						<li><a href="/hopeList">HOPELIST</a></li>
 					</ul>
 				</div>
 			</div>
