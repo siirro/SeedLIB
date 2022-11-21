@@ -23,7 +23,12 @@ class ProgramServiceTest {
 		DateUtil dateUtil = new DateUtil();
 		programVO.setProName("책이야기");
 		programVO.setTotal(30L);
-		
+		String psDt = null;
+		String psTime = null;
+		String plDt = null;
+		String plTime = null;
+		String name = null;
+		String teacher = null;
 		Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");
 		programVO.setPrsDate(prsDate);
 		Date prlDate = dateUtil.parseDate("2022-08-23 00:00:00");
@@ -37,7 +42,7 @@ class ProgramServiceTest {
 		programVO.setProPlace("씨앗도서관");
 		programVO.setProCate("특강");
 		
-		int result = programService.setProgramAdd(programVO);
+		int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
 		
 		assertEquals(1, result);
 		

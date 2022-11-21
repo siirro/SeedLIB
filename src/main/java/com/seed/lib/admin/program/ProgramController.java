@@ -19,9 +19,10 @@ public class ProgramController {
 	}
 	
 	@PostMapping("add")
-	public String setProgramAdd(ProgramVO programVO)throws Exception{
+	public String setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
+								String plTime, String name, String teacher)throws Exception{
 		
-		int result = programService.setProgramAdd(programVO);
+		int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
 		
 		if(result > 0) {
 			return "admin/program/list";
