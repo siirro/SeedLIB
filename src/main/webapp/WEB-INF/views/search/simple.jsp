@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="searchInputbox">
                                         <input type="text" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
-                                        <input type="submit" id="searchBtn" title="검색" class="unifiedSearchbtn">
+                                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
                                     </div>
 
                                     <a href="./detail" class="btn input" title="고급검색 페이지 이동">고급검색</a>
