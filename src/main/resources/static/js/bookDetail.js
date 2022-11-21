@@ -162,22 +162,37 @@ function reservationApplyProc(bookKey,regNo){
 
 
 //좋아요
-const likeBtn = document.querySelector("#likeBtn")
+const likeBtn = document.querySelector("#likeBtn");
+const unlikeBtn = document.querySelector("#unlikeBtn");
+const isbn = document.querySelector("isbn");
+const userName = document.querySelector("userName");
 
-function bookLikeAadd (){
+
+function likeBtnFunction (){
 	likeBtn.addEventListener("click", function(){
 		const xhttp = new XMLHttpRequest();
 
-		xhttp.open("POST", "주소");
+		xhttp.open("POST", "book/like/add");
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("bookHeart="+bookHeart.value);
+		xhttp.send("isbn="+isbn.value +"&userName="+userName.value);
 		
 		xhttp.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200){
-				let reslut = this.responseText.trim();
+			location.reload();
+		}
+	});
+}
 
-				location.reload();
-			}
+
+function unlikeBtnFunction(){
+	unlikeBtn.addEventListener("click", function(){
+		const xhttp = new XMLHttpRequest();
+
+		xhttp.open("POST", "book/like/delete");
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("isbn="+isbn.value +"&userName="+userName.value);
+		
+		xhttp.onreadystatechange = function(){
+			location.reload();
 		}
 	});
 }
