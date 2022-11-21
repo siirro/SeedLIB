@@ -102,10 +102,10 @@
               </a>
               <ul id="ddmenu_2" class="collapse dropdown-nav">
                 <li>
-                  <a href="./book/list">도서 목록</a>
+                  <a href="/admin/book/list">도서 목록</a>
                 </li>
                 <li>
-                  <a href="./book/add">도서 추가</a>
+                  <a href="/admin/book/add">도서 추가</a>
                 </li>
               </ul>
             </li>
@@ -139,7 +139,7 @@
                   <a href="#"> 문화프로그램 목록 </a>
                 </li>
                 <li>
-                  <a href="./program/add"> 문화프로그램 개설 </a>
+                  <a href="/admin/program/add"> 문화프로그램 개설 </a>
                 </li>
               </ul>
             </li>
