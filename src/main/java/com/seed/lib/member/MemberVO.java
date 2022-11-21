@@ -18,8 +18,8 @@ public class MemberVO {
 	private Integer birth;
 	private String phone;
 	private String post;
-	private String addess1;
-	private String addess2;
+	private String address1;
+	private String address2;
 	private boolean enabled;
 	private boolean loanStatus;
 	private Integer ovMyrCount;

@@ -135,11 +135,11 @@
                                <input type="text" id="postcode" name="post" placeholder="우편번호" style="width: 180px;">
                              <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="joinPostcode()" title="우편번호검색 새창으로열림" style="width: 120px;">
                              
-      					     <input type="text" id="addess" name="addess1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
+      					     <input type="text" id="address" name="addess1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
                              </p><!--id="addrs"  -->
              
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                           <input type="text" id="detailAddess" name="addess2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="" required="required">                      
+                           <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="" required="required">                      
                                 <input type="text" id="extraAddress" placeholder="참고항목">
                                 
                                  </p>
