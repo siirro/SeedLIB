@@ -218,7 +218,7 @@ select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: #fff url(/include/image/common/arr_select.png) 100% 50% no-repeat;
+	background: #fff url(/images/arr_select.png) 100% 50% no-repeat;
 	line-height: 40px;
 	color: #666;
 }

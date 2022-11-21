@@ -51,8 +51,7 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form id="searchForm" name="searchForm" method="get">
-                    <input type="hidden" name="searchType" value="SIMPLE">
+                <form action="simple" id="searchForm" name="searchForm" method="get">
 
                     <!-- 서치랩 -->
                     <div class="searchWrap">
@@ -65,8 +64,8 @@
 
                                     </div>
                                     <div class="searchInputbox">
-                                        <input type="text" id="totalSearchValue" name="searchKeyword" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
-                                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
+                                        <input type="text" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
+                                        <input type="submit" id="searchBtn" title="검색" class="unifiedSearchbtn">
                                     </div>
 
                                     <a href="./detail" class="btn input" title="고급검색 페이지 이동">고급검색</a>
@@ -85,15 +84,14 @@
                                     <span id="totalCnt">5,168</span> 건
                                 </div>
 
-                                <div class="listStyleType">
+                                <!-- <div class="listStyleType">
                                     <select name="searchArticle" title="정렬조건 선택">
                                         <option value="SCORE" selected="selected">인기도</option>
                                         <option value="TITLE">서명</option>
-                                        <option value="AUTHOR">저자</option>
+                                        <option value="WRITER">저자</option>
                                         <option value="PUBLISHER">발행처</option>
-                                        <option value="PUBYEAR">발행일</option>
-                                        <option value="LOANCOUNT">대출수</option>
-                                        <option value="WDATE">등록일</option>
+                                        <option value="BOOKDATE">발행일</option>
+                                        <option value="BOOKCOUNT">대출수</option>
                                     </select>
                                     <select name="searchOrder" class="orderSel" style="display:none" title="정렬순서 선택">
                                         <option value="ASC" selected="selected">오름차순</option>
@@ -111,14 +109,14 @@
                                         <a href="#list" class="listTypeList on" id="viewTypeList" title="선택됨"><span class="blind">리스트형</span></a>
                                         <a href="#img" class="listTypeCard " id="viewTypeCard"><span class="blind">이미지형</span></a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>
                     </div>
                     <!-- 검색설정랩 -->
 
-                    <!-- 서치리스트 -->
+                    <!-- 리스트 -->
                     <div id="bookList">
                         <div class="bookList listViewStyle">
                             <ul class="listWrap">
@@ -186,7 +184,7 @@
                         <!-- //페이징 -->
                         
                                             </div>
-                    <!-- 서치리스트 -->
+                    <!-- 리스트 -->
 
                 </form>
                 <!-- End Of the Real Contents-->

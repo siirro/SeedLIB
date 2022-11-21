@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
+
 </head>
 
 <body>
@@ -45,45 +46,30 @@
 
 					<div class="mainSearchWrap">
 						<div class="mainSearchForm clearfix">
-							<form name="mainSearchForm" id="mainSearchForm" method="post">
+							<form action="./search/simple" name="mainSearchForm" id="mainSearchForm" method="post">
 								<input type="hidden" name="searchType" value="SIMPLE">
 								<input type="hidden" name="searchManageCode" value="ALL">
 
 								<fieldset>
 									<legend class="blind">통합검색 영역</legend>
 									<div class="searchRadi mainBestKeyword mobileHide" id="mainBestKeyword">
-										<!-- <div id="mainBestKeyword" class="mainBestKeyword mobileHide"> -->
 					
-											<script>
-												$(function(){
-													//통합검색 인기검색어
-													$(".keywordListWrap").newsTicker({
-														itemHeight: 33,
-														showItems: 1,
-														duration: 4000,
-														prevButton: "#btnDwon",
-														nextButton: "#btnUp"
-													});
-												});
-											</script>
-
-											<div>
-												<div class="controlArea" style="padding: 17px;">
-													<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
-													<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
-												</div>
-												<div class="keywordListWrap" style="height: 55px; overflow: hidden; color: white;">
-													<ol class="keywordList" style="margin-top: 0px;">
-																<li style="padding: 17px 27px 17px 0px;"><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점'); return false;" title="불편한 편의점"><i>1</i>불편한 편의점</a></li>
-													<li><a href="#link" onclick="javascript:fnMainSearchKeyword('흔한남매'); return false;" title="흔한남매"><i>2</i>흔한남매</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('파친코'); return false;" title="파친코"><i>3</i>파친코</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한편의점'); return false;" title="불편한편의점"><i>4</i>불편한편의점</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('하얼빈'); return false;" title="하얼빈"><i>5</i>하얼빈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점 김호연 장편소설 2'); return false;" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('카카오프렌즈'); return false;" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('아버지의 해방일지'); return false;" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('웹툰'); return false;" title="웹툰"><i>9</i>웹툰</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('신라'); return false;" title="신라"><i>10</i>신라</a></li></ol>
-												</div>
+										<div>
+											<div class="controlArea" style="padding: 17px;">
+												<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
+												<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
 											</div>
-										<!-- </div> -->
+											<div class="keywordListWrap" style="height: 55px; overflow: hidden; color: white;">
+												<ol class="keywordList" style="margin-top: 0px;">
+															<li style="padding: 17px 27px 17px 0px;"><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점'); return false;" title="불편한 편의점"><i>1</i>불편한 편의점</a></li>
+												<li><a href="#link" onclick="javascript:fnMainSearchKeyword('흔한남매'); return false;" title="흔한남매"><i>2</i>흔한남매</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('파친코'); return false;" title="파친코"><i>3</i>파친코</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한편의점'); return false;" title="불편한편의점"><i>4</i>불편한편의점</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('하얼빈'); return false;" title="하얼빈"><i>5</i>하얼빈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점 김호연 장편소설 2'); return false;" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('카카오프렌즈'); return false;" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('아버지의 해방일지'); return false;" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('웹툰'); return false;" title="웹툰"><i>9</i>웹툰</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('신라'); return false;" title="신라"><i>10</i>신라</a></li></ol>
+											</div>
+										</div>
 									</div>
 									<div class="mainSearchKeywordWrap">
 										<div class="mainSearchKeyword">
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
-											<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="searchKeyword" placeholder="검색어를 입력하세요">
+											<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
 											<a href="./search/simple" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
 										</div>
 									</div>
@@ -564,7 +550,7 @@
 						<div class="infoBox">
 							<dl>
 								<dt>열람실</dt>
-								<dd>평일 07시~23시 / 주말 07시~23시</dd>
+								<dd>평일 08시~23시 / 주말 08시~23시</dd>
 							</dl>
 							<dl>
 								<dt>대출자료실</dt>
