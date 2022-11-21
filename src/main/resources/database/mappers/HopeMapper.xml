@@ -28,8 +28,15 @@
 	</select>
 
 	<select id="getMonth" parameterType="HopeVO" resultType="Int">
-		SELECT COUNT (*) FROM HOPE
-		WHERE USERNAME=#{userName} AND MONTH(HOPDATE)=MONTH(SYSDATE())	
+		SELECT COUNT (*) FROM 
+		HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+			WHERE USERNAME=#{userName} AND HS.STATNUM=0 AND YEAR(HOPDATE)=YEAR(SYSDATE()) AND MONTH(HOPDATE)=MONTH(SYSDATE());
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">

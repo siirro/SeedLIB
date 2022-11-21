@@ -4,47 +4,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.seed.lib.donation.DonationMapper">
-<!-- 희망도서관련 -->
-	<select id="getHaveBook" parameterType="Map" resultType="int">
-		SELECT COUNT(*) FROM BOOK B
-			INNER JOIN
-			BOOKLIB BL
-			ON B.ISBN=BL.ISBN
-				INNER JOIN
-				LIBRARY L
-				ON BL.LIBNUM=L.LIBNUM
-		WHERE B.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
-	</select>
-
-	<select id="getOverLapBook" parameterType="Map" resultType="int">
-		SELECT COUNT(*) FROM HOPE H
-			INNER JOIN
-			HOPLIB HL
-			ON H.HOPNUM=HL.HOPNUM
-				INNER JOIN
-				LIBRARY L
-				ON HL.LIBNUM=L.LIBNUM
-		WHERE H.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
-	</select>
-
-	<select id="getMonth" parameterType="HopeVO" resultType="Int">
-		SELECT COUNT (*) FROM HOPE
-		WHERE USERNAME=#{userName} AND MONTH(HOPDATE)=MONTH(SYSDATE())	
-	</select>
-
-	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
-		INSERT INTO HOPE VALUES
-		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName})		
+<!-- 기증도서관련 -->
+	<insert id="setDon" parameterType="DonationVO" useGeneratedKeys="true" keyProperty="donNum">
+		INSERT INTO DONATION VALUES
+		(#{donNum}, #{donTitle}, #{donWriter}, #{donPublisher}, #{donMemo}, SYSDATE(), #{userName}, #{emailAgree})		
 	</insert>
 	
-	<insert id="setHopeStat" parameterType="HopeVO">
-		INSERT INTO HOSTAT VALUES
-		(0, #{hopNum}, 0)
+	<insert id="setDonStat" parameterType="DonationVO">
+		INSERT INTO DOSTAT VALUES
+		(0, #{donNum}, 0)
 	</insert>	
 	
-	<insert id="setHopeLib" parameterType="Map">
-		INSERT INTO HOPLIB VALUES
-		(0, #{libNum}, #{hopNum})
+	<insert id="setDonLib" parameterType="Map">
+		INSERT INTO DONLIB VALUES
+		(0, #{libNum}, #{donNum})
 	</insert>	
 		
 		
@@ -52,101 +25,75 @@
 <sql id="search">
 		 AND L.LIBNUM LIKE CONCAT(#{libNum},'%')
 		 AND <choose>
-				<when test="searchType==0">HOPTITLE</when>
-				<when test="searchType==1">HOPWRITER</when>
-				<otherwise>HOPPUBLISHER</otherwise>
+				<when test="searchType==0">DONTITLE</when>
+				<when test="searchType==1">DONWRITER</when>
+				<otherwise>DONPUBLISHER</otherwise>
 			 </choose>
 			LIKE CONCAT('%', #{searchKeyword}, '%')
 </sql>
 
 <select id="getTotalCount" parameterType="HdPager" resultType="Long">
-	SELECT COUNT(H.HOPNUM) FROM HOPE H
+	SELECT COUNT(D.DONNUM) FROM DONATION D
 			INNER JOIN
-			HOSTAT HS
-			ON H.HOPNUM=HS.HOPNUM
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
 				INNER JOIN
 				STATUS S
-				ON HS.STATNUM=S.STATNUM 
+				ON DS.STATNUM=S.STATNUM 
 			INNER JOIN
-			HOPLIB HL
-			ON H.HOPNUM=HL.HOPNUM
+			DONLIB DL
+			ON D.DONNUM=DL.DONNUM
 				INNER JOIN
 				LIBRARY L
-				ON HL.LIBNUM=L.LIBNUM
+				ON DL.LIBNUM=L.LIBNUM
 		WHERE USERNAME=#{userName} <include refid="search"></include>
-		ORDER BY H.HOPNUM DESC 
+		ORDER BY D.DONNUM DESC 
 </select>
 
-
-	<select id="getHopeList" parameterType="HdPager" resultMap="HopeVOResult">
-		SELECT * FROM HOPE H
+	<select id="getDonList" parameterType="HdPager" resultMap="DonationVOResult">
+		SELECT * FROM DONATION D
 			INNER JOIN
-			HOSTAT HS
-			ON H.HOPNUM=HS.HOPNUM
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
 				INNER JOIN
 				STATUS S
-				ON HS.STATNUM=S.STATNUM 
+				ON DS.STATNUM=S.STATNUM 
 			INNER JOIN
-			HOPLIB HL
-			ON H.HOPNUM=HL.HOPNUM
+			DONLIB DL
+			ON D.DONNUM=DL.DONNUM
 				INNER JOIN
 				LIBRARY L
-				ON HL.LIBNUM=L.LIBNUM
+				ON DL.LIBNUM=L.LIBNUM
 		WHERE USERNAME=#{userName} <include refid="search"></include>
-		ORDER BY HS.STATNUM, H.HOPNUM DESC 
+		ORDER BY DS.STATNUM, D.DONNUM DESC 
 	</select>
 	
 
-	<update id="setUpdateHope" parameterType="HopeVO">
-		UPDATE HOPE H
+	<update id="setUpdateDon" parameterType="DonationVO">
+		UPDATE DONATION D
 			INNER JOIN
-			HOSTAT HS
-			ON H.HOPNUM=HS.HOPNUM
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
 				INNER JOIN
 				STATUS S
-				ON HS.STATNUM=S.STATNUM
-				SET HS.STATNUM=1
-		WHERE USERNAME=#{userName} AND H.HOPNUM=#{hopNum}
+				ON DS.STATNUM=S.STATNUM
+				SET DS.STATNUM=1
+		WHERE USERNAME=#{userName} AND D.DONNUM=#{donNum}
 	</update>
 	
-	
-<!-- 기증도서관련 -->	
-	<insert id="setDonation" parameterType="DonationVO">
-		INSERT HOPE VALUES
-		(0, #{dLib}, #{dTitle}, #{dWriter}, #{dPublisher}, #{userName}, #{dMemo}, 0, SYSDATE())		
-	</insert>
 	
 <!-- 열람실예약관련 -->
 
 <!-- resultMap -->
-	<resultMap type="BookVO" id="haveResult">
-		<id column="isbn" property="isbn" />
-			<result column="title" property="title"/>
-			<result column="writer" property="writer"/>
-			<result column="publisher" property="publisher"/>
-			<result column="bookDate" property="bookDate"/>
-			<result column="able" property="able"/>
-			<result column="category" property="category"/>
-			<result column="quantity" property="quantity"/>
-			<result column="image" property="image"/>
-			<result column="bookCount" property="bookCount"/>
-			<result column="bookHeart" property="bookHeart"/>
-			<result column="num" property="num"/>			
-			<collection property="libVOs" javaType="List" ofType="LibVO">
-				<id column="libNum" property="libNum"/>
-				<result column="libName" property="libName"/>
-			</collection>
-	</resultMap>
-
-<resultMap type="HopeVO" id="HopeVOResult">
-	<id column="HOPNUM" property="hopNum"/>
-		<result column="HOPTITLE" property="hopTitle"/>
-		<result column="HOPWRITER" property="hopWriter"/>
-		<result column="HOPPUBLISHER" property="hopPublisher"/>
+<resultMap type="DonationVO" id="DonationVOResult">
+	<id column="DONNUM" property="donNum"/>
+		<result column="DONTITLE" property="donTitle"/>
+		<result column="DONWRITER" property="donWriter"/>
+		<result column="DONPUBLISHER" property="donPublisher"/>
+		<result column="DONMEMO" property="donMemo"/>
+		<result column="DONDATE" property="donDate"/>
 		<result column="USERNAME" property="userName"/>
-		<result column="HOPMEMO" property="hopMemo"/>
-		<result column="HOPDATE" property="hopDate"/>
-		<result column="ISBN" property="isbn"/>
+		<result column="EMAILAGREE" property="emailAgree"/>
 	<association property="statusVO">
 		<id column="STATNUM" property="statNum"/>
 		<result column="STATNAME" property="statName"/>
@@ -156,20 +103,4 @@
 		<result column="LIBNAME" property="libName"/>
 	</association>
 </resultMap>	
-
-<resultMap type="HopeVO" id="getOverLapBookResult">
-	<id column="HOPNUM" property="hopNum"/>
-		<result column="HOPLIB" property="hopLib"/>
-		<result column="HOPTITLE" property="hopTitle"/>
-		<result column="HOPWRITER" property="hopWriter"/>
-		<result column="HOPPUBLISHER" property="hopPublisher"/>
-		<result column="USERNAME" property="userName"/>
-		<result column="HOPMEMO" property="hopMemo"/>
-		<result column="HOPDATE" property="HOPDATE"/>
-		<result column="ISBN" property="isbn"/>
-	<association property="libVO">
-		<id column="LIBNUM" property="libNum"/>
-		<result column="LIBNAME" property="libName"/>
-	</association>
-</resultMap>
 </mapper>    

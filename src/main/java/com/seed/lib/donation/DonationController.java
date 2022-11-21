@@ -2,13 +2,18 @@ package com.seed.lib.donation;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -27,15 +32,13 @@ public class DonationController {
 	public void setHope()throws Exception{
 	}
 	
-//	@PostMapping("setDon")
-//	@ResponseBody
-//	public int setHope(@RequestBody HopeVO hopeVO)throws Exception{
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("isbn", hopeVO.getIsbn());
-//		map.put("libNum", hopeVO.getLibVO().getLibNum());
-//		hopeVO.setIsbn(Long.parseLong(hopeVO.getIsbn().toString()));
-//		int result = hopeService.setHope(hopeVO, map);
-//		return result;
-//	}
+	@PostMapping("setDon")
+	@ResponseBody
+	public int setDon(@RequestBody DonationVO donationVO)throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		map.put("libNum", donationVO.getLibVO().getLibNum());
+		int result = donationService.setDon(donationVO, map);
+		return result;
+	}
 	
 }
