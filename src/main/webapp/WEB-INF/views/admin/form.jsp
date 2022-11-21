@@ -11,14 +11,14 @@
       href="assets/images/favicon.svg"
       type="image/x-icon"
     />
-    <title>Cards | PlainAdmin Demo</title>
+    <title>Form Elements | PlainAdmin Demo</title>
 
     <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="/css/admin/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/admin/lineicons.css" />
-    <link rel="stylesheet" href="/css/admin/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
-    <link rel="stylesheet" href="/css/admin/main.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -90,7 +90,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="inv'">
+            <a href="invoice.html">
               <span class="icon">
                 <svg
                   width="22"
@@ -145,11 +145,11 @@
           <li class="nav-item nav-item-has-children">
             <a
               href="#0"
-              class=""
+              class="collapsed"
               data-bs-toggle="collapse"
               data-bs-target="#ddmenu_4"
               aria-controls="ddmenu_4"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-label="Toggle navigation"
             >
               <span class="icon">
@@ -167,7 +167,7 @@
               </span>
               <span class="text">UI Elements </span>
             </a>
-            <ul id="ddmenu_4" class="collapsed show dropdown-nav">
+            <ul id="ddmenu_4" class="collapse dropdown-nav">
               <li>
                 <a href="alerts.html"> Alerts </a>
               </li>
@@ -175,7 +175,19 @@
                 <a href="buttons.html"> Buttons </a>
               </li>
               <li>
-                <a href="cards.html" class="active"> Cards </a>
+                <a href="cards.html"> Cards </a>
+              </li>
+              <li>
+                <a href="modals.html">
+                  <span class="text">
+                    Modals <span class="pro-badge">Pro</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="tabs.html" class="active">
+                  <i class="lni lni-arrow-right"></i> Tabs
+                </a>
               </li>
               <li>
                 <a href="typography.html"> Typography </a>
@@ -219,11 +231,11 @@
           <li class="nav-item nav-item-has-children">
             <a
               href="#0"
-              class="collapsed"
+              class=""
               data-bs-toggle="collapse"
               data-bs-target="#ddmenu_5"
               aria-controls="ddmenu_5"
-              aria-expanded="false"
+              aria-expanded="true"
               aria-label="Toggle navigation"
             >
               <span class="icon">
@@ -241,9 +253,9 @@
               </span>
               <span class="text"> Forms </span>
             </a>
-            <ul id="ddmenu_5" class="collapse dropdown-nav">
+            <ul id="ddmenu_5" class="collapsed show dropdown-nav">
               <li>
-                <a href="form-elements.html"> Form Elements </a>
+                <a href="form-elements.html" class="active"> Form Elements </a>
               </li>
             </ul>
           </li>
@@ -506,15 +518,15 @@
       </header>
       <!-- ========== header end ========== -->
 
-      <!-- ========== card components start ========== -->
-      <section class="card-components">
+      <!-- ========== tab components start ========== -->
+      <section class="tab-components">
         <div class="container-fluid">
           <!-- ========== title-wrapper start ========== -->
           <div class="title-wrapper pt-30">
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>Cards</h2>
+                  <h2>Form Elements</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -525,11 +537,9 @@
                       <li class="breadcrumb-item">
                         <a href="#0">Dashboard</a>
                       </li>
-                      <li class="breadcrumb-item">
-                        <a href="#0">UI Components</a>
-                      </li>
+                      <li class="breadcrumb-item"><a href="#0">Forms</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        Cards
+                        Form Elements
                       </li>
                     </ol>
                   </nav>
@@ -541,344 +551,275 @@
           </div>
           <!-- ========== title-wrapper end ========== -->
 
-          <!-- ========== cards-styles start ========== -->
-          <div class="cards-styles">
-            <!-- ========= card-style-1 start ========= -->
+          <!-- ========== form-elements-wrapper start ========== -->
+          <div class="form-elements-wrapper">
             <div class="row">
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-1.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Hammad</a>
-                      </p>
+              <div class="col-lg-6">
+                <!-- input style start -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Input Fields</h6>
+                  <div class="input-style-1">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Full Name" />
+                  </div>
+                  <!-- end input -->
+                  <div class="input-style-2">
+                    <input type="text" placeholder="Full Name" />
+                    <span class="icon"> <i class="lni lni-user"></i> </span>
+                  </div>
+                  <!-- end input -->
+                  <div class="input-style-3">
+                    <input type="text" placeholder="Full Name" />
+                    <span class="icon"><i class="lni lni-user"></i></span>
+                  </div>
+                  <!-- end input -->
+                </div>
+                <!-- end card -->
+                <!-- ======= input style end ======= -->
+
+                <!-- ======= select style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Selects</h6>
+                  <div class="select-style-1">
+                    <label>Category</label>
+                    <div class="select-position">
+                      <select>
+                        <option value="">Select category</option>
+                        <option value="">Category one</option>
+                        <option value="">Category two</option>
+                        <option value="">Category three</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-1.jpg"
-                        alt=""
-                      />
-                    </a>
+                  <!-- end select -->
+                  <div class="select-style-2">
+                    <div class="select-position">
+                      <select>
+                        <option value="">Select category</option>
+                        <option value="">Category one</option>
+                        <option value="">Category two</option>
+                        <option value="">Category three</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
+                  <!-- end select -->
+                </div>
+                <!-- end card -->
+                <!-- ======= select style end ======= -->
+
+                <!-- ======= select style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Time and Date</h6>
+                  <div class="input-style-1">
+                    <label>Date</label>
+                    <input type="date" />
+                  </div>
+                  <!-- end input -->
+                  <div class="input-style-2">
+                    <input type="date" />
+                    <span class="icon"
+                      ><i class="lni lni-chevron-down"></i
+                    ></span>
+                  </div>
+                  <!-- end input -->
+                  <div class="input-style-2">
+                    <input type="time" />
+                  </div>
+                  <!-- end input -->
+                </div>
+                <!-- end card -->
+                <!-- ======= input style end ======= -->
+
+                <!-- ======= input switch style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Toggle switch input</h6>
+                  <div class="form-check form-switch toggle-switch mb-30">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="toggleSwitch1"
+                    />
+                    <label class="form-check-label" for="toggleSwitch1"
+                      >Default switch checkbox input</label
+                    >
+                  </div>
+                  <div class="form-check form-switch toggle-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="toggleSwitch2"
+                      checked
+                    />
+                    <label class="form-check-label" for="toggleSwitch2"
+                      >Default switch checkbox input</label
+                    >
                   </div>
                 </div>
-                <!-- end card-->
+                <!-- ======= input switch style end ======= -->
               </div>
               <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-2.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Mahmud</a>
-                      </p>
-                    </div>
+              <div class="col-lg-6">
+                <!-- ======= textarea style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Textarea</h6>
+                  <div class="input-style-1">
+                    <label>Message</label>
+                    <textarea placeholder="Message" rows="5"></textarea>
                   </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-2.jpg"
-                        alt=""
-                      />
-                    </a>
+                  <!-- end textarea -->
+                  <div class="input-style-3">
+                    <textarea placeholder="Message" rows="5"></textarea>
+                    <span class="icon"
+                      ><i class="lni lni-text-format"></i
+                    ></span>
                   </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
+                  <!-- end textarea -->
                 </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-3.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Jamil Kareem</a>
-                      </p>
-                    </div>
+                <!-- ======= textarea style end ======= -->
+
+                <!-- ======= checkbox style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Checkbox</h6>
+                  <div class="form-check checkbox-style mb-20">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="checkbox-1"
+                    />
+                    <label class="form-check-label" for="checkbox-1">
+                      Default Checkbox</label
+                    >
                   </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-3.jpg"
-                        alt=""
-                      />
-                    </a>
+                  <!-- end checkbox -->
+                  <div class="form-check checkbox-style mb-20">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="checkbox-2"
+                      disabled
+                    />
+                    <label class="form-check-label" for="checkbox-2">
+                      Disabled Checkbox</label
+                    >
                   </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
+                  <!-- end checkbox -->
+                  <div class="form-check checkbox-style checkbox-success mb-20">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="checkbox-3"
+                    />
+                    <label class="form-check-label" for="checkbox-3">
+                      Success Checkbox</label
+                    >
                   </div>
+                  <!-- end checkbox -->
+                  <div class="form-check checkbox-style checkbox-warning mb-20">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="checkbox-4"
+                    />
+                    <label class="form-check-label" for="checkbox-4">
+                      Warning Checkbox</label
+                    >
+                  </div>
+                  <!-- end checkbox -->
+                  <div class="form-check checkbox-style checkbox-danger mb-20">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="checkbox-5"
+                    />
+                    <label class="form-check-label" for="checkbox-5">
+                      Danger Checkbox</label
+                    >
+                  </div>
+                  <!-- end checkbox -->
                 </div>
-                <!-- end card-->
+                <!-- ======= checkbox style end ======= -->
+
+                <!-- ======= radio style start ======= -->
+                <div class="card-style mb-30">
+                  <h6 class="mb-25">Radio</h6>
+                  <div class="form-check radio-style mb-20">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      id="radio-1"
+                    />
+                    <label class="form-check-label" for="radio-1">
+                      Default Radio</label
+                    >
+                  </div>
+                  <!-- end radio -->
+                  <div class="form-check radio-style mb-20">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      id="radio-2"
+                      disabled
+                    />
+                    <label class="form-check-label" for="radio-2">
+                      Disabled Radio</label
+                    >
+                  </div>
+                  <!-- end radio -->
+                  <div class="form-check radio-style radio-success mb-20">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      id="radio-3"
+                    />
+                    <label class="form-check-label" for="radio-3">
+                      Success Radio</label
+                    >
+                  </div>
+                  <!-- end radio -->
+                  <div class="form-check radio-style radio-warning mb-20">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      id="radio-4"
+                    />
+                    <label class="form-check-label" for="radio-4">
+                      Warning Radio</label
+                    >
+                  </div>
+                  <!-- end radio -->
+                  <div class="form-check radio-style radio-danger mb-20">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      id="radio-5"
+                    />
+                    <label class="form-check-label" for="radio-5">
+                      Danger Radio</label
+                    >
+                  </div>
+                  <!-- end radio -->
+                </div>
+                <!-- ======= radio style end ======= -->
               </div>
               <!-- end col -->
             </div>
             <!-- end row -->
-            <!-- ========= card-style-1 end ========= -->
-            <!-- ========= card-style-2 start ========= -->
-            <div class="row">
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-1.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Hammad</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-1.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-2.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Mahmud</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-2.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-3.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Jamil Kareem</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-3.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-            </div>
-            <!-- end row -->
-            <!-- ========= card-style-2 end ========= -->
-            <!-- ========= card-style-3 start ========= -->
-            <div class="row">
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-1.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Hammad</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-1.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-2.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Mahmud</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-2.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="card-style-1 mb-30">
-                  <div class="card-meta">
-                    <div class="image">
-                      <img
-                        src="assets/images/cards/card-style-1/admin-3.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="text">
-                      <p class="text-sm text-medium">
-                        Posted by : <a href="#0">Jamil Kareem</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-image">
-                    <a href="#0">
-                      <img
-                        src="assets/images/cards/card-style-1/card-3.jpg"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4><a href="#0"> Card Title here </a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
-                  </div>
-                </div>
-                <!-- end card-->
-              </div>
-              <!-- end col -->
-            </div>
-            <!-- end row -->
-            <!-- ========= card-style-1 end ========= -->
           </div>
-          <!-- ========== cards-styles end ========== -->
+          <!-- ========== form-elements-wrapper end ========== -->
         </div>
         <!-- end container -->
       </section>
-      <!-- ========== card components end ========== -->
+      <!-- ========== tab components end ========== -->
 
       <!-- ========== footer start =========== -->
       <footer class="footer">
@@ -921,14 +862,14 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="/js/admin/bootstrap.bundle.min.js"></script>
-    <script src="/js/admin/Chart.min.js"></script>
-    <script src="/js/admin/dynamic-pie-chart.js"></script>
-    <script src="/js/admin/moment.min.js"></script>
-    <script src="/js/admin/fullcalendar.js"></script>
-    <script src="/js/admin/jvectormap.min.js"></script>
-    <script src="/js/admin/world-merc.js"></script>
-    <script src="/js/admin/polyfill.js"></script>
-    <script src="/js/admin/main.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/jvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
