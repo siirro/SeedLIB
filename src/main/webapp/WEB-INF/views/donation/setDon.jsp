@@ -240,23 +240,6 @@ pageEncoding="UTF-8"%>
                                     <td><input type="text" id="donPublisher" name="donPublisher" value="" class="form-ele wide"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><label for="donation_method01">기증방법</label><span class="require">*</span></th>
-                                    <td>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method01" class="donMethod" name="donMethod" title="기증방법" value="직접방문" checked="">
-                                            <label for="donation_method01">직접방문</label>
-                                        </span>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method02" class="donMethod" name="donMethod" title="기증방법" value="우편배달">
-                                            <label for="donation_method02">우편발송</label>
-                                        </span>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method04" class="donMethod" name="donMethod" title="기증방법" value="담당자와 상담">
-                                            <label for="donation_method04">담당자와 상담</label>
-                                        </span>
-                                    </td>
-                                </tr>  
-                                <tr>
                                     <th scope="row"><label for="donation_alert">처리 알림 여부</label><span class="require">*</span></th>
                                     <td>
                                         <span class="input_radio_wrap">
