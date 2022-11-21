@@ -51,40 +51,7 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form id="searchForm" name="searchForm" method="get">
-                    <input type="hidden" name="searchType" value="SIMPLE">
-                    <div class="searchWrap">
-                        <div class="searchFormWeb">
-
-                            <div class="searchToparea">
-
-                                <div class="searchBardiv">
-                                    <div class="searchTit">통합자료</div>
-                                        <div class="searchInputbox">
-                                            <input type="text" id="totalSearchValue" name="searchKeyword" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
-                                            <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-                                        </div>
-
-                                        <a href="/seoksu/searchDetail.do" class="btn input" title="고급검색 페이지 이동">고급검색</a>
-                                    </div>
-                                    <div class="innerSearch" style="visibility:hidden;">
-                                        <input type="checkbox" id="innerSearch" class="check">
-                                        <label for="innerSearch">결과 내 검색</label>
-                                    </div>
-                                    <div class="searchUtilWrap" id="liboption">
-                                        <ol>
-                                            <li><a href="javascript:;" id="liboptionicon" data-tab="sh_util03" class="sh_util03" title="축소됨">도서관 선택</a></li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-
-                        </div>
-                    
-                    </div>
-                </form>
+                
                 <!-- End Of the Real Contents-->
                 
             </div>

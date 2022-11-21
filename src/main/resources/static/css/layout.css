@@ -111,7 +111,7 @@
 #lnb .submenu li {line-height: 1; padding-left: 7px; /* background: url(/include/image/common/lnb_dot.png) no-repeat left 6px; */}
 #lnb .submenu li + li {margin-top: 25px;}
 #lnb .submenu a {display: inline-block; color: #000; letter-spacing: -0.8px;}
-#lnb .submenu a.current {font-weight: 500; border-bottom: 1px solid #000;}
+#lnb .submenu a.current {font-weight: 500; font-weight: bold; border-bottom: 1px solid #000;}
 #lnb > li > a span, #lnb .submenu a span {display: inline-block;}
 #lnb .MkSub .MkTab {display: none;}
 

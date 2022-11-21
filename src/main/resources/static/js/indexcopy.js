@@ -1,12 +1,10 @@
 // 헤더 오픈/클로즈
 $(".hehehe").mouseenter(function(){
-    console.log("dd");
     $('#indexNavi').css('overflow','visible');
     $('#topmenu>li>ul').css('display','block');
 })
 
 $(".hehehe").mouseleave(function(){
-    console.log("dd");
     $('#indexNavi').css('overflow','hidden');
     $('#topmenu>li>ul').css('display','none');
 
