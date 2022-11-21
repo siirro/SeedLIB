@@ -111,6 +111,13 @@
                                           
                                 
                                             <input type="submit" id="loginBtn" title="로그인" value="로그인" class="btnLogin themeBtn">
+                                            
+                                            <div>
+                                            <a href="kakao_login.php" class="btn_join_kakao" style="color:#FFF;"><i class="icon"></i><i class="division"></i>카카오 로그인</a>
+                                            <a href="google_login.php" class="btn_join_google" style="color:#FFF;"><i class="icon"></i><i class="division"></i>구글 로그인</a>
+                                            
+                                            </div>
+                                            <div class="member_confirm_line"></div>
                                             <div class="checkArea clearfix">
                                                 <a href="/intro/memberFindIdCertify.do">아이디 찾기</a>
                                                 <a href="/intro/memberFindPwdCertify.do">비밀번호 재발급</a>
