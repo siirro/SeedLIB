@@ -13,22 +13,22 @@ public class ProgramController {
 	@Autowired
 	private ProgramService programService;
 	
-	@GetMapping("add")
+	@GetMapping("proAdd")
 	public String setProgramAdd()throws Exception{
-		return "admin/program/add";
+		return "admin/program/proAdd";
 	}
 	
-	@PostMapping("add")
+	@PostMapping("proAdd")
 	public String setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
 								String plTime, String name, String teacher)throws Exception{
 		
 		int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
 		
 		if(result > 0) {
-			return "admin/program/list";
+			return "admin/program/proList";
 		}
 		
-		return "admin/program/add";
+		return "admin/program/proAdd";
 	}
 	
 }

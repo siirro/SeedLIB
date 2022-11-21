@@ -42,7 +42,7 @@
                       <li class="breadcrumb-item">
                         <a href="../main">Dashboard</a>
                       </li>
-                      <li class="breadcrumb-item"><a href="./add">Forms</a></li>
+                      <li class="breadcrumb-item"><a href="./proAdd">Forms</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
                         문화 프로그램 개설
                       </li>
@@ -57,7 +57,7 @@
           <!-- ========== title-wrapper end ========== -->
 
           <!-- ========== form-elements-wrapper start ========== -->
-          <form action="./add" method="post">
+          <form action="./proAdd" method="post">
             <div class="row">
               <div class="col-lg-6">
                 <!-- input style start -->
@@ -205,6 +205,18 @@
                     </div>
                   </div>
                   <!-- end select -->
+                  <div class="select-style-1">
+                    <h6 class="mb-25">접수상태 선택</h6>
+                    <div class="select-position">
+                      <select name="recStatus">
+                        <option value="0">선택안함</option>
+                        <option value="1">예정</option>
+                        <option value="2">접수중</option>
+                        <option value="3">마감</option>
+                        <option value="4">종료</option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-12">
                     <div
                       class="
