@@ -64,7 +64,7 @@
 .mainSearchForm {position: relative; padding-left: 258px;}
 .mainSearchForm .searchRadi {position: absolute; left: 0; top: 0; display: block; height: 68px; line-height: 68px; text-align: center; background-color: rgba(0, 0, 0, 0.4);}
 .mainSearchKeyword {position: relative; padding-right: 93px; box-sizing: border-box;}
-.mainSearchKeyword > input {display: block; width: 100%; height: 68px; padding: 0 20px; font-size: 1.250em; border: 0;}
+.mainSearchKeyword > input {display: block; width: 100%; height: 68px !important;  padding: 0 20px; font-size: 1.250em; border: 0;}
 .mainSearchKeyword .btnSearch {display: block; position: absolute; top: 0; right: 0; width: 93px; line-height: 68px; font-size: 1.125em; color: #fff; background-color: #393939;}
 
 /* 메인 자동검색 */
