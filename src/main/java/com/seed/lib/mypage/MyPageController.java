@@ -37,7 +37,7 @@ public class MyPageController {
 	public ModelAndView setHList(HdPager hdPager)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
-		hdPager.setUserName("id3");
+		hdPager.setUserName("id1");
 		List<HopeVO> hl = hopeService.getHopeList(hdPager);
 		mv.addObject("hlist", hl);
 		mv.addObject("pager", hdPager);

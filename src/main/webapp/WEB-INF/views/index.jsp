@@ -100,7 +100,7 @@
 					<ul class="shortcutList clearfix">
 						<li class="svc1"><a href="./resources/"><img src="/images/m_calendar.png"><br>문화행사신청</a></li>
 						<li class="svc2"><a href="./hope/hopeInfo"><img src="/images/m_books.png"><br>희망도서신청</a></li>
-						<li class="svc3"><a href="./rooms"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
+						<li class="svc3"><a href="./studyroom/roomInfo"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
 						<li class="svc4"><a href="/intro/40027/contents.do"><img src="/images/m_info.png"><br>이용안내</a></li>
 						<li class="svc5"><a href="/intro/40028/contents.do"><img src="/images/m_library.png"><br>도서관소개</a></li>
 						<li class="svc6"><a href="/intro/40028/contents.do"><img src="/images/m_map.png"><br>찾아오는길</a></li>
