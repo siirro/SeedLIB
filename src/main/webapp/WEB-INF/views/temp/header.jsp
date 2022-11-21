@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/css/button.css">
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/sub.css">
+<link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/images/favicon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
