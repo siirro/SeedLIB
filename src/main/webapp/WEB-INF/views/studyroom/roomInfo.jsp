@@ -7,27 +7,48 @@
 <head>
     <title>열람실 현황 조회</title>
 	<style>
+	
+		.contentArea{
+			display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		}
+		
 		.seatArea{
 			display: inline-block;
-			margin-left: 30px;
+			margin-left: 70px;
+			margin-top: 40px;
+			margin-bottom: 30px;
 		}
 		.seatList{
+			align-items: center;
+		    justify-content: center;
+    		display: flex;
 			float:left;
 			width:70px;
 			height:60px;
-			background:#000;
+			background:#77e270;
 			color:#fff; 
 			text-align: center;
 			margin-right: 5px;
     		margin-bottom: 10px;
 		}
-		.seatList:nth-of-type(12n-11){
+		
+		/* .seatList:nth-of-type(12n){
 			background:rgb(255, 0, 0);
 			content:"";
-			clear:left;
-		}
+			clear:right;
+		} */
+		
 		.seatBlank{
 			width:30px;
+			background: transparent;
+			/* background: #77e270; */
+		}
+		
+		.passage{
+			height: 30px;
+			clear: left;
 		}
 	</style>
 </head>
@@ -59,22 +80,27 @@
 	</div>
 	<!--Forced tab Show Que-->
 
-<div style="display: inline-block; width:100%; text-align: center;">
+<div style="display: inline-block; width:95%; text-align: center; border: 1px; border-style: solid;">
 		<!-- style="width:100%; word-break:break-all;word-wrap:break-word;" -->
 		<ul class="seatArea">
 			<c:forEach items="${list}" var="r" varStatus="status">
-				<li class="seatList">${r}
+				<li class="seatList">
 					<div>
-						<button class="resBtn" data-res-num="${r}">예약</button>
+					<span></span>
+						<button class="resBtn" data-res-num="${r}">${r}</button>
+					<span></span>
 					</div>
 				</li>
 				<c:if test="${(status.index+1)%5 eq 0}">
-					<li class="seatBlank seatList">통</li>
+					<li class="seatBlank seatList"></li>
+				</c:if>
+				<c:if test="${(status.index+1)%20 eq 0}">
+					<li class="passage"></li>
 				</c:if>
 			</c:forEach>
 		</ul>
 </div>
-<div>
+<div style="width: 100%;">
 	<dl class="linkBox">
 		<dt class="txtArea">열람실 좌석 신청 또는 조회를 하려면 버튼을 누르세요</dt>
 		<dd class="btnArea"><a class="btn" href="/mypage/roomStat">신청조회</a> <a class="btn write themeBtn" href="/studyroom/setSeat">신청하기</a></dd>
