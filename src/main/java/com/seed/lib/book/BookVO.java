@@ -18,5 +18,16 @@ public class BookVO {
 	private String image;
 	private Long bCount;
 	
-
+	
+	
+	private String search;
+	
+	public void setSearch(String search) {
+		this.search = search;
+		
+		if(search==null) {
+			this.search = "";
+		}
+	}
+	
 }
