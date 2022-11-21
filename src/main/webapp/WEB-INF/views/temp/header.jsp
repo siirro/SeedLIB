@@ -23,12 +23,11 @@
 				<div id="libraryShortcut" class="libSite dropdown">
 					<a href="#open" class="button" title="도서관 바로가기(축소됨)">도서관 바로가기</a>
 					<ul>
-						<li><a href="/">다은도서관</a></li>
 						<li><a href="/">새싹도서관</a></li>
-						<li><a href="/">지혜도서관</a></li>
-						<li><a href="/">대기도서관</a></li>
-						<li><a href="/">효경도서관</a></li>
-						<li><a href="/">소영도서관</a></li>
+						<li><a href="/">쑥쑥도서관</a></li>
+						<li><a href="/">새봄도서관</a></li>
+						<li><a href="/">도란도란도서관</a></li>
+						<li><a href="/">나무도서관</a></li>
 					</ul>
 				</div>
 
@@ -74,11 +73,11 @@
 
 		<div id="indexNavi" style="overflow: hidden;">
 			<ul id="topmenu">
-				<li id="gnb1" class="hehehe"> <a href="/search"> <em>자료검색</em> </a>
+				<li id="gnb1" class="hehehe"> <a href="/search/simple"> <em>자료검색</em> </a>
 					<ul style="display: none;"> 
-						<li id="gnb1_1"><a href="/search">소장자료검색</a></li> 
-						<li id="gnb1_2"><a href="/search2">주제별검색</a> </li> 
-						<li id="gnb1_3"><a href="/newBook">신착자료검색</a> </li> 
+						<li id="gnb1_1"><a href="/search/simple">소장자료검색</a></li> 
+						<li id="gnb1_2"><a href="/search/category">주제별검색</a> </li> 
+						<li id="gnb1_3"><a href="/search/newbook">신착자료검색</a> </li> 
 						<li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li>
 					</ul> 
 				</li> 
@@ -153,8 +152,8 @@
 				<div class="keywordInput">
 					<label for="topSearchKeyword" class="blind">검색어 입력</label>
 					<input type="text" title="검색어 입력" id="topSearchKeyword" name="searchKeyword" autocomplete="off" placeholder="검색어를 입력하세요.">
-					<a href="./search" id="topSearchBtn" class="btnSearch">검색</a>
-					<a href="./searchDetail" class="btnDetail themeBtn mobileHide" style="background: linear-gradient(to right, #9be15d, #00e3ae);">고급검색</a>
+					<a href="./search/simple" id="topSearchBtn" class="btnSearch">검색</a>
+					<a href="./search/detail" class="btnDetail themeBtn mobileHide" style="background: linear-gradient(to right, #9be15d, #00e3ae);">고급검색</a>
 				</div>
 			</div>
 			<div id="topSearchBestKeyword" class="keywordPop mobileHide"></div>

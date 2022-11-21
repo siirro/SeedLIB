@@ -33,5 +33,20 @@
     <div>
         <p id="post-result"></p>
     </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#btnRelateSite").click(function () {
+                var url = $("#relateSite").val();
+                if (!$("#relateSite").val()) {
+                    alert("관련기관을 선택하세요.");
+                    $("#relateSite").focus();
+                } else {
+                    window.open(url, "_blank");
+                }
+                return false;
+            });
+        });
+    </script>
     
 </footer>
