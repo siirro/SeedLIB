@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="getLikeExist" parameterType="MbBookLikeVO" resultType="Integer">
-		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE USERNAME = 'bb' AND ISBN = #{isbn}
 	</select>
 	
 	<delete id="setUnlike" parameterType="MbBookLikeVO">

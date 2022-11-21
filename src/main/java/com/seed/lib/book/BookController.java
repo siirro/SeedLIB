@@ -27,7 +27,7 @@ public class BookController {
 	
 	//도서 디테일
 	@GetMapping("detail")
-	public ModelAndView getDetail (Long num, BookVO bookVO) throws Exception{
+	public ModelAndView getDetail (BookVO bookVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		//도서 정보
@@ -36,12 +36,14 @@ public class BookController {
 		
 		//좋아요 정보
 		MbBookLikeVO bookLikeVO = new MbBookLikeVO();
-		bookLikeVO.setIsbn(num);
 		//유저 정보
 		MemberVO memberVO = new MemberVO();
+		bookLikeVO.setIsbn(bookVO.getIsbn());
 		bookLikeVO.setUserName(memberVO.getUserName());
 		
 		boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
+		log.info("===============================");
+		log.info("isLikeExist : {}", isLikeExist);
 		mv.addObject("isLikeExist", isLikeExist);
 		
 		mv.setViewName("book/detail");
