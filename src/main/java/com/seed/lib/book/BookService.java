@@ -22,12 +22,4 @@ public class BookService {
 	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
 		return bookMapper.getDetail(bookVO);
 	}
-	
-	public List<BookVO> getDetailSC (DetailPager pager) throws Exception {
-		return bookMapper.getDetailSC (pager);
-	}
-	
-	public List<BookVO> getDetailSW (DetailPager pager) throws Exception {
-		return bookMapper.getDetailSC (pager);
-	}
 }
