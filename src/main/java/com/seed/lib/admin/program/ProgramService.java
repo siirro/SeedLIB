@@ -1,6 +1,7 @@
 package com.seed.lib.admin.program;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,17 +20,24 @@ public class ProgramService {
 	public int setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
 							String plTime, String name, String teacher)throws Exception{
 		
-//		DateUtil dateUtil = new DateUtil();
-		String psDate = psDt+" "+psTime;
+		// String을 Date타입으로 바꿔주는 객체
+		DateUtil dateUtil = new DateUtil();
+		// yyyy-MM-dd HH:mm:ss 형식으로 문자열을 만들어줌
+		String psDate = psDt+" "+psTime+":00";
+		String plDate = plDt+" "+plTime+":00";
 		
-//		java.util.Date psDate2 = new java.util.Date(psDate.get);
-//		
-//		Date rePsDate = new Date(0);
-//		
-//		log.info("최종 데이트", psDate2);
-//		programVO.setPsDate(psDate2);
+		// return으로 Date타입을 보내줌
+		Date psDate2 = dateUtil.parseDate(psDate);
+		Date plDate2 = dateUtil.parseDate(plDate);
 		
-		return 1; //programMapper.setProgramAdd(programVO);
+		programVO.setPsDate(psDate2);
+		programVO.setPlDate(plDate2);
+		
+		// 강사님 이름 합침 000강사, 000선생님 등
+		programVO.setProTeacher(name+teacher);
+		log.info("프로그램 데이트 => {} ", programVO.getPsDate());
+		
+		return programMapper.setProgramAdd(programVO);
 	}
 	
 }
