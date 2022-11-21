@@ -1,32 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/member/agree.css">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
 
 </head>
 <body>
 
 
     <div class="loginForm agreeForm">	
-        <form id="form" method="post" action="./join" onsubmit="return chkAgree('kor');">
-            <input type="hidden" name="agreeYn" id="agreeYn" value="N">
-            <input type="hidden" name="view" value="kor">
-            <fieldset>
+        <form id="form" method="get" action="./join" onsubmit="return chkAgree('kor');">
+        <fieldset>
                 <legend>약관동의</legend>			 
-                <div class="langSelect">
-                    <select id="language" title="언어선택">
-                        <option value="kor">한국어</option>
-                        <option value="eng">English</option>
-                    </select>
-                    <a href="#" onclick="changeLang()" title="언어 변경">Go</a> 
-                </div>		
-                <p class="logo"><a href="/" title="메인화면"><img src="" alt="씨앗도서관"></a></p>
+                	
+                <p class="logo"><a href="/" title="메인화면"><img src="/images/logo.png" alt="씨앗도서관"></a></p>
                 
-                    
                     
                         <div class="join1">	
                             <div class="agreeArea">							
@@ -209,8 +202,9 @@
                                         </label>
                                     </p>
                                     <label class="check">
-                                        <input type="checkBox" id="chkAgree01" title="서비스 이용약관 동의">
-                                    </label>							
+                                        <input type="checkBox" id="chkAgree01" title="서비스 이용약관 동의" class="ch">
+                                    </label>
+ 
                                 </div>
                                 <div class="agreement">
                                     <p class="agreeTit">개인정보 제3자 제공 안내</p>
@@ -250,13 +244,13 @@
                                         <label for="chkAgree02"><span class="essential">(필수)</span> 개인정보 필수항목 동의</label>
                                     </p>
                                     <label class="check">
-                                        <input type="checkBox" id="chkAgree02" title="개인정보 수집 및 이용에 관한 안내 동의">
+                                        <input type="checkBox" id="chkAgree02" title="개인정보 수집 및 이용에 관한 안내 동의" class="ch">
                                     </label>
                                     <p class="agreeTit tail">
                                         <label for="chkAgree05"><span class="essential">(선택)</span> 개인정보 선택항목 동의</label>
                                     </p>
                                     <label class="check" style="top: 188px">
-                                        <input type="checkBox" id="chkAgree05" title="선택정보 수집 및 이용에 관한 안내 동의">
+                                        <input type="checkBox" id="chkAgree05" title="선택정보 수집 및 이용에 관한 안내 동의" class="ch ">
                                     </label>
                                 </div>
                                 <div class="agreement">
@@ -310,7 +304,7 @@
                                         <label for="chkAgree03"><span class="essential">(필수)</span> 개인정보 제3자 제공 동의</label>
                                     </p>
                                     <label class="check">
-                                        <input type="checkBox" id="chkAgree03" title="개인정보 제3자 제공 안내 동의">
+                                        <input type="checkBox" id="chkAgree03" title="개인정보 제3자 제공 안내 동의" class="ch">
                                     </label>							
                                 </div>
                                 <div class="agreement">
@@ -327,7 +321,7 @@
                                         <label for="chkAgree04"><span class="essential">(필수)</span> 개인정보 처리 위탁 동의</label>
                                     </p>
                                     <label class="check">
-                                        <input type="checkBox" id="chkAgree04" title="개인정보 처리 및 위탁에 관한 안내 동의">
+                                        <input type="checkBox" id="chkAgree04" title="개인정보 처리 및 위탁에 관한 안내 동의" class="ch">
                                     </label>					
                                 </div>
                                 <div class="agreementAll">
@@ -339,7 +333,8 @@
                             </div>
                             <div class="agreeBtn">
                                 <a href="/" class="noAgree" title="비동의">비동의</a>
-                 <input type="submit" title="동의" value="동의" class="agree">
+                                <input type="submit" title="동의" class="agree" id="join">
+           				
                             </div>
                         </div>
                     
@@ -347,6 +342,9 @@
             </fieldset>
         </form>
     </div>
+    
+    <script src="/js/agree.js"></script>
+<a href="./join">테스트</a>
 
 </body>
 </html>
