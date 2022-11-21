@@ -84,7 +84,7 @@
 										<div class="mainSearchKeyword">
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
 											<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="searchKeyword" placeholder="검색어를 입력하세요">
-											<a href="#search" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
+											<a href="./search/simple" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
 										</div>
 									</div>
 									
@@ -567,7 +567,7 @@
 								<dd>평일 07시~23시 / 주말 07시~23시</dd>
 							</dl>
 							<dl>
-								<dt>관외대출실</dt>
+								<dt>대출자료실</dt>
 								<dd>평일 09시~22시 / 주말 09시~17시</dd>
 							</dl>
 							<dl>
@@ -847,23 +847,9 @@
 
 <!-- footer -->
 <c:import url="./temp/footer.jsp"></c:import>
-
 <!-- //footer -->
 
-<script type="text/javascript">
-    $(function () {
-        $("#btnRelateSite").click(function () {
-            var url = $("#relateSite").val();
-            if (!$("#relateSite").val()) {
-                alert("관련기관을 선택하세요.");
-                $("#relateSite").focus();
-            } else {
-                window.open(url, "_blank");
-            }
-            return false;
-        });
-    });
-</script>
+
 
 <!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
 <input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">

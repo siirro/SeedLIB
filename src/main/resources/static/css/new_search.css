@@ -1,7 +1,7 @@
 input[type='checkbox'].check {position: absolute; left: -9999px; width: 0; height: 0; overflow: hidden;}
-input[type='checkbox'].check + label {display: inline-block; padding-left: 23px; background: url('/include/booksearch/image/common/chkB_off.png') left 50% no-repeat;}
+input[type='checkbox'].check + label {display: inline-block; padding-left: 23px; background: url('/images/checkoff.png') left 50% no-repeat;}
 input[type='checkbox'].check + label span {color: #444; vertical-align: 1px;}
-input[type='checkbox']:checked.check + label {cursor: pointer; background-image: url('/include/booksearch/image/common/chkB_on.png');}
+input[type='checkbox']:checked.check + label {cursor: pointer; background-image: url('/images/checkon.png');}
 input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline: 1px dotted #000;}
 
 /* 다국어 입력기 */
@@ -47,8 +47,8 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 .searchWrap .searchToparea .searchUtilWrap ol li a {display: block; padding: 10px 43px 9px 15px; font-size: 1em; color: #444; position: relative;}
 .searchWrap .searchToparea .searchUtilWrap ol li a.on {background: none;}
 .searchWrap .searchToparea .searchUtilWrap ol li a.sh_util01:before, .searchWrap .searchToparea .searchUtilWrap ol li a.sh_util03:before {display: none;}
-.searchWrap .searchToparea .searchUtilWrap ol li a:after {content: ''; position: absolute; right: 15px; top: 50%; margin-top: -9px; width: 18px; height: 18px; background: url(../img/unified/down_bulet.png) 50% 50% no-repeat;}
-.searchWrap .searchToparea .searchUtilWrap ol li a.on:after {background: url('../img/unified/up_bulet.png') 50% 50% no-repeat;}
+.searchWrap .searchToparea .searchUtilWrap ol li a:after {content: ''; position: absolute; right: 15px; top: 50%; margin-top: -9px; width: 18px; height: 18px; background: url(/images/down.png) 50% 50% no-repeat;}
+.searchWrap .searchToparea .searchUtilWrap ol li a.on:after {background: url(/images/up.png) 50% 50% no-repeat;}
 
 .searchBotarea {background-color: #f6f6f6;}
 .searchBotarea .divSelect {padding: 30px 60px; display: none; position: relative;}
