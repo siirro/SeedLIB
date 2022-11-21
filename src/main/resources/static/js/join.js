@@ -103,7 +103,6 @@
 
 
 
-$("#join").click(function(){
 
 $("#input_ID").blur(function(){
     let result = nullcheck($("#input_ID").val)
@@ -114,11 +113,3 @@ $("#input_ID").blur(function(){
     }
 })
 
-
-
-
-
-
-    $("#form").submit();
-
-})

@@ -31,7 +31,7 @@
         <div id="lnbNav" class="navArea">
             <h2>회원정보</h2>
             <ul id="lnb" class="lnb">
-                                        <li id="lnb9_1"><a href="/" class="current">로그인</a></li>
+                                        <li id="lnb9_1"><a href="/" class="current">로그인</a> </li>
                                         <li id="lnb9_2"><a href="/intro/memberFindIdCertify.do">아이디찾기</a></li>
                                         <li id="lnb9_3"><a href="/intro/memberFindPwdCertify.do">비밀번호 재발급</a></li>
                                         <li id="lnb9_4"><a href="./join">회원가입</a></li>
@@ -93,8 +93,8 @@
         <div id="popblackBG"></div>
                             <!--Real Contents Start-->
                             <div class="loginWrap" >
-                                <form  name="loginForm" id="loginForm" class="loginForm" method="post">
-                                    <input type="hidden" name="returnUrl" value="aHR0cHM6Ly9saWIuYW55YW5nLmdvLmtyL2ludHJvL2luZGV4LmRv">
+                                <form action="./login" name="loginForm" id="loginForm" class="loginForm" method="post">
+                                <input type="hidden" name="returnUrl" value="aHR0cHM6Ly9saWIuYW55YW5nLmdvLmtyL2ludHJvL2luZGV4LmRv">
                                     <div class="loginGroup clearfix">
                                         <div class="loginArea">
                                             <div class="inpArea">

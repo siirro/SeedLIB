@@ -11,7 +11,7 @@
 <body>
  
     <div class="loginForm">
-        <form id="form" name="form" action="/" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
+        <form id="form" name="form" action="./join" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
      <!--        <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
             <input type="hidden" name="gpin" value="">
             <input type="hidden" name="safeId" value="">
@@ -53,7 +53,7 @@
                         <div>
                             <p class="name"><label for="user_name">이름</label>
                             <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
-                            <p class="name"><label for="birthd_year">생년월일</label>
+                            <p class="birth"><label for="birthd_year">생년월일</label>
                             <input type="text" name="birth" id="birthd_year" class="textInput birthday" required="required"></p>
                             <p>
                                 <label for="phone">휴대폰번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
@@ -117,7 +117,7 @@
                         </div>					
                         <div>
                             <p><label for="email">이메일 주소</label>
-                                <input type="text" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
+                                <input type="email" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
                                 
                             </p>
                         </div>
@@ -148,8 +148,8 @@
                     </div>
                     <div class="additionalService">
                         <div class="receiveAgree">
-                            <p>문자 수신동의 <label class="check" id="sms_label"><input type="checkbox" id="sms_input" name="sms_yn" title="문자 수신동의" checked="checked"></label></p>
-                            <p>이메일 수신동의 <label class="check" id="mail_label"><input type="checkbox" id="mail_input" name="mail_yn" title="이메일 수신동의" checked="checked"></label></p>
+                            <p>문자 수신동의 <label class="check" id="sms_label"><input type="checkbox" id="sms_input" name="sms_yn" title="문자 수신동의" checked="checked" required="required"></label></p>
+                            <p>이메일 수신동의 <label class="check" id="mail_label"><input type="checkbox" id="mail_input" name="mail_yn" title="이메일 수신동의" checked="checked" required="required"></label></p>
                         </div>
                         <p class="detail">씨앗도서관의 소식지 및 유용한 정보를 발송시 받아볼 수 있습니다.</p>
                         <p class="detail"><span>기본서비스(대출/반납. 예약, 연체알림등)와 관련된안내는 수신동의 여부와 관계없이 발송됩니다.</span></p>

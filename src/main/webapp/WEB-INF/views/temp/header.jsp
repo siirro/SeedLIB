@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <meta charset="UTF-8">
+    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     
@@ -34,13 +35,27 @@
 
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
-						
-						<li><a href="/member/login">로그인</a></li>
-						<li><a href="/member/join">회원가입</a></li>
+					
+					<c:choose>
+					
+					
+						<c:when test="${not empty member}">
 						
 						<li><a href="/member/logout">로그아웃</a></li>
 						<li><a href="/mypage/myIndex">마이페이지</a></li>
 						
+						</c:when>
+					
+					<c:otherwise>
+					
+						<li><a href="/member/login">로그인</a></li>
+						<li><a href="/member/agree">회원가입</a></li>
+						
+					</c:otherwise>
+					
+					
+						
+						</c:choose>
 						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
 						<li><a href="/test">test</a></li>
