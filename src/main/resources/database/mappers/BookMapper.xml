@@ -30,6 +30,7 @@
 			<result column="image" property="image"/>
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
+			<result column="num" property="num"/>
 
 			<association property="mbBookLikeVO" javaType="MbBookLikeVO">
 				<id column="bookLike" property="bookLike"/>
