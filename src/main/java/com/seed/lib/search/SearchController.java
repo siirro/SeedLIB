@@ -37,7 +37,7 @@ public class SearchController {
 		
 		mv.addObject("list", ar);
 		mv.addObject("count", count);
-		mv.setViewName("search/simple?search="+bookVO.getSearch());
+		mv.setViewName("search/simple");
 		
 		log.info("BookVO의 사이즈 : {}",ar.size());
 		return mv;

@@ -28,11 +28,10 @@ public class BookVO {
 
 	private String search;
 	
-	public void setSearch(String search) {
-		this.search = search;
-		
-		if(search==null) {
-			this.search = "";
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
 		}
+		return search;
 	}
 }

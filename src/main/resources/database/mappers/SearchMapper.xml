@@ -7,14 +7,16 @@
 
 <select id="getSearchSimple" parameterType="BookVO" resultType="BookVO">
 SELECT * FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP #{search}
 ORDER BY NUM
+LIMIT 0, 10
 </select>
 
 <select id="getSearchSimpleCount" parameterType="BookVO" resultType="Long">
 SELECT COUNT(ISBN) FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP #{search}
 ORDER BY NUM
+LIMIT 0, 10
 </select>
 	
 </mapper>    
