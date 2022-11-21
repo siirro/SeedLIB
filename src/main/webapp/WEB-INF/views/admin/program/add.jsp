@@ -57,7 +57,7 @@
           <!-- ========== title-wrapper end ========== -->
 
           <!-- ========== form-elements-wrapper start ========== -->
-          <div class="form-elements-wrapper">
+          <form action="./add" method="post">
             <div class="row">
               <div class="col-lg-6">
                 <!-- input style start -->
@@ -95,13 +95,13 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="prlDate" />
+                        <input type="date" name="psDt" />
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="psDate" />
+                        <input type="time" name="psTime" />
                       </div>
                       <!-- end input -->
                     </div>
@@ -112,13 +112,13 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="prlDate" />
+                        <input type="date" name="plDt" />
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="psDate" />
+                        <input type="time" name="plTime" />
                       </div>
                       <!-- end input -->
                     </div>
@@ -139,14 +139,14 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-3">
-                        <input type="text" name="proTeacher" placeholder="강사님 이름을 입력하세요" />
+                        <input type="text" name="name" placeholder="강사님 이름을 입력하세요" />
                         <span class="icon"><i class="lni lni-user"></i></span>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="select-style-1">
                         <div class="select-position">
-                          <select>
+                          <select name="teacher">
                             <option value="직접입력">직접입력</option>
                             <option value="강사">강사</option>
                             <option value="작가">작가</option>
@@ -159,7 +159,7 @@
                   <div class="select-style-1">
                     <h6 class="mb-25">장소 선택</h6>
                     <div class="select-position">
-                      <select>
+                      <select name="proPlace">
                         <option value="">선택안함</option>
                         <option value="석수도서관">석수도서관</option>
                         <option value="만안도서관">만안도서관</option>
@@ -180,7 +180,7 @@
                   <div class="select-style-1">
                     <h6 class="mb-25">대상자 선택</h6>
                     <div class="select-position">
-                      <select>
+                      <select name="target">
                         <option value="선택안함">선택안함</option>
                         <option value="유아">유아</option>
                         <option value="어린이">어린이</option>
@@ -194,7 +194,7 @@
                   <div class="select-style-1">
                     <h6 class="mb-25">행사구분 선택</h6>
                     <div class="select-position">
-                      <select>
+                      <select name="proCate">
                         <option value="선택안함">선택안함</option>
                         <option value="정기강좌">정기강좌</option>
                         <option value="특강">특강</option>
@@ -223,8 +223,9 @@
                           w-100
                           text-center
                         "
+                        type="submit"
                       >
-                        등록하기
+                        개설하기
                         <span class="icon"><i class="lni lni-checkmark"></i></span>
                       </button>
                     </div>
@@ -236,7 +237,7 @@
               <!-- end col -->
             </div>
             <!-- end row -->
-          </div>
+          </form>
           <!-- ========== form-elements-wrapper end ========== -->
         </div>
         <!-- end container -->
