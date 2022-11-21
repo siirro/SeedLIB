@@ -7,13 +7,13 @@
 
 <select id="getSearchSimple" parameterType="BookVO" resultType="BookVO">
 SELECT * FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '안희철'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
 ORDER BY NUM
 </select>
 
 <select id="getSearchSimpleCount" parameterType="BookVO" resultType="Long">
 SELECT COUNT(ISBN) FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '안희철'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
 ORDER BY NUM
 </select>
 	
