@@ -921,14 +921,14 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/js/admin/bootstrap.bundle.min.js"></script>
+    <script src="/js/admin/Chart.min.js"></script>
+    <script src="/js/admin/dynamic-pie-chart.js"></script>
+    <script src="/js/admin/moment.min.js"></script>
+    <script src="/js/admin/fullcalendar.js"></script>
+    <script src="/js/admin/jvectormap.min.js"></script>
+    <script src="/js/admin/world-merc.js"></script>
+    <script src="/js/admin/polyfill.js"></script>
+    <script src="/js/admin/main.js"></script>
   </body>
 </html>
