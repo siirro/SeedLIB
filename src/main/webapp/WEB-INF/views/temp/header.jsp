@@ -57,9 +57,6 @@
 						</c:choose>
 						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
-						<li><a href="/test">test</a></li>
-						
-						<li><a href="/hopeList">HOPELIST</a></li>
 					</ul>
 				</div>
 			</div>
