@@ -18,7 +18,7 @@
                 <legend>약관동의</legend>			 
                 	
                 <p class="logo"><a href="/" title="메인화면"><img src="/images/logo.png" alt="씨앗도서관"></a></p>
-                
+                <form id="form" action="./join" method="get">
                     
                         <div class="join1">	
                             <div class="agreeArea">							
@@ -332,11 +332,11 @@
                             </div>
                             <div class="agreeBtn">
                                 <a href="/" class="noAgree" title="비동의">비동의</a>
-                                <button type="submit" title="동의" class="agree" id="join"></button>
+                                <input type="submit" title="동의" class="agree" id="join" value="동의">
            				
                             </div>
                         </div>
-                    
+                    </form>
                             
             </fieldset>
     </div>

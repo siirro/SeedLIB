@@ -27,19 +27,19 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@GetMapping("idCheck")
-	@ResponseBody
-	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
-	
-		log.info("login 성공");
-		memberVO= memberService.getLogin(memberVO);
-		ModelAndView mv =new ModelAndView();
-		
-		session.setAttribute("member", memberVO);
-
-		return mv;
-	}
-		
+//	@GetMapping("idCheck")
+//	@ResponseBody
+//	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	
+//		log.info("login 성공");
+//		memberVO= memberService.getLogin(memberVO);
+//		ModelAndView mv =new ModelAndView();
+//		
+//		session.setAttribute("member", memberVO);
+//
+//		return mv;
+//	}
+//		
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
@@ -51,8 +51,10 @@ public class MemberController {
 	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		log.info("login 성공");
 		memberVO= memberService.getLogin(memberVO);
+		
+		
 
-		return "member/login";
+		return "redirect:../";
 	}
 	 
 

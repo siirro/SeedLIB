@@ -15,10 +15,10 @@ public class MemberService {
 	
 
 	
-	public Integer getIdCheck(MemberVO memberVO)throws Exception{
-		
-		return memberMapper.getIdCheck(memberVO);
-	}
+//	public Integer getIdCheck(MemberVO memberVO)throws Exception{
+//		
+//		return memberMapper.getIdCheck(memberVO);
+//	}
 
 	
 	public int setJoin(MemberVO memberVO)throws Exception {			
