@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>열람실 현황 조회</title>
+    <title>${useList[0].roomVO.roomName} 현황 조회</title>
 	<style>
 	
 		.contentArea{
@@ -40,11 +40,9 @@
 			text-shadow: -1px -1px 0 #5d9d49, 1px -1px 0 #5d9d49, -1px 1px 0 #5d9d49, 1px 1px 0 #5d9d49;
 		}
 		
-		/* .seatList:nth-of-type(12n){
-			background:rgb(255, 0, 0);
-			content:"";
-			clear:right;
-		} */
+		.used {
+			background:#4a4a4a;
+		}
 		
 		.seatBlank{
 			width:30px;
@@ -63,14 +61,14 @@
     <c:import url="../temp/header.jsp"></c:import>
 <div class="sVisualWrap">
 	<div class="sVisual">
-		<h3>열람실 현황 조회</h3>
+		<h3>${useList[0].roomVO.roomName} 현황 조회</h3>
 	</div>
 </div>
 <div id="contentGroup">
        <c:import url="../sideBar/BsideBar.jsp"></c:import>
 <div id="contentcore">
 	<div class="naviandtitle">
-		<h3>열람실 현황 조회</h3>
+		<h3>${useList[0].roomVO.roomName} 현황 조회</h3>
 		<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 문화참여 <i class="arrow"></i>열람실 예약<i class="arrow"></i>현황 조회
 		</div>
 	</div>
@@ -80,31 +78,45 @@
 	<div class="ttabWrap" style="display: block; ">
 		<div id="virtSelect" style="display: none;"><a href="#script">탭메뉴</a></div>
 		<ul id="ttab3" class="tnb clearfix"> 
-	    <li id="tnb1_7_1" class="choiced"><a href="/studyroom/roomInfo" class="current" title="선택된 탭" style="min-width: 479px;">좌석 현황조회/예약</a> </li> 
+	    <li id="tnb1_7_1" class="choiced"><a href="/studyroom/roomInfo" class="current" title="선택된 탭" style="min-width: 479px;">좌석 현황 조회/예약</a> </li> 
 	   </ul>
 	</div>
 	<!--Forced tab Show Que-->
-
 <div style="display: inline-block; width:95%; text-align: center; border: 1px; border-style: solid;">
-		<!-- style="width:100%; word-break:break-all;word-wrap:break-word;" -->
-		<ul class="seatArea">
-			<c:forEach items="${list}" var="r" varStatus="status">
-				<li class="seatList">
-					<div>
-					<span></span>
-						<button class="resBtn" data-res-num="${r}">${r}</button>
-					<span></span>
-					</div>
-				</li>
-				<c:if test="${(status.index+1)%5 eq 0}">
-					<li class="seatBlank seatList"></li>
-				</c:if>
-				<c:if test="${(status.index+1)%20 eq 0}">
-					<li class="passage"></li>
-				</c:if>
+      <ul class="seatArea">
+         <c:forEach begin="1" end="${useList[0].roomVO.lastNum}" step="1" var="r" varStatus="status">
+			<c:forEach items="${useList}" var="ul">
+				<c:choose>
+					<c:when test="${ul.seatNum eq r}">
+						<li class="seatList used">
+							<div>
+							   <span></span>
+								  <button class="resBtn" data-res-num="${r}">${r}</button>
+							   <span></span>
+							</div>
+						 </li>
+					</c:when>
+					<c:when test="${ul.seatNum ne r}">
+						<li class="seatList">
+							<div>
+							   <span></span>
+								  <button class="resBtn" data-res-num="${r}">${r}</button>
+							   <span></span>
+							</div>
+						 </li>	
+					</c:when>	
+				</c:choose>
 			</c:forEach>
-		</ul>
-</div>
+            <c:if test="${(status.index)%5 eq 0}">
+               <li class="seatBlank seatList"></li>
+            </c:if>
+            <c:if test="${(status.index)%20 eq 0}">
+               <li class="passage"></li>
+            </c:if>
+         </c:forEach>
+      </ul>
+</div> 
+
 <div style="width: 100%;">
 	<dl class="linkBox">
 		<dt class="txtArea">열람실 좌석 신청 또는 조회를 하려면 버튼을 누르세요</dt>

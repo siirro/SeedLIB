@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
     }
 
     #pageNext{
-        width: 50px;
+        width: 30px;
         /* background-color: #77af9c;
         color: #d7fff1; */
         color: #0cc086;
@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
     }
 
     #pagePre{
-        width: 50px;
+        width: 30px;
         color: #0cc086;
     }
 

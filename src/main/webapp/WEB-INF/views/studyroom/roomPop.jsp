@@ -46,8 +46,12 @@
         hr {
         width : 95%;
         border : 0px;
-        border-top: 3px dotted #663399;
+        border-top: 3px dotted #949494;
         margin-bottom: 15px;
+        }
+
+        #revBtn{
+            border-radius: 5px;
         }
 
     </style>
@@ -86,7 +90,7 @@
             </table>
         </div>
         <div class="btnArea">
-            <button type="button" class="btn">좌석 예약</button>
+            <button type="button" class="btn themeBtn" id="revBtn">좌석 예약</button>
         </div>
     </div>
 </body>
