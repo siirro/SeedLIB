@@ -109,13 +109,13 @@
 					</ul> 
 				</li> 
 				
-				<li id="gnb4" class="hehehe"> <a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do"> <em>도서관안내</em> </a> 
+				<li id="gnb4" class="hehehe"> <a href="./manners"> <em>도서관안내</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb3_1"><a href="/seoksu/menu/12141/contents/41161/contents.do">도서관예절</a> </li> 
-						<li id="gnb3_2"><a href="/seoksu/menu/10136/contents/40034/contents.do">이용시간</a> </li> 
+						<li id="gnb3_1"><a href="./manners">도서관예절</a> </li> 
+						<li id="gnb3_2"><a href="./time">이용시간</a> </li> 
 						<li id="gnb3_3"><a href="/seoksu/menu/10137/program/30019/calendar.do">휴관일안내</a> </li> 
-						<li id="gnb3_4"><a href="/seoksu/menu/10139/contents/40009/contents.do">대여규칙</a> </li> 
-						<li id="gnb3_5"><a href="/seoksu/menu/10140/contents/40035/contents.do">편의시설</a> </li> 
+						<li id="gnb3_4"><a href="./rule">대여규칙</a> </li> 
+						<li id="gnb3_5"><a href="./convenience">편의시설</a> </li> 
 					</ul> 
 				</li> 
 
@@ -141,7 +141,7 @@
 					
 				<li id="gnb6" class="hehehe"> <a href="/mypage"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb6_1"><a href="/seoksu/menu/10169/program/30023/mypage/myInfo.do">나의정보</a> </li> 
+						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
 						<li id="gnb6_2"><a href="/seoksu/menu/10171/program/30024/mypage/loanStatusList.do">도서이용내역</a> </li> 
 						<li id="gnb6_4"><a href="/seoksu/menu/10178/program/30027/mypage/libraryOneLillStatusList.do">상호대차조회</a> </li> 
 						<li id="gnb6_5"><a href="/seoksu/menu/10180/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 

@@ -14,7 +14,6 @@
 
 
     <div class="loginForm agreeForm">	
-        <form id="form" method="get" action="./join" onsubmit="return chkAgree('kor');">
         <fieldset>
                 <legend>약관동의</legend>			 
                 	
@@ -333,14 +332,13 @@
                             </div>
                             <div class="agreeBtn">
                                 <a href="/" class="noAgree" title="비동의">비동의</a>
-                                <input type="submit" title="동의" class="agree" id="join">
+                                <button type="submit" title="동의" class="agree" id="join"></button>
            				
                             </div>
                         </div>
                     
                             
             </fieldset>
-        </form>
     </div>
     
     <script src="/js/agree.js"></script>
