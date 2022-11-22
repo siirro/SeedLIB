@@ -34,7 +34,7 @@ public class BookController {
 		List<BookVO> vo = bookService.getDetail(bookVO);
 		mv.addObject("vo", vo);
 		
-		//좋아요 정보
+		//유저 개인 좋아요 정보
 		MbBookLikeVO bookLikeVO = new MbBookLikeVO();
 		//유저 정보
 		MemberVO memberVO = new MemberVO();
@@ -42,9 +42,11 @@ public class BookController {
 		bookLikeVO.setUserName(memberVO.getUserName());
 		
 		boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
-		log.info("===============================");
-		log.info("isLikeExist : {}", isLikeExist);
 		mv.addObject("isLikeExist", isLikeExist);
+		
+		//책 좋아요 총갯수
+		int bookLike = bookLikeService.getBookLike(bookVO);
+		mv.addObject("like", bookLike);
 		
 		mv.setViewName("book/detail");
 		

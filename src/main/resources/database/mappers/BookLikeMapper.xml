@@ -16,6 +16,10 @@
 	<delete id="setUnlike" parameterType="MbBookLikeVO">
 		DELETE FROM MBBOOKLIKE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</delete>
+	
+	<select id="getBookLike" parameterType="BookVO" resultType="Integer">
+		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE ISBN = #{isbn}
+	</select>
 </mapper>
   
 

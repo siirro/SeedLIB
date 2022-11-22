@@ -96,7 +96,6 @@
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
 								<c:forEach var="book" items="${vo}">
-									<c:set var="like" value="${book.mbBookLikeVO}" />
 									<div class="bookImg">
 										<img alt="" src="${book.image}">
 									</div>
@@ -163,7 +162,7 @@
 												<c:if test="${isLikeExist}">
 													<button type="button" id="unlikeBtn">좋아요 취소</button>
 												</c:if>
-											<span>💚 ${like.bookLike}</span>
+											<span>💚 ${like}</span>
 										</div>
 									</div>
 									<!-- // 간략보기 -->
