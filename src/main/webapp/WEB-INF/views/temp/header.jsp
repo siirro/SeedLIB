@@ -115,7 +115,7 @@
 						<li id="gnb3_2"><a href="/guide/time">이용시간</a> </li> 
 						<li id="gnb3_3"><a href="/seoksu/menu/10137/program/30019/calendar.do">휴관일안내</a> </li> 
 						<li id="gnb3_4"><a href="/guide/rule">대여규칙</a> </li> 
-						<li id="gnb3_5"><a href="/guide/convenience.jsp">편의시설</a> </li> 
+						<li id="gnb3_5"><a href="/guide/convenience">편의시설</a> </li> 
 					</ul> 
 				</li> 
 

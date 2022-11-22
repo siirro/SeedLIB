@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="/css/contents.css">
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/button.css">
+<link rel="stylesheet" href="/css/search.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
 </head>
