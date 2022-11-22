@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.book.shelf.BookShelfMapper">
+
+	<select id="getShelfList" parameterType="BookShelfVO">
+	</select>
+	
+	<insert id="setShelfAdd" parameterType="BookShelfVO">
+	</insert>
+	
+	<delete id="setShelfDelete" parameterType="BookVO">
+	</delete>
+	
+	<update id="setShelfUpdate" parameterType="BookShelfVO">
+	</update>
+	
+	<insert id="setBookAdd" parameterType="BookVO">
+	</insert>
+	
+	<delete id="setBookDelete" parameterType="BookPickVO">
+	</delete>
+	
+	<select id="getBookList" parameterType="ShelfPager">
+		SELECT S.*, P.*, B.*
+			FROM SHELF S
+				INNER JOIN PICK P
+				ON S.SHNUM = P.SHNUM
+				
+				INNER JOIN BOOK B
+				ON P.ISBN = B.ISBN
+				
+			WHERE S.SHNUM = #{shNum}
+			ORDER BY
+    			<choose>
+    				<when test="select == 'title'">B.TITLE</when>
+    				<otherwise>B.ISBN</otherwise>
+    			</choose>
+    			<choose>
+    				<when test="sort == 'desc'">DESC</when>
+    				<otherwise>ASC</otherwise>
+    			</choose>
+	</select>
+	
+	<select id="getShelfCount" resultType="Long" parameterType="ShelfPager">
+    	SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = #{userName}
+	</select>
+	
+	<select id="getBookCount" resultType="Long" parameterType="ShelfBookPager">
+    	SELECT COUNT(PICKNUM) FROM PICK WHERE SHNUM = #{shNum}
+	</select>
+</mapper>

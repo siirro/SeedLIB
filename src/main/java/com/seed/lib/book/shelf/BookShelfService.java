@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.util.ShelfPager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +25,7 @@ public class BookShelfService {
 	}
 		
 	//새 책꽂이 생성
-	public BookShelfVO setShelfAdd (BookShelfVO shelfVO) throws Exception{
+	public int setShelfAdd (BookShelfVO shelfVO) throws Exception{
 		return bookShelfMapper.setShelfAdd(shelfVO);
 	}
 		
@@ -39,18 +40,18 @@ public class BookShelfService {
 	}
 		
 	//책꽂이에 책 저장
-	public BookVO setBookAdd (BookVO bookVO) throws Exception{
+	public int setBookAdd (BookVO bookVO) throws Exception{
 		return bookShelfMapper.setBookAdd(bookVO);
 	}
 		
 	//책꽂이에서 책 삭제
-	public BookVO setBookDelete (BookVO bookVO) throws Exception{
-		return bookShelfMapper.setBookDelete(bookVO);
+	public int setBookDelete (BookPickVO pickVO) throws Exception{
+		return bookShelfMapper.setBookDelete(pickVO);
 	}
 	
 	//책꽂이에 저장된 책 목록
-	public BookVO getBookList (BookVO bookVO) throws Exception{
-		return bookShelfMapper.getBookList(bookVO);
+	public List<BookVO> getBookList (ShelfPager pager) throws Exception{
+		return bookShelfMapper.getBookList(pager);
 	}
 
 }

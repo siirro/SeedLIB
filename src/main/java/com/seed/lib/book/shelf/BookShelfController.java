@@ -2,16 +2,18 @@ package com.seed.lib.book.shelf;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookVO;
-import com.seed.lib.book.like.MbBookLikeVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.ShelfPager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,68 +45,114 @@ public class BookShelfController {
 		
 	
 	//새 책꽂이 생성
-		//jsp : shelf/newshelf
+		//shelf/newshelf?userName=
+	@GetMapping("newShelf")
+	public void setShelfAdd (BookShelfVO shelfVO) throws Exception {
+		
+	}
+	
 	@PostMapping("newShelf")
-	public ModelAndView setShelfAdd (BookShelfVO shelfVO) throws Exception{
+	public ModelAndView setShelfAdd (HttpSession session, BookShelfVO shelfVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		//사용자 정보
-		MemberVO memberVO = new MemberVO();
-		BookShelfVO bookShelfVO = new BookShelfVO();
-		bookShelfVO.setUserName(memberVO.getUserName());
-		
-		//책꽂이 리스트 - 이름 중복 검사용
-		List<BookShelfVO> ar = bookShelfService.getShelfList(bookShelfVO);
-		mv.addObject("list", ar);
+		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
+		mv.addObject("member", memberDTO);
 		
 		//새로운 책꽂이 정보
-		bookShelfVO.setShName(bookShelfVO.getShName());
-		bookShelfVO.setShMemo(bookShelfVO.getShMemo());
+		int result = bookShelfService.setShelfAdd(shelfVO);
+		mv.setViewName("redirect:./list");
 		return mv;
 	}
 		
 	
 	//책꽂이 삭제
 		//마이페이지 - 책꽂이 상세페이지 - 삭제버튼
+		//shelf/deleteShelf?shNum=
 	@PostMapping("deleteShelf")
 	public String setShelfDelete (Long num) throws Exception{
-		return "redirect:./deleteShelf/result";
+		BookShelfVO bookShelfVO = new BookShelfVO();
+		bookShelfVO.setShNum(bookShelfVO.getShNum());
+		//삭제 완료 팝업창
+		return "redirect:./list";
 	}
 	
 	
 	//책꽂이 수정
 		//마이페이지 - 책꽂이 상세페이지 - 수정
+		//shelf/updateShelf?shNum=
 	@PostMapping("updateShelf")
 	public String setShelfUpdate (BookShelfVO shelfVO) throws Exception{
-		
+		BookShelfVO bookShelfVO = new BookShelfVO();
+		bookShelfVO.setShName(bookShelfVO.getShName());
+		bookShelfVO.setShMemo(bookShelfVO.getShMemo());
 		return "redirect:./list";
 	}
 	
 	
 	//책꽂이에 책 저장
 		//책꽂이 목록 불러와서 책 저장하기
-		//jsp : shelf/addBook
-	public BookVO setBookAdd (BookVO bookVO) throws Exception;
+		//shelf/addBook?shNum=
+	@GetMapping("addBook")
+	public String setBookAdd (BookVO bookVO) throws Exception{
+		return "redirect:./done";
+	}
+	
+	@PostMapping("addBook")
+	public ModelAndView setBookAdd (HttpSession session, BookVO bookVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		//사용자 정보
+		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
+		mv.addObject("member", memberDTO);
+		
+		//책꽂이 목록
+		BookShelfVO shelfVO = new BookShelfVO();
+		List<BookShelfVO> ar = bookShelfService.getShelfList(shelfVO);
+		mv.addObject("list", ar);
+		
+		//추가할 책
+		int result = bookShelfService.setBookAdd(bookVO);
+		mv.addObject("result", result);
+		
+		mv.setViewName("redirect:./done");
+		return mv;
+	}
 	
 	
 	//책꽂이에서 책 삭제
 		//마이페이지 - 책꽂이 상세페이지 - 선택 삭제 버튼
-	public BookVO setBookDelete (BookVO bookVO) throws Exception{
+	@PostMapping("deleteBook")
+	public ModelAndView setBookDelete (Long num) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		
+		//책꽂이 번호
+		BookPickVO pickVO = new BookPickVO();
+		pickVO.setShNum(num);
+		int result = bookShelfService.setBookDelete(pickVO);
+		
+		//삭제 성공 팝업, 책꽂이 상세페이지로 돌아감 
+		mv.setViewName("shelf/bookList?shNum="+result);
+		return mv;
 	}
 	
 	
-	//책꽂이에 저장된 책 목록
-	public BookVO getBookList (BookVO bookVO) throws Exception{
-		ModelAndView mv = new m
+	//책꽂이 상세(책꽂이에 저장된 책 목록)
+		//shelf/bookList?shNum=
+	@PostMapping("bookList")
+	public ModelAndView getBookList (Long num, HttpSession session, ShelfPager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		
 		//사용자 정보
-		MemberVO memberVO = new MemberVO();
-		BookShelfVO bookShelfVO = new BookShelfVO();
-		bookShelfVO.setUserName(memberVO.getUserName());
+		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
+		mv.addObject("member", memberDTO);
 		
 		//책 리스트
-		List<BookVO> ar = bookShelfService.getBookList(bookVO);
-		mv
+		List<BookVO> ar = bookShelfService.getBookList(pager);
+		mv.addObject("list", ar);
+		
+		mv.addObject("pager", pager);
+		mv.setViewName("shelf/bookList");
+		return mv;
 	}
 }
