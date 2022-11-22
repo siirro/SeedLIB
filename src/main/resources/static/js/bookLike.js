@@ -1,8 +1,6 @@
 //좋아요
-console.log("gkgkgkgk")
-
-let isbn = $(this).attr("isbn");
-const userName = $(this).attr("userName");
+let isbn = $("#isbn").val();
+const userName = $("#userName").val();
 
 $("#likeBtn").click(function(){
 	
@@ -14,11 +12,10 @@ $("#likeBtn").click(function(){
 			userName : userName
 		},
 		success : function(result){
-			console.log("Result : ", result)
-			
+			location.reload()
 		},
 		error : function(){
-			console.log("Error")
+			location.reload()
 		}
 	})
 });
@@ -34,11 +31,10 @@ $("#unlikeBtn").click(function(){
 			userName : userName
 		},
 		success : function(result){
-			console.log("Result : ", result)
-			
+			location.reload()
 		},
 		error : function(){
-			console.log("Error")
+			location.reload()
 		}
 	})
 });

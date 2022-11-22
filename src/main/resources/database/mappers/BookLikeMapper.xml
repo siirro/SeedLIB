@@ -14,7 +14,7 @@
 	</select>
 	
 	<delete id="setUnlike" parameterType="MbBookLikeVO">
-		DELETE FROM MBBOOKLIKE WHERE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+		DELETE FROM MBBOOKLIKE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</delete>
 </mapper>
   

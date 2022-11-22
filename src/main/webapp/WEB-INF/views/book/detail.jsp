@@ -116,7 +116,7 @@
 										</div>
 										
 										<div class="book_publisher">
-											<span id="isbn" class="bk_writer">ISBN : ${book.isbn}</span>
+											<span class="bk_writer">ISBN : ${book.isbn}</span>
 										</div>
 								
 										<div class="thisBookCategory">
@@ -151,12 +151,13 @@
 											<c:if test="not empty member">
 											</c:if>
 												<form>
+													<input type="hidden" id="isbn" value="${book.isbn}">
 													<input type="hidden" id="userName" value="bb">
 												</form>
 													
 												<span id="addShelf">책꽂이 담기</span>
 												
-												<c:if test="${!isLikeExist}">
+												<c:if test="${isLikeExist eq false}">
 													<button type="button" id="likeBtn">좋아요</button>
 												</c:if>
 												<c:if test="${isLikeExist}">
