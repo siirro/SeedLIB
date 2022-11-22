@@ -5,12 +5,12 @@
 
 <mapper namespace="com.seed.lib.member.MemberMapper">
 
-	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
+<!-- 	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
 	
 		SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
 	
  
-	</select>
+	</select> -->
 	
 
 		<insert id="setJoin" parameterType="MemberVO">

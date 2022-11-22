@@ -35,14 +35,14 @@
             <ul id="lnb" class="lnb"> 
           <li id="lnb4_1"><a href="#">도서관소식</a> </li> 
           <li id="lnb4_2"><a href="#">자주하는질문</a> </li> 
-          <li id="lnb4_3"><a href="#" class="current on">도서관이용안내</a> 
+          <li id="lnb4_3"><a href="/guide/manners" class="current on">도서관이용안내</a> 
            <ul class="MkSub submenu" style="display: block;"> 
-            <li id="lnb4_3_1"><a href="./manners" class="current">도서관예절</a> </li> 
-            <li id="lnb4_3_2"><a href="./time">이용시간</a> </li> 
+            <li id="lnb4_3_1"><a href="/guide/manners" class="current">도서관예절</a> </li> 
+            <li id="lnb4_3_2"><a href="/guide/time">이용시간</a> </li> 
             <li id="lnb4_3_3"><a href="#">휴관일안내</a> </li> 
-            <li id="lnb4_3_4"><a href="./agree">회원가입</a> </li> 
-            <li id="lnb4_3_5"><a href="./rlue">대여규칙</a> </li> 
-            <li id="lnb4_3_6"><a href="./convenience">편의시설</a> </li> 
+            <li id="lnb4_3_4"><a href="/member/agree">회원가입</a> </li> 
+            <li id="lnb4_3_5"><a href="/guide/rule">대여규칙</a> </li> 
+            <li id="lnb4_3_6"><a href="/guide/convenience">편의시설</a> </li> 
            </ul> </li> 
           <li id="lnb4_4"><a href="#">상호대차</a> </li> 
           <li id="lnb4_5"><a href="#">모바일앱</a> </li> 

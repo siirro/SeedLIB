@@ -43,14 +43,15 @@ public class GuideController {
 	}
 	
 	
-	@GetMapping("calendar")
-	public void getSeedSchedule(Model model, HttpServletRequest request, CalVO calVO) throws Exception{
-		
-		Calendar cal = Calendar.getInstance();
-		CalVO calendarVO;
-		
-		if(calVO.getDate())
-		
-	}
+	/*
+	 * @GetMapping("calendar") public void getSeedSchedule(Model model,
+	 * HttpServletRequest request, CalVO calVO) throws Exception{
+	 * 
+	 * Calendar cal = Calendar.getInstance(); CalVO calendarVO;
+	 * 
+	 * if(calVO.getDate())
+	 * 
+	 * }
+	 */
 
 }
