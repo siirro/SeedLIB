@@ -87,7 +87,7 @@
          <c:forEach begin="1" end="${useList[0].roomVO.lastNum}" step="1" var="r" varStatus="status">
 			<c:forEach items="${useList}" var="ul">
 				<c:choose>
-					<c:when test="${ul.seatNum eq r}">
+					<c:when test="${ul.seatNum eq r && ul.}">
 						<li class="seatList used">
 							<div>
 							   <span></span>
