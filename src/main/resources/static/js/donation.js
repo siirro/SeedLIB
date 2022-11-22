@@ -17,20 +17,17 @@ console.log("donation");
 let agree1 = "";
 let agree2 = "";
 ///수신체크////////////////////////////////////////////////////////////
-let donMethod = "";
-let donAlert = "";
+let emailAgree = "";
 
-// agree01 Y
-// donation.js:22 agree02 Y
-// donation.js:23 donMethod 직접방문
-// donation.js:24 donAlert 수신
+// agree01 Y 필수
+// agree02 Y 선택
+// emailAgree Y 수신 N 미수신
 
 //동의 체크 여부
 function agreeCheck(){
     agree1 = $(":input:radio[name=agree1]:checked").val();
     agree2 = $(":input:radio[name=agree2]:checked").val();
-    donMethod = $(":input:radio[name=donMethod]:checked").val();
-    donAlert = $(":input:radio[name=donAlert]:checked").val();
+    emailAgree = $(":input:radio[name=emailAgree]:checked").val();
     if(agree1=='N'){
         return false;
     } else{
@@ -40,7 +37,7 @@ function agreeCheck(){
 
 //기증도서신청
 $("#donBtn").click(function(){
-    let check = window.confirm("신청하시겠습니까?");
+    let check = window.confirm("소장 중인 도서를 기증 신청하시겠습니까?(기증 신청한 도서는 반환되지 않습니다)");
     if(check){
         let result = agreeCheck();
         if(result==false){
@@ -74,82 +71,32 @@ $("#donBtn").click(function(){
             let libVO={
                 libNum:$("#donLib").val()
             }
-            let hopeVO = {
-                hopTitle:$("#hopTitle").val(),
-                hopWriter:$("#hopWriter").val(),
-                hopPublisher:$("#hopPublisher").val(),
-                isbn:$("#isbn").val(),
+            let donationVO = {
+                donTitle:$("#donTitle").val(),
+                donWriter:$("#donWriter").val(),
+                donPublisher:$("#donPublisher").val(),
                 userName:$("#userName").val(),
-                hopMemo:$("#hopMemo").val(),
+                donMemo:$("#donMemo").val(),
+                emailAgree:emailAgree,
                 libVO:libVO
             }
             $.ajax({
                 type:"POST",
-                url:"/hope/bookCheck",
-                data:JSON.stringify(hopeVO),
+                url:"/donation/setDon",
+                data:JSON.stringify(donationVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success:function(data){
-                    switch (data) {
-                        case 111:
-                          $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                          break;
-                        case 222:
-                          alert("해당 도서관에 이미 신청 중인 도서입니다");
-                          break;
-                        case 333:
-                            alert("이번 달에 신청 가능한 횟수를 초과하였습니다");
-                            location.href="../";
-                            break;  
-                        case 200:
-                            console.log("Num: ", hopeVO.libVO.libNum);
-                            $.ajax({
-                                type:"POST",
-                                url:"/hope/setHope",
-                                data: JSON.stringify(hopeVO),
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success:function(data){
-                                    console.log(data);
-                                    alert("희망 도서 신청 완료했습니다");
-                                    location.href="../";
-                                },error:function(error){
-                                    console.log("errorㅠㅠ", data);
-                                    console.log(error);
-                                    location.href="./";
-                                }                
-                            })
-                            break;
-                      }
-                    // console.log(data);
-                    // if(data==111){
-                    //     $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                    // }else if(data==222){
-                    //     alert("해당 도서관에 이미 신청 중인 도서입니다");
-                    // }
+                    alert("도서 기증 신청을 완료했습니다");
+                    location.href="../mypage/donList";
+
+                }, error:function(){
+                    console.log("아이고 이런");
                 }
 
             })
-
-            // $.ajax({
-            //     type:"POST",
-            //     url:"/hope/setHope",
-            //     data: JSON.stringify(hopeVO),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success:function(data){
-            //         console.log(data);
-            //         alert("희망 도서 신청 완료");
-            //         // location.href="../";
-            //     },error:function(error){
-            //         console.log("errorㅠㅠ", data);
-            //         console.log(error);
-            //         // location.href="./";
-
-            //     }                
-            // })
         }else{
-            alert("신청 정보를 확인 후 신청해주세요");
+            alert("필수 정보를 확인 후 신청해주세요");
             location.reload();
             return;
         }

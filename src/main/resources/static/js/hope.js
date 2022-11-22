@@ -256,7 +256,6 @@ $("#registBtn").click(function(){
             hMemoCheck = true;
         }
         if(hLibCheck&&hTitleCheck&&hWriterCheck&&hMemoCheck){
-            // $("#registForm").submit();
             let libVO={
                 libNum:$("#hopLib").val()
             }
@@ -298,7 +297,7 @@ $("#registBtn").click(function(){
                                 success:function(data){
                                     console.log(data);
                                     alert("희망 도서 신청 완료했습니다");
-                                    location.href="../";
+                                    location.href="../mypage/hopeList";
                                 },error:function(error){
                                     console.log("errorㅠㅠ", data);
                                     console.log(error);

@@ -1,6 +1,9 @@
 package com.seed.lib.book;
 
 import java.util.List;
+
+import com.seed.lib.book.like.MbBookLikeVO;
+
 import lombok.Data;
 
 @Data
@@ -20,4 +23,16 @@ public class BookVO {
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
 	private MbBookLikeVO mbBookLikeVO;
+	
+	
+
+	private String search;
+	
+	public void setSearch(String search) {
+		this.search = search;
+		
+		if(search==null) {
+			this.search = "";
+		}
+	}
 }

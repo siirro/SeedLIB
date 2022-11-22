@@ -4,25 +4,7 @@ input[type='checkbox'].check + label span {color: #444; vertical-align: 1px;}
 input[type='checkbox']:checked.check + label {cursor: pointer; background-image: url('/images/checkon.png');}
 input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline: 1px dotted #000;}
 
-/* 다국어 입력기 */
-.worldwordBox {position: relative;}
-.worldwordBox .worldword {clear: both; overflow: hidden; width: 100%;}
-.worldwordBox .worldword ul.language {clear: both; overflow: hidden; background: #fff; margin-bottom: 20px;}
-.worldwordBox .worldword ul.language li {float: left; width: 14.285714%; height: 40px; line-height: 40px; color: #646464; text-align: center; position: relative; border: 1px solid #ddd; border-left: none; box-sizing: border-box;}
-.worldwordBox .worldword ul.language li:nth-child(1), .worldwordBox .worldword ul.language li:nth-child(8) {border-left: 1px solid #ddd;}
-.worldwordBox .worldword ul.language li:nth-child(n+8) {border-top: none;}
-.worldwordBox .worldword ul.language li a {position: absolute; left: -1px; top: -1px; width: 100%; height: 38px; line-height: 38px;}
-.worldwordBox .worldword ul.language li a:hover, .worldwordBox .worldword ul.language li a:focus {text-decoration: none;}
-.worldwordBox .worldword ul.language li a.selected {border: 1px solid #222; color: #444;}
-.worldwordBox .worldword .languageContents {clear: both; overflow: hidden; width: 589px; margin: 0 auto;}
-.worldwordBox .worldword .languageContents ul {clear: both; overflow: hidden; border:none;}
-.worldwordBox .worldword .languageContents ul li {clear: none; float: left; width: 29px; height: 29px; margin: 0; border:1px solid #b8dbe4;}
-.worldwordBox .worldword .languageContents ul li a {display: block; width:100%; margin: 0; padding: 0; color: #787878; font-size: 12px; text-align: center; line-height: 28px; border: none; background: #eef7fc;}
-.worldwordBox .worldword .languageContents ul li a:hover, .worldwordBox .worldword .languageContents ul li a:focus {color: #fff; font-size: 14px; text-decoration: none; font-weight: bold; background: #0066cc;}
-.worldwordBox .worldwordBox_close {position: absolute; top: 5px; right: 16px; width: 23px; height: 23px;}
-.worldwordBox .worldwordBox_close a {width: 23px; height: 23px; margin: 0; padding: 0; background: none;}
 
-.worldwordBox .worldword select {display: none;}
 
 
 /* 통합검색 */
@@ -198,8 +180,8 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li {float: left; margin-right: 10px;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a {position: relative; display: block; color: #444; padding-left: 15px; min-width: 110px; height: 30px;line-height: 28px; border: 1px solid #a5a5a5; box-sizing: border-box;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a {padding-left: 0; text-align: center;}
-.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px; height: 7px; background: url("../img/unified/down_bulet.png") center center no-repeat;}
-.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a.on::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px;height: 7px; background: url("../img/unified/up_bulet.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px; height: 7px; background: url("/images/down.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a.on::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px;height: 7px; background: url("/images/up.png") center center no-repeat;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a::after {display: none;}
 
 /* 검색결과 리스트 - 희망도서신청 */

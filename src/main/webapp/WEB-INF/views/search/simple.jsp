@@ -51,76 +51,141 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form id="searchForm" name="searchForm" method="get">
-                    <input type="hidden" name="searchType" value="SIMPLE">
+                <form action="simple" id="searchForm" name="searchForm" method="get">
+
+                    <!-- 서치랩 -->
                     <div class="searchWrap">
                         <div class="searchFormWeb">
 
                             <div class="searchToparea">
 
                                 <div class="searchBardiv">
-                                    <div class="searchTit">통합자료</div>
-                                        <div class="searchInputbox">
-                                            <input type="text" id="totalSearchValue" name="searchKeyword" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
-                                            <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-                                        </div>
+                                    <div class="searchTit">통합자료
 
-                                        <a href="/seoksu/searchDetail.do" class="btn input" title="고급검색 페이지 이동">고급검색</a>
                                     </div>
-                                    <div class="innerSearch" style="visibility:hidden;">
-                                        <input type="checkbox" id="innerSearch" class="check">
-                                        <label for="innerSearch">결과 내 검색</label>
+                                    <div class="searchInputbox">
+                                        <input type="text" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
+                                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
                                     </div>
-                                    <div class="searchUtilWrap" id="liboption">
-                                        <ol>
-                                            <li><a href="javascript:;" id="liboptionicon" data-tab="sh_util03" class="sh_util03" title="축소됨">도서관 선택</a></li>
-                                        </ol>
-                                    </div>
+
+                                    <a href="./detail" class="btn input" title="고급검색 페이지 이동">고급검색</a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                
+                    <!-- 서치랩끝 -->
 
-                            <div class="searchBotarea">
-                                <div class="divSelect" id="sh_util03">
-
-                                    <!-- 도서관 정보 -->
-                                    <div>
-                                        <div class="box_check">
-                                            <input type="checkbox" name="searchManageCode" id="searchManageCode" value="ALL" class="check"> <label for="searchManageCode">전체 도서관</label>
-                                        </div>
-
-                                        <div class="box_check">
-                                            <ol>
-                                                <li>
-                                                    <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr1" value="MA" class="check" checked="checked">
-                                                    <label for="searchManageCodeArr1">새싹도서관</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr2" value="MI" class="check">
-                                                    <label for="searchManageCodeArr2">쑥쑥도서관</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr3" value="MH" class="check">
-                                                    <label for="searchManageCodeArr3">새봄도서관</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr8" value="MD" class="check">
-                                                    <label for="searchManageCodeArr8">도란도란도서관</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr9" value="MJ" class="check">
-                                                    <label for="searchManageCodeArr9">나무도서관</label>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                    <!-- 도서관 정보 -->
-
+                    <!-- 검색설정랩 -->
+                    <div class="searchResultWrap">
+                        <div class="result_box">
+                            <div class="listSetting">
+                                <div class="result_screen">'<strong>키워드:나</strong>'에 대한 검색결과 총 
+                                    <span id="totalCnt">5,168</span> 건
                                 </div>
+
+                                <!-- <div class="listStyleType">
+                                    <select name="searchArticle" title="정렬조건 선택">
+                                        <option value="SCORE" selected="selected">인기도</option>
+                                        <option value="TITLE">서명</option>
+                                        <option value="WRITER">저자</option>
+                                        <option value="PUBLISHER">발행처</option>
+                                        <option value="BOOKDATE">발행일</option>
+                                        <option value="BOOKCOUNT">대출수</option>
+                                    </select>
+                                    <select name="searchOrder" class="orderSel" style="display:none" title="정렬순서 선택">
+                                        <option value="ASC" selected="selected">오름차순</option>
+                                        <option value="DESC">내림차순</option>
+                                    </select>
+                                    <select name="searchDisplay" class="numSel" title="한페이지에 보여줄 건수 선택">
+                                            <option value="20" selected="selected">20건</option>
+                                            <option value="40">40건</option>
+                                            <option value="60">60건</option>
+                                            <option value="80">80건</option>
+                                    </select>
+                                    <a href="#btn" id="sortListBtn" class="btn">확인</a>
+                                    
+                                    <div class="btnSetWeb">
+                                        <a href="#list" class="listTypeList on" id="viewTypeList" title="선택됨"><span class="blind">리스트형</span></a>
+                                        <a href="#img" class="listTypeCard " id="viewTypeCard"><span class="blind">이미지형</span></a>
+                                    </div>
+                                </div> -->
                             </div>
 
                         </div>
-                    
                     </div>
+                    <!-- 검색설정랩 -->
+
+                    <!-- 리스트 -->
+                    <div id="bookList">
+                        <div class="bookList listViewStyle">
+                            <ul class="listWrap">
+                                <li>
+                                    <div class="bookArea">
+                                        <div class="bookImg"><a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');"><img alt="나" src="https://image.aladin.co.kr/product/64/23/cover500/8990878306_3.jpg" onerror="javascript:fnNoImgBook(this); return false;"></a></div>
+                    
+                                        <div class="bookData">
+                                            <div class="book_dataInner">
+                                                <span class="book_kind">단행본</span>
+                                                <a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');" class="book_name kor on"><span class="highlight word">나</span></a>
+                                                <a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');" class="book_name han"><span class="highlight word">나</span></a>
+                                                <ul class="dot-list clearfix">
+                                                    <li class="kor on"><span>저자</span> : 이경화 지음</li>
+                                                    <li class="han"><span>저자</span> : 이경화 지음</li>
+                                                    <li class="kor on"><span>발행처</span> : 바람의 아이들,</li>
+                                                    <li class="han"><span>발행처</span> : 바람의 아이들,</li>
+                                                    
+                                                            <li><span>발행년도</span> : 2006</li>
+                                                            <li><span>ISBN</span> : 8990878306</li>
+                                                        
+                                                </ul>
+                                            </div>
+                    
+                                            <div class="bookDetailInfo">
+                                                <ol>
+                                                    <li><a href="#link" id="btn_haveInfo1" onclick="fnCollectionInfo('1', '19263465', 'MO');" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
+                                                    <li><a href="#link" id="btn_sergeInfo1" onclick="fnBibliographicInfo('1', '19263465', 'MO');" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
+                                                    
+                                                        <li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8990878306', 'MO'); return false" class="btn_mylibrary themeFC themeBD" title="내서재 담기 새창열림">내서재 담기</a></li>
+                                                    
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <!-- 소장정보 -->
+                                    <div id="collectionInfo1" class="bookDetailLayer whereLibrary"></div>
+                    
+                                    <!-- 서지정보 -->
+                                    <div id="bibliographicInfo1" class="bookDetailLayer bibliographicInfo"></div>
+                    
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 페이징 -->
+                        <div class="pagingWrap">
+                            <p class="paging"><a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
+                        <a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
+                        <span class="current">1</span>
+                        <a href="javascript:fnList(2);">2</a>
+                        <a href="javascript:fnList(3);">3</a>
+                        <a href="javascript:fnList(4);">4</a>
+                        <a href="javascript:fnList(5);">5</a>
+                        <a href="javascript:fnList(6);">6</a>
+                        <a href="javascript:fnList(7);">7</a>
+                        <a href="javascript:fnList(8);">8</a>
+                        <a href="javascript:fnList(9);">9</a>
+                        <a href="javascript:fnList(10);">10</a>
+                        <a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
+                        <a href="javascript:fnList(259);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
+                        
+                        </p>
+                        </div>
+                        <!-- //페이징 -->
+                        
+                                            </div>
+                    <!-- 리스트 -->
+
                 </form>
                 <!-- End Of the Real Contents-->
                 

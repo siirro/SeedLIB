@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.search.SearchMapper">
+
+<select id="getSearchSimple" parameterType="BookVO" resultType="BookVO">
+SELECT * FROM BOOK 
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+ORDER BY NUM
+</select>
+
+<select id="getSearchSimpleCount" parameterType="BookVO" resultType="Long">
+SELECT COUNT(ISBN) FROM BOOK 
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+ORDER BY NUM
+</select>
+	
+</mapper>    

@@ -16,8 +16,8 @@ public class DonationVO {
 	private String donPublisher;
 	private String donMemo;
 	private Date donDate;
-	private Long isbn;
 	private String userName;
+	private String emailAgree;
 	
 	private StatusVO statusVO;
 	private LibVO libVO;

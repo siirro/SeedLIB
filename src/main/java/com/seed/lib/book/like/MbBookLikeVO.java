@@ -1,4 +1,4 @@
-package com.seed.lib.book;
+package com.seed.lib.book.like;
 
 import lombok.Data;
 
@@ -6,5 +6,7 @@ import lombok.Data;
 public class MbBookLikeVO {
 	
 	private Long bookLike;
+	private Long isbn;
+	private String userName;
 
 }

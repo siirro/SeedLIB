@@ -21,17 +21,16 @@ class ProgramServiceTest {
 	void setProgramAddTest()throws Exception {
 		ProgramVO programVO = new ProgramVO();
 		DateUtil dateUtil = new DateUtil();
-		programVO.setProName("독서");
+		programVO.setProName("책이야기");
 		programVO.setTotal(30L);
 		
-		//2022-11-04 12:50:01
-		Date prsDate = dateUtil.parseDate("2022-08-02 24:01:01");
+		Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");
 		programVO.setPrsDate(prsDate);
-		Date prlDate = dateUtil.parseDate("2022-08-23 24:01:01");
+		Date prlDate = dateUtil.parseDate("2022-08-23 00:00:00");
 		programVO.setPrlDate(prlDate);
 		Date psDate = dateUtil.parseDate("2022-09-02 09:00:00");
 		programVO.setPsDate(psDate);
-		Date plDate = dateUtil.parseDate("2022-09-02 11:00:00");
+		Date plDate = dateUtil.parseDate("2022-09-09 11:00:00");
 		programVO.setPlDate(plDate);
 		programVO.setTarget("학생");
 		programVO.setProTeacher("강사");

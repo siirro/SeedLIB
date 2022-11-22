@@ -17,8 +17,7 @@
 		.seatArea{
 			display: inline-block;
 			margin-left: 70px;
-			margin-top: 40px;
-			margin-bottom: 30px;
+			margin-top: 45px;
 		}
 		.seatList{
 			align-items: center;
@@ -28,10 +27,17 @@
 			width:70px;
 			height:60px;
 			background:#77e270;
-			color:#fff; 
 			text-align: center;
 			margin-right: 5px;
-    		margin-bottom: 10px;
+    		margin-bottom: 5px;
+			border-radius: 5%;
+		}
+
+		.resBtn{
+			color: #ffffff;
+			font-size: 20px;
+			font-weight: bold;
+			text-shadow: -1px -1px 0 #5d9d49, 1px -1px 0 #5d9d49, -1px 1px 0 #5d9d49, 1px 1px 0 #5d9d49;
 		}
 		
 		/* .seatList:nth-of-type(12n){
@@ -71,11 +77,10 @@
 
 <div id="contents" class="contentArea">				
 	<!--Forced tab Show Que-->
-	<div class="ttabWrap" style="display: block;">
+	<div class="ttabWrap" style="display: block; ">
 		<div id="virtSelect" style="display: none;"><a href="#script">탭메뉴</a></div>
 		<ul id="ttab3" class="tnb clearfix"> 
-	    <li id="tnb1_7_1" class="choiced"><a href="/studyroom/roomInfo" class="current" title="선택된 탭" style="min-width: 479px;">좌석 현황조회</a> </li> 
-	    <li id="tnb1_7_2"><a href="/studyroom/setSeat" style="min-width: 479px;">좌석 예약하기</a> </li> 
+	    <li id="tnb1_7_1" class="choiced"><a href="/studyroom/roomInfo" class="current" title="선택된 탭" style="min-width: 479px;">좌석 현황조회/예약</a> </li> 
 	   </ul>
 	</div>
 	<!--Forced tab Show Que-->

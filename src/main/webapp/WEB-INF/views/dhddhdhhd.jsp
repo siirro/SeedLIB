@@ -1,3 +1,17 @@
+<script>
+	$(function(){
+		//통합검색 인기검색어
+		$(".keywordListWrap").newsTicker({
+			itemHeight: 33,
+			showItems: 1,
+			duration: 4000,
+			prevButton: "#btnDwon",
+			nextButton: "#btnUp"
+		});
+	});
+</script>
+
+
 <script type="text/javascript" src="/include/booksearch/js/autocom.js"></script>
 
 <script>

@@ -57,9 +57,6 @@
 						</c:choose>
 						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
-						<li><a href="/test">test</a></li>
-						
-						<li><a href="/hopeList">HOPELIST</a></li>
 					</ul>
 				</div>
 			</div>
@@ -108,7 +105,7 @@
 						<li id="gnb2_1"><a href="/seoksu/menu/10124/program/30015/lectureList.do">문화행사신청</a> </li> 
 						<li id="gnb2_2"><a href="/hope/hopeInfo">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo">소장도서기증</a></li> 
-						<li id="gnb2_4"><a href="/studyroom/roomInfo">열람실 조회/신청</a></li> 
+						<li id="gnb2_4"><a href="/studyroom/roomInfo">열람실 조회/예약</a></li> 
 					</ul> 
 				</li> 
 				

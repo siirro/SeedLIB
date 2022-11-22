@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.donation.DonationService;
+import com.seed.lib.donation.DonationVO;
 import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.util.HdPager;
@@ -23,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MyPageController {
 	@Autowired
 	private HopeService hopeService;
+	@Autowired
+	private DonationService donationService;
 	
 	
 	@GetMapping("myIndex")
@@ -37,7 +41,7 @@ public class MyPageController {
 	public ModelAndView setHList(HdPager hdPager)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
-		hdPager.setUserName("id3");
+		hdPager.setUserName("id1");
 		List<HopeVO> hl = hopeService.getHopeList(hdPager);
 		mv.addObject("hlist", hl);
 		mv.addObject("pager", hdPager);
@@ -50,6 +54,17 @@ public class MyPageController {
 		log.info("@@@@@@@@@@@@@@@@@@@@@@cancel:{}",hopeVO.getHopNum());
 		int result = hopeService.setUpdateHope(hopeVO);		
 		return result;
+	}
+	
+	@GetMapping("donList")
+	public ModelAndView setDList(HdPager hdPager)throws Exception{
+		//세션으로 아이디 받아야됨!!!!!!!!!!!
+		ModelAndView mv = new ModelAndView();
+		hdPager.setUserName("id1");
+		List<DonationVO> dl = donationService.getDonList(hdPager);
+		mv.addObject("dlist", dl);
+		mv.addObject("pager", hdPager);
+		return mv;
 	}
 	
 }
