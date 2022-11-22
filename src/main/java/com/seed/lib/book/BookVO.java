@@ -3,6 +3,8 @@ package com.seed.lib.book;
 import java.util.List;
 
 import com.seed.lib.book.like.MbBookLikeVO;
+import com.seed.lib.book.shelf.BookPickVO;
+import com.seed.lib.book.shelf.BookShelfVO;
 
 import lombok.Data;
 
@@ -23,4 +25,6 @@ public class BookVO {
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
 	private MbBookLikeVO mbBookLikeVO;
+	private BookShelfVO bookShelfVOs;
+	private BookPickVO bookPickVOs;
 }

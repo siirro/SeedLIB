@@ -11,6 +11,8 @@
   		<typeAlias type="com.seed.lib.book.LibVO" alias="LibVO"/>
   		<typeAlias type="com.seed.lib.book.BookLibVO" alias="BookLibVO"/>
 		<typeAlias type="com.seed.lib.book.like.MbBookLikeVO" alias="MbBookLikeVO"/>
+		<typeAlias type="com.seed.lib.book.shelf.BookShelfVO" alias="BookShelfVO"/>
+		<typeAlias type="com.seed.lib.book.shelf.BookPickVO" alias="BookPickVO"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
