@@ -2,11 +2,13 @@ package com.seed.lib.admin.program;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seed.lib.util.DateUtil;
+import com.seed.lib.util.HdPager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,6 +19,15 @@ public class ProgramService {
 	@Autowired
 	private ProgramMapper programMapper;
 	
+	// 프로그램 목록 출력
+	public List<ProgramVO> getProgramList(HdPager hdPager)throws Exception{
+		hdPager.makeRow();
+		hdPager.getNum(programMapper.getProTotalCount(hdPager));
+		log.info("pre가 뭐닝? => {} ", hdPager.isPre());
+		return programMapper.getProgramList(hdPager);
+	}
+	
+	// 프로그램 추가
 	public int setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
 							String plTime, String name, String teacher)throws Exception{
 		
@@ -35,7 +46,6 @@ public class ProgramService {
 		
 		// 강사님 이름 합침 000강사, 000선생님 등
 		programVO.setProTeacher(name+teacher);
-		log.info("프로그램 데이트 => {} ", programVO.getPsDate());
 		
 		return programMapper.setProgramAdd(programVO);
 	}

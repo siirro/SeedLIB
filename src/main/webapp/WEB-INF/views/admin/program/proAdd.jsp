@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,8 +13,10 @@
       type="image/x-icon"
     />
     <title>Form Elements | PlainAdmin Demo</title>
-    <!-- ========== All CSS files linkup & sidear ========= -->
-    <c:import url="../temp/sdeber-css.jsp"></c:import>
+    
+    <!-- ========== All CSS files linkup & sidebar ========= -->
+    <c:import url="../temp/sidebar-css.jsp"></c:import>
+    
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
@@ -42,9 +44,9 @@
                       <li class="breadcrumb-item">
                         <a href="../main">Dashboard</a>
                       </li>
-                      <li class="breadcrumb-item"><a href="./proAdd">Forms</a></li>
+                      <li class="breadcrumb-item"><a href="./proList">문화프로그램 관리</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        문화 프로그램 개설
+                        문화프로그램 개설
                       </li>
                     </ol>
                   </nav>
@@ -209,11 +211,11 @@
                     <h6 class="mb-25">접수상태 선택</h6>
                     <div class="select-position">
                       <select name="recStatus">
-                        <option value="0">선택안함</option>
-                        <option value="1">예정</option>
-                        <option value="2">접수중</option>
-                        <option value="3">마감</option>
-                        <option value="4">종료</option>
+                        <option value="선택안함">선택안함</option>
+                        <option value="예정">예정</option>
+                        <option value="접수중">접수중</option>
+                        <option value="마감">마감</option>
+                        <option value="종료">종료</option>
                       </select>
                     </div>
                   </div>

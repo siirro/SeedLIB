@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up | PlainAdmin Demo</title>
-    <!-- ========== All CSS files linkup & sidear ========= -->
-    <c:import url="../temp/sdeber-css.jsp"></c:import>
+    <!-- ========== All CSS files linkup & sidebar ========= -->
+    <c:import url="../temp/sidebar-css.jsp"></c:import>
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->

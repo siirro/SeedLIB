@@ -15,7 +15,7 @@ public class ProgramVO {
 	// 행사구분
 	private String proCate;
 	// 접수상태
-	private Long recStatus;
+	private String recStatus;
 	// 행사이름
 	private String proName;
 	// 대상자
