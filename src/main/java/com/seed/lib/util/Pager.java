@@ -12,17 +12,18 @@ public class Pager {
 	private Long lastRow;
 	private Long perPage;
 	private Long perBlock;
+	private Long totalPage1;
 	
 	private boolean pre;
 	private boolean next;
 	
-	private String search;
 	private String kind;
+	private String search;
 	
 	
 	// 1. 매퍼에 들어가는 startNum, lastNum을 자동으로 계산하는 getRowNum 메서드
 	public void getRowNum()throws Exception{
-		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
+		this.startRow = (this.getPage()-1)*this.getPerPage();
 	}
 	
 	// 2. 각종 페이지수 계산 메서드 - totalCount는 매퍼에서 getCount생성 후 서비스에서 호출
@@ -33,9 +34,20 @@ public class Pager {
 			totalPage +=1;
 		}
 		
+		//토탈페이지 안먹어서 페이저소속인애(1번)과 페이저에서 그냥지나가는변수인데 두개로 중복처리.. 
+		totalPage1 = totalCount/this.getPerPage();
+		if(totalCount%this.getPerPage()!=0) {
+			totalPage1 +=1;
+		}
+		
 		//cf)1-1. totalPage보다 page가 큰 경우 못가게 막기
 		if(this.getPage()>totalPage) {
 			this.setPage(totalPage);
+		}
+		
+		
+		if(this.getPage()==0L) {
+			this.setPage(1L);
 		}
 		
 		//2. totalPage를 이용해 totalBlock(페이지한묶음의 수)
@@ -57,9 +69,6 @@ public class Pager {
 		if(curBlock==totalBlock) {
 			this.lastNum=totalPage;
 		}
-		System.out.println("토탈카운트는?"+totalCount);
-		System.out.println("토탈페이지는?"+totalPage);
-		System.out.println("토탈블럭은?"+totalBlock);
 		
 		//?? 검색결과가 0개면 라스트넘도 0이 되는 식 (제가 임의로 추가한거라 에러뜨면 사용x)
 		if(totalBlock==0) {

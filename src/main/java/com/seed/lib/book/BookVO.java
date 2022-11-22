@@ -26,12 +26,5 @@ public class BookVO {
 	
 	
 
-	private String search;
-	
-	public String getSearch() {
-		if(this.search==null) {
-			this.search="";
-		}
-		return search;
-	}
+
 }

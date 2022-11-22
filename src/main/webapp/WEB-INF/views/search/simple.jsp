@@ -51,7 +51,7 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form action="./simple" id="searchForm" name="searchForm" method="post">
+                <form action="./simpleresult" id="searchForm" name="searchForm" method="get">
 
                     <!-- 서치랩 -->
                     <div class="searchWrap">
@@ -64,7 +64,8 @@
 
                                     </div>
                                     <div class="searchInputbox">
-                                        <input type="text" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
+                                        <input hidden="hidden" />
+                                        <input type="text" onkeyup="enterkey()" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
                                         <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
                                     </div>
                                     <div>
@@ -75,12 +76,7 @@
                         </div>
                     </div>
 
-                    <script>
-                        $("#searchBtn").click(function(){
-                            console.log("아");
-                            $("#searchForm").submit();
-                        })
-                    </script>
+                    <script src="/js/search.js"></script>
                 
                     <!-- 서치랩끝 -->
 
@@ -94,14 +90,17 @@
                                 </div>
                                 </c:if>
 
+                                <c:if test="${not empty message}">
+                                    <div class="result_screen">'<strong>${message}</strong>'
+                                    </div>
+                                </c:if>
+
                                 <!-- <div class="listStyleType">
                                     <select name="searchArticle" title="정렬조건 선택">
                                         <option value="SCORE" selected="selected">인기도</option>
                                         <option value="TITLE">서명</option>
                                         <option value="WRITER">저자</option>
                                         <option value="PUBLISHER">발행처</option>
-                                        <option value="BOOKDATE">발행일</option>
-                                        <option value="BOOKCOUNT">대출수</option>
                                     </select>
                                     <select name="searchOrder" class="orderSel" style="display:none" title="정렬순서 선택">
                                         <option value="ASC" selected="selected">오름차순</option>
@@ -138,7 +137,7 @@
                                             <div class="bookData">
                                                 <div class="book_dataInner">
                                                     <!-- <span class="book_kind">단행본</span> -->
-                                                    <a href="#link" onclick="location.href='../detail?${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                    <a href="#link" onclick="location.href='../book/detail?ISBN=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
                                                     <ul class="dot-list clearfix">
                                                         <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                         <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
@@ -154,7 +153,7 @@
                                                         <li><a href="#link" id="btn_haveInfo1" onclick="fnCollectionInfo('1', '19263465', 'MO');" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
                                                         <li><a href="#link" id="btn_sergeInfo1" onclick="fnBibliographicInfo('1', '19263465', 'MO');" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
                                                         
-                                                            <li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8990878306', 'MO'); return false" class="btn_mylibrary themeFC themeBD" title="내서재 담기 새창열림">내서재 담기</a></li>
+                                                            <li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8990878306', 'MO'); return false" class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜하기</a></li>
                                                         
                                                     </ol>
                                                 </div>
@@ -162,8 +161,113 @@
                                         </div>
                         
                                         <!-- 소장정보 -->
-                                        <div id="collectionInfo1" class="bookDetailLayer whereLibrary"></div>
-                        
+                                        <div id="collectionInfo1" class="bookDetailLayer whereLibrary open" tabindex="0">
+                                            
+                                            <div class="thisBook-libraryList">
+                                                <div class="tblWrap scrollTable">
+                                                    <table class="tbl">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">도서관</th>
+                                                                <th scope="col">대출상태</th>
+                                                                <th scope="col">반납예정일</th>
+                                                                <th scope="col">청구기호</th>
+                                                                <th scope="col">예약</th>
+                                                                <th scope="col">자료실</th>
+                                                                <th scope="col">부록</th>
+                                                                <th scope="col">등록번호</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                                <tr class="MA">
+                                                                    <td>석수도서관</td>
+                                                                    <td>
+                                                                        대출불가
+                                            (상호대차)
+                                                                        <br>(예약가능)
+                                                                        <br>(예약:1명)
+                                                                    </td>
+                                                                    <td>2022.12.05</td>
+                                                                    <td>833.6-히12나 <a href="#print" onclick="javascript:fnCallNoPrintPop('16571048', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                    <td>
+                                                                        
+                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('16571048','EM0000099826'); return false" class="btn white small">대출예약</a>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </td>
+                                                                    <td>석수_관외대출실</td>
+                                                                    <td>부록없음</td>
+                                                                    <td>EM0000099826</td>
+                                                                </tr>
+                                                            
+                                                                <tr class="MA">
+                                                                    <td>석수도서관</td>
+                                                                    <td>
+                                                                        대출중
+                                                                        <br>(예약가능)
+                                                                        <br>(예약:1명)
+                                                                    </td>
+                                                                    <td>2022.11.26</td>
+                                                                    <td>833.6-히12나 <a href="#print" onclick="javascript:fnCallNoPrintPop('101352192', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                    <td>
+                                                                        
+                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('101352192','EM0000160080'); return false" class="btn white small">대출예약</a>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </td>
+                                                                    <td>석수_관외대출실</td>
+                                                                    <td>부록없음</td>
+                                                                    <td>EM0000160080</td>
+                                                                </tr>
+                                                            
+                                                                <tr class="MA">
+                                                                    <td>석수도서관</td>
+                                                                    <td>
+                                                                        대출중
+                                                                        <br>(예약가능)
+                                                                        <br>(예약:1명)
+                                                                    </td>
+                                                                    <td>2022.11.25</td>
+                                                                    <td>833.6-히12나=c.2 <a href="#print" onclick="javascript:fnCallNoPrintPop('101783087', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                    <td>
+                                                                        
+                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('101783087','EM0000167633'); return false" class="btn white small">대출예약</a>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </td>
+                                                                    <td>석수_관외대출실</td>
+                                                                    <td>부록없음</td>
+                                                                    <td>EM0000167633</td>
+                                                                </tr>
+                                                            
+                                                                <tr class="MA">
+                                                                    <td>석수도서관</td>
+                                                                    <td>
+                                                                        대출불가
+                                                                        
+                                                                        
+                                                                    </td>
+                                                                    <td>-</td>
+                                                                    <td>833.6-히12나=c.3 <a href="#print" onclick="javascript:fnCallNoPrintPop('18494205', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                    <td>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </td>
+                                                                    <td>석수_종합자료실</td>
+                                                                    <td>부록없음</td>
+                                                                    <td>AS0000005990</td>
+                                                                </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <a href="#close" class="btn whereLibClose small ta_c">닫기</a></div>
                                         <!-- 서지정보 -->
                                         <div id="bibliographicInfo1" class="bookDetailLayer bibliographicInfo"></div>
                         
@@ -171,24 +275,51 @@
                                 </c:forEach>
                             </ul>
                         </div>
-                        <!-- 페이징 -->
                         <c:if test="${not empty list}">
-                            <div class="pagingWrap">
-                                <p class="paging">
-                                    <a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
-                                    <a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
-                                    <!-- <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"> -->
-                                        <span class="current">1</span>
-                                        <a href="javascript:fnList(2);">2</a>
-                                        
-                                        <a href="javascript:fnList(10);">10</a>
-                                    <!-- </c:forEach> -->
-                                    <a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
-                                    <a href="javascript:fnList(259);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
-                                 </p>
-                            </div>
+                        <div class="pagingWrap">
+                            <p class="paging">
+                                <a href="./simpleresult?search=${pager.search}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
+                                
+                                <a href="./simpleresult?search=${pager.search}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
+                                
+                                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+                                    <!-- <span class="current">1</span> -->
+                                    <a href="./simpleresult?search=${pager.search}&page=${i}" id="ppaaggee${i}">${i}</a>
+                                    
+                                </c:forEach>
+                                <a href="./simpleresult?search=${pager.search}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
+                                <a href="./simpleresult?search=${pager.search}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
+                                </p>
+                        </div>
                         </c:if>
                         <!-- //페이징 -->
+
+                        <script>
+                            let disables = document.querySelectorAll(".disabledLink")
+                            
+                            disables.forEach(element => {
+                                element.removeAttribute('href');
+                            });
+
+                            let urll = window.location.href;
+                            let urlnn = urll.lastIndexOf('=')+1;
+                            urllastt = urll.substring(urlnn);
+
+                            console.log(urllastt);
+
+                            let page1sibal = urll.lastIndexOf('=')-1;
+                            console.log(page1sibal);
+                            if(page1sibal==45){
+                                document.querySelector('#ppaaggee1').style.background="#9be15d";
+                                document.querySelector('#ppaaggee1').style.color="#fff";
+                            }
+
+                            let ppaaggee = document.querySelector('#'+"ppaaggee"+urllastt);
+                            ppaaggee.style.background="#9be15d";
+                            ppaaggee.style.color="#fff";
+                          
+                          
+                        </script>
                         
                     </div>
                     <!-- 리스트 -->
