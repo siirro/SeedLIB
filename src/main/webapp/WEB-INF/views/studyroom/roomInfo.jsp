@@ -39,7 +39,7 @@
 
 		.gray{
 			border-radius: 5px;
-			background-color: #4a4a4a;
+			background-color: #8c8989;
 			font-weight: bold;
 			color: #ffffff;
 			font-size: 17px;
@@ -95,7 +95,7 @@
 		}
 		
 		.used {
-			background:#4a4a4a;
+			background:#8c8989;
 		}
 		
 		.seatBlank{

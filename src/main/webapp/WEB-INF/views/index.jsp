@@ -35,10 +35,10 @@
 
 			<div class="sectionGroup">
 				<div class="sectionGroup" >
-					<p class="slogan" style="color: white;">
+					<p class="slogan" style="color: white; text-shadow: 1px 1px 3px rgb(0 0 0 / 50%);">
 						<span style="font-size: 22px;">시민에게 행복과 감동을 주는</span>
 						<br>
-						<span style="font-size: 52px; font-weight: bold; text-shadow: 2px 1px 0px rgb(100 125 190);">씨앗도서관</span>
+						<span style="font-size: 52px; font-weight: bold; text-shadow: 1px 1px 3px rgb(0 0 0 / 50%);">씨앗도서관</span>
 					</p>
 					
 					<!-- 통합검색 -->
@@ -139,7 +139,7 @@
 					</div> -->
 
 					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
-						<li style="z-index: 100; left: 0px; top: 0px;">
+						<li style="z-index: 100; left: 0px; top: 0px; background-color: #ffffff33;">
 							<a href="https://lib.anyang.go.kr/intro/menu/12220/contents/41241/contents.do">
 								<img src="https://lib.anyang.go.kr/attachfile/popupzone/13758_1_20220824180541507.jpg" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
 									불편한 편의점

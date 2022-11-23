@@ -49,7 +49,7 @@
 			font-size: 1.125em;
 			font-weight: 540;
 			line-height: 1;
-			color: #00d949;
+			color: #969696;
 			letter-spacing: -0.05em;
 			text-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
 				}
