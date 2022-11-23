@@ -21,20 +21,20 @@ class ProgramServiceTest {
 	private ProgramService programService;
 	
 	//@Test
-	void setDelete()throws Exception{
+	void setProgramDeleteTest()throws Exception{
 		
 		ProgramVO programVO = new ProgramVO();
 		
 		programVO.setProNum(104L);
 		
-		int result = programService.setDelete(programVO);
+		int result = programService.setProgramDelete(programVO);
 		
 		assertEquals(1, result);
 		
 	}
 	
 	//@Test
-	void setProgramUpdate()throws Exception{
+	void setProgramUpdateTest()throws Exception{
 		
 		DateUtil dateUtil = new DateUtil();
 		ProgramVO programVO = new ProgramVO();
@@ -62,7 +62,7 @@ class ProgramServiceTest {
 	}
 	
 	//@Test
-	void getProgramDetail()throws Exception{
+	void getProgramDetailTest()throws Exception{
 		
 		ProgramVO programVO = new ProgramVO();
 		
@@ -75,7 +75,7 @@ class ProgramServiceTest {
 	}
 	
 	//@Test
-	void getProgramList()throws Exception{
+	void getProgramListTest()throws Exception{
 		
 		HdPager hdPager = new HdPager();
 		List<ProgramVO> programVOs = programService.getProgramList(hdPager);

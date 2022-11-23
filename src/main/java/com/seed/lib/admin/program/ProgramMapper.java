@@ -9,7 +9,7 @@ import com.seed.lib.util.HdPager;
 @Mapper
 public interface ProgramMapper {
 	
-	public int setDelete(ProgramVO programVO)throws Exception;
+	public int setProgramDelete(ProgramVO programVO)throws Exception;
 	
 	public int setProgramUpdate(ProgramVO programVO)throws Exception;
 	

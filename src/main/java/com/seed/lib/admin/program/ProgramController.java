@@ -18,6 +18,18 @@ public class ProgramController {
 	@Autowired
 	private ProgramService programService;
 	
+	@GetMapping("proDelete")
+	public String setProgramDelete(ProgramVO programVO)throws Exception{
+			
+		int result = programService.setProgramDelete(programVO);
+		
+		if(result > 0) {
+			return "redirect:./proList";
+		}
+		
+		return "admin/program/proList";
+	}
+	
 	@GetMapping("proUpdate")
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		

@@ -20,8 +20,8 @@ public class ProgramService {
 	private ProgramMapper programMapper;
 	
 	// 프로그램 삭제
-	public int setDelete(ProgramVO programVO)throws Exception{
-		return programMapper.setDelete(programVO);
+	public int setProgramDelete(ProgramVO programVO)throws Exception{
+		return programMapper.setProgramDelete(programVO);
 	}
 	
 	// 프로그램 상세정보 수정
