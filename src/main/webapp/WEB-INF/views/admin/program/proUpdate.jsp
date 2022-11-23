@@ -66,12 +66,12 @@
                 <div class="card-style mb-30">
                   <h6 class="mb-25">프로그램 이름</h6>
                   <div class="input-style-3">
-                    <input type="text" name="proName"/>
+                    <input type="text" name="proName" value="${proVO.proName}"/>
                     <span class="icon"><i class="lni lni-bulb"></i></span>
                   </div>
                   <h6 class="mb-25">프로그램 참여 인원 수</h6>
                   <div class="input-style-3">
-                    <input type="number" name="total"/>
+                    <input type="number" name="total" value="${proVO.total}"/>
                     <span class="icon"><i class="lni lni-user"></i></span>
                   </div>
                   <!-- end input -->
@@ -83,7 +83,7 @@
                 <div class="card-style mb-30">
                   <div class="input-style-1">
                     <h6 class="mb-25">접수시작 날짜</h6>
-                    <input type="date" name="prsDate" />
+                    <input type="date" name="prsDate"/>
                   </div>
                   <!-- end input -->
                   <div class="input-style-1">
@@ -141,7 +141,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-3">
-                        <input type="text" name="name"/>
+                        <input type="text" name="name" value="${proVO.proTeacher}"/>
                         <span class="icon"><i class="lni lni-user"></i></span>
                       </div>
                     </div>
@@ -149,7 +149,7 @@
                       <div class="select-style-1">
                         <div class="select-position">
                           <select name="teacher">
-                            <option value="직접입력">직접입력</option>
+                            <option value="">직접입력</option>
                             <option value="강사">강사</option>
                             <option value="작가">작가</option>
                             <option value="선생님">선생님</option>

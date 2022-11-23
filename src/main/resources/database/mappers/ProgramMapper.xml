@@ -4,6 +4,10 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.program.ProgramMapper">
 	
+	<delete id="setDelete" parameterType="ProgramVO">
+		DELETE FROM PROGRAM WHERE PRONUM = #{proNum}
+	</delete>
+	
 	<update id="setProgramUpdate" parameterType="ProgramVO">
 		UPDATE PROGRAM SET PROCATE=#{proCate}, RECSTATUS=#{recStatus}, PRONAME=#{proName}, TARGET=#{target}, TOTAL=#{total}, 
 						   PRSDATE=#{prsDate}, PRLDATE=#{prlDate}, PSDATE=#{psDate}, 
@@ -12,7 +16,7 @@
 	</update>
 	
 	<select id="getProgramDetail" parameterType="ProgramVO" resultType="ProgramVO">
-		SELECT * FROM PROGRAM WHERE PRONUM=#{proNum}
+		SELECT * FROM PROGRAM WHERE PRONUM = #{proNum}
 	</select>
 
 	<select id="getProTotalCount" resultType="Long">

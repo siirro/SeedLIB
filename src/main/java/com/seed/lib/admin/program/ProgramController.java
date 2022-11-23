@@ -19,8 +19,16 @@ public class ProgramController {
 	private ProgramService programService;
 	
 	@GetMapping("proUpdate")
-	public String setProgramUpdate()throws Exception{
-		return "admin/program/proUpdate";
+	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		programVO = programService.getProgramDetail(programVO);
+		
+		mv.addObject("proVO", programVO);
+		mv.setViewName("admin/program/proUpdate");
+		
+		return mv;
 	}
 	
 	@PostMapping("proUpdate")
@@ -32,8 +40,8 @@ public class ProgramController {
 		
 		if(result > 0) {
 			
-			
-			mv.setViewName("admin/program/proList");
+			mv.addObject("proVO", programVO);
+			mv.setViewName("admin/program/proUpdate");
 			
 			return mv;
 		}

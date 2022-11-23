@@ -21,6 +21,19 @@ class ProgramServiceTest {
 	private ProgramService programService;
 	
 	//@Test
+	void setDelete()throws Exception{
+		
+		ProgramVO programVO = new ProgramVO();
+		
+		programVO.setProNum(104L);
+		
+		int result = programService.setDelete(programVO);
+		
+		assertEquals(1, result);
+		
+	}
+	
+	//@Test
 	void setProgramUpdate()throws Exception{
 		
 		DateUtil dateUtil = new DateUtil();
