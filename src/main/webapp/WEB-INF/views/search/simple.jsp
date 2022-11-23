@@ -162,7 +162,6 @@
                         
                                         <!-- 소장정보 -->
                                         <div id="collectionInfo1" class="bookDetailLayer whereLibrary open" tabindex="0">
-                                            
                                             <div class="thisBook-libraryList">
                                                 <div class="tblWrap scrollTable">
                                                     <table class="tbl">
@@ -173,56 +172,9 @@
                                                                 <th scope="col">반납예정일</th>
                                                                 <th scope="col">청구기호</th>
                                                                 <th scope="col">예약</th>
-                                                                <th scope="col">자료실</th>
-                                                                <th scope="col">부록</th>
-                                                                <th scope="col">등록번호</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            
-                                                                <tr class="MA">
-                                                                    <td>석수도서관</td>
-                                                                    <td>
-                                                                        대출불가
-                                            (상호대차)
-                                                                        <br>(예약가능)
-                                                                        <br>(예약:1명)
-                                                                    </td>
-                                                                    <td>2022.12.05</td>
-                                                                    <td>833.6-히12나 <a href="#print" onclick="javascript:fnCallNoPrintPop('16571048', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
-                                                                    <td>
-                                                                        
-                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('16571048','EM0000099826'); return false" class="btn white small">대출예약</a>
-                                                                        
-                                                                        
-                                                                        
-                                                                    </td>
-                                                                    <td>석수_관외대출실</td>
-                                                                    <td>부록없음</td>
-                                                                    <td>EM0000099826</td>
-                                                                </tr>
-                                                            
-                                                                <tr class="MA">
-                                                                    <td>석수도서관</td>
-                                                                    <td>
-                                                                        대출중
-                                                                        <br>(예약가능)
-                                                                        <br>(예약:1명)
-                                                                    </td>
-                                                                    <td>2022.11.26</td>
-                                                                    <td>833.6-히12나 <a href="#print" onclick="javascript:fnCallNoPrintPop('101352192', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
-                                                                    <td>
-                                                                        
-                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('101352192','EM0000160080'); return false" class="btn white small">대출예약</a>
-                                                                        
-                                                                        
-                                                                        
-                                                                    </td>
-                                                                    <td>석수_관외대출실</td>
-                                                                    <td>부록없음</td>
-                                                                    <td>EM0000160080</td>
-                                                                </tr>
-                                                            
                                                                 <tr class="MA">
                                                                     <td>석수도서관</td>
                                                                     <td>
@@ -239,35 +191,15 @@
                                                                         
                                                                         
                                                                     </td>
-                                                                    <td>석수_관외대출실</td>
-                                                                    <td>부록없음</td>
-                                                                    <td>EM0000167633</td>
                                                                 </tr>
                                                             
-                                                                <tr class="MA">
-                                                                    <td>석수도서관</td>
-                                                                    <td>
-                                                                        대출불가
-                                                                        
-                                                                        
-                                                                    </td>
-                                                                    <td>-</td>
-                                                                    <td>833.6-히12나=c.3 <a href="#print" onclick="javascript:fnCallNoPrintPop('18494205', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
-                                                                    <td>
-                                                                        
-                                                                        
-                                                                        
-                                                                    </td>
-                                                                    <td>석수_종합자료실</td>
-                                                                    <td>부록없음</td>
-                                                                    <td>AS0000005990</td>
-                                                                </tr>
                                                             
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
-                                            <a href="#close" class="btn whereLibClose small ta_c">닫기</a></div>
+                                            <a href="#close" class="btn whereLibClose small ta_c">닫기</a>
+                                        </div>
                                         <!-- 서지정보 -->
                                         <div id="bibliographicInfo1" class="bookDetailLayer bibliographicInfo"></div>
                         

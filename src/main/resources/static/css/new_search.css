@@ -75,7 +75,7 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 
 .listSetting {position: relative; overflow: hidden;}
 
-.result_screen {float: left; color: #646464; padding: 3px 0; margin-bottom: 20px;}
+.result_screen {float: left; color: #646464; padding: 3px 0; margin-bottom: 0px;}
 .result_screen.home {width: 100%; padding: 0 10px 10px; margin-bottom: 0; border-bottom: 2px solid #666;}
 .result_screen strong, .result_screen span {color: #d93131;}
 
