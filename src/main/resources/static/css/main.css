@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 
 
 
@@ -46,7 +46,7 @@
 #section1 {overflow: hidden; position: relative; padding: 50px 0 10px 0; background-color: #fff;}
 
 /* 슬로건 */
-.slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 38px;}
+.slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 28px;}
 .slogan span {display: inline-block; font-family: 'S-Core Dream 6'; font-size: 2.091em; padding-bottom: 13px;}
 
 /* 검색 라디오박스 스타일 */
