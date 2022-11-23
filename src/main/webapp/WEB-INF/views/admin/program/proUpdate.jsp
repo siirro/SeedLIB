@@ -83,12 +83,12 @@
                 <div class="card-style mb-30">
                   <div class="input-style-1">
                     <h6 class="mb-25">접수시작 날짜</h6>
-                    <input type="date" name="prsDate"/>
+                    <input type="date" name="prsDate" value="${proVO.prsDate}"/>
                   </div>
                   <!-- end input -->
                   <div class="input-style-1">
                     <h6 class="mb-25">접수마감 날짜</h6>
-                    <input type="date" name="prlDate" />
+                    <input type="date" name="prlDate" value="${proVO.prlDate}"/>
                   </div>
                   <!-- end input -->
                   <div class="row">
@@ -97,13 +97,13 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="psDt" />
+                        <input type="date" name="psDt" value="${proVO.psDate}"/>
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="psTime" />
+                        <input type="time" name="psTime"/>
                       </div>
                       <!-- end input -->
                     </div>
@@ -114,7 +114,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="plDt" />
+                        <input type="date" name="plDt" value="${proVO.plDate}"/>
                       </div>
                       <!-- end input -->
                     </div>

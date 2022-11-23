@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.util.DateUtil;
 import com.seed.lib.util.HdPager;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/admin/program/*")
+@Slf4j
 public class ProgramController {
 
 	@Autowired
@@ -57,6 +61,10 @@ public class ProgramController {
 		ModelAndView mv = new ModelAndView();
 		
 		programVO = programService.getProgramDetail(programVO);
+		
+		// 강사님한테 물어보기!
+		log.info("행사시간 => {} ", programVO.getPsDate());
+		log.info("행사시간 => {} ", programVO.getPlDate());
 		
 		mv.addObject("proVO", programVO);
 		mv.setViewName("admin/program/proUpdate");
