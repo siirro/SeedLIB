@@ -24,15 +24,28 @@ public class ProgramController {
 	}
 	
 	@PostMapping("proUpdate")
-	public String setProgramUpdate(ProgramVO programVO)throws Exception{
+	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
 		
 		int result = programService.setProgramUpdate(programVO);
 		
 		if(result > 0) {
-			return "admin/program/proList";
+			
+			
+			mv.setViewName("admin/program/proList");
+			
+			return mv;
 		}
 		
-		return "admin/program/proUpdate";
+		mv.setViewName("admin/program/proUpdate");
+		
+		return mv;
+	}
+	
+	@GetMapping("proDetail")
+	public String getProgramDetail(ProgramVO programVO)throws Exception{
+		return "admin/program/proDetail";
 	}
 	
 	@GetMapping("proList")

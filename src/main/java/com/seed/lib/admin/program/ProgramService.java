@@ -21,7 +21,18 @@ public class ProgramService {
 	
 	// 프로그램 상세정보 수정
 	public int setProgramUpdate(ProgramVO programVO)throws Exception{
-		return programMapper.setProgramUpdate(programVO);
+		
+		programVO = programMapper.getProgramDetail(programVO);
+		
+		int result=0;
+		
+		if(programVO != null) {
+			
+			result = programMapper.setProgramUpdate(programVO);
+			
+		}
+		
+		return result;
 	}
 	
 	// 프로그램 상세정보 출력

@@ -180,12 +180,12 @@
                           <td>
                             <div class="action text-start">
                                 <button>
-                                  <a href="./proUpdate" class="text-info">
+                                  <a href="./proUpdate?proNum=${proVO.proNum}" class="text-info">
                                     <i class="lni lni-pencil-alt"></i>
                                   </a>
                                 </button>
                               <button>
-                                <a href="./proDelete" class="text-danger">
+                                <a href="./proDelete?proNum=${proVO.proNum}" class="text-danger">
                                     <i class="lni lni-trash-can"></i>
                                 </a>
                               </button>
