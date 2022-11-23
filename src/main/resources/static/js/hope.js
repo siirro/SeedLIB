@@ -127,7 +127,7 @@ function paging(totalCount){
         next=true;
     }
     console.log("page: ",pageNum,"totalcount: ",totalCount,"totalpage: ",totalPage,"totalblock: ",totalBlock,"startnum: ",startNum,"startrow: ",startRow, "curBlock: ",curBlock, "lastNum: ", lastNum)
-    let r='<div class="pagDiv"><ul class="pageList"><li class="pageSet"><button type="button" class="page" id="pagePre" data-num="'+(startNum-5)+'">이전</button></li>'
+    let r='<div class="pagDiv"><ul class="pageList"><li class="pageSet"><button type="button" class="page btn-paging prev" id="pagePre" data-num="'+(startNum-5)+'"></button></li>'
     if(pageNum==totalPage){
         alert("마지막 페이지입니다")
     }
@@ -143,7 +143,7 @@ function paging(totalCount){
                 continue;
             }
         }
-        r=r+'<li class="pageSet"><button type="button" class="page" data-num="'+(lastNum+1)+'" id="pageNext">다음</button></li></ul></div>'
+        r=r+'<li class="pageSet"><button type="button" class="page btn-paging next" data-num="'+(lastNum+1)+'" id="pageNext"></button></li></ul></div>'
     }else{
         alert("존재하지 않는 페이지입니다")
     }    

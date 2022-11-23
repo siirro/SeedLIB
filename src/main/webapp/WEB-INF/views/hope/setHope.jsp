@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
     }
 
     #pageNext{
-        width: 50px;
+        width: 30px;
         /* background-color: #77af9c;
         color: #d7fff1; */
         color: #0cc086;
@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
     }
 
     #pagePre{
-        width: 50px;
+        width: 30px;
         color: #0cc086;
     }
 
@@ -68,6 +68,7 @@ pageEncoding="UTF-8"%>
 <body>
 <!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
+<div id="container" class="sub">	
 <div class="sVisualWrap">
 <div class="sVisual">
     <h3>신청하기</h3>
@@ -233,6 +234,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
         </div>
+</div>
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->

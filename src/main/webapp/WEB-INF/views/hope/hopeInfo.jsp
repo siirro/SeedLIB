@@ -10,6 +10,7 @@
 <body>
 	<!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
+<div id="container" class="sub">	
 <div class="sVisualWrap">
 	<div class="sVisual">
 		<h3>신청안내</h3>
@@ -111,6 +112,7 @@
 				</div>
 			</div>
 			</div>
+</div>
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->			
