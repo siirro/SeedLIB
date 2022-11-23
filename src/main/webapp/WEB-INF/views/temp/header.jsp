@@ -139,14 +139,14 @@
 					</ul> 
 				</li> 
 					
-				<li id="gnb6" class="hehehe"> <a href="/mypage"> <em>마이페이지</em> </a> 
+				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
 						<li id="gnb6_2"><a href="/seoksu/menu/10171/program/30024/mypage/loanStatusList.do">도서이용내역</a> </li> 
 						<li id="gnb6_4"><a href="/seoksu/menu/10178/program/30027/mypage/libraryOneLillStatusList.do">상호대차조회</a> </li> 
 						<li id="gnb6_5"><a href="/seoksu/menu/10180/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 
 						<li id="gnb6_6"><a href="/mypage/hopeList">희망도서조회</a> </li> 
-						<li id="gnb6_7"><a href="/seoksu/menu/10181/program/30030/mypage/myPopularBookList.do">기증조회</a> </li> 
+						<li id="gnb6_7"><a href="/mypage/donList">도서기증조회</a> </li> 
 						<li id="gnb6_8"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
 						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
 					</ul>
