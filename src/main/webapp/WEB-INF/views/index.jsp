@@ -46,7 +46,7 @@
 
 					<div class="mainSearchWrap">
 						<div class="mainSearchForm clearfix">
-							<form action="./search/simple" name="mainSearchForm" id="mainSearchForm" method="post">
+							<form action="./search/simpleresult" name="mainSearchForm" id="searchForm" method="get">
 								<input type="hidden" name="searchType" value="SIMPLE">
 								<input type="hidden" name="searchManageCode" value="ALL">
 
@@ -68,11 +68,14 @@
 									</div>
 									<div class="mainSearchKeywordWrap">
 										<div class="mainSearchKeyword">
+											
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
-											<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
-											<a href="./search/simple" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
+											<input type="text" onkeyup="enterkey()" title="검색어 입력" class="form-ele" id="totalSearchValue" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
+											<a href="./search/simple" id="searchBtn" title="검색" class="btnSearch">검색</a>
 										</div>
 									</div>
+
+									<script src="/js/search.js"></script>
 									
 								</fieldset>
 							</form>
