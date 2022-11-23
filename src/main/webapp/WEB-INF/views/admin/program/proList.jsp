@@ -75,7 +75,7 @@
                   <div class="right d-flex align-items-center">
                     <div class="select-style-1" style="margin-bottom: 0;">
                         <div class="select-position select-sm">
-                          <select name="recStatus">
+                          <select name="kind">
                             <option value="선택안함">선택안함</option>
                             <option value="구분">구분</option>
                             <option value="이름">이름</option>
@@ -99,12 +99,49 @@
                       <thead>
                         <tr>
                           <th class="text-start"><h6>#</h6></th>
-                          <th><h6>구분</h6></th>
+                          <th><h6>
+                            <div class="row justify-content-center">
+                              <div class="col-9">
+                                <div class="select-style-1" style="margin-bottom: 0;">
+                                  <div class="select-position select-sm">
+                                    <select name="recStatus">
+                                      <option value="구분">구분</option>
+                                      <option value="정기강좌">정기강좌</option>
+                                      <option value="특강">특강</option>
+                                      <option value="이벤트">이벤트</option>
+                                      <option value="독서회">독서회</option>
+                                      <option value="기타">기타</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </h6></th>
                           <th><h6>이름</h6></th>
                           <th><h6>정원/신청자</h6></th>
                           <th><h6>접수기간</h6></th>
                           <th><h6>행사기간</h6></th>
-                          <th><h6>접수상태</h6></th>
+                          <th><h6>
+                            <div class="row justify-content-center">
+                              <div class="col-9">
+                                <div class="select-style-1" style="margin-bottom: 0;">
+                                  <div class="select-position select-sm">
+                                    <select name="recStatus">
+                                      <option value="접수상태">접수상태</option>
+                                      <option value="">예정</option>
+                                      <option value="이름">접수중</option>
+                                      <option value="정원/신청자">마감</option>
+                                      <option value="접수기간">종료</option>
+                                      <option value="행사기간">행사기간</option>
+                                      <option value="접수상태">접수상태</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </h6></th>
                           <th class="text-start"><h6>수정/삭제</h6></th>
                         </tr>
                         <!-- end table row-->

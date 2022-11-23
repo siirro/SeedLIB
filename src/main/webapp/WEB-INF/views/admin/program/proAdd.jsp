@@ -158,17 +158,17 @@
                       </div>
                     </div>
                   </div>
+                  <!-- end select -->
                   <div class="select-style-1">
-                    <h6 class="mb-25">장소 선택</h6>
+                    <h6 class="mb-25">행사구분 선택</h6>
                     <div class="select-position">
-                      <select name="proPlace">
-                        <option value="">선택안함</option>
-                        <option value="석수도서관">석수도서관</option>
-                        <option value="만안도서관">만안도서관</option>
-                        <option value="평촌도서관">평촌도서관</option>
-                        <option value="관양도서관">관양도서관</option>
-                        <option value="호계도서관">호계도서관</option>
-                        <option value="어린이도서관">어린이도서관</option>
+                      <select name="proCate">
+                        <option value="선택안함">선택안함</option>
+                        <option value="정기강좌">정기강좌</option>
+                        <option value="특강">특강</option>
+                        <option value="이벤트">이벤트</option>
+                        <option value="독서회">독서회</option>
+                        <option value="기타">기타</option>
                       </select>
                     </div>
                   </div>
@@ -189,20 +189,6 @@
                         <option value="청소년">청소년</option>
                         <option value="성인">성인</option>
                         <option value="누구나">누구나</option>
-                      </select>
-                    </div>
-                  </div>
-                  <!-- end select -->
-                  <div class="select-style-1">
-                    <h6 class="mb-25">행사구분 선택</h6>
-                    <div class="select-position">
-                      <select name="proCate">
-                        <option value="선택안함">선택안함</option>
-                        <option value="정기강좌">정기강좌</option>
-                        <option value="특강">특강</option>
-                        <option value="이벤트">이벤트</option>
-                        <option value="독서회">독서회</option>
-                        <option value="기타">기타</option>
                       </select>
                     </div>
                   </div>
