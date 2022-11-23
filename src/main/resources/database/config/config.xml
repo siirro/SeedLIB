@@ -21,8 +21,6 @@
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
-		
-		 <typeAlias type="com.seed.lib.guide.ScheduleVO" alias="ScheduleVO"/>
 		 
 		 
 		 
