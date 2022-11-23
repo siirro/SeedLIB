@@ -1,5 +1,6 @@
 package com.seed.lib.admin.program;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,12 +60,9 @@ public class ProgramController {
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		DateUtil dateUtil = new DateUtil();
 		
 		programVO = programService.getProgramDetail(programVO);
-		
-		// 강사님한테 물어보기!
-		log.info("행사시간 => {} ", programVO.getPsDate());
-		log.info("행사시간 => {} ", programVO.getPlDate());
 		
 		mv.addObject("proVO", programVO);
 		mv.setViewName("admin/program/proUpdate");

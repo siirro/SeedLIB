@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -103,7 +104,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="psTime"/>
+                        <input type="time" name="psTime" value='<fmt:formatDate value="${proVO.psDate}" pattern="HH:mm:ss"/>'/>
                       </div>
                       <!-- end input -->
                     </div>
@@ -120,7 +121,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="plTime" />
+                        <input type="time" name="plTime" value='<fmt:formatDate value="${proVO.plDate}" pattern="HH:mm:ss"/>'/>
                       </div>
                       <!-- end input -->
                     </div>

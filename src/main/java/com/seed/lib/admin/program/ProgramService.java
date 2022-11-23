@@ -49,7 +49,6 @@ public class ProgramService {
 	public List<ProgramVO> getProgramList(HdPager hdPager)throws Exception{
 		hdPager.makeRow();
 		hdPager.getNum(programMapper.getProTotalCount(hdPager));
-		log.info("pre가 뭐닝? => {} ", hdPager.isPre());
 		return programMapper.getProgramList(hdPager);
 	}
 	
@@ -72,7 +71,7 @@ public class ProgramService {
 		
 		// 강사님 이름 합침 000강사, 000선생님 등
 		programVO.setProTeacher(name+teacher);
-		
+		// 장소는 기본값으로 씨앗도서관 넣어줌
 		programVO.setProPlace("씨앗도서관");
 		
 		return programMapper.setProgramAdd(programVO);
