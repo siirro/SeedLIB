@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .contentsGroup {
             display: flex;
@@ -41,6 +42,10 @@
         .tbl td{
             padding: 0 5px;
             font-size: 17px;
+        }
+
+        .tabTr{
+            line-height: 45px;
         }
 
         hr {
@@ -80,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="tabTr">
                         <td rowspan="2" style="text-align: center;">열 람 실</td>
                         <td style="text-align: center;"><span style="color:#2980b9;">하절기(3월~10월) 07:00 ~ 23:00</span></td>
                         <td style="text-align: center;">하절기(3월~10월) 07:00 ~ 23:00</td>
@@ -94,5 +99,6 @@
             <button type="button" class="btn themeBtn" id="revBtn">좌석 예약</button>
         </div>
     </div>
+   <script src="/js/studyRoomRes.js"></script> 
 </body>
 </html>

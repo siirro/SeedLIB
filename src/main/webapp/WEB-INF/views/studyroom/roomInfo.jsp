@@ -187,8 +187,8 @@
 
 <div style="width: 100%;">
 	<dl class="linkBox">
-		<dt class="txtArea">열람실 좌석 신청 또는 조회를 하려면 버튼을 누르세요</dt>
-		<dd class="btnArea"><a class="btn" href="/mypage/roomStat">신청조회</a> <a class="btn write themeBtn" href="/studyroom/setSeat">신청하기</a></dd>
+		<dt class="txtArea">열람실 좌석 조회/퇴실 체크는 마이페이지에서 가능합니다</dt>
+		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/roomStat">신청조회</a></dd>
 	</dl>
 </div>
 					<!-- End Of the Real Contents-->
