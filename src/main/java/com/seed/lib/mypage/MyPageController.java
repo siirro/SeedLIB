@@ -67,4 +67,9 @@ public class MyPageController {
 		return mv;
 	}
 	
+	@GetMapping("seatHistory")
+	public void getSeatHistory() throws Exception{
+		
+	}
+	
 }

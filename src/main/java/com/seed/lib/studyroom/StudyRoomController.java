@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,12 +57,22 @@ public class StudyRoomController {
 	}
 	
 	@GetMapping("roomPop/**")
-	public ModelAndView getRoomRev(int seatNum) throws Exception{
-		log.info("sn:{}",seatNum);
+	public ModelAndView getRoomRev(String roomName, int seatNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("num", seatNum);
+		mv.addObject("seatNum", seatNum);
+		mv.addObject("roomName", roomName);
 		return mv;
-		
 	}
 
+	@PostMapping("setSeat")
+	@ResponseBody
+	public int setMySeat (@RequestBody StudyDetailVO studyDetailVO) throws Exception {
+		int result = service.setMySeat(studyDetailVO);
+		if(result == 1) {
+			return 200;
+		} else {
+			return result;
+		}
+	}
+	
 }

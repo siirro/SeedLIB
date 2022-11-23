@@ -74,36 +74,36 @@ $("#searchBtn").click(function(){
 
 function getSearch(){
     query = $("#query").val();
-                $.ajax({
-                    type:"GET",
-                    url:"https://dapi.kakao.com/v3/search/book?target=title",
-                    headers:{Authorization: "KakaoAK "+apiKey},
-                    data:{
-                        query:query,
-                        page:pageNum
-                    },success : function(data){
-                        is_end=data.meta.is_end;
-                        totalCount = data.meta.total_count;
-                        if(totalCount>10){
-                            paging(totalCount);
-                        }
-                           let searchArr = [];
-                           searchArr.push(data.documents);
-                           searchResult="'<strong>"+query+"</strong>'에 대한 검색결과 총 <span>"+data.meta.total_count+"</span> 건"
-                           $(".result_screen").append(searchResult);
-                           $.each(searchArr[0], (function(index, item){
-                                if(item.isbn.length<15){
-                                    searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                    searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
-                                }else{
-                                    searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                    searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
-                                }                                
-                                $(".listWrap").append(searchOne);
-                            })
-                            )
-                        }
-                })
+            $.ajax({
+                type:"GET",
+                url:"https://dapi.kakao.com/v3/search/book?target=title",
+                headers:{Authorization: "KakaoAK "+apiKey},
+                data:{
+                    query:query,
+                    page:pageNum
+                },success : function(data){
+                    is_end=data.meta.is_end;
+                    totalCount = data.meta.total_count;
+                    if(totalCount>10){
+                        paging(totalCount);
+                    }
+                        let searchArr = [];
+                        searchArr.push(data.documents);
+                        searchResult="'<strong>"+query+"</strong>'에 대한 검색결과 총 <span>"+data.meta.total_count+"</span> 건"
+                        $(".result_screen").append(searchResult);
+                        $.each(searchArr[0], (function(index, item){
+                            if(item.isbn.length<15){
+                                searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
+                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                            }else{
+                                searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
+                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                            }                                
+                            $(".listWrap").append(searchOne);
+                        })
+                        )
+                    }
+            })
 }
 
 function paging(totalCount){

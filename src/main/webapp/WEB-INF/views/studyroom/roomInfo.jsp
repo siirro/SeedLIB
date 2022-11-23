@@ -116,7 +116,7 @@
 <div id="container" class="sub">	
 <div class="sVisualWrap">
 	<div class="sVisual">
-		<h3>${useList[0].roomVO.roomName} 현황 조회</h3>
+		<h3 id="roomName" data-room-name="${useList[0].roomVO.roomName}">${useList[0].roomVO.roomName} 현황 조회</h3>
 	</div>
 </div>
 <div id="contentGroup">

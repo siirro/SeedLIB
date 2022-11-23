@@ -28,9 +28,13 @@
             margin-left: 25px;
             margin-top: 50px;
             margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
-        #seatNum {
+        .seat {
+            display: block;
             font-size: 30px;
             font-weight: bold;
         }
@@ -49,15 +53,16 @@
         }
 
         hr {
-        width : 95%;
+        width: 87%;
         border : 0px;
-        border-top: 3px dotted #949494;
-        margin-bottom: 15px;
+        border-top: 0.5px solid #cfcece; 
+        margin-bottom: 30px;
         }
 
         #revBtn{
             border-radius: 5px;
             text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+            font-size: 18px !important;
         }
 
     </style>
@@ -65,11 +70,25 @@
     <title>좌석 예약</title>
 </head>
 <body>
+    <input type="hidden" id="userName" value="id1">
     <div class="contentsGroup">
         <div class="seatArea">
-            <span id="seatNum" value="${num}">선택한 좌석 번호 : ${num} </span>
+            <span class="seat" style="margin-bottom: 10px;">🌱 예 약 정 보 🌱</span>
+            <hr style="width: 35%;">  
+            <c:choose>
+                <c:when test="${roomName eq '일반열람실(여)'}">
+                    <span id="roomName" style="font-size: 25px;" class="seat" value="WROOM">열람실 : ${roomName} </span>
+                </c:when>
+                <c:when test="${roomName eq '일반열람실(남)'}">
+                    <span id="roomName" style="font-size: 25px;" class="seat" value="MROOM">열람실 : ${roomName} </span>
+                </c:when>
+                <c:when test="${roomName eq '노트북실'}">
+                    <span id="roomName" style="font-size: 25px;" class="seat" value="NROOM">열람실 : ${roomName} </span>
+                </c:when>
+            </c:choose>
+            <span id="seatNum" style="font-size: 25px;" class="seat" value="${seatNum}">좌석 번호 : ${seatNum} </span>
         </div>
-        <hr>   
+        <hr style="margin-top: 30px;">   
         <div>
             <div style="margin-bottom: 15px;">
                 <span style="font-size: 17px;">● 이용 시간</span>
@@ -86,11 +105,16 @@
                 </thead>
                 <tbody>
                     <tr class="tabTr">
-                        <td rowspan="2" style="text-align: center;">열 람 실</td>
-                        <td style="text-align: center;"><span style="color:#2980b9;">하절기(3월~10월) 07:00 ~ 23:00</span></td>
-                        <td style="text-align: center;">하절기(3월~10월) 07:00 ~ 23:00</td>
+                        <td style="text-align: center;">열 람 실</td>
+                        <td style="text-align: center;"><span style="color:#2980b9;">07:00 ~ 23:00</span></td>
+                        <td style="text-align: center;">07:00 ~ 23:00</td>
                         <td rowspan="2" style="text-align: center;">수시 방역</td>
-                        <td rowspan="2" style="text-align: center;"><span style="color:#ff0000;">현 장 발 권</span></td>
+                        <td rowspan="2" style="text-align: center;"><span style="color:#ff0000;">온/오프라인 예약</span></td>
+                    </tr>
+                    <tr class="tabTr">
+                        <td style="text-align: center;">노트북실</td>
+                        <td style="text-align: center;"><span style="color:#2980b9;">07:00 ~ 23:00</span></td>
+                        <td style="text-align: center;">07:00 ~ 23:00</td>
                     </tr>
                 </tbody>
             </table>

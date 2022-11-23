@@ -13,8 +13,9 @@
           <li id="lnb1_2"><a href="/intro/menu/10005/program/30003/searchKdc.do">관심도서목록</a> </li> 
           <li id="lnb1_3"><a href="/mypage/hopeList" id="hopeList" class="hopeList on">희망도서신청조회</a> </li> 
           <li id="lnb1_6"><a href="/mypage/donList" id="donList" class="donList on">도서기증신청조회</a></li> 
+          <li id="lnb1_6"><a href="/mypage/seatHistory" id="seatHistory" class="seatHistory on">열람실 이용 내역</a></li> 
           <li id="lnb1_7"><a href="/intro/menu/10015/contents/40002/contents.do" class="on">문화행사신청조회</a></li> 
-           <li id="lnb1_7"><a href="/intro/menu/10015/contents/40002/contents.do" class="on">나의게시글조회</a></li> 
+          <li id="lnb1_7"><a href="/intro/menu/10015/contents/40002/contents.do" class="on">나의게시글조회</a></li> 
          </ul>
         </div>
 

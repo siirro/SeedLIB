@@ -9,6 +9,10 @@ public interface StudyRoomMapper {
 
 	public List<StudyDetailVO> getSeatMany (String roomName) throws Exception;
 	
-	public List<StudyDetailVO> getUseSeat (String roomName) throws Exception;
+	public int getUseSeat (StudyDetailVO studyDetailVO) throws Exception;
+	
+	public int getOverlapSeat (StudyDetailVO studyDetailVO) throws Exception;
+	
+	public int setMySeat (StudyDetailVO studyDetailVO) throws Exception; 
 	
 }
