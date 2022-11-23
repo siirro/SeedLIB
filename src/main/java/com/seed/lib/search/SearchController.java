@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.util.Pager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,19 +28,27 @@ public class SearchController {
 		return "search/simple";
 	}
 	
-	@PostMapping("simple")
+	@GetMapping("simpleresult")
 	@ResponseBody
-	public ModelAndView getSearchSimple(BookVO bookVO)throws Exception{
+	public ModelAndView getSearchSimple(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> ar = searchService.getSearchSimple(bookVO);
-		Long count = searchService.getSearchSimpleCount(bookVO);
+		List<BookVO> ar = searchService.getSearchSimple(pager);
+		Long count = searchService.getSearchSimpleCount(pager);
 		
 		mv.addObject("list", ar);
 		mv.addObject("count", count);
-		mv.setViewName("search/simple?search="+bookVO.getSearch());
+		mv.setViewName("search/simple");
+		
 		
 		log.info("BookVO의 사이즈 : {}",ar.size());
+		int size = ar.size();
+		if(size==0) {
+			mv.addObject("message", "검색 결과가 없습니다.");
+		}else {
+			mv.addObject("message", null);
+		}
+		
 		return mv;
 	}
 	

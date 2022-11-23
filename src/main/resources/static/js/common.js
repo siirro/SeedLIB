@@ -175,12 +175,12 @@ function fnLoadingOverlayRedirect(location){
 }
 
 // 검색어 엔터키 처리
-function fnSearchEnter(e){
-	if((e.keyCode || e.which) == 13){
-		fnSearch();
-		e.preventDefault();
-	}
-}
+// function fnSearchEnter(e){
+// 	if((e.keyCode || e.which) == 13){
+// 		fnSearch();
+// 		e.preventDefault();
+// 	}
+// }
 
 //주소검색
 function fnJusoPop(){

@@ -1,4 +1,18 @@
 @charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+
+
+
+* { 
+	/* font-family: 'Nanum Barun Gothic';  */
+	/* font-family: 'hanna'; */
+	font-family: 'Gowun Batang', serif;
+} 
+
+
 
 .lib.all {background-color:#5b5b5b !important} /* 통합홈페이지 */
 .lib.seoksu, .lib.MA {background-color:#0080ab !important} /* 석수도서관 */
@@ -62,8 +76,8 @@
 
 /* top search */
 #btnSearchTop {display: block; position: absolute; top: 50%; right: 10px; z-index: 778; margin-top: -20px; width: 40px; height: 40px; background: url(/images/searcdh.png) 50% 50% no-repeat;}
-#searchTopClose {display: block; position: absolute; top: 50px; right: 10px; z-index: 778; width: 40px; height: 40px; background: url(/include/image/common/btn_search.png) 50% 50% no-repeat;}
-#searchTopClose {display: none; background-image: url(/include/image/common/btn_mobile_close.png); background-size: 24px;}
+#searchTopClose {display: block; position: absolute; top: 50px; right: 10px; z-index: 778; width: 40px; height: 40px; background: url(/images/searcdh.png) 50% 50% no-repeat;}
+#searchTopClose {display: none; background-image: url(/images/btn_mobile_close.png); background-size: 24px;}
 #topSearchForm {display: none; position: absolute; top: 40px; left: 0; z-index: 667; width: 100%; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1);}
 .searchBoxWrap {color: #333; max-width: 1240px; margin: 0 auto; padding: 35px 80px 35px 360px; box-sizing: border-box; position: relative;}
 .searchBoxWrap .logo {position: absolute; left: 0; top: 25px;}

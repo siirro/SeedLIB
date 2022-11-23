@@ -5,15 +5,16 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
-<select id="getSearchSimple" parameterType="BookVO" resultType="BookVO">
+<select id="getSearchSimple" parameterType="Pager" resultType="BookVO">
 SELECT * FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP #{search}
 ORDER BY NUM
+LIMIT #{startRow}, #{perPage}
 </select>
 
-<select id="getSearchSimpleCount" parameterType="BookVO" resultType="Long">
+<select id="getSearchSimpleCount" parameterType="Pager" resultType="Long">
 SELECT COUNT(ISBN) FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '나'
+WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP #{search}
 ORDER BY NUM
 </select>
 	

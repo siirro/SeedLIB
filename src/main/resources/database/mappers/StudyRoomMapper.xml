@@ -21,6 +21,10 @@
 		WHERE ROOMNAME=#{roomName} AND RVABLE=0 AND RVDATE=CURDATE()
 	</select>
 	
+<!-- 	<insert id="setMySeat" parameterType="StudyDetailVO">
+			
+	</insert> -->
+	
 	<resultMap type="StudyDetailVO" id="getSeatManyResult">
 		<id column="RVNUM" property="rvNum"/>
 		<result column="RVABLE" property="rvAble"/>
