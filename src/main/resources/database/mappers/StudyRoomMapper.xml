@@ -9,9 +9,9 @@
 	<select id="getSeatMany" parameterType="String" resultMap="getSeatManyResult">
 		SELECT * FROM
 		STUDYROOM S
-			LEFT JOIN
-			STUDYDETAIL SD
-			ON S.ROOMNAME=SD.ROOMNAME		
+		LEFT JOIN
+		STUDYDETAIL SD
+		ON SD.ROOMNAME=S.ROOMNAME		
 		WHERE S.ROOMNAME=#{roomName}
 	</select>
 	

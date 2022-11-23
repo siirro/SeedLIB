@@ -103,12 +103,12 @@
 #lnb a[target="_blank"] {background-image: none !important;}
 #lnb a[target="_blank"]::after {content: ""; display: inline; padding-right: 22px; background: url(/include/image/button/ico_blank_hover.png) 100% 50% no-repeat;}
 #lnb > li > a {display: block; position: relative; padding: 22px 35px 22px 20px; font-size: 1.125em; line-height: 22px; background: #fff url(/include/image/common/lnb_minus_off.png) no-repeat 206px center; border: 1px solid #e4e4e4; margin-top: -1px;}
-#lnb > li > a.on {background-image: url(/include/image/common/lnb_plus_off.png);}
+#lnb > li > a.on {background:white;}
 #lnb > li > a.current:hover, #lnb > li > a.current:focus {text-decoration: none;}
-#lnb > li > a.current {color: #6b64be; font-weight: 500; border-color: #6b64be; background: url(/include/image/intro/common/lnb_minus_on.png) no-repeat 207px center; z-index: 1;}
-#lnb > li > a.current.on {background-image: url(/include/image/intro/common/lnb_plus_on.png);}
+#lnb > li > a.current {color: #02d449; font-weight: 540; border-color: #02d449; z-index: 1;}
+#lnb > li > a.current.on {background:white;}
 #lnb .submenu {padding: 25px 25px; background-color: #f5f5f5; border-left: 1px solid #e4e4e4; border-right: 1px solid #e4e4e4;}
-#lnb .submenu li {line-height: 1; padding-left: 7px; /* background: url(/include/image/common/lnb_dot.png) no-repeat left 6px; */}
+#lnb .submenu li {line-height: 1; padding-left: 7px;}
 #lnb .submenu li + li {margin-top: 25px;}
 #lnb .submenu a {display: inline-block; color: #000; letter-spacing: -0.8px;}
 #lnb .submenu a.current {font-weight: 500; font-weight: bold; border-bottom: 1px solid #000;}

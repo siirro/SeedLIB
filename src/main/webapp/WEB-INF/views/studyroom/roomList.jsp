@@ -47,11 +47,11 @@
 			display: block;
 			height: 100%;
 			font-size: 1.125em;
-			font-weight: 500;
+			font-weight: 540;
 			line-height: 1;
-			color: #3b59c7;
+			color: #00d949;
 			letter-spacing: -0.05em;
-			text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
 				}
 		
 		.cover div{
@@ -67,6 +67,7 @@
 <body>
 	<!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
+<div id="container" class="sub">
 <div class="sVisualWrap">
 	<div class="sVisual">
 		<h3>열람실 현황 조회</h3>
@@ -96,12 +97,11 @@
 			<span>노트북실</span>
 		</div>
 	</div>
-
 					<!-- End Of the Real Contents-->
-
 		</div>
 	</div>
 </div>
+</div>	
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->	
