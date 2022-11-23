@@ -18,6 +18,11 @@ public class ProgramController {
 	@Autowired
 	private ProgramService programService;
 	
+	@GetMapping("proUpdate")
+	public String setProgramUpdate()throws Exception{
+		return "admin/program/proUpdate";
+	}
+	
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		
