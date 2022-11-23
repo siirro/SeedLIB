@@ -6,7 +6,7 @@
 .btnGroup .btn {min-width: 110px;}
 
 .btn {display: inline-block; padding: 6px 15px; color: #fff; text-align: center; letter-spacing: -1px; vertical-align: middle; box-sizing: border-box; background-color: #444;}
-.btn + .btn {margin-left: 3px;}
+.btn + .btn {margin-left: 3px; text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);}
 
 /* button type - size */
 .btn.full {display: block; margin: 0;}
