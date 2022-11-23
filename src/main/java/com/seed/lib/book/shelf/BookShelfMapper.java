@@ -23,7 +23,7 @@ public interface BookShelfMapper {
 	public BookShelfVO setShelfUpdate (BookShelfVO shelfVO) throws Exception;
 	
 	//책꽂이에 책 저장
-	public int setBookAdd (BookVO bookVO) throws Exception;
+	public int setBookAdd (BookPickVO pickVO) throws Exception;
 	
 	//책꽂이에서 책 삭제
 	public int setBookDelete (BookPickVO pickVO) throws Exception;

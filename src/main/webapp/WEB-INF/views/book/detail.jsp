@@ -25,6 +25,9 @@
     
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 </head>
+
+<c:import url="../temp/header.jsp"></c:import>
+
 <body>
 	<div class = "vsc-initialized">
 		<div class="container" class="sub">
@@ -154,7 +157,7 @@
 													<input type="hidden" id="userName" value="bb">
 												</form>
 													
-												<span id="addShelf">책꽂이 담기</span>
+												<span id="addShelf"><a href="../shelf/addBook?isbn=${book.isbn}&userName=bb">책꽂이 담기</a></span>
 												
 												<c:if test="${isLikeExist eq false}">
 													<button type="button" id="likeBtn">좋아요</button>

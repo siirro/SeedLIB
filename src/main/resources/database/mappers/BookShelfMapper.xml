@@ -5,25 +5,49 @@
 
 <mapper namespace="com.seed.lib.book.shelf.BookShelfMapper">
 
-	<select id="getShelfList" parameterType="BookShelfVO">
+	<select id="getShelfList" parameterType="BookShelfVO" resultMap="getShelfList">
+		select * from shelf where userName = #{userName}
 	</select>
+	<resultMap type="BookShelfVO" id="getShelfList">
+		<id column="shNum" property="shNum"/>
+			<result column="userName" property="userName"/>
+			<result column="shName" property="shName"/>
+			<result column="shMemo" property="shMemo"/>
+	</resultMap>
+	
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
+		insert into shelf(USERNAME, SHNAME, SHMEMO)
+			values (#{userName}, #{shName}, #{shMemo});
 	</insert>
+	
 	
 	<delete id="setShelfDelete" parameterType="BookVO">
+		delete from shelf
+			where shName = #{shName} and username= #{userName}
 	</delete>
+	
 	
 	<update id="setShelfUpdate" parameterType="BookShelfVO">
+		update shelf
+			set shname = #{shName} and shmemo = #{shMemo}
+		where shnum = #{shNum}
 	</update>
 	
-	<insert id="setBookAdd" parameterType="BookVO">
+	
+	<insert id="setBookAdd" parameterType="BookPickVO">
+		insert into pick(ISBN, SHNUM)
+			values (#{isbn}, #{shNum});
 	</insert>
 	
+	
 	<delete id="setBookDelete" parameterType="BookPickVO">
+		delete from pick
+			where isbn = #{isbn} and shnum = #{shNum}
 	</delete>
 	
-	<select id="getBookList" parameterType="ShelfPager">
+	
+	<select id="getBookList" parameterType="ShelfPager" resultMap="getBookList">
 		SELECT S.*, P.*, B.*
 			FROM SHELF S
 				INNER JOIN PICK P
@@ -43,12 +67,30 @@
     				<otherwise>ASC</otherwise>
     			</choose>
 	</select>
+	<resultMap type="BookVO" id="getBookList">
+		<id column="isbn" property="isbn"/>
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+		<association property="bookPickVOs" javaType="BookPickVO">
+			<id column="pickNum" property="pickNum"/>
+		</association>
+		<collection property="bookShelfVOs" javaType="List" ofType="BookShelfVO">
+			<id column="shNum" property="shNum"/>
+			<result column="shName" property="shName"/>
+			<result column="shMemo" property="shMemo"/>
+			<result column="userName" property="userName"/>
+		</collection>
+			
+		
+	</resultMap>
+	
 	
 	<select id="getShelfCount" resultType="Long" parameterType="ShelfPager">
     	SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = #{userName}
 	</select>
 	
-	<select id="getBookCount" resultType="Long" parameterType="ShelfBookPager">
+	
+	<select id="getBookCount" resultType="Long" parameterType="ShelfPager">
     	SELECT COUNT(PICKNUM) FROM PICK WHERE SHNUM = #{shNum}
 	</select>
 </mapper>

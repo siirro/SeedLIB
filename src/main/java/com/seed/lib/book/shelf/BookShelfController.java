@@ -47,8 +47,8 @@ public class BookShelfController {
 	//새 책꽂이 생성
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
-	public void setShelfAdd (BookShelfVO shelfVO) throws Exception {
-		
+	public String setShelfAdd (BookShelfVO shelfVO) throws Exception {
+		return "shelf.newShelf";
 	}
 	
 	@PostMapping("newShelf")
@@ -90,16 +90,17 @@ public class BookShelfController {
 	}
 	
 	
-	//책꽂이에 책 저장
+	//책꽂이에 책 저장하기 버튼 눌렀을 떄
 		//책꽂이 목록 불러와서 책 저장하기
-		//shelf/addBook?shNum=
+		//shelf/addBook?isbn= &userName=
 	@GetMapping("addBook")
-	public String setBookAdd (BookVO bookVO) throws Exception{
-		return "redirect:./done";
+	public String setBookAdd (BookPickVO pickVO) throws Exception {
+		log.info("GET Add Book");
+		return "book/shelf/addBook";
 	}
 	
 	@PostMapping("addBook")
-	public ModelAndView setBookAdd (HttpSession session, BookVO bookVO) throws Exception{
+	public ModelAndView setBookAdd (HttpSession session, BookPickVO pickVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		//사용자 정보
@@ -112,10 +113,11 @@ public class BookShelfController {
 		mv.addObject("list", ar);
 		
 		//추가할 책
-		int result = bookShelfService.setBookAdd(bookVO);
+		int result = bookShelfService.setBookAdd(pickVO);
 		mv.addObject("result", result);
 		
-		mv.setViewName("redirect:./done");
+		mv.setViewName("book/shelf/list");
+		log.info("book add");
 		return mv;
 	}
 	

@@ -18,59 +18,92 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/book/shelf.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
-<body>
+<c:import url="../../temp/header.jsp"></c:import>
 
-	<div id="divWrapper">
-		<section id="divContents">
-			<div class="sub-title cf box">
-				<h2 id="divTitle" class="fl">책꽂이</h2>
-			     <!--  브레드크럼 시작  -->
-				<div class="breadCrumb fr">
-					<ul>	
-						<li class="home"><span></span></li>
-						<li><a href="/myloan/list">내서재</a></li><li class="currentPage">책꽂이</li>
-					</ul>
-			    </div>
-				<!--  브레드크럼 종료  -->
+<body>
+	<div class = "vsc-initialized">
+		<div class="container" class="sub">
+			<div class="sVisualWrap">
+				<div class="sVisual">
+					<h3>통합검색</h3>
+				</div>
 			</div>
 			
-			<div id="divContent">
-				<form name="form" action="/mylist/insertitem" method="post">
-		
-				<input type="hidden" name="item" value="CAT000001370034">	
-				<input type="hidden" name="detailUrl" value="/search/detail/CATTOT000001370034?briefLink=/main/searchBrief?st=KWRD_A_si=TOTAL_A_q=%EC%A0%9C%EC%9D%B8%EC%97%90%EC%96%B4">
-				
-				<div class="writeTable">
-					<table>
-						<caption>책꽂이 저장</caption>
+			<div id="contentGroup">
+				<!-- 사이드바 -->
+		       <c:import url="../../sideBar/AsideBar.jsp"></c:import>
+	
+				<!-- Main -->
+				<div id="contentcore">
+					<!-- 상단 메뉴 -->
+					<div class="naviandtitle">
+						<h3>책꽂이</h3>
+						
+						<div class="navi">
+							<a href="/" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
+							<i class="arrow"></i>책꽂이
+							<i class="arrow"></i>새 책 저장
+						</div>
+					</div>
 					
-						<tbody>
-							<tr>
-								<th><label for="list_id">담을 곳</label></th>
-								<td>
-									<select id="list_id" name="list_id" class="selectBox1">
-										<option value="51608">ㅎ</option>
-										<option value="0">새로운 서재</option>
-									</select>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<div id="contents" class="contentArea">
+									
+						<section id="bookShelfSection">
+							<div class="sub-title cf box">
+								<h2 id="divTitle" class="fl">책꽂이</h2>
+							     <!--  브레드크럼 시작  -->
+								<div class="breadCrumb fr">
+									<ul>	
+										<li class="home"><span></span></li>
+										<li><a href="/myloan/list">내서재</a></li><li class="currentPage">책꽂이</li>
+									</ul>
+							    </div>
+								<!--  브레드크럼 종료  -->
+							</div>
+							
+							<div id="divContent">
+								<form name="form" action="shelf/addBook" method="post">
+						
+								<input type="hidden" name="item" value="CAT000001370034">	
+								<input type="hidden" name="detailUrl" value="/search/detail/CATTOT000001370034?briefLink=/main/searchBrief?st=KWRD_A_si=TOTAL_A_q=%EC%A0%9C%EC%9D%B8%EC%97%90%EC%96%B4">
+								
+								<div class="writeTable">
+									<table>
+										<caption>책꽂이 저장</caption>
+									
+										<tbody>
+											<tr>
+												<th><label for="list_id">담을 곳</label></th>
+												<td>
+													<select id="list_id" name="list_id" class="selectBox1">
+														<option value="51608">ㅎ</option>
+														<option value="0">새로운 서재</option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								
+								<div class="buttons">
+									<input type="submit" value="저장" title="저장" alt="저장">
+									<a href="javascript:window.close();" title="저장">닫기</a>
+								</div>
+								</form>
+							</div>
+						</section>
+					</div>
 				</div>
-				
-				<div class="buttons">
-					<input type="submit" value="저장" title="저장" alt="저장">
-					<a href="javascript:window.close();" title="저장">닫기</a>
-				</div>
-				</form>
 			</div>
-		</section>
+		</div>
 	</div>
+	
 </body>
 </html>

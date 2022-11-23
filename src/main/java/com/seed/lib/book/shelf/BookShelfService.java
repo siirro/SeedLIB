@@ -40,8 +40,8 @@ public class BookShelfService {
 	}
 		
 	//책꽂이에 책 저장
-	public int setBookAdd (BookVO bookVO) throws Exception{
-		return bookShelfMapper.setBookAdd(bookVO);
+	public int setBookAdd (BookPickVO pickVO) throws Exception{
+		return bookShelfMapper.setBookAdd(pickVO);
 	}
 		
 	//책꽂이에서 책 삭제
