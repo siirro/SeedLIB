@@ -3,16 +3,31 @@
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.program.ProgramMapper">
+	
+	<update id="setProgramUpdate" parameterType="ProgramVO">
+		UPDATE PROGRAM SET PROCATE=#{proCate}, RECSTATUS=#{recStatus}, PRONAME=#{proName}, TARGET=#{target}, TOTAL=#{total}, 
+						   PRSDATE=#{prsDate}, PRLDATE=#{prlDate}, PSDATE=#{psDate}, 
+						   PLDATE=#{plDate}, PROTEACHER=#{proTeacher}
+		WHERE PRONUM=#{proNum}
+	</update>
+	
+	<select id="getProgramDetail" parameterType="ProgramVO" resultType="ProgramVO">
+		SELECT * FROM PROGRAM WHERE PRONUM=#{proNum}
+	</select>
+
 	<select id="getProTotalCount" resultType="Long">
 		SELECT COUNT(PRONUM) FROM PROGRAM
 	</select>
+	
 	<select id="getProgramList" parameterType="HdPager" resultType="ProgramVO">
 		SELECT * FROM PROGRAM
 		ORDER BY PRONUM DESC
 		limit #{startRow}, #{perPage};
 	</select>
-	<insert id="setProgramAdd" parameterType="ProgramVO">
+	
+	<insert id="setProgramAdd" parameterType="ProgramVO" useGeneratedKeys="true" keyProperty="proNum">
 		INSERT INTO PROGRAM (PRONUM, PROCATE, RECSTATUS, PRONAME, TARGET, TOTAL, PRSDATE, PRLDATE, PSDATE, PLDATE, PROTEACHER, PROPLACE)
-		VALUES (null, #{proCate}, #{recStatus}, #{proName}, #{target}, #{total}, #{prsDate}, #{prlDate}, #{psDate}, #{plDate}, #{proTeacher}, #{proPlace})
+		VALUES (#{proNum}, #{proCate}, #{recStatus}, #{proName}, #{target}, #{total}, #{prsDate}, #{prlDate}, #{psDate}, #{plDate}, #{proTeacher}, #{proPlace})
 	</insert>
+	
 </mapper>

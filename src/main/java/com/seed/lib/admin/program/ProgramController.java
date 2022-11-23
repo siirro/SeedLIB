@@ -23,6 +23,18 @@ public class ProgramController {
 		return "admin/program/proUpdate";
 	}
 	
+	@PostMapping("proUpdate")
+	public String setProgramUpdate(ProgramVO programVO)throws Exception{
+		
+		int result = programService.setProgramUpdate(programVO);
+		
+		if(result > 0) {
+			return "admin/program/proList";
+		}
+		
+		return "admin/program/proUpdate";
+	}
+	
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		

@@ -19,6 +19,16 @@ public class ProgramService {
 	@Autowired
 	private ProgramMapper programMapper;
 	
+	// 프로그램 상세정보 수정
+	public int setProgramUpdate(ProgramVO programVO)throws Exception{
+		return programMapper.setProgramUpdate(programVO);
+	}
+	
+	// 프로그램 상세정보 출력
+	public ProgramVO getProgramDetail(ProgramVO programVO)throws Exception{
+		return programMapper.getProgramDetail(programVO);
+	}
+	
 	// 프로그램 목록 출력
 	public List<ProgramVO> getProgramList(HdPager hdPager)throws Exception{
 		hdPager.makeRow();
@@ -46,6 +56,8 @@ public class ProgramService {
 		
 		// 강사님 이름 합침 000강사, 000선생님 등
 		programVO.setProTeacher(name+teacher);
+		
+		programVO.setProPlace("씨앗도서관");
 		
 		return programMapper.setProgramAdd(programVO);
 	}
