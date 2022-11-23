@@ -19,15 +19,36 @@ public class ProgramController {
 	private ProgramService programService;
 	
 	@GetMapping("proDelete")
-	public String setProgramDelete(ProgramVO programVO)throws Exception{
-			
-		int result = programService.setProgramDelete(programVO);
+	public ModelAndView setProgramDelete(ProgramVO programVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		String title = "실패..";
+		String text = "프로그램삭제를 실패했습니다";
+		String icon = "error";
+		String button = "확인";
+		String url = "./program/proList";
+		
+		result = programService.setProgramDelete(programVO);
 		
 		if(result > 0) {
-			return "redirect:./proList";
+			
+			result = 1;
+			title = "성공!!";
+			text = "프로그램삭제를 성공했습니다";
+			icon = "success";
+			url="../program/proList";
+			
 		}
 		
-		return "admin/program/proList";
+		mv.addObject("title", title);
+		mv.addObject("text", text);
+		mv.addObject("icon", icon);
+		mv.addObject("button", button);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 	
 	@GetMapping("proUpdate")
@@ -47,18 +68,31 @@ public class ProgramController {
 	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		String title = "실패..";
+		String text = "프로그램수정을 실패했습니다!";
+		String icon = "error";
+		String button = "확인";
+		String url = "./program/proUpdate";
 		
-		int result = programService.setProgramUpdate(programVO);
+		result = programService.setProgramUpdate(programVO);
 		
 		if(result > 0) {
 			
+			result = 1;
+			title = "성공!!";
+			text = "프로그램수정을 성공했습니다!";
+			icon = "success";
+			url="../program/proUpdate";
 			mv.addObject("proVO", programVO);
-			mv.setViewName("admin/program/proUpdate");
 			
-			return mv;
 		}
 		
-		mv.setViewName("admin/program/proUpdate");
+		mv.addObject("title", title);
+		mv.addObject("text", text);
+		mv.addObject("icon", icon);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
 		
 		return mv;
 	}
@@ -87,16 +121,38 @@ public class ProgramController {
 	}
 	
 	@PostMapping("proAdd")
-	public String setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
+	public ModelAndView setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
 								String plTime, String name, String teacher)throws Exception{
 		
-		int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		String title = "실패..";
+		String text = "프로그램등록을 실패했습니다!";
+		String icon = "error";
+		String button = "확인";
+		String url = "./program/proAdd";
+		
+		result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
 		
 		if(result > 0) {
-			return "admin/program/proList";
+			
+			result = 1;
+			title = "성공!!";
+			text = "프로그램등록을 성공했습니다!";
+			icon = "success";
+			button = "확인";
+			url="../program/proList";
+			
 		}
 		
-		return "admin/program/proAdd";
+		mv.addObject("title", title);
+		mv.addObject("text", text);
+		mv.addObject("icon", icon);
+		mv.addObject("button", button);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 	
 }
