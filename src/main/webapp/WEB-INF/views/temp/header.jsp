@@ -199,11 +199,11 @@
 		// $("#pagingWrap").append('');
 	})
 
-	// function enterkey(){
-	// 	if (window.event.keyCode == 13) {
-	// 		$("#topSearchBtn").click();
-	// 	}
-	// }
+	function enterkey(){
+		if (window.event.keyCode == 13) {
+			$("#topSearchBtn").click();
+		}
+	}
 
 	// $(function(){
 	// 	$("#btnSearchTop").click(fnTopSearchBestKeyword);

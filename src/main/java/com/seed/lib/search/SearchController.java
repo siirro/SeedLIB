@@ -49,6 +49,8 @@ public class SearchController {
 			mv.addObject("message", null);
 		}
 		
+		log.info("kind는? {}", pager.getKind());
+		
 		return mv;
 	}
 	
