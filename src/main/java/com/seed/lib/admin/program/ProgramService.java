@@ -57,12 +57,9 @@ public class ProgramService {
 		
 		// String을 Date타입으로 바꿔주는 객체
 		
-		// yyyy-MM-dd HH:mm:ss 형식으로 문자열을 만들어줌
+		// yyyy-MM-dd HH:mm:ss 형식으로 문자열을 만들어주는 메서드 호출!
+		// return은 String
 		programVO.makeDate();
-		// return으로 Date타입을 보내줌
-		
-		//programVO.setPsDate(psDate2);
-		//programVO.setPlDate(plDate2);
 		
 		// 강사님 이름 합침 000강사, 000선생님 등
 		programVO.setProTeacher(name+teacher);

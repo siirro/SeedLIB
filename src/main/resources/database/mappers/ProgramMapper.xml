@@ -21,7 +21,7 @@
 				DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, 
 				DATE_FORMAT(PSDATE,'%H:%i') as psTime,
 				DATE_FORMAT(PLDATE,'%H:%i') as plTime,
-				PROTEACHER, PROPLACE 
+				PROTEACHER
 		FROM PROGRAM WHERE PRONUM = #{proNum}
 	</select>
 

@@ -8,12 +8,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
-    <title>Tables | PlainAdmin Demo</title>
+    <link rel="icon" href="/images/favicon.png">
+    <title>프로그램 목록 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
