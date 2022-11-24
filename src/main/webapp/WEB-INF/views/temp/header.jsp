@@ -48,9 +48,7 @@
 						<li><a href="/member/agree">회원가입</a></li>
 						
 					</c:otherwise>
-					
-					
-						
+
 						</c:choose>
 						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
@@ -107,13 +105,13 @@
 					</ul> 
 				</li> 
 				
-				<li id="gnb4" class="hehehe"> <a href="./manners"> <em>도서관안내</em> </a> 
+				<li id="gnb4" class="hehehe"> <a href="/guide/manners"> <em>도서관안내</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb3_1"><a href="./manners">도서관예절</a> </li> 
-						<li id="gnb3_2"><a href="./time">이용시간</a> </li> 
+						<li id="gnb3_1"><a href="/guide/manners">도서관예절</a> </li> 
+						<li id="gnb3_2"><a href="/guide/time">이용시간</a> </li> 
 						<li id="gnb3_3"><a href="/seoksu/menu/10137/program/30019/calendar.do">휴관일안내</a> </li> 
-						<li id="gnb3_4"><a href="./rule">대여규칙</a> </li> 
-						<li id="gnb3_5"><a href="./convenience">편의시설</a> </li> 
+						<li id="gnb3_4"><a href="/guide/rule">대여규칙</a> </li> 
+						<li id="gnb3_5"><a href="/guide/convenience">편의시설</a> </li> 
 					</ul> 
 				</li> 
 

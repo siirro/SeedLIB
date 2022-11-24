@@ -37,9 +37,10 @@
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" minlength="5" maxlength="15" placeholder="5~15자(영문(소대문자), 숫자로 조합)">
                         <button type="button" title="중복확인" class="loginBtn1" id="login_chk">중복확인</button>
-                          
+                        <div id="inputUserNameResult"> </div>
+<!--                           
                           <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
-                        <span class="error" id="error_web_id2" style="display: none;">이미 존재하는 아이디입니다.</span>
+                        <span class="error" id="error_web_id2" style="display: none;">이미 존재하는 아이디입니다.</span> -->
                         
                         </p>
                         <p class="inputPw"><label for="password">비밀번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
@@ -55,7 +56,14 @@
                             <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
                             <p class="birth"><label for="birthd_year">생년월일</label>
                             <input type="text" name="birth" id="birthd_year" class="textInput birthday" required="required"></p>
-                            <p>
+                          
+                            <p class="gender"><label for="gen">성별</label>
+                                <input type="text" name="gender" id="gen" class="textInput gender" required="required"></p>
+                                  
+
+                              <p>
+
+
                                 <label for="phone">휴대폰번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
                                 <select name="phone" title="휴대폰번호 국번 선택" id="phone">
                                     <option value="010">010</option>
@@ -171,15 +179,6 @@
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
-<%String str= request.getHeader("referer");
- if(str==null){                           		
-%>
-<script language="javascript">
-alert("정상적인 경로를 통해 다시 접근해 주십시오");
-docment.location.href="return member/agree";
-</script>
-<%return;
-}%>
 
 </body>
 </html>

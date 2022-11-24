@@ -36,14 +36,14 @@
 	<ul id="lnb" class="lnb"> 
   <li id="lnb4_1"><a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do">도서관소식</a> </li> 
   <li id="lnb4_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
-  <li id="lnb4_3"><a href="/seoksu/menu/12141/contents/41161/contents.do" class="current on">도서관이용안내</a> 
+  <li id="lnb4_3"><a href="/guide/manners" class="current on">도서관이용안내</a> 
    <ul class="MkSub submenu" style="display: block;"> 
-    <li id="lnb4_3_1"><a href="./manners">도서관예절</a> </li> 
-    <li id="lnb4_3_2"><a href="./time" class="current">이용시간</a> </li> 
-    <li id="lnb4_3_3"><a href="/seoksu/menu/10137/program/30019/calendar.do">휴관일안내</a> </li> 
-    <li id="lnb4_3_4"><a href="./agree">회원가입</a> </li> 
-    <li id="lnb4_3_5"><a href="./rule">대여규칙</a> </li> 
-    <li id="lnb4_3_6"><a href="./convenience">편의시설</a> </li> 
+	<li id="lnb4_3_1"><a href="/guide/manners" class="current">도서관예절</a> </li> 
+	<li id="lnb4_3_2"><a href="/guide/time">이용시간</a> </li> 
+	<li id="lnb4_3_3"><a href="#">휴관일안내</a> </li> 
+	<li id="lnb4_3_4"><a href="/member/agree">회원가입</a> </li> 
+	<li id="lnb4_3_5"><a href="/guide/rule">대여규칙</a> </li> 
+	<li id="lnb4_3_6"><a href="/guide/convenience">편의시설</a> </li> 
    </ul> </li> 
   <li id="lnb4_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li> 
   <li id="lnb4_5"><a href="/seoksu/menu/10142/contents/40011/contents.do">모바일앱</a> </li> 
