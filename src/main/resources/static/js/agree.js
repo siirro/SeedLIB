@@ -28,13 +28,14 @@ $(".check").each(function (item) {
   
  })
 
+        let allCheck = "";
 
     $("#join").click(function(){
         let check01 = $("#chkAgree01").is(":checked"); 
         let check02 = $("#chkAgree02").is(":checked");
         let check03 = $("#chkAgree03").is(":checked");
         let check04 = $("#chkAgree04").is(":checked");
-      
+        allCheck = false;
 
 
         if(check01 === false){ 
@@ -58,8 +59,29 @@ $(".check").each(function (item) {
             return false;
         }
 
+        if(check01&&check02&&check03&&check04){
+            allCheck = true;
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:81/member/agree",
+                async:false,
+                data:{
+                    allCheck:allCheck
+                },success:function(data){
+                    console.log(data);
+                 location.href="member/join";
+
+
+                },error:function(error){
+                    console.log(error);
+                }
+            })
+
+        }
       
     });
+
+
     
 
 

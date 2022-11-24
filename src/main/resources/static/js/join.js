@@ -101,7 +101,37 @@
 // 	});
 // }
 
+function nullcheck(data){
+    if(data==null || data==""){
+        return false
+    }else{
+        return true
+    }
 
+}
+
+
+function equals(data,checkdata){
+    if(data==checkdata){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+//id  nullcheck
+$("#input_ID").blur(function(){
+    let result= nullcheck($("#input_ID").val())
+   
+    if(result){
+    $("#inputUserNameResult").html("ID중복확인 실시하지 않았습니다.")
+   }else{
+    $("#inputUserNameResult").html("아이디를 입력해 주세요")
+
+   }
+
+})
 
 
 $("#input_ID").blur(function(){
