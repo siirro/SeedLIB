@@ -16,6 +16,12 @@ $("#searchBtn").click(function(){
     // $("#pagingWrap").append('');
 })
 
+$("#searchBtn1").click(function(){
+
+    $("#searchForm").submit();
+    // $("#pagingWrap").append('');
+})
+
 function enterkey(){
     if (window.event.keyCode == 13) {
         $("#searchBtn").click();
