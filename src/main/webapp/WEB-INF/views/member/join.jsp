@@ -11,33 +11,18 @@
 <body>
  
     <div class="loginForm">
-        <form id="form" name="form" action="./join" method="post"> <!-- onsubmit="return formValidChk();" onreset="return fnResetForm();"> -->
-     <!--        <input id="idCheck_flag" name="idCheck_flag" type="hidden" value="false">
-            <input type="hidden" name="gpin" value="">
-            <input type="hidden" name="safeId" value="">
-            <input type="hidden" name="user_positn" value="WEB">
-            <input type="hidden" name="grade_code" value="0001">
-            <input type="hidden" name="status_code" value="0001">
-            <input type="hidden" name="process_admin_id" value="WEB">
-            <input type="hidden" name="loan_check" value="0002">
-            <input type="hidden" name="enc_ci" value="e3984f33d4a91d123cc69a32444ceebb70c98f910c982d3eb96e2c4d3ed03b38">
-            <input type="hidden" name="enc_di" value="3277c7d8cc51ddb4d73262515eb08de13e8af84c29937a5800479cc73c032932">
-            <input type="hidden" name="birthd" value="19961007">
-            <input type="hidden" name="birthd_year" value="1996">
-            <input type="hidden" name="birthd_month" value="10">
-            <input type="hidden" name="birthd_day" value="07">
-            <input type="hidden" name="memberType" value="1">
-            <input type="hidden" name="memberTypeDetail" value="child"> -->
+        <form id="form" name="form" action="./join" method="post"> 
+    
             <fieldset>
                 <legend>로그인</legend>
                 <div class="langSelect"></div>
-                <p class="logo"><img src="/images/logo.png" alt="씨앗도서관"></p>
+                <p class="logo"><img src="/images/logo200.png" alt="씨앗도서관"></p>
                 <div class="join2">
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" minlength="5" maxlength="15" placeholder="5~15자(영문(소대문자), 숫자로 조합)">
                         <button type="button" title="중복확인" class="loginBtn1" id="login_chk">중복확인</button>
-                        <div id="inputUserNameResult"> </div>
+                        <div id="userNameResult"> </div>
 <!--                           
                           <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
                         <span class="error" id="error_web_id2" style="display: none;">이미 존재하는 아이디입니다.</span> -->
@@ -47,7 +32,8 @@
                         <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="10" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
                         <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15" required="required"></p>
-                        
+                        <div id="passwordChkResult"> </div>
+
                         
                     </div>
                     <div class="inputProfile">
@@ -143,7 +129,7 @@
                                <input type="text" id="postcode" name="post" placeholder="우편번호" style="width: 180px;">
                              <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="joinPostcode()" title="우편번호검색 새창으로열림" style="width: 120px;">
                              
-      					     <input type="text" id="address" name="addess1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
+      					     <input type="text" id="address" name="address1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
                              </p><!--id="addrs"  -->
              
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>

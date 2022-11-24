@@ -18,7 +18,7 @@
         <fieldset>
                 <legend>약관동의</legend>			 
                 	
-                <p class="logo"><a href="/" title="메인화면"><img src="/images/logo.png" alt="씨앗도서관"></a></p>
+                <p class="logo"><a href="/" title="메인화면"><img src="/images/logo200.png" alt="씨앗도서관"></a></p>
                     
                         <div class="join1">	
                             <div class="agreeArea">							
