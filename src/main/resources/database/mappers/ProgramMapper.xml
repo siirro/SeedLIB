@@ -16,7 +16,13 @@
 	</update>
 	
 	<select id="getProgramDetail" parameterType="ProgramVO" resultType="ProgramVO">
-		SELECT * FROM PROGRAM WHERE PRONUM = #{proNum}
+		SELECT PRONUM, PROCATE, RECSTATUS, PRONAME, TARGET, TOTAL, PRSDATE, PRLDATE, 
+				DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, 
+				DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, 
+				DATE_FORMAT(PSDATE,'%H:%i') as psTime,
+				DATE_FORMAT(PLDATE,'%H:%i') as plTime,
+				PROTEACHER, PROPLACE 
+		FROM PROGRAM WHERE PRONUM = #{proNum}
 	</select>
 
 	<select id="getProTotalCount" resultType="Long">
@@ -24,14 +30,14 @@
 	</select>
 	
 	<select id="getProgramList" parameterType="HdPager" resultType="ProgramVO">
-		SELECT * FROM PROGRAM
+		SELECT PRONUM, PROCATE, RECSTATUS, PRONAME, TARGET, TOTAL, PRSDATE, PRLDATE, DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, PROTEACHER, PROPLACE FROM PROGRAM
 		ORDER BY PRONUM DESC
 		limit #{startRow}, #{perPage};
 	</select>
 	
 	<insert id="setProgramAdd" parameterType="ProgramVO" useGeneratedKeys="true" keyProperty="proNum">
 		INSERT INTO PROGRAM (PRONUM, PROCATE, RECSTATUS, PRONAME, TARGET, TOTAL, PRSDATE, PRLDATE, PSDATE, PLDATE, PROTEACHER, PROPLACE)
-		VALUES (#{proNum}, #{proCate}, #{recStatus}, #{proName}, #{target}, #{total}, #{prsDate}, #{prlDate}, #{psDate}, #{plDate}, #{proTeacher}, #{proPlace})
+		VALUES (#{proNum}, #{proCate}, #{recStatus}, #{proName}, #{target}, #{total}, #{prsDate}, #{prlDate}, STR_TO_DATE(#{psDt}, '%Y-%m-%d %H:%i'), STR_TO_DATE(#{plDt}, '%Y-%m-%d %H:%i'), #{proTeacher}, #{proPlace})
 	</insert>
 	
 </mapper>

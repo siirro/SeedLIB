@@ -28,14 +28,27 @@ public class ProgramVO {
 	private Date prlDate;
 	// 행사시작시간
 	// 출력할때 시간 빼는 작업이 필요!! jstl format 라이브러리 쓰기!!
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date psDate;
 	// 행사끝나는시간
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date plDate;
 	// 강사
 	private String proTeacher;
 	// 장소
 	private String proPlace;
 	
+	private String psDt;
+	
+	private String plDt;
+	
+	private String psTime;
+	
+	private String plTime;
+	
+	
+	public void makeDate() {
+		this.psDt = psDt+" "+psTime;
+		this.plDt = plDt+" "+plTime;
+	}
 }

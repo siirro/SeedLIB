@@ -20,6 +20,9 @@ class ProgramServiceTest {
 	@Autowired
 	private ProgramService programService;
 	
+	@Autowired
+	private ProgramMapper programMapper;
+	
 	//@Test
 	void setProgramDeleteTest()throws Exception{
 		
@@ -110,7 +113,7 @@ class ProgramServiceTest {
 			programVO.setPrlDate(prlDate);
 			programVO.setProPlace("씨앗도서관"+i);
 			
-			int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
+			int result = programService.setProgramAdd(programVO, name, teacher);
 			
 			if(i%10==0) {
 				Thread.sleep(500);
@@ -142,9 +145,13 @@ class ProgramServiceTest {
 		programVO.setPrsDate(prsDate);
 		Date prlDate = dateUtil.parseDate("2022-08-23 00:00:00");
 		programVO.setPrlDate(prlDate);
+		
+		programVO.setPsDt("2022-11-26 14:07:00");
+		programVO.setPlDt("2022-11-26 14:07:00");
+		
 		programVO.setProPlace("씨앗도서관");
 		
-		int result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
+		int result = programMapper.setProgramAdd(programVO);
 		
 		assertEquals(1, result);
 		

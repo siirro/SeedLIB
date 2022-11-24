@@ -60,9 +60,11 @@ public class ProgramController {
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		DateUtil dateUtil = new DateUtil();
 		
 		programVO = programService.getProgramDetail(programVO);
+		
+		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
+		programVO.setPlDt(programVO.getPlDt().substring(0,programVO.getPlDt().indexOf(" ")));
 		
 		mv.addObject("proVO", programVO);
 		mv.setViewName("admin/program/proUpdate");
@@ -127,8 +129,7 @@ public class ProgramController {
 	}
 	
 	@PostMapping("proAdd")
-	public ModelAndView setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
-								String plTime, String name, String teacher)throws Exception{
+	public ModelAndView setProgramAdd(ProgramVO programVO, String name, String teacher)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
@@ -138,7 +139,7 @@ public class ProgramController {
 		String button = "확인";
 		String url = "./program/proAdd";
 		
-		result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
+		result = programService.setProgramAdd(programVO, name, teacher);
 		
 		if(result > 0) {
 			

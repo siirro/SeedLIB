@@ -170,8 +170,10 @@
                             <%-- <p>${proVO.prsDate}-${proVO.}</p> --%>
                           </td>
                            <td class="min-width">
-                           	<fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
-                           	<fmt:formatDate value="${proVO.plDate}" pattern="~ yyyy-MM-dd HH:mm"/>
+                           ${proVO.psDt}
+                           ${proVO.plDt}
+                           	<%-- <fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
+                           	<fmt:formatDate value="${proVO.plDate}" pattern="~ yyyy-MM-dd HH:mm"/> --%>
                             <%-- <p>${proVO.total}</p> --%>
                           </td>
                           <td class="min-width">
