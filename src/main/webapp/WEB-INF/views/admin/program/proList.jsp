@@ -143,7 +143,7 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                      	<c:forEach items="${list}" var="proVO">
+                      	<c:forEach items="${proList}" var="proVO">
                         <tr>
                           <td>
                             <div class="employee-image">

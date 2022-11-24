@@ -3,8 +3,15 @@
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.book.AdminBookMapper">
-	<insert id="setBookAdd" parameterType="BookVO">
+
+	<select id="getAdBookList" resultType="BookVO">
+		SELECT * FROM BOOK
+		ORDER BY ISBN DESC
+	</select>
+
+	<insert id="setAdBookAdd" parameterType="BookVO">
 		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, ABLE, CATEGORY, QUANTLTY, IMAGE, BOOKCOUNT, BOOKHEART, NUM)
 		VALUES (null, #{title}, #{writer}, #{publisher}, #{bDate}, 1, #{category}, #{quantity}, #{image}, 0, 0, 0);
 	</insert>
+	
 </mapper>

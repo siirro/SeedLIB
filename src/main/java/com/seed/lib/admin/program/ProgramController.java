@@ -116,7 +116,7 @@ public class ProgramController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<ProgramVO> ar = programService.getProgramList(hdPager);
-		mv.addObject("list", ar);
+		mv.addObject("proList", ar);
 		mv.addObject("pager", hdPager);
 		mv.setViewName("admin/program/proList");
 		

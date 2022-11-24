@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
     <link rel="stylesheet" href="/css/admin/fullcalendar.css" />
     <link rel="stylesheet" href="/css/admin/main.css" />
-    
     <aside class="sidebar-nav-wrapper">
     <!-- ======== sidebar-nav start =========== -->
         <div class="navbar-logo">
@@ -64,7 +63,7 @@
                     />
                   </svg>
                 </span>
-                <span class="text">Pages</span>
+                <span class="text">회원관리</span>
               </a>
               <ul id="ddmenu_2" class="collapse dropdown-nav">
                 <li>
