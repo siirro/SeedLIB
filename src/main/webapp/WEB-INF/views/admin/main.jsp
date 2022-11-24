@@ -14,8 +14,8 @@
       type="image/x-icon"
     />
     <title>PlainAdmin Demo | Bootstrap 5 Admin Template</title>
-    <!-- ========== All CSS files linkup & sidear ========= -->
-    <c:import url="./temp/sdeber-css.jsp"></c:import>
+    <!-- ========== All CSS files linkup & sidebar ========= -->
+    <c:import url="./temp/sidebar-css.jsp"></c:import>
   </head>
   <body>
   <!-- 구분자는 지정, 단어형식만 맞춰서 하면 됨 -->

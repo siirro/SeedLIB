@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up | PlainAdmin Demo</title>
-    <!-- ========== All CSS files linkup & sidear ========= -->
-    <c:import url="../temp/sdeber-css.jsp"></c:import>
+    <!-- ========== All CSS files linkup & sidebar ========= -->
+    <c:import url="../temp/sidebar-css.jsp"></c:import>
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
@@ -36,11 +36,11 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#0">Dashboard</a>
+                        <a href="../main">Dashboard</a>
                       </li>
-                      <li class="breadcrumb-item"><a href="#0">Auth</a></li>
+                      <li class="breadcrumb-item"><a href="./boAdd">Form</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        Sign up
+                        도서 등록
                       </li>
                     </ol>
                   </nav>
@@ -81,7 +81,7 @@
                   <p class="text-sm mb-25">
                     도서 정보를 빠짐없이 입력해 주세요
                   </p>
-                  <form action="#">
+                  <form action="./boAdd">
                     <div class="row">
                       <div class="col-12">
                         <h6 class="mb-25">이미지</h6>
