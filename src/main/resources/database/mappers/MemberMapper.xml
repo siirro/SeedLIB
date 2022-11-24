@@ -5,17 +5,26 @@
 
 <mapper namespace="com.seed.lib.member.MemberMapper">
 
-<!-- 	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
+ 	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
 	
 		SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
 	
  
-	</select> -->
+	</select>
+	
+	<insert id="setMemberRole" parameterType="MemberVO">
+	
+	INSERT INTO MEMBER_ROLE VALUES (#{userName},
+			(SELECT ROLENUM  FROM ROLE WHERE ROLENAME =ROLE_MEMBER)
+		) 
+	</insert>
+	
+	
 	
 
 		<insert id="setJoin" parameterType="MemberVO">
-		INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
-		VALUES ( #{userName}, #{password}, #{name}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2}, 0, 0, 0, 0)
+		INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
+		VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
 		</insert> 
 
 			  <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
@@ -28,20 +37,21 @@
 					  INNER JOIN
 					  ROLE R 
 					  ON MR.ROLENUM =R.ROLENUM
-					  WHERE M.USERNAME= #{userName}
+					  WHERE M.USERNAME= #{userName} AND M.PASSWORD=#{password}
 					  
 			</select>
 					  
 		<resultMap type="MemberVO" id="getLoginResult">
 		<id column="username" property="userName" />
-		<id column="password" property="password" />
 		<result column="name" property="name"/>
+		<result column="gender" property="gender"/>		
 		<result column="birth" property="birth"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
 		<result column="post" property="post"/>
 		<result column="address1" property="address1"/>
 		<result column="address2" property="address2"/>
+		<result column="regdate" property="regDate"/>
 		<result column="enabled" property="enabled"/>
 		<result column="loanstatus" property="loanStatus"/>
 		<result column="ovmyrcount" property="ovMyrCount"/>

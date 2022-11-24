@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/member/agree.css">
-<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 
 </head>
@@ -18,7 +19,6 @@
                 <legend>약관동의</legend>			 
                 	
                 <p class="logo"><a href="/" title="메인화면"><img src="/images/logo.png" alt="씨앗도서관"></a></p>
-                <form id="form" action="./join" method="get">
                     
                         <div class="join1">	
                             <div class="agreeArea">							
@@ -332,7 +332,7 @@
                             </div>
                             <div class="agreeBtn">
                                 <a href="/" class="noAgree" title="비동의">비동의</a>
-                                <input type="submit" title="동의" class="agree" id="join" value="동의">
+                                <button type="button" title="동의" class="agree" id="join">동의</button>
            				
                             </div>
                         </div>

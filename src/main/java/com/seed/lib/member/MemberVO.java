@@ -14,12 +14,14 @@ public class MemberVO {
 	private String userName;
 	private String password;
 	private String name;
+	private String gender;
 	private String email;
 	private Integer birth;
 	private String phone;
 	private String post;
 	private String address1;
 	private String address2;
+	private Date regDate;
 	private boolean enabled;
 	private boolean loanStatus;
 	private Integer ovMyrCount;
