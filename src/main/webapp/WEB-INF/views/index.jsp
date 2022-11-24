@@ -42,7 +42,7 @@
 					</p>
 					
 					<!-- 통합검색 -->
-					<script type="text/javascript" src="/include/booksearch/js/autocom.js"></script>
+					
 
 					<div class="mainSearchWrap">
 						<div class="mainSearchForm clearfix">
