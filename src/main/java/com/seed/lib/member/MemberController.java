@@ -48,10 +48,7 @@ public class MemberController {
 	
 	@PostMapping("login")
 	public ModelAndView getLogin(MemberVO memberVO, HttpSession session) throws Exception{
-		 log.info( memberVO.getUserName());
-		
 		ModelAndView mv =new ModelAndView();
-		log.info("login 성공");
 		memberVO= memberService.getLogin(memberVO);
 		if(memberVO!=null) {
 			session.setAttribute("memberVO", memberVO);
@@ -59,7 +56,6 @@ public class MemberController {
 
 		}else {
 	         mv.setViewName("redirect:../member/login");   
-			 log.info( memberVO.getUserName());
 
 		}
 		
