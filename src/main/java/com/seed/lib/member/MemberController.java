@@ -53,7 +53,6 @@ public class MemberController {
 		if(memberVO!=null) {
 			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("redirect:../");
-
 		}else {
 	         mv.setViewName("redirect:../member/login");   
 

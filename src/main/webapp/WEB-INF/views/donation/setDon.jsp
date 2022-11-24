@@ -30,15 +30,14 @@ pageEncoding="UTF-8"%>
         box-sizing: border-box;
         display: block;
         font-weight: bold;
-        font-family: 'NotoKR', 'Malgun Gothic', 'gothic', '고딕', '새굴림', Arial, sans-serif;
         color:#504f4f;
     }
 
     .txt{
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: 5px;
     line-height: 20px;
-    font-size: 16px;
+    font-size: 17px;
     color: #626262;
 }
 
@@ -134,7 +133,7 @@ pageEncoding="UTF-8"%>
         <form id="donForm" name="donForm" action-="setDon" method="post">
                 <div class="endowment_bookDamoa">
                     <h3 class="tit">기증처리 동의</h3>
-                        <p class="txt">귀하께서 기증하시는 자료는 씨앗도서관의 장서로 등록됩니다.</p>
+                        <p class="txt" style="margin-top: 15px;">귀하께서 기증하시는 자료는 씨앗도서관의 장서로 등록됩니다.</p>
                         <p class="txt">기증된 자료는 반환이 어렵습니다.</p>
                         <p class="txt">다만, 디지타이징에 활용된 자료와 오・훼손 등으로 재기증이 어려운 자료는 폐기될 수 있음을 알려드립니다. </p>
                         <p class="txt">씨앗도서관 기증 처리 절차에 동의하시면, 기증 신청하여 주시기 바랍니다. </p>
