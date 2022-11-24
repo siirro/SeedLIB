@@ -89,9 +89,9 @@ public class MemberController {
 		log.info("all:{}",allCheck);
 			String mv = "";
 		if(allCheck != null) {
-					mv = "member/join";
+					mv = "./join";
 				} else {
-					mv = "member/agree";
+					mv = "./agree";
 				}
 		return mv;	
 	}

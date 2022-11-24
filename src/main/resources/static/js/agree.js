@@ -69,7 +69,7 @@ $(".check").each(function (item) {
                     allCheck:allCheck
                 },success:function(data){
                     console.log(data);
-                 location.href="member/join";
+                 location.href="./join";
 
 
                 },error:function(error){
