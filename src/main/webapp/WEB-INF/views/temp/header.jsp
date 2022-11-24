@@ -87,6 +87,7 @@
  -->			<a href="/search" id="btnSearchTop"><span class="blind">검색창열기</span></a>
 		</div>
 
+
 		<div id="indexNavi" style="overflow: hidden;">
 			<ul id="topmenu">
 				<li id="gnb1" class="hehehe"> <a href="/search/simple"> <em>자료검색</em> </a>
@@ -103,7 +104,7 @@
 						<li id="gnb2_1"><a href="/seoksu/menu/10124/program/30015/lectureList.do">문화행사신청</a> </li> 
 						<li id="gnb2_2"><a href="/hope/hopeInfo">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo">소장도서기증</a></li> 
-						<li id="gnb2_4"><a href="/studyroom/roomInfo">열람실 조회/예약</a></li> 
+						<li id="gnb2_4"><a href="/studyroom/roomList">열람실 조회/예약</a></li> 
 					</ul> 
 				</li> 
 				
@@ -127,7 +128,7 @@
 					</ul> 
 				</li> 
 					
-				<li id="gnb5" class="hehehe"> <a href="/seoksu/menu/10161/program/30020/dataStatus.do"> <em>도서관소개</em> </a> 
+				<li id="gnb5" class="hehehe"> <a href="/seoksu/menu/10161/program/30020/dataStatus.do"> <em>도서관소식</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb5_1"><a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do">공지사항</a> </li> 
 						<li id="gnb5_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
@@ -137,14 +138,14 @@
 					</ul> 
 				</li> 
 					
-				<li id="gnb6" class="hehehe"> <a href="/mypage"> <em>마이페이지</em> </a> 
+				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
 						<li id="gnb6_2"><a href="/seoksu/menu/10171/program/30024/mypage/loanStatusList.do">도서이용내역</a> </li> 
 						<li id="gnb6_4"><a href="/seoksu/menu/10178/program/30027/mypage/libraryOneLillStatusList.do">상호대차조회</a> </li> 
 						<li id="gnb6_5"><a href="/seoksu/menu/10180/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 
 						<li id="gnb6_6"><a href="/mypage/hopeList">희망도서조회</a> </li> 
-						<li id="gnb6_7"><a href="/seoksu/menu/10181/program/30030/mypage/myPopularBookList.do">기증조회</a> </li> 
+						<li id="gnb6_7"><a href="/mypage/donList">도서기증조회</a> </li> 
 						<li id="gnb6_8"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
 						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
 					</ul>
@@ -156,10 +157,7 @@
 	</div>
 </div>
 
-<form name="topSearchForm" id="topSearchForm" method="post">
-	<input type="hidden" name="searchType" value="SIMPLE">
-		<input type="hidden" name="searchManageCodeArr" value="MA">
-		
+<form action="../../search/simpleresult" name="topSearchForm" id="topSearchForm" method="get">
 	<fieldset>
 		<legend>통합자료 검색영역</legend>
 		<div id="searchBox" class="searchBoxWrap">
@@ -167,8 +165,9 @@
 			<div class="searchBox">
 				<div class="keywordInput">
 					<label for="topSearchKeyword" class="blind">검색어 입력</label>
-					<input type="text" title="검색어 입력" id="topSearchKeyword" name="searchKeyword" autocomplete="off" placeholder="검색어를 입력하세요.">
-					<a href="./search/simple" id="topSearchBtn" class="btnSearch">검색</a>
+					<input type="text" onkeyup="enterkey()" title="검색어 입력" id="topSearchKeyword" name="search" placeholder="검색어를 입력하세요.">
+					<button type="button" id="topSearchBtn" class="btnSearch">검색</button>
+					<!-- <button type="button" id="topSearchBtn" title="검색" class="unifiedSearchbtn btnSearch"> -->
 					<a href="./search/detail" class="btnDetail themeBtn mobileHide" style="background: linear-gradient(to right, #9be15d, #00e3ae);">고급검색</a>
 				</div>
 			</div>
@@ -180,35 +179,60 @@
 <a href="#searchTopClose" id="searchTopClose"><span class="blind">검색창닫기</span></a>
 
 <script>
-	$(function(){
-		$("#btnSearchTop").click(fnTopSearchBestKeyword);
-		$("#topSearchBestKeyword, #topSearchKeyword").keypress(function (e){
-			if((e.keyCode || e.which) == 13){
-				fnTopSearch();
-				e.preventDefault();
-			}
-		});
-
-		$("#topSearchBtn").click(fnTopSearch);
+	$('input[type="text"]').keydown(function() {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+		};
 	});
 
-	function fnTopSearch() {
-		var form = document.topSearchForm;
-		if(isEmpty(form.searchKeyword.value)){
-			alert("검색어를 입력하세요.");
-			form.searchKeyword.focus();
+	$("#topSearchBtn").click(function(){
+
+		if($("#topSearchKeyword").val().trim() ==''){
+			alert("검색어를 입력해주세요.");
+			$("#topSearchKeyword").focus();
 			return false;
 		}
-		if(form.topSearchCondition.value == 'book'){
-			form.action="/seoksu/searchResultList.do";
-		}else {
-			form.action="/seoksu/jnsearch.do";
-		}
-		form.submit();
-	}
 
-	function fnTopSearchBestKeyword(){
-		$("#topSearchBestKeyword").load("/seoksu/include/topSearchBestKeyword.do");
-	}
+		$("#topSearchForm").submit();
+		// $("#pagingWrap").append('');
+	})
+
+	// function enterkey(){
+	// 	if (window.event.keyCode == 13) {
+	// 		$("#topSearchBtn").click();
+	// 	}
+	// }
+
+	// $(function(){
+	// 	$("#btnSearchTop").click(fnTopSearchBestKeyword);
+	// 	$("#topSearchBestKeyword, #topSearchKeyword").keypress(function (e){
+	// 		if((e.keyCode || e.which) == 13){
+	// 			fnTopSearch();
+	// 			e.preventDefault();
+	// 		}
+	// 	});
+
+	// 	$("#topSearchBtn").click(fnTopSearch);
+	// });
+
+	// function fnTopSearch() {
+	// 	var form = document.topSearchForm;
+	// 	if(isEmpty(form.searchKeyword.value)){
+	// 		alert("검색어를 입력하세요.");
+	// 		form.searchKeyword.focus();
+	// 		return false;
+	// 	}
+	// 	if(form.topSearchCondition.value != ''){
+	// 		form.action="/search/simpleresult";
+	// 	}else {
+			
+	// 	}
+	// 	form.submit();
+	// }
+
+	
+
+	
 </script>
+
 <script src="/js/indexcopy.js"></script>

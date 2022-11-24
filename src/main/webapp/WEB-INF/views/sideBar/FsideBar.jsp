@@ -5,7 +5,7 @@
 <div id="lnbNav" class="navArea">
             <h2> 마이페이지 </h2>
             <ul id="lnb" class="lnb"> 
-          <li id="lnb1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do" class="on">나의정보</a> 
+          <li id="lnb1_1"><a href="/mypage/myIndex" class="on">나의정보</a> 
            <ul class="MkSub submenu" style="display: none;"> 
             <li id="lnb1_1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do">도서이용내역</a> </li> 
             <li id="lnb1_1_2"><a href="/intro/menu/10004/program/30002/searchDetail.do">상호대차조회</a> </li> 

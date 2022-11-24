@@ -28,17 +28,17 @@
 			<div class="backImg">
 				<ul class="popupList thumb">
 					<li style="z-index: 99; display: list-item;"></li>
-					<li style="display: list-item; z-index: 100;"></li>
+					<li style="display: list-item; z-index: 100; background-color: #ffffff33;"></li>
 					<li style="display: list-item; z-index: 99;"></li>
 				</ul>
 			</div>
 
 			<div class="sectionGroup">
 				<div class="sectionGroup" >
-					<p class="slogan" style="color: white;">
+					<p class="slogan" style="color: white; text-shadow: 1px 1px 3px rgb(0 0 0 / 50%);">
 						<span style="font-size: 22px;">시민에게 행복과 감동을 주는</span>
 						<br>
-						<span style="font-size: 52px; font-weight: bold; text-shadow: 2px 1px 0px rgb(100 125 190);">씨앗도서관</span>
+						<span style="font-size: 52px; font-weight: bold; text-shadow: 1px 1px 3px rgb(0 0 0 / 50%);">씨앗도서관</span>
 					</p>
 					
 					<!-- 통합검색 -->
@@ -46,7 +46,7 @@
 
 					<div class="mainSearchWrap">
 						<div class="mainSearchForm clearfix">
-							<form action="./search/simple" name="mainSearchForm" id="mainSearchForm" method="post">
+							<form action="./search/simpleresult" name="mainSearchForm" id="searchForm" method="get">
 								<input type="hidden" name="searchType" value="SIMPLE">
 								<input type="hidden" name="searchManageCode" value="ALL">
 
@@ -68,11 +68,14 @@
 									</div>
 									<div class="mainSearchKeywordWrap">
 										<div class="mainSearchKeyword">
+											
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
-											<input type="text" title="검색어 입력" class="form-ele" id="mainSearchKeyword" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
-											<a href="./search/simple" id="mainSearchBtn" title="검색" class="btnSearch">검색</a>
+											<input type="text" onkeyup="enterkey()" title="검색어 입력" class="form-ele" id="totalSearchValue" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
+											<a href="./search/simple" id="searchBtn" title="검색" class="btnSearch">검색</a>
 										</div>
 									</div>
+
+									<script src="/js/search.js"></script>
 									
 								</fieldset>
 							</form>

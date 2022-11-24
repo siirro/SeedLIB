@@ -104,6 +104,7 @@ pageEncoding="UTF-8"%>
 <body>
 <!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
+<div id="container" class="sub">	    
 <div class="sVisualWrap">
     <div class="sVisual">
         <h3>신청하기</h3>
@@ -267,6 +268,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- End Of the Real Contents-->
     </div>
+</div>
 </div>
 </div>
 </div>

@@ -1,6 +1,9 @@
 let popupWidth = "750";
-let popupHeight = "300";
+let popupHeight = "350";
+
 let seatNum = 0;
+let used = "";
+
   
 // 듀얼 모니터 고려한 윈도우 띄우기
 let curX = window.screenLeft;
@@ -19,10 +22,33 @@ strOption += "toolbar=no,menubar=no,location=no,";
 strOption += "resizable=yes,status=yes";
 
 $(".seatList").on("click",".resBtn",function(){
-    console.log($(this).attr("data-res-num"));
-    seatNum = $(this).attr("data-res-num");
-    console.log(popupWidth, popupHeight, screen.availWidth, nTop);
-    window.open('/studyroom/roomPop/?seatNum='+seatNum,"좌석 예약", strOption);
+    used = $(this).attr("available");
+    console.log(used);
+    if(used=="N"){
+        alert("이미 이용 중인 좌석입니다");
+        return;
+    } else{
+        console.log($(this).attr("data-res-num"));
+        seatNum = $(this).attr("data-res-num");
+        console.log(popupWidth, popupHeight, screen.availWidth, nTop);
+        window.open('/studyroom/roomPop/?seatNum='+seatNum,"좌석 예약", strOption);
+    }
+})
+
+$("#revBtn").click(function(){
+    console.log("올")
+    window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
+    $.ajax({
+        type:"POST",
+        url:"",
+        data:{
+
+        }, success: function(){
+
+        }, error: function(){
+
+        }
+    })
 })
 
 {/* <button class="resBtn" data-res-num="${r}">예약</button> */}
