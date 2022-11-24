@@ -19,7 +19,7 @@ WHERE B.ISBN = #{isbn}
 <select id="getSearchSimple" parameterType="Pager" resultType="BookVO">
 SELECT * FROM BOOK 
 WHERE CONCAT(TITLE, WRITER, PUBLISHER, ISBN) REGEXP #{search}
-ORDER BY 
+ORDER BY
 	<choose>
 		<when test="kind == 'score'">
 		    case when TITLE = #{search} then 0

@@ -47,7 +47,7 @@
 
 /* 슬로건 */
 .slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 28px;}
-.slogan span {display: inline-block; font-family: 'S-Core Dream 6'; font-size: 2.091em; padding-bottom: 13px;}
+.slogan span {display: inline-block; font-size: 2.091em; padding-bottom: 13px;}
 
 /* 검색 라디오박스 스타일 */
 .radi {display: inline-block;}

@@ -51,7 +51,7 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form action="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.page}" id="searchForm" name="searchForm" method="get">
+                <form action="./simpleresult" id="searchForm" name="searchForm" method="get">
 
                     <!-- 서치랩 -->
                     <div class="searchWrap">
@@ -83,17 +83,18 @@
                     <!-- 검색설정랩 -->
                     <div class="searchResultWrap">
                         <div class="result_box">
-                            <div class="listSetting">
+                            <div class="listSetting" >
                                 <c:if test="${not empty list}">
                                 <div class="result_screen">'<strong>키워드:${param.search}</strong>'에 대한 검색결과 총 
                                     <span id="totalCnt">${count}</span> 건
                                 </div>
                                 </c:if>
-
-                                <c:if test="${not empty message}">
-                                    <div class="result_screen">'<strong>${message}</strong>'
-                                    </div>
-                                </c:if>
+                                <div style="display: flex;">
+                                    <c:if test="${not empty message}">
+                                        <div class="result_screen" style="margin: 0px auto;">'<strong>${message}</strong>'
+                                        </div>
+                                    </c:if>
+                                </div>
 
                                 <c:if test="${not empty list}">
                                     <div class="listStyleType">
@@ -126,12 +127,12 @@
                                 <c:forEach items="${list}" var="list" varStatus="status">
                                     <li>
                                         <div class="bookArea">
-                                            <div class="bookImg"><a href="#link" onclick="location.href='../detail?isbn=${list.isbn}'");"><img alt="${list.title}" src="${list.image}"></a></div>
+                                            <div class="bookImg"><a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'");"><img alt="${list.title}" src="${list.image}"></a></div>
                         
                                             <div class="bookData">
                                                 <div class="book_dataInner">
                                                     <!-- <span class="book_kind">단행본</span> -->
-                                                    <a href="#link" onclick="location.href='../book/detail?ISBN=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                    <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
                                                     <ul class="dot-list clearfix">
                                                         <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                         <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
@@ -144,9 +145,9 @@
                         
                                                 <div class="bookDetailInfo">
                                                     <ol>
-                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
-                                                        <li><a href="" id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
-                                                        <li><a href="" class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
+                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
+                                                        <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
+                                                        <li><a class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
                                                     </ol>
                                                 </div>
 
@@ -187,102 +188,148 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <a class="btn whereLibClose small ta_c">닫기</a>
                                         </div>
 
-                                        <script>
-                                            // 얘도 반만됨
-                                            $(".tlqkf").on("click", $(".btn_haveInfo"), function () {
-                                                console.log($(".btn_haveInfo").attr("id"));
-                                                $(".whereLibrary").removeClass("open");
-                                                $(".bookInfo").removeClass("open");
-                                                $(".btn_sergeInfo").removeClass("on");
-                                                if (!$(this).hasClass("on")) {
-                                                    $(".btn_haveInfo").removeClass("on");
-                                                    $(this).addClass("on");
-                                                    $(this).parents("li").children(".whereLibrary").addClass("open");
-                                                    $(this).attr("title", "소장정보 확장됨");
-                                                } else {
-                                                    $(this).removeClass("on");
-                                                    $(".whereLibrary").removeClass("open");
-                                                    $(this).attr("title", "소장정보 축소됨");
-                                                }
-                                            });
-
-                                            // $('#btn_haveInfo1').click(function(){
-                                            //     if($('#collectionInfo1').hasClass("open") === false) {
-                                            //         $('#collectionInfo1').addClass("open");
-                                            //         $(this).prop("title","소장정보 확장됨");
-                                            //         return false;
-                                            //     } else {
-                                            //         $('#collectionInfo1').removeClass("open");
-                                            //         $(this).prop("title","소장정보 축소됨");
-                                            //     }
-                                            // });
-
-                                            
-
-                                            // document.querySelector('.roqkrcla').forEach(function(btns){ 
-                                            //     $('.btn_haveInfo').click(function(){
-                                                
-                                            //         // this.toggle();
-                                            //         btns.classList.toggle('open')
-                                            //     });
-                                            // })
-
-                                            
-
-                                            // $('.btn_haveInfo').on('click', (e) => {
-                                            //     console.log(e.target);
-                                            //     // if(e.target.matches)
-                                            //     btns.classList.toggle('open');
-                                            // })
-
-                                            // document.querySelectorAll('.roqkrcla').forEach(function(btns){ 
-                                            //     $('.btn_haveInfo').on('click', (e) => {
-                                            //         console.log(e.target);
-                                            //         // if(e.target.matches)
-                                            //         btns.classList.toggle('open');
-                                            //     })
-                                                
-                                            // })
-
-                                            // document.addEventListener('click', (e) => {
-                                            // if (e.target.matches('button.finish')){
-                                            //     e.target.closest('.eachTodo').classList.toggle('completed');
-                                            // }
-                                            // if (e.target.matches('button.remove')){
-                                            //     e.target.closest('.eachTodo').remove();
-                                            // }
-                                            // });
-
-
-                                            
-                                            // for(let i=1;i<=10;i++) {
-                                            //     $('#'+"btn_haveInfo"+i).click(function(){            
-                                            //         console.log("아");
-                                            //         $('#'+"collectionInfo"+i).toggle();
-                                            //     });
-                                            // } 
-
-                                            // for(let i=1;i<=10;i++) {
-                                            //     $('#'+"btn_haveInfo"+i).click(function(){
-                                            //             if($('#'+"collectionInfo"+i).hasClass("open") === true) {
-                                            //                 $('#'+"collectionInfo"+i).removeClass("open");
-                                            //                 $(this).prop("title","소장정보 축소됨");
-                                            //                 return false;
-                                            //             }
-                                            //     });
-                                            // } 
-                                            
-
-                                        </script>
+                                        
                                         <!-- 서지정보 -->
-                                        <div id="bookInfo1" class="bookDetailLayer bookInfo"></div>
-                        
+                                        <div id="bookInfo${status.count}" class="bookDetailLayer bookInfo" tabindex="0">
+
+                                            <div class="thisBook-bibliographicInfo">
+                                                <div class="tblWrap">
+                                                    <table class="tbl">
+                                                        <colgroup>
+                                                            <col style="width:15%">
+                                                            <col>
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">자료유형</th>
+                                                                <td class="ta_l">인쇄자료(책자형) 형태의 자료입니다</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">독자유형</th>
+                                                                <td class="ta_l">일반</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">저자사항</th>
+                                                                <td class="ta_l">나넷 스톤 지음;, 고유경 옮김</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">발행사항</th>
+                                                                <td class="ta_l">서울:프런티어,2018</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">형태사항</th>
+                                                                <td class="ta_l">
+                                                                        <p>248page</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">ISBN사항</th>
+                                                                <td class="ta_l">9788947544320 03190 ￦14000</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">수상주기</th>
+                                                                <td class="ta_l"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                 </c:forEach>
                             </ul>
+
+                            <script>
+
+                                // $(".btn_haveInfo").on("click", function(){
+                                //     let id=$(this).attr("data-id")
+                                //     if(!$(this).hasClass("on")) {
+                                //         $(this).addClass("on");
+                                //         $(".whereLibrary").addClass("open");
+                                //         $(".bookInfo").removeClass("open");
+                                //         $(this).prop("title","소장정보 확장됨");
+                                //     }
+                                // })
+                                // $(".tlqkf").on("click", ".btn_haveInfo", function () {
+                                //     if ($(this).hasClass("on")) {
+                                //         $(this).removeClass("on");
+                                //         $(".whereLibrary").removeClass("open");
+                                //         $(".bookInfo").removeClass("open");
+                                //         $(".btn_sergeInfo").removeClass("on");
+                                //     let id=$(this).attr("data-id")
+                                //     }else {
+                                //         $(this).addClass("on");
+                                //         let id=$(this).attr("data-id")
+                                //         id = "#collectionInfo"+id;
+                                //         $(id).addClass("open");
+                                //     }
+                                // });
+
+                                for(let i=1;i<=10;i++) {
+                                    $('#'+"btn_haveInfo"+i).click(function(){            
+                                        
+                                        if(!$('#'+"collectionInfo"+i).hasClass("open")) {
+                                            $('#'+"collectionInfo"+i).addClass("open");
+                                            $(this).addClass("on");
+                                            $('#'+"bookInfo"+i).hide();
+                                        } else {
+                                            $('#'+"collectionInfo"+i).removeClass("open");
+                                            $(this).removeClass("on");
+                                            
+                                        }
+
+                                        
+                                    });
+                                } 
+
+                                for(let i=1;i<=10;i++) {
+                                    $('#'+"btn_sergeInfo"+i).click(function(){            
+                                        
+                                        if(!$('#'+"bookInfo"+i).hasClass("open")) {
+                                            $('#'+"bookInfo"+i).addClass("open");
+                                            $(this).addClass("on");
+                                            $('#'+"collectionInfo"+i).hide();
+                                        } else {
+                                            $('#'+"bookInfo"+i).removeClass("open");
+                                            $(this).removeClass("on");
+                                            
+                                        }
+                                    });
+                                } 
+
+                                
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_haveInfo"+i).click(function(){            
+                                //         console.log("아");
+                                //         $('#'+"collectionInfo"+i).toggle();
+                                //         $('#'+"bibliographicInfo"+i).removeClass("open");
+                                //     });
+                                // } 
+
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_sergeInfo"+i).click(function(){            
+                                //         console.log("아");
+                                //         $('#'+"bibliographicInfo"+i).toggle();
+                                //         $('#'+"collectionInfo"+i).removeClass("open");
+                                //     });
+                                // } 
+
+
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_haveInfo"+i).click(function(){
+                                //             if($('#'+"collectionInfo"+i).hasClass("open") === true) {
+                                //                 $('#'+"collectionInfo"+i).removeClass("open");
+                                //                 $(this).prop("title","소장정보 축소됨");
+                                //                 return false;
+                                //             }
+                                //     });
+                                // } 
+                                
+
+                            </script>
+
                         </div>
                         <c:if test="${not empty list}">
                         <div class="pagingWrap">
