@@ -144,7 +144,7 @@
                         
                                                 <div class="bookDetailInfo">
                                                     <ol>
-                                                        <li><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
+                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
                                                         <li><a href="" id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
                                                         <li><a href="" class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
                                                     </ol>
@@ -170,7 +170,7 @@
                                                         </thead>
                                                         <tbody>
                                                                 <tr class="MA">
-                                                                    <td>석수도서관</td>
+                                                                    <td></td>
                                                                     <td>
                                                                         대출중
                                                                         <br>(예약가능)
@@ -191,6 +191,23 @@
                                         </div>
 
                                         <script>
+                                            // 얘도 반만됨
+                                            $(".tlqkf").on("click", $(".btn_haveInfo"), function () {
+                                                console.log($(".btn_haveInfo").attr("id"));
+                                                $(".whereLibrary").removeClass("open");
+                                                $(".bookInfo").removeClass("open");
+                                                $(".btn_sergeInfo").removeClass("on");
+                                                if (!$(this).hasClass("on")) {
+                                                    $(".btn_haveInfo").removeClass("on");
+                                                    $(this).addClass("on");
+                                                    $(this).parents("li").children(".whereLibrary").addClass("open");
+                                                    $(this).attr("title", "소장정보 확장됨");
+                                                } else {
+                                                    $(this).removeClass("on");
+                                                    $(".whereLibrary").removeClass("open");
+                                                    $(this).attr("title", "소장정보 축소됨");
+                                                }
+                                            });
 
                                             // $('#btn_haveInfo1').click(function(){
                                             //     if($('#collectionInfo1').hasClass("open") === false) {
@@ -203,22 +220,41 @@
                                             //     }
                                             // });
 
-                                            // const togglingBtns = document.querySelectorAll('.fa-heart'); 
+                                            
 
-                                            // togglingBtns.forEach(function(btns){ 
-                                            //     btns.addEventListener ("click", function() { 
+                                            // document.querySelector('.roqkrcla').forEach(function(btns){ 
+                                            //     $('.btn_haveInfo').click(function(){
+                                                
+                                            //         // this.toggle();
                                             //         btns.classList.toggle('open')
                                             //     });
                                             // })
 
-                                            const togglingBtns = document.querySelectorAll('.roqkrcla'); 
+                                            
 
-                                            togglingBtns.forEach(function(btns){ 
-                                                $('#btn_haveInfo1').click(function(){
+                                            // $('.btn_haveInfo').on('click', (e) => {
+                                            //     console.log(e.target);
+                                            //     // if(e.target.matches)
+                                            //     btns.classList.toggle('open');
+                                            // })
+
+                                            // document.querySelectorAll('.roqkrcla').forEach(function(btns){ 
+                                            //     $('.btn_haveInfo').on('click', (e) => {
+                                            //         console.log(e.target);
+                                            //         // if(e.target.matches)
+                                            //         btns.classList.toggle('open');
+                                            //     })
                                                 
-                                                    btns.toggle();
-                                                });
-                                            })
+                                            // })
+
+                                            // document.addEventListener('click', (e) => {
+                                            // if (e.target.matches('button.finish')){
+                                            //     e.target.closest('.eachTodo').classList.toggle('completed');
+                                            // }
+                                            // if (e.target.matches('button.remove')){
+                                            //     e.target.closest('.eachTodo').remove();
+                                            // }
+                                            // });
 
 
                                             
@@ -242,7 +278,7 @@
 
                                         </script>
                                         <!-- 서지정보 -->
-                                        <div id="bibliographicInfo1" class="bookDetailLayer bibliographicInfo"></div>
+                                        <div id="bookInfo1" class="bookDetailLayer bookInfo"></div>
                         
                                     </li>
                                 </c:forEach>

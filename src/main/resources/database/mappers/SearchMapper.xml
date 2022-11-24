@@ -5,7 +5,7 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
-<select id="getHaveInfo" parameterType="BookVO" resultMap="getHaveInfoResult">
+<!-- <select id="getHaveInfo" parameterType="BookVO" resultMap="getHaveInfoResult">
 SELECT * FROM BOOKLIB B
 	JOIN LIBRARY L
 	ON B.LIBNUM = L.LIBNUM
@@ -14,7 +14,7 @@ ON B.ISBN = BLN.ISBN
 JOIN LOAN LN
 ON BLN.LOANNUM = LN.LOANNUM
 WHERE B.ISBN = #{isbn}
-</select>
+</select> -->
 
 <select id="getSearchSimple" parameterType="Pager" resultType="BookVO">
 SELECT * FROM BOOK 

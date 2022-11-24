@@ -36,10 +36,7 @@
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
 					<c:choose>
-					
-					
 						<c:when test="${not empty member}">
-						
 						<li><a href="/member/logout">로그아웃</a></li>
 						<li><a href="/mypage/myIndex">마이페이지</a></li>
 						
