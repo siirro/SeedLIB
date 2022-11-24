@@ -58,44 +58,37 @@
 						<section id="bookShelfSection">
 							<div class="sub-title cf box">
 								<h2 id="divTitle" class="fl">책꽂이</h2>
-							     <!--  브레드크럼 시작  -->
-								<div class="breadCrumb fr">
-									<ul>	
-										<li class="home"><span></span></li>
-										<li><a href="/myloan/list">내서재</a></li><li class="currentPage">책꽂이</li>
-									</ul>
-							    </div>
-								<!--  브레드크럼 종료  -->
 							</div>
 							
 							<div id="divContent">
 								<form name="form" action="shelf/addBook" method="post">
-						
-								<input type="hidden" name="item" value="CAT000001370034">	
-								<input type="hidden" name="detailUrl" value="/search/detail/CATTOT000001370034?briefLink=/main/searchBrief?st=KWRD_A_si=TOTAL_A_q=%EC%A0%9C%EC%9D%B8%EC%97%90%EC%96%B4">
-								
-								<div class="writeTable">
-									<table>
-										<caption>책꽂이 저장</caption>
+									<input type="hidden" name="isbn" value="CAT000001370034">	
+									<input type="hidden" name="detailUrl" value="/book/detail?isbn=">
 									
-										<tbody>
-											<tr>
-												<th><label for="list_id">담을 곳</label></th>
-												<td>
-													<select id="list_id" name="list_id" class="selectBox1">
-														<option value="51608">ㅎ</option>
-														<option value="0">새로운 서재</option>
-													</select>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								
-								<div class="buttons">
-									<input type="submit" value="저장" title="저장" alt="저장">
-									<a href="javascript:window.close();" title="저장">닫기</a>
-								</div>
+									<div class="writeTable">
+										<table>
+											<caption>책꽂이 저장</caption>
+											
+											<tbody>
+												<tr>
+													<th><label for="list_id">담을 곳</label></th>
+													<td>
+														<select id="list_id" name="list_id" class="selectBox1">
+															<c:forEach items="${list}" var="shelf">															
+																<option value="${shelf.shNum}">${shelf.shName}</option>
+															</c:forEach>
+														</select>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									
+									<div class="buttons">
+										<a href="../book/shelf/newshelf" title="새 책꽂이 만들기">새로운 책꽂이</a>
+										<input type="submit" value="저장" title="저장" alt="저장">
+										<a href="javascript:window.close();" title="닫기">닫기</a>
+									</div>
 								</form>
 							</div>
 						</section>
