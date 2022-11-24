@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.ShelfPager;
@@ -25,33 +26,32 @@ public class BookShelfController {
 	@Autowired
 	private BookShelfService bookShelfService;
 	
+	@Autowired
+	private BookService bookService;
+	
 	//책꽂이 목록
 		//마이페이지, 새 책 저장시 옵션
-	@PostMapping("list")
-	public ModelAndView getShelfList (BookShelfVO shelfVO) throws Exception {
+		//shelf/list?userName=
+	@GetMapping("list")
+	public ModelAndView getShelfList (String userName) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		//사용자 정보
-		MemberVO memberVO = new MemberVO();
-		BookShelfVO bookShelfVO = new BookShelfVO();
-		bookShelfVO.setUserName(memberVO.getUserName());
-		
 		//책꽂이 리스트
-		List<BookShelfVO> ar = bookShelfService.getShelfList(bookShelfVO);
+		List<BookShelfVO> ar = bookShelfService.getShelfList(userName);
 		mv.addObject("list", ar);
+		mv.setViewName("shelf/list");
 		
 		return mv;
-	}
-		
+	}	
 	
 	//새 책꽂이 생성
 		//shelf/newshelf?userName=
-	@GetMapping("newshelf")
-	public String setShelfAdd (BookShelfVO shelfVO) throws Exception {
-		return "book/shelf/newshelf";
+	@GetMapping("newShelf")
+	public void setShelfAdd (BookShelfVO shelfVO) throws Exception{
+		log.info("GET Shelf Add");
 	}
 	
-	@PostMapping("newshelf")
+	@PostMapping("newShelf")
 	public ModelAndView setShelfAdd (HttpSession session, BookShelfVO shelfVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -61,7 +61,7 @@ public class BookShelfController {
 		
 		//새로운 책꽂이 정보
 		int result = bookShelfService.setShelfAdd(shelfVO);
-		mv.setViewName("book/shelf/newshelf");
+		mv.setViewName("shelf/newShelf");
 		return mv;
 	}
 		
@@ -94,29 +94,18 @@ public class BookShelfController {
 		//책꽂이 목록 불러와서 책 저장하기
 		//shelf/addBook?isbn= &userName=
 	@GetMapping("addBook")
-	public String setBookAdd (BookPickVO pickVO) throws Exception {
-		
-		return "book/shelf/addBook";
-	}
-	
-	@PostMapping("addBook")
-	public ModelAndView setBookAdd (HttpSession session, BookPickVO pickVO) throws Exception{
+	public ModelAndView setBookAdd (String userName, Long isbn) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("userName", userName);
+		mv.addObject("isbn", isbn);
 		
-		//사용자 정보
-		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
-		mv.addObject("member", memberDTO);
+		String title = bookShelfService.getBookTitle(isbn);
+		mv.addObject("title", title);
+		log.info("title : {}", title);
 		
-		//책꽂이 목록
-		BookShelfVO shelfVO = new BookShelfVO();
-		List<BookShelfVO> ar = bookShelfService.getShelfList(shelfVO);
+		List<BookShelfVO> ar = bookShelfService.getShelfList(userName);
 		mv.addObject("list", ar);
 		
-		//추가할 책
-		int result = bookShelfService.setBookAdd(pickVO);
-		mv.addObject("result", result);
-		
-		mv.setViewName("book/shelf/list");
 		return mv;
 	}
 	

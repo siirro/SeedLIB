@@ -157,7 +157,12 @@
 													<input type="hidden" id="userName" value="bb">
 												</form>
 													
-												<span id="addShelf"><a href="../shelf/addBook?isbn=${book.isbn}&userName=bb">책꽂이 담기</a></span>
+												<c:if test="${isShelfExist eq false}">											
+													<button type="button" id="addShelfBtn">책꽂이 담기</button>
+												</c:if>	
+												<c:if test="${isShelfExist}">											
+													<button type="button" id="addBookBtn">책꽂이 담기</button>
+												</c:if>	
 												
 												<c:if test="${isLikeExist eq false}">
 													<button type="button" id="likeBtn">좋아요</button>
@@ -220,7 +225,7 @@
 																	<th scope="col">대출상태</th>
 																	<th scope="col">반납 예정일</th>
 																	<th scope="col">대출 및 예약</th>
-																	<th scope="col">부록</th>
+																	<th scope="col">자료실</th>
 																</tr>
 															</thead>
 															<tbody>

@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.like.BookLikeService;
 import com.seed.lib.book.like.MbBookLikeVO;
+import com.seed.lib.book.shelf.BookShelfService;
+import com.seed.lib.book.shelf.BookShelfVO;
 import com.seed.lib.member.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,9 @@ public class BookController {
 	
 	@Autowired
 	private BookLikeService bookLikeService;
+	
+	@Autowired
+	private BookShelfService bookShelfService;
 	
 	//도서 디테일
 	@GetMapping("detail")
@@ -47,6 +52,11 @@ public class BookController {
 		//책 좋아요 총갯수
 		int bookLike = bookLikeService.getBookLike(bookVO);
 		mv.addObject("like", bookLike);
+		
+		//책꽂이 존재 유무
+		BookShelfVO shelfVO = new BookShelfVO();
+		boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
+		mv.addObject("isShelfExist", isShelfExist);
 		
 		mv.setViewName("book/detail");
 		
