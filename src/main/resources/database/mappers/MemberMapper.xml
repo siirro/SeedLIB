@@ -13,10 +13,10 @@
 	</select>
 	
 	<insert id="setMemberRole" parameterType="MemberVO">
-	
-	INSERT INTO MEMBER_ROLE VALUES (#{userName},
-			(SELECT ROLENUM  FROM ROLE WHERE ROLENAME =ROLE_MEMBER)
-		) 
+		
+		INSERT INTO MEMBER_ROLE VALUES (
+	(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_MEMBER'),#{userName}
+)		
 	</insert>
 	
 	
