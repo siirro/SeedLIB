@@ -54,6 +54,11 @@ public class SearchController {
 		return mv;
 	}
 	
+	@GetMapping("detail")
+	public String getDetail()throws Exception{
+		return "search/detail";
+	}
+	
 	@GetMapping("category")
 	public String getCategory()throws Exception{
 		return "search/category";

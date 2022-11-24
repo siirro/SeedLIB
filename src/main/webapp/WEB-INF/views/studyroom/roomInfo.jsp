@@ -53,7 +53,7 @@
 			border-left: 1px solid #444;
 			border: 1px solid;
 			text-align: center;
-			font-size: 20px;
+			font-size: 25px;
 			padding: 15px;
 		}
 
