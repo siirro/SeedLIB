@@ -1,7 +1,6 @@
 package com.seed.lib.member;
 
 import java.sql.Date;
-import java.util.Collection;
 import java.util.List;
 
 

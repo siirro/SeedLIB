@@ -76,7 +76,7 @@ public class MyPageController {
 	@GetMapping("seatHistory")
 	public ModelAndView getSeatHistory (String userName) throws Exception{
 		
-		List<StudyDetailVO> sdl = roomService.getSeatMany(userName);
+		List<StudyDetailVO> sdl = roomService.getSeatHistory(userName);
 		List<FullCalendarVO> cl = new ArrayList<>();
 		ModelAndView mv = new ModelAndView();
 		for(StudyDetailVO s: sdl) {

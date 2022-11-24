@@ -24,7 +24,7 @@
 			padding: 6px 15px;
 		}
 	</style>
-<title>열람실 이용 내역</title>
+<title>열람실 이용 내역 : 씨앗도서관 ☘️</title>
 </head>
 <body>
 	<!-- header -->

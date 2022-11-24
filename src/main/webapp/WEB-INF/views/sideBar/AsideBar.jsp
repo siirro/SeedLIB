@@ -11,7 +11,7 @@
       </ul>
     </li> 
     <li id="lnb1_2"><a href="../../search/category" class="category">주제별검색</a> </li> 
-    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료검색</a> </li> 
+    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료</a> </li> 
 
 
     <!-- <li id="lnb1_1">
