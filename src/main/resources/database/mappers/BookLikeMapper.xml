@@ -10,12 +10,16 @@
 	</insert>
 	
 	<select id="getLikeExist" parameterType="MbBookLikeVO" resultType="Integer">
-		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE USERNAME = 'bb' AND ISBN = #{isbn}
 	</select>
 	
 	<delete id="setUnlike" parameterType="MbBookLikeVO">
-		DELETE FROM MBBOOKLIKE WHERE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+		DELETE FROM MBBOOKLIKE WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</delete>
+	
+	<select id="getBookLike" parameterType="BookVO" resultType="Integer">
+		SELECT COUNT(BOOKLIKE) FROM MBBOOKLIKE WHERE ISBN = #{isbn}
+	</select>
 </mapper>
   
 

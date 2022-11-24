@@ -10,6 +10,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/default.css">
@@ -18,11 +19,15 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
     
-    <script defer src="/js/common.js"></script>
-    <script defer src="/js/bookDetail.js"></script>
+    <script type="text/javascript" defer src="/js/common.js"></script>
+    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
+    <script type="text/javascript" defer src="/js/bookLike.js"></script>
     
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 </head>
+
+<c:import url="../temp/header.jsp"></c:import>
+
 <body>
 	<div class = "vsc-initialized">
 		<div class="container" class="sub">
@@ -94,7 +99,6 @@
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
 								<c:forEach var="book" items="${vo}">
-									<c:set var="like" value="${book.mbBookLikeVO}" />
 									<div class="bookImg">
 										<img alt="" src="${book.image}">
 									</div>
@@ -146,25 +150,22 @@
 										</div>
 										
 										<div class="keyword">
-											<ul>
-												<c:if test="not empty member">
+											<c:if test="not empty member">
+											</c:if>
+												<form>
+													<input type="hidden" id="isbn" value="${book.isbn}">
+													<input type="hidden" id="userName" value="bb">
+												</form>
+													
+												<span id="addShelf"><a href="../shelf/addBook?isbn=${book.isbn}&userName=bb">책꽂이 담기</a></span>
+												
+												<c:if test="${isLikeExist eq false}">
+													<button type="button" id="likeBtn">좋아요</button>
 												</c:if>
-													<form>
-														<input type="hidden" id="userName" value="bb">
-														<input type="hidden" id="isbn" value="${book.isbn}">
-													</form>
-													
-													<li class=""><a href="">책꽂이 담기</a></li>
-													
-														<li class="likeBtn" onclick="likeBtnFunction">좋아요</li>
-													<c:if test="!isLikeExist">
-													</c:if>
-													
-													<c:if test="isLikeExist">
-														<li class="unlikeBtn" onclick="unlikeBtnFunction">좋아요</li>
-													</c:if>
-													<li>💚 ${like.bookLike}</li>
-											</ul>
+												<c:if test="${isLikeExist}">
+													<button type="button" id="unlikeBtn">좋아요 취소</button>
+												</c:if>
+											<span>💚 ${like}</span>
 										</div>
 									</div>
 									<!-- // 간략보기 -->
@@ -372,17 +373,15 @@
 										</div>
 									</div>
 								</div>
-								
-								
 							</div>	
 						</div>
 						<!-- 책 디테일 끝 -->
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>
