@@ -67,7 +67,7 @@
 
     </style>
 
-    <title>좌석 예약</title>
+    <title>좌석 예약 : 씨앗도서관 ☘️</title>
 </head>
 <body>
     <input type="hidden" id="userName" value="id1">

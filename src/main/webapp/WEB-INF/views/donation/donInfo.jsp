@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>소장 도서 기증</title>
+    <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 </head>
 <body>
 	<!-- header -->
