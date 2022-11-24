@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>열람실 현황 조회</title>
+    <title>열람실 현황 조회 : 씨앗도서관 ☘️</title>
 	<style>
 	
 		.contentArea{
