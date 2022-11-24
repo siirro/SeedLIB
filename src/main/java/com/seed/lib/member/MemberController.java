@@ -55,7 +55,7 @@ public class MemberController {
 		memberVO= memberService.getLogin(memberVO);
 		if(memberVO!=null) {
 			session.setAttribute("memberVO", memberVO);
-			 log.info( memberVO.getUserName());
+			mv.setViewName("redirect:../");
 
 		}else {
 	         mv.setViewName("redirect:../member/login");   

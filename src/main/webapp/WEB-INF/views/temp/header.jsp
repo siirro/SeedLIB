@@ -35,8 +35,8 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-					<c:choose>
-						<c:when test="${not empty member}">
+					 <c:choose>
+						<c:when test="${not empty memberVO}">
 						<li><a href="/member/logout">로그아웃</a></li>
 						<li><a href="/mypage/myIndex">마이페이지</a></li>
 						
@@ -49,7 +49,8 @@
 						
 					</c:otherwise>
 
-						</c:choose>
+						</c:choose> 
+
 						
 						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
 					</ul>
