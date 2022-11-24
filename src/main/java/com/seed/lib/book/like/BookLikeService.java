@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.seed.lib.book.BookVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -36,5 +38,9 @@ public class BookLikeService {
 	public int setUnlike (MbBookLikeVO bookLikeVO) throws Exception {
 		return bookLikeMapper.setUnlike(bookLikeVO);
 	}
-
+	
+	//도서의 좋아요 총 갯수
+	public int getBookLike (BookVO bookVO) throws Exception{
+		return bookLikeMapper.getBookLike(bookVO);
+	}
 }

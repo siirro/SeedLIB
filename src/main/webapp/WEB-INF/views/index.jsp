@@ -602,235 +602,108 @@
 			<input type="hidden" name="isbn">
 			<input type="hidden" name="pubFormCode">
 		</form>
+	</div>
 
-
-</div>
-
-</section>
 
 <!-- 인기도서 추천도서 신착도서 대출베스트 -->
-
-
-<section id="section3">
-	<h2 class="blind">섹션3</h2>
-	<div class="sectionGroup">
-		<!-- 북리스트 -->
-<div class="bookZone">
-	<ul class="tab book clearfix">
-		<li class="on"><a href="#libraryPopularBook">공공도서관 인기도서</a></li>
-		<li><a href="#recommendBook">추천도서</a></li>
-		<li><a href="#accessionBook">신착도서</a></li>
-		<li><a href="#popularBookMonth">대출베스트</a></li>
-	</ul>
-	<div id="libraryPopularBook" class="bookListWrap">
+	<section id="section3">
+		<h2 class="blind">섹션3</h2>
+		<div class="sectionGroup">
 		
-
-<ul class="bookList clearfix">
-	
-				<li>
-					<span class="cover">
-						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
-							<img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
+			<!-- 북리스트 -->
+			<div class="bookZone">
+				<ul class="tab book clearfix">
+					<li class="on"><a href="#libraryPopularBook">공공도서관 인기도서</a></li>
+					<li><a href="#recommendBook">추천도서</a></li>
+					<li><a href="#accessionBook">신착도서</a></li>
+					<li><a href="#popularBookMonth">대출베스트</a></li>
+				</ul>
+				
+				<div id="libraryPopularBook" class="bookListWrap">
+					<ul class="bookList clearfix">
+						<li>
+							<span class="cover">
+								<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
+									<img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
+								</a>
+							</span>
+							<span class="txt">불편한 편의점 :김호연 장편소설</span>
+						</li>
+					</ul>
+					<div class="more mobileHide">
+						<a href="/seoksu/libraryPopularBookList.do">
+							<span class="blind">더보기</span>
 						</a>
-					</span>
-					<span class="txt">불편한 편의점 :김호연 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571379">
-							<img src="https://image.aladin.co.kr/product/29858/98/cover/k432838027_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
-						</a>
-					</span>
-					<span class="txt">불편한 편의점 :김호연 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791165341909">
-							<img src="https://image.aladin.co.kr/product/24512/70/cover/k392630952_1.jpg" alt="달러구트 꿈 백화점.이미예 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
-						</a>
-					</span>
-					<span class="txt">달러구트 꿈 백화점.이미예 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791197377143">
-							<img src="https://image.aladin.co.kr/product/28685/95/cover/k362836265_1.jpg" alt="어서오세요, 휴남동 서점입니다 :황보름 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
-						</a>
-					</span>
-					<span class="txt">어서오세요, 휴남동 서점입니다 :황보름 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="/seoksu/libraryPopularBookDetail.do?isbn=9788954699914">
-							<img src="https://image.aladin.co.kr/product/29857/0/cover/895469991x_1.jpg" alt="하얼빈 :김훈 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
-						</a>
-					</span>
-					<span class="txt">하얼빈 :김훈 장편소설</span>
-				</li>
-</ul>
-<div class="more mobileHide"><a href="/seoksu/libraryPopularBookList.do"><span class="blind">더보기</span></a></div>
-	</div>
-	<div id="recommendBook" class="bookListWrap" style="display: none;">
-<ul class="bookList clearfix">
-				<li>
-					<span class="cover">
-						<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
-									<img src="https://shopping-phinf.pstatic.net/main_3437283/34372834618.20221019120118.jpg" alt="걱정 많은 어른들을 위한 화학 이야기" onerror="javascript:fnNoImgBook(this);">
-						</a>
-					</span>
-					<span class="txt">걱정 많은 어른들을 위한 화학 이야기</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="/seoksu/recommendBookDetail.do?searchCategory=4&amp;recommendBookIdx=3925">
-							
-									<img src="https://bookthumb-phinf.pstatic.net/cover/212/927/21292798.jpg" alt="나를 훔쳐 주세요" onerror="javascript:fnNoImgBook(this);">
-						</a>
-					</span>
-					<span class="txt">나를 훔쳐 주세요</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="/seoksu/recommendBookDetail.do?searchCategory=2&amp;recommendBookIdx=3924">
-									<img src="https://bookthumb-phinf.pstatic.net/cover/214/340/21434043.jpg" alt="세븐 테크" onerror="javascript:fnNoImgBook(this);">
-						</a>
-					</span>
-					<span class="txt">세븐 테크</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="/seoksu/recommendBookDetail.do?searchCategory=1&amp;recommendBookIdx=3923">
-									<img src="https://bookthumb-phinf.pstatic.net/cover/223/379/22337911.jpg" alt="아티스트 웨이, 마음의 소리를 듣는 시간" onerror="javascript:fnNoImgBook(this);">
-						</a>
-					</span>
-					<span class="txt">아티스트 웨이, 마음의 소리를 듣는 시간</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="/seoksu/recommendBookDetail.do?searchCategory=5&amp;recommendBookIdx=3922">
-							
-									<img src="https://bookthumb-phinf.pstatic.net/cover/225/599/22559905.jpg" alt="곧 재능 교환이 시작됩니다" onerror="javascript:fnNoImgBook(this);">
-						</a>
-					</span>
-					<span class="txt">곧 재능 교환이 시작됩니다</span>
-				</li>
-</ul>
-<div class="more mobileHide"><a href="/seoksu/recommendBookList.do"><span class="blind">더보기</span></a></div>
-</div>
-	<div id="accessionBook" class="bookListWrap" style="display: none;">
-<ul class="bookList clearfix">
-				<li>
-					<span class="cover">
-						<a href="#link" onclick="fnAccessionBookDetail('106022579', '9788949162485', 'MO'); return false;">
-							<img src="https://shopping-phinf.pstatic.net/main_3543928/35439288618.20221101102653.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="랑랑 형제 떡집">
-						</a>
-					</span>
-					<span class="txt">랑랑 형제 떡집</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="#link" onclick="fnAccessionBookDetail('106022576', '9788901253862', 'MO'); return false;">
-							<img src="https://shopping-phinf.pstatic.net/main_3360142/33601420626.20220723093406.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="정글버스">
-						</a>
-					</span>
-					<span class="txt">정글버스</span>
-				</li>
-				<li>
-					<span class="cover">
-						<a href="#link" onclick="fnAccessionBookDetail('106022571', '9788925578170', 'MO'); return false;">
-							<img src="https://shopping-phinf.pstatic.net/main_3364246/33642465642.20220728093317.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="잠깐만 기다려 줘!">
-						</a>
-					</span>
-					<span class="txt">잠깐만 기다려 줘!</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="#link" onclick="fnAccessionBookDetail('106022568', '9788931557138', 'MO'); return false;">
-							<img src="https://shopping-phinf.pstatic.net/main_3364246/33642464619.20221019134607.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="잘 자요, 우리 아기">
-						</a>
-					</span>
-					<span class="txt">잘 자요, 우리 아기</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="#link" onclick="fnAccessionBookDetail('106022565', '9791192182377', 'MO'); return false;">
-							<img src="https://shopping-phinf.pstatic.net/main_3453494/34534947635.20220914102054.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="잘 싸우는 기술">
-						</a>
-					</span>
-					<span class="txt">잘 싸우는 기술</span>
-				</li>
-			
-		
-</ul>
-<div class="more mobileHide"><a href="/seoksu/accessionBookList.do"><span class="blind">더보기</span></a></div></div>
-	<div id="popularBookMonth" class="bookListWrap" style="display: none;">
-
-<ul class="bookList clearfix">
-				<li>
-					<span class="cover">
-						<a href="" onclick="fnPopularBookMonthDetail('19632613', '9788954654753', 'MO'); return false;">
-							<img src="https://image.aladin.co.kr/product/17970/0/cover500/8954654754_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="체리새우: 비밀글입니다 : 황영미 장편소설 ">
-						</a>
-					</span>
-					<span class="txt">체리새우: 비밀글입니다 : 황영미 장편소설 </span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="" onclick="fnPopularBookMonthDetail('93685740', '9791161571188', 'MO'); return false;">
-							<img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="불편한 편의점: 김호연 장편소설">
-						</a>
-					</span>
-					<span class="txt">불편한 편의점: 김호연 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="" onclick="fnPopularBookMonthDetail('100359716', '9791158362836', 'MO'); return false;">
-							<img src="https://bookthumb-phinf.pstatic.net/cover/213/959/21395909.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="연이와 버들 도령">
-						</a>
-					</span>
-					<span class="txt">연이와 버들 도령</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="" onclick="fnPopularBookMonthDetail('93685740', '9791161571188', 'MO'); return false;">
-							<img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="불편한 편의점: 김호연 장편소설">
-						</a>
-					</span>
-					<span class="txt">불편한 편의점: 김호연 장편소설</span>
-				</li>
-			
-				<li>
-					<span class="cover">
-						<a href="" onclick="fnPopularBookMonthDetail('95775822', '9791165343996', 'MO'); return false;">
-							<img src="https://image.aladin.co.kr/product/27794/22/cover/k862734063_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="(서울 자가에 대기업 다니는) 김 부장 이야기. 1, 김 부장 편">
-						</a>
-					</span>
-					<span class="txt">(서울 자가에 대기업 다니는) 김 부장 이야기. 1, 김 부장 편</span>
-				</li>
-</ul>
-<div class="more mobileHide"><a href="/seoksu/popularBookMonthList.do"><span class="blind">더보기</span></a></div></div>
-</div>
-
-<script>
-	$(function(){
-		$("#accessionBook").load("/seoksu/main/include/bookAccession.do");
-		$("#popularBookMonth").load("/seoksu/main/include/bookPopularMonth.do");
-		$("#recommendBook").load("/seoksu/main/include/bookRecommend.do");
-	});
-</script>
-
+					</div>
 				</div>
-			</section>
+			
+				<div id="recommendBook" class="bookListWrap" style="display: none;">
+					<ul class="bookList clearfix">
+						<li>
+							<span class="cover">
+								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+									<img src="https://shopping-phinf.pstatic.net/main_3437283/34372834618.20221019120118.jpg" alt="걱정 많은 어른들을 위한 화학 이야기" onerror="javascript:fnNoImgBook(this);">
+								</a>
+							</span>
+							<span class="txt">걱정 많은 어른들을 위한 화학 이야기</span>
+						</li>
+					</ul>
+					<div class="more mobileHide">
+						<a href="/seoksu/recommendBookList.do">
+							<span class="blind">더보기</span>
+						</a>
+					</div>
+				</div>
+			
+				<div id="accessionBook" class="bookListWrap" style="display: none;">
+					<ul class="bookList clearfix">
+						<li>
+							<span class="cover">
+								<a href="#link" onclick="fnAccessionBookDetail('106022579', '9788949162485', 'MO'); return false;">
+									<img src="https://shopping-phinf.pstatic.net/main_3543928/35439288618.20221101102653.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="랑랑 형제 떡집">
+								</a>
+							</span>
+							<span class="txt">랑랑 형제 떡집</span>
+						</li>
+					</ul>
+					<div class="more mobileHide">
+						<a href="/seoksu/accessionBookList.do">
+							<span class="blind">더보기</span>
+						</a>
+					</div>
+				</div>
+			
+				<div id="popularBookMonth" class="bookListWrap" style="display: none;">
+					<ul class="bookList clearfix">
+						<li>
+							<span class="cover">
+								<a href="" onclick="fnPopularBookMonthDetail('19632613', '9788954654753', 'MO'); return false;">
+									<img src="https://image.aladin.co.kr/product/17970/0/cover500/8954654754_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="체리새우: 비밀글입니다 : 황영미 장편소설 ">
+								</a>
+							</span>
+							<span class="txt">체리새우: 비밀글입니다 : 황영미 장편소설 </span>
+						</li>
+					</ul>
+		
+					<div class="more mobileHide">
+						<a href="/seoksu/popularBookMonthList.do">
+							<span class="blind">더보기</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				$(function(){
+					$("#accessionBook").load("/bookAccession");
+					$("#popularBookMonth").load("/bookPopularMonth");
+					$("#recommendBook").load("/bookRecommend");
+				});
+			</script>
+
 		</div>
+	</section>
+</div>
 		
 
 

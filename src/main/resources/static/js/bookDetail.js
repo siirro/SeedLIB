@@ -1,48 +1,48 @@
 
-$(function(){
-	$('.listDropdown').on("click", function(){
-		if(!$(this).hasClass("on")) {
-			$(this).addClass('on');
-			$('.thisBook-libraryselecter').addClass('open');
-		} else {
-			$(this).removeClass('on');
-			$('.thisBook-libraryselecter').removeClass('open');
-		}
-	});
+// $(function(){
+// 	$('.listDropdown').on("click", function(){
+// 		if(!$(this).hasClass("on")) {
+// 			$(this).addClass('on');
+// 			$('.thisBook-libraryselecter').addClass('open');
+// 		} else {
+// 			$(this).removeClass('on');
+// 			$('.thisBook-libraryselecter').removeClass('open');
+// 		}
+// 	});
 
-	$("#collectionLibraryAll").click(function(){
-		$(this).prop('checked', true);
-		$('.thisBook-libraryselecter a').removeClass('on');
-		$('.thisBook-libraryList tbody tr').css('display','table-row');
-    });
+// 	$("#collectionLibraryAll").click(function(){
+// 		$(this).prop('checked', true);
+// 		$('.thisBook-libraryselecter a').removeClass('on');
+// 		$('.thisBook-libraryList tbody tr').css('display','table-row');
+//     });
 
-	$('.thisBook-libraryselecter a').on("click", function(){
-		if ($("#collectionLibraryAll").is(":checked")){
-			$("#collectionLibraryAll").prop('checked', false);
-			$('.thisBook-libraryList tbody tr').css('display','none');
-		}
+// 	$('.thisBook-libraryselecter a').on("click", function(){
+// 		if ($("#collectionLibraryAll").is(":checked")){
+// 			$("#collectionLibraryAll").prop('checked', false);
+// 			$('.thisBook-libraryList tbody tr').css('display','none');
+// 		}
 
-		var name = $(this).data("name");
-		if(!$(this).hasClass("on")) {
-			$(this).addClass("on").attr("title", "선택됨,해당 도서관의 책 소장정보 표시됨");
-			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','table-row');
-		} else {
-			$(this).removeClass("on").attr("title", "선택되지 않음");
-			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','none');
-		}
-	});
+// 		var name = $(this).data("name");
+// 		if(!$(this).hasClass("on")) {
+// 			$(this).addClass("on").attr("title", "선택됨,해당 도서관의 책 소장정보 표시됨");
+// 			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','table-row');
+// 		} else {
+// 			$(this).removeClass("on").attr("title", "선택되지 않음");
+// 			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','none');
+// 		}
+// 	});
 
-	$('.dropBookData #dataInfo').on("click", function(){
-	    if(!$(this).hasClass("on")) {
-	      $(this).addClass('on');
-	      $(this).parents('tr').siblings('tr').find('#dataInfo').removeClass('on');
-	      $('.dropBookData.dataInfo').addClass('open');
-	    } else {
-	      $(this).removeClass('on');
-	      $('.dropBookData.dataInfo').removeClass('open');
-	    }
-	  });
-});
+// 	$('.dropBookData #dataInfo').on("click", function(){
+// 	    if(!$(this).hasClass("on")) {
+// 	      $(this).addClass('on');
+// 	      $(this).parents('tr').siblings('tr').find('#dataInfo').removeClass('on');
+// 	      $('.dropBookData.dataInfo').addClass('open');
+// 	    } else {
+// 	      $(this).removeClass('on');
+// 	      $('.dropBookData.dataInfo').removeClass('open');
+// 	    }
+// 	  });
+// });
 
 	function fnSerialVolList(speciesKey){
 		$("#serialCollectionVol").load("/search/include/detailSerialCollectionVolList.do", {speciesKey : speciesKey});
@@ -158,41 +158,4 @@ function reservationApplyProc(bookKey,regNo){
             }
         });
     }
-}
-
-
-//좋아요
-const likeBtn = document.querySelector("#likeBtn");
-const unlikeBtn = document.querySelector("#unlikeBtn");
-const isbn = document.querySelector("isbn");
-const userName = document.querySelector("userName");
-
-
-function likeBtnFunction (){
-	likeBtn.addEventListener("click", function(){
-		const xhttp = new XMLHttpRequest();
-
-		xhttp.open("POST", "book/like/add");
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("isbn="+isbn.value +"&userName="+userName.value);
-		
-		xhttp.onreadystatechange = function(){
-			location.reload();
-		}
-	});
-}
-
-
-function unlikeBtnFunction(){
-	unlikeBtn.addEventListener("click", function(){
-		const xhttp = new XMLHttpRequest();
-
-		xhttp.open("POST", "book/like/delete");
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("isbn="+isbn.value +"&userName="+userName.value);
-		
-		xhttp.onreadystatechange = function(){
-			location.reload();
-		}
-	});
 }
