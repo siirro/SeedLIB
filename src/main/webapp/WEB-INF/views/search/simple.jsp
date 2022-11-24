@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꿈이 싹트는 정원 : 씨앗도서관</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>통합검색 : 씨앗도서관 ☘</title>
 </head>
 <body>
 <div id="wrap">
@@ -99,11 +100,11 @@
                                 <c:if test="${not empty list}">
                                     <div class="listStyleType">
                                         <select id="kind" name="kind" title="정렬조건 선택" onchange="changeFn()">
-                                            <option value="score">정확도</option>
-                                            <option value="title">서명</option>
-                                            <option value="writer">저자</option>
-                                            <option value="publisher">발행처</option>
-                                            <option value="num">대출수</option>
+                                            <option value="score">정확도 순</option>
+                                            <option value="title">서명 순</option>
+                                            <option value="writer">저자 순</option>
+                                            <option value="publisher">발행처 순</option>
+                                            <option value="num">대출수 순</option>
                                         </select>
 
                                         <!-- <a href="" id="sortListBtn" class="btn">확인</a> -->
@@ -243,6 +244,38 @@
 
                             <script>
 
+                            $(".btn_haveInfo").on("click", function () {
+                                $(".whereLibrary").removeClass("open");
+                                $(".bookInfo").removeClass("open");
+                                $(".btn_sergeInfo").removeClass("on");
+                                if (!$(this).hasClass("on")) {
+                                    $(".btn_haveInfo").removeClass("on");
+                                    $(this).addClass("on");
+                                    $(this).parents("li").children(".whereLibrary").addClass("open").attr("tabIndex", "0");
+                                    $(this).attr("title", "소장정보 확장됨");
+                                } else {
+                                    $(this).removeClass("on");
+                                    $(".whereLibrary").removeClass("open").removeAttr("tabIndex", "0");
+                                    $(this).attr("title", "소장정보 축소됨");
+                                }
+                            });
+                            // 서지정보 view/hide
+                            $(".btn_sergeInfo").on("click", function () {
+                                $(".whereLibrary").removeClass("open");
+                                $(".bookInfo").removeClass("open");
+                                $(".btn_haveInfo, .btn_bkdanbi").removeClass("on");
+                                if (!$(this).hasClass("on")) {
+                                    $(".btn_sergeInfo").removeClass("on");
+                                    $(this).addClass("on");
+                                    $(this).parents("li").children(".bookInfo").addClass("open").attr("tabIndex", "0");
+                                    $(this).attr("title", "서지정보 확장됨");
+                                } else {
+                                    $(this).removeClass("on");
+                                    $(".bookInfo").removeClass("open").removeAttr("tabIndex", "0");
+                                    $(this).attr("title", "서지정보 축소됨");
+                                }
+                            });
+
                                 // $(".btn_haveInfo").on("click", function(){
                                 //     let id=$(this).attr("data-id")
                                 //     if(!$(this).hasClass("on")) {
@@ -267,37 +300,37 @@
                                 //     }
                                 // });
 
-                                for(let i=1;i<=10;i++) {
-                                    $('#'+"btn_haveInfo"+i).click(function(){            
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_haveInfo"+i).click(function(){            
                                         
-                                        if(!$('#'+"collectionInfo"+i).hasClass("open")) {
-                                            $('#'+"collectionInfo"+i).addClass("open");
-                                            $(this).addClass("on");
-                                            $('#'+"bookInfo"+i).hide();
-                                        } else {
-                                            $('#'+"collectionInfo"+i).removeClass("open");
-                                            $(this).removeClass("on");
+                                //         if(!$('#'+"collectionInfo"+i).hasClass("open")) {
+                                //             $('#'+"collectionInfo"+i).addClass("open");
+                                //             $(this).addClass("on");
+                                //             $('#'+"bookInfo"+i).hide();
+                                //         } else {
+                                //             $('#'+"collectionInfo"+i).removeClass("open");
+                                //             $(this).removeClass("on");
                                             
-                                        }
+                                //         }
 
                                         
-                                    });
-                                } 
+                                //     });
+                                // } 
 
-                                for(let i=1;i<=10;i++) {
-                                    $('#'+"btn_sergeInfo"+i).click(function(){            
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_sergeInfo"+i).click(function(){            
                                         
-                                        if(!$('#'+"bookInfo"+i).hasClass("open")) {
-                                            $('#'+"bookInfo"+i).addClass("open");
-                                            $(this).addClass("on");
-                                            $('#'+"collectionInfo"+i).hide();
-                                        } else {
-                                            $('#'+"bookInfo"+i).removeClass("open");
-                                            $(this).removeClass("on");
+                                //         if(!$('#'+"bookInfo"+i).hasClass("open")) {
+                                //             $('#'+"bookInfo"+i).addClass("open");
+                                //             $(this).addClass("on");
+                                //             $('#'+"collectionInfo"+i).hide();
+                                //         } else {
+                                //             $('#'+"bookInfo"+i).removeClass("open");
+                                //             $(this).removeClass("on");
                                             
-                                        }
-                                    });
-                                } 
+                                //         }
+                                //     });
+                                // } 
 
                                 
                                 // for(let i=1;i<=10;i++) {

@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/main.css">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
@@ -143,8 +144,8 @@
 
 					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
 						<li style="z-index: 100; left: 0px; top: 0px;">
-							<a href="https://lib.anyang.go.kr/intro/menu/12220/contents/41241/contents.do">
-								<img src="https://lib.anyang.go.kr/attachfile/popupzone/13758_1_20220824180541507.jpg" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
+							<a href="/">
+								<img src="/images/l_winterNight.png" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
 									불편한 편의점
 									연이와 버들도령
 									체리새우 : 비밀글입니다" onerror="javascript:errorPopupzoneImageFile(this);" class="slide">
