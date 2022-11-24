@@ -11,8 +11,8 @@
     <aside class="sidebar-nav-wrapper">
     <!-- ======== sidebar-nav start =========== -->
         <div class="navbar-logo">
-          <a href="./main">
-            <img src="assets/images/logo/logo.svg" alt="logo" />
+          <a href="/admin/main">
+            <img src="/images/logo200.png" alt="씨앗도서관">
           </a>
         </div>
         <nav class="sidebar-nav">
@@ -102,10 +102,10 @@
               </a>
               <ul id="ddmenu_2" class="collapse dropdown-nav">
                 <li>
-                  <a href="/admin/book/list">도서 목록</a>
+                  <a href="/admin/book/boList">도서 목록</a>
                 </li>
                 <li>
-                  <a href="/admin/book/add">도서 추가</a>
+                  <a href="/admin/book/boAdd">도서 추가</a>
                 </li>
               </ul>
             </li>
@@ -136,10 +136,10 @@
               </a>
               <ul id="ddmenu_2" class="collapse dropdown-nav">
                 <li>
-                  <a href="#"> 문화프로그램 목록 </a>
+                  <a href="/admin/program/proList"> 문화프로그램 목록 </a>
                 </li>
                 <li>
-                  <a href="/admin/program/add"> 문화프로그램 개설 </a>
+                  <a href="/admin/program/proAdd"> 문화프로그램 개설 </a>
                 </li>
               </ul>
             </li>
