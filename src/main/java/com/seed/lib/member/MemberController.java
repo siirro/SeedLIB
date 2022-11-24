@@ -38,8 +38,7 @@ public class MemberController {
 		session.setAttribute("member", memberVO);
 
 		return mv;
-	}
-		
+	}	
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
@@ -51,8 +50,8 @@ public class MemberController {
 	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		log.info("login 성공");
 		memberVO= memberService.getLogin(memberVO);
-
-		return "member/login";
+		
+		 return "redirect:../";
 	}
 	 
 
@@ -72,7 +71,7 @@ public class MemberController {
 
 	
 	
-	@GetMapping("join")	
+	@GetMapping("join")		
 	public void setJoin() throws Exception{
 		
 	}
@@ -82,6 +81,19 @@ public class MemberController {
 				
 		return "member/agree";
 		
+	}
+	
+	@GetMapping("agreeCheck")
+	@ResponseBody
+	public String agreeCheck(String allCheck) throws Exception{
+		log.info("all:{}",allCheck);
+			String mv = "";
+		if(allCheck != null) {
+					mv = "member/join";
+				} else {
+					mv = "member/agree";
+				}
+		return mv;	
 	}
 
 	@GetMapping("logout")

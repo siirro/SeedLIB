@@ -24,6 +24,7 @@ public class MemberService {
 	public int setJoin(MemberVO memberVO)throws Exception {			
 	
 		int result = memberMapper.setJoin(memberVO);
+		result = memberMapper.setMemberRole(memberVO);
 		
 		
 		return result;
