@@ -33,8 +33,7 @@
 
 
   let check = url.includes('simple');
-  if(check) {
-    console.log("댐");
+  if(url.includes('simple')||url.includes('book/detail')) {
     $(".simpledetail").addClass(' current');
     $(".simpledetail2").css("display","block")
     $("#simple").addClass(' current');
@@ -52,10 +51,12 @@
 
   
 
-  if(urllast=="simple"||urllast=="detail"){
+  if(urllast=="simple"||urllast=="detail"||url.includes('book/detail')){
     $(".simpledetail2").css("display","block")
-    hoho.className = 'current';
+    // hoho.className = 'current';
+    $(".simpledetail").addClass('current');
   }
+
 
 
 </script>

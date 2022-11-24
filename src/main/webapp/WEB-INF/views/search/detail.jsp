@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png">
     <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 </head>
 <body>
