@@ -42,7 +42,7 @@
 .btn.arrow1::after {content: ""; display: inline; padding-left: 20px; background: url(/include/image/button/ico_arrow1.png) right 50% no-repeat;}
 
 /* button type - color */
-.btn.white {color: #646464; background-color: #fff; border: 1px solid #c8c8c8;}
+.btn.white {color: #646464; background-color: #fff; border: 1px solid #c8c8c8; text-shadow: none;}
 .btn.white1 {color: #646464; background-color: #fff; border: 1px solid #e9e9e9;}
 .btn.red{border:1px solid #d93131;color:#d93131;background:#fff;}
 .btn.cncl, .btn.print {color: #666; background-color: #e9e9e9; border: 1px solid #e9e9e9;}
