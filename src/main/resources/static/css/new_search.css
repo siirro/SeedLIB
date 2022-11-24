@@ -9,7 +9,7 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 
 /* 통합검색 */
 .searchWrap {border: none;}
-.searchFormWeb {min-height: auto; border-bottom: 2px solid #666;}
+.searchFormWeb {min-height: auto;}
 .searchWrap .searchToparea {position: relative; padding: 0;}
 .searchWrap .searchToparea .searchBardiv {position: relative; padding: 18px 20px;}
 .searchWrap .searchToparea .searchBardiv .searchTit {position: absolute; left: 40px; top: 18px; height: 54px; line-height: 54px; font-size: 1.176em; font-weight: 500; color: #fff;}
@@ -75,7 +75,7 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 
 .listSetting {position: relative; overflow: hidden;}
 
-.result_screen {float: left; color: #646464; padding: 3px 0; margin-bottom: 20px;}
+.result_screen {float: left; color: #646464; padding: 3px 0; margin-bottom: 0px;}
 .result_screen.home {width: 100%; padding: 0 10px 10px; margin-bottom: 0; border-bottom: 2px solid #666;}
 .result_screen strong, .result_screen span {color: #d93131;}
 
@@ -180,8 +180,8 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li {float: left; margin-right: 10px;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a {position: relative; display: block; color: #444; padding-left: 15px; min-width: 110px; height: 30px;line-height: 28px; border: 1px solid #a5a5a5; box-sizing: border-box;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a {padding-left: 0; text-align: center;}
-.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px; height: 7px; background: url("../img/unified/down_bulet.png") center center no-repeat;}
-.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a.on::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px;height: 7px; background: url("../img/unified/up_bulet.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px; height: 7px; background: url("/images/down.png") center center no-repeat;}
+.bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li a.on::after {content: ''; position: absolute; right: 10px; top: 50%; margin-top: -3px; width: 12px;height: 7px; background: url("/images/up.png") center center no-repeat;}
 .bookList.listViewStyle .listWrap li .bookData .bookDetailInfo ol li:last-child a::after {display: none;}
 
 /* 검색결과 리스트 - 희망도서신청 */

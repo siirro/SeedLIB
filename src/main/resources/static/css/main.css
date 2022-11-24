@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 
 
 
@@ -27,7 +27,7 @@
 }
 .shortcutList li {float: left; width: 14.28571428571429%; text-align: center;}
 .shortcutList li a {display: block; height: 100%; font-size: 1.125em; font-weight: 500; line-height: 1; color: #fff; letter-spacing: -0.05em; text-shadow: 1px 1px 3px rgba(0,0,0,.5);}
-.shortcutList li .ico {display: block; width: 80px; height: 80px; margin: 0 auto; background: url(/include/image/intro/main/ico_summaryMain.png) 0 0 no-repeat;}
+.shortcutList li .ico {display: block; width: 80px; height: 80px; margin: 0 auto;}
 .shortcutList li.svc1 .ico {background-position-x: 0;} /*독서마라톤*/
 .shortcutList li.svc2 .ico {background-position-x: -80px;} /*스마트도서관*/
 .shortcutList li.svc3 .ico {background-position-x: -160px;} /*전자도서관*/
@@ -46,7 +46,7 @@
 #section1 {overflow: hidden; position: relative; padding: 50px 0 10px 0; background-color: #fff;}
 
 /* 슬로건 */
-.slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 38px;}
+.slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 28px;}
 .slogan span {display: inline-block; font-family: 'S-Core Dream 6'; font-size: 2.091em; padding-bottom: 13px;}
 
 /* 검색 라디오박스 스타일 */
@@ -475,7 +475,8 @@
 .popupZone {overflow: hidden; position: relative;}
 .popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 0; left: 0; z-index: 30; width: 100%; height: 33px; z-index: 101; text-align: right;} 
 .popupZone .controlGroup a {float: left; display: block; position: relative; width: 29px; height: 33px; background-color: rgba(0,0,0,.5);}
-.popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; background: url("/include/image/intro/main/btn_control_split.png") 0 0 no-repeat}
+.popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; }
+/* background: url("/include/image/intro/main/btn_control_split.png") 0 0 no-repeat */
 .popupZone .controlGroup .nowpage {display: inline-block; height: 33px; line-height: 33px; padding: 0 20px; background-color: rgba(0,0,0,.5); color:#fff; font-weight: 300; vertical-align: top;}
 .popupZone .controlGroup .nowpage strong {font-weight: 300;}
 .popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 29px; vertical-align: top;}
@@ -530,7 +531,7 @@
 .popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup {padding:6.582978723404255% 8.846808510638298% 0; letter-spacing:-1px;}
 .popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .title {position:relative; padding-bottom:15px; font-weight:500; font-size:1.500em; color:#dc2f50; text-align:center; }
 .popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .title::before {content:"";position:absolute;bottom:2px;left:0;width:100%;height:2px;background-color:#fff}
-.popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .title::after {content:"";position:absolute;bottom:-4px;left:50%;width:16px;height:15px;margin-left:-8px;background:url(/include/image/popupzone/bg_pzTemp07_title.png) 50% 100% no-repeat}
+.popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .title::after {content:"";position:absolute;bottom:-4px;left:50%;width:16px;height:15px;margin-left:-8px;}
 .popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .summary {margin:4% 0;font-size:1.125em;color:#333;}
 .popupZone.public img[src$="bg_pzTemp07.jpg"] ~ .textPopup .desc {padding:5px 10px; font-size:1.063em; color:#666; border-radius:10px; background-color:rgba(255,255,255,.7)}
 
@@ -566,7 +567,7 @@
 
 /* 공지사항 */
 .noticeZone {position: relative; padding: 20px; background: #9be15d0a;}
-.noticeZone h5 {font-size: 1.500em; line-height: 1; color: #222; padding: 17px 0 35px; margin-bottom: 0px; background: url(/include/image/intro/main/bg_pattern.png) repeat-x 0 bottom;}
+.noticeZone h5 {font-size: 1.500em; line-height: 1; color: #222; padding: 17px 0 35px; margin-bottom: 0px; background: url() repeat-x 0 bottom;}
 .noticeZone .more {position: absolute; top: 4px; right: 0; padding: 20px;} 
 .noticeZone .more a {display: block; width: 48px; height: 48px; background: #fff url(/images/plus.png) no-repeat 50% 50%; border-radius: 100%; position: relative;}
 .noticeZone .articleList li {overflow: hidden; position: relative; text-overflow: ellipsis; white-space: nowrap;}
@@ -575,12 +576,12 @@
 .noticeZone .articleList a {font-size: 1.125em; color: #555;}
 .noticeZone .articleList a span {font-weight: 500; display: inline-block; margin-right: 5px;}
 .noticeZone .articleList .date {display: block; position: absolute; top: 1px; right: 0; color: #666;}
-.noticeZone .articleList .top {height: 86px; padding: 0 0 30px 107px; background: url(/include/image/common/main_noticeIcon.png) no-repeat 0 0; box-sizing: border-box; margin-bottom: 25px;}
+.noticeZone .articleList .top {height: 86px; padding: 0 0 30px 107px; background: url() no-repeat 0 0; box-sizing: border-box; margin-bottom: 25px;}
 .noticeZone .articleList .top a {display: inline-block; font-size: 1.313em; line-height: 1.5; color: #444; font-weight: 500; white-space: normal; margin-top: -5px; height: 3em; letter-spacing: -0.5px; display: -webkit-box; -webkit-box-orient: vertical; word-wrap: break-word; -webkit-line-clamp: 2; overflow: hidden;}
 .noticeZone .articleList .top .date {position: absolute; top: auto; bottom: 0; left: 107px; right: auto;}
 
 /* 서비스 이용현황 */
-.serviceZone {position: relative; background: url(/include/image/intro/main/service_bg.jpg) no-repeat 0 0; background-size: cover; padding: 30px 20px; box-sizing: border-box;}
+.serviceZone {position: relative; background-size: cover; padding: 30px 20px; box-sizing: border-box;}
 .serviceZone h5 {font-size: 1.563em; line-height: 1; color: #fff; margin-bottom: 30px;}
 .serviceZone .more {position: absolute; top: 29px; right: 30px;}
 .serviceZone .more a {display: block; width: 28px; height: 28px; background-color: rgba(255,255,255,.2); border-radius: 100%; position: relative;}
@@ -597,7 +598,7 @@
 .serviceZone .myInfoList dl {float: left; width: 100%; color: #fff; font-size: 1.063em;}
 .serviceZone .myInfoList dl + dl {margin-top: 13px;}
 .serviceZone .myInfoList dl dt {float: left;}
-.serviceZone .myInfoList dl dt::before {content: ""; display: inline; padding-left: 20px; background: url(/include/image/common/main_myInfoIcon.png) no-repeat 0 50%;}
+.serviceZone .myInfoList dl dt::before {content: ""; display: inline; padding-left: 20px;}
 .serviceZone .myInfoList dl dd {float: right; width: 56px; line-height: 28px; font-weight: 500; text-align: center; background-color: rgba(255,255,255,.15); border-radius: 28px;}
 
 /* 회원 로그인 */

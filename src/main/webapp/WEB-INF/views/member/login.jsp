@@ -140,6 +140,9 @@
             </div>
             </div>
 
+     <!-- footer -->
+     <c:import url="../temp/footer.jsp"></c:import>
+     <!-- //footer -->
 
 </body>
 </html>

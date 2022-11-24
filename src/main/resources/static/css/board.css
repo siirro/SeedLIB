@@ -77,7 +77,7 @@
 .paging span, .paging a {display: inline-block; width: 32px; font-size: 1.125em; color: #777; line-height: 30px; text-align: center; vertical-align: top;}
 .paging span.current {width: 32px; height: 32px; line-height: 32px; color: #fff; border: none; background-color: #464646;}
 .paging a:hover, .paging a:focus, .paging a:active {text-decoration: underline;}
-.paging .btn-paging {width: 30px; height: 30px; line-height: 30px; border: 1px solid #ddd; background: url(/include/image/board/arr_sp.png) 50% 0 no-repeat;}
+.paging .btn-paging {width: 30px; height: 30px; line-height: 30px; border: 1px solid #ddd; background: url(/images/arr_sp.png) 50% 0 no-repeat;}
 .paging .btn-paging.prev {margin-right: 5px; background-position-y: -27px;}
 .paging .btn-paging.next {margin-left: 5px; background-position-y: -52px;}
 .paging .btn-paging.last {background-position-y: -77px;}
@@ -85,6 +85,11 @@
 .pagingWrap .btn:only-child {float: right;} /* 온니 글쓰기(등록)버튼 */
 .pagingWrap .paging ~ .btn {position: absolute; bottom: 0; right: 0;} /* 페이징 + 글쓰기(등록)버튼 */
 .boardWrap ~ form .pageSearch {margin-top: 30px;}
+
+.pagination .btn-paging {width: 30px; height: 30px; line-height: 30px; border: 1px solid #ddd; background: url(/images/arr_sp.png) 50% 0 no-repeat;}
+.pagination .btn-paging.prev {margin-right: 5px; background-position-y: -27px;}
+.pagination .btn-paging.next {margin-left: 5px; background-position-y: -52px;}
+.pagination .btn-paging.last {background-position-y: -77px;}
 
 /* board filter */
 .boardFilter {overflow: hidden; position: relative; z-index: 10; padding-bottom: 5px; background-color: #fff;}

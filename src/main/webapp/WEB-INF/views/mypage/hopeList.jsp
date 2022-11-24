@@ -105,8 +105,10 @@
 											<span>신청도서관: ${list.libVO.libName}</span>
 											<span>신청일: ${list.hopDate}</span>
 											<span>신청상태: ${list.statusVO.statName}</span>
-										</li>										
-										<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">신청취소</button></li>
+										</li>
+										<c:if test="${list.statusVO.statName eq '신청 중'}">
+											<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">신청취소</button></li>
+										</c:if>										
 									</ul>
 								</li>
 							</c:forEach>

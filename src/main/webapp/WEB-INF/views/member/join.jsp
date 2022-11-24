@@ -170,5 +170,16 @@
   <script src="/js/join.js"></script>
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+
+<%String str= request.getHeader("referer");
+ if(str==null){                           		
+%>
+<script language="javascript">
+alert("정상적인 경로를 통해 다시 접근해 주십시오");
+docment.location.href="return member/agree";
+</script>
+<%return;
+}%>
+
 </body>
 </html>

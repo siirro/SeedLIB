@@ -5,16 +5,109 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
-<select id="getSearchSimple" parameterType="BookVO" resultType="BookVO">
+<!-- <select id="getHaveInfo" parameterType="BookVO" resultMap="getHaveInfoResult">
+SELECT * FROM BOOKLIB B
+	JOIN LIBRARY L
+	ON B.LIBNUM = L.LIBNUM
+JOIN BOOKLOAN BLN
+ON B.ISBN = BLN.ISBN
+JOIN LOAN LN
+ON BLN.LOANNUM = LN.LOANNUM
+WHERE B.ISBN = #{isbn}
+</select> -->
+
+<select id="getSearchSimple" parameterType="Pager" resultType="BookVO">
 SELECT * FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '안희철'
-ORDER BY NUM
+WHERE CONCAT(TITLE, WRITER, PUBLISHER, ISBN) REGEXP #{search}
+ORDER BY 
+	<choose>
+		<when test="kind == 'score'">
+		    case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    when WRITER = #{search} then 4
+		    when WRITER LIKE CONCAT(#{search}, '%') then 5
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
+		    when WRITER LIKE CONCAT('%', #{search}) then 7
+		    when PUBLISHER = #{search} then 8
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
+		    else 12 end
+		</when>
+		<when test="kind == 'title'">
+			case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'writer'">
+			case when WRITER = #{search} then 0
+		    when WRITER LIKE CONCAT(#{search}, '%') then 1
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
+		    when WRITER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'publisher'">
+			case when PUBLISHER = #{search} then 0
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<otherwise>NUM</otherwise>
+	</choose>
+
+LIMIT #{startRow}, #{perPage}
+
+
 </select>
 
-<select id="getSearchSimpleCount" parameterType="BookVO" resultType="Long">
+<select id="getSearchSimpleCount" parameterType="Pager" resultType="Long">
 SELECT COUNT(ISBN) FROM BOOK 
-WHERE CONCAT(TITLE, WRITER, PUBLISHER) REGEXP '안희철'
-ORDER BY NUM
+WHERE CONCAT(TITLE, WRITER, PUBLISHER, ISBN) REGEXP #{search}
+ORDER BY
+<choose>
+		<when test="kind == 'score'">
+		    case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    when WRITER = #{search} then 4
+		    when WRITER LIKE CONCAT(#{search}, '%') then 5
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
+		    when WRITER LIKE CONCAT('%', #{search}) then 7
+		    when PUBLISHER = #{search} then 8
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
+		    else 12 end
+		</when>
+		<when test="kind == 'title'">
+			case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'writer'">
+			case when WRITER = #{search} then 0
+		    when WRITER LIKE CONCAT(#{search}, '%') then 1
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
+		    when WRITER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'publisher'">
+			case when PUBLISHER = #{search} then 0
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<otherwise>NUM</otherwise>
+	</choose>
 </select>
 	
 </mapper>    

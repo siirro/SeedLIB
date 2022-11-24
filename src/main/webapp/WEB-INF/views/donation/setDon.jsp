@@ -99,11 +99,12 @@ pageEncoding="UTF-8"%>
 
 </style>
 
-<title>희망 도서 신청</title>
+<title>소장 도서 기증</title>
 </head>
 <body>
 <!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
+<div id="container" class="sub">	    
 <div class="sVisualWrap">
     <div class="sVisual">
         <h3>신청하기</h3>
@@ -240,31 +241,14 @@ pageEncoding="UTF-8"%>
                                     <td><input type="text" id="donPublisher" name="donPublisher" value="" class="form-ele wide"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><label for="donation_method01">기증방법</label><span class="require">*</span></th>
-                                    <td>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method01" class="donMethod" name="donMethod" title="기증방법" value="직접방문" checked="">
-                                            <label for="donation_method01">직접방문</label>
-                                        </span>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method02" class="donMethod" name="donMethod" title="기증방법" value="우편배달">
-                                            <label for="donation_method02">우편발송</label>
-                                        </span>
-                                        <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_method04" class="donMethod" name="donMethod" title="기증방법" value="담당자와 상담">
-                                            <label for="donation_method04">담당자와 상담</label>
-                                        </span>
-                                    </td>
-                                </tr>  
-                                <tr>
                                     <th scope="row"><label for="donation_alert">처리 알림 여부</label><span class="require">*</span></th>
                                     <td>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_alert01" class="donAlert" name="donAlert" title="알림여부" value="Y" checked="">
+                                            <input type="radio" id="donation_alert01" class="emailAgree" name="emailAgree" title="알림여부" value="Y" checked="">
                                             <label for="donation_alert01">수신</label>
                                         </span>
                                         <span class="input_radio_wrap">
-                                            <input type="radio" id="donation_alert02" class="donAlert" name="donAlert" title="알림여부" value="N">
+                                            <input type="radio" id="donation_alert02" class="emailAgree" name="emailAgree" title="알림여부" value="N">
                                             <label for="donation_alert02">미수신</label>
                                         </span>
                                         <p class="emp1 ref">접수 처리가 되면 상단의 이메일로 안내 이메일을 보내드립니다.</p>
@@ -284,6 +268,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- End Of the Real Contents-->
     </div>
+</div>
 </div>
 </div>
 </div>

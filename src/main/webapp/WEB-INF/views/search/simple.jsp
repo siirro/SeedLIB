@@ -51,8 +51,7 @@
             <div id="contents" class="contentArea">
                         
                 <!-- Contents Start-->
-                <form id="searchForm" name="searchForm" method="get">
-                    <input type="hidden" name="searchType" value="SIMPLE">
+                <form action="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.page}" id="searchForm" name="searchForm" method="get">
 
                     <!-- 서치랩 -->
                     <div class="searchWrap">
@@ -65,15 +64,19 @@
 
                                     </div>
                                     <div class="searchInputbox">
-                                        <input type="text" id="totalSearchValue" name="searchKeyword" title="검색어를 입력하세요." value="" placeholder="검색어를 입력하세요." autocomplete="off">
+                                        <input hidden="hidden" />
+                                        <input type="text" onkeyup="enterkey()" id="totalSearchValue" name="search" title="검색어를 입력하세요." value="${param.search}" placeholder="검색어를 입력하세요." autocomplete="off">
                                         <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
                                     </div>
-
-                                    <a href="./detail" class="btn input" title="고급검색 페이지 이동">고급검색</a>
+                                    <div>
+                                        <a href="./detail" class="btn input" title="고급검색 페이지 이동">고급검색</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    
                 
                     <!-- 서치랩끝 -->
 
@@ -81,112 +84,255 @@
                     <div class="searchResultWrap">
                         <div class="result_box">
                             <div class="listSetting">
-                                <div class="result_screen">'<strong>키워드:나</strong>'에 대한 검색결과 총 
-                                    <span id="totalCnt">5,168</span> 건
+                                <c:if test="${not empty list}">
+                                <div class="result_screen">'<strong>키워드:${param.search}</strong>'에 대한 검색결과 총 
+                                    <span id="totalCnt">${count}</span> 건
                                 </div>
+                                </c:if>
 
-                                <div class="listStyleType">
-                                    <select name="searchArticle" title="정렬조건 선택">
-                                        <option value="SCORE" selected="selected">인기도</option>
-                                        <option value="TITLE">서명</option>
-                                        <option value="AUTHOR">저자</option>
-                                        <option value="PUBLISHER">발행처</option>
-                                        <option value="PUBYEAR">발행일</option>
-                                        <option value="LOANCOUNT">대출수</option>
-                                        <option value="WDATE">등록일</option>
-                                    </select>
-                                    <select name="searchOrder" class="orderSel" style="display:none" title="정렬순서 선택">
-                                        <option value="ASC" selected="selected">오름차순</option>
-                                        <option value="DESC">내림차순</option>
-                                    </select>
-                                    <select name="searchDisplay" class="numSel" title="한페이지에 보여줄 건수 선택">
-                                            <option value="20" selected="selected">20건</option>
-                                            <option value="40">40건</option>
-                                            <option value="60">60건</option>
-                                            <option value="80">80건</option>
-                                    </select>
-                                    <a href="#btn" id="sortListBtn" class="btn">확인</a>
-                                    
-                                    <div class="btnSetWeb">
-                                        <a href="#list" class="listTypeList on" id="viewTypeList" title="선택됨"><span class="blind">리스트형</span></a>
-                                        <a href="#img" class="listTypeCard " id="viewTypeCard"><span class="blind">이미지형</span></a>
+                                <c:if test="${not empty message}">
+                                    <div class="result_screen">'<strong>${message}</strong>'
                                     </div>
-                                </div>
+                                </c:if>
+
+                                <c:if test="${not empty list}">
+                                    <div class="listStyleType">
+                                        <select id="kind" name="kind" title="정렬조건 선택" onchange="changeFn()">
+                                            <option value="score">정확도</option>
+                                            <option value="title">서명</option>
+                                            <option value="writer">저자</option>
+                                            <option value="publisher">발행처</option>
+                                            <option value="num">대출수</option>
+                                        </select>
+
+                                        <!-- <a href="" id="sortListBtn" class="btn">확인</a> -->
+                                        <input type="button" id="searchBtn1" class="btn" value="확인">
+                                        <!-- <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn"> -->
+                                        
+                                    </div>
+                                </c:if>
                             </div>
 
                         </div>
                     </div>
                     <!-- 검색설정랩 -->
 
-                    <!-- 서치리스트 -->
+                    <script src="/js/search.js"></script>
+
+                    <!-- 리스트 -->
                     <div id="bookList">
                         <div class="bookList listViewStyle">
                             <ul class="listWrap">
-                                <li>
-                                    <div class="bookArea">
-                                        <div class="bookImg"><a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');"><img alt="나" src="https://image.aladin.co.kr/product/64/23/cover500/8990878306_3.jpg" onerror="javascript:fnNoImgBook(this); return false;"></a></div>
-                    
-                                        <div class="bookData">
-                                            <div class="book_dataInner">
-                                                <span class="book_kind">단행본</span>
-                                                <a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');" class="book_name kor on"><span class="highlight word">나</span></a>
-                                                <a href="#link" onclick="fnDetail('19263465', '8990878306', 'MO');" class="book_name han"><span class="highlight word">나</span></a>
-                                                <ul class="dot-list clearfix">
-                                                    <li class="kor on"><span>저자</span> : 이경화 지음</li>
-                                                    <li class="han"><span>저자</span> : 이경화 지음</li>
-                                                    <li class="kor on"><span>발행처</span> : 바람의 아이들,</li>
-                                                    <li class="han"><span>발행처</span> : 바람의 아이들,</li>
-                                                    
-                                                            <li><span>발행년도</span> : 2006</li>
-                                                            <li><span>ISBN</span> : 8990878306</li>
+                                <c:forEach items="${list}" var="list" varStatus="status">
+                                    <li>
+                                        <div class="bookArea">
+                                            <div class="bookImg"><a href="#link" onclick="location.href='../detail?isbn=${list.isbn}'");"><img alt="${list.title}" src="${list.image}"></a></div>
+                        
+                                            <div class="bookData">
+                                                <div class="book_dataInner">
+                                                    <!-- <span class="book_kind">단행본</span> -->
+                                                    <a href="#link" onclick="location.href='../book/detail?ISBN=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                    <ul class="dot-list clearfix">
+                                                        <li class="kor on"><span>저자</span> : ${list.writer}</li>
+                                                        <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
                                                         
-                                                </ul>
-                                            </div>
-                    
-                                            <div class="bookDetailInfo">
-                                                <ol>
-                                                    <li><a href="#link" id="btn_haveInfo1" onclick="fnCollectionInfo('1', '19263465', 'MO');" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
-                                                    <li><a href="#link" id="btn_sergeInfo1" onclick="fnBibliographicInfo('1', '19263465', 'MO');" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
-                                                    
-                                                        <li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('8990878306', 'MO'); return false" class="btn_mylibrary themeFC themeBD" title="내서재 담기 새창열림">내서재 담기</a></li>
-                                                    
-                                                </ol>
+                                                                <li><span>발행년도</span> : ${list.bookDate}</li>
+                                                                <li><span>ISBN</span> : ${list.isbn}</li>
+                                                            
+                                                    </ul>
+                                                </div>
+                        
+                                                <div class="bookDetailInfo">
+                                                    <ol>
+                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨">소장정보</a></li>
+                                                        <li><a href="" id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
+                                                        <li><a href="" class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
+                                                    </ol>
+                                                </div>
+
+                                                
                                             </div>
                                         </div>
-                                    </div>
-                    
-                                    <!-- 소장정보 -->
-                                    <div id="collectionInfo1" class="bookDetailLayer whereLibrary"></div>
-                    
-                                    <!-- 서지정보 -->
-                                    <div id="bibliographicInfo1" class="bookDetailLayer bibliographicInfo"></div>
-                    
-                                </li>
+                        
+                                        <!-- 소장정보 -->
+                                        <div id="collectionInfo${status.count}" class="roqkrcla bookDetailLayer whereLibrary" tabindex="0">
+                                            <div class="thisBook-libraryList">
+                                                <div class="tblWrap scrollTable">
+                                                    <table class="tbl">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">도서관</th>
+                                                                <th scope="col">대출상태</th>
+                                                                <th scope="col">반납예정일</th>
+                                                                <th scope="col">청구기호</th>
+                                                                <th scope="col">예약</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr class="MA">
+                                                                    <td></td>
+                                                                    <td>
+                                                                        대출중
+                                                                        <br>(예약가능)
+                                                                        <br>(예약:1명)
+                                                                    </td>
+                                                                    <td>2022.11.25</td>
+                                                                    <td>833.6-히12나=c.2 <a href="#print" onclick="javascript:fnCallNoPrintPop('101783087', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                    <td>
+                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('101783087','EM0000167633'); return false" class="btn white small">대출예약</a>
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <a class="btn whereLibClose small ta_c">닫기</a>
+                                        </div>
+
+                                        <script>
+                                            // 얘도 반만됨
+                                            $(".tlqkf").on("click", $(".btn_haveInfo"), function () {
+                                                console.log($(".btn_haveInfo").attr("id"));
+                                                $(".whereLibrary").removeClass("open");
+                                                $(".bookInfo").removeClass("open");
+                                                $(".btn_sergeInfo").removeClass("on");
+                                                if (!$(this).hasClass("on")) {
+                                                    $(".btn_haveInfo").removeClass("on");
+                                                    $(this).addClass("on");
+                                                    $(this).parents("li").children(".whereLibrary").addClass("open");
+                                                    $(this).attr("title", "소장정보 확장됨");
+                                                } else {
+                                                    $(this).removeClass("on");
+                                                    $(".whereLibrary").removeClass("open");
+                                                    $(this).attr("title", "소장정보 축소됨");
+                                                }
+                                            });
+
+                                            // $('#btn_haveInfo1').click(function(){
+                                            //     if($('#collectionInfo1').hasClass("open") === false) {
+                                            //         $('#collectionInfo1').addClass("open");
+                                            //         $(this).prop("title","소장정보 확장됨");
+                                            //         return false;
+                                            //     } else {
+                                            //         $('#collectionInfo1').removeClass("open");
+                                            //         $(this).prop("title","소장정보 축소됨");
+                                            //     }
+                                            // });
+
+                                            
+
+                                            // document.querySelector('.roqkrcla').forEach(function(btns){ 
+                                            //     $('.btn_haveInfo').click(function(){
+                                                
+                                            //         // this.toggle();
+                                            //         btns.classList.toggle('open')
+                                            //     });
+                                            // })
+
+                                            
+
+                                            // $('.btn_haveInfo').on('click', (e) => {
+                                            //     console.log(e.target);
+                                            //     // if(e.target.matches)
+                                            //     btns.classList.toggle('open');
+                                            // })
+
+                                            // document.querySelectorAll('.roqkrcla').forEach(function(btns){ 
+                                            //     $('.btn_haveInfo').on('click', (e) => {
+                                            //         console.log(e.target);
+                                            //         // if(e.target.matches)
+                                            //         btns.classList.toggle('open');
+                                            //     })
+                                                
+                                            // })
+
+                                            // document.addEventListener('click', (e) => {
+                                            // if (e.target.matches('button.finish')){
+                                            //     e.target.closest('.eachTodo').classList.toggle('completed');
+                                            // }
+                                            // if (e.target.matches('button.remove')){
+                                            //     e.target.closest('.eachTodo').remove();
+                                            // }
+                                            // });
+
+
+                                            
+                                            // for(let i=1;i<=10;i++) {
+                                            //     $('#'+"btn_haveInfo"+i).click(function(){            
+                                            //         console.log("아");
+                                            //         $('#'+"collectionInfo"+i).toggle();
+                                            //     });
+                                            // } 
+
+                                            // for(let i=1;i<=10;i++) {
+                                            //     $('#'+"btn_haveInfo"+i).click(function(){
+                                            //             if($('#'+"collectionInfo"+i).hasClass("open") === true) {
+                                            //                 $('#'+"collectionInfo"+i).removeClass("open");
+                                            //                 $(this).prop("title","소장정보 축소됨");
+                                            //                 return false;
+                                            //             }
+                                            //     });
+                                            // } 
+                                            
+
+                                        </script>
+                                        <!-- 서지정보 -->
+                                        <div id="bookInfo1" class="bookDetailLayer bookInfo"></div>
+                        
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </div>
-                        <!-- 페이징 -->
+                        <c:if test="${not empty list}">
                         <div class="pagingWrap">
-                            <p class="paging"><a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
-                        <a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
-                        <span class="current">1</span>
-                        <a href="javascript:fnList(2);">2</a>
-                        <a href="javascript:fnList(3);">3</a>
-                        <a href="javascript:fnList(4);">4</a>
-                        <a href="javascript:fnList(5);">5</a>
-                        <a href="javascript:fnList(6);">6</a>
-                        <a href="javascript:fnList(7);">7</a>
-                        <a href="javascript:fnList(8);">8</a>
-                        <a href="javascript:fnList(9);">9</a>
-                        <a href="javascript:fnList(10);">10</a>
-                        <a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
-                        <a href="javascript:fnList(259);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
-                        
-                        </p>
+                            <input type="hidden" name="page" value="${pager.page}">
+                            <p class="paging">
+                                <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
+                                
+                                <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
+                                
+                                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+                                    <!-- <span class="current">1</span> -->
+                                    <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${i}" id="ppaaggee${i}">${i}</a>
+                                    
+                                </c:forEach>
+                                <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
+                                <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
+                                </p>
                         </div>
+                        </c:if>
                         <!-- //페이징 -->
+
+                        <script>
+                            let disables = document.querySelectorAll(".disabledLink")
+                            
+                            disables.forEach(element => {
+                                element.removeAttribute('href');
+                            });
+
+                            let urll = window.location.href;
+                            let urlnn = urll.lastIndexOf('=')+1;
+                            urllastt = urll.substring(urlnn);
+
+                            console.log(urllastt);
+
+                            let page1sibal = urll.lastIndexOf('=')-1;
+                            console.log(page1sibal);
+                            if(page1sibal==45){
+                                document.querySelector('#ppaaggee1').style.background="#9be15d";
+                                document.querySelector('#ppaaggee1').style.color="#fff";
+                            }
+
+                            let ppaaggee = document.querySelector('#'+"ppaaggee"+urllastt);
+                            ppaaggee.style.background="#9be15d";
+                            ppaaggee.style.color="#fff";
+                          
+                          
+                        </script>
                         
-                                            </div>
-                    <!-- 서치리스트 -->
+                    </div>
+                    <!-- 리스트 -->
 
                 </form>
                 <!-- End Of the Real Contents-->

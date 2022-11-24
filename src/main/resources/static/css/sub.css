@@ -9,7 +9,7 @@
 
 #container.sub {position: relative;}
 .sVisualWrap {display: block; position: absolute; left: 0; top: 0; width: 100%; height: 159px; background: #f4f4f4;}
-.sVisualWrap .sVisual {max-width: 1240px; height: 100%; margin: 0 auto; background: url(/include/image/common/svisual_img.png) no-repeat right top;}
+.sVisualWrap .sVisual {max-width: 1240px; height: 100%; margin: 0 auto; background: url(/images/svisual_img.png) no-repeat right top;}
 .sVisualWrap .sVisual h3 {display: none;}
 
 @media screen and (max-width:1024px) {

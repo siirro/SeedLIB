@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.studyroom.StudyRoomMapper">
+
+	
+	<select id="getSeatMany" parameterType="String" resultMap="getSeatManyResult">
+		SELECT * FROM
+		STUDYROOM S
+		LEFT JOIN
+		STUDYDETAIL SD
+		ON SD.ROOMNAME=S.ROOMNAME		
+		WHERE S.ROOMNAME=#{roomName}
+	</select>
+	
+	<select id="getUseSeat" parameterType="StudyDetailVO" resultType="int">
+		SELECT COUNT(*) FROM
+		STUDYDETAIL
+		WHERE ROOMNAME=#{roomName} AND SEATNUM=#{seatNum} AND RVABLE=0 AND RVDATE=CURDATE()
+	</select>
+	
+	<select id="getOverlapSeat" parameterType="StudyDetailVO" resultType="int">
+		SELECT COUNT(*) FROM
+		STUDYDETAIL
+		WHERE USERNAME=#{userName} AND RVABLE=0
+	</select>
+	
+	<insert id="setMySeat" parameterType="StudyDetailVO">
+		INSERT INTO STUDYDETAIL VALUES
+		(0, 0, #{seatNum}, SYSDATE(), #{roomName}, #{userName});
+	</insert>
+	
+	<select id="getSeatHistory" parameterType="String" resultType="StudyDetailVO">
+		SELECT * FROM STUDYDETAIL 
+		WHERE USERNAME=#{userName}
+	</select>
+	
+	<update id="exitMySeat" parameterType="Map">
+		UPDATE STUDYDETAIL SET
+		RVABLE=1
+		WHERE USERNAME=#{userName} AND SEATNUM=#{seatNum};
+	</update> 
+	
+	<update id="changeDaySeat">
+		UPDATE STUDYDETAIL SET
+		RVABLE=1
+		WHERE RVDATE <![CDATA[<]]> CURDATE()
+	</update>
+		
+	<resultMap type="StudyDetailVO" id="getSeatManyResult">
+		<id column="RVNUM" property="rvNum"/>
+		<result column="RVABLE" property="rvAble"/>
+		<result column="SEATNUM" property="seatNum"/>
+		<result column="RVDATE" property="rvDate"/>  
+		<result column="USERNAME" property="userName"/>
+		<association property="roomVO">
+			<id column="ROOMNAME" property="roomName"/>
+			<result column="LASTNUM" property="lastNum"/>
+		</association>
+	</resultMap>
+</mapper>    
