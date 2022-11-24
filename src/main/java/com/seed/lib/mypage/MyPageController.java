@@ -1,5 +1,6 @@
 package com.seed.lib.mypage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import com.seed.lib.donation.DonationService;
 import com.seed.lib.donation.DonationVO;
 import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
+import com.seed.lib.studyroom.StudyDetailVO;
+import com.seed.lib.studyroom.StudyRoomService;
+import com.seed.lib.util.FullCalendarVO;
 import com.seed.lib.util.HdPager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +31,8 @@ public class MyPageController {
 	private HopeService hopeService;
 	@Autowired
 	private DonationService donationService;
+	@Autowired
+	private StudyRoomService roomService;
 	
 	
 	@GetMapping("myIndex")
@@ -64,6 +70,25 @@ public class MyPageController {
 		List<DonationVO> dl = donationService.getDonList(hdPager);
 		mv.addObject("dlist", dl);
 		mv.addObject("pager", hdPager);
+		return mv;
+	}
+	
+	@GetMapping("seatHistory")
+	public ModelAndView getSeatHistory (String userName) throws Exception{
+		
+		List<StudyDetailVO> sdl = roomService.getSeatMany(userName);
+		List<FullCalendarVO> cl = new ArrayList<>();
+		ModelAndView mv = new ModelAndView();
+		for(StudyDetailVO s: sdl) {
+			FullCalendarVO calendarVO = new FullCalendarVO();
+			calendarVO.setId(s.getSeatNum().toString());
+			calendarVO.setTitle(s.getRoomName());
+			calendarVO.setStart(s.getRvDate());
+			calendarVO.setDisplay("background");
+			calendarVO.setClassNames(s.getRoomName()+"-"+s.getSeatNum()+"-"+s.getRvAble());
+			cl.add(calendarVO);
+		}
+		mv.addObject("cl", cl);		
 		return mv;
 	}
 	
