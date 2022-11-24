@@ -57,34 +57,28 @@ $("#revBtn").click(function(){
         success: function(data){
             switch (data) {
                 case 111:
-                alert("해당 좌석은 이미 이용 중입니다");
-                window.close();
-                break;
+                    alert("해당 좌석은 이미 이용 중입니다");
+                    window.close();
+                    break;
                 case 222:
-                alert("이용 중인 좌석을 퇴실 처리 후 다시 예약해주세요");
-                window.close();
-                break;
+                    alert("이용 중인 좌석의 퇴실 처리 후 예약이 가능합니다");
+                    window.close();
+                    break;
                 case 200:
-                    console.log("Num: ", hopeVO.libVO.libNum);
-            if(data == 111){
-                alert("해당 좌석은 이미 이용 중입니다");
-                window.close();
-            }else if(data == 222){
-                alert("")
-            } else{
-
+                    let check=window.confirm("좌석 예약을 완료했습니다\n마이페이지에서 확인하시겠습니까?");
+                    if(check){
+                        opener.location.href="/mypage/seatHistory"; 
+                        window.close();
+                        break;
+                    } else{
+                        opener.location.href="../"; 
+                        window.close();
+                        break;
+                    }    
+                }
+            }, error: function(){
+                console.log("에러남ㅠㅠ");
             }
-            let check=window.confirm("좌석 예약을 완료했습니다\n마이페이지에서 확인하시겠습니까?");
-            if(check){
-                opener.location.href="/mypage/seatHistory"; 
-                window.close();
-            } else{
-                opener.location.href="../"; 
-                window.close();
-            }
-        }, error: function(){
-            console.log("에러남ㅠㅠ");
-        }
     })
 })
 

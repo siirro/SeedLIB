@@ -46,6 +46,7 @@
 						<fieldset>
 							<legend class="blind">이용 내역 검색 영역</legend>
 							<div id='calendar'></div>
+							${cl}
 		</div>
 	</div>	
 </div>	
@@ -54,12 +55,48 @@
 <!-- //footer -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+		let cl = [];
+		cl.push("${cl}");
+		for(let i=0; i<cl; i++){
+			console.log(cl[i]);
+		}
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+  			locale: 'ko', // the initial locale. of not specified, uses the first one
+			initialView: 'dayGridMonth',
+			events: [
+					{
+					id: 'a',
+    			  	title: 'my event',
+					start: '2022-10-10',
+					// end: '2022-11-10',
+					display: 'background'
+					},
+					{
+					id: 'a',
+    			  	title: 'my event',
+					start: '2022-11-10',
+					// end: '2022-11-10',
+					display: 'background'
+					},
+					{
+					id: 'a',
+    			  	title: 'my event',
+					start: '2022-11-15',
+					// end: '2022-11-10',
+					display: 'background'
+					}
+				],
+				eventBackgroundColor: '#378006'
         });
         calendar.render();
+		var event = calendar.getEventById('a');
+		event.addEventListener("click",function(){
+		alert("wow");
+	})
       });
+</script>
+<script>
 </script>  
 </body>
 </html>

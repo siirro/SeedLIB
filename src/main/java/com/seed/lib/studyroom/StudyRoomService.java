@@ -38,4 +38,9 @@ public class StudyRoomService {
 //		return mapper.getUseSeat(roomName);
 //	}
 	
+	//마이페이지에서 이용내역 확인하기
+	public List<StudyDetailVO> getSeatHistory (String userName) throws Exception{
+		return mapper.getSeatHistory(userName);
+	}
+	
 }

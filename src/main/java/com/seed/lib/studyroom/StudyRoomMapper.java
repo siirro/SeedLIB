@@ -15,4 +15,6 @@ public interface StudyRoomMapper {
 	
 	public int setMySeat (StudyDetailVO studyDetailVO) throws Exception; 
 	
+	public List<StudyDetailVO> getSeatHistory (String userName) throws Exception;
+	
 }

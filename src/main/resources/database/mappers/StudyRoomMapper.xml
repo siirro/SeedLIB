@@ -24,13 +24,18 @@
 	<select id="getOverlapSeat" parameterType="StudyDetailVO" resultType="int">
 		SELECT COUNT(*) FROM
 		STUDYDETAIL
-		WHERE USERNAME=#{uaerName} AND RVABLE=0
+		WHERE USERNAME=#{userName} AND RVABLE=0
 	</select>
 	
 	<insert id="setMySeat" parameterType="StudyDetailVO">
 		INSERT INTO STUDYDETAIL VALUES
 		(0, 0, #{seatNum}, SYSDATE(), #{roomName}, #{userName});
 	</insert>
+	
+	<select id="getSeatHistory" parameterType="String" resultType="StudyDetailVO">
+		SELECT * FROM STUDYDETAIL 
+		WHERE USERNAME=#{userName}
+	</select>
 	
 	<update id="exitMySeat" parameterType="Map">
 		UPDATE STUDYDETAIL SET
