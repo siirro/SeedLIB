@@ -32,7 +32,7 @@
             <div class="naviandtitle">
                 <h3>신착자료</h3>
                 <div class="navi">
-                    <a href="/seoksu/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
+                    <a href="/" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
                     <i class="arrow"></i> 자료검색 <i class="arrow"></i>신착자료
                 </div>
                 <div class="snsFarm">
