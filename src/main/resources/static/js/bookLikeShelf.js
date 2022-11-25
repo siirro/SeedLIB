@@ -98,7 +98,7 @@ $("#RealBookBtn").click(function(){
 				case 0:
 					let check = window.confirm("책꽂이에 책을 저장했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/mypage/shelf?shNum="+shNum;
+						opener.location.href="/shelf/bookList?shNum="+shNum;
 						window.close();
 						break;
 					} else{
@@ -116,20 +116,51 @@ $("#RealBookBtn").click(function(){
 
 
 
-//새 책꽂이 생성
+//-------------------------------------------------
+//새 책꽂이 생성 눌렀을 때
 $("#addShelfBtn").click(function(){
 	$.ajax({
 		type : "GET",
 		url : "../shelf/newShelf",
-		data : {
-			userName : userName
-		},
 		success : function(){
-			console.log("책꽂이 없음");
-			window.open('../shelf/newShelf?userName='+userName);
+			window.open('../shelf/newShelf', "새 책꽂이 생성", strOption);
 		},
 		error : function(){
 			console.log("ERROR");
 		}
 	})
 });
+
+//새 책꽂이 저장
+$("#RealShelfBtn").click(function(){
+	const bookShelfVO = {
+		shName:$("shName").val(),
+		shNum:$("shNum").val(),
+	}
+	$.ajax({
+		type : "POST",
+		url : "/shelf/setNewShelf",
+		data:JSON.stringify(bookShelfVO),
+		success:function(data){
+			switch (data){
+				case 1:
+					alert("해당 이름의 책꽂이가 이미 존재합니다.")
+					break;
+				case 0:
+					let check = window.confirm("책꽂이를 생성했습니다.\n마이페이지에서 확인하시겠습니까?");
+					if(check){
+						opener.location.href="/mypage/shelf?userName="+userName;
+						window.close();
+						break;
+					} else{
+                        opener.location.href="../"; 
+                        window.close();
+                        break;
+                    } 
+				}
+			},
+			error:function(){
+				console.log("ERROR");
+			}
+		})
+	});

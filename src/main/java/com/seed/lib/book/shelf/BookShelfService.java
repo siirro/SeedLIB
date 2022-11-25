@@ -28,10 +28,11 @@ public class BookShelfService {
 	}
 	
 	//사용자의 기존 책꽂이 존재 유무
+		//detail.jsp - 기존에 책꽂이가 있으면 책 저장 페이지 | 없으면 책꽂이 생성 페이지
 	public boolean getShelfExist (BookShelfVO shelfVO) throws Exception{
 		int exist = bookShelfMapper.getShelfExist(shelfVO);
 		boolean isExist = false;
-		
+			
 		if (exist >= 1) {
 			isExist = true;
 		}
@@ -53,7 +54,12 @@ public class BookShelfService {
 		
 	//새 책꽂이 생성
 	public int setShelfAdd (BookShelfVO shelfVO) throws Exception{
-		return bookShelfMapper.setShelfAdd(shelfVO);
+		int result = bookShelfMapper.getShelfExist(shelfVO);
+		if(result==0) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 		
 	//책꽂이 삭제

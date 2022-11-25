@@ -21,11 +21,13 @@
     <link rel="stylesheet" href="/css/book/shelf.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    
+    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
+    <link rel="icon" href="/images/favicon.png">
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
 <body>
+	<input type="hidden" id="userName" value="bb">
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 책 꽂 이 🌱</span>
@@ -47,13 +49,12 @@
 	            </div>
 	        </div>
         	<div class="btnArea">
-				<a href="../shelf/newshelf" title="새 책꽂이 만들기">새로운 책꽂이</a>
+				<button type="button" id="addShelfBtn" title="새 책꽂이 만들기">새로운 책꽂이</button>
 				<button type="button" id="RealBookBtn" title="저장">저장</button>
-				<a href="javascript:window.close();" title="닫기">닫기</a>
+				<button type="button" id="closeBtn" title="닫기">닫기</button>
 			</div>
 		</div>
     </div>
-   <script src="/js/studyRoomRes.js"></script>
 	
 </body>
 </html>

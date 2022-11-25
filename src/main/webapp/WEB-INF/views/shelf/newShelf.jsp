@@ -18,78 +18,39 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/book/shelf.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    
+    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
+    <link rel="icon" href="/images/favicon.png">
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
 <body>
-	<div id="divWrapper">
-		<section id="divContents">
-			<div class="sub-title cf box">
-				<h2 id="divTitle" class="fl">책꽂이</h2>
-		     	
-		     	<!--  브레드크럼 시작  -->
-				<div class="breadCrumb fr">
-					<ul>	
-						<li class="home"><span></span></li>
-						<li><a href="/myloan/list">내서재</a></li>
-						<li class="currentPage">책꽂이</li>
-					</ul>
-		   		</div>
-				<!--  브레드크럼 종료  -->
+	<input type="hidden" id="userName" value="bb">
+	<div class="contentsGroup">
+        <div class="seatArea">
+            <span class="book" style="margin-bottom: 10px;">🌱 새 책 꽂 이 🌱</span>
+            <hr style="width: 35%;"> 
+        </div>
+        <hr style="margin-top: 30px;">   
+        <div>
+            <div class="shelfCon">
+	            <div class="shelfName">
+	            	<span>새 책꽂이 명</span>
+	            	<input type="text" id="shName" placeholder="책꽂이 명은 한 글자 이상이어야 합니다.">
+	            </div>
+	            <div class="shelfMemo">
+	            	<span>책꽂이 설명</span>
+	            	<textarea type="text" id="shMemo" rows="3"></textarea>
+	            </div>
+	        </div>
+        	<div class="btnArea">
+				<button type="button" id="RealShelfBtn" title="저장">저장</button>
+				<a href="" title="닫기">닫기</a>
 			</div>
+		</div>
+    </div>
 	
-			<div id="divContent">
-				<p class="sentence">
-				<span class="essential">*</span>
-				표시는 필수사항 입니다.</p>
-	
-				<form id="form" action="/mylist/pop/insert" method="post">
-					<input id="list_id" name="list_id" type="hidden" value="0">
-					<input type="hidden" name="item" value="CAT000001370034">
-					<input type="hidden" name="list_privacy" value="1">
-					
-					<fieldset>
-						<div class="writeTable">
-							<legend>책꽂이 추가</legend>
-							<table>
-								<caption>책꽂이 추가</caption>
-								<tbody>
-									<tr>
-										<th scope="row"><label for="list_name">
-											<span class="essential" title="필수항목">*</span>
-											서재</label>
-										</th>
-										<td>
-											<input id="list_name" name="list_name" class="inputTextType1" type="text" value="" maxlength="200">
-											
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											<label for="description"> 설명</label>
-										</th>
-										<td>
-											<input id="description" name="description" class="inputTextType1" type="text" value="" maxlength="400">
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</fieldset>
-		
-					<!-- buttons -->
-					<div class="buttons">
-						<input type="submit" value="저장">
-						<input type="reset" value="다시쓰기">
-						<a href="javascript:window.close();" title="닫기">닫기</a>
-					</div>			
-				</form>
-			</div>
-		</section>
-	</div>
-
 </body>
 </html>

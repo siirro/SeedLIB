@@ -30,20 +30,6 @@ public class BookShelfController {
 	private BookShelfService bookShelfService;
 	
 	//책꽂이 목록
-		//새 책 저장시 옵션 - Pager X
-	@GetMapping("list")
-	public ModelAndView getShelfList (String userName) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		//책꽂이 리스트
-		List<BookShelfVO> ar = bookShelfService.getShelfList(userName);
-		mv.addObject("list", ar);
-		mv.setViewName("shelf/list");
-		
-		return mv;
-	}
-	
-	//책꽂이 목록
 		//마이페이지 - Pager O
 		//shelf/list?userName=
 	@GetMapping("list")
@@ -61,22 +47,20 @@ public class BookShelfController {
 		//동일한 이름 있을 시 생성 불가
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
-	public void setShelfAdd (BookShelfVO shelfVO) throws Exception{
+	public String setNewShelf (BookShelfVO shelfVO) throws Exception{
 		log.info("GET Shelf Add");
+		return "shelf/newShelf";
 	}
 	
+	@ResponseBody
 	@PostMapping("newShelf")
-	public ModelAndView setShelfAdd (HttpSession session, BookShelfVO shelfVO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		//사용자 정보
-		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
-		mv.addObject("member", memberDTO);
-		
-		//새로운 책꽂이 정보
+	public int setShelfAdd (@RequestBody BookShelfVO shelfVO) throws Exception{
 		int result = bookShelfService.setShelfAdd(shelfVO);
-		mv.setViewName("shelf/newShelf");
-		return mv;
+		if(result==0) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 		
 	

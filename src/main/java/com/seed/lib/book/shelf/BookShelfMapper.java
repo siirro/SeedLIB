@@ -15,6 +15,7 @@ public interface BookShelfMapper {
 	public String getBookTitle (Long isbn) throws Exception;
 	
 	//사용자의 기존 책꽂이 존재 유무
+		//setShelfAdd 에서 사용 - 1이면 존재 -> 저장X | 0이면 저장 가능
 	public int getShelfExist (BookShelfVO shelfVO) throws Exception;
 	
 	//사용자의 책꽂이 내 기존 책 존재 유무

@@ -21,8 +21,8 @@
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLike.js"></script>
-    
+    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
+    <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 </head>
 
