@@ -179,9 +179,9 @@
                               text-center
                             "
                             type="submit"
-                          >
-                            등록하기
-                            <span class="icon"><i class="lni lni-checkmark"></i></span>
+                          >                          
+                            <b>등록하기</b>
+                            <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                           </button>
                         </div>
                       </div>

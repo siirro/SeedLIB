@@ -16,14 +16,9 @@
         </div>
         <nav class="sidebar-nav">
           <ul>
-            <li class="nav-item nav-item-has-children">
+            <li class="nav-item">
               <a
-                href="#0"
-                data-bs-toggle="collapse"
-                data-bs-target="#ddmenu_1"
-                aria-controls="ddmenu_1"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+                href="/admin/main"
               >
                 <span class="icon">
                   <svg width="22" height="22" viewBox="0 0 22 22">
@@ -34,11 +29,6 @@
                 </span>
                 <span class="text">Dashboard</span>
               </a>
-              <ul id="ddmenu_1" class="collapse show dropdown-nav">
-                <li>
-                  <a href="index.html" class="active"> eCommerce </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item nav-item-has-children">
               <a
@@ -159,15 +149,9 @@
                 <span class="text">Invoice</span>
               </a>
             </li>
-            <li class="nav-item nav-item-has-children">
+            <li class="nav-item">
               <a
-                href="#0"
-                class="collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#ddmenu_3"
-                aria-controls="ddmenu_3"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+                href="/admin/adLogin"
               >
                 <span class="icon">
                   <svg
@@ -182,13 +166,8 @@
                     />
                   </svg>
                 </span>
-                <span class="text">관리자 인증</span>
+                <span class="text">관리자 로그인</span>
               </a>
-              <ul id="ddmenu_3" class="collapse dropdown-nav">
-                <li>
-                  <a href="/admin/adLogin">관리자 로그인</a>
-                </li>
-              </ul>
             </li>
             <span class="divider"><hr /></span>
             <li class="nav-item nav-item-has-children">

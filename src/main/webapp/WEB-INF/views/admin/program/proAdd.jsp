@@ -221,7 +221,7 @@
                         "
                         type="submit"
                       >
-                        개설하기
+                        <b>개설하기</b>
                         <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                       </button>
                     </div>
