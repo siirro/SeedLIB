@@ -1,12 +1,15 @@
 package com.seed.lib.search;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.Pager;
+import com.seed.lib.util.SearchDetailPager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +19,37 @@ public class SearchService {
 	
 	@Autowired
 	private SearchMapper searchMapper;
+	
+	public List<BookVO> getSearchDetail(SearchDetailPager searchDetailPager)throws Exception{
+		searchDetailPager.getRowNum();
+		Long totalCount = searchMapper.getSearchDetailCount(searchDetailPager);
+		searchDetailPager.getNum(totalCount);
+		return searchMapper.getSearchDetail(searchDetailPager);
+	}
+	
+	public List<BookVO> getSearchCategory(Pager pager, BookVO bookVO)throws Exception{
+		pager.getRowNum();
+		Long totalCount = getSearchCategoryCount(pager, bookVO);
+		pager.getNum(totalCount);
+		Map<String, Object> map = new HashMap<>();
+		map.put("category", bookVO.getCategory());
+		map.put("startRow", pager.getStartRow());
+		map.put("perPage", pager.getPerPage());
+		map.put("kind", pager.getKind());
+		return searchMapper.getSearchCategory(map);
+	}
+	
+	public Long getSearchCategoryCount(Pager pager, BookVO bookVO)throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("category", bookVO.getCategory());
+		map.put("kind", pager.getKind());
+		return searchMapper.getSearchCategoryCount(map);
+	}
+	
+	public List<BookVO> getSearchNewBook(Pager pager)throws Exception{
+		
+		return searchMapper.getSearchNewBook(pager);
+	}
 	
 	public List<BookVO> getSearchSimple(Pager pager)throws Exception{
 		pager.getRowNum();

@@ -5,6 +5,74 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
+<select id="getSearchDetail" parameterType="SearchDetailPager" resultType="BookVO">
+SELECT * FROM BOOK
+WHERE TITLE LIKE CONCAT('%', #{searchTitle}, '%') 
+AND WRITER LIKE CONCAT('%', #{searchWriter}, '%')
+AND PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%')
+AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
+AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
+AND CATEGORY = #{searchCategory}
+ORDER BY NUM
+LIMIT #{startRow}, #{perPage}
+</select>
+
+<select id="getSearchDetailCount" parameterType="SearchDetailPager" resultType="Long">
+SELECT COUNT(ISBN) FROM BOOK
+WHERE TITLE LIKE CONCAT('%', #{searchTitle}, '%') 
+AND WRITER LIKE CONCAT('%', #{searchWriter}, '%')
+AND PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%')
+AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
+AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
+AND CATEGORY = #{searchCategory}
+ORDER BY NUM
+</select>
+
+
+
+<select id="getSearchCategory" parameterType="Map" resultType="BookVO">
+SELECT * FROM BOOK
+WHERE CATEGORY=#{category}
+ORDER BY
+	<choose>
+		<when test="kind == 'num'">
+		    NUM
+		</when>
+		<when test="kind == 'title'">
+			TITLE
+		</when>
+		<when test="kind == 'writer'">
+			WRITER
+		</when>
+		<otherwise>PUBLISHER</otherwise>
+	</choose>
+LIMIT #{startRow}, #{perPage}
+</select>
+
+<select id="getSearchCategoryCount" parameterType="Map" resultType="Long">
+SELECT COUNT(ISBN) FROM BOOK
+WHERE CATEGORY=#{category}
+ORDER BY 
+	<choose>
+		<when test="kind == 'num'">
+		    NUM
+		</when>
+		<when test="kind == 'title'">
+			TITLE
+		</when>
+		<when test="kind == 'writer'">
+			WRITER
+		</when>
+		<otherwise>PUBLISHER</otherwise>
+	</choose>
+</select>
+
+<select id="getSearchNewBook" parameterType="Pager" resultType="BookVO">
+SELECT * FROM BOOK
+ORDER BY REGDATE DESC
+limit 0, #{perPage}
+</select>
+
 <!-- <select id="getHaveInfo" parameterType="BookVO" resultMap="getHaveInfoResult">
 SELECT * FROM BOOKLIB B
 	JOIN LIBRARY L

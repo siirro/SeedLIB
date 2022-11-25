@@ -71,10 +71,10 @@
 .siteMenu > ul > li a:hover, .siteMenu li a:focus {text-decoration: underline;}
 .siteMenu .snsShortcut {float: right; margin-left: 20px;}
 .siteMenu .snsShortcut a {display: block; float: left; width: 38px; height: 40px;}
-.siteMenu .snsShortcut a:nth-child(1) {background: url(/include/image/common/top_snsKakao.png) no-repeat 50% 50%;}
+/* .siteMenu .snsShortcut a:nth-child(1) {background: url(/include/image/common/top_snsKakao.png) no-repeat 50% 50%;}
 .siteMenu .snsShortcut a:nth-child(2) {background: url(/include/image/common/top_snsInsta.png) no-repeat 50% 50%;}
 .siteMenu .snsShortcut a:nth-child(3) {background: url(/include/image/common/top_snsTwitter.png) no-repeat 50% 50%;}
-.siteMenu .snsShortcut a:nth-child(4) {background: url(/include/image/common/top_snsYoutube.png) no-repeat 50% 50%;}
+.siteMenu .snsShortcut a:nth-child(4) {background: url(/include/image/common/top_snsYoutube.png) no-repeat 50% 50%;} */
 
 /* top search */
 #btnSearchTop {display: block; position: absolute; top: 50%; right: 10px; z-index: 778; margin-top: -20px; width: 40px; height: 40px; background: url(/images/searcdh.png) 50% 50% no-repeat;}
@@ -106,7 +106,7 @@
 .snsFarm li > a {position: relative; z-index: 2; box-sizing: border-box; background-color: #fff;}
 .snsFarm a {display: inline-block; overflow: hidden; width: 40px; height: 40px; margin-left: 5px; border-radius: 50%; position: relative;}
 .snsFarm .snsList {display: none; overflow: hidden; position: absolute; top: 0; right: 0; z-index: 1; font-size: 0; line-height: 0; white-space: nowrap;}
-.snsFarm a::before {content: ''; display: block; position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(/include/image/common/ico_sns.png) 0 0 no-repeat; background-size: 40px auto;}
+/* .snsFarm a::before {content: ''; display: block; position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(/include/image/common/ico_sns.png) 0 0 no-repeat; background-size: 40px auto;} */
 .snsFarm a.snsShare::before {background-position: 1px 2px;}
 .snsFarm a.snsPrint::before {background-position: 1px -39px;}
 .snsFarm a.snsStory::before {background-color: #fed300;background-position: 0 -80px;}
@@ -166,15 +166,15 @@
 .topPopupWrap .topNotice p {font-size: 1.188em; color: #fff; line-height: 37px; font-weight: 200; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .topPopupWrap .topNotice p b {font-weight: 500;}
 .topPopupWrap .topNotice p span {display: inline-block; width: 36px; height: 37px; margin-right: 10px; line-height: 0; vertical-align: top; background-color: #6b64be; border-radius: 100%; position: relative;}
-.topPopupWrap .topNotice p span::before {content: ""; position: absolute; left: 0; top: 0; width: 36px; height: 37px;}
+/* .topPopupWrap .topNotice p span::before {content: ""; position: absolute; left: 0; top: 0; width: 36px; height: 37px;}
 .topPopupWrap .topNotice p span.ico::before {background: url(/include/image/common/topPopup_icon.png) no-repeat 50% 50%;}
-.topPopupWrap .topNotice p span.ico1::before {background: url(/include/image/common/topPopup_icon.png) no-repeat 50% 50%;}
+.topPopupWrap .topNotice p span.ico1::before {background: url(/include/image/common/topPopup_icon.png) no-repeat 50% 50%;} */
 .topPopupWrap .topPopClose {position: absolute; top: 50%; right: 0; margin-top: -18px; line-height: 1; color: rgba(255,255,255,.6); font-size: 0.875em; background-color: rgba(78,60,153,.5); padding: 0 10px 0 15px; line-height: 36px; border-radius: 36px;}
 .topPopupWrap .topPopClose input {vertical-align: middle; margin-right: 2px;}
 .topPopupWrap .topPopupClose {display: inline-block; padding: 0 5px;}
 
 /* top button */
-#btnTopScroll {display:inline-block; position:fixed; right:15px; bottom:35px; min-width:30px; min-height:30px; z-index:9999; line-height:0; padding:10px; background:url(/include/image/button/btn_top.png) no-repeat center; display:none;}
+/* #btnTopScroll {display:inline-block; position:fixed; right:15px; bottom:35px; min-width:30px; min-height:30px; z-index:9999; line-height:0; padding:10px; background:url(/include/image/button/btn_top.png) no-repeat center; display:none;} */
 
 /* form element */
 .form-ele {display: inline-block; width: 100%; vertical-align: middle; box-sizing: border-box;}
@@ -238,7 +238,7 @@ li > .boardWrap {margin: 5px 0;}
 
 /* list style - dot */
 .dot-list > li {margin: 3px 0;}
-.dot-list > li, .dot {padding-left: 11px; background: url(/include/image/common/bul_dot.png) 0 12px no-repeat;}
+/* .dot-list > li, .dot {padding-left: 11px; background: url(/include/image/common/bul_dot.png) 0 12px no-repeat;} */
 .dot-list > li > span {color: #222;}
 .dot-list ~ .dash-list {margin-top: 5px;}
 .dot-list.location > li {margin: 10px 0 0;}
@@ -247,7 +247,7 @@ p.dot {position: relative;}
 p.dot span {position: absolute; top: 0; right: 0}
 
 /* list style - dash */
-.dash-list > li, .dash {padding-left: 12px; background: url(/include/image/common/bul_dash.png) 0 12px no-repeat;}
+/* .dash-list > li, .dash {padding-left: 12px; background: url(/include/image/common/bul_dash.png) 0 12px no-repeat;} */
 .dash-list > li > span {color: #222;}
 
 .dot-list.location > li > .dash-list > li {margin-top: 5px;}
@@ -279,7 +279,7 @@ p.dot span {position: absolute; top: 0; right: 0}
 .process-list.col-4 > li {width: 25%;}
 .process-list.col-5 > li {width: 20%;}
 .process-list.col-6 > li {width: 16.666%;}
-.process-list .col {overflow: hidden; padding-left: 20px;word-break: keep-all; background: url(/include/image/common/arr_process.png) 5px 50% no-repeat;}
+/* .process-list .col {overflow: hidden; padding-left: 20px;word-break: keep-all; background: url(/include/image/common/arr_process.png) 5px 50% no-repeat;} */
 .process-list .col .tit {display: block; padding: 15px 0;font-weight: 500; font-size: 1.063em; line-height: 20px; color: #fff; text-align: center; background-color: #555;}
 .process-list .col .txt {display: table; width: 100%; text-align: center;}
 .process-list .col .txt .cell {display: table-cell; width: 100%; height: 140px; padding: 10px; vertical-align: middle; border: 1px solid #aaa; background-color: #fff;}
@@ -342,7 +342,7 @@ p.dot span {position: absolute; top: 0; right: 0}
 /* box design group */
 .bdBox {padding: 20px; border: 1px solid #ddd;}
 .bdBox span {display: inline-block; position: relative; padding: 3px 18px 3px 0; margin-right: 11px; font-weight: 500;}
-.bdBox span::after {content: ""; position: absolute; right: 0; top: 50%; margin-top: -5px; width: 7px; height: 11px; background: url(/include/image/contents/bd_arr.png) no-repeat 0 0;}
+/* .bdBox span::after {content: ""; position: absolute; right: 0; top: 50%; margin-top: -5px; width: 7px; height: 11px; background: url(/include/image/contents/bd_arr.png) no-repeat 0 0;} */
 .bdBox span:last-child {padding-right: 0; margin-right: 0;}
 .bdBox span:last-child::after {display: none;}
 
@@ -367,10 +367,10 @@ p.dot span {position: absolute; top: 0; right: 0}
 .policyBox span {font-size: 1.188rem; font-weight: 700; display: inline-block;}
 .scrollBox {overflow-x: hidden; overflow-y: auto; max-height: 200px; padding: 20px; border: 1px solid #d6d6d6; background-color: #faf9f9; box-sizing: border-box;}
 
-.summaryDesc {overflow: hidden; position: relative; margin-bottom: 40px; padding: 10px; background: url(/include/image/common/bg_pattern.png) 0 0; }
+/* .summaryDesc {overflow: hidden; position: relative; margin-bottom: 40px; padding: 10px; background: url(/include/image/common/bg_pattern.png) 0 0; } */
 .summaryDesc .innerBox {display: table; width: 100%; background-color: #fff; padding: 15px 0; box-sizing: border-box;}
 .summaryDesc .innerBox.noImg {padding: 15px;}
-.summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/images/ico_book.png) no-repeat 0 0;}
+/* .summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/images/ico_book.png) no-repeat 0 0;} */
 
 .summaryDesc .img + .desc {display: table-cell; width: 100%; height: 100px; padding: 0 20px 0 163px;}
 .summaryDesc .desc {word-break: keep-all; vertical-align: middle; color: #464646; font-size: 1.059em; letter-spacing: -0.75px;}
@@ -385,7 +385,7 @@ p.dot span {position: absolute; top: 0; right: 0}
 .summaryDesc .recommend_box > ul li p span {font-size:1.278em; }
 .summaryDesc .recommend_box .recommend_desc {display: block; padding: 0 30px; font-size: 1.063em; color: #555; margin-bottom: 20px;}
 
-.prefaceDesc {overflow: hidden; position: relative; margin-bottom: 30px; padding: 20px 0; background: url(/include/image/common/bg_diagonal_line.png) left top repeat-x, url(/include/image/common/bg_diagonal_line.png) left bottom repeat-x;}
+/* .prefaceDesc {overflow: hidden; position: relative; margin-bottom: 30px; padding: 20px 0; background: url(/include/image/common/bg_diagonal_line.png) left top repeat-x, url(/include/image/common/bg_diagonal_line.png) left bottom repeat-x;} */
 .prefaceDesc li {margin: 2px 0;}
 .policyAgree {margin-top: 20px;}
 .policyAgree .innerBox {padding: 15px 20px; border: 1px dashed #999;}
@@ -404,11 +404,11 @@ p.dot span {position: absolute; top: 0; right: 0}
 .clip-check input[type="checkbox"]{width: 20px; height: 15px; padding-bottom: 20px; vertical-align: middle; display: inline-block;}
 
 /* 관심도서목록 - 책장만들기 레이어 팝업 */
-.chart-pop {display: none; position: fixed; top: 200px; left: 50%; margin-left: -300px; width: 600px; z-index: 9999;}
+/* .chart-pop {display: none; position: fixed; top: 200px; left: 50%; margin-left: -300px; width: 600px; z-index: 9999;}
 .chart-pop .chart-close01 {position: absolute; right: 20px; top: 20px; width: 30px; height: 30px; background: url(/include/image/common/ico_layerClose.png) no-repeat center center; }
 .chart-pop h4 {padding: 20px; font-size: 1.176em; color: #fff; font-weight: 300;}
 .chart-pop h4::before {content: ""; display: inline-block; width: 17px; height: 17px; background: url(/include/image/common/ico_layerTit.png) no-repeat 0 0; vertical-align: -1px; margin-right: 10px;}
-.chart-pop .layer-content {overflow: hidden; position: relative; background-color: #fff;}
+.chart-pop .layer-content {overflow: hidden; position: relative; background-color: #fff;} */
 
 /* 책장만들기 */
 .chart-pop .layer-content .addWrap {position: relative; background-color:#f8f8f8; padding: 30px 30px 10px;}
@@ -432,8 +432,8 @@ p.dot span {position: absolute; top: 0; right: 0}
 .chart-pop .layer-content .caseList ul li dd a {display: inline-block; width: 40px; height: 30px; vertical-align: middle;}
 .chart-pop .layer-content .caseList ul li dd a::before {content: ""; display: inline-block; width: 1px; height: 17px; background-color: #dcdcdc; vertical-align: middle;}
 .chart-pop .layer-content .caseList ul li dd a.del::before {display: none;}
-.chart-pop .layer-content .caseList ul li dd a.del {background: url(/include/image/common/ico_layerCaseDel.png) no-repeat 50% 50%;}
-.chart-pop .layer-content .caseList ul li dd a.mod {background: url(/include/image/common/ico_layerCaseMod.png) no-repeat 50% 50%;}
+/* .chart-pop .layer-content .caseList ul li dd a.del {background: url(/include/image/common/ico_layerCaseDel.png) no-repeat 50% 50%;}
+.chart-pop .layer-content .caseList ul li dd a.mod {background: url(/include/image/common/ico_layerCaseMod.png) no-repeat 50% 50%;} */
 
 /* 도움말 */
 .chart-pop .layer-content .topTxt {position: relative; font-size: 1.176em; color: #444; font-weight: 500; background-color:#f8f8f8; padding: 35px 40px;}
