@@ -178,6 +178,7 @@
                               w-100
                               text-center
                             "
+                            type="submit"
                           >
                             등록하기
                             <span class="icon"><i class="lni lni-checkmark"></i></span>

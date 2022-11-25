@@ -87,14 +87,14 @@
                       <div class="col-12">
                         <div class="input-style-1">
                           <label>아이디</label>
-                          <input type="text" placeholder="아이디를 입력하세요" />
+                          <input type="text" name="userName" placeholder="아이디를 입력하세요" />
                         </div>
                       </div>
                       <!-- end col -->
                       <div class="col-12">
                         <div class="input-style-1">
                           <label>비밀번호</label>
-                          <input type="password" placeholder="비밀번호를 입력하세요" />
+                          <input type="password" name="password" placeholder="비밀번호를 입력하세요" />
                         </div>
                       </div>
                       <!-- end col -->
@@ -146,6 +146,7 @@
                               w-100
                               text-center
                             "
+                            type="submit"
                           >
                             로그인
                             <span class="icon"><i class="lni lni-checkmark"></i></span>
