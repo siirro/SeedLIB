@@ -82,7 +82,7 @@
                     Start creating the best possible user experience for you
                     customers.
                   </p>
-                  <form action="#">
+                  <form action="./adLogin" method="post">
                     <div class="row">
                       <div class="col-12">
                         <div class="input-style-1">
@@ -148,8 +148,8 @@
                             "
                             type="submit"
                           >
-                            로그인
-                            <span class="icon"><i class="lni lni-checkmark"></i></span>
+                            <b>로그인</b>
+                            <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                           </button>
                         </div>
                       </div>

@@ -1,5 +1,7 @@
 package com.seed.lib.admin;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,15 @@ public class AdminController {
 	@Autowired
 	private MemberService memberService;
 	
+	// 어드민 로그아웃
+	@GetMapping("adLogout")
+	public String setAdLogout(HttpSession session)throws Exception{
+		
+		session.invalidate();
+		
+		return "redirect:../";
+	}
+	
 	// 어드민 로그인 페이지
 	@GetMapping("adLogin")
 	public String getAdLogin()throws Exception{
@@ -25,27 +36,26 @@ public class AdminController {
 	
 	// 어드민 로그인 포스트
 	@PostMapping("adLogin")
-	public ModelAndView getAdLogin(MemberVO memberVO)throws Exception{
+	public ModelAndView getAdLogin(MemberVO memberVO, HttpSession session)throws Exception{
 		
 		
 		ModelAndView mv = new ModelAndView();
-		int result = 0;
 		String title = "실패..";
 		String text = "로그인을 실패했습니다!";
 		String icon = "error";
 		String button = "확인";
-		String url = "./admin/adLogin";
+		String url = "./adLogin";
 		
 		memberVO = memberService.getLogin(memberVO);
 		
-		if(result > 0) {
+		if(memberVO != null) {
 			
-			result = 1;
 			title = "성공!!";
 			text = "로그인을 성공했습니다!";
 			icon = "success";
 			button = "확인";
 			url="../admin/main";
+			session.setAttribute("admin", memberVO);
 			
 		}
 		
