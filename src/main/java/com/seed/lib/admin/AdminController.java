@@ -25,7 +25,7 @@ public class AdminController {
 		
 		session.invalidate();
 		
-		return "redirect:../";
+		return "redirect:../admin/main";
 	}
 	
 	// 어드민 로그인 페이지
