@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>${useList[0].roomVO.roomName} 현황 조회</title>
+    <title>${useList[0].roomVO.roomName} 현황 조회 : 씨앗도서관 ☘️</title>
 	<style>
 	
 		.contentArea{
@@ -53,7 +53,7 @@
 			border-left: 1px solid #444;
 			border: 1px solid;
 			text-align: center;
-			font-size: 20px;
+			font-size: 25px;
 			padding: 15px;
 		}
 

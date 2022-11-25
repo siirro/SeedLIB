@@ -47,7 +47,7 @@
 
 /* 슬로건 */
 .slogan {font-family: 'S-Core Dream 5'; font-size: 1.375em; text-align: center; color: #0080ab; line-height: 1; margin-bottom: 28px;}
-.slogan span {display: inline-block; font-family: 'S-Core Dream 6'; font-size: 2.091em; padding-bottom: 13px;}
+.slogan span {display: inline-block; font-size: 2.091em; padding-bottom: 13px;}
 
 /* 검색 라디오박스 스타일 */
 .radi {display: inline-block;}
@@ -493,7 +493,7 @@
 .popupZone .popupList.thumb {position:relative;}
 .popupZone .popupList.thumb > li {position:absolute; top:0; left:0; width:100%; height:100%;}
 .popupZone .popupList.thumb a,.popupZone .popupList.thumb span {display:block;height:100%}
-.popupZone .popupList.thumb .slide {display:block;width:100%;height:100%}
+.popupZone .popupList.thumb .slide {display:block;width:100%;}
 .popupZone .textPopup {overflow:hidden;position:absolute;top:0;left:0;right:0;bottom:0;line-height:1.4;word-break:keep-all}
 .popupZone .textPopup .title {line-height:1.2}
 

@@ -11,7 +11,7 @@
       </ul>
     </li> 
     <li id="lnb1_2"><a href="../../search/category" class="category">주제별검색</a> </li> 
-    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료검색</a> </li> 
+    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료</a> </li> 
 
 
     <!-- <li id="lnb1_1">
@@ -33,8 +33,7 @@
 
 
   let check = url.includes('simple');
-  if(check) {
-    console.log("댐");
+  if(url.includes('simple')||url.includes('book/detail')) {
     $(".simpledetail").addClass(' current');
     $(".simpledetail2").css("display","block")
     $("#simple").addClass(' current');
@@ -52,10 +51,12 @@
 
   
 
-  if(urllast=="simple"||urllast=="detail"){
+  if(urllast=="simple"||urllast=="detail"||url.includes('book/detail')){
     $(".simpledetail2").css("display","block")
-    hoho.className = 'current';
+    // hoho.className = 'current';
+    $(".simpledetail").addClass('current');
   }
+
 
 
 </script>

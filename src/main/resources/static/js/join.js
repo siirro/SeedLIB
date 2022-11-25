@@ -119,27 +119,23 @@ function equals(data,checkdata){
     }
 }
 
-
 //id  nullcheck
 $("#input_ID").blur(function(){
     let result= nullcheck($("#input_ID").val())
-   
-    if(result){
-    $("#inputUserNameResult").html("ID중복확인 실시하지 않았습니다.")
+    }if (result == null){
+    $("#userNameResult").html("ID중복확인 실시하지 않았습니다.")
+    $('#input_ID').focus();
    }else{
-    $("#inputUserNameResult").html("아이디를 입력해 주세요")
+    $("#userNameResult").html("아이디를 입력해 주세요")
+    $('#input_ID').focus();
 
    }
 
 })
 
 
-$("#input_ID").blur(function(){
-    let result = nullcheck($("#input_ID").val)
-    if(result){
 
-    }else{
-        $("error_web_id").html("ID중복확인 실시하지 않았습니다.") 
-    }
-})
+
+
+
 

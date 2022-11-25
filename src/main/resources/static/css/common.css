@@ -2,14 +2,16 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
 
 
 * { 
 	/* font-family: 'Nanum Barun Gothic';  */
 	/* font-family: 'hanna'; */
-	font-family: 'Gowun Batang', serif;
+	/* font-family: 'Gowun Batang', serif; */
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	letter-spacing: 0.3px;
 } 
 
 

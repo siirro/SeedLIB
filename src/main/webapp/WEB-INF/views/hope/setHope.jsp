@@ -63,7 +63,7 @@ pageEncoding="UTF-8"%>
 
 </style>
 
-<title>희망 도서 신청</title>
+<title>희망 도서 신청 : 씨앗도서관 ☘️</title>
 </head>
 <body>
 <!-- header -->

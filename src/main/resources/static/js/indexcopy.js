@@ -16,7 +16,7 @@ $('#btnSearchTop').click(function(e) {
 
 	let url = window.location.href;
 	console.log(url);
-	if(url=="http://localhost:81/"||url=="http://localhost:81/search/simple") {
+	if(url.includes("search/simple")||url=="http://localhost:81/"||url.includes("search/detail")){
 		// $("부모선택자").on("이벤트명", "자식선택자", callback function)
 		$("#totalSearchValue").focus();
 		return false;

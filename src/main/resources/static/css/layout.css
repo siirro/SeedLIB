@@ -98,7 +98,7 @@
 
 /* lnb */
 #lnbNav {float: left; width: 240px;}
-#lnbNav h2 {position: relative; font-family: 'S-Core Dream 5'; font-size: 1.750em; line-height: 142px; color: #fff; text-align: center; background-image: linear-gradient(to right, #9be15d, #00e3ae);}
+#lnbNav h2 {position: relative; font-size: 1.750em; line-height: 142px; color: #fff; text-align: center; background-image: linear-gradient(to right, #9be15d, #00e3ae);}
 #lnb a:focus {text-decoration: underline;}
 #lnb a[target="_blank"] {background-image: none !important;}
 #lnb a[target="_blank"]::after {content: ""; display: inline; padding-right: 22px; background: url() 100% 50% no-repeat;}
