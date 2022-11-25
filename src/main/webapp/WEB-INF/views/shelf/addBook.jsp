@@ -48,7 +48,7 @@
 	        </div>
         	<div class="btnArea">
 				<a href="../shelf/newshelf" title="새 책꽂이 만들기">새로운 책꽂이</a>
-				<button type="button" id="addBookBtn" title="저장">저장</button>
+				<button type="button" id="RealBookBtn" title="저장">저장</button>
 				<a href="javascript:window.close();" title="닫기">닫기</a>
 			</div>
 		</div>

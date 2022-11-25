@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.util.ShelfBookPager;
 import com.seed.lib.util.ShelfPager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,17 @@ public class BookShelfService {
 		return isExist;
 	}
 	
-	//책꽂이 목록
+	//책꽂이 목록 - Pager X
 	public List<BookShelfVO> getShelfList (String userName) throws Exception{
 		return bookShelfMapper.getShelfList(userName);
+	}
+	
+	//책꽂이 목록 - Pager O | 검색 : 이름, 생성날짜
+	public List<BookShelfVO> getShelfListP (ShelfPager pager) throws Exception{
+		Long totalCount = bookShelfMapper.getCount(pager);
+		pager.getNum(totalCount);
+		pager.getRowNum();
+		return bookShelfMapper.getShelfListP(pager);
 	}
 		
 	//새 책꽂이 생성
@@ -58,9 +67,14 @@ public class BookShelfService {
 	}
 		
 	//책꽂이에 책 저장
-	public int setBookAdd (BookVO bookVO, ServletContext servletContext) throws Exception{
-		int result = bookShelfMapper.setBookAdd(bookVO);
-		return result;
+	public int setBookAdd (BookPickVO pickVO) throws Exception{
+		//1이면 존재 -> 저장X | 0이면 저장 가능
+		int result = bookShelfMapper.getBookExist(pickVO);
+		if(result==0) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 		
 	//책꽂이에서 책 삭제
@@ -69,8 +83,20 @@ public class BookShelfService {
 	}
 	
 	//책꽂이에 저장된 책 목록
-	public List<BookVO> getBookList (ShelfPager pager) throws Exception{
+	public List<BookVO> getBookList (ShelfBookPager pager) throws Exception{
+		Long totalCount = bookShelfMapper.getBookCount(pager);
+		pager.getNum(totalCount);
+		pager.getRowNum();
 		return bookShelfMapper.getBookList(pager);
+	}
+	
+	//pager
+	public Long getCount (ShelfPager pager) throws Exception{
+		return bookShelfMapper.getCount(pager);
+	}
+	
+	public Long getBookCount (ShelfBookPager pager) throws Exception{
+		return bookShelfMapper.getBookCount(pager);
 	}
 
 }

@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.ShelfBookPager;
 import com.seed.lib.util.ShelfPager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,12 +29,8 @@ public class BookShelfController {
 	@Autowired
 	private BookShelfService bookShelfService;
 	
-	@Autowired
-	private BookService bookService;
-	
 	//책꽂이 목록
-		//마이페이지, 새 책 저장시 옵션
-		//shelf/list?userName=
+		//새 책 저장시 옵션 - Pager X
 	@GetMapping("list")
 	public ModelAndView getShelfList (String userName) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -42,9 +41,24 @@ public class BookShelfController {
 		mv.setViewName("shelf/list");
 		
 		return mv;
-	}	
+	}
+	
+	//책꽂이 목록
+		//마이페이지 - Pager O
+		//shelf/list?userName=
+	@GetMapping("list")
+	public ModelAndView getShelfListP (ShelfPager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookShelfVO> ar = bookShelfService.getShelfListP(pager);
+		mv.addObject("list", ar);
+		mv.setViewName("shelf/list");
+			
+		return mv;
+	}
 	
 	//새 책꽂이 생성
+		//동일한 이름 있을 시 생성 불가
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
 	public void setShelfAdd (BookShelfVO shelfVO) throws Exception{
@@ -92,6 +106,7 @@ public class BookShelfController {
 	
 	//책꽂이에 책 저장하기 버튼 눌렀을 떄
 		//책꽂이 목록 불러와서 책 저장하기
+		//동일한 책 있으면 저장 불가
 		//shelf/addBook?isbn= &userName=
 	@GetMapping("addBook")
 	public ModelAndView setBookAdd (String userName, Long isbn) throws Exception{
@@ -99,14 +114,27 @@ public class BookShelfController {
 		mv.addObject("userName", userName);
 		mv.addObject("isbn", isbn);
 		
+		//저장 화면에 제목 띄우는 용
 		String title = bookShelfService.getBookTitle(isbn);
 		mv.addObject("title", title);
-		log.info("title : {}", title);
 		
+		//유저명으로 책꽂이 목록 불러오기
 		List<BookShelfVO> ar = bookShelfService.getShelfList(userName);
 		mv.addObject("list", ar);
 		
 		return mv;
+	}
+	
+	@ResponseBody
+	@PostMapping("addBook")
+	public int setBookAdd (@RequestBody BookPickVO pickVO) throws Exception{
+		//1이면 존재 -> 저장X | 0이면 저장 가능
+		int result = bookShelfService.setBookAdd(pickVO);
+		if(result == 0) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 	
 	
@@ -130,7 +158,7 @@ public class BookShelfController {
 	//책꽂이 상세(책꽂이에 저장된 책 목록)
 		//shelf/bookList?shNum=
 	@PostMapping("bookList")
-	public ModelAndView getBookList (Long num, HttpSession session, ShelfPager pager) throws Exception{
+	public ModelAndView getBookList (Long num, HttpSession session, ShelfBookPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		//사용자 정보

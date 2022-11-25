@@ -5,9 +5,9 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ShelfPager {
+public class ShelfBookPager {
 	
-	//책꽂이에 저장된 책 목록에서 사용 - 제목, isbn, 등록일
+	//책꽂이 목록에서 사용 - 이름, 생성날짜
 	
 	private Long page;
 	private Long startNum;
@@ -20,16 +20,14 @@ public class ShelfPager {
 	private boolean pre;
 	private boolean next;
 	
-	//검색어 - 제목
-	private String title;
-	//isbn
-	private Long isbn;
+	//검색어 - 이름
+	private String name;
 	//등록일
-	private Date regDate;
+	private Date creDate;
 
 	
-	public ShelfPager() {
-		this.perPage=5L;
+	public ShelfBookPager() {
+		this.perPage=10L;
 		this.perBlock=5L;
 	}
 	
@@ -99,18 +97,12 @@ public class ShelfPager {
 	}
 	
 	public String getName() {
-		if(this.title==null) {
-			this.title="";
+		if(this.name==null) {
+			this.name="";
 		}
-		return title;
+		return name;
 	}
-	
-	public Long getIsbn() {
-		if(this.isbn==null) {
-			this.isbn=0L;
-		}
-		return isbn;
-	}
+
 
 
 }

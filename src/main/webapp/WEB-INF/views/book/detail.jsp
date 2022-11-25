@@ -279,7 +279,16 @@
 																			</c:choose>
 																		</td>
 																		
-																		<td>부록 없음</td>
+																		<td>
+																			<c:choose>
+																				<c:when test="${where eq 1}">2층 일반 자료실</c:when>
+																				<c:when test="${where eq 2}">3층 일반 자료실2</c:when>
+																				<c:when test="${where eq 3}">2층 보존 서고</c:when>
+																				<c:when test="${where eq 4}">스마트도서관</c:when>
+																				<c:when test="${where eq 5}">4층 보존서고</c:when>
+																				<c:when test="${where eq 6}">2층 일반 자료실</c:when>
+																			</c:choose>
+																		</td>
 																	</tr>
 																</c:forEach>
 																</c:forEach>

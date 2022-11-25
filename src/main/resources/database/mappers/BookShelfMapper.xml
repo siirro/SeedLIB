@@ -13,13 +13,17 @@
 		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb'
 	</select>
 	
+	<select id="getBookExist" parameterType="BookPickVO" resultType="Integer">
+		SELECT COUNT(PICKNUM) FROM PICK WHERE USERNAME = 'bb' AND SHNUM = #{shNum}
+	</select>
+	
 	<select id="getShelfList" parameterType="BookShelfVO" resultType="BookShelfVO">
-		select * from shelf where userName = #{userName}
+		SELECT * FROM SHELF WHERE USERNAME = #{userName}
 	</select>
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
-		insert into shelf(USERNAME, SHNAME, SHMEMO)
-			values (#{userName}, #{shName}, #{shMemo});
+		INSERT INTO SHELF(USERNAME, SHNAME, SHMEMO)
+			VALUES (#{userName}, #{shName}, #{shMemo});
 	</insert>
 	
 	
@@ -30,21 +34,21 @@
 	
 	
 	<update id="setShelfUpdate" parameterType="BookShelfVO">
-		update shelf
-			set shname = #{shName} and shmemo = #{shMemo}
-		where shnum = #{shNum}
+		UPDATE SHELF
+			SET SHNAME = #{shName} AND SHMEMO = #{shMemo}
+		WHERE SHNUM = #{shNum}
 	</update>
 	
 	
 	<insert id="setBookAdd" parameterType="BookPickVO">
-		insert into pick(ISBN, SHNUM)
-			values (#{isbn}, #{shNum});
+		INSERT INTO PICK(ISBN, SHNUM, REGDATE)
+			VALUES (#{isbn}, #{shNum}, sysdate);
 	</insert>
 	
 	
 	<delete id="setBookDelete" parameterType="BookPickVO">
-		delete from pick
-			where isbn = #{isbn} and shnum = #{shNum}
+		DELETE FROM PICK
+			WHERE ISBN = #{isbn} ANS SHNUM = #{shNum}
 	</delete>
 	
 	
@@ -80,6 +84,7 @@
 			<result column="shName" property="shName"/>
 			<result column="shMemo" property="shMemo"/>
 			<result column="userName" property="userName"/>
+			<result column="creDate" property="creDate"/>
 		</collection>
 			
 		
