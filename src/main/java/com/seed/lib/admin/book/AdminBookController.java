@@ -17,12 +17,26 @@ public class AdminBookController {
 	@Autowired
 	private AdminBookService adminBookService;
 	
+	// 도서 목록 조회
 	@GetMapping("boList")
-	public String getAdBookList()throws Exception{
+	public ModelAndView getAdBookList()throws Exception{
 		
-		return "admin/book/boList";
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookVO> bookVOs = adminBookService.getAdBookList();
+		
+		if(bookVOs.size() != 0) {
+			
+			mv.addObject("list", bookVOs);
+			
+		}
+		
+		mv.setViewName("admin/book/boList");
+		
+		return mv;
 	}
 	
+	// 도서 추가
 	@GetMapping("boAdd")
 	public String setAdBookAdd()throws Exception{
 		

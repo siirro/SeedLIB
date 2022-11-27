@@ -147,7 +147,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <!-- 다른 도서관 로고 넣을 예정 -->
+                              <!-- 이미지 어떤걸 넣을까 고민중 -->
                               <img src="/images/logo200.png" alt="씨앗도서관"/>
                             </div>
                           </td>
@@ -155,7 +155,7 @@
                             <p>${proVO.proCate}</p>
                           </td>
                           <td class="min-width">
-                            <p><a href="#0">${proVO.proName}</a></p>
+                            <p><a href="./proDetail?proNum=${proVO.proNum}">${proVO.proName}</a></p>
                           </td>
                           <td class="min-width">
                             <p>${proVO.total}/</p>

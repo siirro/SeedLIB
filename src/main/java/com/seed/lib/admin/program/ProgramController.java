@@ -106,8 +106,21 @@ public class ProgramController {
 	}
 	
 	@GetMapping("proDetail")
-	public String getProgramDetail(ProgramVO programVO)throws Exception{
-		return "admin/program/proDetail";
+	public ModelAndView getProgramDetail(ProgramVO programVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		programVO = programService.getProgramDetail(programVO);
+		
+		if(programVO != null) {
+			
+			mv.addObject("proVO", programVO);
+			
+		}
+		
+		mv.setViewName("admin/program/proDetail");
+		
+		return mv;
 	}
 	
 	@GetMapping("proList")

@@ -7,6 +7,7 @@
 	<select id="getAdBookList" resultType="BookVO">
 		SELECT * FROM BOOK
 		ORDER BY ISBN DESC
+		limit 10, 10
 	</select>
 
 	<insert id="setAdBookAdd" parameterType="BookVO">
