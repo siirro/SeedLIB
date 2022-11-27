@@ -3,6 +3,8 @@ package com.seed.lib.hope;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,10 @@ public class HopeController {
 	}
 
 	@GetMapping("setHope")
-	public void setHope()throws Exception{
+	public void setHope(HttpSession session)throws Exception{
+		if(session.getAttribute("memberVO")==null) {
+			
+		}
 	}
 	
 	@GetMapping("searchHope")

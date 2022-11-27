@@ -12,8 +12,8 @@ public class StudyRoomService {
 	private StudyRoomMapper mapper;
 
 	//스터디룸의 좌석 수 가져오기
-	public List<StudyDetailVO> getSeatMany (String roomName) throws Exception {
-		return mapper.getSeatMany(roomName);
+	public List<StudyDetailVO> getSeatMany (String roomNum) throws Exception {
+		return mapper.getSeatMany(roomNum);
 	}
 	
 	//좌석 예약하기
@@ -41,6 +41,11 @@ public class StudyRoomService {
 	//마이페이지에서 이용내역 확인하기
 	public List<StudyDetailVO> getSeatHistory (String userName) throws Exception{
 		return mapper.getSeatHistory(userName);
+	}
+	
+	//퇴실하기
+	public int exitMySeat (StudyDetailVO studyDetailVO) throws Exception{
+		return mapper.exitMySeat(studyDetailVO);
 	}
 	
 }
