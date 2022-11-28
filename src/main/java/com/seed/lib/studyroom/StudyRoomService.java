@@ -48,4 +48,8 @@ public class StudyRoomService {
 		return mapper.exitMySeat(studyDetailVO);
 	}
 	
+	//전체 퇴실하기
+	public int changeAllSeat() throws Exception{
+		return mapper.exitAllSeat();
+	}	
 }

@@ -18,6 +18,7 @@ public class ApplicationInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
         MemberVO memberVO = (MemberVO)request.getSession().getAttribute("memberVO");
+        log.info("mvo:{}", memberVO);
         if(memberVO != null) {
         	return true;
         } else {

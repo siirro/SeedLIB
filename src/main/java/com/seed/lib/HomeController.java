@@ -1,21 +1,24 @@
 package com.seed.lib;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.seed.lib.studyroom.StudyRoomService;
+
 @Controller
 
 public class HomeController {
 	
+	@Autowired
+	private StudyRoomService roomService;
 	
 	@GetMapping("/admin")
-	
 	@ResponseBody
-	public String admin()throws Exception {
-	 
+	public String admin() throws Exception {
 		return "admin Role";	
 	}
 	
@@ -29,7 +32,8 @@ public class HomeController {
 
 	
 	@GetMapping("/")
-	public String setHome() {
+	public String setHome() throws Exception{
+		roomService.changeAllSeat();
 		return "index";
 	}
 	

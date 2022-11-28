@@ -20,4 +20,6 @@ public interface StudyRoomMapper {
 	
 	public int exitMySeat (StudyDetailVO studyDetailVO) throws Exception;
 	
+	public int exitAllSeat() throws Exception;
+	
 }
