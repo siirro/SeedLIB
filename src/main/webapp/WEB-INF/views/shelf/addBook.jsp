@@ -27,8 +27,10 @@
 </head>
 
 <body>
+	<form name="form" action="/shelf/addBook" method="POST">
 	<input type="hidden" id="userName" value="bb">
 	<input type="hidden" id="isbn" value="${isbn}">
+	
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 책 꽂 이 🌱</span>
@@ -44,18 +46,18 @@
 	            <div class="shelfSelect">
 	            	<select id="list_id" name="list_id" class="selectBox1">
 						<c:forEach items="${list}" var="shelf">															
-							<option id="shName">${shelf.shName}</option>
+							<option id="shNum" value="${shelf.shNum}">${shelf.shName}</option>
 						</c:forEach>
-					</select>
+					</select>	
 	            </div>
 	        </div>
         	<div class="btnArea">
 				<button type="button" id="addShelfBtn" title="새 책꽂이 만들기">새로운 책꽂이</button>
-				<button type="button" id="RealBookBtn" title="저장">저장</button>
-				<button type="button" id="closeBtn" title="닫기">닫기</button>
+				<button type="submit" id="RealBookBtn" title="저장">저장</button>
+				<a href="javascript:window.close();" title="닫기">닫기</a>
 			</div>
 		</div>
     </div>
-	
+	</form>
 </body>
 </html>

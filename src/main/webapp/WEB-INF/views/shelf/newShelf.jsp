@@ -47,7 +47,7 @@
 	        </div>
         	<div class="btnArea">
 				<button type="button" id="RealShelfBtn" title="저장">저장</button>
-				<a href="" title="닫기">닫기</a>
+				<a href="javascript:window.close();" title="닫기">닫기</a>
 			</div>
 		</div>
     </div>

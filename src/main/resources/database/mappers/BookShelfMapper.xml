@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="getBookExist" parameterType="BookPickVO" resultType="Integer">
-		SELECT COUNT(PICKNUM) FROM PICK WHERE ISBN = #{isbn} AND SHNAME = #{shName}
+		SELECT COUNT(PICKNUM) FROM PICK WHERE ISBN = #{isbn} AND SHNUM = #{shNum}
 	</select>
 	
 	<select id="getShelfList" parameterType="BookShelfVO" resultType="BookShelfVO">
