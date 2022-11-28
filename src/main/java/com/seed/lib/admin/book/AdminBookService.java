@@ -14,6 +14,11 @@ public class AdminBookService {
 	private AdminBookMapper adminBookMapper;
 	
 	
+	// 도서 제본 신청
+	public int setBoCart(BookPrintVO bookPrintVO)throws Exception{
+		return adminBookMapper.setBoCart(bookPrintVO);
+	}
+	
 	// 도서 목록 조회
 	public List<BookVO> getAdBookList()throws Exception{
 		return adminBookMapper.getAdBookList();

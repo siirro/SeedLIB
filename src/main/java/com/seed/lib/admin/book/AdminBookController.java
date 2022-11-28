@@ -17,6 +17,19 @@ public class AdminBookController {
 	@Autowired
 	private AdminBookService adminBookService;
 	
+	// 제본 결제
+	@GetMapping("boPay")
+	public String setBoPay()throws Exception{
+		return "admin/book/boPay";
+	}
+	
+	// 도서 장바구니 추가
+	@GetMapping("boCart")
+	public String setBoCart()throws Exception{
+		
+		return "admin/book/boCart";
+	}
+	
 	// 도서 목록 조회
 	@GetMapping("boList")
 	public ModelAndView getAdBookList()throws Exception{

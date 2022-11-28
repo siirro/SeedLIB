@@ -9,6 +9,9 @@ import com.seed.lib.book.BookVO;
 @Mapper
 public interface AdminBookMapper {
 	
+	// 도서 제본 신청
+	public int setBoCart(BookPrintVO bookPrintVO)throws Exception;
+	
 	// 도서 목록 조회
 	public List<BookVO> getAdBookList()throws Exception;
 

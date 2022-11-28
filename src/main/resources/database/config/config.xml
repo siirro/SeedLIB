@@ -6,6 +6,7 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.seed.lib.admin.program.ProgramVO" alias="ProgramVO"/>
+  		<typeAlias type="com.seed.lib.admin.book.BookPrintVO" alias="BookPrintVO"/>
   		
   		<typeAlias type="com.seed.lib.book.BookVO" alias="BookVO"/>
   		<typeAlias type="com.seed.lib.book.LibVO" alias="LibVO"/>
