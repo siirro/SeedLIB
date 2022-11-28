@@ -7,12 +7,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
-    <title>Form Elements | PlainAdmin Demo</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
     
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
@@ -225,7 +221,7 @@
                         "
                         type="submit"
                       >
-                        개설하기
+                        <b>개설하기</b>
                         <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                       </button>
                     </div>

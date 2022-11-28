@@ -2,6 +2,8 @@ package com.seed.lib.admin.book;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +16,15 @@ class AdminBookServiceTest {
 	@Autowired
 	private AdminBookService adminBookService;
 	
+	@Test
+	void getAdBookList() throws Exception{
+		
+		List<BookVO> bookVOs = adminBookService.getAdBookList();
+		
+		assertNotEquals(0, bookVOs.size());
+		
+	}
+	
 	//@Test
 	void setBookAddtest() throws Exception {
 		BookVO bookVO = new BookVO();
@@ -23,7 +34,7 @@ class AdminBookServiceTest {
 		bookVO.setBookDate(2022L);
 		bookVO.setImage("이미지");
 		
-		int result = adminBookService.setBookAdd(bookVO);
+		int result = adminBookService.setAdBookAdd(bookVO);
 		
 		assertEquals(1, result);
 		

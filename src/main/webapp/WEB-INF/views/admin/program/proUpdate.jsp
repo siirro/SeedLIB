@@ -98,13 +98,13 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="psDt" value="${proVO.psDate}"/>
+                        <input type="date" name="psDt" value="${proVO.psDt}"/>
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="psTime" value='<fmt:formatDate value="${proVO.psDate}" pattern="HH:mm:ss"/>'/>
+                        <input type="time" name="psTime" value='${proVO.psTime}'/>
                       </div>
                       <!-- end input -->
                     </div>
@@ -115,13 +115,13 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="plDt" value="${proVO.plDate}"/>
+                        <input type="date" name="plDt" value="${proVO.plDt}"/>
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="col-lg-6">
                       <div class="input-style-2">
-                        <input type="time" name="plTime" value='<fmt:formatDate value="${proVO.plDate}" pattern="HH:mm:ss"/>'/>
+                        <input type="time" name="plTime" value='${proVO.plTime}'/>
                       </div>
                       <!-- end input -->
                     </div>

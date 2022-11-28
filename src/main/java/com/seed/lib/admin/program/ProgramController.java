@@ -23,6 +23,7 @@ public class ProgramController {
 	@Autowired
 	private ProgramService programService;
 	
+	// 문화프로그램 삭제
 	@GetMapping("proDelete")
 	public ModelAndView setProgramDelete(ProgramVO programVO)throws Exception{
 		
@@ -56,13 +57,17 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 업데이트
 	@GetMapping("proUpdate")
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		DateUtil dateUtil = new DateUtil();
 		
 		programVO = programService.getProgramDetail(programVO);
+		
+		// 뒤에 시간빼고 앞에 날짜만 파싱 -> 2022-09-09
+		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
+		programVO.setPlDt(programVO.getPlDt().substring(0,programVO.getPlDt().indexOf(" ")));
 		
 		mv.addObject("proVO", programVO);
 		mv.setViewName("admin/program/proUpdate");
@@ -70,6 +75,7 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 업데이트(POST)
 	@PostMapping("proUpdate")
 	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
 		
@@ -103,32 +109,51 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화 프로그램 상세정보
 	@GetMapping("proDetail")
-	public String getProgramDetail(ProgramVO programVO)throws Exception{
-		return "admin/program/proDetail";
+	public ModelAndView getProgramDetail(ProgramVO programVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		programVO = programService.getProgramDetail(programVO);
+		
+		// 뒤에 시간빼고 앞에 날짜만 파싱 -> 2022-09-09
+		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
+		
+		if(programVO != null) {
+			
+			mv.addObject("proVO", programVO);
+			
+		}
+		
+		mv.setViewName("admin/program/proDetail");
+		
+		return mv;
 	}
 	
+	// 문화프로그램 목록
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
 		List<ProgramVO> ar = programService.getProgramList(hdPager);
-		mv.addObject("list", ar);
+		mv.addObject("proList", ar);
 		mv.addObject("pager", hdPager);
 		mv.setViewName("admin/program/proList");
 		
 		return mv;
 	}
 	
+	// 문화프로그램 추가
 	@GetMapping("proAdd")
 	public String setProgramAdd()throws Exception{
 		return "admin/program/proAdd";
 	}
 	
+	// 문화프로그램 추가(POST)
 	@PostMapping("proAdd")
-	public ModelAndView setProgramAdd(ProgramVO programVO, String psDt, String psTime, String plDt,
-								String plTime, String name, String teacher)throws Exception{
+	public ModelAndView setProgramAdd(ProgramVO programVO, String name, String teacher)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
@@ -138,7 +163,7 @@ public class ProgramController {
 		String button = "확인";
 		String url = "./program/proAdd";
 		
-		result = programService.setProgramAdd(programVO, psDt, psTime, plDt, plTime, name, teacher);
+		result = programService.setProgramAdd(programVO, name, teacher);
 		
 		if(result > 0) {
 			

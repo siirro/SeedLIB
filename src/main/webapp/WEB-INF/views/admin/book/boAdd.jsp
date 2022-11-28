@@ -7,7 +7,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up | PlainAdmin Demo</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
   </head>
@@ -177,9 +178,10 @@
                               w-100
                               text-center
                             "
-                          >
-                            등록하기
-                            <span class="icon"><i class="lni lni-checkmark"></i></span>
+                            type="submit"
+                          >                          
+                            <b>등록하기</b>
+                            <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                           </button>
                         </div>
                       </div>
