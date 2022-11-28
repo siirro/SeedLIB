@@ -167,7 +167,7 @@ pageEncoding="UTF-8"%>
                                     </tbody>
                                 </table>
                             </div>
-    
+
                             <div class="boardWrap mt10">
                                 <table class="board-view">
                                     <caption>희망도서 정보</caption>

@@ -68,9 +68,6 @@ public class HopeController {
 				result = 222;
 			}
 		}else {
-//			message = "해당 도서관에서 소장 중인 도서입니다";
-//			data.addAttribute("message", "해당 도서관에서 소장 중인 도서입니다");
-//			data.addAttribute("result", 100);
 			result=111;
 		}		
 		return result;
