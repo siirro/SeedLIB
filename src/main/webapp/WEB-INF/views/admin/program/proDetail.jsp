@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,7 +82,7 @@
 
                     <h4>행사구분</h4>
                     <p>
-					  ${proVO.proCate}
+                      ${proVO.proCate}
                     </p>
 
                     <div class="text-success">
@@ -90,7 +91,7 @@
 
                     <h4>접수기간</h4>
                     <p>
-                      날짜예시 2022-08-09 ~ 2022-09-09
+                      ${proVO.prsDate} ~ ${proVO.prlDate}
                     </p>
 
                     <div class="text-success">
@@ -108,7 +109,7 @@
 
                     <h4>행사일정</h4>
                     <p>
-                      일정예시 2022-08-09()
+                      ${proVO.psDt}
                     </p>
 
                     <div class="text-success">
@@ -117,7 +118,7 @@
 
                     <h4>행사시간</h4>
                      <p>
-                      일정예시 ()요일 00:00 ~ 00:00
+                      ${proVO.psTime} ~ ${proVO.plTime}
                     </p>
 
                     <div class="text-success">
@@ -150,6 +151,185 @@
                 </div>
               </div>
               <!-- end col -->
+
+              <div class="col-xl-8 col-lg-4 col-md-6 col-sm-6">
+                <div class="card-style mb-30">
+                  <h6 class="mb-10">Striped Table</h6>
+                  <p class="text-sm mb-20">
+                    For Striped Table—light padding and only horizontal
+                    dividers.
+                  </p>
+                  <div class="table-wrapper table-responsive">
+                    <table class="table striped-table">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th><h6>Account No</h6></th>
+                          <th><h6>Balance</h6></th>
+                          <th><h6>Action</h6></th>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-1"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 508 2157</p>
+                          </td>
+                          <td>
+                            <p>$523</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-2"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 756 0987</p>
+                          </td>
+                          <td>
+                            <p>$123</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-3"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 098 8765</p>
+                          </td>
+                          <td>
+                            <p>$223</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-4"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 897 3242</p>
+                          </td>
+                          <td>
+                            <p>$323</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-5"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 654 0987</p>
+                          </td>
+                          <td>
+                            <p>$423</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                        <tr>
+                          <td>
+                            <div class="check-input-primary">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox-6"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <p>AC336 234 9804</p>
+                          </td>
+                          <td>
+                            <p>$523</p>
+                          </td>
+                          <td>
+                            <div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <!-- end table row -->
+                      </tbody>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                </div>
+                <!-- end card -->
+              </div>
+              <!-- end col -->
+
             </div>
             <!-- end row -->
             <!-- ========= card-style-2 end ========= -->

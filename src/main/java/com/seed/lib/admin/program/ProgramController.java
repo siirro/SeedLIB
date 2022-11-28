@@ -23,6 +23,7 @@ public class ProgramController {
 	@Autowired
 	private ProgramService programService;
 	
+	// 문화프로그램 삭제
 	@GetMapping("proDelete")
 	public ModelAndView setProgramDelete(ProgramVO programVO)throws Exception{
 		
@@ -56,6 +57,7 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 업데이트
 	@GetMapping("proUpdate")
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		
@@ -63,6 +65,7 @@ public class ProgramController {
 		
 		programVO = programService.getProgramDetail(programVO);
 		
+		// 뒤에 시간빼고 앞에 날짜만 파싱 -> 2022-09-09
 		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
 		programVO.setPlDt(programVO.getPlDt().substring(0,programVO.getPlDt().indexOf(" ")));
 		
@@ -72,6 +75,7 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 업데이트(POST)
 	@PostMapping("proUpdate")
 	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
 		
@@ -105,12 +109,16 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화 프로그램 상세정보
 	@GetMapping("proDetail")
 	public ModelAndView getProgramDetail(ProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
 		programVO = programService.getProgramDetail(programVO);
+		
+		// 뒤에 시간빼고 앞에 날짜만 파싱 -> 2022-09-09
+		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
 		
 		if(programVO != null) {
 			
@@ -123,6 +131,7 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 목록
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		
@@ -136,11 +145,13 @@ public class ProgramController {
 		return mv;
 	}
 	
+	// 문화프로그램 추가
 	@GetMapping("proAdd")
 	public String setProgramAdd()throws Exception{
 		return "admin/program/proAdd";
 	}
 	
+	// 문화프로그램 추가(POST)
 	@PostMapping("proAdd")
 	public ModelAndView setProgramAdd(ProgramVO programVO, String name, String teacher)throws Exception{
 		
