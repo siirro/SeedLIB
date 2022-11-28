@@ -52,30 +52,21 @@ public class MyPageController {
 		
 	}
 	
-
-	
-	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("memberVO") == null) {
-			mv.setViewName("redirect:../member/login");
-			return mv;
-		} else {
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());
 			List<HopeVO> hl = hopeService.getHopeList(hdPager);
 			mv.addObject("hlist", hl);
 			mv.addObject("pager", hdPager);
 			return mv;
-		}
 	}
 	
 	@PostMapping("hopeCancel")
 	@ResponseBody
 	public int setDeleteHope(@RequestBody HopeVO hopeVO) throws Exception{
-		log.info("@@@@@@@@@@@@@@@@@@@@@@cancel:{}",hopeVO.getHopNum());
 		int result = hopeService.setUpdateHope(hopeVO);		
 		return result;
 	}
@@ -84,26 +75,17 @@ public class MyPageController {
 	public ModelAndView setDList(HdPager hdPager, HttpSession session)throws Exception{
 		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("memberVO") == null) {
-			mv.setViewName("redirect:../member/login");
-			return mv;
-		} else {
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());
 			List<DonationVO> dl = donationService.getDonList(hdPager);
 			mv.addObject("dlist", dl);
 			mv.addObject("pager", hdPager);
 			return mv;
-			}
 	}
 	
 	@GetMapping("seatHistory")
 	public ModelAndView getSeatHistory (HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("memberVO") == null) {
-			mv.setViewName("redirect:../member/login");
-			return mv;
-		} else {
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			String userName = memberVO.getUserName();
 			log.info(userName);
@@ -123,13 +105,11 @@ public class MyPageController {
 			
 			mv.addObject("cl", js);		
 			return mv;
-			}
 	}
 	
 	@PostMapping("exitSeat")
 	@ResponseBody
 	public int exitMySeat(String exitNum, String userName) throws Exception{
-		log.info("uN:{}",userName,exitNum);
 		StudyDetailVO detailVO = new StudyDetailVO();
 		detailVO.setUserName(userName);
 		detailVO.setSeatNum(Integer.parseInt(exitNum));

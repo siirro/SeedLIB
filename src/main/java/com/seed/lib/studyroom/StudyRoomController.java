@@ -38,11 +38,6 @@ public class StudyRoomController {
 	@ResponseBody
 	public Map<String, String> sendRoomList(String roomNum, HttpSession session) throws Exception{
 		Map<String, String> mv = new HashMap<>();
-		if(session.getAttribute("memberVO") == null) {
-			mv.put("msg", "로그인이 필요한 페이지입니다");
-			mv.put("url","../member/login");
-			return mv;
-		} else {
 				MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 					if(memberVO.getGender().equals("여")&&roomNum.equals("1")) {
 						mv.put("msg", "[일반열람실(여)] 좌석 정보를 불러옵니다");
@@ -57,9 +52,9 @@ public class StudyRoomController {
 						mv.put("msg", "본인의 성별에 적합한 열람실을 다시 선택해주세요");
 						mv.put("url", "./roomList");
 					}
-					return mv;
-					}
-	}
+			return mv;
+			}
+
 	
 	@GetMapping("roomInfo")
 	public ModelAndView getRoomInfo(String roomNum) throws Exception{

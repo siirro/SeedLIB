@@ -34,16 +34,12 @@ public class HopeController {
 	}
 
 	@GetMapping("setHope")
-	public void setHope(HttpSession session)throws Exception{
-		if(session.getAttribute("memberVO")==null) {
-			
-		}
+	public void setHope()throws Exception{
 	}
 	
 	@GetMapping("searchHope")
 	@ResponseBody
 	public String searchHope(String result) throws Exception{
-		
 	return apiKey;
   }
 

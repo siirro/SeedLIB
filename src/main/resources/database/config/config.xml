@@ -34,7 +34,9 @@
 		<typeAlias type="java.lang.Long" alias="Long"/>
 
 		 
+		 
 
  
  </typeAliases>
+
   </configuration>
