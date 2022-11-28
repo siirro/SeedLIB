@@ -52,7 +52,9 @@ public class MemberController {
 		memberVO= memberService.getLogin(memberVO);
 		if(memberVO!=null) {
 			session.setAttribute("memberVO", memberVO);
-			mv.setViewName("redirect:../");
+			String uri = (String)session.getAttribute("dest");
+			mv.setViewName(uri);
+//			mv.setViewName("redirect:../");
 		}else {
 	         mv.setViewName("redirect:../member/login");   
 
