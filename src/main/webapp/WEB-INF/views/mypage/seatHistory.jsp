@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,58 @@
 			min-width: 110px;
 			padding: 6px 15px;
 		}
+		.seatInfo{
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 15px;
+		}
+
+		.green{
+			border-radius: 5px;
+			background-color: #77e270;
+			font-weight: bold;
+			color: #ffffff;
+			font-size: 17px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+		}
+
+		.gray{
+			border-radius: 5px;
+			background-color: #8c8989;
+			font-weight: bold;
+			color: #ffffff;
+			font-size: 17px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+		}
+
+/* 이용중 */
+		.room-0{
+			background: #77e270 !important;
+			color:#77e270 !important;
+			opacity: 100 !important;
+		}
+
+		.btn{
+			border-radius: 5px;
+			background-color: #ff5722 !important;
+		}
+
+/* 퇴실 */
+		.room-1{
+			background-color: #8c8989 !important;
+			color: #8c8989 !important;
+		}		
+
+		.studySuccess{
+			color: #ffffff;
+			font-size: 17px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 70%);
+		}
+
+
 	</style>
 <title>열람실 이용 내역 : 씨앗도서관 ☘️</title>
 </head>
@@ -45,62 +98,116 @@
 </div>
 <div id="contents" class="contentArea">
 <div id="popblackBG"></div>
+<div class="seatInfo">
+	<div>
+		<table style="width:210px;">
+			<tbody>
+				<tr>
+					<td style="width:100px; text-align: center; " class="green">이용중</td>
+					<td style="width: 10px;"></td>							
+					<td style="width:100px; text-align: center; " class="gray">퇴실</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 					<!--Real Contents Start-->
 					<form action="../mypage/seatHistory" method="GET">
-						<input type="hidden" id="userName" name="userName" value="id1">
-						<fieldset>
-							<legend class="blind">이용 내역 검색 영역</legend>
+						<input type="hidden" id="userName" name="userName" value="${memberVO.userName}">
 							<div id='calendar'></div>
-							${cl}
+	
 		</div>
 	</div>	
 </div>	
-</div>
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-		let cl = [];
-		cl.push("${cl}");
-		for(let i=0; i<cl; i++){
-			console.log(cl[i]);
-		}
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+	let calendar;
+	document.addEventListener('DOMContentLoaded', function() {
+		let data = '${cl}';
+		let id = "";
+		let exitnum = 0;
+		data = JSON.parse(data);
+		console.log("data", data)
+		let calendarEl = document.getElementById('calendar');
+        calendar = new FullCalendar.Calendar(calendarEl, {
   			locale: 'ko', // the initial locale. of not specified, uses the first one
 			initialView: 'dayGridMonth',
-			events: [
-					{
-					id: 'a',
-    			  	title: 'my event',
-					start: '2022-10-10',
-					// end: '2022-11-10',
-					display: 'background'
-					},
-					{
-					id: 'a',
-    			  	title: 'my event',
-					start: '2022-11-10',
-					// end: '2022-11-10',
-					display: 'background'
-					},
-					{
-					id: 'a',
-    			  	title: 'my event',
-					start: '2022-11-15',
-					// end: '2022-11-10',
-					display: 'background'
-					}
-				],
-				eventBackgroundColor: '#378006'
-        });
+			events: data
+			// eventClick: function (info) {
+			// 	console.log(info);
+			// 	var eventObj = info.event;
+			// 	if($(".fc-bg-event").hasClass("room-1")){
+			// 		return;
+			// 	}else{
+			// 		exitNum=eventObj.id;
+			// 		title=eventObj.title;
+			// 		userName=$("#userName").val();
+			// 		let check = window.confirm("퇴실????");
+			// 		if(check) {
+			// 			console.log("퇴실한대", exitnum);
+			// 			$.ajax({
+			// 				type:"POST",
+			// 				url:"/mypage/exitSeat",
+			// 				data:{
+			// 					exitNum:exitnum,
+			// 					title:title,
+			// 					userName:userName
+			// 				},success:function(data){
+			// 					if(data>0){
+			// 						alert("퇴실 완료했습니다");
+			// 						location.reload();
+			// 					}
+			// 				}
+			// 			})
+			// 		} else{
+
+			// 		}
+			// 	}
+			// 	}	
+			})
         calendar.render();
-		var event = calendar.getEventById('a');
-		event.addEventListener("click",function(){
-		alert("wow");
-	})
-      });
+		
+		if($(".fc-bg-event").hasClass("room-0")){
+			let exitBtn = '<div style="display:flex; justify-content: center;">';		
+			exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
+			$(".room-0").append(exitBtn);
+		}	
+
+		if($(".fc-bg-event").hasClass("room-1")){
+			let alreadyExit = '<div style="display:flex; justify-content: center;">';		
+			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
+			$(".room-1").append(alreadyExit);
+		}
+
+		});
+		
+		$(document).on("click","#exitBtn",function (info) {
+			// console.log(info);
+			let exitNum = $(this).parent().prev().text();
+			userName=$("#userName").val();
+			let check = window.confirm("퇴실하시겠습니까?");
+			if(check) {
+				$.ajax({
+					type:"POST",
+					url:"/mypage/exitSeat",
+					data:{
+						exitNum:exitNum,
+						userName:userName
+					},success:function(data){
+						if(data>0){
+							alert("퇴실 완료했습니다");
+							location.reload();
+						}else{
+							alert("서버 문제로 퇴실 처리가 미완료되었습니다\n관리자에게 문의바랍니다")
+						}
+					},error:function(){
+						alert("서버 문제로 퇴실 처리가 미완료되었습니다\n관리자에게 문의바랍니다")
+					}	
+				})
+			}		
+});
 </script>
 <script>
 </script>  

@@ -147,6 +147,7 @@
 						<li id="gnb6_5"><a href="/seoksu/menu/10180/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 
 						<li id="gnb6_6"><a href="/mypage/hopeList">희망도서조회</a> </li> 
 						<li id="gnb6_7"><a href="/mypage/donList">도서기증조회</a> </li> 
+						<li id="lnb1_6"><a href="/mypage/seatHistory">열람실 이용 내역</a></li> 
 						<li id="gnb6_8"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
 						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
 					</ul>

@@ -3,6 +3,8 @@ package com.seed.lib.hope;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -38,7 +40,6 @@ public class HopeController {
 	@GetMapping("searchHope")
 	@ResponseBody
 	public String searchHope(String result) throws Exception{
-		
 	return apiKey;
   }
 
