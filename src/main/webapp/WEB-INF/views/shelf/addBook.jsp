@@ -28,6 +28,7 @@
 
 <body>
 	<input type="hidden" id="userName" value="bb">
+	<input type="hidden" id="isbn" value="${isbn}">
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 책 꽂 이 🌱</span>
@@ -43,7 +44,7 @@
 	            <div class="shelfSelect">
 	            	<select id="list_id" name="list_id" class="selectBox1">
 						<c:forEach items="${list}" var="shelf">															
-							<option value="${shelf.shNum}">${shelf.shName}</option>
+							<option id="shName">${shelf.shName}</option>
 						</c:forEach>
 					</select>
 	            </div>

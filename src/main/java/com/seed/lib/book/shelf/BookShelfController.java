@@ -48,19 +48,15 @@ public class BookShelfController {
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
 	public String setNewShelf (BookShelfVO shelfVO) throws Exception{
-		log.info("GET Shelf Add");
 		return "shelf/newShelf";
 	}
 	
 	@ResponseBody
 	@PostMapping("newShelf")
 	public int setShelfAdd (@RequestBody BookShelfVO shelfVO) throws Exception{
+		// 0이면 mapper -> 값 0 | 1이면 1 리턴
 		int result = bookShelfService.setShelfAdd(shelfVO);
-		if(result==0) {
-			return 0;
-		}else {
-			return 1;
-		}
+		return result;
 	}
 		
 	
@@ -112,13 +108,8 @@ public class BookShelfController {
 	@ResponseBody
 	@PostMapping("addBook")
 	public int setBookAdd (@RequestBody BookPickVO pickVO) throws Exception{
-		//1이면 존재 -> 저장X | 0이면 저장 가능
 		int result = bookShelfService.setBookAdd(pickVO);
-		if(result == 0) {
-			return 0;
-		}else {
-			return 1;
-		}
+		return result;
 	}
 	
 	

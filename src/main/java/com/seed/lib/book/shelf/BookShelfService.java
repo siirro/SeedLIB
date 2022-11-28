@@ -54,11 +54,14 @@ public class BookShelfService {
 		
 	//새 책꽂이 생성
 	public int setShelfAdd (BookShelfVO shelfVO) throws Exception{
-		int result = bookShelfMapper.getShelfExist(shelfVO);
+		int result = bookShelfMapper.getSameShelf(shelfVO);
+		// 0이면 저장 -> mapper.setShelfAdd return
+		//	-> 저장 후 1 리턴
+		// 2이면 동일한 이름의 책꽂이 존재 -> 저장 X
 		if(result==0) {
-			return 0;
+			return bookShelfMapper.setShelfAdd(shelfVO);
 		}else {
-			return 1;
+			return 2;
 		}
 	}
 		
@@ -74,12 +77,11 @@ public class BookShelfService {
 		
 	//책꽂이에 책 저장
 	public int setBookAdd (BookPickVO pickVO) throws Exception{
-		//1이면 존재 -> 저장X | 0이면 저장 가능
 		int result = bookShelfMapper.getBookExist(pickVO);
 		if(result==0) {
-			return 0;
+			return bookShelfMapper.setBookAdd(pickVO);
 		}else {
-			return 1;
+			return 2;
 		}
 	}
 		

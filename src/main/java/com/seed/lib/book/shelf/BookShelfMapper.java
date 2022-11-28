@@ -15,8 +15,12 @@ public interface BookShelfMapper {
 	public String getBookTitle (Long isbn) throws Exception;
 	
 	//사용자의 기존 책꽂이 존재 유무
-		//setShelfAdd 에서 사용 - 1이면 존재 -> 저장X | 0이면 저장 가능
+		// 존재하면 바로 책 저장 페이지 | 없으면 새 책꽂이 먼저 생성
 	public int getShelfExist (BookShelfVO shelfVO) throws Exception;
+	
+	//동일한 책꽂이명 존재 유무
+		//setShelfAdd 에서 사용 - 1이면 존재 -> 저장X | 0이면 저장 가능
+	public int getSameShelf (BookShelfVO shelfVO) throws Exception;
 	
 	//사용자의 책꽂이 내 기존 책 존재 유무
 		//setBookAdd 에서 사용 - 1이면 존재 -> 저장X | 0이면 저장 가능
@@ -38,7 +42,7 @@ public interface BookShelfMapper {
 	public BookShelfVO setShelfUpdate (BookShelfVO shelfVO) throws Exception;
 	
 	//책꽂이에 책 저장
-	public int setBookAdd (BookVO bookVO) throws Exception;
+	public int setBookAdd (BookPickVO pickVO) throws Exception;
 	
 	//책꽂이에서 책 삭제
 	public int setBookDelete (BookPickVO pickVO) throws Exception;

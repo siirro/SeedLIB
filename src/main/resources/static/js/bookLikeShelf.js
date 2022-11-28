@@ -18,10 +18,10 @@ strOption += "height=" + popupHeight + "px,";
 strOption += "toolbar=no,menubar=no,location=no,";
 strOption += "resizable=yes,status=yes";
 
-//좋아요
 let isbn = $("#isbn").val();
 const userName = $("#userName").val();
 
+//좋아요
 $("#likeBtn").click(function(){
 	
 	$.ajax({
@@ -70,10 +70,12 @@ $("#addBookBtn").click(function(){
 			userName : userName
 		},
 		success : function(){
+			window.close();
 			window.open('../shelf/addBook?isbn='+isbn+'&userName='+userName, "책꽂이에 저장", strOption);
 		},
 		error : function(){
-			console.log("ERROR");
+			window.close();
+			console.log("ADD BOOK ERROR");
 		}
 	})
 });
@@ -81,21 +83,25 @@ $("#addBookBtn").click(function(){
 //책꽂이 선택 후 책 저장
 $("#RealBookBtn").click(function(){
 	const bookPickVO = {
-		pickNum:$("pickNum").val(),
-		isbn:$("isbn").val(),
-		shNum:$("shNum").val(),
+		isbn : $("#isbn").val(),
+		shName : $("#shName").val(),
 	}
+	
+	console.log(bookPickVO);
+	
 	$.ajax({
 		type : "POST",
-		url : "/shelf/setBookAdd",
+		url : "/shelf/addBook",
 		data:JSON.stringify(bookPickVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
 		success:function(data){
 			switch (data){
-				case 1:
+				case 2:
 					alert("해당 책이 이미 책꽂이에 존재합니다.")
 					window.close();
 					break;
-				case 0:
+				case 1:
 					let check = window.confirm("책꽂이에 책을 저장했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
 						opener.location.href="/shelf/bookList?shNum="+shNum;
@@ -123,10 +129,12 @@ $("#addShelfBtn").click(function(){
 		type : "GET",
 		url : "../shelf/newShelf",
 		success : function(){
-			window.open('../shelf/newShelf', "새 책꽂이 생성", strOption);
+			window.close();
+			window.open('../shelf/newShelf?userName='+userName, "새 책꽂이 생성", strOption);
 		},
 		error : function(){
-			console.log("ERROR");
+			window.close();
+			console.log("ADD SHELF ERROR");
 		}
 	})
 });
@@ -134,22 +142,28 @@ $("#addShelfBtn").click(function(){
 //새 책꽂이 저장
 $("#RealShelfBtn").click(function(){
 	const bookShelfVO = {
-		shName:$("shName").val(),
-		shNum:$("shNum").val(),
+		shName : $("#shName").val(),
+		shMemo : $("#shMemo").val(),
+		userName : userName
 	}
+	
+	console.log(bookShelfVO);
+	
 	$.ajax({
 		type : "POST",
-		url : "/shelf/setNewShelf",
+		url : "/shelf/newShelf",
 		data:JSON.stringify(bookShelfVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
 		success:function(data){
 			switch (data){
-				case 1:
+				case 2:
 					alert("해당 이름의 책꽂이가 이미 존재합니다.")
 					break;
-				case 0:
+				case 1:
 					let check = window.confirm("책꽂이를 생성했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/mypage/shelf?userName="+userName;
+						opener.location.href="/shelf/list?userName="+userName;
 						window.close();
 						break;
 					} else{

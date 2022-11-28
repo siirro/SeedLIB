@@ -14,7 +14,7 @@
 		<typeAlias type="com.seed.lib.book.shelf.BookShelfVO" alias="BookShelfVO"/>
 		<typeAlias type="com.seed.lib.book.shelf.BookPickVO" alias="BookPickVO"/>
 		<typeAlias type="com.seed.lib.util.ShelfPager" alias="ShelfPager"/>
-		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfPager"/>
+		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfBookPager"/>
 		<typeAlias type="com.seed.lib.util.BookPager" alias="BookPager"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>

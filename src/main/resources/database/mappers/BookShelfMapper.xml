@@ -13,8 +13,12 @@
 		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb'
 	</select>
 	
+	<select id="getSameShelf" parameterType="BookShelfVO" resultType="Integer">
+		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb' AND SHNAME = #{shName}
+	</select>
+	
 	<select id="getBookExist" parameterType="BookPickVO" resultType="Integer">
-		SELECT COUNT(PICKNUM) FROM PICK WHERE USERNAME = 'bb' AND SHNUM = #{shNum}
+		SELECT COUNT(PICKNUM) FROM PICK WHERE ISBN = #{isbn} AND SHNAME = #{shName}
 	</select>
 	
 	<select id="getShelfList" parameterType="BookShelfVO" resultType="BookShelfVO">
@@ -43,7 +47,7 @@
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
 		INSERT INTO SHELF(USERNAME, SHNAME, SHMEMO, CREDATE)
-			VALUES (#{userName}, #{shName}, #{shMemo}, sysdate);
+			VALUES (#{userName}, #{shName}, #{shMemo}, now());
 	</insert>
 	
 	
@@ -62,7 +66,7 @@
 	
 	<insert id="setBookAdd" parameterType="BookPickVO">
 		INSERT INTO PICK(ISBN, SHNUM, REGDATE)
-			VALUES (#{isbn}, #{shNum}, sysdate);
+			VALUES (#{isbn}, #{shNum}, now());
 	</insert>
 	
 	
