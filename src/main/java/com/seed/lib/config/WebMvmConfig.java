@@ -19,7 +19,7 @@ public class WebMvmConfig implements WebMvcConfigurer {
 				.addPathPatterns("/hope/setHope")
 				.addPathPatterns("/donation/setDon")
 				.addPathPatterns("/studyroom/**")
-				.addPathPatterns("/mypage/**")
+//				.addPathPatterns("/mypage/**")
 				.excludePathPatterns("/index")
         		.excludePathPatterns("/css/**", "/images/**", "/js/**");
 	}
