@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.lib.admin.AdminMapper">
+	<insert id="setAdminRole" parameterType="MemberVO">
+		INSERT INTO MEMBER_ROLE VALUES (
+			(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_ADMIN'),#{userName}
+		)	
+	</insert>
+</mapper>

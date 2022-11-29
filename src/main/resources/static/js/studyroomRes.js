@@ -22,6 +22,24 @@ strOption += "height=" + popupHeight + "px,";
 strOption += "toolbar=no,menubar=no,location=no,";
 strOption += "resizable=yes,status=yes";
 
+$(".roomBtn").click(function(){
+    let roomNum = $(this).attr("roomNum");
+    $.ajax({
+        type:"POST",
+        url:"./roomList",
+        data:{
+            roomNum:roomNum
+        },success:function(data){
+            console.log(data);
+            let url = data.url;
+            let msg = data.msg;
+            alert(msg);
+            location.href=url;
+        }
+    })
+
+})
+
 $(".seatList").on("click",".resBtn",function(){
     used = $(this).attr("available");
     console.log(used);
@@ -38,11 +56,10 @@ $(".seatList").on("click",".resBtn",function(){
 })
 
 $("#revBtn").click(function(){
-    console.log("올")
     window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
     const studyDetailVO={
         seatNum:$("#seatNum").attr("value"),
-        roomName:$("#roomName").attr("value"),
+        roomNum:$("#roomNum").attr("value"),
         userName:$("#userName").val()
     }
 
@@ -62,6 +79,7 @@ $("#revBtn").click(function(){
                     break;
                 case 222:
                     alert("이용 중인 좌석의 퇴실 처리 후 예약이 가능합니다");
+                    opener.location.href="/mypage/seatHistory"; 
                     window.close();
                     break;
                 case 200:
@@ -71,7 +89,7 @@ $("#revBtn").click(function(){
                         window.close();
                         break;
                     } else{
-                        opener.location.href="../"; 
+                        opener.location.href="../index"; 
                         window.close();
                         break;
                     }    

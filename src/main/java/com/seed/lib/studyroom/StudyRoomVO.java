@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class StudyRoomVO {
 
+	private int roomNum;
 	private String roomName;
 	private int lastNum;
 	

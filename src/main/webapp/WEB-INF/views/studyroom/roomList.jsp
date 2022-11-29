@@ -85,15 +85,15 @@
 <div id="contents" class="contentArea">				
 	<div class="cover">
 		<div class="wroom">
-			<a href="/studyroom/roomInfo?roomName=WROOM" style="min-width: 479px;"><img src="/images/read.png" style="width:100px; height: auto;"></a>
+			<button type="button" class="roomBtn" roomNum="1"><img src="/images/read.png" style="width:100px; height: auto;"></a>
 			<span>일반열람실(여)</span>
 		</div>
 		<div class="mroom">
-			<a href="/studyroom/roomInfo?roomName=MROOM" style="min-width: 479px;"><img src="/images/read (1).png" style="width:100px; height: auto;"></a>
+			<button type="button" class="roomBtn" roomNum="2"><img src="/images/read (1).png" style="width:100px; height: auto;"></a>
 			<span>일반열람실(남)</span>
 		</div>
-		<div class="nroom" style="padding-left: 40px; padding-right: 40px;">
-			<a href="/studyroom/roomInfo?roomName=NROOM" style="min-width: 479px;"><img src="/images/online-lesson.png" style="width:100px; height: auto;"></a>
+		<div class="nroom" style="padding-left: 34px; padding-right: 34px;">
+			<button type="button" class="roomBtn" roomNum="3"><img src="/images/online-lesson.png" style="width:100px; height: auto;"></button>
 			<span>노트북실</span>
 		</div>
 	</div>

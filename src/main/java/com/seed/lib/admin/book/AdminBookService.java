@@ -1,5 +1,7 @@
 package com.seed.lib.admin.book;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,15 @@ public class AdminBookService {
 	@Autowired
 	private AdminBookMapper adminBookMapper;
 	
-	public int setBookAdd(BookVO bookVO)throws Exception{
-		return adminBookMapper.setBookAdd(bookVO);
+	
+	// 도서 목록 조회
+	public List<BookVO> getAdBookList()throws Exception{
+		return adminBookMapper.getAdBookList();
+	}
+	
+	// 도서 등록
+	public int setAdBookAdd(BookVO bookVO)throws Exception{
+		return adminBookMapper.setAdBookAdd(bookVO);
 	}
 	
 }

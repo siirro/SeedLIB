@@ -177,7 +177,7 @@ pageEncoding="UTF-8"%>
                 </div>    
                     <div><h4 class="htitle" style="margin-top:25px;">기증자 정보</h4>
                     </div>
-                    <p class="emp1 ref">* 표시는 필수 입력 항목입니다.</p>
+                    <p class="emp1 ref">기증자 정보는 회원 정보와 동일합니다.</p>
                     <div class="boardWrap">
                         <table class="board-view">
                             <caption>도서 기증자 정보</caption>
@@ -188,23 +188,26 @@ pageEncoding="UTF-8"%>
                             <tbody>
                                 <tr>
                                     <th scope="row">신청자명</th>
-                                    <td><input type="text" class="required" id="userName" name="userName" value="id1" readonly></td>
+                                    <td><input type="text" class="required" id="userName" name="userName" value="${memberVO.userName}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">휴대폰번호</th>
-                                    <td><input type="text" class="required" name="phone" value="01000000000" readonly></td>
+                                    <td><input type="text" class="required" name="phone" value="${memberVO.phone}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">이메일</th>
-                                    <td><input type="text" name="email" value="00000@mail.com" readonly></td>
+                                    <td><input type="text" class="required" name="email" value="${memberVO.email}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">주소</th>
-                                    <td><input type="text" name="addr" value="서울" readonly></td>
+                                    <td><input type="text" class="required" style="width: 50%;" name="addr" value="${memberVO.address1}" readonly></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div><h4 class="htitle" style="margin-top:25px;">기증 도서 정보</h4>
+                    </div>
+                    <p class="emp1 ref" style="margin-top: 10px;">* 표시는 필수 입력 항목입니다.</p>
                     <div class="boardWrap mt10">
                         <table class="board-view">
                             <caption>기증 도서 정보</caption>

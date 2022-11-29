@@ -11,14 +11,14 @@
 		STUDYROOM S
 		LEFT JOIN
 		STUDYDETAIL SD
-		ON SD.ROOMNAME=S.ROOMNAME		
-		WHERE S.ROOMNAME=#{roomName}
+		ON SD.ROOMNUM=S.ROOMNUM		
+		WHERE S.ROOMNUM=#{roomNum}
 	</select>
 	
 	<select id="getUseSeat" parameterType="StudyDetailVO" resultType="int">
 		SELECT COUNT(*) FROM
 		STUDYDETAIL
-		WHERE ROOMNAME=#{roomName} AND SEATNUM=#{seatNum} AND RVABLE=0 AND RVDATE=CURDATE()
+		WHERE ROOMNUM=#{roomNum} AND SEATNUM=#{seatNum} AND RVABLE=0 AND RVDATE=CURDATE()
 	</select>
 	
 	<select id="getOverlapSeat" parameterType="StudyDetailVO" resultType="int">
@@ -29,7 +29,7 @@
 	
 	<insert id="setMySeat" parameterType="StudyDetailVO">
 		INSERT INTO STUDYDETAIL VALUES
-		(0, 0, #{seatNum}, SYSDATE(), #{roomName}, #{userName});
+		(0, 0, #{seatNum}, SYSDATE(), #{roomNum}, #{userName});
 	</insert>
 	
 	<select id="getSeatHistory" parameterType="String" resultType="StudyDetailVO">
@@ -37,7 +37,7 @@
 		WHERE USERNAME=#{userName}
 	</select>
 	
-	<update id="exitMySeat" parameterType="Map">
+	<update id="exitMySeat" parameterType="StudyDetailVO">
 		UPDATE STUDYDETAIL SET
 		RVABLE=1
 		WHERE USERNAME=#{userName} AND SEATNUM=#{seatNum};
@@ -56,7 +56,8 @@
 		<result column="RVDATE" property="rvDate"/>  
 		<result column="USERNAME" property="userName"/>
 		<association property="roomVO">
-			<id column="ROOMNAME" property="roomName"/>
+			<id column="ROOMNUM" property="roomNum"/>
+			<result column="ROOMNAME" property="roomName"/>
 			<result column="LASTNUM" property="lastNum"/>
 		</association>
 	</resultMap>
