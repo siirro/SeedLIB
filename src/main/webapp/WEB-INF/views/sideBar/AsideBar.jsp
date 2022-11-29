@@ -11,16 +11,7 @@
       </ul>
     </li> 
     <li id="lnb1_2"><a href="../../search/category" class="category">주제별검색</a> </li> 
-    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료검색</a> </li> 
-
-
-    <!-- <li id="lnb1_1">
-      <a href="/seoksu/menu/10095/program/30001/searchSimple.do" class="current on">소장자료검색</a> 
-         <ul class="MkSub submenu" style="display: block;"> 
-          <li id="lnb1_1_1"><a href="/seoksu/menu/10095/program/30001/searchSimple.do" class="current">통합검색</a> </li> 
-          <li id="lnb1_1_2"><a href="/seoksu/menu/10096/program/30002/searchDetail.do">고급검색</a> </li> 
-         </ul> 
-      </li> -->
+    <li id="lnb1_3"><a href="../../search/newBook" class="newBook">신착자료</a> </li> 
 
   </ul>
 </div>
@@ -30,16 +21,24 @@
   let urln = window.location.href.lastIndexOf('/')+1;
   urllast = url.substring(urln);
 
-
-
   let check = url.includes('simple');
-  if(check) {
-    console.log("댐");
+  if(url.includes('simple')||url.includes('book/detail')) {
     $(".simpledetail").addClass(' current');
     $(".simpledetail2").css("display","block")
     $("#simple").addClass(' current');
   }
   
+  if(url.includes('search/detail')){
+    $("#detail").addClass(' current');
+  }
+
+  if(url.includes('category')){
+    $(".category").addClass(' current');
+  }
+
+  if(url.includes('newBook')){
+    $(".newBook").addClass(' current');
+  }
 
   try {
     let gogo = document.querySelector('.'+urllast);
@@ -50,12 +49,9 @@
     
   }
 
-  
-
-  if(urllast=="simple"||urllast=="detail"){
+  if(urllast=="simple"||url.includes('search/detail')||url.includes('book/detail')){
     $(".simpledetail2").css("display","block")
-    hoho.className = 'current';
+    // hoho.className = 'current';
+    $(".simpledetail").addClass('current');
   }
-
-
 </script>

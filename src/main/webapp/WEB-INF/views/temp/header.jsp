@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+	
     
     <meta charset="UTF-8">
     <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/images/favicon.png">   
     
 <!-- CSS & JQUERY -->
 <link rel="stylesheet" href="/css/common.css">
@@ -92,7 +95,7 @@
 					<ul style="display: none;"> 
 						<li id="gnb1_1"><a href="/search/simple">소장자료검색</a></li> 
 						<li id="gnb1_2"><a href="/search/category">주제별검색</a> </li> 
-						<li id="gnb1_3"><a href="/search/newbook">신착자료검색</a> </li> 
+						<li id="gnb1_3"><a href="/search/newBook">신착자료검색</a> </li> 
 						<li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li>
 					</ul> 
 				</li> 
@@ -144,6 +147,7 @@
 						<li id="gnb6_5"><a href="/seoksu/menu/10180/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 
 						<li id="gnb6_6"><a href="/mypage/hopeList">희망도서조회</a> </li> 
 						<li id="gnb6_7"><a href="/mypage/donList">도서기증조회</a> </li> 
+						<li id="lnb1_6"><a href="/mypage/seatHistory">열람실 이용 내역</a></li> 
 						<li id="gnb6_8"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
 						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
 					</ul>

@@ -32,7 +32,12 @@
 <body>
 	<!-- header -->
     <c:import url="../temp/header.jsp"></c:import>
-
+<div id="container" class="sub">	
+	<div class="sVisualWrap">
+	<div class="sVisual">
+		<h3>신청하기</h3>
+	</div>
+	</div>
 <div id="contentGroup">
 	<c:import url="../sideBar/FsideBar.jsp"></c:import>
 
@@ -47,7 +52,7 @@
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
 					<form action="../mypage/hopeList" method="GET">
-						<input type="hidden" id="userName" name="userName" value="id1">
+						<input type="hidden" id="userName" name="userName" value="${memberVO.userName}">
 						<fieldset>
 							<legend class="blind">게시글 검색 영역</legend>
 							<!-- 게시판 검색 -->
@@ -125,6 +130,7 @@
 				</div>
 			</div>
 		</div>	
+</div>		
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->

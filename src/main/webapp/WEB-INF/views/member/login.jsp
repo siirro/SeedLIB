@@ -65,23 +65,7 @@
             </div>
         </div>
         
-        <!-- 레이어팝업 -->
-        <div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-            <div class="layer-content">
-                <h4>QR코드</h4>
-                <div class="layer-content">
-                    <div class="conTxt ta_c" id="qrcodeImg"></div>
-                    <div class="conTxt">
-                        <p>QR코드 이미지 저장</p>
-                        QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-                    </div>
-                </div>
-                <a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-            </div>
-        </div>
-        <!-- //레이어팝업 -->
-        
-        <div id="contents" class="contentArea">
+       <div id="contents" class="contentArea">
                             
         <!--Forced tab Show Que-->
         <div class="ttabWrap">

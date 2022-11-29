@@ -30,15 +30,14 @@ pageEncoding="UTF-8"%>
         box-sizing: border-box;
         display: block;
         font-weight: bold;
-        font-family: 'NotoKR', 'Malgun Gothic', 'gothic', '고딕', '새굴림', Arial, sans-serif;
         color:#504f4f;
     }
 
     .txt{
-    margin-top: 15px;
+    margin-top: 5px;
     margin-left: 5px;
     line-height: 20px;
-    font-size: 16px;
+    font-size: 17px;
     color: #626262;
 }
 
@@ -99,7 +98,7 @@ pageEncoding="UTF-8"%>
 
 </style>
 
-<title>소장 도서 기증</title>
+<title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 </head>
 <body>
 <!-- header -->
@@ -134,7 +133,7 @@ pageEncoding="UTF-8"%>
         <form id="donForm" name="donForm" action-="setDon" method="post">
                 <div class="endowment_bookDamoa">
                     <h3 class="tit">기증처리 동의</h3>
-                        <p class="txt">귀하께서 기증하시는 자료는 씨앗도서관의 장서로 등록됩니다.</p>
+                        <p class="txt" style="margin-top: 15px;">귀하께서 기증하시는 자료는 씨앗도서관의 장서로 등록됩니다.</p>
                         <p class="txt">기증된 자료는 반환이 어렵습니다.</p>
                         <p class="txt">다만, 디지타이징에 활용된 자료와 오・훼손 등으로 재기증이 어려운 자료는 폐기될 수 있음을 알려드립니다. </p>
                         <p class="txt">씨앗도서관 기증 처리 절차에 동의하시면, 기증 신청하여 주시기 바랍니다. </p>
@@ -178,7 +177,7 @@ pageEncoding="UTF-8"%>
                 </div>    
                     <div><h4 class="htitle" style="margin-top:25px;">기증자 정보</h4>
                     </div>
-                    <p class="emp1 ref">* 표시는 필수 입력 항목입니다.</p>
+                    <p class="emp1 ref">기증자 정보는 회원 정보와 동일합니다.</p>
                     <div class="boardWrap">
                         <table class="board-view">
                             <caption>도서 기증자 정보</caption>
@@ -189,23 +188,26 @@ pageEncoding="UTF-8"%>
                             <tbody>
                                 <tr>
                                     <th scope="row">신청자명</th>
-                                    <td><input type="text" class="required" id="userName" name="userName" value="id1" readonly></td>
+                                    <td><input type="text" class="required" id="userName" name="userName" value="${memberVO.userName}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">휴대폰번호</th>
-                                    <td><input type="text" class="required" name="phone" value="01000000000" readonly></td>
+                                    <td><input type="text" class="required" name="phone" value="${memberVO.phone}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">이메일</th>
-                                    <td><input type="text" name="email" value="00000@mail.com" readonly></td>
+                                    <td><input type="text" class="required" name="email" value="${memberVO.email}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">주소</th>
-                                    <td><input type="text" name="addr" value="서울" readonly></td>
+                                    <td><input type="text" class="required" style="width: 50%;" name="addr" value="${memberVO.address1}" readonly></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div><h4 class="htitle" style="margin-top:25px;">기증 도서 정보</h4>
+                    </div>
+                    <p class="emp1 ref" style="margin-top: 10px;">* 표시는 필수 입력 항목입니다.</p>
                     <div class="boardWrap mt10">
                         <table class="board-view">
                             <caption>기증 도서 정보</caption>

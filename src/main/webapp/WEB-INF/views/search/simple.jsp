@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꿈이 싹트는 정원 : 씨앗도서관</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>통합검색 : 씨앗도서관 ☘</title>
 </head>
 <body>
 <div id="wrap">
@@ -98,12 +99,12 @@
 
                                 <c:if test="${not empty list}">
                                     <div class="listStyleType">
-                                        <select id="kind" name="kind" title="정렬조건 선택" onchange="changeFn()">
-                                            <option value="score">정확도</option>
-                                            <option value="title">서명</option>
-                                            <option value="writer">저자</option>
-                                            <option value="publisher">발행처</option>
-                                            <option value="num">대출수</option>
+                                        <select id="kind" name="kind" title="정렬조건 선택">
+                                            <option class="kinds" value="score">정확도 순</option>
+                                            <option class="kinds" value="title">서명 순</option>
+                                            <option class="kinds" value="writer">저자 순</option>
+                                            <option class="kinds" value="publisher">발행처 순</option>
+                                            <option class="kinds" value="num">대출수 순</option>
                                         </select>
 
                                         <!-- <a href="" id="sortListBtn" class="btn">확인</a> -->
@@ -147,7 +148,7 @@
                                                     <ol>
                                                         <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
                                                         <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
-                                                        <li><a class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
+                                                        <li><button class="btn" title="찜하기 새창열림" style="padding: 0px 15px; height: 30px; background-color: #fff; color: #00e3ae; border: 1px solid #00e3ae;">찜</a></li>
                                                     </ol>
                                                 </div>
 
@@ -243,6 +244,38 @@
 
                             <script>
 
+                            $(".btn_haveInfo").on("click", function () {
+                                $(".whereLibrary").removeClass("open");
+                                $(".bookInfo").removeClass("open");
+                                $(".btn_sergeInfo").removeClass("on");
+                                if (!$(this).hasClass("on")) {
+                                    $(".btn_haveInfo").removeClass("on");
+                                    $(this).addClass("on");
+                                    $(this).parents("li").children(".whereLibrary").addClass("open").attr("tabIndex", "0");
+                                    $(this).attr("title", "소장정보 확장됨");
+                                } else {
+                                    $(this).removeClass("on");
+                                    $(".whereLibrary").removeClass("open").removeAttr("tabIndex", "0");
+                                    $(this).attr("title", "소장정보 축소됨");
+                                }
+                            });
+                            // 서지정보 view/hide
+                            $(".btn_sergeInfo").on("click", function () {
+                                $(".whereLibrary").removeClass("open");
+                                $(".bookInfo").removeClass("open");
+                                $(".btn_haveInfo, .btn_bkdanbi").removeClass("on");
+                                if (!$(this).hasClass("on")) {
+                                    $(".btn_sergeInfo").removeClass("on");
+                                    $(this).addClass("on");
+                                    $(this).parents("li").children(".bookInfo").addClass("open").attr("tabIndex", "0");
+                                    $(this).attr("title", "서지정보 확장됨");
+                                } else {
+                                    $(this).removeClass("on");
+                                    $(".bookInfo").removeClass("open").removeAttr("tabIndex", "0");
+                                    $(this).attr("title", "서지정보 축소됨");
+                                }
+                            });
+
                                 // $(".btn_haveInfo").on("click", function(){
                                 //     let id=$(this).attr("data-id")
                                 //     if(!$(this).hasClass("on")) {
@@ -267,37 +300,37 @@
                                 //     }
                                 // });
 
-                                for(let i=1;i<=10;i++) {
-                                    $('#'+"btn_haveInfo"+i).click(function(){            
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_haveInfo"+i).click(function(){            
                                         
-                                        if(!$('#'+"collectionInfo"+i).hasClass("open")) {
-                                            $('#'+"collectionInfo"+i).addClass("open");
-                                            $(this).addClass("on");
-                                            $('#'+"bookInfo"+i).hide();
-                                        } else {
-                                            $('#'+"collectionInfo"+i).removeClass("open");
-                                            $(this).removeClass("on");
+                                //         if(!$('#'+"collectionInfo"+i).hasClass("open")) {
+                                //             $('#'+"collectionInfo"+i).addClass("open");
+                                //             $(this).addClass("on");
+                                //             $('#'+"bookInfo"+i).hide();
+                                //         } else {
+                                //             $('#'+"collectionInfo"+i).removeClass("open");
+                                //             $(this).removeClass("on");
                                             
-                                        }
+                                //         }
 
                                         
-                                    });
-                                } 
+                                //     });
+                                // } 
 
-                                for(let i=1;i<=10;i++) {
-                                    $('#'+"btn_sergeInfo"+i).click(function(){            
+                                // for(let i=1;i<=10;i++) {
+                                //     $('#'+"btn_sergeInfo"+i).click(function(){            
                                         
-                                        if(!$('#'+"bookInfo"+i).hasClass("open")) {
-                                            $('#'+"bookInfo"+i).addClass("open");
-                                            $(this).addClass("on");
-                                            $('#'+"collectionInfo"+i).hide();
-                                        } else {
-                                            $('#'+"bookInfo"+i).removeClass("open");
-                                            $(this).removeClass("on");
+                                //         if(!$('#'+"bookInfo"+i).hasClass("open")) {
+                                //             $('#'+"bookInfo"+i).addClass("open");
+                                //             $(this).addClass("on");
+                                //             $('#'+"collectionInfo"+i).hide();
+                                //         } else {
+                                //             $('#'+"bookInfo"+i).removeClass("open");
+                                //             $(this).removeClass("on");
                                             
-                                        }
-                                    });
-                                } 
+                                //         }
+                                //     });
+                                // } 
 
                                 
                                 // for(let i=1;i<=10;i++) {
@@ -351,32 +384,7 @@
                         </c:if>
                         <!-- //페이징 -->
 
-                        <script>
-                            let disables = document.querySelectorAll(".disabledLink")
-                            
-                            disables.forEach(element => {
-                                element.removeAttribute('href');
-                            });
-
-                            let urll = window.location.href;
-                            let urlnn = urll.lastIndexOf('=')+1;
-                            urllastt = urll.substring(urlnn);
-
-                            console.log(urllastt);
-
-                            let page1sibal = urll.lastIndexOf('=')-1;
-                            console.log(page1sibal);
-                            if(page1sibal==45){
-                                document.querySelector('#ppaaggee1').style.background="#9be15d";
-                                document.querySelector('#ppaaggee1').style.color="#fff";
-                            }
-
-                            let ppaaggee = document.querySelector('#'+"ppaaggee"+urllastt);
-                            ppaaggee.style.background="#9be15d";
-                            ppaaggee.style.color="#fff";
-                          
-                          
-                        </script>
+                       
                         
                     </div>
                     <!-- 리스트 -->
@@ -395,6 +403,34 @@
 </div>
 
 <script>
+
+    try {
+        // 페이징 활성화 
+            // 화살표들 disabledLink 클래스 걸려있으면 누를수없게 a태그에서 href 속성을 삭제시킴
+            let disables = document.querySelectorAll(".disabledLink")
+            disables.forEach(element => {
+                element.removeAttribute('href');
+            });
+
+            let urll = window.location.href;
+            let urlnn = urll.lastIndexOf('=')+1;
+            urllastt = urll.substring(urlnn);
+
+            //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+            let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
+
+            ppaaggee.style.background="#9be15d";
+            ppaaggee.style.color="#fff";
+        // 페이징 활성화 
+        
+    } catch (error) {
+        
+    }
+
+    
+                          
+                          
+                     
 $("#liboption").click(function(){
     let check = $("#sh_util03").attr("class");
     if(check=="divSelect") {
@@ -408,6 +444,22 @@ $("#liboption").click(function(){
     }
     
 })
+
+
+
+let k = '${param.kind}'
+
+const kinds = document.getElementsByClassName('kinds');
+for(let i=0;i<kinds.length;i++){
+    if(k==kinds[i].value) {
+        kinds[i].setAttribute('selected','selected');
+        break;
+    }
+}
+
+
+
+
 
 </script>
 

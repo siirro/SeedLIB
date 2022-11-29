@@ -3,6 +3,7 @@ package com.seed.lib.member;
 import java.lang.ProcessBuilder.Redirect;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,22 +47,24 @@ public class MemberController {
 				
 	}	
 	
-//	@PostMapping("login")
-//	public ModelAndView getLogin(MemberVO memberVO, HttpSession session) throws Exception{
-//		
-//		ModelAndView mv =new ModelAndView();
-//		memberVO= memberService.getLogin(memberVO);
-//		if(memberVO!=null) {
-//			session.setAttribute("memberVO", memberVO);
+	@PostMapping("login")
+	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
+		ModelAndView mv =new ModelAndView();
+		memberVO= memberService.getLogin(memberVO);
+		if(memberVO!=null) {
+			session.setAttribute("memberVO", memberVO);
+			String dest = (String)session.getAttribute("dest");
+        	String uri = (dest == null) ? "index":dest;
+			mv.addObject("memberVO", memberVO);
+			mv.setViewName(uri);
 //			mv.setViewName("redirect:../");
-//
-//		}else {
-//	         mv.setViewName("redirect:../member/login");   
-//
-//		}
-//		
-//	      return mv;
-//	}
+		}else {
+	         mv.setViewName("redirect:../member/login");   
+
+		}
+		
+	      return mv;
+	}
 	 
 
 	

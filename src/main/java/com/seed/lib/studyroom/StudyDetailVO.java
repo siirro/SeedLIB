@@ -11,7 +11,7 @@ public class StudyDetailVO {
 	private int rvAble;
 	private Integer seatNum;
 	private Date rvDate;
-	private String roomName;
+	private int roomNum;
 	private String userName;	
 	
 	private StudyRoomVO roomVO;

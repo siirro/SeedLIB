@@ -67,23 +67,23 @@
 
     </style>
 
-    <title>좌석 예약</title>
+    <title>좌석 예약 : 씨앗도서관 ☘️</title>
 </head>
 <body>
-    <input type="hidden" id="userName" value="id1">
+    <input type="hidden" id="userName" value="${memberVO.userName}">
     <div class="contentsGroup">
         <div class="seatArea">
             <span class="seat" style="margin-bottom: 10px;">🌱 예 약 정 보 🌱</span>
             <hr style="width: 35%;">  
             <c:choose>
                 <c:when test="${roomName eq '일반열람실(여)'}">
-                    <span id="roomName" style="font-size: 25px;" class="seat" value="WROOM">열람실 : ${roomName} </span>
+                    <span id="roomNum" style="font-size: 25px;" class="seat" value="1">열람실 : ${roomName} </span>
                 </c:when>
                 <c:when test="${roomName eq '일반열람실(남)'}">
-                    <span id="roomName" style="font-size: 25px;" class="seat" value="MROOM">열람실 : ${roomName} </span>
+                    <span id="roomNum" style="font-size: 25px;" class="seat" value="2">열람실 : ${roomName} </span>
                 </c:when>
                 <c:when test="${roomName eq '노트북실'}">
-                    <span id="roomName" style="font-size: 25px;" class="seat" value="NROOM">열람실 : ${roomName} </span>
+                    <span id="roomNum" style="font-size: 25px;" class="seat" value="3">열람실 : ${roomName} </span>
                 </c:when>
             </c:choose>
             <span id="seatNum" style="font-size: 25px;" class="seat" value="${seatNum}">좌석 번호 : ${seatNum} </span>

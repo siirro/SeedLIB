@@ -5,7 +5,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>소장 도서 기증</title>
+	<style>
+		.decimal-list{
+			margin-left: 20px;
+		}
+		.marginText{
+			margin-left: 20px;
+		}
+	</style>
+	<link rel="icon" href="/images/favicon.png">
+    <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 </head>
 <body>
 	<!-- header -->
@@ -27,7 +36,7 @@
 
 
 
-				<div id="contents" class="contentArea">
+<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->
 <div class="ttabWrap" style="display: block;">
@@ -55,14 +64,14 @@
 						<!-- 독서정보_도서기증안내 -->
 	<h4 class="htitle"><span class="themeFC">도서관 기증자료</span> 운영기준</h4>
 	
-	<h5 class="stitle">목적 및 정의</h5>
+	<h5 class="stitle">🌱목적 및 정의</h5>
 	<ul class="decimal-list">
 		<li>이 기준은 “씨앗도서관”(이하 “도서관”이라 한다) 장서관리의 효율성과 기증자료 업무의 일관성을 기하기 위하여 관련 기준을 규정하는데 있다.</li>
 		<li>기증자료란 개인 또는 단체로부터 무상으로 받은 도서 및 비도서를 말한다.</li>
 	</ul>
 	
-	<h5 class="stitle">대상자료</h5>
-	<p>공공도서관의 특성에 맞게 공중의 열람과 이용가치가 높은 자료로써 다음 각 호의 자료로 한다.</p>
+	<h5 class="stitle">🌱대상자료</h5>
+	<p class="marginText">공공도서관의 특성에 맞게 공중의 열람과 이용가치가 높은 자료로써 다음 각 호의 자료로 한다.</p>
 	<ul class="decimal-list mt10">
 		<li>일반 및 어린이 문학서, 교양˙학술서</li>
 		<li>당해년도 기준 5년 이내 출판된 자료</li>
@@ -71,7 +80,7 @@
 		<li>점자도서, 큰 글자 등 장애인을 위한 도서</li>
 		<li>다문화자료, 한국을 소개하는 외국어자료</li>
 	</ul>
-	<p>(단, 다음 각 호의 자료는 기증자료 접수에서 제외한다.)</p>
+	<p class="marginText">(단, 다음 각 호의 자료는 기증자료 접수에서 제외한다.)</p>
 	<div class="descBox mt10 fsize16">
 		<ul class="clearfix">
 			<li>① 발행년도가 오래되어 자료의 활용도가 떨어지는 자료</li>
@@ -87,7 +96,7 @@
 		</ul>
 	</div>
 	
-	<h5 class="stitle">기증자료의 관리</h5>
+	<h5 class="stitle">🌱기증자료의 관리</h5>
 	<ul class="decimal-list">
 		<li><span>접수 및 등록</span>
 			<ul class="dash-list">
@@ -107,7 +116,7 @@
 		<li><span>위의 1-3항에 해당되지 않는 자료</span>는 도서관 행사 및 전시에 활용 가능하며, 기타 자료는 폐기 할 수 있다.</li>
 	</ul>
 	
-	<h5 class="stitle">기증방법 및 기증자 예우</h5>
+	<h5 class="stitle">🌱기증방법 및 기증자 예우</h5>
 	<ul class="decimal-list">
 		<li>온라인 홈페이지 [메인-소장도서기증-신청하기] 메뉴에서 기증신청을 합니다.</li>
 		<li>도서관에 방문(평일 09:00~18:00), 우편 발송, 우체국 택배(착불) 등의 방법으로 자료를 보냅니다.</li>
