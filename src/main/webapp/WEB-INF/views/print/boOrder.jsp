@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/admin/modal.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<h1>Book Order Page</h1>
+	<button type="button" id="modal-open">결제하기</button>
 	<div class="container">
 	  <div class="popup-wrap" id="popup">
 	    <div class="popup">
@@ -31,5 +34,23 @@
 	    </div>
 	</div>
 	</div>
+<script type="text/javascript">
+	$("#confirm").click(function(){
+		modalClose(); // 모달 닫기 함수 호출
+		
+		// 컨펌 이벤트 처리
+	});
+	$("#modal-open").click(function(){   
+		console.log("버튼클릭!")     
+		$("#popup").css('display','flex').hide().fadeIn();
+		// 팝업을 flex속성으로 바꿔준 후 hide()로 숨기고 다시 fadeIn()으로 효과
+	});
+	$("#close").click(function(){
+		modalClose(); // 모달 닫기 함수 호출
+	});
+	function modalClose(){
+		$("#popup").fadeOut(); // 페이드아웃 효과
+	};
+</script>
 </body>
 </html>

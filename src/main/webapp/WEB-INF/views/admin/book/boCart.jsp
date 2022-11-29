@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/css/admin/modal.css">
 	<!-- header -->
 	<c:import url="../../temp/header.jsp"></c:import>
+	<script defer src="/js/admin/modal.js"></script>
 </head>
 <body>
 	<div id="container" class="sub">	
@@ -100,7 +101,10 @@
 
 					<dl class="linkBox">
 						<dt class="txtArea">소장도서기증 또는 조회를 하려면 버튼을 누르세요</dt>
-						<dd class="btnArea"><a class="btn" href="./delete">선택삭제하기</a> <a class="btn write themeBtn" onclick="window.open('http://localhost:81/print/boOrder', '_blank', 'width=1000 height=700')">선택결제하기</a></dd>
+						<dd class="btnArea">
+							<a class="btn" href="./delete">선택삭제하기</a> 
+							<a class="btn write themeBtn" id="modal-open">선택결제하기</a>
+						</dd>
 					</dl>
 				</div>
 				<!-- End Of the Real Contents 2 -->

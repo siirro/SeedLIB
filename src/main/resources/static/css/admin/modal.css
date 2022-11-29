@@ -1,5 +1,14 @@
 /* modal.css */
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+p{
+    margin-top: 10px;
+}
+
 /* 모달팝업을 감쌀 박스의 css */
 .popup-wrap{
     /* 배경색과 투명도로 살짝 어둡지만 투명한 배경
@@ -114,6 +123,11 @@
 }
 /* 확인버튼 */
 .pop-btn.confirm{
+    /* 오른쪽 줄 */
+    border-right:1px solid #3b5fbf;
+}
+/* 닫기버튼 */
+.pop-btn.close{
     /* 오른쪽 줄 */
     border-right:1px solid #3b5fbf;
 }
