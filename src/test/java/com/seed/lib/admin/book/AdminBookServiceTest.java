@@ -16,6 +16,11 @@ class AdminBookServiceTest {
 	@Autowired
 	private AdminBookService adminBookService;
 	
+	@Test
+	void getBoCartListTest()throws Exception{
+		
+	}
+	
 	//@Test
 	void setBoCartTest()throws Exception{
 		

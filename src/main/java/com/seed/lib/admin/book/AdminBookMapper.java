@@ -5,11 +5,15 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 
 @Mapper
 public interface AdminBookMapper {
 	
-	// 도서 제본 신청
+	// 바구니 제본 신청 목록
+	public BookPrintVO getBoCartList(MemberVO memberVO)throws Exception;
+	
+	// 바구니 제본 신청
 	public int setBoCart(BookPrintVO bookPrintVO)throws Exception;
 	
 	// 도서 목록 조회

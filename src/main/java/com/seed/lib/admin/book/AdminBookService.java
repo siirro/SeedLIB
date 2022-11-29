@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 
 @Service
 public class AdminBookService {
@@ -13,8 +14,12 @@ public class AdminBookService {
 	@Autowired
 	private AdminBookMapper adminBookMapper;
 	
+	// 바구니 제본 신청 목록
+	public BookPrintVO getBoCartList(MemberVO memberVO)throws Exception{
+		return adminBookMapper.getBoCartList(memberVO);
+	}
 	
-	// 도서 제본 신청
+	// 바구니 제본 신청
 	public int setBoCart(BookPrintVO bookPrintVO)throws Exception{
 		return adminBookMapper.setBoCart(bookPrintVO);
 	}

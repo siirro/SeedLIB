@@ -76,19 +76,27 @@
 							<colgroup>
 								<col class="no mobileHide">
 								<col>
-								<col class="date mobileHide">
-								<col style="width:70px">
+								<col style="width: 200px;" class="date mobileHide">
+								<col style="width:100px">
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col" class="mobileHide">번호</th>
 									<th scope="col">도서 제목</th>
-									<th scope="col" class="mobileHide">작성일</th>
+									<th scope="col" class="mobileHide">제본페이지수</th>
 									<th scope="col">결제상태</th>
 								</tr>
 							</thead>
 							<tbody>
-								
+								<c:forEach items="${boardVO}" var="vo">
+									<tr>
+									   <td>${vo.boardNum}</td>
+									   <td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
+									   <td>${vo.writer}</td>
+									   <td>${vo.regDate}</td>
+									   <td>${vo.hit}</td>
+									</tr>   
+							  </c:forEach>
 							</tbody>
 						</table>
 					</div>

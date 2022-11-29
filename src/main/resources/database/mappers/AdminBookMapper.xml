@@ -4,7 +4,12 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.book.AdminBookMapper">
 
-	<!--                     도서 제본 신청                     -->
+	<!--                     바구니 제본 신청 목록                    -->
+	<select id="getBoCartList" parameterType="MemberVO">
+		SELECT * FROM CART WHERE USERNAME = #{userName}
+	</select>
+
+	<!--                     바구니 제본 신청                     -->
 	<insert id="setBoCart" parameterType="BookPrintVO" useGeneratedKeys="true" keyProperty="caNum">
 		INSERT INTO CART (CANUM, CASTPAGE, CALSPAGE, CATTPAGE, CAAMOUNT, CASTATUS, USERNAME, ISBN)
 		VALUES (#{caNum}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'N', #{userName}, #{isbn})
