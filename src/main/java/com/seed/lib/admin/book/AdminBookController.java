@@ -25,6 +25,7 @@ public class AdminBookController {
 	}
 	
 	// 바구니 제본신청 목록
+	@GetMapping("boCart")
 	public ModelAndView getBoCartList()throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
@@ -34,19 +35,19 @@ public class AdminBookController {
 		
 		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(bookPrintVO);
 		
-		mv.addObject("list", bookPrintVO);
+		mv.addObject("list", bookPrintVOs);
 		mv.setViewName("admin/book/boCart");
 		
 		return mv;
 	}
 	
 	// 도서 바구니 추가
-	@GetMapping("boCart")
-	public String setBoCart()throws Exception{
-		
-		
-		return "admin/book/boCart";
-	}
+//	@GetMapping("boAdCart")
+//	public String setBoAdCart()throws Exception{
+//		
+//		
+//		return "admin/book/boAdCart";
+//	}
 	
 	// 도서 목록 조회
 	@GetMapping("boList")
