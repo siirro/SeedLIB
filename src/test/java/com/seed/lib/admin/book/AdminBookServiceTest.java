@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 
 @SpringBootTest
 class AdminBookServiceTest {
@@ -16,8 +17,15 @@ class AdminBookServiceTest {
 	@Autowired
 	private AdminBookService adminBookService;
 	
-	@Test
+	//@Test
 	void getBoCartListTest()throws Exception{
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUserName("member");
+		
+		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(memberVO);
+		
+		assertEquals(2,bookPrintVOs.size());
 		
 	}
 	
