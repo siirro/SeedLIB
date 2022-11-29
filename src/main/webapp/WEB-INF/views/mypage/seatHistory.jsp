@@ -66,6 +66,7 @@
 		.room-1{
 			background-color: #8c8989 !important;
 			color: #8c8989 !important;
+			opacity: 100 !important;
 		}		
 
 		.studySuccess{
@@ -135,44 +136,14 @@
   			locale: 'ko', // the initial locale. of not specified, uses the first one
 			initialView: 'dayGridMonth',
 			events: data
-			// eventClick: function (info) {
-			// 	console.log(info);
-			// 	var eventObj = info.event;
-			// 	if($(".fc-bg-event").hasClass("room-1")){
-			// 		return;
-			// 	}else{
-			// 		exitNum=eventObj.id;
-			// 		title=eventObj.title;
-			// 		userName=$("#userName").val();
-			// 		let check = window.confirm("퇴실????");
-			// 		if(check) {
-			// 			console.log("퇴실한대", exitnum);
-			// 			$.ajax({
-			// 				type:"POST",
-			// 				url:"/mypage/exitSeat",
-			// 				data:{
-			// 					exitNum:exitnum,
-			// 					title:title,
-			// 					userName:userName
-			// 				},success:function(data){
-			// 					if(data>0){
-			// 						alert("퇴실 완료했습니다");
-			// 						location.reload();
-			// 					}
-			// 				}
-			// 			})
-			// 		} else{
-
-			// 		}
-			// 	}
-			// 	}	
-			})
+		})
+		
         calendar.render();
 		
 		if($(".fc-bg-event").hasClass("room-0")){
-			let exitBtn = '<div style="display:flex; justify-content: center;">';		
-			exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
-			$(".room-0").append(exitBtn);
+		let exitBtn = '<div style="display:flex; justify-content: center;">';		
+		exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
+		$(".room-0").append(exitBtn);
 		}	
 
 		if($(".fc-bg-event").hasClass("room-1")){
@@ -180,8 +151,11 @@
 			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
 			$(".room-1").append(alreadyExit);
 		}
+		
 
 		});
+
+		
 		
 		$(document).on("click","#exitBtn",function (info) {
 			// console.log(info);
@@ -210,6 +184,21 @@
 });
 </script>
 <script>
+	// $(function(){
+	// 	$(".fc-bg-event").each(function(){
+	// 		if($(this).hasClass("room-0")===true){
+	// 			let exitBtn = '<div style="display:flex; justify-content: center;">';		
+	// 			exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
+	// 			$(".room-0").append(exitBtn);
+	// 		} else if($(this).hasClass("room-1")===true){
+	// 			let alreadyExit = '<div style="display:flex; justify-content: center;">';		
+	// 			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
+	// 			$(".room-1").append(alreadyExit);
+	// 		} else{
+	// 			return;
+	// 		}
+	// 		})
+	// });
 </script>  
 </body>
 </html>
