@@ -37,6 +37,7 @@ public class StudyRoomController {
 	@PostMapping("roomList")
 	@ResponseBody
 	public Map<String, String> sendRoomList(String roomNum, HttpSession session) throws Exception{
+		log.info("$$$$$$$$$$$$$$$$$$$rn:{}",roomNum);
 		Map<String, String> mv = new HashMap<>();
 				MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 					if(memberVO.getGender().equals("여")&&roomNum.equals("1")) {
@@ -50,7 +51,7 @@ public class StudyRoomController {
 						mv.put("url", "./roomInfo?roomNum=3");
 					} else {
 						mv.put("msg", "본인의 성별에 적합한 열람실을 다시 선택해주세요");
-						mv.put("url", "./roomList");
+						mv.put("url", "/studyroom/roomList");
 					}
 			return mv;
 			}

@@ -26,7 +26,7 @@ $(".roomBtn").click(function(){
     let roomNum = $(this).attr("roomNum");
     $.ajax({
         type:"POST",
-        url:"./roomList",
+        url:"/studyroom/roomList",
         data:{
             roomNum:roomNum
         },success:function(data){
