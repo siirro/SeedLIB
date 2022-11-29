@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<link rel="icon" href="/images/favicon.png">
     <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
+	<link rel="stylesheet" href="/css/admin/modal.css">
 </head>
 <body>
 	<!-- header -->
@@ -56,14 +57,8 @@
 					<h5 class="stitle">🌱바구니 자료 신청 안내</h5>
 					<div class="descBox mt10 fsize16">
 						<ul class="clearfix">
-							<li>① 신청은 1회 최대 5책을 선택하여 신청할 수 있으며, 다운로드 서비스는 제한 없이 이용하실 수 있습니다.</li>
-							<li>② 바구니는 신청을 위해 임시보관하며, 자료는 일주일 후 자동 삭제됨</li>
-							<li>③ 1983년 이전 발행 자료는 지질이 약하고 산성화가 진행되어 별도의 이용절차로 운영하고 있습니다.
-								<!-- 줄바꿈 -->
-								<br>
-								<!-- 스페이스바 공백 -->
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								씨앗도서관의 자료는 후대에 전승되는 소중한 문화유산입니다. 여러분들의 협력을 부탁 드립니다.
+							<li>① 신청은 1회 최대 5책을 선택하여 신청할 수 있습니다.</li>
+							<li>② 바구니는 신청을 위해 임시보관하며, 자료는 일주일 후 자동 삭제됩니다.</li>
 							</li>
 						</ul>
 					</div>
@@ -75,12 +70,14 @@
 							<caption>묻고답하기 목록</caption>
 							<colgroup>
 								<col class="no mobileHide">
+								<col class="no mobileHide">
 								<col>
 								<col style="width: 200px;" class="date mobileHide">
 								<col style="width:100px">
 							</colgroup>
 							<thead>
 								<tr>
+									<th scope="col" class="mobileHide">선택</th>
 									<th scope="col" class="mobileHide">번호</th>
 									<th scope="col">도서 제목</th>
 									<th scope="col" class="mobileHide">제본페이지수</th>
@@ -90,6 +87,7 @@
 							<tbody>
 								<c:forEach items="${list}" var="boPrintVO">
 									<tr>
+									   <td><input type="checkbox"></td>
 									   <td>${boPrintVO.caNum}</td>
 									   <td><a href="./detail?caNum=${boPrintVO.caNum}">${boPrintVO.isbn}</a></td>
 									   <td>${boPrintVO.caTtPage}</td>
@@ -102,13 +100,36 @@
 
 					<dl class="linkBox">
 						<dt class="txtArea">소장도서기증 또는 조회를 하려면 버튼을 누르세요</dt>
-						<dd class="btnArea"><a class="btn" href="/mypage/donList">신청조회</a> <a class="btn write themeBtn" href="/donation/setDon" onclick="">신청하기</a></dd>
+						<dd class="btnArea"><a class="btn" href="./delete">선택삭제하기</a> <a class="btn write themeBtn" onclick="window.open('http://localhost:81/print/boOrder', '_blank', 'width=1000 height=700')">선택결제하기</a></dd>
 					</dl>
 				</div>
 				<!-- End Of the Real Contents 2 -->
 			</div>
 		</div>
-	</div>			
+	</div>
+	<div class="container">
+	  <div class="popup-wrap" id="popup">
+	    <div class="popup">
+	      <div class="popup-head">
+	          <span class="head-title">Book Order Page</span>
+	      </div>
+	      <div class="popup-body">
+	        <div class="body-content">
+	          <div class="body-titlebox">
+	            <h1>Confirm Modal</h1>
+	          </div>
+	          <div class="body-contentbox">
+	            <p> 모달 내용칸 </p>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="popup-foot">
+	        <span class="pop-btn confirm" id="confirm">확인</span>
+	        <span class="pop-btn close" id="close">창 닫기</span>
+	      </div>
+	    </div>
+	</div>
+	</div>		
 <!-- footer -->
 <c:import url="../../temp/footer.jsp"></c:import>
 <!-- footer -->
