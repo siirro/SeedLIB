@@ -2126,14 +2126,14 @@ outline:none;}
 .qrationBookList .listWrap {margin-left:-28px;}
 .qrationBookList .listWrap > li{width:calc(25% - 28px);margin-left:28px;margin-bottom:30px;float:left;position:relative;vertical-align:top;}
 .qrationBookList .listWrap > li .rankingNum{position:absolute;left:0;top:-5px;z-index:2;text-align:center;}
-.qrationBookList .listWrap > li .rankingNum:before{content:'';position:absolute;right:-4px;top:0;width: 4px;height:6px;background: url("../img/unified/ico_labelshadow.png") no-repeat;}
-.qrationBookList .listWrap > li:nth-child(n+4) .rankingNum:before{background: url("../img/unified/ico_labelshadow1.png") no-repeat;}
+/* .qrationBookList .listWrap > li .rankingNum:before{content:'';position:absolute;right:-4px;top:0;width: 4px;height:6px;background: url("../img/unified/ico_labelshadow.png") no-repeat;}
+.qrationBookList .listWrap > li:nth-child(n+4) .rankingNum:before{background: url("../img/unified/ico_labelshadow1.png") no-repeat;} */
 .qrationBookList .listWrap > li .rankingNum h5{width:40px;height:40px;line-height:40px;font-size:0.940em;color:#fff;background-color:#d92e3a;}
 .qrationBookList .listWrap > li:nth-child(n+4) .rankingNum h5{background-color:#535353;}
 .qrationBookList .listWrap > li .rankingNum p{height:16px;line-height:16px;color:#000;background-color:#ffc94e;}
 
-.qrationBookList .listWrap > li .kdcNum {position:absolute;left:0;top:-5px;z-index:2;text-align:center;}
-.qrationBookList .listWrap > li .kdcNum:before {content:'';position:absolute;right:-4px;top:0;width: 4px;height:6px;background: url("../img/unified/ico_labelshadow1.png") no-repeat;}
+.qrationBookList .listWrap > li .kdcNum {position:absolute;left:0;top:0px;z-index:2;text-align:center;}
+/* .qrationBookList .listWrap > li .kdcNum:before {content:'';position:absolute;right:-4px;top:0;width: 4px;height:6px;background: url("../img/unified/ico_labelshadow1.png") no-repeat;} */
 .qrationBookList .listWrap > li .kdcNum h5 {height:40px;line-height:40px;font-size:0.940em;color:#fff;background-color:#535353; padding: 0 6px;}
 
 .qrationBookList .listWrap > li .categoryLabel{position:absolute;left:5;top:-5px;z-index:2;}

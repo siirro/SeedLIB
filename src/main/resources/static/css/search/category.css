@@ -1,0 +1,8 @@
+/* search form - kdc */
+/*.kdcSearch {background-color:#f6f6f6}*/
+.kdcDepth1List {overflow:hidden;padding:24px;border:1px solid #e2e2e2;}
+.kdcDepth1List li {float:left;width:20%;margin:10px 0;text-align:center}
+.kdcDepth1List li .txt {display:block;margin-top:5px;font-weight:300;font-size:1.125em;line-height:22px}
+.kdcDepth1List li a {display:block;width:80px;height:80px;margin:0 auto;padding:10px;border-radius:8px;background-color:#f6f6f6}
+.kdcDepth1List li a.choiced,.kdcDepth1List li a:hover,.kdcDepth1List li a:focus {background-color:#eef0f7}
+.kdcDepth1List li a .ico {display:block;width:80px;height:80px;}
