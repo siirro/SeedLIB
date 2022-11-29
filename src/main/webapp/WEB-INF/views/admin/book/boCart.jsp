@@ -121,20 +121,7 @@
 							<div class="post_copy_wrap">
 								<form action="#">
 									<fieldset>
-										<legend>우편복사 신청</legend>
-										<div class="post_info_wrap">
-											<div class="inner">
-												<ul class="post_info_list">
-													<span style="color:red;font:bold;text-align:center;">[ 명절 연휴 발송 안내 ]</span>
-													<li>
-														추석 연휴 기간 택배사 사정으로 9.2.(금) 14:00 이후 신청 내용은 9.13.(화)부터 순차 발송되오니 이 점 미리 양지하여 주시기 바랍니다.
-													</li>
-													<li>
-														※ 문의 : (신청접수) 02-590-6295 / (발송일정) 02-3456-6124 
-													</li>
-												</ul>
-											</div>
-										</div>
+										<legend>복사 신청</legend>
 										<div class="post_info_wrap">
 											<div class="btn_wrap">
 												<button type="button" class="btn">우편복사신청 안내</button>
@@ -150,7 +137,6 @@
 													</li>
 												</ul>
 												<p class="asterisk"><span class="point">* 저작권법에 의거하여 부분복제(1/3)만 가능</span></p>
-												<p class="asterisk">* 전체페이지수 확인 : 자료찾기 &gt; &lsquo;자료&rsquo; 선택 &gt; 형태사항</p class="asterisk">
 											</div>
 										</div>
 										<!-- //우편복사신청 안내 -->
@@ -254,7 +240,37 @@
 														</tr>
 													</thead>
 													<tbody id="contents_pc">
-		
+														<tr>
+															<td>
+																<span></span>
+															</td>
+															<td>
+																<div class="input_select_wrap2">
+																	<select title="복사 색상 선택" name="" id="">
+																		<option value="N">흑백</option>
+																		<option value="Y">컬러</option>
+																	</select>
+																</div>
+															</td>
+															<td>
+																<div class="input_select_wrap2">
+																	<select title="용지크기 선택" name="" id="">
+																		<option value="A4">A4</option>
+																		<option value="A3">A3</option>
+																		<option value="B5">B5</option>
+																		<option value="B4">B4</option>
+																	</select>
+																</div>
+															</td>
+															<td>
+																<div class="input_text_wrap">
+																	<label for="copyNum">
+																		<span class="ir_text">복사면 기입</span>
+																	</label>
+																</div>
+																<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="복사 페이지를 입력해주세요.">
+															</td>
+														</tr>
 													</tbody>
 												</table>
 												</div>
@@ -266,6 +282,37 @@
 												<p class="mt5">※ 용지 크기 선택 시 확대, 축소 등은 별도 요청해야 함.</p>
 												<p>※ 양면, 단면 비용 동일</p>
 												<p></p>
+												<div class="post_copy_wrap">
+													<table class="tbl_post_copy">
+														<caption class="ir_text">제본여부선택</caption>
+														<colgroup>
+															<col class="col1">
+															<col>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th scope="row">
+																	<span>제본 여부 선택</span>
+																</th>
+																<td>
+																	<div class="input_select_wrap2 input_txtSel_wrap">
+		<!-- 																<select title="우편복사 수령방법" id="binding" name="binding" onchange="fn_binding(this);"> -->
+																		<select title="우편복사 수령방법" id="binding" name="binding">
+																			<!-- [D] 수정 전 선택된 옵션값 selected -->
+																			<option value="N">제본 하지 않음</option>
+																			<option value="Y">스프링 제본함</option>
+																		</select>
+																	</div>
+		<!-- 															<div class="input_text_wrap input_selTxt_wrap" id="inputBinding" style="display:none;"> -->
+		<!-- 																<input type="text" id="bindingDesc" name="bindingDesc" class="input_text" aria-label="제본 요청사항" required=""> -->
+		<!-- 																<label for="bindingDesc" class="placeholder">제본 요청사항을 입력해주세요.</label>	 -->
+		<!-- 															</div> -->
+		<!-- 															<p class="policy_agree" id="bindingEx" style="display:none;">ex. 신청자료 모두 통합하여 한권으로 제본 요청</p>			 -->
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 												<p class="mt5">※ 스프링 제본 요금 : (50매 이내) 2,000원, (50~100매) 3,000원, (100매 이상) 4,000원</p>
 		
 												<div class="post_copy_wrap">
@@ -284,12 +331,12 @@
 																	<div class="privacy_agree_wrap mt20">
 																		<div class="privacy_agree_inner">
 																			<ul class="privacy_agree_list">
-																				<li>1. 수집 및 이용 목적 : 우편복사 서비스 제공을 위한 업무처리</li>
+																				<li>1. 수집 및 이용 목적 : 복사 서비스 제공을 위한 업무처리</li>
 																			</ul>
 																			<ul class="privacy_agree_list">
 																				<li>2. 수집하는 개인정보 항목</li>
-																				<li>&nbsp;&nbsp;(필수항목) 성명, 아이디, 휴대폰번호, 배송지(우편번호, 주소), 이메일, 도서정보(청구기호, 책제목 등), 수령방법</li>
-																				<li>&nbsp;&nbsp;(선택항목) FAX번호, 전달사항</li>
+																				<li>&nbsp;&nbsp;(필수항목) 성명, 아이디, 휴대폰번호, 이메일, 도서정보(청구기호, 책제목 등)</li>
+																				<li>&nbsp;&nbsp;(선택항목) 전달사항</li>
 																			</ul>
 																			<ul class="privacy_agree_list">
 																				<li>3. 보유 및 이용기간 : <b class="txt_red" style="font-size: 20px">1년</b></li>
@@ -319,14 +366,6 @@
 																		</div>
 																	</div>
 																</td>
-																<!-- <th scope="row"><label for="policy_agree">개인정보 수집동의</label></th>
-																<td>
-																	<p class="policy_agree">우편복사를 위한 '개인정보 수집 및 이용'에 동의합니다.</p>
-																	<span class="input_check_wrap">
-																		<input type="checkbox" id="privInfo" name="privInfo" class="input_check" required>
-																		<label for="privInfo">동의함</label>
-																	</span>
-																</td> -->
 															</tr>
 															<tr>
 																<th scope="row">
@@ -349,20 +388,6 @@
 																	<p class="notice_text" id="mobile_fax" style="display:none;">※ 모바일 팩스 전송 불가</p>
 																</td>
 															</tr>
-															<!-- [D] FAX 선택시 -->
-		<!-- 													<tr id="inputFax" style="display: none;"> -->
-		<!-- 														<th scope="row"> -->
-		<!-- 															<label for="faxTel">FAX 번호</label> -->
-		<!-- 														</th> -->
-		<!-- 														<td> -->
-		<!-- 															<div class="input_text_wrap input_phone_wrap"> -->
-		<!-- 																<input type="text" id="faxTel" name="faxTel" class="input_text" aria-label="팩스번호" required=""> -->
-		<!-- 																<label for="input_cell" class="placeholder">입력예: 021234567</label> -->
-		<!-- 															</div> -->
-		<!-- 															<p class="notice_text">*입력 예 : 021234567</p> -->
-		<!-- 														</td> -->
-		<!-- 													</tr> -->
-															<!-- // [D] FAX 선택시 -->
 															<tr>
 																<th scope="row">
 																	<label for="hpTel">휴대폰번호</label>
