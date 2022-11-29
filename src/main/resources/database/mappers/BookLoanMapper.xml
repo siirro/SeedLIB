@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.book.loan.BookLoanMapper">
+	
+	<!-- 대출 가능한 회원인지? - 해당 도서 대출 중인지 -->
+	<select id="getBookLoan" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+	</select>
+	
+	<!-- 대출 신청 -->
+	<insert id="setLoan" parameterType="BookLoanVO">
+		INSERT INTO LOAN(USERNAME, ISBN, LOANSDATE, LOANLDATE, OVERDUE, RTSTATUS)
+			VALUES (#{userName}, #{isbn}, now(), 0000, 0, 0)
+	</insert>
+	
+	<!-- 대출 목록 -->
+	<select id="getLoanList" parameterType="BookLoanPager" resultMap="LoanResult">
+		SELECT LL.* FROM
+			(SELECT ROWNUM R, L.*
+				FROM LOAN L
+					INNER JOIN BOOK B
+					ON B.ISBN = L.ISBN
+			
+				WHERE L.USERNAME = #{userName}
+					AND RTSTATUS = #{rtStatus}
+					AND S.LOANSDATE BETWEEN #{dateA} AND #{dateB}
+				ORDER BY
+				<choose>
+					<when test="select == 'title">B.TITLE</when>
+					<otherwise>S.LOANSDATE</otherwise>
+				</choose>
+				<choose>
+					<when test="sort == 'desc'">DESC</when>
+					<otherwise>ASC</otherwise>
+				</choose>
+			)LL
+		WHERE R BETWEEN #{startRow} AND #{lastRow}		
+	</select>
+	
+	<resultMap type="BookVO" id="LoanResult">
+		<id column="isbn" property="isbn"/>
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="image" property="image"/>
+		<collection property="loanVOs" javaType="List" ofType="BookLoanVO">
+			<id column="loanNum" property="loanNum"/>
+			<result column="userName" property="userName"/>
+			<result column="loanSDate" property="loanSDate"/>
+			<result column="loanLDate" property="loanLDate"/>
+			<result column="overdue" property="overdue"/>
+			<result column="rtStatus" property="rtStatus"/>
+			<result column="extension" property="extension"/>
+		</collection>	
+	</resultMap>
+	
+	<!-- 대출 연장 신청 가능? -->
+	<select id="getExCount" parameterType="BookLoanVO" resultType="Integer">
+		SELECT EXTENSION FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+	</select>
+	
+	<!-- 대출 연장 신청 -->
+	<!-- 연장 횟수, 만기일 업데이트 -->
+	<!-- <update id="setExtension">
+	</update> -->
+	
+	<!-- ================================== -->
+	
+	<!-- 예약 신청 -->
+	<select id="setReservation">
+		INSERT INTO RESERVATION (ISBN, USERNAME, ENABLEDATE)
+			VALUES (#{isbn}, #{userName}, #{enableDate})
+	</select>
+	
+	<!-- 예약 목록 -->
+	<select id="getReList" parameterType="BookLoanPager" resultMap="ReResult">
+		SELECT RR.* FROM
+			(SELECT ROWNUM R, E.*
+				FROM RESERVATION E
+					INNER JOIN BOOK B
+					ON B.ISBN = R.ISBN
+			
+				WHERE R.USERNAME = #{userName}
+					AND R.REGDATE BETWEEN #{dateA} AND #{dateB}
+				ORDER BY
+				<choose>
+					<when test="select == 'title">B.TITLE</when>
+					<otherwise>E.REGDATE</otherwise>
+				</choose>
+				<choose>
+					<when test="sort == 'desc'">DESC</when>
+					<otherwise>ASC</otherwise>
+				</choose>
+			)RR
+		WHERE R BETWEEN #{startRow} AND #{lastRow}	
+	</select>
+	
+	<resultMap type="BookVO" id="ReResult">
+		<id column="isbn" property="isbn"/>
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="image" property="image"/>
+		<collection property="reVOs" javaType="List" ofType="BookReservationVO">
+			<id column="rvNum" property="rvNum"/>
+			<result column="userName" property="userName"/>
+			<result column="enableDate" property="enableDate"/>
+		</collection>	
+	</resultMap>
+	
+	<!-- ================================== -->
+	
+	<!-- 상호대차 신청 -->
+	<select id="setMutual">
+		INSERT INTO MUTUALLOAN (ISBN, USERNAME)
+			VALUES (#{isbn}, #{userName})
+	</select>
+	
+	<!-- 상호대차 목록 -->
+	<select id="getMuList" parameterType="BookLoanPager" resultMap="MuResult">
+		SELECT MM.* FROM
+			(SELECT ROWNUM R, M.*
+				FROM MUTUALLOAN M
+					INNER JOIN BOOK B
+					ON B.ISBN = M.ISBN
+			
+				WHERE M.USERNAME = #{userName}
+					AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
+				ORDER BY
+				<choose>
+					<when test="select == 'title">B.TITLE</when>
+					<otherwise>M.REGDATE</otherwise>
+				</choose>
+				<choose>
+					<when test="sort == 'desc'">DESC</when>
+					<otherwise>ASC</otherwise>
+				</choose>
+			)MM
+		WHERE R BETWEEN #{startRow} AND #{lastRow}	
+	</select>
+	
+	<resultMap type="BookVO" id="MuResult">
+		<id column="isbn" property="isbn"/>
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="image" property="image"/>
+		<collection property="muVOs" javaType="List" ofType="BookMutualVO">
+			<id column="loanNum" property="loanNum"/>
+			<result column="userName" property="userName"/>
+		</collection>	
+	</resultMap>
+	
+
+	
+	
+	
+	
+</mapper>

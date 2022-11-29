@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.book.BookVO;
+import com.seed.lib.book.loan.BookLoanService;
+import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.donation.DonationService;
 import com.seed.lib.donation.DonationVO;
 import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.studyroom.StudyDetailVO;
 import com.seed.lib.studyroom.StudyRoomService;
+import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.FullCalendarVO;
 import com.seed.lib.util.HdPager;
 
@@ -33,7 +37,8 @@ public class MyPageController {
 	private DonationService donationService;
 	@Autowired
 	private StudyRoomService roomService;
-	
+	@Autowired
+	private BookLoanService loanService;
 	
 	@GetMapping("myIndex")
 	public void getIndex() throws Exception{
@@ -89,6 +94,70 @@ public class MyPageController {
 			cl.add(calendarVO);
 		}
 		mv.addObject("cl", cl);		
+		return mv;
+	}
+	
+	
+	//대출 목록
+	@GetMapping("bookLoan")
+	public ModelAndView getLoanList (BookLoanPager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookVO> li = loanService.getLoanList(pager);
+		mv.addObject("li", li);
+		mv.setViewName("myPage/bookLoan");
+		
+		return mv;
+	}
+	
+	//대출 이력 목록
+	@GetMapping("bookLoanHistory")
+	public ModelAndView getLoanHistoryList (BookLoanPager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookVO> li = loanService.getLoanList(pager);
+		mv.addObject("li", li);
+		mv.setViewName("mypage/bookLoan");
+		
+		return mv;
+	}
+	
+	//대출 연장 - 최대 2번
+	@PostMapping("extension")
+	public String setExtension (BookLoanVO loVO) throws Exception{
+		// 연장 횟수가 0, 1일때만 신청 가능 -> setExtension -> 저장 후 +1 리턴
+		// 2이면 불가능 -> 3 리턴
+		BookLoanVO loanVO = new BookLoanVO();
+		//만기일 변경
+		//Date date = loanVO.getLoanLDate().after();
+		//loanVO.setLoanLDate(date);
+		
+		//연장횟수 변경
+		loanVO.setExtension(loanVO.getExtension()+1);
+		return "redirect:./bookLoan";
+	}	
+	
+	//예약 목록
+	@GetMapping("bookReserve")
+	public ModelAndView getReList (BookLoanPager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookVO> li = loanService.getReList(pager);
+		mv.addObject("li", li);
+		mv.setViewName("mypage/bookReserve");
+		
+		return mv;
+	}
+	
+	//상호대차 목록
+	@GetMapping("bookMutual")
+	public ModelAndView getMuList (BookLoanPager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookVO> li = loanService.getMuList(pager);
+		mv.addObject("li", li);
+		mv.setViewName("mypage/bookMutual");
+		
 		return mv;
 	}
 	

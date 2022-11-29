@@ -12,8 +12,8 @@ public class BookLoanVO {
 	private Long isbn;
 	private Date loanSDate;
 	private Date loanLDate;
-	private String loanLib;
 	private boolean overDue;
-	private boolean rtStatus;
+	private int rtStatus;
+	private int extension;
 	
 }
