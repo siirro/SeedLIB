@@ -49,7 +49,7 @@
     
   }
 
-  if(urllast=="simple"||urllast=="detail"||url.includes('book/detail')){
+  if(urllast=="simple"||url.includes('search/detail')||url.includes('book/detail')){
     $(".simpledetail2").css("display","block")
     // hoho.className = 'current';
     $(".simpledetail").addClass('current');

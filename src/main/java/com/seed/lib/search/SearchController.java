@@ -65,8 +65,18 @@ public class SearchController {
 	public ModelAndView getSearchDetail(SearchDetailPager searchDetailPager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BookVO> ar = searchService.getSearchDetail(searchDetailPager);
+		long count = searchService.getSearchDetailCount(searchDetailPager);
 		mv.addObject("list", ar);
+		mv.addObject("count", count);
+		mv.addObject("pager", searchDetailPager);
 		mv.setViewName("search/detail");
+		log.info("list의 사이즈 : {}", ar.size());
+		log.info("getPAge : {}", searchDetailPager.getPage());
+		
+		if(ar.size()==0) {
+			mv.addObject("message", "검색결과가가 없습니다.");
+		}
+		
 		return mv;
 	}
 	

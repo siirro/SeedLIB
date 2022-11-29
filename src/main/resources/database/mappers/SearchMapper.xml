@@ -10,10 +10,57 @@ SELECT * FROM BOOK
 WHERE TITLE LIKE CONCAT('%', #{searchTitle}, '%') 
 AND WRITER LIKE CONCAT('%', #{searchWriter}, '%')
 AND PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%')
-AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
-AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
-AND CATEGORY = #{searchCategory}
-ORDER BY NUM
+	<if  test= "searchISBN != null">
+	AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
+	</if>
+	<if  test= "searchDate1 != null">
+		<if  test= "searchDate2 != null">
+		AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
+		</if>
+	</if>
+	<if  test= "searchCategory != ''">
+	AND CATEGORY = #{searchCategory}
+	</if>
+ORDER BY
+<choose>
+		<when test="kind == 'score'">
+		    case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    when WRITER = #{search} then 4
+		    when WRITER LIKE CONCAT(#{search}, '%') then 5
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
+		    when WRITER LIKE CONCAT('%', #{search}) then 7
+		    when PUBLISHER = #{search} then 8
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
+		    else 12 end
+		</when>
+		<when test="kind == 'title'">
+			case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'writer'">
+			case when WRITER = #{search} then 0
+		    when WRITER LIKE CONCAT(#{search}, '%') then 1
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
+		    when WRITER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'publisher'">
+			case when PUBLISHER = #{search} then 0
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<otherwise>NUM</otherwise>
+	</choose>
 LIMIT #{startRow}, #{perPage}
 </select>
 
@@ -22,10 +69,57 @@ SELECT COUNT(ISBN) FROM BOOK
 WHERE TITLE LIKE CONCAT('%', #{searchTitle}, '%') 
 AND WRITER LIKE CONCAT('%', #{searchWriter}, '%')
 AND PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%')
-AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
-AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
-AND CATEGORY = #{searchCategory}
-ORDER BY NUM
+	<if  test= "searchISBN != null">
+	AND ISBN LIKE CONCAT('%', #{searchISBN}, '%')
+	</if>
+	<if  test= "searchDate1 != null">
+		<if  test= "searchDate2 != null">
+		AND BOOKDATE BETWEEN #{searchDate1} AND #{searchDate2}
+		</if>
+	</if>
+		<if  test= "searchCategory != ''">
+	AND CATEGORY = #{searchCategory}
+	</if>
+ORDER BY
+<choose>
+		<when test="kind == 'score'">
+		    case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    when WRITER = #{search} then 4
+		    when WRITER LIKE CONCAT(#{search}, '%') then 5
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
+		    when WRITER LIKE CONCAT('%', #{search}) then 7
+		    when PUBLISHER = #{search} then 8
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
+		    else 12 end
+		</when>
+		<when test="kind == 'title'">
+			case when TITLE = #{search} then 0
+		    when TITLE LIKE CONCAT(#{search}, '%') then 1
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
+		    when TITLE LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'writer'">
+			case when WRITER = #{search} then 0
+		    when WRITER LIKE CONCAT(#{search}, '%') then 1
+		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
+		    when WRITER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<when test="kind == 'publisher'">
+			case when PUBLISHER = #{search} then 0
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
+		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
+		    else 4 end
+		</when>
+		<otherwise>NUM</otherwise>
+	</choose>
 </select>
 
 

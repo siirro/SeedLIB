@@ -416,17 +416,8 @@
             let urlnn = urll.lastIndexOf('=')+1;
             urllastt = urll.substring(urlnn);
 
-
-            //페이지가 1일때는 url,param으로 판단할수가 없어서 임의로 노가다로 글자수세서 요상하게활성화시킴.. 더좋은방안이있다면바로고치겠음...
-            let page1sb = urll.lastIndexOf('=')-1;
-            console.log(page1sb);
-            if(page1sb==45){
-                document.querySelector('#ppaaggee1').style.background="#9be15d";
-                document.querySelector('#ppaaggee1').style.color="#fff";
-            }
-
             //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
-            let ppaaggee = document.querySelector('#'+"ppaaggee"+'${param.page}');
+            let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
 
             ppaaggee.style.background="#9be15d";
             ppaaggee.style.color="#fff";

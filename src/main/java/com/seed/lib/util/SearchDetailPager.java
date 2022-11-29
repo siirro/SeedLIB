@@ -38,14 +38,14 @@ public class SearchDetailPager extends Pager{
 		return searchISBN;
 	}
 	
-	public Long getSearchdate1() {
+	public Long getSearchDate1() {
 		if(this.searchDate1==null) {
 			this.searchDate1=null;
 		}
 		return searchDate1;
 	}
 	
-	public Long getSearchdate2() {
+	public Long getSearchDate2() {
 		if(this.searchDate2==null) {
 			this.searchDate2=null;
 		}
@@ -53,7 +53,7 @@ public class SearchDetailPager extends Pager{
 	}
 	public String searchCategory() {
 		if(this.searchCategory==null) {
-			this.searchCategory=null;
+			this.searchCategory="";
 		}
 		return searchCategory;
 	}

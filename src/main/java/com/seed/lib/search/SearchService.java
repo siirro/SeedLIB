@@ -27,6 +27,10 @@ public class SearchService {
 		return searchMapper.getSearchDetail(searchDetailPager);
 	}
 	
+	public long getSearchDetailCount(SearchDetailPager searchDetailPager)throws Exception{
+		return searchMapper.getSearchDetailCount(searchDetailPager);
+	}
+	
 	public List<BookVO> getSearchCategory(Pager pager, BookVO bookVO)throws Exception{
 		pager.getRowNum();
 		Long totalCount = getSearchCategoryCount(pager, bookVO);

@@ -71,46 +71,48 @@
                     </div>
 
                     <!--Real Contents Start-->
-                    <form action="./detailResult" name="searchForm" method="get">
+                    <form action="./detailResult" name="searchForm" method="get" id="detailForm">
                         <div class="searchdetailWrap">
                             <div class="detailSettingWrap">
                                 <div class="detailDataInput" style="margin-top: 0px;">
                                     <dl>
                                         <dt>자료명</dt>
-                                        <dd><input type="text" name="searchTitle" title="자료명 입력" placeholder="예: 책제목"></dd>
+                                        <dd><input type="text" class="resee" value="${param.searchTitle}" name="searchTitle" title="자료명 입력" placeholder="예: 책제목"></dd>
                                     </dl>
                                     <dl>
                                         <dt>저자명</dt>
-                                        <dd><input type="text" name="searchWriter" title="저자명 입력" placeholder="예: 신짱구"></dd>
+                                        <dd><input type="text" class="resee" value="${param.searchWriter}" name="searchWriter" title="저자명 입력" placeholder="예: 신짱구"></dd>
                                     </dl>
                                     <dl>
                                         <dt>발행처</dt>
-                                        <dd><input type="text" name="searchPublisher" title="발행처 입력" placeholder="예: 구디출판사"></dd>
+                                        <dd><input type="text" class="resee" value="${param.searchPublisher}" name="searchPublisher" title="발행처 입력" placeholder="예: 구디출판사"></dd>
                                     </dl>
                                     <dl>
                                         <dt>ISBN</dt>
-                                        <dd><input type="text" name="searchISBN" title="ISBN 입력" placeholder="예: 9788912345678"></dd>
+                                        <dd><input type="text" class="resee" value="${param.searchISBN}" name="searchISBN" title="ISBN 입력" placeholder="예: 9788912345678"></dd>
                                     </dl>
                                     
                                     <dl class="devideWidth1">
                                         <dt>발행년</dt>
                                         <dd>
-                                            <input type="text" name="searchDate1" maxlength="4" class="numeric" title="시작 발행년 입력" placeholder="발행년(시작)">
+                                            <input type="text" class="resee" value="${param.searchDate1}" name="searchDate1" id="searchDate1" maxlength="4" class="numeric" title="시작 발행년 입력" placeholder="발행년(시작)">
                                             <span>-</span>
-                                            <input type="text" name="searchDate2" maxlength="4" class="numeric" title="종료 발행년 입력" placeholder="발행년(종료)">
+                                            <input type="text" class="resee" value="${param.searchDate2}" name="searchDate2" id="searchDate2" maxlength="4" class="numeric" title="종료 발행년 입력" placeholder="발행년(종료)">
                                         </dd>
                                     </dl>
                                     <dl class="devideWidth2">
                                         <dt>분류기호</dt>
-                                        <dd><input type="text" name="searchCategory" title="분류기호 입력" placeholder="예: 8"></dd>
+                                        <dd><input type="text" class="resee" value="${param.searchCategory}" name="searchCategory" title="분류기호 입력" placeholder="예: 8"></dd>
                                     </dl>
                                 </div>
                             </div>
 
                             <div class="btnGroup">
-                                <a href="#btn" id="resetBtn" class="btn white">입력초기화</a>
-                                <input type="submit" id="searchBtn" class="btn themeBtn" value="검색"></a>
+                                <input type="button" id="resetBtn" class="btn white" value="입력초기화"></a>
+                                <input type="button" id="searchBtn" class="btn themeBtn" value="검색"></a>
                             </div>
+
+                          
 
                         </div>
 
@@ -119,7 +121,13 @@
                             <div class="result_box">
                                 <div class="listSetting" >
                                     <c:if test="${not empty list}">
-                                    <div class="result_screen">'<strong>자료명:${param.searchTitle}</strong>'에 대한 검색결과 총 
+                                    <div class="result_screen">'<strong>자료명:${param.searchTitle}</strong>', 
+                                        '<strong>저자명:${param.searchWriter}</strong>', 
+                                        '<strong>발행처:${param.searchPublisher}</strong>', 
+                                        '<strong>ISBN:${param.searchISBN}</strong>', 
+                                        '<strong>발행년:${param.searchDate1}~${param.searchDate2}</strong>', 
+                                        '<strong>분류기호:${param.searchCategory}</strong>'
+                                        에 대한 검색결과 총 
                                         <span id="totalCnt">${count}</span> 건
                                     </div>
                                     </c:if>
@@ -152,7 +160,7 @@
                         </div>
                         <!-- 검색설정랩 -->
 
-                        <script src="/js/search.js"></script>
+                        <!-- <script src="/js/search.js"></script> -->
 
                         <!-- 리스트 -->
                         <div id="bookList">
@@ -401,17 +409,17 @@
                             <div class="pagingWrap">
                                 <input type="hidden" name="page" value="${pager.page}">
                                 <p class="paging">
-                                    <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
                                     
-                                    <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
                                     
                                     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
                                         <!-- <span class="current">1</span> -->
-                                        <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${i}" id="ppaaggee${i}">${i}</a>
+                                        <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${i}" id="ppaaggee${i}">${i}</a>
                                         
                                     </c:forEach>
-                                    <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
-                                    <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
                                     </p>
                             </div>
                             </c:if>
@@ -436,5 +444,70 @@
     <c:import url="../temp/footer.jsp"></c:import>
     <!-- //footer -->
 </div>
+
+<script>
+
+    //페이징 js
+    try {
+
+        // 화살표들 disabledLink 클래스 걸려있으면 누를수없게 a태그에서 href 속성을 삭제시킴
+        let disables = document.querySelectorAll(".disabledLink")
+        disables.forEach(element => {
+            element.removeAttribute('href');
+        });
+
+        //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+        let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
+        ppaaggee.style.background="#9be15d";
+        ppaaggee.style.color="#fff";
+
+        if('${param.page}'!="") {
+            console.log("dd");
+            console.log("널이아님2");
+        } else {
+            console.log("ㅋㅋ");
+            console.log("ㅋㅋㅋ");
+        }
+        
+
+    } catch (error) {
+        
+    }
+
+    
+
+    // 종료년도만 입력시 검색불가
+    $("#searchBtn").click(function(){
+        if($("#searchDate2").val()!=''){
+            if($("#searchDate1").val()=='') {
+                alert("시작 발행년도를 입력해주세요.")
+                return false;
+            }
+        }
+        $("#detailForm").submit();
+    })
+
+    // 정렬 확인버튼
+    $("#searchBtn1").click(function(){
+        $("#detailForm").submit();
+    })
+
+    // 정렬 선택한것 표시
+    let k = '${param.kind}'
+    const kinds = document.getElementsByClassName('kinds');
+    for(let i=0;i<kinds.length;i++){
+        if(k==kinds[i].value) {
+            kinds[i].setAttribute('selected','selected');
+            break;
+        }
+    }
+
+    // 입력초기화
+    $("#resetBtn").click(function(){
+        $(".resee").each(function(index, item){
+            $(this).val("");
+        })
+    })
+</script>
 </body>
 </html>
