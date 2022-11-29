@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/member/agree.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-material@1.0.0/icheck-material.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<!--  달력 -->
 </head>
 <body>
  
@@ -39,14 +41,23 @@
                     <div class="inputProfile">
                         <div>
                             <p class="name"><label for="user_name">이름</label>
-                            <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
+                               <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
+                            
                             <p class="birth"><label for="birthd_year">생년월일</label>
-                            <input type="text" name="birth" id="birthd_year" class="textInput birthday" required="required"></p>
+                               <input type="date" name="birth" id="birthd_year" maxlength="s"></p>
                           
                             <p class="gender"><label for="gen">성별</label>
-                                <input type="text" name="gender" id="gen" class="textInput gender" required="required"></p>
-                                  
-
+					
+						    <span class="icheck-material-teal">
+							<label for="teal1">  남자</label>
+							 <input type="radio" id="teal1" name="gender" title="남자">
+					
+							</span>
+							<span class="icheck-material-teal">
+							 <label for="teal2">여자</label>
+							   <input type="radio" id="teal2" name="gender" title="여자">
+						
+							</span>                                   
                               <p>
 
 
@@ -151,15 +162,10 @@
                     <p class="joinBtn"><input type="submit" title="가입하기" value="가입하기" id="joinB"></p>
                 </div>
             </fieldset>
-            
-            
-            
-            
 
             
         </form>
     </div>
- 
  <script src="/js/addess.js"></script>
   <script src="/js/join.js"></script>
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

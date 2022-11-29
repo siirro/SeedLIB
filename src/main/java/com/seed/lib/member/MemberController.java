@@ -27,18 +27,18 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@GetMapping("idCheck")
-	@ResponseBody
-	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
-	
-		log.info("login 성공");
-		memberVO= memberService.getLogin(memberVO);
-		ModelAndView mv =new ModelAndView();
-		
-		session.setAttribute("member", memberVO);
-
-		return mv;
-	}	
+//	@GetMapping("idCheck")
+//	@ResponseBody
+//	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	
+//		log.info("login 성공");
+//		memberVO= memberService.getLogin(memberVO);
+//		ModelAndView mv =new ModelAndView();
+//		
+//		session.setAttribute("member", memberVO);
+//
+//		return mv;
+//	}	
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
@@ -46,25 +46,22 @@ public class MemberController {
 				
 	}	
 	
-	@PostMapping("login")
-	public ModelAndView getLogin(MemberVO memberVO, HttpSession session) throws Exception{
-		 log.info( memberVO.getUserName());
-		
-		ModelAndView mv =new ModelAndView();
-		log.info("login 성공");
-		memberVO= memberService.getLogin(memberVO);
-		if(memberVO!=null) {
-			session.setAttribute("memberVO", memberVO);
-			mv.setViewName("redirect:../");
-
-		}else {
-	         mv.setViewName("redirect:../member/login");   
-			 log.info( memberVO.getUserName());
-
-		}
-		
-	      return mv;
-	}
+//	@PostMapping("login")
+//	public ModelAndView getLogin(MemberVO memberVO, HttpSession session) throws Exception{
+//		
+//		ModelAndView mv =new ModelAndView();
+//		memberVO= memberService.getLogin(memberVO);
+//		if(memberVO!=null) {
+//			session.setAttribute("memberVO", memberVO);
+//			mv.setViewName("redirect:../");
+//
+//		}else {
+//	         mv.setViewName("redirect:../member/login");   
+//
+//		}
+//		
+//	      return mv;
+//	}
 	 
 
 	

@@ -30,12 +30,12 @@ public class MemberService {
 		return result;
 	}
 	
-	public MemberVO getLogin(MemberVO memberVO)throws Exception {
-		
-		return memberMapper.getLogin(memberVO);
-	
-	
-	}
+//	public MemberVO getLogin(MemberVO memberVO)throws Exception {
+//		
+//		return memberMapper.getLogin(memberVO);
+//	
+//	
+//	}
 		
 
 }
