@@ -8,10 +8,10 @@
 	<link rel="icon" href="/images/favicon.png">
     <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 	<link rel="stylesheet" href="/css/admin/modal.css">
+	<!-- header -->
+	<c:import url="../../temp/header.jsp"></c:import>
 </head>
 <body>
-	<!-- header -->
-    <c:import url="../../temp/header.jsp"></c:import>
 	<div id="container" class="sub">	
 		<div class="sVisualWrap">
 			<div class="sVisual">
