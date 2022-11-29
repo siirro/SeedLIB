@@ -20,10 +20,10 @@ class AdminBookServiceTest {
 	//@Test
 	void getBoCartListTest()throws Exception{
 		
-		MemberVO memberVO = new MemberVO();
-		memberVO.setUserName("member");
+		BookPrintVO bookPrintVO = new BookPrintVO();
+		bookPrintVO.setUserName("member");
 		
-		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(memberVO);
+		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(bookPrintVO);
 		
 		assertEquals(2,bookPrintVOs.size());
 		

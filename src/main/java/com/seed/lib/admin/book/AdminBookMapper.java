@@ -11,7 +11,7 @@ import com.seed.lib.member.MemberVO;
 public interface AdminBookMapper {
 	
 	// 바구니 제본 신청 목록
-	public List<BookPrintVO> getBoCartList(MemberVO memberVO)throws Exception;
+	public List<BookPrintVO> getBoCartList(BookPrintVO bookPrintVO)throws Exception;
 	
 	// 바구니 제본 신청
 	public int setBoCart(BookPrintVO bookPrintVO)throws Exception;

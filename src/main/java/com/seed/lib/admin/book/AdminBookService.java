@@ -15,8 +15,8 @@ public class AdminBookService {
 	private AdminBookMapper adminBookMapper;
 	
 	// 바구니 제본 신청 목록
-	public List<BookPrintVO> getBoCartList(MemberVO memberVO)throws Exception{
-		return adminBookMapper.getBoCartList(memberVO);
+	public List<BookPrintVO> getBoCartList(BookPrintVO BookPrintVO)throws Exception{
+		return adminBookMapper.getBoCartList(BookPrintVO);
 	}
 	
 	// 바구니 제본 신청

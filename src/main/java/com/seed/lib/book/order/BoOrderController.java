@@ -15,6 +15,7 @@ public class BoOrderController {
 	
 	@GetMapping()
 	public String setBoOrder()throws Exception{
+		
 		return "";
 	}
 	

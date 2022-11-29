@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 
 @Controller
 @RequestMapping("/admin/book/*")
@@ -23,7 +24,23 @@ public class AdminBookController {
 		return "admin/book/boPay";
 	}
 	
-	// 도서 장바구니 추가
+	// 바구니 제본신청 목록
+	public ModelAndView getBoCartList()throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		BookPrintVO bookPrintVO = new BookPrintVO();
+		bookPrintVO.setUserName("member");
+		
+		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(bookPrintVO);
+		
+		mv.addObject("list", bookPrintVO);
+		mv.setViewName("admin/book/boCart");
+		
+		return mv;
+	}
+	
+	// 도서 바구니 추가
 	@GetMapping("boCart")
 	public String setBoCart()throws Exception{
 		

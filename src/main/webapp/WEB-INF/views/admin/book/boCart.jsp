@@ -88,9 +88,9 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${boardVO}" var="vo">
+								<c:forEach items="${list}" var="boPrintVO">
 									<tr>
-									   <td>${vo.boardNum}</td>
+									   <td>${boPrintVO.caNum}</td>
 									   <td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
 									   <td>${vo.writer}</td>
 									   <td>${vo.regDate}</td>

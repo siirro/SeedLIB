@@ -5,7 +5,7 @@
 <mapper namespace="com.seed.lib.admin.book.AdminBookMapper">
 
 	<!--                     바구니 제본 신청 목록                    -->
-	<select id="getBoCartList" parameterType="MemberVO" resultType="BookPrintVO">
+	<select id="getBoCartList" parameterType="BookPrintVO" resultType="BookPrintVO">
 		SELECT * FROM CART WHERE USERNAME = #{userName}
 	</select>
 
