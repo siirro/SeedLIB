@@ -55,7 +55,7 @@
 						</c:choose> 
 
 						
-						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
+						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 						<li id="gnb1_1"><a href="/search/simple">소장자료검색</a></li> 
 						<li id="gnb1_2"><a href="/search/category">주제별검색</a> </li> 
 						<li id="gnb1_3"><a href="/search/newBook">신착자료검색</a> </li> 
-						<li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li>
+						<!-- <li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li> -->
 					</ul> 
 				</li> 
 
