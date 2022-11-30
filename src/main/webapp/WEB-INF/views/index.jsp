@@ -207,18 +207,57 @@
 				</div>
 				<!-- //공지사항 -->
 
-				<!-- 회원 로그인 -->
-				<div class="serviceZone before">
-					<h5>회원 로그인</h5>
-					<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
-					<ul class="clearfix">
-						<li><a href="/member/login">로그인</a></li>
-						<li><a href="/member/join">회원가입</a></li>
-					</ul>
-					<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
-				</div>
+				<c:choose>
+					<c:when test="${empty memberVO}">
+						<!-- 회원 로그인 -->
+						<div class="serviceZone before">
+							<h5>회원 로그인</h5>
+							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
+							<ul class="clearfix">
+								<li><a href="/member/login">로그인</a></li>
+								<li><a href="/member/join">회원가입</a></li>
+							</ul>
+							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+						</div>
+						<!-- //회원 로그인 -->
 
-				<!-- //회원 로그인 -->
+				
+					</c:when>
+					<c:otherwise>
+
+						<!-- 미니 내정보 -->
+						<div class="serviceZone">
+							<h5>서비스 이용현황</h5>
+							<ul class="myInfo clearfix">
+								<li><p><strong>${memberVO.name} 님,</strong><br> 반갑습니다.</p></li>
+								<li><p><strong><c:if test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">관리자</c:if></strong></p></li>
+							</ul>
+							<div class="myInfoList">
+								<dl>
+									<dt>도서대출현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>도서예약현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>수강신청현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>희망도서 신청현황</dt>
+									<dd>0</dd>
+								</dl>
+							</div>
+							<div class="more"><a href="/intro/myInfo.do" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
+						</div>
+						<!-- 미니 내정보 -->
+
+					</c:otherwise>
+				</c:choose>
+
+
 			</div>
 		</section>
 

@@ -12,5 +12,15 @@ public class PolicyController {
 	public String getSiteMap()throws Exception{
 		return "policy/siteMap";
 	}
+	
+	@GetMapping("personal")
+	public String getPersonalPolicy()throws Exception{
+		return "policy/personal";
+	}
+	
+	@GetMapping("email")
+	public String getEmailPolicy()throws Exception{
+		return "policy/email";
+	}
 
 }

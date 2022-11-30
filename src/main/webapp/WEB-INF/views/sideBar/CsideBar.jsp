@@ -3,7 +3,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <div id="lnbNav" class="navArea">
-            <h2> 자료검색 </h2>
+            <h2> 도서관안내 </h2>
             <ul id="lnb" class="lnb"> 
           <li id="lnb1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do" class="on">소장자료검색</a> 
            <ul class="MkSub submenu" style="display: none;"> 

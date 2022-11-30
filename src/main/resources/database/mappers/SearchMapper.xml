@@ -5,6 +5,18 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
+<select id="getBookStatusTotal" resultType="Long">
+SELECT COUNT(BLNUM) FROM BOOKLIB WHERE LIBNUM=0
+</select>
+
+<select id="getBookStatusEach" parameterType="Long" resultType="Long">
+SELECT COUNT(BL.BLNUM)
+FROM BOOKLIB BL
+JOIN BOOK B
+ON BL.ISBN = B.ISBN
+WHERE BL.LIBNUM=0 AND CATEGORY = #{num}
+</select>
+
 <select id="getSearchDetail" parameterType="SearchDetailPager" resultType="BookVO">
 SELECT * FROM BOOK
 WHERE TITLE LIKE CONCAT('%', #{searchTitle}, '%') 

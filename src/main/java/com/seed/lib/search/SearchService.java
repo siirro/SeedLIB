@@ -20,6 +20,14 @@ public class SearchService {
 	@Autowired
 	private SearchMapper searchMapper;
 	
+	public Long getBookStatusEach(Long num)throws Exception{
+		return searchMapper.getBookStatusEach(num);
+	}
+	
+	public Long getBookStatusTotal()throws Exception{
+		return searchMapper.getBookStatusTotal();
+	}
+	
 	public List<BookVO> getSearchDetail(SearchDetailPager searchDetailPager)throws Exception{
 		searchDetailPager.getRowNum();
 		Long totalCount = searchMapper.getSearchDetailCount(searchDetailPager);
