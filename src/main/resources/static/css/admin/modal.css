@@ -6,7 +6,7 @@
 
 .ucmy8_modify_wrap table {
 	width: 100%;
-	border-top: 2px solid #426f8f;
+	border-top: 2px solid #02d449;
 	border-bottom: 1px solid #a6a6a6;
 	font-size: 16px;
 	text-align: center;
@@ -206,70 +206,6 @@
 .normal_input+label {
   cursor: pointer
 }
-
-  input,
-  select,
-  textarea {
-    border: 0;
-    background: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none
-  }
-
-  input[type='text'],
-  input[type='password'],
-  input[type='submit'],
-  input[type='search'] {
-    -webkit-appearance: none;
-    border-radius: 0;
-    background-color: transparent
-  }
-  
-  .ir_text,
-  legend,
-  .blind {
-    overflow: hidden;
-    position: absolute;
-    border: 0;
-    width: 1px;
-    height: 1px;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-
-  caption.ir_text {
-    position: static;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-  }
-
-  @media screen and (max-width:1239px) {
-    html {
-      font-size: 10px;
-      font-size: 0.625rem;
-    }
-  
-    body,
-    button,
-    input,
-    select,
-    table,
-    textarea {
-      font-size: 1.6rem;
-      letter-spacing: -0.05rem;
-    }
-  }
 
 /* [s] 레이어팝업 수정 */
 .layer_popup .btn_close.closeLayer {

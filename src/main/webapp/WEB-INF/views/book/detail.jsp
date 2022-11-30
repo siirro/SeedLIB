@@ -16,6 +16,7 @@
    	<link rel="stylesheet" href="/css/admin/modal.css">
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
+	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -107,14 +108,6 @@
 									<a href="#link" class="btn_optionView">
 										<span class="blind">책정보 더보기</span>
 									</a>
-									<div class="snsFarm">
-										<ul class="snsBtnArea clearfix">
-											<li class="mobileHide">
-												<!-- 복사 버튼 -->
-												<a href="#" id="pprint" title="인쇄" class="snsPrint"><span>도서 프린트</span></a>								
-											</li>
-										</ul>
-									</div>
 
 									<!-- 간략보기 -->
 									<div class="simpleView viewTab open">
@@ -177,8 +170,11 @@
 									</div>
 									<!-- // 간략보기 -->
 								</c:forEach>
+								<!-- 복사 버튼 -->
+								<div>
+									<button type="button" id="print" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">도서 프린트</button>	
 								</div>
-								
+								</div>
 								<!-- 하단 책 상세정보 -->
 								<div class="tabMove">
 									<ul class="cateTab col-4 clearfix">
@@ -387,9 +383,9 @@
 				</div>
 				<form id="postFrm" name="postFrm" class="pFrm"  method="post">
 					<!-- 팝업 : 우편복사 신청 -->
-					<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:flex" id="grpBtns_apply">
+					<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 						<div class="layer_popup basket_layer">
-							<div class="popup_header">
+							<div class="popup_header" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">
 								<h1 class="popup_title">복사 신청</h1>
 							</div>
 							<div class="popup_contents">
@@ -399,7 +395,7 @@
 											<legend>복사 신청</legend>
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
-													<button type="button" class="btn">복사신청 안내</button>
+													<button type="button" style="background: #02d4498f" class="btn">복사신청 안내</button>
 												</div>
 												<div class="inner">
 													<ul class="post_info_list">
@@ -408,7 +404,7 @@
 															<p class="mark">※ 비도서, 신문, 마이크로필름, 특수자료, 귀중본자료 제외</p>
 														</li>
 														<li>신청책수: 1인 5책 이하(1일 1건 기준) 단, 서고자료신청대 양장족보는 1인 3종 이하
-															<p class="mark">※ 접수완료 및 발송: 평일(주말 및 휴관일 제외)</p>
+															<p class="mark">※ 접수완료 : 평일(주말 및 휴관일 제외)</p>
 														</li>
 													</ul>
 													<p class="asterisk"><span class="point">* 저작권법에 의거하여 부분복제(1/3)만 가능</span></p>
@@ -418,7 +414,7 @@
 											<!-- 입금 정보 -->
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
-													<button type="button" class="btn">입금 정보</button>
+													<button type="button" style="background: #02d4498f" class="btn">요금 정보</button>
 												</div>
 												<div class="inner">
 													<ul class="post_info_list">
@@ -459,7 +455,7 @@
 															</table>
 														</li>
 														<li>
-															<p>입금 문의전화 : (복사실) 02-xxxx-xxxx</p>
+															<p>결제 문의전화 : (복사실) 02-xxxx-xxxx</p>
 														</li>
 													</ul>
 												</div>
@@ -468,7 +464,7 @@
 											<!-- 신청정보 입력 -->
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
-													<button type="button" class="btn">신청 정보 입력</button>
+													<button type="button" class="btn" style="background: #02d4498f">신청 정보 입력</button>
 												</div>
 												<div class="inner">
 													<div class="notice_box">
@@ -538,7 +534,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 시작 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사 시작 페이지" placeholder="시작 쪽">
+																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 시작 페이지" placeholder="시작 쪽">
 																	</div>
 																</td>
 																<td>
@@ -546,7 +542,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 끝 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사 끝 페이지" placeholder="끝 쪽">
+																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 끝 페이지" placeholder="끝 쪽">
 																	</div>
 																</td>
 																<td>
@@ -554,7 +550,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
@@ -660,7 +656,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" aria-label="휴대폰번호" required="" />
+																			<input type="text" id="hpTel" name="hpTel" class="input_text" style="border: 1px solid #fff0" aria-label="휴대폰번호" required="" />
 																			<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : 01012345678</p>
@@ -677,7 +673,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" aria-label="이메일" required="" />
+																			<input type="text" id="hpTel" name="hpTel" class="input_text" style="border: 1px solid #fff0" aria-label="이메일" required="" />
 																			<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -695,7 +691,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap">
-																			<input type="text" id="etc" name="etc" class="input_text" aria-label="기타 전달사항" />
+																			<input type="text" id="etc" name="etc" class="input_text" style="border: 1px solid #fff0" aria-label="기타 전달사항" />
 																		</div>
 																	</td>
 																</tr> <!-- //우편복사 수령 정보 -->
@@ -706,13 +702,13 @@
 											</div>
 											<!-- //신청정보 입력 -->
 											<div class="btn_wrap center mb30">
-												<button type="submit" class="btn btn_apply" onclick="javascript:goPostApply();return false;">신청</button>
+												<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
 											</div>
 										</fieldset>
 									</form>
 								</div>
 							</div>
-							<button type="button" class="btn_close closeLayer"><span class="sp">닫기</span></button>
+							<button type="button" class="btn_close closeLayer" id="close"><span class="sp">닫기</span></button>
 						</div>
 					</div>
 				</form>
