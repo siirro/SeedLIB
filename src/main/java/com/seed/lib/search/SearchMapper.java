@@ -12,6 +12,9 @@ import com.seed.lib.util.SearchDetailPager;
 @Mapper
 public interface SearchMapper {
 	
+	public Long getBookStatusEach(Long num)throws Exception;
+	public Long getBookStatusTotal()throws Exception;
+	
 	public List<BookVO> getSearchDetail(SearchDetailPager searchDetailPager)throws Exception;
 	public Long getSearchDetailCount(SearchDetailPager searchDetailPager)throws Exception;
 	

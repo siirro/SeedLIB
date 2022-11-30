@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="shortcut" href="/images/favicon.png">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 </head>
@@ -88,9 +88,9 @@
 				<!-- 주요서비스 -->
 				<div class="shortcut">
 					<ul class="shortcutList clearfix">
-						<li class="svc1"><a href="/resources/"><img src="/images/m_calendar.png"><br>문화행사신청</a></li>
-						<li class="svc2"><a href="/hope/hopeInfo"><img src="/images/m_books.png"><br>희망도서신청</a></li>
-						<li class="svc3"><a href="/studyroom/roomList"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
+						<li class="svc1"><a href="./resources/"><img src="/images/m_calendar.png"><br>문화행사신청</a></li>
+						<li class="svc2"><a href="./hope/hopeInfo"><img src="/images/m_books.png"><br>희망도서신청</a></li>
+						<li class="svc3"><a href="./studyroom/roomInfo"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
 						<li class="svc4"><a href="/intro/40027/contents.do"><img src="/images/m_info.png"><br>이용안내</a></li>
 						<li class="svc5"><a href="/intro/40028/contents.do"><img src="/images/m_library.png"><br>도서관소개</a></li>
 						<li class="svc6"><a href="/intro/40028/contents.do"><img src="/images/m_map.png"><br>찾아오는길</a></li>
@@ -144,8 +144,8 @@
 
 					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
 						<li style="z-index: 100; left: 0px; top: 0px;">
-							<a href="/">
-								<img src="/images/l_winterNight.png" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
+							<a href="https://lib.anyang.go.kr/intro/menu/12220/contents/41241/contents.do">
+								<img src="https://lib.anyang.go.kr/attachfile/popupzone/13758_1_20220824180541507.jpg" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
 									불편한 편의점
 									연이와 버들도령
 									체리새우 : 비밀글입니다" onerror="javascript:errorPopupzoneImageFile(this);" class="slide">
@@ -207,18 +207,57 @@
 				</div>
 				<!-- //공지사항 -->
 
-				<!-- 회원 로그인 -->
-				<div class="serviceZone before">
-					<h5>회원 로그인</h5>
-					<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
-					<ul class="clearfix">
-						<li><a href="/member/login">로그인</a></li>
-						<li><a href="/member/join">회원가입</a></li>
-					</ul>
-					<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
-				</div>
+				<c:choose>
+					<c:when test="${empty memberVO}">
+						<!-- 회원 로그인 -->
+						<div class="serviceZone before">
+							<h5>회원 로그인</h5>
+							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
+							<ul class="clearfix">
+								<li><a href="/member/login">로그인</a></li>
+								<li><a href="/member/join">회원가입</a></li>
+							</ul>
+							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+						</div>
+						<!-- //회원 로그인 -->
 
-				<!-- //회원 로그인 -->
+				
+					</c:when>
+					<c:otherwise>
+
+						<!-- 미니 내정보 -->
+						<div class="serviceZone">
+							<h5>서비스 이용현황</h5>
+							<ul class="myInfo clearfix">
+								<li><p><strong>${memberVO.name} 님,</strong><br> 반갑습니다.</p></li>
+								<li><p><strong><c:if test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">관리자</c:if></strong></p></li>
+							</ul>
+							<div class="myInfoList">
+								<dl>
+									<dt>도서대출현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>도서예약현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>수강신청현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>희망도서 신청현황</dt>
+									<dd>0</dd>
+								</dl>
+							</div>
+							<div class="more"><a href="/intro/myInfo.do" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
+						</div>
+						<!-- 미니 내정보 -->
+
+					</c:otherwise>
+				</c:choose>
+
+
 			</div>
 		</section>
 

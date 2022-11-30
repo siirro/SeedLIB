@@ -122,16 +122,35 @@ function equals(data,checkdata){
 //id  nullcheck
 $("#input_ID").blur(function(){
     let result= nullcheck($("#input_ID").val())
-    }if (result == null){
+    if (result){
+   }else{
     $("#userNameResult").html("ID중복확인 실시하지 않았습니다.")
     $('#input_ID').focus();
-   }else{
-    $("#userNameResult").html("아이디를 입력해 주세요")
-    $('#input_ID').focus();
-
    }
 
 })
+
+
+$("#password").blur(function(){
+
+
+})
+$("#passwordChk").blur(function(){
+
+    let result=equals($("#password").val(),$("#passwordChk").val())
+    if(result){
+        $("#passwordChkResult").html("일치합니다.")
+
+    }else{
+    $("#passwordChkResult").html("동일한 비밀번호를 입력해 주세요")
+    }
+
+  
+
+
+})
+
+
 
 
 

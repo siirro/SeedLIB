@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodReturnValueHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,18 +29,20 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@GetMapping("idCheck")
-	@ResponseBody
-	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	@GetMapping("idCheck")
+//	@ResponseBody
+//	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	
+//		log.info("login 성공");
+//		memberVO= memberService.getLogin(memberVO);
+//		ModelAndView mv =new ModelAndView();
+//		
+//		session.setAttribute("member", memberVO);
+//
+//		return mv;
+//	}	
 	
-		log.info("login 성공");
-		memberVO= memberService.getLogin(memberVO);
-		ModelAndView mv =new ModelAndView();
-		
-		session.setAttribute("member", memberVO);
 
-		return mv;
-	}	
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{

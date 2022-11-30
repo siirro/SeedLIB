@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +28,7 @@ import com.seed.lib.donation.DonationService;
 import com.seed.lib.donation.DonationVO;
 import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
+import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.studyroom.StudyDetailVO;
 import com.seed.lib.studyroom.StudyRoomService;
@@ -45,16 +47,45 @@ public class MyPageController {
 	private DonationService donationService;
 	@Autowired
 	private StudyRoomService roomService;
+	@Autowired
+	private MemberService memberService;
 	
 	
 	@GetMapping("myIndex")
-	public void getIndex() throws Exception{
+	public ModelAndView getIndex(HttpSession session) throws Exception{
+		ModelAndView mv =new ModelAndView();
+		MemberVO memberVO =new MemberVO();
+		
+		
+		return mv;
+	}
+	
+	@GetMapping("memberCheck")
+	public String memberCheck() throws Exception {
+	
+     return "mypage/memberCheck"; 
+     
+	}
+	@GetMapping("memberModify")
+	public ModelAndView setUpdate(MemberVO memberVO,ModelAndView mv,HttpSession session)throws Exception {
+		memberVO= (MemberVO)session.getAttribute("memberVO");
+		mv.addObject("memberVO",memberVO);
+		mv.setViewName("mypage/memberModify");
+		return mv;
+	}
+	
+	@PostMapping("memberModify")
+	public ModelAndView setUpdate(MemberVO memberVO)throws Exception{
+		int result = memberService.setUpdate(memberVO);
+		ModelAndView mv =new ModelAndView();
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("");
+		return mv;
 		
 	}
 	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
-		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());
@@ -73,7 +104,6 @@ public class MyPageController {
 	
 	@GetMapping("donList")
 	public ModelAndView setDList(HdPager hdPager, HttpSession session)throws Exception{
-		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());

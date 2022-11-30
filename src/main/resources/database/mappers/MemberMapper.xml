@@ -5,6 +5,14 @@
 
 <mapper namespace="com.seed.lib.member.MemberMapper">
 
+
+	<update id="setUpdate" parameterType="MemberVO">
+	UPDATE `MEMBER` SET EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
+	WHERE USERNAME =#{userName}
+	
+	</update>
+
+
  	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
 	
 		SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
@@ -27,7 +35,7 @@
 		VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
 		</insert> 
 
-			  <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+			  <select id="getLogin" parameterType="String" resultMap="getLoginResult">
 			
 				SELECT M.*, R.*
 					FROM MEMBER M
@@ -37,7 +45,7 @@
 					  INNER JOIN
 					  ROLE R 
 					  ON MR.ROLENUM =R.ROLENUM
-					  WHERE M.USERNAME= #{userName} AND M.PASSWORD=#{password}
+					  WHERE M.USERNAME= #{userName}
 					  
 			</select>
 					  

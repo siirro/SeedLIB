@@ -71,7 +71,7 @@ public class SearchController {
 		mv.addObject("pager", searchDetailPager);
 		mv.setViewName("search/detail");
 		log.info("list의 사이즈 : {}", ar.size());
-		log.info("getPAge : {}", searchDetailPager.getPage());
+		log.info("getKind : {}", searchDetailPager.getKind());
 		
 		if(ar.size()==0) {
 			mv.addObject("message", "검색결과가가 없습니다.");

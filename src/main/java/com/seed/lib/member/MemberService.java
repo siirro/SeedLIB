@@ -21,6 +21,10 @@ public class MemberService {
 	}
 
 	
+	public int setUpdate(MemberVO memberVO)throws Exception{
+		return memberMapper.setUpdate(memberVO);
+	}
+	
 	public int setJoin(MemberVO memberVO)throws Exception {			
 	
 		int result = memberMapper.setJoin(memberVO);
@@ -29,6 +33,7 @@ public class MemberService {
 		
 		return result;
 	}
+	
 	
 	public MemberVO getLogin(MemberVO memberVO)throws Exception {
 		
