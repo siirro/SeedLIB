@@ -51,6 +51,7 @@ public class BookShelfController {
 		return "shelf/newShelf";
 	}
 	
+	@ResponseBody
 	@PostMapping("newShelf")
 	public int setShelfAdd (@RequestBody BookShelfVO shelfVO) throws Exception{
 		// 0이면 mapper -> 값 0 | 1이면 1 리턴

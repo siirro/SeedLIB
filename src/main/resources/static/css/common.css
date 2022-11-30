@@ -108,7 +108,7 @@
 .snsFarm .snsList {display: none; overflow: hidden; position: absolute; top: 0; right: 0; z-index: 1; font-size: 0; line-height: 0; white-space: nowrap;}
 .snsFarm a::before {content: ''; display: block; position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(/include/image/common/ico_sns.png) 0 0 no-repeat; background-size: 40px auto;}
 .snsFarm a.snsShare::before {background-position: 1px 2px;}
-.snsFarm a.snsPrint::before {background-position: 1px -39px;}
+.snsFarm a.snsPrint::before {background-color: #39b54a;background-position: 1px -39px;}
 .snsFarm a.snsStory::before {background-color: #fed300;background-position: 0 -80px;}
 .snsFarm a.snsTwitter::before {background-color: #2e97e9;background-position: 0 -120px;}
 .snsFarm a.snsFacebook::before {background-color: #4064d9;background-position: 0 -160px;}

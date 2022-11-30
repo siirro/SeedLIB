@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.like.BookLikeService;
@@ -75,11 +76,7 @@ public class BookController {
 	
 //-------------------------------------------------------------------------------
 	//대출 신청
-	@GetMapping("loan")
-	public String setLoan (BookLoanVO loanVO) throws Exception{
-		return "book/loan";
-	}
-	
+	@ResponseBody
 	@PostMapping("loan")
 	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {
 		int result = loanService.setLoan(loanVO);
@@ -88,24 +85,16 @@ public class BookController {
 		
 		
 	//예약 신청
-	@GetMapping("reservation")
-	public String setReservation (BookReservationVO reVO) throws Exception{
-		return "book/reservation";
-	}
-	
-	@PostMapping("loan")
+	@ResponseBody
+	@PostMapping("reservation")
 	public int setReservationAdd (@RequestBody BookReservationVO reVO) throws Exception {
 		int result = loanService.setReservation(reVO);
 		return result;
 	}
 	
 	//상호대차 신청
-	@GetMapping("mutual")
-	public String setMutual (BookMutualLoanVO muVO) throws Exception{
-		return "book/mutual";
-	}
-	
-	@PostMapping("loan")
+	@ResponseBody
+	@PostMapping("mutual")
 	public int setLoanAdd (@RequestBody BookMutualLoanVO muVO) throws Exception {
 		int result = loanService.setMutual(muVO);
 		return result;

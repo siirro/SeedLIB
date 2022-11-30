@@ -145,7 +145,7 @@
 			<result column="title" property="title"/>
 			<result column="writer" property="writer"/>
 			<result column="image" property="image"/>
-		<collection property="muVOs" javaType="List" ofType="BookMutualVO">
+		<collection property="muVOs" javaType="List" ofType="BookMutualLoanVO">
 			<id column="loanNum" property="loanNum"/>
 			<result column="userName" property="userName"/>
 		</collection>	

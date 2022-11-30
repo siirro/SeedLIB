@@ -46,8 +46,8 @@
 	</select>
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
-		INSERT INTO SHELF(USERNAME, SHNAME, SHMEMO, CREDATE)
-			VALUES (#{userName}, #{shName}, #{shMemo}, now());
+		INSERT INTO SHELF(USERNAME, SHNAME, SHMEMO)
+			VALUES (#{userName}, #{shName}, #{shMemo});
 	</insert>
 	
 	
