@@ -507,20 +507,19 @@
 															</tr>
 														</thead>
 														<tbody id="contents_pc">
-															<c:forEach items="${list}" var="boPrintVO">
 															<tr>
 																<td>
-																	<span>도서제모옥이 길어서 이렇게 예시를 보여야합니다</span>
+																	<span>${bookVO.title}</span>
 																</td>
 																<td>
-																	<span>발행연도오옭</span>
+																	<span>${bookVO.bookDate}</span>
 																</td>
 																<td>
-																	<span>${boPrintVO.isbn}</span>
+																	<span>${bookVO.isbn}</span>
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="복사 색상 선택" name="" id="">
+																		<select title="복사 색상 선택" name="" id="prColor">
 																			<option value="N">흑백</option>
 																			<option value="Y">컬러</option>
 																		</select>
@@ -528,7 +527,7 @@
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="용지크기 선택" name="" id="">
+																		<select title="용지크기 선택" name="" id="prSize">
 																			<option value="A4">A4</option>
 																			<option value="B5">B5</option>
 																		</select>
@@ -537,29 +536,28 @@
 																<td>
 																	<div class="input_text_wrap">
 																		<label for="copyNum">
-																			<span class="ir_text">복사면 기입</span>
+																			<span class="ir_text">복사 시작 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="시작 쪽">
+																		<input type="text" id="" name="" class="input_text" aria-label="복사 시작 페이지" placeholder="시작 쪽">
 																	</div>
 																</td>
 																<td>
 																	<div class="input_text_wrap">
 																		<label for="copyNum">
-																			<span class="ir_text">복사면 기입</span>
+																			<span class="ir_text">복사 끝 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="끝 쪽">
+																		<input type="text" id="" name="" class="input_text" aria-label="복사 끝 페이지" placeholder="끝 쪽">
 																	</div>
 																</td>
 																<td>
 																	<div class="input_text_wrap">
 																		<label for="copyNum">
-																			<span class="ir_text">복사면 기입</span>
+																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="총 페이지">
+																		<input type="text" id="" name="" class="input_text" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
-															</c:forEach>
 														</tbody>
 													</table>
 													</div>

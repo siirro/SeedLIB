@@ -730,13 +730,13 @@ caption.ir_text {
 .apply_board_wrap .apply_title:before {
   display: inline-block;
   overflow: hidden;
-  background: url(/resource/templete/nl/common/img/common/sp.png) 0 0 no-repeat;
+  background: url(/images/sp.png) 0 0 no-repeat;
   font-size: 5px;
   color: transparent;
   vertical-align: top
 }
 
-@media screen and (max-width:767px) {
+/* @media screen and (max-width:767px) {
 
   .sp,
   .input_radio+label:before,
@@ -745,12 +745,12 @@ caption.ir_text {
   .apply_board_wrap .apply_title:before {
     display: inline-block;
     overflow: hidden;
-    background: url(/resource/templete/nl/common/img/common/sp_m.png) 0 0 no-repeat;
+    background: url(/images/sp_m.png) 0 0 no-repeat;
     background-size: 200px auto;
     color: transparent;
     vertical-align: top
   }
-}
+} */
 
 /* breadcrumbs */
 .breadcrumbs__list {

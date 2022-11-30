@@ -32,6 +32,11 @@ public class BookController {
 		
 		//도서 정보
 		List<BookVO> vo = bookService.getDetail(bookVO);
+		
+		//도서 하나 상세정보
+		bookVO = bookService.getBookInfo(bookVO);
+		mv.addObject("bookVO", bookVO);
+		
 		mv.addObject("vo", vo);
 		
 		//유저 개인 좋아요 정보

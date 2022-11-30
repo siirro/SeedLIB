@@ -271,6 +271,32 @@
     }
   }
 
+/* [s] 레이어팝업 수정 */
+.layer_popup .btn_close.closeLayer {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  padding: 24px 24px 20px 20px;
+}
+.layer_popup .btn_close.closeLayer .sp {
+  width: 18px;
+  height: 18px;
+  background-position: -211px 0;
+}
+@media screen and (max-width: 767px) {
+  .layer_popup .btn_close.closeLayer {
+    padding: 16px 15px 10px 10px;
+  }
+  .layer_popup .btn_close.closeLayer .sp {
+    width: 17px;
+    height: 17px;
+    background: url(/images/btn_close.png) no-repeat;
+  }
+}
+/*-- [e] 레이어팝업 수정 */
+
 /* 바구니 */
 .basket_list {
   border-top: 2px solid #426f8f;

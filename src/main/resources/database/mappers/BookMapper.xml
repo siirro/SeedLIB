@@ -5,6 +5,11 @@
 
 <mapper namespace="com.seed.lib.book.BookMapper">
 
+	<!--                      현재도서 상세정보 출력                      -->
+	<select id="getBookInfo" parameterType="BookVO" resultType="BookVO">
+		SELECT * FROM BOOK WHERE ISBN  = #{isbn}
+	</select>
+
 	<!-- 도서 디테일 -->
 	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
 	SELECT b.*, b2.*, l.*
