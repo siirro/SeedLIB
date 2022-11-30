@@ -656,7 +656,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" style="border: 1px solid #fff0" aria-label="휴대폰번호" required="" />
+																			<input type="text" id="hpTel" name="hpTel" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
 																			<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : 01012345678</p>
@@ -673,7 +673,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																			<input type="text" id="hpTel" name="hpTel" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
 																			<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
