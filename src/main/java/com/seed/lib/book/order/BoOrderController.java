@@ -43,11 +43,9 @@ public class BoOrderController {
 	}
 	
 	// 도서 바구니 추가
-//	@GetMapping("boAdCart")
-//	public String setBoAdCart()throws Exception{
-//		
-//		
-//		return "print/boAdCart";
-//	}
+	@GetMapping("boAdCart")
+	public String setBoAdCart()throws Exception{
+		return "print/boAdCart";
+	}
 	
 }

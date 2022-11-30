@@ -443,9 +443,9 @@
 						<button type="button" class="btn_close closeLayer"><span class="sp">닫기</span></button>
 					</div>
 				</div>
-				<!-- //팝업 : 우편복사 신청 -->
-		
 			</form>
+			<!-- //팝업 : 우편복사 신청 -->
+
 		</div>
 	</div>		
 <!-- footer -->
