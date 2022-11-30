@@ -18,44 +18,18 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/book/shelf.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
+<c:import url="../../temp/header.jsp"></c:import>
+
 <body>
-	<div id="divWrapper">
-		<section id="divContents">
-			<div class="sub-title cf box">
-			<h2 id="divTitle" class="fl">책꽂이</h2>
-		     
-			    <!--  브레드크럼 시작  -->
-				<div class="breadCrumb fr">
-					<ul>	
-						<li class="home"><span></span></li>
-						<li><a href="/myloan/list">내서재</a></li>
-						<li class="currentPage">책꽂이</li>
-					</ul>
-			    </div>
-				<!--  브레드크럼 종료  -->
-			</div>
-	
-			<div id="divContent">
-				<!-- message -->
-				<div class="complete">
-					<div>
-						<p>저장되었습니다.</p>
-					</div>
-				</div>
-			
-				<!-- button -->
-				<div class="buttons">
-					<a href="/mylist/list" title="책꽂이로 이동">책꽂이로 이동</a>
-					<a href="/search/detail/CATTOT000001370034?briefLink=/main/searchBrief?st=KWRD_A_si=TOTAL_A_q=%EC%A0%9C%EC%9D%B8%EC%97%90%EC%96%B4" title="이전페이지로 이동">이전페이지로 이동</a>
-				</div>
-			</div>
-		</section>
+	<div>
+		userName = ${list.userName};
 	</div>
 
 </body>

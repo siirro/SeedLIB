@@ -5,20 +5,49 @@
 
 <mapper namespace="com.seed.lib.book.shelf.BookShelfMapper">
 
-	<select id="getShelfList" parameterType="BookShelfVO" resultMap="getShelfList">
-		select * from shelf where userName = #{userName}
+	<select id="getBookTitle" parameterType="BookVO" resultType="String">
+		select TITLE from book b where ISBN = #{isbn}
 	</select>
-	<resultMap type="BookShelfVO" id="getShelfList">
-		<id column="shNum" property="shNum"/>
-			<result column="userName" property="userName"/>
-			<result column="shName" property="shName"/>
-			<result column="shMemo" property="shMemo"/>
-	</resultMap>
+
+	<select id="getShelfExist" parameterType="BookShelfVO" resultType="Integer">
+		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb'
+	</select>
 	
+	<select id="getSameShelf" parameterType="BookShelfVO" resultType="Integer">
+		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb' AND SHNAME = #{shName}
+	</select>
+	
+	<select id="getBookExist" parameterType="BookPickVO" resultType="Integer">
+		SELECT COUNT(PICKNUM) FROM PICK WHERE ISBN = #{isbn} AND SHNUM = #{shNum}
+	</select>
+	
+	<select id="getShelfList" parameterType="BookShelfVO" resultType="BookShelfVO">
+		SELECT * FROM SHELF WHERE USERNAME = #{userName}
+	</select>
+	
+	<select id="getShelfListP" parameterType="ShelfPager" resultType="ShelfPager">
+		SELECT SS.* FROM
+			(SELECT ROWNUM R, S.*
+				FROM SHELF S
+				WHERE S.USERNAME = #{userName}
+					AND S.SHNAME = #{shName}
+					AND S.CREDATE BETWEEN #{creDateA} AND #{creDateB}
+					ORDER BY
+	    			<choose>
+	    				<when test="select == 'name'">S.SHNAME</when>
+	    				<otherwise>S.CREDATE</otherwise>
+	    			</choose>
+	    			<choose>
+	    				<when test="sort == 'desc'">DESC</when>
+	    				<otherwise>ASC</otherwise>
+	    			</choose>
+	    		)SS
+	    WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
-		insert into shelf(USERNAME, SHNAME, SHMEMO)
-			values (#{userName}, #{shName}, #{shMemo});
+		INSERT INTO SHELF(USERNAME, SHNAME, SHMEMO)
+			VALUES (#{userName}, #{shName}, #{shMemo});
 	</insert>
 	
 	
@@ -29,44 +58,54 @@
 	
 	
 	<update id="setShelfUpdate" parameterType="BookShelfVO">
-		update shelf
-			set shname = #{shName} and shmemo = #{shMemo}
-		where shnum = #{shNum}
+		UPDATE SHELF
+			SET SHNAME = #{shName} AND SHMEMO = #{shMemo}
+		WHERE SHNUM = #{shNum}
 	</update>
 	
 	
 	<insert id="setBookAdd" parameterType="BookPickVO">
-		insert into pick(ISBN, SHNUM)
-			values (#{isbn}, #{shNum});
+		INSERT INTO PICK(ISBN, SHNUM, REGDATE)
+			VALUES (#{isbn}, #{shNum}, now());
 	</insert>
 	
 	
 	<delete id="setBookDelete" parameterType="BookPickVO">
-		delete from pick
-			where isbn = #{isbn} and shnum = #{shNum}
+		DELETE FROM PICK
+			WHERE ISBN = #{isbn} ANS SHNUM = #{shNum}
 	</delete>
 	
 	
-	<select id="getBookList" parameterType="ShelfPager" resultMap="getBookList">
-		SELECT S.*, P.*, B.*
-			FROM SHELF S
-				INNER JOIN PICK P
-				ON S.SHNUM = P.SHNUM
+	<select id="getBookList" parameterType="ShelfBookPager" resultMap="getBookList">
+		SELECT BB.* FROM
+			(SELECT ROWNUM R, BB.* FROM
+				(S.*, P.*, B.*
+					FROM SHELF S
+					INNER JOIN PICK P
+					ON S.SHNUM = P.SHNUM
 				
-				INNER JOIN BOOK B
-				ON P.ISBN = B.ISBN
+					INNER JOIN BOOK B
+					ON P.ISBN = B.ISBN
 				
-			WHERE S.SHNUM = #{shNum}
-			ORDER BY
-    			<choose>
-    				<when test="select == 'title'">B.TITLE</when>
-    				<otherwise>B.ISBN</otherwise>
-    			</choose>
-    			<choose>
-    				<when test="sort == 'desc'">DESC</when>
-    				<otherwise>ASC</otherwise>
-    			</choose>
+					WHERE S.SHNUM = #{shNum}
+						AND B.TITLE = #{title}
+						AND B.ISBN = #{isbn}
+						AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
+					ORDER BY
+	    			<choose>
+	    				<when test="select == 'title'">B.TITLE</when>
+	    				<when test="select == 'isbn'">B.ISBN</when>
+	    				<otherwise>P.REGDATE</otherwise>
+	    			</choose>
+	    			<choose>
+	    				<when test="sort == 'desc'">DESC</when>
+	    				<otherwise>ASC</otherwise>
+	    			</choose>
+	    		)BB
+	    	)BB
+	    WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
 	<resultMap type="BookVO" id="getBookList">
 		<id column="isbn" property="isbn"/>
 			<result column="title" property="title"/>
@@ -79,6 +118,7 @@
 			<result column="shName" property="shName"/>
 			<result column="shMemo" property="shMemo"/>
 			<result column="userName" property="userName"/>
+			<result column="creDate" property="creDate"/>
 		</collection>
 			
 		

@@ -1,39 +1,43 @@
 @charset "utf-8";
 
-@charset "utf-8";
-
-/* Layout */
-#divWrapper{min-width:320px}
-.header{position:relative;height:41px;width:auto;min-width:320px;margin-top:0;padding:6px 0 0}
-#divContents{width:auto;background-color:#fff}
-#divContent{min-height:200px;margin: 20px 10px;}
-
-writeTable tbody tr:first-child th {
-    border-top: none;
+.contentsGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-.writeTable th {
-    width: 20%;
-    padding: 10px 0;
-    border-top: 1px solid #e6e6e6;
-    font-size: 14px;
+       
+.seatArea {
+	width: 100%;
+    margin-left: 25px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-table th {
-    border: none;
-    background-color: #f3f3f3;
-    color: #727272;
-    padding: 0;
-}
-   
-.writeTable tbody tr:first-child td {
-    border-top: none;
+        
+.book {
+   display: block;
+   font-size: 30px;
+   font-weight: bold;
 }
 
-.writeTable td {
-    width: 85%;
-    padding: 10px 20px;
-    border-top: 1px solid #e6e6e6;
-    font-size: 14px;
+.bookTitle {
+   display: block;
+   font-size: 25px;
+   font-weight: bold;
 }
-table td {
-    border: none;
-}    
+
+.shelfCon {
+	display: flex;
+}
+
+.btnArea {
+	margin-top: 30px;
+}
+
+#revBtn{
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+    font-size: 18px !important;
+}
