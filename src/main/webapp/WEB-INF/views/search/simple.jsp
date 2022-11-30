@@ -100,7 +100,7 @@
                                 <c:if test="${not empty list}">
                                     <div class="listStyleType">
                                         <select id="kind" name="kind" title="정렬조건 선택">
-                                            <option class="kinds" value="score">정확도 순</option>
+                                            <option class="kinds" value="score" selected>정확도 순</option>
                                             <option class="kinds" value="title">서명 순</option>
                                             <option class="kinds" value="writer">저자 순</option>
                                             <option class="kinds" value="publisher">발행처 순</option>
@@ -133,7 +133,7 @@
                                             <div class="bookData">
                                                 <div class="book_dataInner">
                                                     <!-- <span class="book_kind">단행본</span> -->
-                                                    <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                    <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on" style="font-weight: bold;">${list.title}<span class="highlight word"></span></a>
                                                     <ul class="dot-list clearfix">
                                                         <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                         <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
@@ -457,10 +457,16 @@ for(let i=0;i<kinds.length;i++){
     }
 }
 
+</script>
 
+<script defer>
 
-
-
+let kw = '${param.search}'
+console.log(kw);
+    $(".book_dataInner>a:contains('"+kw+"')").each(function (d, f) {
+        var regex = new RegExp(kw, 'gi');
+        f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
+    });
 </script>
 
 </body>

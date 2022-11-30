@@ -125,7 +125,7 @@
                                         '<strong>저자명:${param.searchWriter}</strong>', 
                                         '<strong>발행처:${param.searchPublisher}</strong>', 
                                         '<strong>ISBN:${param.searchISBN}</strong>', 
-                                        '<strong>발행년:${param.searchDate1}~${param.searchDate2}</strong>', 
+                                        '<strong>발행년:${param.searchDate1}<c:if test="${not empty param.searchDate1}">~</c:if>${param.searchDate2}</strong>', 
                                         '<strong>분류기호:${param.searchCategory}</strong>'
                                         에 대한 검색결과 총 
                                         <span id="totalCnt">${count}</span> 건
