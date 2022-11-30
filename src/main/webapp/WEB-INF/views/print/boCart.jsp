@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- header -->
-	<c:import url="../../temp/header.jsp"></c:import>
+	<c:import url="../temp/header.jsp"></c:import>
 	<script defer src="/js/admin/modal.js"></script>
 </head>
 <body>
@@ -449,7 +449,7 @@
 		</div>
 	</div>		
 <!-- footer -->
-<c:import url="../../temp/footer.jsp"></c:import>
+<c:import url="../temp/footer.jsp"></c:import>
 <!-- footer -->
 </body>
 </html>
