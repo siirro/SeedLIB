@@ -27,15 +27,8 @@
 		<div id="contentGroup">
 			
 <div id="lnbNav" class="navArea">
-	<h2> 도서관소식 </h2>
-	<ul id="lnb" class="lnb"> 
-  <li id="lnb4_1"><a href="/board/list" class="current">공지사항</a> </li> 
-  <li id="lnb4_2"><a href="#">자주하는질문</a> </li> 
-  <li id="lnb4_3"><a href="#">도서관에게바란다</a> 
-  <li id="lnb4_3"><a href="#" >자유게시판</a> 
-  <li id="lnb4_3"><a href="#" >분실물센터</a> 
- 
- </ul>
+	<c:import url="../sideBar/EsideBar.jsp"></c:import>
+
 </div>
 
 			<div id="contentcore">
@@ -63,21 +56,6 @@
 	</div>
 </div>
 
-<!-- 레이어팝업 -->
-<div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-	<div class="layer-content">
-		<h4>QR코드</h4>
-		<div class="layer-content">
-			<div class="conTxt ta_c" id="qrcodeImg"></div>
-			<div class="conTxt">
-				<p>QR코드 이미지 저장</p>
-				QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-			</div>
-		</div>
-		<a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-	</div>
-</div>
-<!-- //레이어팝업 -->
 
 <div id="contents" class="contentArea">
 					
