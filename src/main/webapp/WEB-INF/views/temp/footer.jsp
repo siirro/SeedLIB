@@ -5,8 +5,8 @@
     <div class="fnbWrap">
         <div class="footerInner clearfix">
             <ul class="fnb clearfix">
-                <li><a href="/etc/personalinfo"><span>개인정보처리방침</span></a></li>
-                <li><a href="/etc/emailinfo">이메일추출방지정책</a></li>
+                <li><a href="/policy/personal"><span>개인정보처리방침</span></a></li>
+                <li><a href="/policy/email">이메일추출방지정책</a></li>
                 <li><a href="/intro/law">도서관관련법규</a></li>
             </ul>
             <div class="familySite mobileHide">
