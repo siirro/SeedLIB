@@ -32,44 +32,8 @@
 		<div id="contentGroup">
 			
 <div id="lnbNav" class="navArea">
-	<h2> 이용안내 </h2>
-	<ul id="lnb" class="lnb"> 
-  <li id="lnb4_1"><a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do">도서관소식</a> </li> 
-  <li id="lnb4_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
-  <li id="lnb4_3"><a href="/guide/manners" class="current on">도서관이용안내</a> 
-   <ul class="MkSub submenu" style="display: block;"> 
-	<li id="lnb4_3_1"><a href="/guide/manners" class="current">도서관예절</a> </li> 
-	<li id="lnb4_3_2"><a href="/guide/time">이용시간</a> </li> 
-	<li id="lnb4_3_3"><a href="#">휴관일안내</a> </li> 
-	<li id="lnb4_3_4"><a href="/member/agree">회원가입</a> </li> 
-	<li id="lnb4_3_5"><a href="/guide/rule">대여규칙</a> </li> 
-	<li id="lnb4_3_6"><a href="/guide/convenience">편의시설</a> </li> 
-   </ul> </li> 
-  <li id="lnb4_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li> 
-  <li id="lnb4_5"><a href="/seoksu/menu/10142/contents/40011/contents.do">모바일앱</a> </li> 
-  <li id="lnb4_6"><a href="/seoksu/menu/10143/contents/40012/contents.do">스마트도서관</a> </li> 
-  <li id="lnb4_7"><a href="/seoksu/menu/10145/contents/40013/contents.do" class="on">책배달서비스</a> 
-   <ul class="MkSub submenu" style="display: none;"> 
-    <li id="lnb4_7_1"><a href="/seoksu/menu/10145/contents/40013/contents.do">책바다</a> </li> 
-    <li id="lnb4_7_2"><a href="/seoksu/menu/10146/contents/40014/contents.do">책나래</a> </li> 
-    <li id="lnb4_7_3"><a href="/seoksu/menu/10147/contents/40015/contents.do">두루두루</a> </li> 
-    <li id="lnb4_7_4"><a href="/seoksu/menu/10148/contents/40016/contents.do">내생애첫도서관</a> </li> 
-   </ul> </li> 
-  <li id="lnb4_8"><a href="/seoksu/menu/10150/contents/40017/contents.do" class="on">전자도서관</a> 
-   <ul class="MkSub submenu" style="display: none;"> 
-    <li id="lnb4_8_1"><a href="/seoksu/menu/10150/contents/40017/contents.do">전자책</a> </li> 
-    <li id="lnb4_8_2"><a href="/seoksu/menu/10151/contents/40018/contents.do">오디오북</a> </li> 
-    <li id="lnb4_8_3"><a href="/seoksu/menu/10154/contents/40021/contents.do">학술논문</a> </li> 
-    <li id="lnb4_8_4"><a href="/seoksu/menu/10155/contents/40022/contents.do">한국학</a> </li> 
-    <li id="lnb4_8_5"><a href="/seoksu/menu/10153/contents/40020/contents.do">도서요약</a> </li> 
-    <li id="lnb4_8_6"><a href="/seoksu/menu/10152/contents/40019/contents.do">인문학강의</a> </li> 
-    <li id="lnb4_8_7"><a href="/seoksu/menu/10156/contents/40023/contents.do">이러닝</a> </li> 
-    <li id="lnb4_8_8"><a href="/seoksu/menu/11107/contents/40109/contents.do">전자잡지</a> </li> 
-    <li id="lnb4_8_9"><a href="/seoksu/menu/11108/contents/40110/contents.do">IT강좌</a> </li> 
-   </ul> </li> 
-  <li id="lnb4_9"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">도서관에바란다</a> </li> 
-  <li id="lnb4_10"><a href="/seoksu/menu/10158/bbs/20004/bbsPostList.do">분실물센터</a> </li> 
- </ul>
+	<c:import url="../sideBar/CsideBar.jsp"></c:import>
+
 </div>
 
 			<div id="contentcore">
@@ -97,48 +61,8 @@
 	</div>
 </div>
 
-<!-- 레이어팝업 -->
-<div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-	<div class="layer-content">
-		<h4>QR코드</h4>
-		<div class="layer-content">
-			<div class="conTxt ta_c" id="qrcodeImg"></div>
-			<div class="conTxt">
-				<p>QR코드 이미지 저장</p>
-				QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-			</div>
-		</div>
-		<a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-	</div>
-</div>
-<!-- //레이어팝업 -->
 
-<script src="/include/js/clipboard.min.js"></script>
-<script>
-	$('#sns').click(function(e) {
-		$.ajax({
-			type: "POST",
-			url: "/cmmn/share/shortUrl.do",
-			dataType : "json",
-			data: { "url" : "https://lib.anyang.go.kr/seoksu/menu/10136/contents/40034/contents.do"},
-			async: false,
-			error : function (request, status, error){
-				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-			},
-			success: function(data) {
-				//$("#shortUrl").html(data.url);
-				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/seoksu/menu/10136/contents/40034/contents.do" >');
-				$("#sns1").attr('data-clipboard-text', data.url);
-			}
-		});
-	});
 
-	function fnShorturlCopy() {
-		var clipboard = new ClipboardJS('#sns1');
-		alert('단축주소가 복사되었습니다.');
-		return false;
-	}
-</script>
 				<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->

@@ -1,16 +1,16 @@
-package com.seed.lib.config;
-
+//package com.seed.lib.config;
+//
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 //import org.springframework.security.web.SecurityFilterChain;
-
+//
 //@Configuration
 //@EnableWebSecurity
 //public class SecurityConfig {
-	
+//	
 //	@Bean
 //	WebSecurityCustomizer webSecurityCustomizer() throws Exception{
 //		
@@ -45,12 +45,14 @@ package com.seed.lib.config;
 //					.loginPage("/member/login")
 //					.usernameParameter("userName")
 //					.defaultSuccessUrl("/")
-//					.failureUrl("member/login")
+//					.failureUrl("/member/login")
 //					.permitAll()
 //					.and()
 //					
 //					.logout()
 //					.permitAll()
+//					.and()
+//					.oauth2Login()
 //					
 //					;
 //					

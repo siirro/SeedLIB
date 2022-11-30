@@ -121,9 +121,9 @@
 					</ul> 
 				</li> 
 					
-				<li id="gnb5" class="hehehe"> <a href="/seoksu/menu/10161/program/30020/dataStatus.do"> <em>도서관소식</em> </a> 
+				<li id="gnb5" class="hehehe"> <a href="/board/list"> <em>도서관소식</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb5_1"><a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do">공지사항</a> </li> 
+						<li id="gnb5_1"><a href="/board/list">공지사항</a> </li> 
 						<li id="gnb5_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
 						<li id="gnb5_3"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">도서관에바란다</a> </li>
 						<li id="gnb5_4"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">자유게시판</a> </li>
