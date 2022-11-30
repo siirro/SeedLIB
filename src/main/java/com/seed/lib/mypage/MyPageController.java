@@ -86,7 +86,6 @@ public class MyPageController {
 	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
-		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());
@@ -105,7 +104,6 @@ public class MyPageController {
 	
 	@GetMapping("donList")
 	public ModelAndView setDList(HdPager hdPager, HttpSession session)throws Exception{
-		//세션으로 아이디 받아야됨!!!!!!!!!!!
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			hdPager.setUserName(memberVO.getUserName());
