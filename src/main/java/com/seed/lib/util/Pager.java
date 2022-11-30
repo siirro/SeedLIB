@@ -118,6 +118,13 @@ public class Pager {
 		return search;
 	}
 	
+	public String getKind() {
+		if(this.kind==null) {
+			this.kind="score";
+		}
+		return kind;
+	}
+	
 
 
 }

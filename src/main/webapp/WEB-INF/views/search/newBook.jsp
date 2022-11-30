@@ -105,10 +105,10 @@
                                         </c:choose>
                                     </h5>
                                 </div>
-                                <div class="bookImg" style="height: 302px;"><a href="#link" onclick="fnDetail('106246104', '9791167070791', 'MO');"><img src="${list.image}" onerror="javascript:fnNoImgBook(this); return false;" alt="${list.title}"></a></div>
+                                <div class="bookImg" style="height: 302px;"><a href="#" onclick="location.href='../book/detail?isbn=${list.isbn}'";"><img src="${list.image}" onerror="javascript:fnNoImgBook(this); return false;" alt="${list.title}"></a></div>
 
                                 <div class="bookData">
-                                    <a href="#link" onclick="fnDetail('106246104', '9791167070791', 'MO');"><span class="blind">${list.title}</span></a>
+                                    <a href="#" onclick="location.href='../book/detail?isbn=${list.isbn}'"><span class="blind">${list.title}</span></a>
                                     <div class="book_dataInner">
                                         <p class="book_name" title="${list.title}"><strong>${list.title}</strong></p>
                                         <p class="book_writers">
@@ -116,11 +116,11 @@
                                             <span class="bk_publish">${list.publisher}<br>2022</span>
                                         </p>
                                     </div>
-                                    <div class="bookEventWrap">
+                                    <!-- <div class="bookEventWrap">
                                         <ol>
                                             <li><a href="#apply" onclick="javascript:fnLibraryMyLibPop('9791167070791', 'MO'); return false" class="btn_sergeInfo" title="내서재 담기"><span class="blind">내서재 담기</span></a></li>
                                         </ol>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </li>
                         </c:forEach>

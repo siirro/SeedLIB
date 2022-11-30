@@ -30,24 +30,19 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-					 <c:choose>
+					<c:choose>
 						<c:when test="${not empty memberVO}">
-						<li><a href="/member/logout">로그아웃</a></li>
-						<li><a href="/mypage/myIndex">마이페이지</a></li>
-						
+							<li><a href="/member/logout">로그아웃</a></li>
+							<li><a href="/mypage/myIndex">마이페이지</a></li>
 						</c:when>
-					
-					<c:otherwise>
-					
-						<li><a href="/member/login">로그인</a></li>
-						<li><a href="/member/agree">회원가입</a></li>
-						
-					</c:otherwise>
-
-						</c:choose> 
+						<c:otherwise>
+							<li><a href="/member/login">로그인</a></li>
+							<li><a href="/member/agree">회원가입</a></li>
+						</c:otherwise>
+					</c:choose> 
 
 						
-						<li class="mobileHide"><a href="/sitemap">사이트맵</a></li>
+						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>
 				</div>
 			</div>
@@ -88,7 +83,7 @@
 						<li id="gnb1_1"><a href="/search/simple">소장자료검색</a></li> 
 						<li id="gnb1_2"><a href="/search/category">주제별검색</a> </li> 
 						<li id="gnb1_3"><a href="/search/newBook">신착자료검색</a> </li> 
-						<li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li>
+						<!-- <li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li> -->
 					</ul> 
 				</li> 
 
@@ -111,13 +106,13 @@
 					</ul> 
 				</li> 
 
-				<li id="gnb4" class="hehehe"> <a href="/seoksu/menu/10133/bbs/20001/bbsPostList.do"> <em>도서관소개</em> </a> 
+				<li id="gnb4" class="hehehe"> <a href="/info/bookStatus"> <em>도서관소개</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb4_1"><a href="/seoksu/menu/10161/program/30020/dataStatus.do">자료현황</a> </li> 
-						<li id="gnb4_2"><a href="/seoksu/menu/10161/program/30020/dataStatus.do">시설현황</a> </li> 
-						<li id="gnb4_3"><a href="/seoksu/menu/10165/program/30021/staffList.do">조직정보</a> </li> 
-						<li id="gnb4_4"><a href="/seoksu/menu/10166/contents/40024/contents.do">도서관관련법규</a> </li> 
-						<li id="gnb4_5"><a href="/seoksu/menu/10167/contents/40038/contents.do">찾아오시는길</a> </li> 
+						<li id="gnb4_1"><a href="/info/bookStatus">자료현황</a> </li> 
+						<li id="gnb4_2"><a href="/info/facilityStatus">시설현황</a> </li> 
+						<li id="gnb4_3"><a href="/info/bookStatus">조직정보</a> </li> 
+						<li id="gnb4_4"><a href="/info/law">도서관관련법규</a> </li> 
+						<li id="gnb4_5"><a href="/info/map">찾아오시는길</a> </li> 
 					</ul> 
 				</li> 
 					
