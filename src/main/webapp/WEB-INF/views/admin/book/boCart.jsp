@@ -8,6 +8,7 @@
 	<link rel="icon" href="/images/favicon.png">
     <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 	<link rel="stylesheet" href="/css/admin/modal.css">
+	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- header -->
 	<c:import url="../../temp/header.jsp"></c:import>
@@ -75,7 +76,7 @@
 								<col class="no mobileHide">
 								<col>
 								<col style="width: 200px;" class="date mobileHide">
-								<col style="width:100px">
+								<col style="width: 100px;">
 							</colgroup>
 							<thead>
 								<tr>
@@ -112,7 +113,7 @@
 			</div>
 			<form id="postFrm" name="postFrm" class="pFrm"  method="post">
 				<!-- 팝업 : 우편복사 신청 -->
-				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:flex" id="grpBtns_apply">
+				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 					<div class="layer_popup basket_layer">
 						<div class="popup_header">
 							<h1 class="popup_title">복사 신청</h1>
@@ -210,13 +211,14 @@
 												<table>
 													<caption><span class="ir_text">복사 신청한 도서 정보</span></caption>
 													<colgroup>
-														<col class="col2">
+														<col class="col2" style="width: 25%;">
 														<col class="col3">
-														<col class="col3">
+														<col class="col3" style="width: 10%;">
+														<col >
+														<col >
 														<col>
 														<col>
 														<col>
-														<col class="col2">
 													</colgroup>
 													<thead>
 														<tr>
@@ -225,17 +227,23 @@
 															<th scope="col">청구 기호</th>
 															<th scope="col">종류</th>
 															<th scope="col">인쇄 방식</th>
-															<th scope="col">용지 크기</th>
-															<th scope="col">복사 페이지</th>
+															<th scope="col">시작 페이지</th>
+															<th scope="col">끝 페이지</th>
+															<th scope="col">총 페이지</th>
 														</tr>
 													</thead>
 													<tbody id="contents_pc">
+														<c:forEach items="${list}" var="boPrintVO">
 														<tr>
-															<c:forEach items="${list}" var="boPrintVO">
 															<td>
-																<span>${boPrintVO.}</span>
+																<span>도서제모옥이 길어서 이렇게 예시를 보여야합니다</span>
 															</td>
-															</c:forEach>
+															<td>
+																<span>발행연도오옭</span>
+															</td>
+															<td>
+																<span>${boPrintVO.isbn}</span>
+															</td>
 															<td>
 																<div class="input_select_wrap2">
 																	<select title="복사 색상 선택" name="" id="">
@@ -248,9 +256,7 @@
 																<div class="input_select_wrap2">
 																	<select title="용지크기 선택" name="" id="">
 																		<option value="A4">A4</option>
-																		<option value="A3">A3</option>
 																		<option value="B5">B5</option>
-																		<option value="B4">B4</option>
 																	</select>
 																</div>
 															</td>
@@ -259,10 +265,27 @@
 																	<label for="copyNum">
 																		<span class="ir_text">복사면 기입</span>
 																	</label>
-																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="복사 페이지를 입력해주세요.">
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="시작 쪽">
+																</div>
+															</td>
+															<td>
+																<div class="input_text_wrap">
+																	<label for="copyNum">
+																		<span class="ir_text">복사면 기입</span>
+																	</label>
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="끝 쪽">
+																</div>
+															</td>
+															<td>
+																<div class="input_text_wrap">
+																	<label for="copyNum">
+																		<span class="ir_text">복사면 기입</span>
+																	</label>
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="총 페이지">
 																</div>
 															</td>
 														</tr>
+														</c:forEach>
 													</tbody>
 												</table>
 												</div>
