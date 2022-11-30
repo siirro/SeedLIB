@@ -25,7 +25,7 @@
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
-<c:import url="../../temp/header.jsp"></c:import>
+<c:import url="../temp/header.jsp"></c:import>
 <body>
 
 </body>

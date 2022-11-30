@@ -132,7 +132,7 @@ public class BookShelfController {
 	
 	//책꽂이 상세(책꽂이에 저장된 책 목록)
 		//shelf/bookList?shNum=
-	@PostMapping("bookList")
+	@GetMapping("bookList")
 	public ModelAndView getBookList (Long num, HttpSession session, ShelfBookPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		

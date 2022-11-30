@@ -77,33 +77,29 @@
 	
 	
 	<select id="getBookList" parameterType="ShelfBookPager" resultMap="getBookList">
-		SELECT BB.* FROM
-			(SELECT ROWNUM R, BB.* FROM
-				(S.*, P.*, B.*
-					FROM SHELF S
-					INNER JOIN PICK P
-					ON S.SHNUM = P.SHNUM
-				
-					INNER JOIN BOOK B
-					ON P.ISBN = B.ISBN
-				
-					WHERE S.SHNUM = #{shNum}
-						AND B.TITLE = #{title}
-						AND B.ISBN = #{isbn}
-						AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
-					ORDER BY
-	    			<choose>
-	    				<when test="select == 'title'">B.TITLE</when>
-	    				<when test="select == 'isbn'">B.ISBN</when>
-	    				<otherwise>P.REGDATE</otherwise>
-	    			</choose>
-	    			<choose>
-	    				<when test="sort == 'desc'">DESC</when>
-	    				<otherwise>ASC</otherwise>
-	    			</choose>
-	    		)BB
-	    	)BB
-	    WHERE R BETWEEN #{startRow} AND #{lastRow}
+		SELECT P.*, S.SHNAME, S.SHMEMO, S.CREDATE, B.TITLE, B.WRITER
+			FROM SHELF S
+			INNER JOIN PICK P
+			ON S.SHNUM = P.SHNUM
+		
+			INNER JOIN BOOK B
+			ON P.ISBN = B.ISBN
+		
+			WHERE S.SHNUM = #{shNum}
+				AND B.TITLE = #{title}
+				AND B.ISBN = #{isbn}
+				AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
+			ORDER BY
+   			<choose>
+   				<when test="select == 'title'">B.TITLE</when>
+   				<when test="select == 'isbn'">B.ISBN</when>
+   				<otherwise>P.REGDATE</otherwise>
+   			</choose>
+   			<choose>
+   				<when test="sort == 'desc'">DESC</when>
+   				<otherwise>ASC</otherwise>
+   			</choose>
+	    LIMIT #{startRow}, #{lastRow}
 	</select>
 	
 	<resultMap type="BookVO" id="getBookList">
