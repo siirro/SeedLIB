@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/member/agree.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-material@1.0.0/icheck-material.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<!--  달력 -->
 </head>
 <body>
  
@@ -39,14 +41,23 @@
                     <div class="inputProfile">
                         <div>
                             <p class="name"><label for="user_name">이름</label>
-                            <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
+                               <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
+                            
                             <p class="birth"><label for="birthd_year">생년월일</label>
-                            <input type="text" name="birth" id="birthd_year" class="textInput birthday" required="required"></p>
+                               <input type="date" name="birth" id="birthd_year" maxlength="s"></p>
                           
                             <p class="gender"><label for="gen">성별</label>
-                                <input type="text" name="gender" id="gen" class="textInput gender" required="required"></p>
-                                  
-
+					
+						    <span class="icheck-material-teal">
+							<label for="teal1">  남자</label>
+							 <input type="radio" id="teal1" name="gender" title="남자">
+					
+							</span>
+							<span class="icheck-material-teal">
+							 <label for="teal2">여자</label>
+							   <input type="radio" id="teal2" name="gender" title="여자">
+						
+							</span>                                   
                               <p>
 
 
@@ -113,6 +124,40 @@
                             <p><label for="email">이메일 주소</label>
                                 <input type="email" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
                                 
+
+                                                    
+                                    <input type="email" id="email" name="email"  title="이메일 입력" class="form-ele auto eng-mode">
+                                    @<br class="mobileShow3">
+                                    <input type="text" id="emailDomain" name="email" title="이메일 도메인 입력">
+                                    
+                                    <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
+                                        
+                                            <option value="daum.net">daum.net</option>
+                                        
+                                            <option value="dreamwiz.com">dreamwiz.com</option>
+                                        
+                                            <option value="gmail.com">gmail.com</option>
+                                        
+                                            <option value="hanmail.net">hanmail.net</option>
+                                        
+                                            <option value="hotmail.com">hotmail.com</option>
+                                        
+                                            <option value="korea.com">korea.com</option>
+                                        
+                                            <option value="lycos.co.kr">lycos.co.kr</option>
+                                        
+                                            <option value="msn.com">msn.com</option>
+                                        
+                                            <option value="nate.com">nate.com</option>
+                                        
+                                            <option value="naver.com" selected="selected">naver.com</option>
+                                        
+                                            <option value="yahoo.co.kr">yahoo.co.kr</option>
+                                        
+                                        <option value="etc">직접입력</option>
+                                    </select>
+                                    <label for="mailingUseYn" class="ml10"><input type="checkbox" name="mailingUseYn" id="mailingUseYn" value="Y" checked="checked"> 이메일 수신동의</label>
+                                </td>
                             </p>
                         </div>
                         <p class="info" style="padding:0 10px;">* 이메일 주소는 회원정보 재동의(2년 주기) 알림에 이용됩니다.</p><br>
@@ -151,16 +196,11 @@
                     <p class="joinBtn"><input type="submit" title="가입하기" value="가입하기" id="joinB"></p>
                 </div>
             </fieldset>
-            
-            
-            
-            
 
             
         </form>
     </div>
- 
- <script src="/js/addess.js"></script>
+ <script src="/js/address.js"></script>
   <script src="/js/join.js"></script>
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

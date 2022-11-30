@@ -99,12 +99,12 @@
 
                                 <c:if test="${not empty list}">
                                     <div class="listStyleType">
-                                        <select id="kind" name="kind" title="정렬조건 선택" onchange="changeFn()">
-                                            <option value="score">정확도 순</option>
-                                            <option value="title">서명 순</option>
-                                            <option value="writer">저자 순</option>
-                                            <option value="publisher">발행처 순</option>
-                                            <option value="num">대출수 순</option>
+                                        <select id="kind" name="kind" title="정렬조건 선택">
+                                            <option class="kinds" value="score" selected>정확도 순</option>
+                                            <option class="kinds" value="title">서명 순</option>
+                                            <option class="kinds" value="writer">저자 순</option>
+                                            <option class="kinds" value="publisher">발행처 순</option>
+                                            <option class="kinds" value="num">대출수 순</option>
                                         </select>
 
                                         <!-- <a href="" id="sortListBtn" class="btn">확인</a> -->
@@ -133,7 +133,7 @@
                                             <div class="bookData">
                                                 <div class="book_dataInner">
                                                     <!-- <span class="book_kind">단행본</span> -->
-                                                    <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                    <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on" style="font-weight: bold;">${list.title}<span class="highlight word"></span></a>
                                                     <ul class="dot-list clearfix">
                                                         <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                         <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
@@ -148,7 +148,7 @@
                                                     <ol>
                                                         <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
                                                         <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
-                                                        <li><a class="btn_mylibrary themeFC themeBD" title="찜하기 새창열림">찜</a></li>
+                                                        <li><button class="btn" title="찜하기 새창열림" style="padding: 0px 15px; height: 30px; background-color: #fff; color: #00e3ae; border: 1px solid #00e3ae;">찜</a></li>
                                                     </ol>
                                                 </div>
 
@@ -384,32 +384,7 @@
                         </c:if>
                         <!-- //페이징 -->
 
-                        <script>
-                            let disables = document.querySelectorAll(".disabledLink")
-                            
-                            disables.forEach(element => {
-                                element.removeAttribute('href');
-                            });
-
-                            let urll = window.location.href;
-                            let urlnn = urll.lastIndexOf('=')+1;
-                            urllastt = urll.substring(urlnn);
-
-                            console.log(urllastt);
-
-                            let page1sibal = urll.lastIndexOf('=')-1;
-                            console.log(page1sibal);
-                            if(page1sibal==45){
-                                document.querySelector('#ppaaggee1').style.background="#9be15d";
-                                document.querySelector('#ppaaggee1').style.color="#fff";
-                            }
-
-                            let ppaaggee = document.querySelector('#'+"ppaaggee"+urllastt);
-                            ppaaggee.style.background="#9be15d";
-                            ppaaggee.style.color="#fff";
-                          
-                          
-                        </script>
+                       
                         
                     </div>
                     <!-- 리스트 -->
@@ -428,6 +403,34 @@
 </div>
 
 <script>
+
+    try {
+        // 페이징 활성화 
+            // 화살표들 disabledLink 클래스 걸려있으면 누를수없게 a태그에서 href 속성을 삭제시킴
+            let disables = document.querySelectorAll(".disabledLink")
+            disables.forEach(element => {
+                element.removeAttribute('href');
+            });
+
+            let urll = window.location.href;
+            let urlnn = urll.lastIndexOf('=')+1;
+            urllastt = urll.substring(urlnn);
+
+            //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+            let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
+
+            ppaaggee.style.background="#9be15d";
+            ppaaggee.style.color="#fff";
+        // 페이징 활성화 
+        
+    } catch (error) {
+        
+    }
+
+    
+                          
+                          
+                     
 $("#liboption").click(function(){
     let check = $("#sh_util03").attr("class");
     if(check=="divSelect") {
@@ -442,6 +445,28 @@ $("#liboption").click(function(){
     
 })
 
+
+
+let k = '${param.kind}'
+
+const kinds = document.getElementsByClassName('kinds');
+for(let i=0;i<kinds.length;i++){
+    if(k==kinds[i].value) {
+        kinds[i].setAttribute('selected','selected');
+        break;
+    }
+}
+
+</script>
+
+<script defer>
+
+let kw = '${param.search}'
+console.log(kw);
+    $(".book_dataInner>a:contains('"+kw+"')").each(function (d, f) {
+        var regex = new RegExp(kw, 'gi');
+        f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
+    });
 </script>
 
 </body>

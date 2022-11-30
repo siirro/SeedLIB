@@ -8,7 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/images/favicon.png">
-    <title>꿈이 싹트는 정원 : 씨앗도서관</title>
+    
+    <title>고급검색 : 씨앗도서관 ☘</title>
+    
+
 </head>
 <body>
 <div id="wrap">
@@ -32,9 +35,6 @@
 
             <div id="contentcore">
 				
-
-
-
                 <div class="naviandtitle">
                     <h3>고급검색</h3>
                     <div class="navi"><a href="/seoksu/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 자료검색 <i class="arrow"></i>소장자료검색<i class="arrow"></i>고급검색</div>
@@ -55,297 +55,459 @@
                     </div>
                 </div>
                 
-                <!-- 레이어팝업 -->
-                <div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-                    <div class="layer-content">
-                        <h4>QR코드</h4>
-                        <div class="layer-content">
-                            <div class="conTxt ta_c" id="qrcodeImg"></div>
-                            <div class="conTxt">
-                                <p>QR코드 이미지 저장</p>
-                                QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-                            </div>
-                        </div>
-                        <a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-                    </div>
-                </div>
-                <!-- //레이어팝업 -->
                 
-                <script src="/include/js/clipboard.min.js"></script>
-                <script>
-                    $('#sns').click(function(e) {
-                        $.ajax({
-                            type: "POST",
-                            url: "/cmmn/share/shortUrl.do",
-                            dataType : "json",
-                            data: { "url" : "https://lib.anyang.go.kr/seoksu/menu/10096/program/30002/searchDetail.do"},
-                            async: false,
-                            error : function (request, status, error){
-                                //alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-                            },
-                            success: function(data) {
-                                //$("#shortUrl").html(data.url);
-                                $("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/seoksu/menu/10096/program/30002/searchDetail.do" >');
-                                $("#sns1").attr('data-clipboard-text', data.url);
-                            }
-                        });
-                    });
-                
-                    function fnShorturlCopy() {
-                        var clipboard = new ClipboardJS('#sns1');
-                        alert('단축주소가 복사되었습니다.');
-                        return false;
-                    }
-                </script>
-                                <div id="contents" class="contentArea">
+                <div id="contents" class="contentArea" style="padding: 0px 0 0;">
                                     
-                <!--Forced tab Show Que-->
-                <div class="ttabWrap">
-                    <div id="virtSelect"><a href="#script">탭메뉴</a></div>
-                    <ul id="ttab3" class="tnb clearfix">
-                        <li class="ttabLast"></li>
-                    </ul>
-                </div>
-                <!--Forced tab Show Que-->
-                
-                <div id="popblackBG"></div>
-                                    <!--Real Contents Start-->
-                
-                                    <form id="searchForm" name="searchForm" method="post">
-                                        <input type="hidden" name="searchType" value="DETAIL">
-                                        <div class="searchWrap">
-                                            <div class="searchToparea">
-                                                <div class="searchBardiv detail">
-                                                    <dl class="detailSearch">
-                                                        <dt>검색어</dt>
-                                                        <dd><input type="text" name="searchAdvSearchKeywordA" id="searchAdvSearchKeywordA" title="포함할 단어 입력" placeholder="다음 단어 모두 포함"></dd>
-                                                        <dd><input type="text" name="searchAdvSearchKeywordB" title="포함할 문구 입력" placeholder="다음 문구 정확하게 포함"></dd>
-                                                        <dd><input type="text" name="searchAdvSearchKeywordC" title="적어도 하나 포함할 단어 입력" placeholder="다음 단어 적어도 하나 포함"></dd>
-                                                        <dd><input type="text" name="searchAdvSearchKeywordD" title="제외할 단어 입력" placeholder="다음 단어 제외"></dd>
-                                                    </dl>
-                                                </div>
-                
-                                                <div class="searchUtilWrap high-searcform">
-                                                    <ol>
-                                                        <li><a href="javascript:;" data-tab="sh_util01" class="sh_util01">다국어 입력</a></li>
-                                                        <!-- 도서관 선택은 모바일에서 보이지 않게 함. line 1632 에 id="sh_util03" 도 안보이게 -->
-                                                        <li><a href="javascript:;" data-tab="sh_util03" class="sh_util03">도서관 선택</a></li>
-                                                    </ol>
-                                                </div>
-                                            </div>
-                
-                                            <div class="searchBotarea">
-                                                <div class="divSelect" id="sh_util01">
-                                                    <div class="worldwordWrap">
-                                                        
-                                                    </div>
-                                                </div>
-                
-                                                <div class="divSelect" id="sh_util03">
-                                                    <!-- 도서관 정보 -->
-                                                    
-                
-                
-                
-                <div>
-                    <div class="box_check">
-                        <input type="checkbox" name="searchManageCode" id="searchManageCode" value="ALL" class="check"> <label for="searchManageCode">전체 도서관</label>
+                    <!--Forced tab Show Que-->
+                    <div class="ttabWrap">
+                        <div id="virtSelect"><a href="#script">탭메뉴</a></div>
+                        <ul id="ttab3" class="tnb clearfix">
+                            <li class="ttabLast"></li>
+                        </ul>
                     </div>
-                    <div class="box_check">
-                        <ol>
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr1" value="MA" class="check" checked="checked">
-                                        <label for="searchManageCodeArr1">석수도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr2" value="MI" class="check">
-                                        <label for="searchManageCodeArr2">만안도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr3" value="MH" class="check">
-                                        <label for="searchManageCodeArr3">삼덕도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr4" value="ME" class="check">
-                                        <label for="searchManageCodeArr4">박달도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr5" value="MB" class="check">
-                                        <label for="searchManageCodeArr5">평촌도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr6" value="MG" class="check">
-                                        <label for="searchManageCodeArr6">관양도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr7" value="MC" class="check">
-                                        <label for="searchManageCodeArr7">비산도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr8" value="MD" class="check">
-                                        <label for="searchManageCodeArr8">호계도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr9" value="MJ" class="check">
-                                        <label for="searchManageCodeArr9">어린이도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr10" value="MF" class="check">
-                                        <label for="searchManageCodeArr10">벌말도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr11" value="MK" class="check">
-                                        <label for="searchManageCodeArr11">안양역스마트도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr12" value="ML" class="check">
-                                        <label for="searchManageCodeArr12">동안구청스마트도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr13" value="MM" class="check">
-                                        <label for="searchManageCodeArr13">범계스마트도서관</label>
-                                    </li>
-                                
-                            
-                                
-                                    <li>
-                                        <input type="checkbox" name="searchManageCodeArr" id="searchManageCodeArr14" value="MN" class="check">
-                                        <label for="searchManageCodeArr14">인덕원역스마트도서관</label>
-                                    </li>
-                                
-                            
-                        </ol>
+                    <!--Forced tab Show Que-->
+                    
+                    <div id="popblackBG">
                     </div>
-                </div>
-                                                    <!-- 도서관 정보 -->
-                                                </div>
-                
-                                            </div>
-                                        </div>
-                
-                                        <div class="searchdetailWrap">
-                                            <div class="detailSettingWrap">
-                                                <dl class="data-type-select">
-                                                    <dt>자료유형</dt>
-                                                    <dd><input type="checkbox" name="searchAdvContentsType" id="Allbook" value="ALL" class="check" checked="checked"> <label for="Allbook">전체</label></dd>
-                                                    <dd><input type="checkbox" name="searchAdvContentsTypeArr" id="book1" value="단행본" class="check"> <label for="book1">단행본</label></dd>
-                                                    <dd><input type="checkbox" name="searchAdvContentsTypeArr" id="book2" value="멀티미디어" class="check"> <label for="book2">멀티미디어</label></dd>
-                                                    <dd><input type="checkbox" name="searchAdvContentsTypeArr" id="book3" value="연속간행물" class="check"> <label for="book3">연속간행물</label></dd>
-                                                </dl>
-                
-                                                <div class="detailDataInput">
-                                                    <dl>
-                                                        <dt>자료명</dt>
-                                                        <dd><input type="text" name="searchAdvTitle" title="자료명 입력" placeholder="예: 책제목"></dd>
-                                                    </dl>
-                                                    <dl>
-                                                        <dt>저자명</dt>
-                                                        <dd><input type="text" name="searchAdvAuthor" title="저자명 입력" placeholder="예: 홍길동"></dd>
-                                                    </dl>
-                                                    <dl>
-                                                        <dt>발행처</dt>
-                                                        <dd><input type="text" name="searchAdvPublisher" title="발행처 입력" placeholder="예: 가나출판사"></dd>
-                                                    </dl>
-                                                    <dl class="halfWidth1">
-                                                        <dt>ISBN</dt>
-                                                        <dd><input type="text" name="searchAdvIsbn" title="ISBN 입력" placeholder="예: 9788912345678"></dd>
-                                                    </dl>
-                                                    <dl class="halfWidth2">
-                                                        <dt>ISSN</dt>
-                                                        <dd><input type="text" name="searchAdvIssn" title="ISSN 입력" placeholder="예: 12345678"></dd>
-                                                    </dl>
-                                                    <dl class="devideWidth1">
-                                                        <dt>발행년</dt>
-                                                        <dd>
-                                                            <input type="text" name="searchAdvFromPubYear" maxlength="4" class="numeric" title="시작 발행년 입력" placeholder="발행년(시작)">
-                                                            <span>-</span>
-                                                            <input type="text" name="searchAdvToPubYear" maxlength="4" class="numeric" title="종료 발행년 입력" placeholder="발행년(종료)">
-                                                        </dd>
-                                                    </dl>
-                                                    <dl class="devideWidth2">
-                                                        <dt>분류기호</dt>
-                                                        <dd><input type="text" name="searchAdvClassNo" title="분류기호 입력" placeholder="예: 813.6"></dd>
-                                                    </dl>
-                                                    <dl class="devideWidth3">
-                                                        <dt>언어</dt>
-                                                        <dd>
-                                                            <select name="searchAdvTextLang" title="언어 선택">
-                                                                <option value="ALL">전체</option>
-                                                                <option value="한국어, 영어">한국어, 영어</option>
-                                                                <option value="중국어">중국어</option>
-                                                                <option value="일본어">일본어</option>
-                                                                <option value="프랑스어">프랑스어</option>
-                                                                <option value="독일어">독일어</option>
-                                                                <option value="이탈리아어">이탈리아어</option>
-                                                                <option value="스페인어">스페인어</option>
-                                                                <option value="기타">기타</option>
-                                                            </select>
-                                                        </dd>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                
-                
-                                            <div class="btnGroup">
-                                                <a href="#btn" id="resetBtn" class="btn white">입력초기화</a>
-                                                <a href="#btn" id="searchBtn" class="btn themeBtn">검색</a>
-                                            </div>
-                
-                                        </div>
-                                    </form>
-                                    <!-- End Of the Real Contents-->
+
+                    <!--Real Contents Start-->
+                    <form action="./detailResult" name="searchForm" method="get" id="detailForm">
+                        <div class="searchdetailWrap">
+                            <div class="detailSettingWrap">
+                                <div class="detailDataInput" style="margin-top: 0px;">
+                                    <dl>
+                                        <dt>자료명</dt>
+                                        <dd><input type="text" class="resee" value="${param.searchTitle}" name="searchTitle" title="자료명 입력" placeholder="예: 책제목"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>저자명</dt>
+                                        <dd><input type="text" class="resee" value="${param.searchWriter}" name="searchWriter" title="저자명 입력" placeholder="예: 신짱구"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>발행처</dt>
+                                        <dd><input type="text" class="resee" value="${param.searchPublisher}" name="searchPublisher" title="발행처 입력" placeholder="예: 구디출판사"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>ISBN</dt>
+                                        <dd><input type="text" class="resee" value="${param.searchISBN}" name="searchISBN" title="ISBN 입력" placeholder="예: 9788912345678"></dd>
+                                    </dl>
+                                    
+                                    <dl class="devideWidth1">
+                                        <dt>발행년</dt>
+                                        <dd>
+                                            <input type="text" class="resee" value="${param.searchDate1}" name="searchDate1" id="searchDate1" maxlength="4" class="numeric" title="시작 발행년 입력" placeholder="발행년(시작)">
+                                            <span>-</span>
+                                            <input type="text" class="resee" value="${param.searchDate2}" name="searchDate2" id="searchDate2" maxlength="4" class="numeric" title="종료 발행년 입력" placeholder="발행년(종료)">
+                                        </dd>
+                                    </dl>
+                                    <dl class="devideWidth2">
+                                        <dt>분류기호</dt>
+                                        <dd><input type="text" class="resee" value="${param.searchCategory}" name="searchCategory" title="분류기호 입력" placeholder="예: 8"></dd>
+                                    </dl>
                                 </div>
                             </div>
 
+                            <div class="btnGroup">
+                                <input type="button" id="resetBtn" class="btn white" value="입력초기화"></a>
+                                <input type="button" id="searchBtn" class="btn themeBtn" value="검색"></a>
+                            </div>
+
+                          
+
+                        </div>
+
+                        <!-- 검색결과 -->
+                        <div class="searchResultWrap">
+                            <div class="result_box">
+                                <div class="listSetting" >
+                                    <c:if test="${not empty list}">
+                                    <div class="result_screen">'<strong>자료명:${param.searchTitle}</strong>', 
+                                        '<strong>저자명:${param.searchWriter}</strong>', 
+                                        '<strong>발행처:${param.searchPublisher}</strong>', 
+                                        '<strong>ISBN:${param.searchISBN}</strong>', 
+                                        '<strong>발행년:${param.searchDate1}<c:if test="${not empty param.searchDate1}">~</c:if>${param.searchDate2}</strong>', 
+                                        '<strong>분류기호:${param.searchCategory}</strong>'
+                                        에 대한 검색결과 총 
+                                        <span id="totalCnt">${count}</span> 건
+                                    </div>
+                                    </c:if>
+                                    <div style="display: flex;">
+                                        <c:if test="${not empty message}">
+                                            <div class="result_screen" style="margin: 0px auto;">'<strong>${message}</strong>'
+                                            </div>
+                                        </c:if>
+                                    </div>
+
+                                    <c:if test="${not empty list}">
+                                        <div class="listStyleType">
+                                            <select id="kind" name="kind" title="정렬조건 선택">
+                                                <option class="kinds" value="score">정확도 순</option>
+                                                <option class="kinds" value="title">서명 순</option>
+                                                <option class="kinds" value="writer">저자 순</option>
+                                                <option class="kinds" value="publisher">발행처 순</option>
+                                                <option class="kinds" value="num">대출수 순</option>
+                                            </select>
+
+                                            <!-- <a href="" id="sortListBtn" class="btn">확인</a> -->
+                                            <input type="button" id="searchBtn1" class="btn" value="확인">
+                                            <!-- <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn"> -->
+                                            
+                                        </div>
+                                    </c:if>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- 검색설정랩 -->
+
+                        <!-- <script src="/js/search.js"></script> -->
+
+                        <!-- 리스트 -->
+                        <div id="bookList">
+                            <div class="bookList listViewStyle">
+                                <ul class="listWrap">
+                                    <c:forEach items="${list}" var="list" varStatus="status">
+                                        <li>
+                                            <div class="bookArea">
+                                                <div class="bookImg"><a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'");"><img alt="${list.title}" src="${list.image}"></a></div>
+                            
+                                                <div class="bookData">
+                                                    <div class="book_dataInner">
+                                                        <!-- <span class="book_kind">단행본</span> -->
+                                                        <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                        <ul class="dot-list clearfix">
+                                                            <li class="kor on"><span>저자</span> : ${list.writer}</li>
+                                                            <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
+                                                            
+                                                                    <li><span>발행년도</span> : ${list.bookDate}</li>
+                                                                    <li><span>ISBN</span> : ${list.isbn}</li>
+                                                                
+                                                        </ul>
+                                                    </div>
+                            
+                                                    <div class="bookDetailInfo">
+                                                        <ol>
+                                                            <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
+                                                            <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
+                                                            <li><button class="btn" title="찜하기 새창열림" style="padding: 0px 15px; height: 30px; background-color: #fff; color: #00e3ae; border: 1px solid #00e3ae;">찜</a></li>
+                                                        </ol>
+                                                    </div>
+
+                                                    
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 소장정보 -->
+                                            <div id="collectionInfo${status.count}" class="roqkrcla bookDetailLayer whereLibrary" tabindex="0">
+                                                <div class="thisBook-libraryList">
+                                                    <div class="tblWrap scrollTable">
+                                                        <table class="tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">도서관</th>
+                                                                    <th scope="col">대출상태</th>
+                                                                    <th scope="col">반납예정일</th>
+                                                                    <th scope="col">청구기호</th>
+                                                                    <th scope="col">예약</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                    <tr class="MA">
+                                                                        <td></td>
+                                                                        <td>
+                                                                            대출중
+                                                                            <br>(예약가능)
+                                                                            <br>(예약:1명)
+                                                                        </td>
+                                                                        <td>2022.11.25</td>
+                                                                        <td>833.6-히12나=c.2 <a href="#print" onclick="javascript:fnCallNoPrintPop('101783087', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
+                                                                        <td>
+                                                                                <a href="javascript:;" onclick="javascript:reservationApplyProc('101783087','EM0000167633'); return false" class="btn white small">대출예약</a>
+                                                                            
+                                                                        </td>
+                                                                    </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <!-- 서지정보 -->
+                                            <div id="bookInfo${status.count}" class="bookDetailLayer bookInfo" tabindex="0">
+
+                                                <div class="thisBook-bibliographicInfo">
+                                                    <div class="tblWrap">
+                                                        <table class="tbl">
+                                                            <colgroup>
+                                                                <col style="width:15%">
+                                                                <col>
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">자료유형</th>
+                                                                    <td class="ta_l">인쇄자료(책자형) 형태의 자료입니다</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">독자유형</th>
+                                                                    <td class="ta_l">일반</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">저자사항</th>
+                                                                    <td class="ta_l">나넷 스톤 지음;, 고유경 옮김</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">발행사항</th>
+                                                                    <td class="ta_l">서울:프런티어,2018</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">형태사항</th>
+                                                                    <td class="ta_l">
+                                                                            <p>248page</p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">ISBN사항</th>
+                                                                    <td class="ta_l">9788947544320 03190 ￦14000</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">수상주기</th>
+                                                                    <td class="ta_l"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+
+                                <script>
+
+                                $(".btn_haveInfo").on("click", function () {
+                                    $(".whereLibrary").removeClass("open");
+                                    $(".bookInfo").removeClass("open");
+                                    $(".btn_sergeInfo").removeClass("on");
+                                    if (!$(this).hasClass("on")) {
+                                        $(".btn_haveInfo").removeClass("on");
+                                        $(this).addClass("on");
+                                        $(this).parents("li").children(".whereLibrary").addClass("open").attr("tabIndex", "0");
+                                        $(this).attr("title", "소장정보 확장됨");
+                                    } else {
+                                        $(this).removeClass("on");
+                                        $(".whereLibrary").removeClass("open").removeAttr("tabIndex", "0");
+                                        $(this).attr("title", "소장정보 축소됨");
+                                    }
+                                });
+                                // 서지정보 view/hide
+                                $(".btn_sergeInfo").on("click", function () {
+                                    $(".whereLibrary").removeClass("open");
+                                    $(".bookInfo").removeClass("open");
+                                    $(".btn_haveInfo, .btn_bkdanbi").removeClass("on");
+                                    if (!$(this).hasClass("on")) {
+                                        $(".btn_sergeInfo").removeClass("on");
+                                        $(this).addClass("on");
+                                        $(this).parents("li").children(".bookInfo").addClass("open").attr("tabIndex", "0");
+                                        $(this).attr("title", "서지정보 확장됨");
+                                    } else {
+                                        $(this).removeClass("on");
+                                        $(".bookInfo").removeClass("open").removeAttr("tabIndex", "0");
+                                        $(this).attr("title", "서지정보 축소됨");
+                                    }
+                                });
+
+                                    // $(".btn_haveInfo").on("click", function(){
+                                    //     let id=$(this).attr("data-id")
+                                    //     if(!$(this).hasClass("on")) {
+                                    //         $(this).addClass("on");
+                                    //         $(".whereLibrary").addClass("open");
+                                    //         $(".bookInfo").removeClass("open");
+                                    //         $(this).prop("title","소장정보 확장됨");
+                                    //     }
+                                    // })
+                                    // $(".tlqkf").on("click", ".btn_haveInfo", function () {
+                                    //     if ($(this).hasClass("on")) {
+                                    //         $(this).removeClass("on");
+                                    //         $(".whereLibrary").removeClass("open");
+                                    //         $(".bookInfo").removeClass("open");
+                                    //         $(".btn_sergeInfo").removeClass("on");
+                                    //     let id=$(this).attr("data-id")
+                                    //     }else {
+                                    //         $(this).addClass("on");
+                                    //         let id=$(this).attr("data-id")
+                                    //         id = "#collectionInfo"+id;
+                                    //         $(id).addClass("open");
+                                    //     }
+                                    // });
+
+                                    // for(let i=1;i<=10;i++) {
+                                    //     $('#'+"btn_haveInfo"+i).click(function(){            
+                                            
+                                    //         if(!$('#'+"collectionInfo"+i).hasClass("open")) {
+                                    //             $('#'+"collectionInfo"+i).addClass("open");
+                                    //             $(this).addClass("on");
+                                    //             $('#'+"bookInfo"+i).hide();
+                                    //         } else {
+                                    //             $('#'+"collectionInfo"+i).removeClass("open");
+                                    //             $(this).removeClass("on");
+                                                
+                                    //         }
+
+                                            
+                                    //     });
+                                    // } 
+
+                                    // for(let i=1;i<=10;i++) {
+                                    //     $('#'+"btn_sergeInfo"+i).click(function(){            
+                                            
+                                    //         if(!$('#'+"bookInfo"+i).hasClass("open")) {
+                                    //             $('#'+"bookInfo"+i).addClass("open");
+                                    //             $(this).addClass("on");
+                                    //             $('#'+"collectionInfo"+i).hide();
+                                    //         } else {
+                                    //             $('#'+"bookInfo"+i).removeClass("open");
+                                    //             $(this).removeClass("on");
+                                                
+                                    //         }
+                                    //     });
+                                    // } 
+
+                                    
+                                    // for(let i=1;i<=10;i++) {
+                                    //     $('#'+"btn_haveInfo"+i).click(function(){            
+                                    //         console.log("아");
+                                    //         $('#'+"collectionInfo"+i).toggle();
+                                    //         $('#'+"bibliographicInfo"+i).removeClass("open");
+                                    //     });
+                                    // } 
+
+                                    // for(let i=1;i<=10;i++) {
+                                    //     $('#'+"btn_sergeInfo"+i).click(function(){            
+                                    //         console.log("아");
+                                    //         $('#'+"bibliographicInfo"+i).toggle();
+                                    //         $('#'+"collectionInfo"+i).removeClass("open");
+                                    //     });
+                                    // } 
+
+
+                                    // for(let i=1;i<=10;i++) {
+                                    //     $('#'+"btn_haveInfo"+i).click(function(){
+                                    //             if($('#'+"collectionInfo"+i).hasClass("open") === true) {
+                                    //                 $('#'+"collectionInfo"+i).removeClass("open");
+                                    //                 $(this).prop("title","소장정보 축소됨");
+                                    //                 return false;
+                                    //             }
+                                    //     });
+                                    // } 
+                                    
+
+                                </script>
+
+                            </div>
+                            <c:if test="${not empty list}">
+                            <div class="pagingWrap">
+                                <input type="hidden" name="page" value="${pager.page}">
+                                <p class="paging">
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
+                                    
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
+                                    
+                                    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+                                        <!-- <span class="current">1</span> -->
+                                        <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${i}" id="ppaaggee${i}">${i}</a>
+                                        
+                                    </c:forEach>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
+                                    <a href="./detailResult?searchTitle=${pager.searchTitle}&searchWriter=${pager.searchWriter}&searchPublisher=${pager.searchPublisher}&searchISBN=${pager.searchISBN}&searchdate1=${pager.searchDate1}&searchdate2=${pager.searchDate2}&searchCategory=${pager.searchCategory}&kind=${pager.kind}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
+                                    </p>
+                            </div>
+                            </c:if>
+                            <!-- //페이징 -->
+
+                        
+                            
+                        </div>
+                        <!-- 리스트 -->
+                        <!-- 검색결과 -->
+
+
+                    </form>
+                    <!-- End Of the Real Contents-->
+                </div>
+            </div>
+
         </div>
     </div>
-
-
-
-
-
 
     <!-- footer -->
     <c:import url="../temp/footer.jsp"></c:import>
     <!-- //footer -->
 </div>
+
+<script>
+
+    //페이징 js
+    try {
+
+        // 화살표들 disabledLink 클래스 걸려있으면 누를수없게 a태그에서 href 속성을 삭제시킴
+        let disables = document.querySelectorAll(".disabledLink")
+        disables.forEach(element => {
+            element.removeAttribute('href');
+        });
+
+        //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+        let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
+        ppaaggee.style.background="#9be15d";
+        ppaaggee.style.color="#fff";
+
+        if('${param.page}'!="") {
+            console.log("dd");
+            console.log("널이아님2");
+        } else {
+            console.log("ㅋㅋ");
+            console.log("ㅋㅋㅋ");
+        }
+        
+
+    } catch (error) {
+        
+    }
+
+    
+
+    // 종료년도만 입력시 검색불가
+    $("#searchBtn").click(function(){
+        if($("#searchDate2").val()!=''){
+            if($("#searchDate1").val()=='') {
+                alert("시작 발행년도를 입력해주세요.")
+                return false;
+            }
+        }
+        $("#detailForm").submit();
+    })
+
+    // 정렬 확인버튼
+    $("#searchBtn1").click(function(){
+        $("#detailForm").submit();
+    })
+
+    // 정렬 선택한것 표시
+    let k = '${param.kind}'
+    const kinds = document.getElementsByClassName('kinds');
+    for(let i=0;i<kinds.length;i++){
+        if(k==kinds[i].value) {
+            kinds[i].setAttribute('selected','selected');
+            break;
+        }
+    }
+
+    // 입력초기화
+    $("#resetBtn").click(function(){
+        $(".resee").each(function(index, item){
+            $(this).val("");
+        })
+    })
+</script>
 </body>
 </html>

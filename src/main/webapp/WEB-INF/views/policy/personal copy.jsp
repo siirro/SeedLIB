@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꿈이 싹트는 정원 : 씨앗도서관</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>개인정보처리방침 : 씨앗도서관 ☘</title>
 </head>
 <body>
 <div id="wrap">
@@ -19,21 +20,21 @@
 		
         <div class="sVisualWrap">
             <div class="sVisual">
-                <h3>신착자료</h3>
+                <h3>개인정보처리방침/h3>
             </div>
         </div>
         <div id="contentGroup">
                     
         <!-- 사이드바 -->
-        <c:import url="../sideBar/AsideBar.jsp"></c:import>
+        <c:import url="../sideBar/HsideBar.jsp"></c:import>
         <!-- 사이드바 -->
 
         <div id="contentcore">
             <div class="naviandtitle">
-                <h3>신착자료</h3>
+                <h3>개인정보처리방침</h3>
                 <div class="navi">
-                    <a href="/" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
-                    <i class="arrow"></i> 자료검색 <i class="arrow"></i>신착자료
+                    <a href="/seoksu/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
+                    <i class="arrow"></i> 홈페이지이용안내 <i class="arrow"></i>개인정보처리방침
                 </div>
                 <div class="snsFarm">
                     <ul class="snsBtnArea clearfix">
@@ -47,14 +48,9 @@
                     </ul>
                 </div>
             </div>
-    
-            <div id="contents" class="contentArea">
-                        
-                <!-- Contents Start-->
-                
-                <!-- End Of the Real Contents-->
-                
-            </div>
+            
+            <!-- 컨텐츠넣어 -->
+            <!-- 컨텐츠넣어 -->
         </div>
     </div>
 

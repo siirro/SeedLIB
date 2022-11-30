@@ -8,12 +8,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
-    <title>Tables | PlainAdmin Demo</title>
+    <link rel="icon" href="/images/favicon.png">
+    <title>프로그램 목록 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
@@ -147,11 +143,11 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                      	<c:forEach items="${list}" var="proVO">
+                      	<c:forEach items="${proList}" var="proVO">
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <!-- 다른 도서관 로고 넣을 예정 -->
+                              <!-- 이미지 어떤걸 넣을까 고민중 -->
                               <img src="/images/logo200.png" alt="씨앗도서관"/>
                             </div>
                           </td>
@@ -159,7 +155,7 @@
                             <p>${proVO.proCate}</p>
                           </td>
                           <td class="min-width">
-                            <p><a href="#0">${proVO.proName}</a></p>
+                            <p><a href="./proDetail?proNum=${proVO.proNum}">${proVO.proName}</a></p>
                           </td>
                           <td class="min-width">
                             <p>${proVO.total}/</p>
@@ -170,8 +166,10 @@
                             <%-- <p>${proVO.prsDate}-${proVO.}</p> --%>
                           </td>
                            <td class="min-width">
-                           	<fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
-                           	<fmt:formatDate value="${proVO.plDate}" pattern="~ yyyy-MM-dd HH:mm"/>
+                           ${proVO.psDt}
+                           ${proVO.plDt}
+                           	<%-- <fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
+                           	<fmt:formatDate value="${proVO.plDate}" pattern="~ yyyy-MM-dd HH:mm"/> --%>
                             <%-- <p>${proVO.total}</p> --%>
                           </td>
                           <td class="min-width">

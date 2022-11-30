@@ -3,6 +3,7 @@ package com.seed.lib.member;
 import java.lang.ProcessBuilder.Redirect;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodReturnValueHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,18 +29,20 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@GetMapping("idCheck")
-	@ResponseBody
-	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	@GetMapping("idCheck")
+//	@ResponseBody
+//	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
+//	
+//		log.info("login 성공");
+//		memberVO= memberService.getLogin(memberVO);
+//		ModelAndView mv =new ModelAndView();
+//		
+//		session.setAttribute("member", memberVO);
+//
+//		return mv;
+//	}	
 	
-		log.info("login 성공");
-		memberVO= memberService.getLogin(memberVO);
-		ModelAndView mv =new ModelAndView();
-		
-		session.setAttribute("member", memberVO);
 
-		return mv;
-	}	
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
@@ -47,12 +51,16 @@ public class MemberController {
 	}	
 	
 	@PostMapping("login")
-	public ModelAndView getLogin(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
 		ModelAndView mv =new ModelAndView();
 		memberVO= memberService.getLogin(memberVO);
 		if(memberVO!=null) {
 			session.setAttribute("memberVO", memberVO);
-			mv.setViewName("redirect:../");
+			String dest = (String)session.getAttribute("dest");
+        	String uri = (dest == null) ? "index":dest;
+			mv.addObject("memberVO", memberVO);
+			mv.setViewName(uri);
+//			mv.setViewName("redirect:../");
 		}else {
 	         mv.setViewName("redirect:../member/login");   
 

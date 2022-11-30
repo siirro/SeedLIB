@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="shortcut" href="/images/favicon.png">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 </head>
@@ -144,7 +144,7 @@
 
 					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
 						<li style="z-index: 100; left: 0px; top: 0px;">
-							<a href="/">
+							<a href="https://lib.anyang.go.kr/intro/menu/12220/contents/41241/contents.do">
 								<img src="/images/l_winterNight.png" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
 									불편한 편의점
 									연이와 버들도령
@@ -207,18 +207,57 @@
 				</div>
 				<!-- //공지사항 -->
 
-				<!-- 회원 로그인 -->
-				<div class="serviceZone before">
-					<h5>회원 로그인</h5>
-					<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
-					<ul class="clearfix">
-						<li><a href="/member/login">로그인</a></li>
-						<li><a href="/member/join">회원가입</a></li>
-					</ul>
-					<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
-				</div>
+				<c:choose>
+					<c:when test="${empty memberVO}">
+						<!-- 회원 로그인 -->
+						<div class="serviceZone before">
+							<h5>회원 로그인</h5>
+							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
+							<ul class="clearfix">
+								<li><a href="/member/login">로그인</a></li>
+								<li><a href="/member/join">회원가입</a></li>
+							</ul>
+							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+						</div>
+						<!-- //회원 로그인 -->
 
-				<!-- //회원 로그인 -->
+				
+					</c:when>
+					<c:otherwise>
+
+						<!-- 미니 내정보 -->
+						<div class="serviceZone">
+							<h5>서비스 이용현황</h5>
+							<ul class="myInfo clearfix">
+								<li><p><strong>${memberVO.name} 님,</strong><br> 반갑습니다.</p></li>
+								<li><p><strong><c:if test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">관리자</c:if></strong></p></li>
+							</ul>
+							<div class="myInfoList">
+								<dl>
+									<dt>도서대출현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>도서예약현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>수강신청현황</dt>
+									<dd>0</dd>
+								</dl>
+								<dl>
+									<dt>희망도서 신청현황</dt>
+									<dd>0</dd>
+								</dl>
+							</div>
+							<div class="more"><a href="/intro/myInfo.do" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
+						</div>
+						<!-- 미니 내정보 -->
+
+					</c:otherwise>
+				</c:choose>
+
+
 			</div>
 		</section>
 

@@ -43,9 +43,8 @@
 					<!-- 자료검색_비치희망도서신청_신청안내 -->
 <div class="summaryDesc">
 <div class="innerBox">
-<div class="img icoHope">&nbsp;</div>
-
-<div class="desc">
+<div class="desc" style="width: 80%; margin-left: auto; margin-right: auto; display: flex; align-items: center; justify-content: center;">
+<img src="/images/ico_book.png">
 <p>씨앗도서관 대출회원이면 1달에 10개도서관 통합 3권까지 희망도서신청이 가능합니다.<br>
 희망도서는 아래의 선정 기준에 의해 선정 제외될 수 있습니다.</p>
 </div>

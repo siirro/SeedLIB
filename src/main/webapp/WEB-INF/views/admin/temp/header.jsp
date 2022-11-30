@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
       <header class="header">
         <div class="container-fluid">
@@ -11,7 +12,8 @@
                     id="menu-toggle"
                     class="main-btn info-btn btn-hover"
                   >
-                    <i class="lni lni-chevron-left me-2"></i> Menu
+                    <i class="lni lni-chevron-left me-2"></i>
+                    <b>메뉴</b>
                   </button>
                 </div>
                 <div class="header-search d-none d-md-flex">
@@ -24,7 +26,21 @@
             </div>
             <div class="col-lg-7 col-md-7 col-6">
               <div class="header-right">
+                <!-- 로그인하지 않았을때 로그인 아이콘O -->
+                <c:if test="${empty amdin}">
+                <div class="ml-15 d-none d-md-flex">
+                  <a 
+                  	class="main-btn btn-sm rounded-md info-btn"
+                  	href="/admin/adLogin"
+                  	>
+                  	<b>로그인</b>
+                    <i class="lni lni-lock-alt ms-1"></i>
+                  </a>
+                </div>
+                </c:if>
                 <!-- notification start -->
+                <!-- 로그인 했을때 아이콘 -->
+                <c:if test="${not empty admin}">
                 <div class="notification-box ml-15 d-none d-md-flex">
                   <button
                     class="dropdown-toggle"
@@ -156,11 +172,11 @@
                   >
                     <div class="profile-info">
                       <div class="info">
-                        <h6>John Doe</h6>
+                        <h6>${admin.name}</h6>
                         <div class="image">
                           <img
-                            src="assets/images/profile/profile-image.png"
-                            alt=""
+                            src="/images/logo200.png" 
+                            alt="씨앗도서관"
                           />
                           <span class="status"></span>
                         </div>
@@ -173,26 +189,11 @@
                     aria-labelledby="profile"
                   >
                     <li>
-                      <a href="#0">
-                        <i class="lni lni-user"></i> View Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0">
-                        <i class="lni lni-alarm"></i> Notifications
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                    </li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                    </li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                      <a href="/admin/adLogout"> <i class="lni lni-exit"></i>로그아웃</a>
                     </li>
                   </ul>
                 </div>
+                </c:if>
                 <!-- profile end -->
               </div>
             </div>

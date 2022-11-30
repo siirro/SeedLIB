@@ -332,8 +332,9 @@
                             </div>
                             <div class="agreeBtn">
                                 <a href="/" class="noAgree" title="비동의">비동의</a>
+
+                                
                                 <button type="button" title="동의" class="agree" id="join">동의</button>
-           				
                             </div>
                         </div>
                     </form>

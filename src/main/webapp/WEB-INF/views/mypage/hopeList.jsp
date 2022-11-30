@@ -52,7 +52,7 @@
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
 					<form action="../mypage/hopeList" method="GET">
-						<input type="hidden" id="userName" name="userName" value="id1">
+						<input type="hidden" id="userName" name="userName" value="${memberVO.userName}">
 						<fieldset>
 							<legend class="blind">게시글 검색 영역</legend>
 							<!-- 게시판 검색 -->

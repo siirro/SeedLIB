@@ -16,6 +16,8 @@
 </head>
 <body>
 
+	<div class="wrap">
+
 <c:import url="../temp/header.jsp"></c:import>
 
 
@@ -29,25 +31,9 @@
 		<div id="contentGroup">
 			
 <div id="lnbNav" class="navArea">
-	<h2> 마이페이지 </h2>
-	<ul id="lnb" class="lnb"> 
-  <li id="lnb6_1"><a href="/intro/menu/10074/program/30023/mypage/myInfo.do" class="current">나의정보</a> </li> 
-  <li id="lnb6_2"><a href="/intro/menu/10076/program/30024/mypage/loanStatusList.do" class="on">도서이용내역</a> 
-   <ul class="MkTab submenu" style="display: none;"> 
-    <li id="lnb6_2_1"><a href="/intro/menu/10076/program/30024/mypage/loanStatusList.do">대출현황</a> </li> 
-    <li id="lnb6_2_2"><a href="/intro/menu/10077/program/30025/mypage/reservationStatusList.do">예약현황</a> </li> 
-    <li id="lnb6_2_3"><a href="/intro/menu/10078/program/30026/mypage/loanHistoryList.do">대출이력</a> </li> 
-   </ul> </li> 
-  <li id="lnb6_4"><a href="/intro/menu/10083/program/30027/mypage/libraryOneLillStatusList.do" class="on">상호대차조회</a> 
-   <ul class="MkTab submenu" style="display: none;"> 
-    <li id="lnb6_4_1"><a href="/intro/menu/10083/program/30027/mypage/libraryOneLillStatusList.do">신청현황</a> </li> 
-    <li id="lnb6_4_2"><a href="/intro/menu/10084/program/30028/mypage/libraryOneLillHistoryList.do">상호대차이력</a> </li> 
-   </ul> </li> 
-  <li id="lnb6_5"><a href="/intro/menu/10085/program/30029/mypage/bookcaseList.do">관심도서목록</a> </li> 
-  <li id="lnb6_6"><a href="/intro/menu/10086/program/30030/mypage/myPopularBookList.do">추천도서목록</a> </li> 
-  <li id="lnb6_7"><a href="/intro/menu/10087/program/30008/mypage/hopeBookList.do">희망도서신청조회</a> </li> 
-  <li id="lnb6_8"><a href="/intro/menu/10088/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
- </ul>
+	
+	<c:import url="../sideBar/FsideBar.jsp"></c:import>
+
 </div>
 
 			<div id="contentcore">
@@ -75,21 +61,7 @@
 	</div>
 </div>
 
-<!-- 레이어팝업 -->
-<div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-	<div class="layer-content">
-		<h4>QR코드</h4>
-		<div class="layer-content">
-			<div class="conTxt ta_c" id="qrcodeImg"></div>
-			<div class="conTxt">
-				<p>QR코드 이미지 저장</p>
-				QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-			</div>
-		</div>
-		<a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-	</div>
-</div>
-<!-- //레이어팝업 -->
+
 
 <script src="/include/js/clipboard.min.js"></script>
 
@@ -118,7 +90,7 @@
 											
 												<a href="#" class="btn">온라인회원증발급</a>
 											
-											<a href="#" class="btn white">회원정보수정</a>
+											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
 										</div>
 									</div>
 									<div class="myInfo">
@@ -196,32 +168,10 @@
 			</div>
 		</div>
 	</div>
-	
-	<script>
-	$('#sns').click(function(e) {
-		$.ajax({
-			type: "POST",
-			url: "/cmmn/share/shortUrl.do",
-			dataType : "json",
-			data: { "url" : "https://lib.anyang.go.kr/intro/index.do"},
-			async: false,
-			error : function (request, status, error){
-				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
-			},
-			success: function(data) {
-				//$("#shortUrl").html(data.url);
-				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/intro/index.do" >');
-				$("#sns1").attr('data-clipboard-text', data.url);
-			}
-		});
-	});
-
-	function fnShorturlCopy() {
-		var clipboard = new ClipboardJS('#sns1');
-		alert('단축주소가 복사되었습니다.');
-		return false;
-	}
-</script>
+      <!-- footer -->
+	  <c:import url="../temp/footer.jsp"></c:import>
+	  <!-- //footer --> 
+</div>
 
 </body>
 </html>

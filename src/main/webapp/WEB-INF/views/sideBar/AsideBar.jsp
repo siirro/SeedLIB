@@ -6,57 +6,37 @@
     
     <li id="lnb1_1"><a href="../../search/simple" class="on simple detail simpledetail">소장자료검색</a> 
       <ul class="MkSub submenu simpledetail2" style="display: none;"> 
-        <li id="simple1"><a href="../../search/simple" id="simple">통합검색</a> </li> 
-        <li id="detail1"><a href="../../search/detail" id="detail">고급검색</a> </li> 
+        <li id="simple1"><a href="../../search/simple" class="haha" id="simple">통합검색</a> </li> 
+        <li id="detail1"><a href="../../search/detail" class="haha" id="detail">고급검색</a> </li> 
       </ul>
     </li> 
-    <li id="lnb1_2"><a href="../../search/category" class="category">주제별검색</a> </li> 
-    <li id="lnb1_3"><a href="../../search/newbook" class="newbook">신착자료</a> </li> 
-
-
-    <!-- <li id="lnb1_1">
-      <a href="/seoksu/menu/10095/program/30001/searchSimple.do" class="current on">소장자료검색</a> 
-         <ul class="MkSub submenu" style="display: block;"> 
-          <li id="lnb1_1_1"><a href="/seoksu/menu/10095/program/30001/searchSimple.do" class="current">통합검색</a> </li> 
-          <li id="lnb1_1_2"><a href="/seoksu/menu/10096/program/30002/searchDetail.do">고급검색</a> </li> 
-         </ul> 
-      </li> -->
+    <li id="lnb1_2"><a href="../../search/category" class="category haha" id="category">주제별검색</a> </li> 
+    <li id="lnb1_3"><a href="../../search/newBook" class="newBook haha" id="newBook">신착자료</a> </li> 
 
   </ul>
 </div>
 
 <script>
   let url = window.location.href;
-  let urln = window.location.href.lastIndexOf('/')+1;
-  urllast = url.substring(urln);
+  // let urln = window.location.href.lastIndexOf('/')+1;
+  // urllast = url.substring(urln);
 
-
-
-  let check = url.includes('simple');
-  if(url.includes('simple')||url.includes('book/detail')) {
+  if(url.includes('search/simple')||url.includes('book/detail')) {
     $(".simpledetail").addClass(' current');
     $(".simpledetail2").css("display","block")
-    $("#simple").addClass(' current');
-  }
-  
-
-  try {
-    let gogo = document.querySelector('.'+urllast);
-    gogo.className += ' current';
-    let hoho = document.querySelector('#'+urllast);
-    
-  } catch (error) {
-    
   }
 
-  
-
-  if(urllast=="simple"||urllast=="detail"||url.includes('book/detail')){
+  if(url.includes('search/detail')){
     $(".simpledetail2").css("display","block")
-    // hoho.className = 'current';
     $(".simpledetail").addClass('current');
   }
 
-
+  const haha = document.getElementsByClassName('haha');
+  for(let i=0;i<haha.length;i++){
+      if(url.includes(haha[i].getAttribute("id"))) {
+          haha[i].className += ' current';
+          break;
+      }
+  }
 
 </script>

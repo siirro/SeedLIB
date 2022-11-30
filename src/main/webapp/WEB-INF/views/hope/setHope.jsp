@@ -154,20 +154,20 @@ pageEncoding="UTF-8"%>
                                     <tbody>
                                         <tr>
                                             <th scope="row">신청자명</th>
-                                            <td><input type="text" id="userName" name="userName" value="id1" readonly></td>
+                                            <td><input type="text" id="userName" name="userName" value="${memberVO.userName}" readonly></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">휴대폰번호</th>
-                                            <td><input type="text" name="phone" value="01000000000" readonly></td>
+                                            <td><input type="text" name="phone" value="${memberVO.phone}" readonly></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">이메일</th>
-                                            <td><input type="text" name="email" value="00000@mail.com" readonly></td>
+                                            <td><input type="text" name="email" value="${memberVO.email}" readonly></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-    
+
                             <div class="boardWrap mt10">
                                 <table class="board-view">
                                     <caption>희망도서 정보</caption>

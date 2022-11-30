@@ -31,44 +31,8 @@
                 <div id="contentGroup">
                     
         <div id="lnbNav" class="navArea">
-            <h2> 이용안내 </h2>
-            <ul id="lnb" class="lnb"> 
-          <li id="lnb4_1"><a href="#">도서관소식</a> </li> 
-          <li id="lnb4_2"><a href="#">자주하는질문</a> </li> 
-          <li id="lnb4_3"><a href="/guide/manners" class="current on">도서관이용안내</a> 
-           <ul class="MkSub submenu" style="display: block;"> 
-            <li id="lnb4_3_1"><a href="/guide/manners" class="current">도서관예절</a> </li> 
-            <li id="lnb4_3_2"><a href="/guide/time">이용시간</a> </li> 
-            <li id="lnb4_3_3"><a href="#">휴관일안내</a> </li> 
-            <li id="lnb4_3_4"><a href="/member/agree">회원가입</a> </li> 
-            <li id="lnb4_3_5"><a href="/guide/rule">대여규칙</a> </li> 
-            <li id="lnb4_3_6"><a href="/guide/convenience">편의시설</a> </li> 
-           </ul> </li> 
-          <li id="lnb4_4"><a href="#">상호대차</a> </li> 
-          <li id="lnb4_5"><a href="#">모바일앱</a> </li> 
-          <li id="lnb4_6"><a href="#">스마트도서관</a> </li> 
-          <li id="lnb4_7"><a href="#" class="on">책배달서비스</a> 
-           <ul class="MkSub submenu" style="display: none;"> 
-            <li id="lnb4_7_1"><a href="#">책바다</a> </li> 
-            <li id="lnb4_7_2"><a href="#">책나래</a> </li> 
-            <li id="lnb4_7_3"><a href="#">두루두루</a> </li> 
-            <li id="lnb4_7_4"><a href="#">내생애첫도서관</a> </li> 
-           </ul> </li> 
-          <li id="lnb4_8"><a href="#" class="on">전자도서관</a> 
-           <ul class="MkSub submenu" style="display: none;"> 
-            <li id="lnb4_8_1"><a href="#">전자책</a> </li> 
-            <li id="lnb4_8_2"><a href="#">오디오북</a> </li> 
-            <li id="lnb4_8_3"><a href="#">학술논문</a> </li> 
-            <li id="lnb4_8_4"><a href="#">한국학</a> </li> 
-            <li id="lnb4_8_5"><a href="#">도서요약</a> </li> 
-            <li id="lnb4_8_6"><a href="#">인문학강의</a> </li> 
-            <li id="lnb4_8_7"><a href="#">이러닝</a> </li> 
-            <li id="lnb4_8_8"><a href="#">전자잡지</a> </li> 
-            <li id="lnb4_8_9"><a href="#">IT강좌</a> </li> 
-           </ul> </li> 
-          <li id="lnb4_9"><a href="#">도서관에바란다</a> </li> 
-          <li id="lnb4_10"><a href="#">분실물센터</a> </li> 
-         </ul>
+            <c:import url="../sideBar/CsideBar.jsp"></c:import>
+
         </div>
         
                     <div id="contentcore">
@@ -96,21 +60,7 @@
             </div>
         </div>
         
-        <!-- 레이어팝업 -->
-        <div class="chart-pop chartSns" tabindex="0" data-tooltip-con="chartSns" data-focus="chartSns" data-focus-prev="chartSns-close">
-            <div class="layer-content">
-                <h4>QR코드</h4>
-                <div class="layer-content">
-                    <div class="conTxt ta_c" id="qrcodeImg"></div>
-                    <div class="conTxt">
-                        <p>QR코드 이미지 저장</p>
-                        QR코드 &gt; 우측 클릭 &gt; 저장 &gt; 확장자 변경(png, jpg) 후 저장
-                    </div>
-                </div>
-                <a href="#close" class="chart-close01 tooltip-close" data-focus="chartSns-close" data-focus-next="chartSns"><span class="blind">닫기</span></a>
-            </div>
-        </div>
-        
+      
      
   <div id="contents" class="contentArea">
                             

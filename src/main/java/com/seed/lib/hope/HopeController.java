@@ -3,6 +3,8 @@ package com.seed.lib.hope;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -38,7 +40,6 @@ public class HopeController {
 	@GetMapping("searchHope")
 	@ResponseBody
 	public String searchHope(String result) throws Exception{
-		
 	return apiKey;
   }
 
@@ -67,9 +68,6 @@ public class HopeController {
 				result = 222;
 			}
 		}else {
-//			message = "해당 도서관에서 소장 중인 도서입니다";
-//			data.addAttribute("message", "해당 도서관에서 소장 중인 도서입니다");
-//			data.addAttribute("result", 100);
 			result=111;
 		}		
 		return result;

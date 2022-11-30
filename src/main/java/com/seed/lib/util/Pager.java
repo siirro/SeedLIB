@@ -19,6 +19,7 @@ public class Pager {
 	
 	private String kind;
 	private String search;
+
 	
 	
 	// 1. 매퍼에 들어가는 startNum, lastNum을 자동으로 계산하는 getRowNum 메서드
@@ -117,5 +118,13 @@ public class Pager {
 		return search;
 	}
 	
+	public String getKind() {
+		if(this.kind==null) {
+			this.kind="score";
+		}
+		return kind;
+	}
+	
+
 
 }
