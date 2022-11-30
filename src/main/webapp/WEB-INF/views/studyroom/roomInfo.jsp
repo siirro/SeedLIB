@@ -188,7 +188,7 @@
 <div style="width: 100%;">
 	<dl class="linkBox">
 		<dt class="txtArea">열람실 좌석 조회/퇴실 체크는 마이페이지에서 가능합니다</dt>
-		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/roomStat">신청조회</a></dd>
+		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/seatHistory">신청조회</a></dd>
 	</dl>
 </div>
 					<!-- End Of the Real Contents-->
