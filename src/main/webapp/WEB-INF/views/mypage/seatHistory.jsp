@@ -125,40 +125,37 @@
 <!-- //footer -->
 <script>
 	let calendar;
+
 	document.addEventListener('DOMContentLoaded', function() {
 		let data = '${cl}';
 		let id = "";
-		let exitnum = 0;
 		data = JSON.parse(data);
 		console.log("data", data)
 		let calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
-  			locale: 'ko', // the initial locale. of not specified, uses the first one
+			locale: 'ko', // the initial locale. of not specified, uses the first one
 			initialView: 'dayGridMonth',
 			events: data
 		})
 		
         calendar.render();
-		
-		if($(".fc-bg-event").hasClass("room-0")){
-		let exitBtn = '<div style="display:flex; justify-content: center;">';		
-		exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
-		$(".room-0").append(exitBtn);
-		}	
-
-		if($(".fc-bg-event").hasClass("room-1")){
-			let alreadyExit = '<div style="display:flex; justify-content: center;">';		
-			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
-			$(".room-1").append(alreadyExit);
-		}
-		
+		makeCalendar();
 
 		});
+
+		  $("#calendar").on("click", ".fc-next-button", function(){
+			console.log("dddd");
+			makeCalendar();
+		 })
+
+		 $("#calendar").on("click", ".fc-prev-button", function(){
+			console.log("dddd");
+			makeCalendar();
+		 })
 
 		
 		
 		$(document).on("click","#exitBtn",function (info) {
-			// console.log(info);
 			let exitNum = $(this).parent().prev().text();
 			userName=$("#userName").val();
 			let check = window.confirm("퇴실하시겠습니까?");
@@ -181,24 +178,28 @@
 					}	
 				})
 			}		
-});
+		});
+
+function makeCalendar(){
+
+
+	if($(".fc-bg-event").hasClass("room-0")){
+		let exitBtn = '<div style="display:flex; justify-content: center;" class="room">';		
+		exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn"">퇴실</button></div>';
+		$(".room-0 > .room").remove();
+		$(".room-0").append(exitBtn);
+		}	
+
+		if($(".fc-bg-event").hasClass("room-1")){
+			let alreadyExit = '<div style="display:flex; justify-content: center;" class="room">';		
+			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
+			$(".room-1 > .room").remove();
+			$(".room-1").append(alreadyExit);
+		}
+
+}
 </script>
 <script>
-	// $(function(){
-	// 	$(".fc-bg-event").each(function(){
-	// 		if($(this).hasClass("room-0")===true){
-	// 			let exitBtn = '<div style="display:flex; justify-content: center;">';		
-	// 			exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn" exitnum="'+exitnum+'">퇴실</button></div>';
-	// 			$(".room-0").append(exitBtn);
-	// 		} else if($(this).hasClass("room-1")===true){
-	// 			let alreadyExit = '<div style="display:flex; justify-content: center;">';		
-	// 			alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
-	// 			$(".room-1").append(alreadyExit);
-	// 		} else{
-	// 			return;
-	// 		}
-	// 		})
-	// });
 </script>  
 </body>
 </html>

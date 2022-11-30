@@ -91,6 +91,11 @@ public class StudyRoomController {
 		}
 	}
 	
-
+//////////////////////////////////////////////////////////////////////////////////////////
+	
+	@GetMapping("locker")
+	public void getLocker() throws Exception{
+		
+	}
 	
 }
