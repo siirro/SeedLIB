@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.seed.lib.admin.book.BookPrintVO;
+import com.seed.lib.book.BookVO;
 
 import lombok.Data;
 
@@ -27,6 +29,9 @@ import lombok.Data;
 	private boolean loanStatus;
 	private Integer ovMyrCount;
 	private boolean dropStatus;
+	
+	private List<BookPrintVO> bookPrintVOs;
+	private BookVO bookVO;
 	
 	
 	private List<RoleVO> roleVOs;
