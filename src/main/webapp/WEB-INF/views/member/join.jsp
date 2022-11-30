@@ -122,11 +122,13 @@
                         </div>					
                         <div>
                             <p><label for="email">이메일 주소</label>
+                                <input type="email" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
                                 
+
                                                     
-                                    <input type="text" id="emailId" name="email" title="이메일 입력" class="form-ele auto eng-mode">
+                                    <input type="email" id="email" name="email"  title="이메일 입력" class="form-ele auto eng-mode">
                                     @<br class="mobileShow3">
-                                    <input type="text" id="emailDomain" name="email"  class="form-ele auto readonly" title="이메일 도메인 입력">
+                                    <input type="text" id="emailDomain" name="email" title="이메일 도메인 입력">
                                     
                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
                                         
@@ -155,14 +157,16 @@
                                         <option value="etc">직접입력</option>
                                     </select>
                                     <label for="mailingUseYn" class="ml10"><input type="checkbox" name="mailingUseYn" id="mailingUseYn" value="Y" checked="checked"> 이메일 수신동의</label>
-                                                               
+                                </td>
                             </p>
-
-                        
                         </div>
                         <p class="info" style="padding:0 10px;">* 이메일 주소는 회원정보 재동의(2년 주기) 알림에 이용됩니다.</p><br>
                         <div>
-                  
+                         <!--    <input id="addrs_jibun" name="addrs_jibun" type="hidden" value="">
+                            <input id="buld_manage_no" name="buld_manage_no" type="hidden" value="">
+                            <input id="zip_code" name="zip_code" type="hidden" value="">
+                            <input id="b_dong_code" name="b_dong_code" type="hidden" value="">
+                            <input id="h_dong_code" name="h_dong_code" type="hidden" value=""> -->
                             
                             
                             <p><label for="addrs">기본주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
