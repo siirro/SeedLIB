@@ -93,6 +93,7 @@
 						<li id="gnb2_2"><a href="/hope/hopeInfo">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo">소장도서기증</a></li> 
 						<li id="gnb2_4"><a href="/studyroom/roomList">열람실 조회/예약</a></li> 
+						<li id="gnb2_5"><a href="/studyroom/locker" id="locker" class="locker on">사물함 대여</a></li> 
 					</ul> 
 				</li> 
 				
