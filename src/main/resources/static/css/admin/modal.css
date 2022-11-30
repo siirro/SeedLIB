@@ -194,53 +194,184 @@
 	}
 }
 
+
+/* textarea */
+.textarea_wrap {
+  position: relative;
+  z-index: 1;
+  height: 48px;
+  border: 1px solid #518fba;
+  background-color: #fff;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box
+}
+
+.textarea_wrap .textarea {
+  width: 100%;
+  height: 100%;
+  padding: 12px 18px;
+  font-size: 15px;
+  color: #656565;
+  box-sizing: border-box
+}
+
+.textarea_wrap .textarea.is_focus {
+  position: relative;
+  z-index: 5;
+  background: #fff
+}
+
+.textarea_wrap label {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  z-index: -1;
+  font-size: 15px;
+  color: #656565;
+  letter-spacing: -1.5px
+}
+
+@media screen and (max-width:767px) {
+  .textarea_wrap .textarea {
+    padding: 7px 6px
+  }
+}
+
 /* input text */
 .input_text_wrap {
-    position: relative;
-    z-index: 1;
-    height: 48px;
-    border: 1px solid lightgray;
-    background-color: white;
-    border-radius: 6px;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-  }
-  
+  position: relative;
+  z-index: 1;
+  height: 48px;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.input_text_wrap .input_text {
+  width: 100%;
+  height: 100%;
+  padding: 0 18px;
+  font-size: 15px;
+  color: #656565;
+  box-sizing: border-box
+}
+
+.input_text_wrap .input_text.is_focus {
+  position: relative;
+  z-index: 5;
+  background: #fff
+}
+
+.input_text_wrap label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  z-index: -1;
+  font-size: 15px;
+  color: #656565;
+  letter-spacing: -1.5px;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%)
+}
+
+.search_info div:first-of-type.input_text_wrap {
+  border-left: solid 1px #8a8a8a;
+}
+
+@media screen and (max-width:767px) {
   .input_text_wrap .input_text {
-    width: 100%;
-    height: 100%;
-    padding: 0 18px;
-    font-size: 15px;
-    color: #656565;
-    box-sizing: border-box
+    padding: 0 6px
   }
-  
-  .input_text_wrap .input_text.is_focus {
-    position: relative;
-    z-index: 5;
-    background: #fff
+}
+
+/* input select */
+.input_select_wrap {
+  position: relative;
+  min-width: 160px;
+  height: 48px
+}
+
+.input_select_wrap select {
+  width: 100%;
+  height: 100%;
+  padding: 0 18px 0 14px;
+  border: 1px solid #8a8a8a;
+  background: #fff url(/resource/templete/nl/common/img/common/search-arrow.png) 85% center no-repeat;
+  font-size: 15px;
+  color: #000;
+  vertical-align: middle;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box
+}
+
+.input_select_wrap.type2 select {
+  background-position: 95% center
+}
+
+.ie9 .input_select_wrap select {
+  padding: 4px 0
+}
+
+.ie9 .input_select_wrap:after {
+  display: none
+}
+
+.input_select_wrap2 {
+  position: relative;
+  width: 86px;
+  height: 48px
+}
+
+.input_select_wrap2 select {
+  width: 100%;
+  height: 100%;
+  padding: 0 18px 0 14px;
+  border: 1px solid #dcdcdc;
+  background: #fff url(/resource/templete/nl/common/img/common/search-arrow.png) 95% center no-repeat;
+  font-size: 15px;
+  color: #000;
+  vertical-align: middle;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box
+}
+
+.ie9 .input_select_wrap2 select {
+  padding: 4px 0
+}
+
+.ie9 .input_select_wrap2:after {
+  display: none
+}
+
+@media screen and (max-width:767px) {
+  .input_select_wrap select {
+    background-position: 97% center;
   }
-  
-  .input_text_wrap label {
-    position: absolute;
-    top: 50%;
-    left: 16px;
-    z-index: -1;
-    font-size: 15px;
-    color: #656565;
-    letter-spacing: -1.5px;
-    transform: translate(0, -50%);
-    -webkit-transform: translate(0, -50%)
+
+  .input_select_wrap2 select {
+    padding: 0 15px 0 5px;
+    background-position: 88% center;
   }
-  
-  .search_info div:first-of-type.input_text_wrap {
-    border-left: solid 1px #8a8a8a;
-  }
-  
-  @media screen and (max-width:767px) {
-    .input_text_wrap .input_text {
-      padding: 0 6px
-    }
+}
+
+  input,
+  select,
+  textarea {
+    border: 0;
+    background: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none
   }
 
   input[type='text'],
@@ -262,6 +393,116 @@
     height: 1px;
     clip: rect(1px, 1px, 1px, 1px);
   }
+
+  caption.ir_text {
+    position: static;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+
+  @media screen and (max-width:1239px) {
+    html {
+      font-size: 10px;
+      font-size: 0.625rem;
+    }
+  
+    body,
+    button,
+    input,
+    select,
+    table,
+    textarea {
+      font-size: 1.6rem;
+      letter-spacing: -0.05rem;
+    }
+  }
+
+/* input checkbox */
+.input_check_wrap {
+  display: inline-block;
+  position: relative;
+  margin-left: 22px;
+  font-size: 0
+}
+
+.input_check_wrap:first-of-type {
+  margin-left: 0
+}
+
+.input_check {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff
+}
+
+.input_check+label {
+  display: inline-block;
+  position: relative;
+  padding-right: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #3f3f3f;
+  line-height: 20px;
+  vertical-align: top;
+  cursor: pointer
+}
+
+.input_check:focus+label {
+  outline: dotted 1px;
+  outline: -webkit-focus-ring-color auto 5px
+}
+
+.input_check+label:before {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: 0px 4px 0 0;
+  background-position: 0 -44px;
+  vertical-align: top;
+  content: ''
+}
+
+.input_check:checked+label:before {
+  background-position: -21px -44px
+}
+
+@media screen and (max-width:767px) {
+  .input_check_wrap {
+    margin-left: 12px
+  }
+
+  .input_check {
+    width: 10px;
+    height: 10px
+  }
+
+  .input_check+label {
+    padding-right: 2px;
+    font-size: 1.5rem;
+    line-height: 16px
+  }
+
+  .input_check+label:before {
+    position: relative;
+    top: -2px;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    background-position: 0 -33px;
+    line-height: 16px
+  }
+
+  .input_check:checked+label:before {
+    background-position: -16px -33px
+  }
+}
+
 
 /* button */
 .btn_wrap {
