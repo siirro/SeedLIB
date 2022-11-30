@@ -3,6 +3,9 @@ package com.seed.lib.book;
 import java.util.List;
 
 import com.seed.lib.book.like.MbBookLikeVO;
+import com.seed.lib.book.loan.BookLoanVO;
+import com.seed.lib.book.loan.BookMutualLoanVO;
+import com.seed.lib.book.loan.BookReservationVO;
 import com.seed.lib.book.shelf.BookPickVO;
 import com.seed.lib.book.shelf.BookShelfVO;
 
@@ -24,7 +27,10 @@ public class BookVO {
 	
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
-	private MbBookLikeVO mbBookLikeVO;
-	private BookShelfVO bookShelfVOs;
-	private BookPickVO bookPickVOs;
+	private List<MbBookLikeVO> mbBookLikeVO;
+	private List<BookShelfVO> bookShelfVOs;
+	private List<BookPickVO> bookPickVOs;
+	private List<BookLoanVO> loanVOs;
+	private List<BookMutualLoanVO> muVOs;
+	private List<BookReservationVO> reVOs;
 }

@@ -21,8 +21,9 @@
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLike.js"></script>
-    
+    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
+    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
+    <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 </head>
 
@@ -71,9 +72,12 @@
 										<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
 											<span class="blind">페이스북</span>
 										</a>
+										<a href="#print" id="snsPrint" title="인쇄" class="snsPrint">
+											<img alt="" src="/images/printer.png">
+											<span class="">현재화면 프린트</span>
+										</a>
 									</div>
 								</li>
-								<li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a></li>
 							</ul>
 						</div>
 					</div> <!-- 상단 메뉴 끝 -->
@@ -94,7 +98,6 @@
 						<!-- 책 디테일 -->
 						<div class="bookDetailInformation">
 						
-						
 							<div class="bookInforWrap cate_volume">
 								<!-- 상단 책 정보 -->
 								<div class="bookDataDiv">
@@ -103,12 +106,12 @@
 										<img alt="" src="${book.image}">
 									</div>
 
-									<div class="book_name">${book.title}</div>
+									<div class="book_name" id="title">${book.title}</div>
 
 									<a href="#link" class="btn_optionView">
 										<span class="blind">책정보 더보기</span>
 									</a>
-
+									
 									<!-- 간략보기 -->
 									<div class="simpleView viewTab open">
 										<div class="book_publisher">
@@ -157,7 +160,12 @@
 													<input type="hidden" id="userName" value="bb">
 												</form>
 													
-												<span id="addShelf"><a href="../shelf/addBook?isbn=${book.isbn}&userName=bb">책꽂이 담기</a></span>
+												<c:if test="${isShelfExist eq false}">											
+													<button type="button" id="addShelfBtn">책꽂이 담기</button>
+												</c:if>	
+												<c:if test="${isShelfExist}">											
+													<button type="button" id="addBookBtn">책꽂이 담기</button>
+												</c:if>	
 												
 												<c:if test="${isLikeExist eq false}">
 													<button type="button" id="likeBtn">좋아요</button>
@@ -220,7 +228,7 @@
 																	<th scope="col">대출상태</th>
 																	<th scope="col">반납 예정일</th>
 																	<th scope="col">대출 및 예약</th>
-																	<th scope="col">부록</th>
+																	<th scope="col">자료실</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -256,10 +264,10 @@
 																				<c:when test="${where == 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
-																							<a href="javascript:;" class="btn white small">대출하기</a>
+																							<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
 																						</c:when>
 																						<c:when test="${able == 0}">
-																							<a href="javascript:;" class="btn white small">대출예약</a>
+																							<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
 																						</c:when>
 																					</c:choose>
 																				</c:when>
@@ -274,7 +282,16 @@
 																			</c:choose>
 																		</td>
 																		
-																		<td>부록 없음</td>
+																		<td>
+																			<c:choose>
+																				<c:when test="${where eq 1}">2층 일반 자료실</c:when>
+																				<c:when test="${where eq 2}">3층 일반 자료실2</c:when>
+																				<c:when test="${where eq 3}">2층 보존 서고</c:when>
+																				<c:when test="${where eq 4}">스마트도서관</c:when>
+																				<c:when test="${where eq 5}">4층 보존서고</c:when>
+																				<c:when test="${where eq 6}">2층 일반 자료실</c:when>
+																			</c:choose>
+																		</td>
 																	</tr>
 																</c:forEach>
 																</c:forEach>
