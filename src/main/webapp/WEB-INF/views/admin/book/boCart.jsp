@@ -156,16 +156,12 @@
 																<col>
 																<col>
 																<col>
-																<col>
-																<col>
 															</colgroup>
 															<thead>
 																<tr>
 																	<th scope="col"></th>
 																	<th scope="col">B5</th>
 																	<th scope="col">A4</th>
-																	<th scope="col">B4</th>
-																	<th scope="col">A3</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -173,22 +169,16 @@
 																	<td class="title"><span>흑백</span></td>
 																	<td><span>60원</span></td>
 																	<td><span>70원</span></td>
-																	<td><span>90원</span></td>
-																	<td><span>120원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>칼라</span></td>
 																	<td><span>400원</span></td>
 																	<td><span>500원</span></td>
-																	<td><span>800원</span></td>
-																	<td><span>1,000원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>고서</span></td>
 																	<td><span>100원</span></td>
 																	<td><span>120원</span></td>
-																	<td><span>150원</span></td>
-																	<td><span>160원</span></td>
 																</tr>
 															</tbody>
 														</table>
