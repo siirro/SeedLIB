@@ -102,7 +102,22 @@
                                     </dl>
                                     <dl class="devideWidth2">
                                         <dt>분류기호</dt>
-                                        <dd><input type="text" class="resee" value="${param.searchCategory}" name="searchCategory" title="분류기호 입력" placeholder="예: 8"></dd>
+                                        <dd>
+                                            <!-- <input type="text" class="resee" value="${param.searchCategory}" name="searchCategory" title="분류기호 입력" placeholder="예: 8"> -->
+                                            <select id="cateSelect" class="resee" name="searchCategory" title="정렬조건 선택" placeholder="분류기호를 선택하세요" value="">
+                                                <option selected value="">분류기호 선택</option>
+                                                <option class="cates" value="0">0: 총류</option>
+                                                <option class="cates" value="1">1: 철학</option>
+                                                <option class="cates" value="2">2: 종교</option>
+                                                <option class="cates" value="3">3: 사회과학</option>
+                                                <option class="cates" value="4">4: 자연과학</option>
+                                                <option class="cates" value="5">5: 기술과학</option>
+                                                <option class="cates" value="6">6: 예술</option>
+                                                <option class="cates" value="7">7: 언어</option>
+                                                <option class="cates" value="8">8: 문학</option>
+                                                <option class="cates" value="9">9: 역사</option>
+                                            </select>
+                                        </dd>
                                     </dl>
                                 </div>
                             </div>
@@ -126,7 +141,20 @@
                                         '<strong>발행처:${param.searchPublisher}</strong>', 
                                         '<strong>ISBN:${param.searchISBN}</strong>', 
                                         '<strong>발행년:${param.searchDate1}<c:if test="${not empty param.searchDate1}">~</c:if>${param.searchDate2}</strong>', 
-                                        '<strong>분류기호:${param.searchCategory}</strong>'
+                                        '<strong>분류기호:${param.searchCategory}
+                                            <!-- <c:choose>
+                                                <c:when test="${param.searchCategory eq 0}">총류</c:when>
+					                        <c:when test="${param.searchCategory eq 1}">철학</c:when>
+					                        <c:when test="${param.searchCategory eq 2}">종교</c:when>
+					                        <c:when test="${param.searchCategory eq 3}">사회과학</c:when>
+					                        <c:when test="${param.searchCategory eq 4}">자연과학</c:when>
+					                        <c:when test="${param.searchCategory eq 5}">기술과학</c:when>
+					                        <c:when test="${param.searchCategory eq 6}">예술</c:when>
+					                        <c:when test="${param.searchCategory eq 7}">언어</c:when>
+					                        <c:when test="${param.searchCategory eq 8}">문학</c:when>
+                                            <c:otherwise>역사</c:otherwise>
+                                            </c:choose> -->
+                                        </strong>'
                                         에 대한 검색결과 총 
                                         <span id="totalCnt">${count}</span> 건
                                     </div>
@@ -174,7 +202,7 @@
                                                 <div class="bookData">
                                                     <div class="book_dataInner">
                                                         <!-- <span class="book_kind">단행본</span> -->
-                                                        <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on"><span class="highlight word">${list.title}</span></a>
+                                                        <a href="#link" onclick="location.href='../book/detail?isbn=${list.isbn}'" class="book_name kor on">${list.title}</a>
                                                         <ul class="dot-list clearfix">
                                                             <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                             <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
@@ -456,19 +484,10 @@
             element.removeAttribute('href');
         });
 
-        //파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+        //모델앤뷰.pager로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
         let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
         ppaaggee.style.background="#9be15d";
         ppaaggee.style.color="#fff";
-
-        if('${param.page}'!="") {
-            console.log("dd");
-            console.log("널이아님2");
-        } else {
-            console.log("ㅋㅋ");
-            console.log("ㅋㅋㅋ");
-        }
-        
 
     } catch (error) {
         
@@ -502,12 +521,52 @@
         }
     }
 
+    //카테고리 고정
+    let sc = '${param.searchCategory}'
+    console.log(sc);
+    const cates = document.getElementsByClassName('cates');
+    for(let i=0;i<cates.length;i++){
+        if(sc==cates[i].value) {
+            cates[i].setAttribute('selected','selected');
+            break;
+        }
+    }
+
     // 입력초기화
     $("#resetBtn").click(function(){
         $(".resee").each(function(index, item){
             $(this).val("");
+            for(let i=0;i<cates.length;i++){
+                if(sc==cates[i].value) {
+                    cates[i].removeAttribute('selected','selected');
+                }
+            }
         })
     })
+
+
 </script>
+<script defer>
+
+    let kw = '${param.searchTitle}'
+        $(".book_dataInner>a:contains('"+kw+"')").each(function (d, f) {
+            var regex = new RegExp(kw, 'gi');
+            f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
+        });
+    let kw2 = '${param.searchWriter}'
+    if(kw2!='') {
+        $(".book_dataInner>ul>li:nth-child(1):contains('"+kw2+"')").each(function (d, f) {
+            var regex = new RegExp(kw2, 'gi');
+            f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw2+'</span>');
+        });
+    }
+    let kw3 = '${param.searchPublisher}'
+    if(kw3!='') {
+        $(".book_dataInner>ul>li:nth-child(2):contains('"+kw3+"')").each(function (d, f) {
+            var regex = new RegExp(kw3, 'gi');
+            f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw3+'</span>');
+        });
+    }
+    </script>
 </body>
 </html>

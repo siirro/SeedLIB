@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,58 +117,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1,469,746</td>
-                            <td>78,185</td>
-                            <td>69,364</td>
-                            <td>41,799</td>
-                            <td>236,968</td>
-                            <td>98,571</td>
-                            <td>114,408</td>
-                            <td>62,859</td>
-                            <td>62,675</td>
-                            <td>584,089</td>
-                            <td>120,828</td>
+                            <td><fmt:formatNumber value="${total}" pattern="#,###"/> </td>
+
+                            <c:forEach items="${ar}" var="dd">
+                                <td><fmt:formatNumber value="${dd}" pattern="#,###"/> </td>
+                                
+                            
+                            </c:forEach>
                         </tr>
                     </tbody>
                 </table>
                 </div>
                 
-                <p class="dot mt20">비도서 현황<span>[단위 : 점]</span></p>
-                
-                <div class="tblWrap tblScroller">
-                <table class="tbl">
-                    <caption>비도서현황</caption>
-                    <colgroup>
-                        <col span="9">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">소계</th>
-                            <th scope="col">전자책</th>
-                            <th scope="col">오디오북</th>
-                            <th scope="col">이러닝</th>
-                            <th scope="col">원문DB</th>
-                            <th scope="col">DVD</th>
-                            <th scope="col">CD-ROM</th>
-                            <th scope="col">CT</th>
-                            <th scope="col">VT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>164,154</td>
-                            <td>98,886</td>
-                            <td>2,532</td>
-                            <td>5,139</td>
-                            <td>496</td>
-                            <td>55,688</td>
-                            <td>1,385</td>
-                            <td>23</td>
-                            <td>5</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
                 
                 
                 <!-- End Of the Real Contents-->
