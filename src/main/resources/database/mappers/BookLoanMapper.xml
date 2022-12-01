@@ -23,19 +23,11 @@
 				INNER JOIN BOOK B
 				ON B.ISBN = L.ISBN
 		
-			WHERE L.USERNAME = #{userName}
+			WHERE L.USERNAME = 'bb'
 				AND RTSTATUS = #{rtStatus}
-				AND S.LOANSDATE BETWEEN #{dateA} AND #{dateB}
-			ORDER BY
-			<choose>
-				<when test="select == 'title'">B.TITLE</when>
-				<otherwise>S.LOANSDATE</otherwise>
-			</choose>
-			<choose>
-				<when test="sort == 'desc'">&#160;DESC</when>
-				<otherwise>&#160;ASC</otherwise>
-			</choose>
-		LIMIT #{startRow}, #{lastRow}		
+				
+			order by L.LOANNUM ASC
+			LIMIT 1, 9;
 	</select>
 	
 	<resultMap type="BookVO" id="LoanResult">

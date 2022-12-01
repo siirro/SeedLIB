@@ -169,7 +169,7 @@ public class MyPageController {
 		
 		List<BookVO> li = loanService.getLoanList(pager);
 		mv.addObject("li", li);
-		mv.setViewName("myPage/bookLoan");
+		mv.setViewName("mypage/bookLoan");
 		
 		return mv;
 	}
