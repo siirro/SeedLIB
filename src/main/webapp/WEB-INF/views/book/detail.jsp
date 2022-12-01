@@ -25,7 +25,6 @@
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
     <script type="text/javascript" defer src="/js/bookLoan.js"></script>
     <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
@@ -154,8 +153,7 @@
 									</div>
 									
 									<div class="keyword">
-										<c:if test="not empty member">
-										</c:if>
+										<c:if test="${not empty member}">
 											<form>
 												<input type="hidden" id="isbn" value="${bookVO.isbn}">
 												<input type="hidden" id="userName" value="${sessionScope.member.userName}">
@@ -174,6 +172,7 @@
 											<c:if test="${isLikeExist}">
 												<button type="button" id="unlikeBtn">좋아요 취소</button>
 											</c:if>
+										</c:if>
 										<span>💚 ${like}</span>
 									</div>
 								</div>
@@ -263,24 +262,47 @@
 																	
 																	<td>
 																		<c:choose>
-																			<c:when test="${where == 0}">
-																				<c:choose>
-																					<c:when test="${able eq 1}">
-																						<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
-																					</c:when>
-																					<c:when test="${able == 0}">
-																						<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
-																					</c:when>
-																				</c:choose>
-																			</c:when>
+																			<c:if test="${not empty member}">
+																				<c:when test="${where == 0}">
+																					<c:choose>
+																						<c:when test="${able eq 1}">
+																							<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
+																						</c:when>
+																						<c:when test="${able == 0}">
+																							<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
+																						</c:when>
+																					</c:choose>
+																				</c:when>
+																				
+																				<c:when test="${where != 0}">
+																					<c:choose>
+																						<c:when test="${able eq 1}">
+																							<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
+																						</c:when>
+																					</c:choose>
+																				</c:when>
+																			</c:if>
 																			
-																			<c:when test="${where != 0}">
-																				<c:choose>
-																					<c:when test="${able eq 1}">
-																						<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
-																					</c:when>
-																				</c:choose>
-																			</c:when>
+																			<c:if test="${empty member}">
+																				<c:when test="${where == 0}">
+																					<c:choose>
+																						<c:when test="${able eq 1}">
+																							<button type="button" class="btn white small" id="LoginBtn" title="대출신청">대출신청</button>
+																						</c:when>
+																						<c:when test="${able == 0}">
+																							<button type="button" class="btn white small" id="LoginBtn" title="예약신청">예약신청</button>
+																						</c:when>
+																					</c:choose>
+																				</c:when>
+																				
+																				<c:when test="${where != 0}">
+																					<c:choose>
+																						<c:when test="${able eq 1}">
+																							<button type="button" id="LoginBtn" class="btn white small">상호대차</button>
+																						</c:when>
+																					</c:choose>
+																				</c:when>
+																			</c:if>
 																		</c:choose>
 																	</td>
 																	
