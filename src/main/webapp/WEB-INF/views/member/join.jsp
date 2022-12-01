@@ -31,7 +31,7 @@
                         
                         </p>
                         <p class="inputPw"><label for="password">비밀번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="10" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
+                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="5" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
                         <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15" required="required"></p>
                         <div id="passwordChkResult"> </div>
@@ -44,25 +44,25 @@
                                <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
                             
                             <p class="birth"><label for="birthd_year">생년월일</label>
-                               <input type="date" name="birth" id="birthd_year" maxlength="s"></p>
+                               <input type="text" name="birth" id="birthd_year" maxlength="2022"></p>
                           
                             <p class="gender"><label for="gen">성별</label>
 					
 						    <span class="icheck-material-teal">
 							<label for="teal1">  남자</label>
-							 <input type="radio" id="teal1" name="gender" title="남자">
+							 <input type="radio" id="teal1" name="gender" title="남" value="남">
 					
 							</span>
 							<span class="icheck-material-teal">
 							 <label for="teal2">여자</label>
-							   <input type="radio" id="teal2" name="gender" title="여자">
+							   <input type="radio" id="teal2" name="gender" title="여" value="여">
 						
 							</span>                                   
                               <p>
 
 
                                 <label for="phone">휴대폰번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                                <select name="phone" title="휴대폰번호 국번 선택" id="phone">
+                                <select name="phone1" title="휴대폰번호 국번 선택" id="phone1">
                                     <option value="010">010</option>
                                     <option value="011">011</option>
                                     <option value="016">016</option>
@@ -72,13 +72,12 @@
                                     <option value="000">-없음-</option>
                                 </select>
                                 
-                                    <input id="mobile_no_2" name="phone" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" type="text" maxlength="4" placeholder="앞-4자리" required="required">
+                                    <input id="mobile_no_2" name="phone2" class="phone" title="휴대폰번호 앞자리" onkeyup="fnCheckkNum('mobile_no_2');" type="text" maxlength="4" placeholder="앞-4자리" required="required">
                                 
                                 
+                                    <input id="mobile_no_3" name="phone3" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');"  type="text"  maxlength="4" placeholder="뒤-4자리" required="required">
                                 
-                                    <input id="mobile_no_3" name="phone" class="phone" title="휴대폰번호 뒷자리" onkeyup="fnCheckkNum('mobile_no_3');"  type="text"  maxlength="4" placeholder="뒤-4자리" required="required">
-                                
-                                
+                                <input type="hidden" name="phone" value= phone1+"-"phone2"> 
                                 
                                 
                             </p>
@@ -116,20 +115,16 @@
                                 <input id="tel_no_2" name="tel_no_2" class="phone" title="전화번호 앞자리" onkeyup="fnCheckkNum('tel_no_2');" type="text" value="" maxlength="4" placeholder="앞-4자리" required="required">
                                 <input id="tel_no_3" name="tel_no_3" class="phone" title="전화번호 뒷자리" onkeyup="fnCheckkNum('tel_no_3');" type="text" value="" maxlength="4" placeholder="뒤-4자리" required="required">
                                 
-                                
-                                
+                            
                             </p>
                         </div>					
-                        <div>
+                        <div class="form">
                             <p><label for="email">이메일 주소</label>
-                                <input type="email" id="email" name="email" class="email" placeholder="sample@sample.com" title="이메일 (sample@sample.com)" value="" required="required">
-                                
-
-                                                    
-                                    <input type="email" id="email" name="email"  title="이메일 입력" class="form-ele auto eng-mode">
-                                    @<br class="mobileShow3">
-                                    <input type="text" id="emailDomain" name="email" title="이메일 도메인 입력">
                                     
+                                    <input type="text" id="email1" name="email"  title="이메일 입력" class="form-ele auto eng-mode" >
+                                    <span class="mobileShow3">@</span>
+                                    <input type="text" id="email2" name="email" title="이메일 도메인 입력">
+                            
                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
                                         
                                             <option value="daum.net">daum.net</option>
@@ -156,17 +151,10 @@
                                         
                                         <option value="etc">직접입력</option>
                                     </select>
-                                    <label for="mailingUseYn" class="ml10"><input type="checkbox" name="mailingUseYn" id="mailingUseYn" value="Y" checked="checked"> 이메일 수신동의</label>
-                                </td>
                             </p>
                         </div>
                         <p class="info" style="padding:0 10px;">* 이메일 주소는 회원정보 재동의(2년 주기) 알림에 이용됩니다.</p><br>
                         <div>
-                         <!--    <input id="addrs_jibun" name="addrs_jibun" type="hidden" value="">
-                            <input id="buld_manage_no" name="buld_manage_no" type="hidden" value="">
-                            <input id="zip_code" name="zip_code" type="hidden" value="">
-                            <input id="b_dong_code" name="b_dong_code" type="hidden" value="">
-                            <input id="h_dong_code" name="h_dong_code" type="hidden" value=""> -->
                             
                             
                             <p><label for="addrs">기본주소(<span>*</span>)<span class="accessibility">필수항목</span></label>

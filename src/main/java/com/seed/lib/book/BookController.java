@@ -3,6 +3,8 @@ package com.seed.lib.book;
 import java.sql.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,11 +45,24 @@ public class BookController {
 	
 	//도서 디테일
 	@GetMapping("detail")
-	public ModelAndView getDetail (BookVO bookVO) throws Exception{
+	public ModelAndView getDetail (BookVO bookVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		// 세션에서 한 유저의 정보를 꺼냄
+		MemberVO memberVO2 = (MemberVO)session.getAttribute("memberVO");
+
+		// 비어있지 않다면 모델앤뷰에 넣기
+		if(memberVO2 != null) {
+			mv.addObject("member", memberVO2);			
+		}
 		
 		//도서 정보
 		List<BookVO> vo = bookService.getDetail(bookVO);
+		
+		//도서 하나 상세정보
+		bookVO = bookService.getBookInfo(bookVO);
+		mv.addObject("bookVO", bookVO);
+		
 		mv.addObject("vo", vo);
 		
 		//유저 개인 좋아요 정보

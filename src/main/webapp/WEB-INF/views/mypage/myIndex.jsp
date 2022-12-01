@@ -84,7 +84,7 @@
 							<div class="myInfoBox">
 								<div class="myInner">
 									<div class="myTop">
-										<div class="title"><strong class="name"> 아이유 </strong> 님, 안녕하세요.</div>
+										<div class="title"><strong class="name"> ${memberVO.name} </strong> 님, 안녕하세요.</div>
 										<div class="btnModify">
 											
 											
@@ -101,9 +101,9 @@
 										</div>
 										<div class="myInfoList">
 											<ul class="dot-list">
-												<li><span>아이디</span> : 아이유 </li>
-												<li><span>회원가입일</span> : 2022.11.17 </li>
-												<li><span>휴대폰번호</span> : 010-1111-1111 </li>
+												<li><span>아이디</span> : ${memberVO.userName} </li>
+												<li><span>회원가입일</span> : ${memberVO.regDate} </li>
+												<li><span>휴대폰번호</span> : ${memberVO.phone} </li>
 												
 												<!-- <li><span>회원증번호</span> : </li>
 												<li class="mobileShow"><span class="emp1">※ 모바일회원증 캡처 이미지 사용 불가</span></li>-->
@@ -117,7 +117,7 @@
 											<ul class="barcodeFamily swiper-wrapper">
 												
 												<li class="swiper-slide">
-													<div class="name"> 아이유 </div>
+													<div class="name"> ${memberVO.name} </div>
 													<img src="https://www.yslibrary.or.kr/cmmn/barcode/getBarCode.do?width=248&amp;height=75&amp;data=" alt="" width="248" height="75">
 													<div class="num"></div>
 												</li>

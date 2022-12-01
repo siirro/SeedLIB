@@ -18,37 +18,6 @@ public class AdminBookController {
 	@Autowired
 	private AdminBookService adminBookService;
 	
-	// 제본 결제
-	@GetMapping("boPay")
-	public String setBoPay()throws Exception{
-		return "admin/book/boPay";
-	}
-	
-	// 바구니 제본신청 목록
-	@GetMapping("boCart")
-	public ModelAndView getBoCartList()throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		BookPrintVO bookPrintVO = new BookPrintVO();
-		bookPrintVO.setUserName("member");
-		
-		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(bookPrintVO);
-		
-		mv.addObject("list", bookPrintVOs);
-		mv.setViewName("admin/book/boCart");
-		
-		return mv;
-	}
-	
-	// 도서 바구니 추가
-//	@GetMapping("boAdCart")
-//	public String setBoAdCart()throws Exception{
-//		
-//		
-//		return "admin/book/boAdCart";
-//	}
-	
 	// 도서 목록 조회
 	@GetMapping("boList")
 	public ModelAndView getAdBookList()throws Exception{

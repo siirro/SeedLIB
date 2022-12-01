@@ -62,7 +62,32 @@
 </div>
 
 
+<script src="/include/js/clipboard.min.js"></script>
+<script>
+	$('#sns').click(function(e) {
+		$.ajax({
+			type: "POST",
+			url: "/cmmn/share/shortUrl.do",
+			dataType : "json",
+			data: { "url" : "https://lib.anyang.go.kr/seoksu/menu/10136/contents/40034/contents.do"},
+			async: false,
+			error : function (request, status, error){
+				//alert("에러코드: " + request.status + "\r\n메시지: " + request.responseText);
+			},
+			success: function(data) {
+				//$("#shortUrl").html(data.url);
+				$("#qrcodeImg").html('<img src="' + data.url + '.qr" alt="QR코드 : https://lib.anyang.go.kr/seoksu/menu/10136/contents/40034/contents.do" >');
+				$("#sns1").attr('data-clipboard-text', data.url);
+			}
+		});
+	});
 
+	function fnShorturlCopy() {
+		var clipboard = new ClipboardJS('#sns1');
+		alert('단축주소가 복사되었습니다.');
+		return false;
+	}
+</script>
 				<div id="contents" class="contentArea">
 					
 <!--Forced tab Show Que-->
@@ -108,23 +133,21 @@
 	<tbody>
 		<tr>
 			<td style="text-align: center;">관외 대출실</td>
-			<td style="text-align: center;"><span style="color:#2980b9;">09:00 ~ 22:00</span><br>
-			(어린이실 09:00 ~ 18:00)</td>
+			<td style="text-align: center;"><span style="color:#2980b9;">09:00 ~ 22:00</span><br></td>
 			<td rowspan="2" style="text-align: center;">09:00 ~ 17:00</td>
 			<td style="text-align: center;">수시 방역</td>
 			<td style="text-align: center;">&nbsp;</td>
 		</tr>
 		<tr>
-			<td style="text-align: center;">기타 자료실<br>
-			(전자자료실 등)</td>
+			<td style="text-align: center;">어린이실<br></td>
 			<td style="text-align: center;"><span style="color:#2980b9;">09:00 ~ 18:00</span></td>
 			<td style="text-align: center;">수시 방역</td>
 			<td style="text-align: center;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td rowspan="2" style="text-align: center;">열 람 실</td>
-			<td style="text-align: center;"><span style="color:#2980b9;">하절기(3월~10월) 07:00 ~ 23:00</span></td>
-			<td style="text-align: center;">하절기(3월~10월) 07:00 ~ 23:00</td>
+			<td style="text-align: center;"><span style="color:#2980b9;">하절기(3월~10월) 08:00 ~ 23:00</span></td>
+			<td style="text-align: center;">하절기(3월~10월) 08:00 ~ 23:00</td>
 			<td rowspan="2" style="text-align: center;">수시 방역</td>
 			<td rowspan="2" style="text-align: center;"><span style="color:#ff0000;">현 장 발 권</span></td>
 		</tr>

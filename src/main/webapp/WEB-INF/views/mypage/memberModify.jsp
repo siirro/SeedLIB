@@ -74,7 +74,8 @@
                             <!--Real Contents Start-->
         
                             <div class="memberWrap">
-                                <form id="registForm" name="registForm" method="post">
+
+                                <form action="./memberModify" id="registForm" name="registForm" method="post">
                                 <input type="hidden" id="handphone" name="handphone">
                                 <input type="hidden" id="eMail" name="eMail">
                                 <div class="boardWrap mt30">
@@ -92,11 +93,14 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="memId">아이디</label></th>
-                                                <td>${memberVo.userName}</td>
+                                                <td>${memberVO.userName}</td>                                              
+                                                  <input type="hidden" name="userName" value="${memberVO.userName}">
                                             </tr>
                                             <tr class="mobileShowTr">
                                                 <th scope="row" class="ta_l pl10">비밀번호</th>
                                                 <td><a href="/intro/mypage/memberPwdModifyCheck.do" class="btn small white">비밀번호변경</a></td>
+                                                <input type="hidden" name="password" value="${memberVO.password}">
+
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="cellNumber">핸드폰 번호 <span class="essential themeFC">*</span></label></th>
@@ -104,7 +108,7 @@
                                                     <div class="numericForm clearfix">
                                                         
                                                         
-                                                        <select name="handphone1" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short">
+                                                        <select name="phone" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
                                                             
                                                                 <option value="010" selected="selected">010</option>
                                                             
@@ -120,9 +124,9 @@
                                                             
                                                         </select>
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone2" name="handphone2" value="${memberVO.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric">
+                                                        <input type="text" id="handphone2" name="phone" value="${memberVO.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone3" name="handphone3" value="${memberVO.phone}" title="휴대폰번호 끝자리" maxlength="4" class="numeric">
+                                                        <input type="text" id="handphone3" name="phone" value="${memberVO.phone}" title="휴대폰번호 끝자리" maxlength="4" class="numeric" required="required">
                                                         <label for="smsUseYn" class="ml10"><input type="checkbox" name="smsUseYn" id="smsUseYn" value="Y" checked="checked"> SMS 수신동의</label>
                                                     </div>
                                                 </td>
@@ -131,10 +135,10 @@
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>
                                                 <td>
                                                     
-                                                    <input type="text" id="emailId" name="emailId" value="${memberVO.email}" title="이메일 입력" class="form-ele auto eng-mode">
+                                                    <input type="text" id="emailId" name="email" value="${memberVO.email}" title="이메일 입력" class="form-ele auto eng-mode"  required="required">
                                                     @<br class="mobileShow3">
-                                                    <input type="text" id="emailDomain" name="emailDomain" value="naver.com" class="form-ele auto readonly" readonly="readonly" title="이메일 도메인 입력">
-                                                    
+                                                    <input type="text" id="emailDomain" name="email" value="${memberVO.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
+                                                    <!-- readonly="readonly" -->
                                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
                                                         
                                                             <option value="daum.net">daum.net</option>
@@ -161,16 +165,15 @@
                                                         
                                                         <option value="etc">직접입력</option>
                                                     </select>
-                                                    <label for="mailingUseYn" class="ml10"><input type="checkbox" name="mailingUseYn" id="mailingUseYn" value="Y" checked="checked"> 이메일 수신동의</label>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10">주소 <span class="essential themeFC">*</span></th>
                                                 <td>
-                                                    <input type="text" id="postcode" name="post" title="자택 우편번호" value="${memberVO.post}" readonly="readonly" class="form-ele short readonly">
+                                                    <input type="text" id="postcode" name="post" title="자택 우편번호" value="${memberVO.post}" readonly="readonly" class="form-ele short readonly"  required="required">
                                                     <input type="button" id="idCheckBtn" title="새창 열림" class="btn input btnPop" target="epost"   value= "주소검색" onclick="joinPostcode()"><br>
-                                                    <input type="text" id="address" name="address1" value="${memberVO.address1}" title="자택 기본 주소" class="form-ele full mt05">
-                                                        <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="${memberVO.address2}" required="required">                      
+                                                    <input type="text" id="address" name="address1"  placeholder="기본주소(*)" value="${memberVO.address1}" title="자택 기본 주소" class="form-ele full mt05"  required="required">
+                                                       <br> <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="${memberVO.address2}" required="required">                      
 
                                           
                                                 </td>
@@ -179,11 +182,10 @@
                                     </table>
                                 </div>
 
-                                
-                                </form>
                                 <div class="btnGroup">
                                     <button type="submit" id="updateBtn" class="btn themeBtn">수정확인</button>
                                     <button type="button" id="deleteAccount" class="btn btn-primary">회원탈퇴</button>
+                                </form>
 
                                 </div>
                             </div>
@@ -192,12 +194,15 @@
                     </div>
                 </div>
             </div>
+
           <!-- footer -->
-<c:import url="../temp/footer.jsp"></c:import>
-<!-- //footer --> 
-<script src="/js/address.js"></script>
-
-
+        <c:import url="../temp/footer.jsp"></c:import>
+        <!-- //footer --> 
         </div>
+
+        <script src="/js/address.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
 </body>
 </html>
