@@ -131,11 +131,11 @@
 				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
-						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
-						<li id="gnb6_3"><a href="/mypage/bookMutual">상호대차조회</a> </li> 
+						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용정보</a> </li> 
+						<!-- <li id="gnb6_3"><a href="/mypage/bookMutual">상호대차조회</a> </li> 
 						<li id="gnb6_4"><a href="/shelf/list">관심도서목록</a> </li> 
 						<li id="gnb6_5"><a href="/mypage/hopeList" id="hopeList2" class="hopeList2 on">희망도서신청조회</a> </li> 
-						<li id="gnb6_6"><a href="/mypage/donList" id="donList2" class="donList2 on">도서기증신청조회</a> </li> 
+						<li id="gnb6_6"><a href="/mypage/donList" id="donList2" class="donList2 on">도서기증신청조회</a> </li>  -->
 						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
 						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 
 						<li id="gnb6_9"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
