@@ -28,7 +28,7 @@
 
 <body>
 	<form name="form" action="/shelf/addBook" method="POST">
-	<input type="hidden" id="userName" value="bb">
+	<input type="hidden" id="userName" value="${sessionScope.member.userName}">
 	<input type="hidden" id="isbn" value="${isbn}">
 	
 	<div class="contentsGroup">
