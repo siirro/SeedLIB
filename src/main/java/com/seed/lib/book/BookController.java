@@ -37,7 +37,6 @@ public class BookController {
 
 		// 비어있지 않다면 모델앤뷰에 넣기
 		if(memberVO2 != null) {
-			// 어째서 널이죠...?
 			mv.addObject("member", memberVO2);			
 		}
 		

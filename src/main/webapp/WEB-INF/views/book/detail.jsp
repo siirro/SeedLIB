@@ -12,11 +12,16 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
-    <!-- 프린트신청 팝업창 -->
+    <!-- 프린트신청 팝업창 css -->
    	<link rel="stylesheet" href="/css/admin/modal.css">
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
 	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
+	<!-- 프린트신청 팝업창 유효성검사 js -->
+	<!-- <script src="/js/admin/adCart.js"></script> -->
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -455,7 +460,7 @@
 															</table>
 														</li>
 														<li>
-															<p>결제 문의전화 : (복사실) 02-xxxx-xxxx</p>
+															<p>요금 문의전화 : (복사실) 02-xxxx-xxxx</p>
 														</li>
 													</ul>
 												</div>
@@ -478,93 +483,94 @@
 													</div>
 													<!-- [D]PC인 경우 -->
 													<div class="ucmy8_modify_wrap basktet_table">
-													<table>
-														<caption><span class="ir_text">복사 신청한 도서 정보</span></caption>
-														<colgroup>
-															<col class="col2" style="width: 25%;">
-															<col class="col3">
-															<col class="col3" style="width: 10%;">
-															<col >
-															<col >
-															<col>
-															<col>
-															<col>
-														</colgroup>
-														<thead>
-															<tr>
-																<th scope="col">자료명</th>
-																<th scope="col">발행 년도</th>
-																<th scope="col">청구 기호</th>
-																<th scope="col">종류</th>
-																<th scope="col">인쇄 방식</th>
-																<th scope="col">시작 페이지</th>
-																<th scope="col">끝 페이지</th>
-																<th scope="col">총 페이지</th>
-															</tr>
-														</thead>
-														<tbody id="contents_pc">
-															<tr>
-																<td>
-																	<span>${bookVO.title}</span>
-																</td>
-																<td>
-																	<span>${bookVO.bookDate}</span>
-																</td>
-																<td>
-																	<span>${bookVO.isbn}</span>
-																</td>
-																<td>
-																	<div class="input_select_wrap2">
-																		<select title="복사 색상 선택" name="" id="prColor">
-																			<option value="N">흑백</option>
-																			<option value="Y">컬러</option>
-																		</select>
-																	</div>
-																</td>
-																<td>
-																	<div class="input_select_wrap2">
-																		<select title="용지크기 선택" name="" id="prSize">
-																			<option value="A4">A4</option>
-																			<option value="B5">B5</option>
-																		</select>
-																	</div>
-																</td>
-																<td>
-																	<div class="input_text_wrap">
-																		<label for="copyNum">
-																			<span class="ir_text">복사 시작 페이지</span>
-																		</label>
-																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 시작 페이지" placeholder="시작 쪽">
-																	</div>
-																</td>
-																<td>
-																	<div class="input_text_wrap">
-																		<label for="copyNum">
-																			<span class="ir_text">복사 끝 페이지</span>
-																		</label>
-																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 끝 페이지" placeholder="끝 쪽">
-																	</div>
-																</td>
-																<td>
-																	<div class="input_text_wrap">
-																		<label for="copyNum">
-																			<span class="ir_text">복사 총 페이지</span>
-																		</label>
-																		<input type="text" id="" name="" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
+														<table>
+															<caption><span class="ir_text">복사 신청한 도서 정보</span></caption>
+															<colgroup>
+																<col class="col2" style="width: 25%;">
+																<col class="col3">
+																<col class="col3" style="width: 10%;">
+																<col>
+																<col>
+																<col>
+																<col>
+																<col>
+															</colgroup>
+															<thead>
+																<tr>
+																	<th scope="col">자료명</th>
+																	<th scope="col">발행 년도</th>
+																	<th scope="col">청구 기호</th>
+																	<th scope="col">종류</th>
+																	<th scope="col">인쇄 방식</th>
+																	<th scope="col">시작 페이지</th>
+																	<th scope="col">끝 페이지</th>
+																	<th scope="col">총 페이지</th>
+																</tr>
+															</thead>
+															<tbody id="contents_pc">
+																<tr>
+																	<td>
+																		<span>${bookVO.title}</span>
+																	</td>
+																	<td>
+																		<span>${bookVO.bookDate}</span>
+																	</td>
+																	<td>
+																		<span>${bookVO.isbn}</span>
+																	</td>
+																	<td>
+																		<div class="input_select_wrap2">
+																			<select title="복사 색상 선택" id="prColor">
+																				<option value="N">흑백</option>
+																				<option value="Y">컬러</option>
+																			</select>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="input_select_wrap2">
+																			<select title="용지크기 선택" id="prSize">
+																				<option value="A4">A4</option>
+																				<option value="B5">B5</option>
+																			</select>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="input_text_wrap">
+																			<label for="copyNum">
+																				<span class="ir_text">복사 시작 페이지</span>
+																			</label>
+																			<input type="text" id="ipCaStPage" name="caStPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 시작 페이지" placeholder="시작 쪽">
+																		</div>
+																	</td>
+																	<td>
+																		<div class="input_text_wrap">
+																			<label for="copyNum">
+																				<span class="ir_text">복사 끝 페이지</span>
+																			</label>
+																			<input type="text" id="ipCaLsPage" name="caLsPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 끝 페이지" placeholder="끝 쪽">
+																		</div>
+																	</td>
+																	<td>
+																		<div class="input_text_wrap">
+																			<label for="copyNum">
+																				<span class="ir_text">복사 총 페이지</span>
+																			</label>
+																			<input type="text" id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-													<!-- [D]MO인 경우 -->
-													<div class="ucmy8_modify_wrap ucmy8_mobile_modify_wrap">
-														<ul class="ucmy8_list" id="contents_mo">
-														</ul>
+													<div 
+														id="ipResult"
+														style="margin-top: 1;
+															   margin-bottom: 1;
+															   color: red;"	
+													>
 													</div>
 													<p class="mt5">※ 용지 크기 선택 시 확대, 축소 등은 별도 요청해야 함.</p>
 													<p>※ 양면, 단면 비용 동일</p>
-													<p></p>
 													<div class="post_copy_wrap">
 														<table class="tbl_post_copy">
 															<caption class="ir_text">제본여부선택</caption>
@@ -579,18 +585,11 @@
 																	</th>
 																	<td>
 																		<div class="input_select_wrap2 input_txtSel_wrap">
-				<!-- 																<select title="복사 수령방법" id="binding" name="binding" onchange="fn_binding(this);"> -->
-																			<select title="우편복사 수령방법" id="binding" name="binding">
-																				<!-- [D] 수정 전 선택된 옵션값 selected -->
+																			<select title="우편복사 수령방법" id="binding">
 																				<option value="N">제본 하지 않음</option>
 																				<option value="Y">스프링 제본함</option>
 																			</select>
 																		</div>
-				<!-- 															<div class="input_text_wrap input_selTxt_wrap" id="inputBinding" style="display:none;"> -->
-				<!-- 																<input type="text" id="bindingDesc" name="bindingDesc" class="input_text" aria-label="제본 요청사항" required=""> -->
-				<!-- 																<label for="bindingDesc" class="placeholder">제본 요청사항을 입력해주세요.</label>	 -->
-				<!-- 															</div> -->
-				<!-- 															<p class="policy_agree" id="bindingEx" style="display:none;">ex. 신청자료 모두 통합하여 한권으로 제본 요청</p>			 -->
 																	</td>
 																</tr>
 															</tbody>
@@ -656,7 +655,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																			<input type="text" id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
 																			<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : 01012345678</p>
@@ -673,7 +672,7 @@
 																	</th>
 																	<td>
 																		<div class="input_text_wrap input_phone_wrap">
-																			<input type="text" id="hpTel" name="hpTel" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																			<input type="text" id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
 																			<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																		</div>
 																		<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -701,6 +700,48 @@
 												</div>
 											</div>
 											<!-- //신청정보 입력 -->
+											<!-- 입금 정보 -->
+											<div class="post_info_wrap">
+												<div class="btn_wrap">
+													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
+												</div>
+												<div class="inner">
+													<ul class="post_info_list">
+														<li>
+															<strong class="tit">복사 요금(복사면 단위)</strong>
+															<table class="tbl_copy_charge">
+																<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
+																<colgroup>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																</colgroup>
+																<thead>
+																	<tr>
+																		<th scope="col"></th>
+																		<th scope="col">총 페이지</th>
+																		<th scope="col">1장 가격</th>
+																		<th scope="col">제본 가격</th>
+																		<th scope="col">결제 금액</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td class="title"><span>상품1</span></td>
+																		<td><span>30장</span></td>
+																		<td><span>60</span></td>
+																		<td><span>3000</span></td>
+																		<td><span>1800+3000</span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- //입금 정보 -->
 											<div class="btn_wrap center mb30">
 												<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
 											</div>

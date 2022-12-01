@@ -311,18 +311,11 @@
 																</th>
 																<td>
 																	<div class="input_select_wrap2 input_txtSel_wrap">
-		<!-- 																<select title="복사 수령방법" id="binding" name="binding" onchange="fn_binding(this);"> -->
-																		<select title="우편복사 수령방법" id="binding" name="binding">
-																			<!-- [D] 수정 전 선택된 옵션값 selected -->
+																		<select title="우편복사 수령방법" id="binding">
 																			<option value="N">제본 하지 않음</option>
 																			<option value="Y">스프링 제본함</option>
 																		</select>
 																	</div>
-		<!-- 															<div class="input_text_wrap input_selTxt_wrap" id="inputBinding" style="display:none;"> -->
-		<!-- 																<input type="text" id="bindingDesc" name="bindingDesc" class="input_text" aria-label="제본 요청사항" required=""> -->
-		<!-- 																<label for="bindingDesc" class="placeholder">제본 요청사항을 입력해주세요.</label>	 -->
-		<!-- 															</div> -->
-		<!-- 															<p class="policy_agree" id="bindingEx" style="display:none;">ex. 신청자료 모두 통합하여 한권으로 제본 요청</p>			 -->
 																</td>
 															</tr>
 														</tbody>
@@ -364,17 +357,17 @@
 																				<p style="position : relative;">
 																					<b><span class="txt_red">(필수항목)</span>개인정보 수집 및 이용</b>에 동의합니다.
 																					&nbsp;&nbsp;&nbsp;
-																					<input type="checkbox" id="agree01" name="agree1" value="Y" class="normal_input" />
+																					<input type="checkbox" id="agree01" class="normal_input" />
 																					<label for="agree01">동의</label>
-																					<input type="checkbox" id="agree03" name="agree1" value="N" class="normal_input" />
+																					<input type="checkbox" id="agree03" class="normal_input" />
 																					<label for="agree03">미동의</label>
 																				</p>
 																				<p style="position : relative;">
 																					<b><span class="txt_red">(선택항목)</span>개인정보 수집 및 이용</b>에 동의합니다.
 																					&nbsp;&nbsp;&nbsp;
-																					<input type="checkbox" id="agree02" name="agree2" value="Y" class="normal_input" />
+																					<input type="checkbox" id="agree02" class="normal_input" />
 																					<label for="agree02">동의</label>
-																					<input type="checkbox" id="agree04" name="agree2" value="N" class="normal_input" />
+																					<input type="checkbox" id="agree04" class="normal_input" />
 																					<label for="agree04">미동의</label>
 																				</p>
 																			</div>
@@ -388,13 +381,13 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="hpTel" name="hpTel" class="input_text" aria-label="휴대폰번호" required="" />
+																		<input type="text" id="ipPhone" name="phone" class="input_text" aria-label="휴대폰번호" required="" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
 		
 																	<span class="input_check_wrap">
-																		<input type="checkbox" id="smsApply" name="smsApply" class="input_check" checked />
+																		<input type="checkbox" id="ipPhoneCh" class="input_check" checked />
 																		<label for="smsApply">접수내역 알림 신청</label>
 																	</span>
 																</td>
@@ -405,13 +398,13 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="hpTel" name="hpTel" class="input_text" aria-label="이메일" required="" />
+																		<input type="text" id="ipEmail" name="email" class="input_text" aria-label="이메일" required="" />
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
 		
 																	<span class="input_check_wrap">
-																		<input type="checkbox" id="smsApply" name="smsApply" class="input_check" checked />
+																		<input type="checkbox" id="ipEmailCh" class="input_check" checked />
 																		<label for="smsApply">접수내역 알림 신청</label>
 																	</span>
 																	</div>
@@ -423,7 +416,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap">
-																		<input type="text" id="etc" name="etc" class="input_text" aria-label="기타 전달사항" />
+																		<input type="text" id="etcCh" class="input_text" aria-label="기타 전달사항" />
 																	</div>
 																</td>
 															</tr> <!-- //우편복사 수령 정보 -->
@@ -434,7 +427,7 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" onclick="javascript:goPostApply();return false;">신청</button>
+											<button type="button" class="btn btn_apply">신청</button>
 										</div>
 									</fieldset>
 								</form>
