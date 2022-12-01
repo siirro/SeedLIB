@@ -19,7 +19,7 @@ import lombok.Data;
 	private String name;
 	private String gender;
 	private String email;
-	private Integer birth;
+	private Date birth;
 	private String phone;
 	private String post;
 	private String address1;
