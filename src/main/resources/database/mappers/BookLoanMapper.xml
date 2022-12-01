@@ -28,12 +28,12 @@
 				AND S.LOANSDATE BETWEEN #{dateA} AND #{dateB}
 			ORDER BY
 			<choose>
-				<when test="select == 'title">B.TITLE</when>
+				<when test="select == 'title'">B.TITLE</when>
 				<otherwise>S.LOANSDATE</otherwise>
 			</choose>
 			<choose>
-				<when test="sort == 'desc'">DESC</when>
-				<otherwise>ASC</otherwise>
+				<when test="sort == 'desc'">&#160;DESC</when>
+				<otherwise>&#160;ASC</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{lastRow}		
 	</select>
@@ -83,12 +83,12 @@
 				AND R.REGDATE BETWEEN #{dateA} AND #{dateB}
 			ORDER BY
 			<choose>
-				<when test="select == 'title">B.TITLE</when>
+				<when test="select == 'title'">B.TITLE</when>
 				<otherwise>E.REGDATE</otherwise>
 			</choose>
 			<choose>
-				<when test="sort == 'desc'">DESC</when>
-				<otherwise>ASC</otherwise>
+				<when test="sort == 'desc'">&#160;DESC</when>
+				<otherwise>&#160;ASC</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{lastRow}	
 	</select>
@@ -124,12 +124,12 @@
 				AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
 			ORDER BY
 			<choose>
-				<when test="select == 'title">B.TITLE</when>
+				<when test="select == 'title'">B.TITLE</when>
 				<otherwise>M.REGDATE</otherwise>
 			</choose>
 			<choose>
-				<when test="sort == 'desc'">DESC</when>
-				<otherwise>ASC</otherwise>
+				<when test="sort == 'desc'">&#160;DESC</when>
+				<otherwise>&#160;ASC</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{lastRow}	
 	</select>
@@ -145,9 +145,9 @@
 		</collection>	
 	</resultMap>
 	
-
-	
-	
-	
+	<!-- from / username 파라미터로 받아서 처리하기 -->
+	<select id="getCount" resultType="Long" parameterType="BookLoanPager">
+    	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = 'bb'
+	</select>
 	
 </mapper>
