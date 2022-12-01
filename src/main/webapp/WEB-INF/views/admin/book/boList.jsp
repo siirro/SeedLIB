@@ -67,7 +67,7 @@
               </div>
               <!-- end col -->
               <c:forEach items="${list}" var="bookVO">
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+              <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
                 <div class="card-style-2 mb-30">
                   <div class="card-image">
                     <a href="./boDetail?isbn=${bookVO.isbn}">
@@ -78,12 +78,7 @@
                     </a>
                   </div>
                   <div class="card-content">
-                    <h4><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
-                    <p>
-                      With supporting text below as a natural lead-in to
-                      additional content. consectetur adipiscing elit. Integer
-                      posuere erat a ante.
-                    </p>
+                    <h6><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h6>
                   </div>
                 </div>
               </div>
