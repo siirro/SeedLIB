@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.seed.lib.studyroom.StudyRoomService;
 
-@Controller
+import lombok.extern.slf4j.Slf4j;
 
+@Controller
+@Slf4j
 public class HomeController {
 	
 	@Autowired
@@ -33,7 +35,8 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String setHome() throws Exception{
-		roomService.changeAllSeat();
+		int result = roomService.changeAllSeat();
+		log.info("changeSeat:{}", result);
 		return "index";
 	}
 	
