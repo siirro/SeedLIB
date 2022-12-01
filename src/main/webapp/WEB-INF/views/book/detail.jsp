@@ -161,7 +161,7 @@
 											</c:if>
 												<form>
 													<input type="hidden" id="isbn" value="${book.isbn}">
-													<input type="hidden" id="userName" value="bb">
+													<input type="hidden" id="userName" value="member1">
 												</form>
 													
 												<c:if test="${isShelfExist eq false}">											

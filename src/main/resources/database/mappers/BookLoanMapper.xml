@@ -23,7 +23,7 @@
 				INNER JOIN BOOK B
 				ON B.ISBN = L.ISBN
 		
-			WHERE L.USERNAME = 'bb'
+			WHERE L.USERNAME = #{userName}
 				AND RTSTATUS = #{rtStatus}
 			ORDER BY
 			<choose>
