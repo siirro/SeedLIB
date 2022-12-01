@@ -6,11 +6,11 @@
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
 <select id="getBookStatusTotal" resultType="Long">
-SELECT COUNT(BLNUM) FROM BOOKLIB WHERE LIBNUM=0
+SELECT COUNT(BLIBNUM) FROM BOOKLIB WHERE LIBNUM=0
 </select>
 
 <select id="getBookStatusEach" parameterType="Long" resultType="Long">
-SELECT COUNT(BL.BLNUM)
+SELECT COUNT(BL.BLIBNUM)
 FROM BOOKLIB BL
 JOIN BOOK B
 ON BL.ISBN = B.ISBN
