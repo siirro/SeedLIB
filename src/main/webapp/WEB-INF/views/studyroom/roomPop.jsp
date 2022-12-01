@@ -106,15 +106,15 @@
                 <tbody>
                     <tr class="tabTr">
                         <td style="text-align: center;">열 람 실</td>
-                        <td style="text-align: center;"><span style="color:#2980b9;">07:00 ~ 23:00</span></td>
-                        <td style="text-align: center;">07:00 ~ 23:00</td>
+                        <td style="text-align: center;"><span style="color:#2980b9;">08:00 ~ 23:00</span></td>
+                        <td style="text-align: center;">08:00 ~ 23:00</td>
                         <td rowspan="2" style="text-align: center;">수시 방역</td>
                         <td rowspan="2" style="text-align: center;"><span style="color:#ff0000;">온/오프라인 예약</span></td>
                     </tr>
                     <tr class="tabTr">
                         <td style="text-align: center;">노트북실</td>
-                        <td style="text-align: center;"><span style="color:#2980b9;">07:00 ~ 23:00</span></td>
-                        <td style="text-align: center;">07:00 ~ 23:00</td>
+                        <td style="text-align: center;"><span style="color:#2980b9;">08:00 ~ 23:00</span></td>
+                        <td style="text-align: center;">08:00 ~ 23:00</td>
                     </tr>
                 </tbody>
             </table>

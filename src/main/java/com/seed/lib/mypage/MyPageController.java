@@ -120,6 +120,7 @@ public class MyPageController {
 	
 	@GetMapping("seatHistory")
 	public ModelAndView getSeatHistory (HttpSession session) throws Exception{
+		roomService.changeAllSeat();
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 			String userName = memberVO.getUserName();
