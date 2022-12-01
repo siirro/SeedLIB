@@ -8,7 +8,7 @@
 	<select id="getAdBookList" resultType="BookVO">
 		SELECT * FROM BOOK
 		ORDER BY ISBN DESC
-		limit 10, 10
+		limit 10, 24
 	</select>
 	
 	<!--                     도서 추가                     -->
