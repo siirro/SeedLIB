@@ -9,8 +9,8 @@ public class LockerVO {
 	private Integer rentNum; 
 	private int lockerNum;
 	private int price;
-	private Date stDate;
-	private Date enDate;
+	private String stDate;
+	private String enDate;
 	private int rentDays;
 	private int rentStat;
 	private String userName;

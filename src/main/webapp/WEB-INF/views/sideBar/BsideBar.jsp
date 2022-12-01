@@ -28,5 +28,4 @@
             link = '"#'+link+'"';
             $(link).className.add("cuttent ");
           }
-
          </script>

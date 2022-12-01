@@ -28,6 +28,8 @@ public class StudyRoomController {
 	@Autowired
 	private StudyRoomService service;
 	
+	@Autowired
+	private LockerService lockerService;
 	
 	@GetMapping("roomList")
 	public void getRoomList() throws Exception{
@@ -95,8 +97,18 @@ public class StudyRoomController {
 //////////////////////////////////////////////////////////////////////////////////////////
 	
 	@GetMapping("locker")
-	public void getLocker() throws Exception{
-		
+	public ModelAndView getLocker() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<LockerVO> lockerList = lockerService.getLockerCount();
+		mv.addObject("locL", lockerList);
+		return mv;
+	}
+	
+	@GetMapping("lockerPop")
+	public ModelAndView lockerPop(int lockerNum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("lockerNum", lockerNum);
+		return mv;
 	}
 	
 }
