@@ -144,11 +144,11 @@
 						</div>
 					</div>
 
-					<ul id="slide" class="slidee" style="height: 334px;">
-						<li><img src="/images/main/l_winterNight2.png" alt="뭐지1" class="slide"></li>
-						<li><img src="/images/main/l_coloring2.png" alt="뭐지2" class="slide"></li>
-						<li><img src="/images/main/l_seed2.png" alt="뭐지3" class="slide"></li>
-						<li><img src="/images/main/l_ding2.png" alt="뭐지4" class="slide"></li>
+					<ul id="slide" class="slidee" style="height: 340px;">
+						<li><img src="/images/main/l_winterNight.png" alt="뭐지1" class="slide"></li>
+						<li><img src="/images/main/l_coloring.png" alt="뭐지2" class="slide"></li>
+						<li><img src="/images/main/l_seed.png" alt="뭐지3" class="slide"></li>
+						<li><img src="/images/main/l_ding.png" alt="뭐지4" class="slide"></li>
 					</ul>
 
 

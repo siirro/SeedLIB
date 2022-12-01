@@ -447,7 +447,7 @@
 @media screen and (min-width:1025px) {
 	/* .mainSearchWrap {padding-right: 129px;} */
 
-	.popupZone {float: left; width: 467px; height: 340px;}
+	.popupZone {float: left; width: 467px; height: 344px;}
 	.noticeZone {float: left; width: 358px; height: 304px; margin-left: 20px;}
 	.serviceZone {float: left; width: 331px; height: 344px; margin-left: 20px;}
 
@@ -473,6 +473,7 @@
 
 #slide img {
 	vertical-align: top;
+	max-width: 110%;
 }
 
 #slide { 
@@ -486,6 +487,7 @@
     padding: 0 0 0 0;
     border : 0;
 	width: 467px;
+	height: 344px;
 }
 
 #section5 {overflow: hidden; position: relative; padding: 50px 0 50px 0;}

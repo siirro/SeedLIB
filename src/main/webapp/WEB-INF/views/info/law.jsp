@@ -88,25 +88,7 @@
                     <dd class="btnArea"><a class="btn" href="#link" onclick="fnAdminLink();">바로가기</a></dd>
                 </dl>
                 
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시평생교육원 운영에 관한 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-11-01-00-009-20200331.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
                 
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시평생교육원 운영에 관한 조례 시행규칙</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-11-01-00-010-20191122.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
-                
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시작은도서관 설치 및 운영 지원에 관한 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-10-02-00-001-20181228.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
-                
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시 독서문화 진흥 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-10-01-00-011-20160106.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
                 
                 <!-- End Of the Real Contents-->
 
