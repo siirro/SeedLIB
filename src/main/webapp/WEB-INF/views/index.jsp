@@ -12,6 +12,7 @@
 <link rel="shortcut" href="/images/favicon.png">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
+
 </head>
 
 <body>
@@ -116,7 +117,7 @@
 			<div class="sectionGroup">
 
 			<!-- 팝업존 -->
-			<script>
+			<!-- <script>
 				$(function(){
 					//팝업존
 					$(".popupZone .popupList").slider({
@@ -125,33 +126,110 @@
 						numbering : true
 					});
 				});
-			</script>
+			</script> -->
 	
 				<div class="popupZone public">
 
 					<h1 class="blind">팝업존</h1>
-					<!-- <div class="controlGroup">
-						<div class="arrowWrap">
-							<div class="pp-controls">
-								<a href="#" class="btnSlidePause" title="슬라이드 멈추기" style="display: none;"></a>
-								<a href="#" class="btnSlidePlay" title="자동으로 슬라이드 넘기기" style="display: block;"></a>
-							</div>
-							<a href="#" class="arrow btnSlidePrev" title="이전 슬라이드 보기"></a>
-							<a href="#" class="arrow btnSlideNext" title="다음 슬라이드 보기"></a>
+					
+					<div class="controlGroup">
+						<a href="#" class="btnSlidePrev" title="이전 슬라이드 보기"></a>
+						<a href="#" class="btnSlideNext" title="다음 슬라이드 보기"></a>
+						
+					</div>
+					<div class="arrowWrap">
+						<div class="pp-controls">
+							<a href="#" class="btnSlidePause" title="슬라이드 멈추기" style="display: none;"></a>
+							<a href="#" class="btnSlidePlay" title="자동으로 슬라이드 넘기기" style="display: block;"></a>
 						</div>
-						<p class="nowpage"><strong>6</strong>/10</p>
-					</div> -->
+					</div>
 
-					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
-						<li style="z-index: 100; left: 0px; top: 0px;">
-							<a href="/">
-								<img src="/images/l_winterNight.png" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
-									불편한 편의점
-									연이와 버들도령
-									체리새우 : 비밀글입니다" onerror="javascript:errorPopupzoneImageFile(this);" class="slide">
-							</a>
-						</li>
+					<ul id="slide" class="slidee" style="height: 334px;">
+						<li><img src="/images/main/l_winterNight2.png" alt="뭐지1" class="slide"></li>
+						<li><img src="/images/main/l_coloring2.png" alt="뭐지2" class="slide"></li>
+						<li><img src="/images/main/l_seed2.png" alt="뭐지3" class="slide"></li>
+						<li><img src="/images/main/l_ding2.png" alt="뭐지4" class="slide"></li>
 					</ul>
+
+
+					
+
+
+					<script>
+						window.onload = function() {
+							const slider = document.querySelector('#slide');
+							const slideLis = slider.querySelectorAll('li')
+							const moveButton = document.querySelector('.controlGroup');
+
+							// 주요변수 초기화
+							let currentIdx = 0;
+							let translate = 0;
+							const speedTime = 500;
+
+							/* ul 넓이 계산 */
+							const liWidth = slideLis[0].clientWidth;
+							const sliderWidth = liWidth * slideLis.length;
+							slider.style.width = sliderWidth+'px' ;
+							
+							/* 리스너 설치하기 */
+							moveButton.addEventListener('click', moveSlide);
+
+							function move(gogogo) {
+								currentIdx += (-1 * gogogo);
+								translate += liWidth * gogogo;
+								slider.style.transform = "translateX("+translate+"px)";
+								slider.style.transition = "all "+speedTime+"ms ease";
+							}
+
+							/* 버튼 클릭 */
+							function moveSlide(event) {
+							event.preventDefault();
+							if (event.target.className === 'btnSlideNext') {
+								if (currentIdx === slideLis.length -1) {
+									slider.style.transform = "translateX(0px)";
+									currentIdx = 0;
+									translate = 0;
+									return
+								};
+								move(-1);
+								console.log(currentIdx);
+								console.log(translate);
+							} else {
+								if (currentIdx === 0) {
+									slider.style.transform = "translateX(-1401px)";
+									currentIdx = 3;
+									translate = -1401;
+									return
+								};
+									move(1);
+								}
+							}
+
+							function sliding() {
+								if (currentIdx === slideLis.length -1) {
+									slider.style.transform = "translateX(0px)";
+									currentIdx = 0;
+									translate = 0;
+									return
+								};
+								move(-1);
+
+								
+							}
+
+							function showSliding() {
+								setInterval(sliding, 2000);
+							}
+
+							showSliding();
+
+							
+						}
+					</script>
+
+					
+					
+
 				</div>
 				<!-- //팝업존 -->
 
@@ -373,7 +451,7 @@
 				</div>
 				<!-- 문화프로그램 끝 -->
 
-				<script>
+				<!-- <script>
 					$(function(){
 						//문화행사 PC버전
 						var serviceSwiper = new Swiper('.swiper-service', {
@@ -415,7 +493,7 @@
 							},
 						});
 					});
-				</script>
+				</script> -->
 
 				<!-- 달력 & 이용안내 -->
 				<div class="guideWrap">
