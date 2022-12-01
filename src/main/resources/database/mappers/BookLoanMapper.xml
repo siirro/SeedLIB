@@ -146,7 +146,7 @@
 	
 	<!-- from / username 파라미터로 받아서 처리하기 -->
 	<select id="getCount" resultType="Long" parameterType="BookLoanPager">
-    	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = 'bb'
+    	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = #{userName}
 	</select>
 	
 </mapper>
