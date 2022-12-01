@@ -121,6 +121,7 @@
 										<span class="bk_date">${bookVO.bookDate}</span>
 									</div>
 									
+
 									<div class="book_publisher">
 										<span class="bk_writer">ISBN : ${bookVO.isbn}</span>
 									</div>
@@ -160,6 +161,7 @@
 												<input type="hidden" id="isbn" value="${bookVO.isbn}">
 												<input type="hidden" id="userName" value="${sessionScope.member.userName}">
 											</form>
+									
 												
 											<c:if test="${isShelfExist eq false}">											
 												<button type="button" id="addShelfBtn">책꽂이 담기</button>
