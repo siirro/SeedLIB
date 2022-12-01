@@ -18,6 +18,11 @@ public class BookService {
 	@Autowired
 	private BookMapper bookMapper;
 	
+	// 도서 상세정보
+	public BookVO getBookInfo(BookVO bookVO) throws Exception{
+		return bookMapper.getBookInfo(bookVO);
+	}
+	
 	//도서 디테일
 	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
 		return bookMapper.getDetail(bookVO);
