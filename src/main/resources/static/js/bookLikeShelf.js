@@ -84,7 +84,7 @@ $("#addBookBtn").click(function(){
 $("#RealBookBtn").click(function(){
 	const bookPickVO = {
 		isbn : $("#isbn").val(),
-		shNum : $("#shNum").val(),
+		shNum : $(".shNum").val(),
 	}
 	
 	console.log(bookPickVO);
@@ -104,7 +104,7 @@ $("#RealBookBtn").click(function(){
 				case 1:
 					let check = window.confirm("책꽂이에 책을 저장했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/shelf/bookList?shNum="+shNum;
+						opener.location.href="/shelf/bookList";
 						window.close();
 						break;
 					} else{
@@ -163,7 +163,7 @@ $("#RealShelfBtn").click(function(){
 				case 1:
 					let check = window.confirm("책꽂이를 생성했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/shelf/list?userName="+userName;
+						opener.location.href="/shelf/list";
 						window.close();
 						break;
 					} else{

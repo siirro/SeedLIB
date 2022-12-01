@@ -94,6 +94,8 @@ public class BookController {
 	@ResponseBody
 	@PostMapping("loan")
 	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {
+		//result 값은 loanMapper 값 or 2 리턴
+		
 		int result = loanService.setLoan(loanVO);
 		return result;
 	}
@@ -104,6 +106,7 @@ public class BookController {
 	@PostMapping("reservation")
 	public int setReservationAdd (@RequestBody BookReservationVO reVO) throws Exception {
 		int result = loanService.setReservation(reVO);
+		//대출 신청한 다음은 1 리턴
 		return result;
 	}
 	

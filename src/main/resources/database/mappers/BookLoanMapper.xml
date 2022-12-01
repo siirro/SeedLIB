@@ -18,26 +18,23 @@
 	
 	<!-- 대출 목록 -->
 	<select id="getLoanList" parameterType="BookLoanPager" resultMap="LoanResult">
-		SELECT LL.* FROM
-			(SELECT ROWNUM R, L.*
-				FROM LOAN L
-					INNER JOIN BOOK B
-					ON B.ISBN = L.ISBN
-			
-				WHERE L.USERNAME = #{userName}
-					AND RTSTATUS = #{rtStatus}
-					AND S.LOANSDATE BETWEEN #{dateA} AND #{dateB}
-				ORDER BY
-				<choose>
-					<when test="select == 'title">B.TITLE</when>
-					<otherwise>S.LOANSDATE</otherwise>
-				</choose>
-				<choose>
-					<when test="sort == 'desc'">DESC</when>
-					<otherwise>ASC</otherwise>
-				</choose>
-			)LL
-		WHERE R BETWEEN #{startRow} AND #{lastRow}		
+		SELECT L.*, B.*
+			FROM LOAN L
+				INNER JOIN BOOK B
+				ON B.ISBN = L.ISBN
+		
+			WHERE L.USERNAME = 'bb'
+				AND RTSTATUS = #{rtStatus}
+			ORDER BY
+			<choose>
+				<when test="select == 'title'">B.TITLE</when>
+				<otherwise>L.LOANNUM</otherwise>
+			</choose>
+			<choose>
+				<when test="sort == 'desc'">DESC</when>
+				<otherwise>ASC</otherwise>
+			</choose>
+			LIMIT #{startRow}, #{perPage};
 	</select>
 	
 	<resultMap type="BookVO" id="LoanResult">
@@ -76,25 +73,23 @@
 	
 	<!-- 예약 목록 -->
 	<select id="getReList" parameterType="BookLoanPager" resultMap="ReResult">
-		SELECT RR.* FROM
-			(SELECT ROWNUM R, E.*
-				FROM RESERVATION E
-					INNER JOIN BOOK B
-					ON B.ISBN = R.ISBN
-			
-				WHERE R.USERNAME = #{userName}
-					AND R.REGDATE BETWEEN #{dateA} AND #{dateB}
-				ORDER BY
-				<choose>
-					<when test="select == 'title">B.TITLE</when>
-					<otherwise>E.REGDATE</otherwise>
-				</choose>
-				<choose>
-					<when test="sort == 'desc'">DESC</when>
-					<otherwise>ASC</otherwise>
-				</choose>
-			)RR
-		WHERE R BETWEEN #{startRow} AND #{lastRow}	
+		SELECT E.*, B.*
+			FROM RESERVATION E
+				INNER JOIN BOOK B
+				ON B.ISBN = R.ISBN
+		
+			WHERE R.USERNAME = #{userName}
+				AND R.REGDATE BETWEEN #{dateA} AND #{dateB}
+			ORDER BY
+			<choose>
+				<when test="select == 'title'">B.TITLE</when>
+				<otherwise>E.REGDATE</otherwise>
+			</choose>
+			<choose>
+				<when test="sort == 'desc'">&#160;DESC</when>
+				<otherwise>&#160;ASC</otherwise>
+			</choose>
+		LIMIT #{startRow}, #{lastRow}	
 	</select>
 	
 	<resultMap type="BookVO" id="ReResult">
@@ -119,25 +114,23 @@
 	
 	<!-- 상호대차 목록 -->
 	<select id="getMuList" parameterType="BookLoanPager" resultMap="MuResult">
-		SELECT MM.* FROM
-			(SELECT ROWNUM R, M.*
-				FROM MUTUALLOAN M
-					INNER JOIN BOOK B
-					ON B.ISBN = M.ISBN
-			
-				WHERE M.USERNAME = #{userName}
-					AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
-				ORDER BY
-				<choose>
-					<when test="select == 'title">B.TITLE</when>
-					<otherwise>M.REGDATE</otherwise>
-				</choose>
-				<choose>
-					<when test="sort == 'desc'">DESC</when>
-					<otherwise>ASC</otherwise>
-				</choose>
-			)MM
-		WHERE R BETWEEN #{startRow} AND #{lastRow}	
+		SELECT M.*, b.*
+			FROM MUTUALLOAN M
+				INNER JOIN BOOK B
+				ON B.ISBN = M.ISBN
+		
+			WHERE M.USERNAME = #{userName}
+				AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
+			ORDER BY
+			<choose>
+				<when test="select == 'title'">B.TITLE</when>
+				<otherwise>M.REGDATE</otherwise>
+			</choose>
+			<choose>
+				<when test="sort == 'desc'">&#160;DESC</when>
+				<otherwise>&#160;ASC</otherwise>
+			</choose>
+		LIMIT #{startRow}, #{lastRow}	
 	</select>
 	
 	<resultMap type="BookVO" id="MuResult">
@@ -151,9 +144,9 @@
 		</collection>	
 	</resultMap>
 	
-
-	
-	
-	
+	<!-- from / username 파라미터로 받아서 처리하기 -->
+	<select id="getCount" resultType="Long" parameterType="BookLoanPager">
+    	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = 'bb'
+	</select>
 	
 </mapper>

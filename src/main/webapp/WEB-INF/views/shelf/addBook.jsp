@@ -44,9 +44,9 @@
 	            	<span>담을 곳</span>
 	            </div>
 	            <div class="shelfSelect">
-	            	<select id="list_id" name="list_id" class="selectBox1">
+	            	<select class="shNum" id="list_id" name="list_id" class="selectBox1">
 						<c:forEach items="${list}" var="shelf">															
-							<option id="shNum" value="${shelf.shNum}">${shelf.shName}</option>
+							<option value="${shelf.shNum}">${shelf.shName}</option>
 						</c:forEach>
 					</select>	
 	            </div>

@@ -18,6 +18,9 @@ public class BookLoanPager {
 	private boolean pre;
 	private boolean next;
 	
+	private boolean rtStatus;
+	private String userName;
+	
 	//제목 OR date
 	private String select;
 	

@@ -22,8 +22,8 @@ public class BookLoanService {
 		//연체일도 체크해야 함
 	//대출 신청
 	public int setLoan (BookLoanVO loVO) throws Exception{
-		// 1이면 해당 도서 대출 중 -> 새로 대출신청 불가
 		// 0이면 대출 가능 -> setLoan -> 저장 후 1 리턴
+		// 1이면 해당 도서 대출 중 -> 새로 대출신청 불가
 		// 2이면 해당 도서 대출 중 -> 불가
 		int enable = loanMapper.getBookLoan(loVO);
 		if(enable == 0) {

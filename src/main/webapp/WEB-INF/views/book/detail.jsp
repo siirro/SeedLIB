@@ -282,7 +282,7 @@
 																				<c:when test="${where != 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
-																							<a href="javascript:;" class="btn white small">상호대차</a>
+																							<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
 																						</c:when>
 																					</c:choose>
 																				</c:when>
@@ -773,7 +773,7 @@
 			</div>
 		</div>
 	</div>
-
+	<c:import url="../temp/footer.jsp"></c:import> 
 
 </body>
 </html>

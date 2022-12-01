@@ -13,7 +13,7 @@ public class BookLoanVO {
 	private Date loanSDate;
 	private Date loanLDate;
 	private boolean overDue;
-	private int rtStatus;
+	private boolean rtStatus;
 	private int extension;
 	
 }
