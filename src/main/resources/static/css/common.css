@@ -180,7 +180,7 @@
 .form-ele {display: inline-block; width: 100%; vertical-align: middle; box-sizing: border-box;}
 .form-ele.auto {width: auto; max-width: 220px;}
 .form-ele.auto1 {width: 380px;}
-.form-ele.short {width: 80px;}
+.form-ele.short {width: 220px;}
 .form-ele.fix {width: 200px;}
 .form-ele.fix1 {width: 180px;}
 .form-ele.fix2 {width: 150px;}
@@ -189,7 +189,7 @@
 .form-ele.min {min-width: 102px;} /*auto와 다중 클래스로 사용*/
 .form-ele.wide {max-width: calc(50% - 5px);}
 .form-ele.wide + .form-ele.wide {margin-left: 4px;}
-.form-ele.full {width: 100%; max-width: 100%;}
+.form-ele.full {width: 100%; max-width: 63%; margin-bottom: 0.4em;}
 .form-ele.half {float: left; width: 47%; max-width: 104px;}
 .form-ele.half ~ .hyphen {float: left; width: 6%; text-align: center;}
 .form-ele[readonly], .form-ele[disabled], .rdoBtn input[disabled] + label {color: #777; cursor: default; background-color: #e7e7e7;}
@@ -211,7 +211,7 @@
 .rdoBtn input[type="radio"]:checked + label, .rdoBtn input[type="checkbox"]:checked + label,.rdoBtn.checked label {z-index: 3; color: #fff;}
 .rdoBtn input[type="radio"]:focus + label, .rdoBtn input[type="checkbox"]:focus + label, .rdoBtn input[type="radio"]:checked:focus + label, .rdoBtn input[type="checkbox"]:checked:focus + label,.rdoBtn.checked:focus label {border: 1px dashed #000 !important;}
 .rdoBtn input[type="radio"]:checked:focus + label, .rdoBtn input[type="checkbox"]:checked:focus + label,.rdoBtn.checked:focus label {border: 1px dashed #fff !important;}
-
+.textInput.textInput2{width: 100%; max-width: 63px;}
 /* title style */
 .htitle {position: relative; margin: 45px 0 20px; font-size: 1.412em; line-height: 1; color: #222; letter-spacing: -0.45px;}
 .stitle {position: relative; margin: 35px 0 12px; font-size: 1.235em; line-height: 1; color: #222; letter-spacing: -0.25px;}

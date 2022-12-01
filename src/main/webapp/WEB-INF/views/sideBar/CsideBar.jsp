@@ -7,11 +7,11 @@
         <div id="lnbNav" class="navArea">
           <h2> 도서관안내 </h2>
           <ul id="lnb" class="lnb"> 
-          <li id="lnb1_1"><a href="/guide/manners" class="on">도서관예절</a> </li>
-          <li id="lnb1_2"><a href="/guide/time" id="hopeInfo" class="">이용시간</a>
-          <li id="lnb1_3"><a href="/guide/calendar" id="donInfo" class="donInfo setDon on">휴관일안내</a> </li> 
-          <li id="lnb1_4"><a href="/guide/rule" id="roomList" class="roomList roomInfo on">대여규칙</a>
-            <li id="lnb1_4"><a href="/guide/convenience" id="roomList" class="roomList roomInfo on">편의시설</a>
+          <li id="lnb1_1"><a href="/guide/manners" class="current on">도서관예절</a> </li>
+          <li id="lnb1_2"><a href="/guide/time"  class="time on">이용시간</a>
+          <li id="lnb1_3"><a href="/guide/calendar" class="calendar on">휴관일안내</a> </li> 
+          <li id="lnb1_4"><a href="/guide/rule"  class="rule on">대여규칙</a>
+          <li id="lnb1_5"><a href="/guide/convenience"  class="convenience on">편의시설</a>
 
             <!-- class="current on" -->
         </li> 

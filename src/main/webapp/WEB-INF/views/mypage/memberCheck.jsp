@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css">
+<link rel="stylesheet" href="/css/contents.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
 </head>
@@ -26,8 +28,7 @@
                 <div id="contentGroup">
                     
         <div id="lnbNav" class="navArea">
-            <h2>회원정보</h2>
-        	<c:import url="../sideBar/FsideBar.jsp"></c:import>
+        	<c:import url="../sideBar/GsideBar.jsp"></c:import>
 
         </div>
         
@@ -81,11 +82,12 @@
                                         <div class="pwChkArea">
                                             <div class="inpArea">
                                                 <label for="user_id">아이디</label>
-                                                rrkdalsfn
+                                                 <input type="hidden" id="userName" name="userName" value="${memberVO.userName}">
+                                                ${memberVO.userName}
                                             </div>
                                             <div class="inpArea bdon">
                                                 <label for="user_pw">비밀번호</label>
-                                                <input type="password" id="password" name="password">
+                                                <input type="password" id="password" name="password" >
                                             </div>
                                             <input type="button" id="checkBtn" title="비밀번호 확인" value="비밀번호 확인" class="btnLogin themeBtn">
                                         </div>
@@ -102,6 +104,31 @@
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer --> 
         </div>
+
+        <!-- <script>
+            $("#checkBtn").click(function(){
+                console.log("ddfsf");
+                let id=$("#id").val();
+                let pw = $("#password").val();
+                console.log(id, pw);
+                $.ajax({
+                    type:"POST",
+                    url:"/mypage/memberCheck",
+                    data:{
+                        id:id,
+                        pw:pw
+                    },success:function(data){
+                        if(data>0){
+                            console.log("있다")
+                        }else{
+                            console.log("없다")
+                        }
+                    },error:function(){
+
+                    }
+                })
+            })
+        </script> -->
     
 </body>
 </html>

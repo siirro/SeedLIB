@@ -22,7 +22,7 @@
 .loginBottom .btn {font-size: 1.176em;}
 
 /* find ID/PW */
-.findWrap {text-align: center; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0;}
+.findWrap {text-align: center; padding: 7px; background: url(../images/bg_pattern.png) 0 0;}
 .findForm {background-color: #fff;}
 .findGroup {display: inline-block; padding: 50px 0;}
 .findGroup .findArea {position: relative; min-width: 530px;}
@@ -96,7 +96,7 @@
 
 /* my library */
 .myPageWrap {overflow: hidden;}
-.myInfoBox {overflow: hidden; position: relative; margin-bottom: 40px; padding: 7px; background: url(/include/image/contents/bg_pattern.png) 0 0; }
+.myInfoBox {overflow: hidden; position: relative; margin-bottom: 40px; padding: 7px; background: url(../images/bg_pattern.png) 0 0; }
 .myInner {background-color: #fcfdfe; padding: 10px;}
 .myTop {overflow: hidden; position: relative; background-color: #f2f2f2; padding: 15px 280px 15px 20px;}
 .myInfoBox .title .name {font-size: 1.235em; font-weight: 500; color: #464646; display: inline-block;}

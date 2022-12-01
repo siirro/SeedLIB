@@ -1,6 +1,8 @@
 package com.seed.lib.member;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
@@ -76,7 +78,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		log.info("조인조인조인");
 		int result = memberService.setJoin(memberVO);
-
 		mv.addObject("memberVO", memberVO);
 		
 		mv.setViewName("redirect:../");

@@ -162,7 +162,7 @@ body{height:100%;background-color:white}
 /* 회원가입 - 정보입력 */
 .join2{margin-top:20px; width:100px font-family:NanumBarunGothic, sans-serif}
 .join2 .inputIdPw{margin-bottom:11px;background-color:#fff;border:1px solid #dadada}
-.join2 .inputIdPw label{margin-right:20px;font-weight:600}
+.join2 .inputIdPw label{margin-left: 15px; margin-right:20px;font-weight:600}
 .join2 .inputIdPw label span{color:red}
 .join2 .inputIdPw p{padding:0 15px;border-top:1px solid #f0f0f0}
 .join2 .inputIdPw p:first-child{border-top:none}
@@ -180,7 +180,11 @@ body{height:100%;background-color:white}
 .join2 .inputProfile > div p.gender{ border:1px solid #d0d0d0;border-bottom:none;padding:10px 10px;background-color:#fff}
 .join2 .inputProfile > div p.name{background-color:#fafafa}
 .join2 .inputProfile > div input{width:305px;height:48px;border:none;}
-.join2 .inputProfile > div input.email{width:310px}
+.join2 .inputProfile > div input#email1{width:170px; }
+.join2 .inputProfile > div input#email2{width:170px; }
+
+.join2 .inputProfile > div input#domainList {width:150px}
+
 .join2 .inputProfile > div input#user_name{width:328px;background-color:#fafafa}
 .join2 .inputProfile > div input#birthd_year{background-color:#fafafa}
 .join2 .inputProfile > div input.textInput{width:348px}
@@ -188,10 +192,13 @@ body{height:100%;background-color:white}
 .join2 .inputProfile > div >p.gender input#teal1 {width: 22px; height: 18.4px; }
 .join2 .inputProfile > div >p.gender input#teal2 {width: 22px; height: 18.4px; }
 
-.join2 .inputProfile > div select{width:93px;height:48px;border:none;line-height:48px}
-.join2 .inputProfile > div input.phone{width:92px;height:26px;margin-left:5px;padding-left:10px;border-left:1px solid #f0f0f0}
+.join2 .inputProfile > div select{width:130px;height:48px;border:none;line-height:48px; margin-left: 40px;}
+.join2 .inputProfile > div input.phone{width:200px;height:26px;margin-left:5px;padding-left:10px;border-left:1px solid #f0f0f0}
 .join2 .inputProfile > div .addressInput input{width:100%}
 .join2 .inputProfile > div input#addrs{width:235px}
+.join2 .inputProfile > div input#addrs{width:235px}
+.join2 .inputProfile > div input#address1{width:235px; margin:30px}
+
 .join2 .inputProfile > div input#addrs_detail{width:324px}
 .join2 .inputProfile > div .info{margin-bottom:22px;padding-top:10px;border:none;border-top:1px solid #d0d0d0;background:none;color:#535353;font-size:14px}
 .join2 .inputProfile > div .loginBtn1{display:inline-block;margin-bottom:10px;padding:5px 10px;background-color:#006EAF;color:#fff;font-size:13px;line-height:100%}
