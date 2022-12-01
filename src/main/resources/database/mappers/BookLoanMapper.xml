@@ -25,9 +25,16 @@
 		
 			WHERE L.USERNAME = 'bb'
 				AND RTSTATUS = #{rtStatus}
-				
-			order by L.LOANNUM ASC
-			LIMIT 1, 9;
+			ORDER BY
+			<choose>
+				<when test="select == 'title'">B.TITLE</when>
+				<otherwise>L.LOANNUM</otherwise>
+			</choose>
+			<choose>
+				<when test="sort == 'desc'">DESC</when>
+				<otherwise>ASC</otherwise>
+			</choose>
+			LIMIT #{startRow}, #{perPage};
 	</select>
 	
 	<resultMap type="BookVO" id="LoanResult">
