@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -57,12 +58,12 @@ public class MyPageController {
 	private MemberService memberService;
 	
 	@GetMapping("myIndex")
-	public ModelAndView getIndex(HttpSession session) throws Exception{
+	public void getIndex(HttpSession session) throws Exception{
+		
 		ModelAndView mv =new ModelAndView();
-		MemberVO memberVO =new MemberVO();
+		MemberVO memberVO =(MemberVO)session.getAttribute("memberVO");
 		
 		
-		return mv;
 	}
 	
 	@GetMapping("memberCheck")
@@ -71,8 +72,26 @@ public class MyPageController {
      return "mypage/memberCheck"; 
      
 	}
+	
+	@PostMapping("memberCheck")
+	@ResponseBody
+	public String memberCheck2(String id, String pw, HttpSession session) throws Exception {
+		log.info("PW:{}",pw);
+		log.info("ID:{}",id);
+		session.setAttribute("result", "ok");
+		
+     return ""; 
+     
+	}
+	
 	@GetMapping("memberModify")
 	public ModelAndView setUpdate(MemberVO memberVO,ModelAndView mv,HttpSession session)throws Exception {
+//		String result = session.getAttribute("result").toString();
+//		if(result.equals("ok")) {
+//			
+//		} else {
+//			
+//		}
 		memberVO= (MemberVO)session.getAttribute("memberVO");
 		mv.addObject("memberVO",memberVO);
 		mv.setViewName("mypage/memberModify");
@@ -80,11 +99,13 @@ public class MyPageController {
 	}
 	
 	@PostMapping("memberModify")
-	public ModelAndView setUpdate(MemberVO memberVO)throws Exception{
+	public ModelAndView setUpdate(MemberVO memberVO, HttpSession session)throws Exception{
+		
 		int result = memberService.setUpdate(memberVO);
 		ModelAndView mv =new ModelAndView();
-		mv.addObject("memberVO", memberVO);
-		mv.setViewName("");
+		log.info("이메일 {} ", memberVO.getEmail());
+		mv.setViewName("redirect:./myIndex");
+		
 		return mv;
 		
 	}

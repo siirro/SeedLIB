@@ -19,7 +19,7 @@ import lombok.Data;
 	private String name;
 	private String gender;
 	private String email;
-	private Integer birth;
+	private Date birth;
 	private String phone;
 	private String post;
 	private String address1;
@@ -32,7 +32,6 @@ import lombok.Data;
 	
 	private List<BookPrintVO> bookPrintVOs;
 	private BookVO bookVO;
-	
 	
 	private List<RoleVO> roleVOs;
 
@@ -69,16 +68,12 @@ import lombok.Data;
 //		// TODO Auto-generated method stub
 //		return true;
 //	}
-//
-//
+
 //	@Override
 //	public boolean isCredentialsNonExpired() {
 //		// TODO Auto-generated method stub
 //		return true;
-//	}
-//	
-//	
-//	
+//	}	
 
 
 

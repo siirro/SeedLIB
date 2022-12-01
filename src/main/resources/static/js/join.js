@@ -101,6 +101,19 @@
 // 	});
 // }
 
+$(".form-ele auto min").on("change",function(){
+    let addr =$(this).closest(".form").find("input[class=form-ele auto min]")
+        if(($this).val==etc) {
+        addr.val("readonly",false);
+        }else{
+        addr.val($(this).val())
+        addr.prop("readonly",true)
+        }
+
+})
+
+
+
 function nullcheck(data){
     if(data==null || data==""){
         return false
@@ -145,10 +158,9 @@ $("#passwordChk").blur(function(){
     $("#passwordChkResult").html("동일한 비밀번호를 입력해 주세요")
     }
 
-  
-
-
 })
+
+
 
 
 
