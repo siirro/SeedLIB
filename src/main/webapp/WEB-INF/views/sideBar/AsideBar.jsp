@@ -7,7 +7,7 @@
     <li id="lnb1_1"><a href="../../search/simple" class="on simple detail simpledetail">소장자료검색</a> 
       <ul class="MkSub submenu simpledetail2" style="display: none;"> 
         <li id="simple1"><a href="../../search/simple" class="haha" id="simple">통합검색</a> </li> 
-        <li id="detail1"><a href="../../search/detail" class="haha" id="detail">고급검색</a> </li> 
+        <li id="detail1"><a href="../../search/detail" class="haha" id="search/detail">고급검색</a> </li> 
       </ul>
     </li> 
     <li id="lnb1_2"><a href="../../search/category" class="category haha" id="category">주제별검색</a> </li> 
@@ -24,6 +24,7 @@
   if(url.includes('search/simple')||url.includes('book/detail')) {
     $(".simpledetail").addClass(' current');
     $(".simpledetail2").css("display","block")
+    $("#simple").addClass(' current');
   }
 
   if(url.includes('search/detail')){

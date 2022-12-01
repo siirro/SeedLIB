@@ -75,14 +75,15 @@
  -->			<a href="/search" id="btnSearchTop"><span class="blind">검색창열기</span></a>
 		</div>
 
+		
 
 		<div id="indexNavi" style="overflow: hidden;">
 			<ul id="topmenu">
 				<li id="gnb1" class="hehehe"> <a href="/search/simple"> <em>자료검색</em> </a>
 					<ul style="display: none;"> 
-						<li id="gnb1_1"><a href="/search/simple">소장자료검색</a></li> 
-						<li id="gnb1_2"><a href="/search/category">주제별검색</a> </li> 
-						<li id="gnb1_3"><a href="/search/newBook">신착자료검색</a> </li> 
+						<li id="search/simple"><a href="/search/simple">소장자료검색</a></li> 
+						<li id="search/cate"><a href="/search/category">주제별검색</a> </li> 
+						<li id="search/newBook"><a href="/search/newBook">신착자료검색</a> </li> 
 						<!-- <li id="gnb1_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">상호대차</a> </li> -->
 					</ul> 
 				</li> 
@@ -93,6 +94,7 @@
 						<li id="gnb2_2"><a href="/hope/hopeInfo">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo">소장도서기증</a></li> 
 						<li id="gnb2_4"><a href="/studyroom/roomList">열람실 조회/예약</a></li> 
+						<li id="gnb2_5"><a href="/studyroom/locker" id="locker" class="locker on">사물함 대여</a></li> 
 					</ul> 
 				</li> 
 				
@@ -109,7 +111,7 @@
 				<li id="gnb4" class="hehehe"> <a href="/info/bookStatus"> <em>도서관소개</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb4_1"><a href="/info/bookStatus">자료현황</a> </li> 
-						<li id="gnb4_2"><a href="/info/facilityStatus">시설현황</a> </li> 
+						<!-- <li id="gnb4_2"><a href="/info/facilityStatus">시설현황</a> </li>  -->
 						<li id="gnb4_3"><a href="/info/bookStatus">조직정보</a> </li> 
 						<li id="gnb4_4"><a href="/info/law">도서관관련법규</a> </li> 
 						<li id="gnb4_5"><a href="/info/map">찾아오시는길</a> </li> 
@@ -222,6 +224,13 @@
 	
 
 	
+</script>
+<script>
+	let hUrl = document.location.href;
+	if(hUrl.includes("search")) {
+		$("#gnb1").addClass("active");
+	}
+
 </script>
 
 <script src="/js/indexcopy.js"></script>

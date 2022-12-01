@@ -94,7 +94,7 @@
                         <li id="smb5"> <a href="/info/bookStatus" class="themeColor"> <em>도서관소개</em> </a> 
                             <ul> 
                                 <li id="smb5_1_1"><a href="/info/bookStatus">자료현황</a> </li> 
-                                <li id="smb5_1_2"><a href="/info/facilityStatus">시설현황</a> </li> 
+                                <!-- <li id="smb5_1_2"><a href="/info/facilityStatus">시설현황</a> </li>  -->
                                 <li id="smb5_2"><a href="/info/organization">조직정보</a> </li> 
                                 <li id="smb5_3"><a href="/info/law">도서관관련법규</a> </li> 
                                 <li id="smb5_4"><a href="/info/map">찾아오시는길</a> </li> 

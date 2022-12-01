@@ -116,14 +116,14 @@
 <div id="container" class="sub">	
 <div class="sVisualWrap">
 	<div class="sVisual">
-		<h3 id="roomName" data-room-name="${useList[0].roomVO.roomName}">${useList[0].roomVO.roomName} 현황 조회</h3>
+		<h3 id="roomName" data-room-name="${useList[0].roomVO.roomName}">사물함 대여</h3>
 	</div>
 </div>
 <div id="contentGroup">
        <c:import url="../sideBar/BsideBar.jsp"></c:import>
 <div id="contentcore">
 	<div class="naviandtitle">
-		<h3>${useList[0].roomVO.roomName} 현황 조회</h3>
+		<h3>사물함 대여</h3>
 		<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i>문화참여<i class="arrow"></i>사물함 대여
 		</div>
 	</div>
@@ -152,7 +152,7 @@
 	</div>
 <div style="display: inline-block; width:95%; text-align: center; border: 1px; border-style: solid;">
       <ul class="seatArea">
-         <c:forEach begin="1" end="${useList[0].roomVO.lastNum}" step="1" var="r" varStatus="status">
+         <c:forEach begin="1" end="40" step="1" var="r" varStatus="status">
 			 <c:set var="loop_flag" value="false" />
 				<c:forEach items="${useList}" var="ul">
 					<c:if test="${ul.seatNum eq r && ul.rvAble eq 0}">
@@ -188,7 +188,7 @@
 <div style="width: 100%;">
 	<dl class="linkBox">
 		<dt class="txtArea">열람실 좌석 조회/퇴실 체크는 마이페이지에서 가능합니다</dt>
-		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/roomStat">신청조회</a></dd>
+		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/lockerHistory">신청조회</a></dd>
 	</dl>
 </div>
 					<!-- End Of the Real Contents-->
