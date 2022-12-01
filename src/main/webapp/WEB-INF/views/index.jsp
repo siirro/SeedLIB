@@ -88,13 +88,13 @@
 				<!-- 주요서비스 -->
 				<div class="shortcut">
 					<ul class="shortcutList clearfix">
-						<li class="svc1"><a href="./resources/"><img src="/images/m_calendar.png"><br>문화행사신청</a></li>
-						<li class="svc2"><a href="./hope/hopeInfo"><img src="/images/m_books.png"><br>희망도서신청</a></li>
-						<li class="svc3"><a href="./studyroom/roomInfo"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
-						<li class="svc4"><a href="/intro/40027/contents.do"><img src="/images/m_info.png"><br>이용안내</a></li>
-						<li class="svc5"><a href="/intro/40028/contents.do"><img src="/images/m_library.png"><br>도서관소개</a></li>
-						<li class="svc6"><a href="/intro/40028/contents.do"><img src="/images/m_map.png"><br>찾아오는길</a></li>
-						<li class="svc7"><a href="/intro/40028/contents.do"><img src="/images/m_reading.png"><br>도서이용내역</a></li>
+						<li class="svc1"><a href="/resources/"><img src="/images/m_calendar.png"><br>문화행사신청</a></li>
+						<li class="svc2"><a href="/hope/hopeInfo"><img src="/images/m_books.png"><br>희망도서신청</a></li>
+						<li class="svc3"><a href="/studyroom/roomInfo"><img src="/images/m_room.png"><br>열람실현황조회</a></li>
+						<li class="svc4"><a href="/guide/manners"><img src="/images/m_info.png"><br>도서관안내</a></li>
+						<li class="svc5"><a href="/info/bookStatus"><img src="/images/m_library.png"><br>도서관소개</a></li>
+						<li class="svc6"><a href="/info/map"><img src="/images/m_map.png"><br>찾아오는길</a></li>
+						<li class="svc7"><a href="/mypage/myIndex"><img src="/images/m_reading.png"><br>도서이용내역</a></li>
 					</ul>
 				</div>
 				<!-- //주요서비스 -->
@@ -144,7 +144,7 @@
 
 					<ul class="popupList thumb" ondragstart="return false" style="width: 480px; height: 400px;">
 						<li style="z-index: 100; left: 0px; top: 0px;">
-							<a href="https://lib.anyang.go.kr/intro/menu/12220/contents/41241/contents.do">
+							<a href="/">
 								<img src="/images/l_winterNight.png" alt="안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책 안양시도서관 「한 도시 한 책 읽기」 2022 올해의 책
 									불편한 편의점
 									연이와 버들도령
@@ -250,7 +250,7 @@
 									<dd>0</dd>
 								</dl>
 							</div>
-							<div class="more"><a href="/intro/myInfo.do" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
+							<div class="more"><a href="/mypage/myIndex" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
 						</div>
 						<!-- 미니 내정보 -->
 

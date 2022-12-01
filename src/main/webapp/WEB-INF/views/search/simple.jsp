@@ -137,9 +137,8 @@
                                                     <ul class="dot-list clearfix">
                                                         <li class="kor on"><span>저자</span> : ${list.writer}</li>
                                                         <li class="kor on"><span>발행처</span> : ${list.publisher}</li>
-                                                        
-                                                                <li><span>발행년도</span> : ${list.bookDate}</li>
-                                                                <li><span>ISBN</span> : ${list.isbn}</li>
+                                                        <li><span>발행년도</span> : ${list.bookDate}</li>
+                                                        <li><span>ISBN</span> : ${list.isbn}</li>
                                                             
                                                     </ul>
                                                 </div>
@@ -366,7 +365,7 @@
                         </div>
                         <c:if test="${not empty list}">
                         <div class="pagingWrap">
-                            <input type="hidden" name="page" value="${pager.page}">
+                            <!-- <input type="hidden" name="page" value="${pager.page}"> -->
                             <p class="paging">
                                 <a href="./simpleresult?search=${pager.search}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
                                 
@@ -462,8 +461,15 @@ for(let i=0;i<kinds.length;i++){
 <script defer>
 
 let kw = '${param.search}'
-console.log(kw);
     $(".book_dataInner>a:contains('"+kw+"')").each(function (d, f) {
+        var regex = new RegExp(kw, 'gi');
+        f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
+    });
+    $(".book_dataInner>ul>li:nth-child(1):contains('"+kw+"')").each(function (d, f) {
+        var regex = new RegExp(kw, 'gi');
+        f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
+    });
+    $(".book_dataInner>ul>li:nth-child(2):contains('"+kw+"')").each(function (d, f) {
         var regex = new RegExp(kw, 'gi');
         f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
     });
