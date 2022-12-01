@@ -83,7 +83,22 @@
             <span id="lockerNum" style="font-size: 25px;" class="locker" value="${lockerNum}">사물함 번호 : ${lockerNum} </span>
         </div>
         <div>
-            <input type="date" id="stDate">-<input type="date" id="enDate" min="" max="">
+            <table class="tbl" style="width: 550px;">
+                <thead>
+                    <tr>
+                        <th>대여시작일자</th>
+                        <th>대여종료일자</th>
+                        <th>총 이용 금액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tabTr">
+                        <td><input type="date" id="stDate"></td>
+                        <td><input type="date" id="enDate" min="" max=""></td>
+                        <td><input type="text" id="price" name="price" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <hr style="margin-top: 30px;">   
         <div>

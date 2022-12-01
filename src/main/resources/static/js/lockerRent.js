@@ -7,6 +7,7 @@ let used = "";
 let roomName = "";
 
 let enDate = new Date();
+let stDate = new Date();
 
   
 // 듀얼 모니터 고려한 윈도우 띄우기
@@ -44,15 +45,25 @@ $("#stDate").blur(function(){
     // stDateString = stDateString.replace(/-/g,",");
     // console.log(stDateString);
     console.log(startDate);
-    let stDate = new Date(startDate.substr(0,4),startDate.substr(5,2),startDate.substr(8,2));
+    // stDate = new Date(startDate.substr(0,4),startDate.substr(5,2),startDate.substr(8,2));
+
+    console.log(startDate.substr(0,4), startDate.substr(5,2), startDate.substr(8,2));
+    stDate.setFullYear(startDate.substr(0,4));
+    stDate.setMonth(startDate.substr(5,2));
+    stDate.setDate(startDate.substr(8,2));
+
     console.log(stDate);
     let enDateMin = startDate;
-    let enDateMax = new Date(stDate.setDate(stDate.getMonth()+2));
-    console.log(stDate);
+    let enDateMax = stDate;
     console.log(dateForm(enDateMax));
     $("#enDate").attr("min", enDateMin);
     $("#enDate").attr("max", dateForm(enDateMax));
 });
+
+$("#enDate").change(function(){
+    
+    $("#price").val();
+})
 
 $("#rentBtn").click(function(){
     window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
@@ -102,7 +113,9 @@ $("#rentBtn").click(function(){
 function dateForm(date){
     let yyyy = date.getFullYear();
     let mm = date.getMonth()+1;
-    let dd = date.getDate();
+    let dd = date.getDate()-1;
+    mm = mm > 10 ? mm:'0' + mm;
+    dd = dd > 10 ? dd:'0' + dd;
     let dateString = yyyy+'-'+mm+'-'+dd
     return dateString;
 
