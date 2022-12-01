@@ -18,35 +18,6 @@ class AdminBookServiceTest {
 	private AdminBookService adminBookService;
 	
 	//@Test
-	void getBoCartListTest()throws Exception{
-		
-		BookPrintVO bookPrintVO = new BookPrintVO();
-		bookPrintVO.setUserName("member");
-		
-		List<BookPrintVO> bookPrintVOs = adminBookService.getBoCartList(bookPrintVO);
-		
-		assertEquals(2,bookPrintVOs.size());
-		
-	}
-	
-	//@Test
-	void setBoCartTest()throws Exception{
-		
-		BookPrintVO bookPrintVO = new BookPrintVO();
-		bookPrintVO.setCaStPage(20L);
-		bookPrintVO.setCaLsPage(40L);
-		bookPrintVO.setCaTtPage(20L);
-		bookPrintVO.setCaAmount(3000L);
-		bookPrintVO.setUserName("member");
-		bookPrintVO.setIsbn("9780062882059");
-		
-		int result = adminBookService.setBoCart(bookPrintVO);
-		
-		assertEquals(1, result);
-		
-	}
-	
-	//@Test
 	void getAdBookListTest() throws Exception{
 		
 		List<BookVO> bookVOs = adminBookService.getAdBookList();

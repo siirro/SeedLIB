@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.book.order.BoOrderMapper">
+
+	<!--                     바구니 제본 신청 목록                    -->
+	<select id="getBoCartList" parameterType="BookPrintVO" resultType="BookPrintVO">
+		SELECT * FROM CART WHERE USERNAME = #{userName}
+	</select>
+
+	<!--                     바구니 제본 신청                     -->
+	<insert id="setBoCart" parameterType="BookPrintVO" useGeneratedKeys="true" keyProperty="caNum">
+		INSERT INTO CART (CANUM, CASTPAGE, CALSPAGE, CATTPAGE, CAAMOUNT, CASTATUS, USERNAME, ISBN)
+		VALUES (#{caNum}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'N', #{userName}, #{isbn})
+	</insert>
+	
+	<!--                     제본 결제                     -->
+	<insert id="setBoOrder" parameterType="BoOrderVO" useGeneratedKeys="true" keyProperty="ordNum">
+		INSERT INTO `ORDER` (ORDNUM, ORDTOTAL, ORDDATE, ORDSTATUS)
+		VALUES(#{ordNum}, 1, now(), 1)
+	</insert>
+</mapper> 

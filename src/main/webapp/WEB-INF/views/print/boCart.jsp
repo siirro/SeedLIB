@@ -8,9 +8,10 @@
 	<link rel="icon" href="/images/favicon.png">
     <title>소장 도서 기증 : 씨앗도서관 ☘️</title>
 	<link rel="stylesheet" href="/css/admin/modal.css">
+	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- header -->
-	<c:import url="../../temp/header.jsp"></c:import>
+	<c:import url="../temp/header.jsp"></c:import>
 	<script defer src="/js/admin/modal.js"></script>
 </head>
 <body>
@@ -75,7 +76,7 @@
 								<col class="no mobileHide">
 								<col>
 								<col style="width: 200px;" class="date mobileHide">
-								<col style="width:100px">
+								<col style="width: 100px;">
 							</colgroup>
 							<thead>
 								<tr>
@@ -112,10 +113,10 @@
 			</div>
 			<form id="postFrm" name="postFrm" class="pFrm"  method="post">
 				<!-- 팝업 : 우편복사 신청 -->
-				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:flex" id="grpBtns_apply">
+				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 					<div class="layer_popup basket_layer">
 						<div class="popup_header">
-							<h1 class="popup_title">우편복사 신청</h1>
+							<h1 class="popup_title">복사 신청</h1>
 						</div>
 						<div class="popup_contents">
 							<div class="post_copy_wrap">
@@ -124,7 +125,7 @@
 										<legend>복사 신청</legend>
 										<div class="post_info_wrap">
 											<div class="btn_wrap">
-												<button type="button" class="btn">우편복사신청 안내</button>
+												<button type="button" class="btn">복사신청 안내</button>
 											</div>
 											<div class="inner">
 												<ul class="post_info_list">
@@ -197,7 +198,7 @@
 											</div>
 											<div class="inner">
 												<div class="notice_box">
-													<!-- <strong class="notice_title">우편복사 범위</strong> -->
+													<!-- <strong class="notice_title">복사 범위</strong> -->
 													<ul>
 														<li><span class="as_is_txt">※ 저작권법에 의거하여 부분 복제 (전체 페이지수의 1/3 범위 이내) 가능</span></li>
 														<li>- 전체 페이지수 확인 : 홈페이지 자료 검색 > 자료 상세화면 > 형태사항 참고 <a href="#none" class="btn_layer" data-layer="info_img_pop" data-img-src="/resource/templete/nl/img/sub/basket_ex_img.jpg" data-focus="img_ex_pop"><font color="blue">(예시보기)</font></a></li>
@@ -210,13 +211,14 @@
 												<table>
 													<caption><span class="ir_text">복사 신청한 도서 정보</span></caption>
 													<colgroup>
-														<col class="col2">
+														<col class="col2" style="width: 25%;">
 														<col class="col3">
-														<col class="col3">
+														<col class="col3" style="width: 10%;">
+														<col >
+														<col >
 														<col>
 														<col>
 														<col>
-														<col class="col2">
 													</colgroup>
 													<thead>
 														<tr>
@@ -225,14 +227,22 @@
 															<th scope="col">청구 기호</th>
 															<th scope="col">종류</th>
 															<th scope="col">인쇄 방식</th>
-															<th scope="col">용지 크기</th>
-															<th scope="col">복사 페이지</th>
+															<th scope="col">시작 페이지</th>
+															<th scope="col">끝 페이지</th>
+															<th scope="col">총 페이지</th>
 														</tr>
 													</thead>
 													<tbody id="contents_pc">
+														<c:forEach items="${list}" var="boPrintVO">
 														<tr>
 															<td>
-																<span></span>
+																<span>도서제모옥이 길어서 이렇게 예시를 보여야합니다</span>
+															</td>
+															<td>
+																<span>발행연도오옭</span>
+															</td>
+															<td>
+																<span>${boPrintVO.isbn}</span>
 															</td>
 															<td>
 																<div class="input_select_wrap2">
@@ -246,9 +256,7 @@
 																<div class="input_select_wrap2">
 																	<select title="용지크기 선택" name="" id="">
 																		<option value="A4">A4</option>
-																		<option value="A3">A3</option>
 																		<option value="B5">B5</option>
-																		<option value="B4">B4</option>
 																	</select>
 																</div>
 															</td>
@@ -257,10 +265,27 @@
 																	<label for="copyNum">
 																		<span class="ir_text">복사면 기입</span>
 																	</label>
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="시작 쪽">
 																</div>
-																<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="복사 페이지를 입력해주세요.">
+															</td>
+															<td>
+																<div class="input_text_wrap">
+																	<label for="copyNum">
+																		<span class="ir_text">복사면 기입</span>
+																	</label>
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="끝 쪽">
+																</div>
+															</td>
+															<td>
+																<div class="input_text_wrap">
+																	<label for="copyNum">
+																		<span class="ir_text">복사면 기입</span>
+																	</label>
+																	<input type="text" id="" name="" class="input_text" aria-label="복사면 기입" placeholder="총 페이지">
+																</div>
 															</td>
 														</tr>
+														</c:forEach>
 													</tbody>
 												</table>
 												</div>
@@ -286,18 +311,11 @@
 																</th>
 																<td>
 																	<div class="input_select_wrap2 input_txtSel_wrap">
-		<!-- 																<select title="우편복사 수령방법" id="binding" name="binding" onchange="fn_binding(this);"> -->
-																		<select title="우편복사 수령방법" id="binding" name="binding">
-																			<!-- [D] 수정 전 선택된 옵션값 selected -->
+																		<select title="우편복사 수령방법" id="binding">
 																			<option value="N">제본 하지 않음</option>
 																			<option value="Y">스프링 제본함</option>
 																		</select>
 																	</div>
-		<!-- 															<div class="input_text_wrap input_selTxt_wrap" id="inputBinding" style="display:none;"> -->
-		<!-- 																<input type="text" id="bindingDesc" name="bindingDesc" class="input_text" aria-label="제본 요청사항" required=""> -->
-		<!-- 																<label for="bindingDesc" class="placeholder">제본 요청사항을 입력해주세요.</label>	 -->
-		<!-- 															</div> -->
-		<!-- 															<p class="policy_agree" id="bindingEx" style="display:none;">ex. 신청자료 모두 통합하여 한권으로 제본 요청</p>			 -->
 																</td>
 															</tr>
 														</tbody>
@@ -308,7 +326,7 @@
 												<div class="post_copy_wrap">
 													<!-- 우편복사 수령 정보 -->
 													<table class="tbl_post_copy">
-														<caption class="ir_text">우편복사 수령 정보</caption>
+														<caption class="ir_text">복사 수령 정보</caption>
 														<colgroup>
 															<col class="col1">
 															<col>
@@ -339,17 +357,17 @@
 																				<p style="position : relative;">
 																					<b><span class="txt_red">(필수항목)</span>개인정보 수집 및 이용</b>에 동의합니다.
 																					&nbsp;&nbsp;&nbsp;
-																					<input type="checkbox" id="agree01" name="agree1" value="Y" class="normal_input" />
+																					<input type="checkbox" id="agree01" class="normal_input" />
 																					<label for="agree01">동의</label>
-																					<input type="checkbox" id="agree03" name="agree1" value="N" class="normal_input" />
+																					<input type="checkbox" id="agree03" class="normal_input" />
 																					<label for="agree03">미동의</label>
 																				</p>
 																				<p style="position : relative;">
 																					<b><span class="txt_red">(선택항목)</span>개인정보 수집 및 이용</b>에 동의합니다.
 																					&nbsp;&nbsp;&nbsp;
-																					<input type="checkbox" id="agree02" name="agree2" value="Y" class="normal_input" />
+																					<input type="checkbox" id="agree02" class="normal_input" />
 																					<label for="agree02">동의</label>
-																					<input type="checkbox" id="agree04" name="agree2" value="N" class="normal_input" />
+																					<input type="checkbox" id="agree04" class="normal_input" />
 																					<label for="agree04">미동의</label>
 																				</p>
 																			</div>
@@ -359,63 +377,36 @@
 															</tr>
 															<tr>
 																<th scope="row">
-																	<span>우편복사 수령방법</span>
-		
-																</th>
-																<td>
-																	<div class="input_select_wrap2">
-																		<select title="우편복사 수령방법" id="postmethod" name="postmethod" onchange="fn_faxDisplay(this);">
-																			<!-- [D] 수정 전 선택된 옵션값 selected -->
-																			<option value="general">일반배송</option>
-																			<option value="fast">빠른배송</option>
-																			<option value="fax">FAX</option>
-																		</select>
-																	</div>
-																	<div class="input_text_wrap input_phone_wrap" id="inputFax" style="display:none;">
-																		<input type="text" id="faxTel" name="faxTel" class="input_text" aria-label="팩스번호" required="" />
-																		<label for="faxTel" class="placeholder">입력예: 021234567</label>
-																	</div>
-																	<p class="notice_text" id="mobile_fax" style="display:none;">※ 모바일 팩스 전송 불가</p>
-																</td>
-															</tr>
-															<tr>
-																<th scope="row">
 																	<label for="hpTel">휴대폰번호</label>
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="hpTel" name="hpTel" class="input_text" aria-label="휴대폰번호" required="" />
+																		<input type="text" id="ipPhone" name="phone" class="input_text" aria-label="휴대폰번호" required="" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
 		
 																	<span class="input_check_wrap">
-																		<input type="checkbox" id="smsApply" name="smsApply" class="input_check" checked />
+																		<input type="checkbox" id="ipPhoneCh" class="input_check" checked />
 																		<label for="smsApply">접수내역 알림 신청</label>
 																	</span>
 																</td>
 															</tr>
 															<tr>
 																<th scope="row">
-																	<label for="post1st">배송지</label>
+																	<label for="post1st">이메일</label>
 																</th>
 																<td>
-																	<input type="hidden" id="addressApply" name="addressApply" value="" />
-																	<div class="address_wrap">
-																		<div class="post_wrap">
-																			<a href="#" class="btn_post" title="새창열림" onclick="ItgJs.fn_schAddr();fn_addressValue();">우편번호 검색</a>
-																			<div class="input_text_wrap">
-																				<input type="text" name="post1st" id="post1st" class="input_text" aria-label="우편번호" required="" readonly="" />
-																			</div>
-																		</div>
-																		<div class="input_text_wrap">
-																			<input type="text" name="addr1st1" id="addr1st1" class="input_text" aria-label="기본주소" required="" readonly="" />
-																			<label for="addr1st1"><span class="ir_text">우편번호 검색을 통해 기본주소 입력</span></label>
-																		</div>
-																		<div class="input_text_wrap">
-																			<label for="addr1st2" class="ir_text">상세주소</label>
-																			<input type="text" name="addr1st2" id="addr1st2" class="input_text" aria-label="상세주소" required="" />
-																		</div>
+																	<div class="input_text_wrap input_phone_wrap">
+																		<input type="text" id="ipEmail" name="email" class="input_text" aria-label="이메일" required="" />
+																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
+																	</div>
+																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
+		
+																	<span class="input_check_wrap">
+																		<input type="checkbox" id="ipEmailCh" class="input_check" checked />
+																		<label for="smsApply">접수내역 알림 신청</label>
+																	</span>
 																	</div>
 																</td>
 															</tr>
@@ -425,7 +416,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap">
-																		<input type="text" id="etc" name="etc" class="input_text" aria-label="기타 전달사항" />
+																		<input type="text" id="etcCh" class="input_text" aria-label="기타 전달사항" />
 																	</div>
 																</td>
 															</tr> <!-- //우편복사 수령 정보 -->
@@ -436,7 +427,7 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" onclick="javascript:goPostApply();return false;">신청</button>
+											<button type="button" class="btn btn_apply">신청</button>
 										</div>
 									</fieldset>
 								</form>
@@ -445,13 +436,13 @@
 						<button type="button" class="btn_close closeLayer"><span class="sp">닫기</span></button>
 					</div>
 				</div>
-				<!-- //팝업 : 우편복사 신청 -->
-		
 			</form>
+			<!-- //팝업 : 우편복사 신청 -->
+
 		</div>
 	</div>		
 <!-- footer -->
-<c:import url="../../temp/footer.jsp"></c:import>
+<c:import url="../temp/footer.jsp"></c:import>
 <!-- footer -->
 </body>
 </html>
