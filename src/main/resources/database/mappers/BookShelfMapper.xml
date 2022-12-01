@@ -10,11 +10,11 @@
 	</select>
 
 	<select id="getShelfExist" parameterType="BookShelfVO" resultType="Integer">
-		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb'
+		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = #{userName}
 	</select>
 	
 	<select id="getSameShelf" parameterType="BookShelfVO" resultType="Integer">
-		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = 'bb' AND SHNAME = #{shName}
+		SELECT COUNT(SHNUM) FROM SHELF WHERE USERNAME = #{userName} AND SHNAME = #{shName}
 	</select>
 	
 	<select id="getBookExist" parameterType="BookPickVO" resultType="Integer">

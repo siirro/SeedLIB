@@ -20,19 +20,21 @@ public class ShelfBookPager {
 		private boolean pre;
 		private boolean next;
 		
-		private Long shNum;
-		private Long isbn;
+		//파라미터
 		//검색어 - 제목
 		private String title;
+		private Long shNum;
+		private Long isbn;
+		
 		//정렬 - 제목 / isbn
 		private String select;
 		//정렬
 		private String sort;
 		//등록일
-		private Date regDate;
+		private String regDate;
 		//등록일 00~00일 사이
-		private Date regDateA;
-		private Date regDateB;
+		private Long regDateA;
+		private Long regDateB;
 
 		
 		public ShelfBookPager() {
@@ -139,6 +141,14 @@ public class ShelfBookPager {
 			}
 			return isbn;
 		}
+		
+		public Long get() {
+			if(this.isbn==null) {
+				this.isbn=0L;
+			}
+			return isbn;
+		}
+
 
 
 }

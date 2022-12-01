@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<input type="hidden" id="userName" value="bb">
+	<input type="hidden" id="userName" value="${sessionScope.member.userName}">
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 새 책 꽂 이 🌱</span>
