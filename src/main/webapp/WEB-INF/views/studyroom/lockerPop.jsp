@@ -95,7 +95,7 @@
                     <tr class="tabTr">
                         <td><input type="date" id="stDate"></td>
                         <td><input type="date" id="enDate" min="" max=""></td>
-                        <td><input type="text" id="price" name="price" readonly></td>
+                        <td><input type="text" id="price" name="price" readonly style="text-align: end;"></td>
                     </tr>
                 </tbody>
             </table>

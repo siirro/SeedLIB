@@ -8,7 +8,6 @@ let roomName = "";
 
 let enDate = new Date();
 let stDate = new Date();
-
   
 // 듀얼 모니터 고려한 윈도우 띄우기
 let curX = window.screenLeft;
@@ -42,17 +41,9 @@ $(".lockerList").on("click",".resBtn",function(){
 
 $("#stDate").blur(function(){
     let startDate = $("#stDate").val();
-    // stDateString = stDateString.replace(/-/g,",");
-    // console.log(stDateString);
     console.log(startDate);
-    // stDate = new Date(startDate.substr(0,4),startDate.substr(5,2),startDate.substr(8,2));
+    stDate = new Date(startDate.substr(0,4),startDate.substr(5,2),startDate.substr(8,2));
 
-    console.log(startDate.substr(0,4), startDate.substr(5,2), startDate.substr(8,2));
-    stDate.setFullYear(startDate.substr(0,4));
-    stDate.setMonth(startDate.substr(5,2));
-    stDate.setDate(startDate.substr(8,2));
-
-    console.log(stDate);
     let enDateMin = startDate;
     let enDateMax = stDate;
     console.log(dateForm(enDateMax));
@@ -61,15 +52,19 @@ $("#stDate").blur(function(){
 });
 
 $("#enDate").change(function(){
-    
-    $("#price").val();
+    let newStDate = new Date($("#stDate").val());
+    let newEnDate = new Date($("#enDate").val());
+    let days =  Math.abs((newEnDate.getTime() - newStDate.getTime())/(1000*60*60*24))+1;
+    console.log(days);
+    let price = 500*days;
+    $("#price").val(price);
 })
 
 $("#rentBtn").click(function(){
     window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
-    const studyDetailVO={
-        seatNum:$("#seatNum").attr("value"),
-        roomNum:$("#roomNum").attr("value"),
+    const lockerVO={
+        lockerNum:$("#lockerNum").attr("value"),
+        price:$("#price").attr("value"),
         userName:$("#userName").val()
     }
 
