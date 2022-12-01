@@ -15,8 +15,13 @@
 		<typeAlias type="com.seed.lib.book.like.MbBookLikeVO" alias="MbBookLikeVO"/>
 		<typeAlias type="com.seed.lib.book.shelf.BookShelfVO" alias="BookShelfVO"/>
 		<typeAlias type="com.seed.lib.book.shelf.BookPickVO" alias="BookPickVO"/>
+		<typeAlias type="com.seed.lib.book.loan.BookLoanVO" alias="BookLoanVO"/>
+		<typeAlias type="com.seed.lib.book.loan.BookMutualLoanVO" alias="BookMutualLoanVO"/>
+		<typeAlias type="com.seed.lib.book.loan.BookReservationVO" alias="BookReservationVO"/>
 		<typeAlias type="com.seed.lib.util.ShelfPager" alias="ShelfPager"/>
+		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfBookPager"/>
 		<typeAlias type="com.seed.lib.util.BookPager" alias="BookPager"/>
+		<typeAlias type="com.seed.lib.util.BookLoanPager" alias="BookLoanPager"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
@@ -36,7 +41,8 @@
 		 
 		 <typeAlias type="java.util.List" alias="List"/>
 		 <typeAlias type="java.util.Map" alias="Map"/>
-		<typeAlias type="java.lang.Long" alias="Long"/>
+		 <typeAlias type="java.lang.Long" alias="Long"/>
+		 <typeAlias type="java.lang.Integer" alias="Integer"/>
 
 		 
 		 

@@ -108,7 +108,7 @@
 .snsFarm .snsList {display: none; overflow: hidden; position: absolute; top: 0; right: 0; z-index: 1; font-size: 0; line-height: 0; white-space: nowrap;}
 /* .snsFarm a::before {content: ''; display: block; position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(/include/image/common/ico_sns.png) 0 0 no-repeat; background-size: 40px auto;} */
 .snsFarm a.snsShare::before {background-position: 1px 2px;}
-.snsFarm a.snsPrint::before {background-position: 1px -39px;}
+.snsFarm a.snsPrint::before {background-color: #39b54a;background-position: 1px -39px;}
 .snsFarm a.snsStory::before {background-color: #fed300;background-position: 0 -80px;}
 .snsFarm a.snsTwitter::before {background-color: #2e97e9;background-position: 0 -120px;}
 .snsFarm a.snsFacebook::before {background-color: #4064d9;background-position: 0 -160px;}
@@ -367,15 +367,15 @@ p.dot span {position: absolute; top: 0; right: 0}
 .policyBox span {font-size: 1.188rem; font-weight: 700; display: inline-block;}
 .scrollBox {overflow-x: hidden; overflow-y: auto; max-height: 200px; padding: 20px; border: 1px solid #d6d6d6; background-color: #faf9f9; box-sizing: border-box;}
 
-/* .summaryDesc {overflow: hidden; position: relative; margin-bottom: 40px; padding: 10px; background: url(/include/image/common/bg_pattern.png) 0 0; } */
+.summaryDesc {overflow: hidden; position: relative; margin-bottom: 40px; padding: 10px; background: url(/images/bg_pattern.png) 0 0; }
 .summaryDesc .innerBox {display: table; width: 100%; background-color: #fff; padding: 15px 0; box-sizing: border-box;}
 .summaryDesc .innerBox.noImg {padding: 15px;}
-/* .summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/images/ico_book.png) no-repeat 0 0;} */
+.summaryDesc .img {position: absolute; top: 50%; left: 45px; margin-top: -50px; width: 100px; height: 100px; background: url(/images/searchCategory/sc_literature.png) no-repeat 0 0;}
 
 .summaryDesc .img + .desc {display: table-cell; width: 100%; height: 100px; padding: 0 20px 0 163px;}
 .summaryDesc .desc {word-break: keep-all; vertical-align: middle; color: #464646; font-size: 1.059em; letter-spacing: -0.75px;}
 .summaryDesc .desc .title {font-size: 1.313em; color: #464646; font-weight: 500; margin-bottom: 5px;}
-.summaryDesc .tit,.noticeDesc .tit {display: block; margin-bottom: 5px; font-size: 1.063em; color: #464646;}
+.summaryDesc .tit,.noticeDesc .tit {display: block; margin-bottom: 5px; font-size: 1.463em; color: #464646;}
 
 /* 나만의도서관 - 도서추천서비스 */
 .summaryDesc .recommend_box {width:100%; background-color:#fff; padding: 25px 0;}

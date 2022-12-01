@@ -31,6 +31,7 @@ public class StudyRoomController {
 	
 	@GetMapping("roomList")
 	public void getRoomList() throws Exception{
+		service.changeAllSeat();
 		
 	}
 	

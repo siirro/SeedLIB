@@ -93,22 +93,24 @@
 .boxWrap {overflow: hidden; position: relative; margin-bottom: 30px;}
 
 /* 팝업존 */
+.popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; background: url("/images/btn_control_split.png") 0 0 no-repeat}
+.popupZone .controlGroup .btnSlidePrev:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px}
+.popupZone .controlGroup .btnSlideNext:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px;background-position-x:-7px}
+.popupZone .controlGroup .btnSlidePlay:before {width:8px;height:9px;margin:-4.5px 0 0 -3px;background-position-x:-14px}
+.popupZone .controlGroup .btnSlidePause:before {width:7px;height:9px;margin:-4.5px 0 0 -3.5px;background-position-x:-22px}
+.popupZone .controlGroup .btnSlidePrev {left:0}
+.popupZone .controlGroup .btnSlideNext {right:0}
 /* .popupZone {overflow: hidden; position: relative; border: 6px solid #fff;}
 .popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 0; left: 0; z-index: 30; width: 100%; height: 33px; z-index: 101; text-align: right;} 
 .popupZone .controlGroup a {float: left; display: block; position: relative; width: 29px; height: 33px; background-color: rgba(0,0,0,.5);}
-.popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; background: url("/include/image/intro/main/btn_control_split.png") 0 0 no-repeat}
 .popupZone .controlGroup .nowpage {display: inline-block; height: 33px; line-height: 33px; padding: 0 20px; background-color: rgba(0,0,0,.5); color:#fff; font-weight: 300; vertical-align: top;}
 .popupZone .controlGroup .nowpage strong {font-weight: 300;}
 .popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 29px; vertical-align: top;}
 .popupZone .controlGroup .pp-controls {float: left;}
 .popupZone .controlGroup .arrow {position:absolute;top:0}
-.popupZone .controlGroup .btnSlidePrev {left:0}
-.popupZone .controlGroup .btnSlideNext {right:0}
+
 .popupZone .controlGroup .listTypeWrap {display:inline-block;vertical-align:middle}
-.popupZone .controlGroup .btnSlidePrev:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px}
-.popupZone .controlGroup .btnSlideNext:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px;background-position-x:-7px}
-.popupZone .controlGroup .btnSlidePlay:before {width:8px;height:9px;margin:-4.5px 0 0 -3px;background-position-x:-14px}
-.popupZone .controlGroup .btnSlidePause:before {width:7px;height:9px;margin:-4.5px 0 0 -3.5px;background-position-x:-22px}
+
 .popupZone .popupList {overflow:hidden;}
 .popupZone .popupList.thumb {position:relative;}
 .popupZone .popupList.thumb > li {position:absolute; top:0; left:0; width:100%; height:100%;}
@@ -445,7 +447,7 @@
 @media screen and (min-width:1025px) {
 	/* .mainSearchWrap {padding-right: 129px;} */
 
-	.popupZone {float: left; width: 467px; height: 344px;}
+	.popupZone {float: left; width: 467px; height: 340px;}
 	.noticeZone {float: left; width: 358px; height: 304px; margin-left: 20px;}
 	.serviceZone {float: left; width: 331px; height: 344px; margin-left: 20px;}
 
@@ -469,21 +471,38 @@
 	.swiper-pagination-bullet-active {width: 28px; background-color: #d92c41;}
 }
 
+#slide img {
+	vertical-align: top;
+}
+
+#slide { 
+	position: relative; 
+	transition: 0.5s;
+  }
+
+#slide li {
+	float:left;
+	margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+	width: 467px;
+}
 
 #section5 {overflow: hidden; position: relative; padding: 50px 0 50px 0;}
 /* 팝업존 */
 .popupZone {overflow: hidden; position: relative;}
-.popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 0; left: 0; z-index: 30; width: 100%; height: 33px; z-index: 101; text-align: right;} 
-.popupZone .controlGroup a {float: left; display: block; position: relative; width: 29px; height: 33px; background-color: rgba(0,0,0,.5);}
+.popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 143px; left: 0; z-index: 30; width: 100%; height: 53px; z-index: 101; text-align: right;} 
+/* .popupZone .arrowWrap {overflow: hidden; position: absolute; bottom: 143px; left: 0; z-index: 30; width: 100%; height: 53px; z-index: 101; text-align: right;}  */
+.popupZone .controlGroup a {float: left; display: block; position: relative; width: 53px; height: 53px; background-color: rgba(0,0,0,22%);}
 .popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; }
 /* background: url("/include/image/intro/main/btn_control_split.png") 0 0 no-repeat */
 .popupZone .controlGroup .nowpage {display: inline-block; height: 33px; line-height: 33px; padding: 0 20px; background-color: rgba(0,0,0,.5); color:#fff; font-weight: 300; vertical-align: top;}
 .popupZone .controlGroup .nowpage strong {font-weight: 300;}
-.popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 29px; vertical-align: top;}
+.popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 0px; vertical-align: top;}
 .popupZone .controlGroup .pp-controls {float: left;}
-.popupZone .controlGroup .arrow {position:absolute;top:0}
-.popupZone .controlGroup .btnSlidePrev {left:0}
-.popupZone .controlGroup .btnSlideNext {right:0}
+/* .popupZone .controlGroup .arrow {position:absolute;top:0} */
+.popupZone .controlGroup .btnSlidePrev {left:0; position:absolute;top:0}
+.popupZone .controlGroup .btnSlideNext {right:0; position:absolute;top:0}
 .popupZone .controlGroup .listTypeWrap {display:inline-block;vertical-align:middle}
 .popupZone .controlGroup .btnSlidePrev:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px}
 .popupZone .controlGroup .btnSlideNext:before {width:7px;height:11px;margin:-5.5px 0 0 -3.5px;background-position-x:-7px}
@@ -581,13 +600,13 @@
 .noticeZone .articleList .top .date {position: absolute; top: auto; bottom: 0; left: 107px; right: auto;}
 
 /* 서비스 이용현황 */
-.serviceZone {position: relative; background-size: cover; padding: 30px 20px; box-sizing: border-box;}
+.serviceZone {position: relative; background-size: cover; padding: 30px 20px; box-sizing: border-box; background-image: linear-gradient(to left, #9be15d, #00e3ae);}
 .serviceZone h5 {font-size: 1.563em; line-height: 1; color: #fff; margin-bottom: 30px;}
 .serviceZone .more {position: absolute; top: 29px; right: 30px;}
 .serviceZone .more a {display: block; width: 28px; height: 28px; background-color: rgba(255,255,255,.2); border-radius: 100%; position: relative;}
 .serviceZone .more a::before {content: ""; position: absolute; left: 50%; top: 50%; width: 1px; height: 13px; margin-top: -6px; background-color: #fff;}
 .serviceZone .more a::after {content: ""; position: absolute; left: 50%; top: 50%; width: 13px; height: 1px; margin-left: -6px; background-color: #fff;}
-.serviceZone .myInfo {overflow: hidden; position: relative; background-color: rgba(255,255,255,.5); margin-bottom: 40px;}
+.serviceZone .myInfo {overflow: hidden; position: relative; background-color: rgba(255,255,255,.5); margin-bottom: 20px;}
 .serviceZone .myInfo li {float: left; display: table; box-sizing: border-box; position: relative;}
 .serviceZone .myInfo li:nth-child(1) {width: 60%; padding: 0 28px 0 20px; line-height: 1.3;}
 .serviceZone .myInfo li:nth-child(1)::after {content: ""; position: absolute; right: 0; top: 0; border-top: 43px solid rgba(255,255,255,.3); border-left: 28px solid transparent; border-bottom: 43px solid rgba(255,255,255,.3);}
@@ -596,9 +615,9 @@
 .serviceZone .myInfo li p span {font-size: 0.778em; color: #ef2525;}
 .serviceZone .myInfoList {overflow: hidden; position: relative;}
 .serviceZone .myInfoList dl {float: left; width: 100%; color: #fff; font-size: 1.063em;}
-.serviceZone .myInfoList dl + dl {margin-top: 13px;}
+.serviceZone .myInfoList dl + dl {margin-top: 7px;}
 .serviceZone .myInfoList dl dt {float: left;}
-.serviceZone .myInfoList dl dt::before {content: ""; display: inline; padding-left: 20px;}
+.serviceZone .myInfoList dl dt::before {content: ""; display: inline; padding-left: 10px;}
 .serviceZone .myInfoList dl dd {float: right; width: 56px; line-height: 28px; font-weight: 500; text-align: center; background-color: rgba(255,255,255,.15); border-radius: 28px;}
 
 /* 회원 로그인 */
