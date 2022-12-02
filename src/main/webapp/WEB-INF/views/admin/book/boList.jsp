@@ -77,8 +77,8 @@
                       />
                     </a>
                   </div>
-                  <div class="card-content">
-                    <h6><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h6>
+                  <div class="card-content" style="overflow: hidden;">
+                    <h4><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
                   </div>
                 </div>
               </div>
