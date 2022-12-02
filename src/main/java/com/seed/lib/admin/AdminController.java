@@ -19,6 +19,18 @@ public class AdminController {
 	@Autowired
 	private MemberService memberService;
 	
+	// 기증도서 목록 조회
+	@GetMapping("donaBoList")
+	public String getDonaBoList()throws Exception{
+		return "admin/donaBoList";
+	}
+	
+	// 희망도서 목록 조회
+	@GetMapping("hopeBoList")
+	public String getHopeBoList()throws Exception{
+		return "admin/hopeBoList";
+	}
+	
 	// 어드민 로그아웃
 	@GetMapping("adLogout")
 	public String setAdLogout(HttpSession session)throws Exception{

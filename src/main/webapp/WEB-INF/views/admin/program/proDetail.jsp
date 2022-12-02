@@ -74,8 +74,20 @@
                       <img src="/images/logo200.png" alt="씨앗도서관"/>
                   </div>
                   <div class="card-content">
-                    <h4>${proVO.proName}</h4>
+                    <h4>${proVO.proTitle}</h4>
 
+                    <div class="text-success">
+	                    <hr>
+                    </div>
+                    
+                    <h4>프로그램내용</h4>
+                    <textarea rows="20" cols="">
+                    	<c:out value="${proVO.proContents}"></c:out>
+                    </textarea>
+                    <p>
+                      ${proVO.proContents}
+                    </p>
+                    
                     <div class="text-success">
 	                    <hr>
                     </div>
