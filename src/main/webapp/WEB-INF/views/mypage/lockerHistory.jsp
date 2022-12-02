@@ -27,7 +27,7 @@
 			padding: 6px 15px;
 		}
 	</style>
-<title>도서 기증 신청 조회</title>
+<title>사물함 대여 조회 : 씨앗도서관 ☘️ </title>
 </head>
 <body>
 	<!-- header -->
@@ -43,15 +43,15 @@
 
 <div id="contentcore">
 <div class="naviandtitle">
-	<h3>도서기증신청조회</h3>
-	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 마이페이지 <i class="arrow"></i>도서기증신청조회</div>
+	<h3>희망도서신청조회</h3>
+	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 마이페이지 <i class="arrow"></i>희망도서신청조회</div>
 </div>
 <div id="contents" class="contentArea">
 
 
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
-					<form action="../mypage/donList" method="GET">
+					<form action="../mypage/hopeList" method="GET">
 						<input type="hidden" id="userName" name="userName" value="${memberVO.userName}">
 						<fieldset>
 							<legend class="blind">게시글 검색 영역</legend>
@@ -84,10 +84,10 @@
 					<div class="articleWrap">
 						<ul class="article-list reserve">
 							<c:choose>
-								<c:when test="${not empty dlist}">
+								<c:when test="${not empty hlist}">
 								 <!-- <li>신청한 희망 도서는 ${hlist.size()} 권입니다</li> -->
 								</c:when>
-								<c:when test="${empty dlist}">
+								<c:when test="${empty hlist}">
 									<c:choose>
 										<c:when test="${not empty pager.searchKeyword}">
 								 			<li>[${pager.searchKeyword}] 의 검색 결과가 없습니다</li>
@@ -98,19 +98,22 @@
 									</c:choose>		
 								</c:when>
 							</c:choose>
-							<c:forEach items="${dlist}" var="list">	
+							<c:forEach items="${hlist}" var="list">	
 								<li>
-									<p class="title">${list.donTitle}</p>
+									<p class="title">${list.hopTitle}</p>
 									<ul class="info">
 										<li>
-											<span>저자: ${list.donWriter}</span>
-											<span>발행처: ${list.donPublisher}</span>
+											<span>저자: ${list.hopWriter}</span>
+											<span>발행처: ${list.hopPublisher}</span>
 										</li>
 										<li>
 											<span>신청도서관: ${list.libVO.libName}</span>
-											<span>신청일: ${list.donDate}</span>
+											<span>신청일: ${list.hopDate}</span>
 											<span>신청상태: ${list.statusVO.statName}</span>
 										</li>
+										<c:if test="${list.statusVO.statName eq '신청 중'}">
+											<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">신청취소</button></li>
+										</c:if>										
 									</ul>
 								</li>
 							</c:forEach>
@@ -131,6 +134,6 @@
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->
-		<script src="/js/donList.js"></script>
+		<script src="/js/hopeList.js"></script>
 </body>
 </html>

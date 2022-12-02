@@ -27,7 +27,7 @@
 			padding: 6px 15px;
 		}
 	</style>
-<title>희망 도서 신청 조회</title>
+<title>희망 도서 신청 조회 : 씨앗도서관 ☘️ </title>
 </head>
 <body>
 	<!-- header -->

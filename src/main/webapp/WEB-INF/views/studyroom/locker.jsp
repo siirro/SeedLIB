@@ -5,7 +5,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>사물함 대여 : 씨앗도서관 ☘️</title>
+    <title>사물함 대여 : 씨앗도서관 ☘️ </title>
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
 	<style>
 	
 		.contentArea{
@@ -121,6 +126,7 @@
 </div>
 <div id="contentGroup">
        <c:import url="../sideBar/BsideBar.jsp"></c:import>
+	   <input type="hidden" id="imp" value="${imp}">
 <div id="contentcore">
 	<div class="naviandtitle">
 		<h3>사물함 대여</h3>
