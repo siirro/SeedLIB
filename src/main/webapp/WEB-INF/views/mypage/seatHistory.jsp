@@ -78,7 +78,7 @@
 
 
 	</style>
-<title>열람실 이용 내역 : 씨앗도서관 ☘️</title>
+<title>열람실 이용 내역 : 씨앗도서관 ☘️ </title>
 </head>
 <body>
 	<!-- header -->

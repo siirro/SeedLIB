@@ -1,13 +1,17 @@
-let popupWidth = "750";
-let popupHeight = "550";
+let popupWidth = "850";
+let popupHeight = "640";
 let popUp = "";
 
-let seatNum = 0;
 let used = "";
-let roomName = "";
 
+console.log($("#imp").val());
+
+let price = 0;
+let rentDays = 0;
 let enDate = new Date();
 let stDate = new Date();
+let newDate = new Date();
+let merchant_uid = newDate.getTime();
   
 // 듀얼 모니터 고려한 윈도우 띄우기
 let curX = window.screenLeft;
@@ -54,55 +58,35 @@ $("#stDate").blur(function(){
 $("#enDate").change(function(){
     let newStDate = new Date($("#stDate").val());
     let newEnDate = new Date($("#enDate").val());
-    let days =  Math.abs((newEnDate.getTime() - newStDate.getTime())/(1000*60*60*24))+1;
-    console.log(days);
-    let price = 500*days;
+    rentDays =  Math.abs((newEnDate.getTime() - newStDate.getTime())/(1000*60*60*24))+1;
+    console.log(rentDays);
+    price = 500*rentDays;
     $("#price").val(price);
 })
 
 $("#rentBtn").click(function(){
-    window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
-    const lockerVO={
-        lockerNum:$("#lockerNum").attr("value"),
-        price:$("#price").attr("value"),
-        userName:$("#userName").val()
+    let sDate = $("#stDate").val();
+    let eDate = $("#enDate").val();
+    console.log("s:",sDate, "e:",eDate, "p:",price)
+    if(sDate==='null'||eDate==='null'||price<1){
+        alert("대여 정보를 다시 확인해주세요");
+        return;
     }
-
-    console.log(studyDetailVO);
-
-    $.ajax({
-        type:"POST",
-        url:"/studyroom/setSeat",
-        data:JSON.stringify(studyDetailVO),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json", 
-        success: function(data){
-            switch (data) {
-                case 111:
-                    alert("해당 좌석은 이미 이용 중입니다");
-                    window.close();
-                    break;
-                case 222:
-                    alert("이용 중인 좌석의 퇴실 처리 후 예약이 가능합니다");
-                    opener.location.href="/mypage/seatHistory"; 
-                    window.close();
-                    break;
-                case 200:
-                    let check=window.confirm("좌석 예약을 완료했습니다\n마이페이지에서 확인하시겠습니까?");
-                    if(check){
-                        opener.location.href="/mypage/seatHistory"; 
-                        window.close();
-                        break;
-                    } else{
-                        opener.location.href="../index"; 
-                        window.close();
-                        break;
-                    }    
-                }
-            }, error: function(){
-                console.log("에러남ㅠㅠ");
-            }
-    })
+    let check = window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
+    if(check){
+        let lockerVO={
+            lockerNum:$("#lockerNum").attr("value"),
+            price:price,
+            userName:$("#userName").val(),
+            stDate:sDate,
+            enDate:eDate,
+            rentDays:rentDays,
+            email:$("#email").val(),
+            phone:$("#phone").val()
+        }
+        console.log(lockerVO);
+        requestPay(lockerVO);
+    }
 })
 
 function dateForm(date){
@@ -113,5 +97,38 @@ function dateForm(date){
     dd = dd > 10 ? dd:'0' + dd;
     let dateString = yyyy+'-'+mm+'-'+dd
     return dateString;
-
 }
+
+function requestPay(lockerVO) {
+    console.log(IMP);
+    // IMP.request_pay(param, callback) 결제창 호출
+    IMP.request_pay({ // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: merchant_uid,
+        name: "사물함 "+lockerVO.lockerNum+"번 대여",
+        amount: price,//tpv
+        buyer_email: lockerVO.email,
+        buyer_name: lockerVO.userName,
+        buyer_tel: lockerVO.phone
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            $.ajax({
+                type: "POST",
+                url: "/studyroom/payments", // 예: https://www.myservice.com/payments/complete
+                data: {
+                    'imp_uid': rsp.imp_uid,
+                    'merchant_uid': rsp.merchant_uid,
+                    'amount': price,
+                    'lockerVO':lockerVO
+                 },success:function(){
+
+                },error:function(){
+
+                }
+            })    
+        } else {
+        
+        }
+    });
+  }

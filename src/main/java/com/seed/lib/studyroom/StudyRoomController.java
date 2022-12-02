@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("studyroom")
 @Slf4j
 public class StudyRoomController {
+	
+	@Value("${locker.imp.key}")
+	private String impKey;
 	
 	@Autowired
 	private StudyRoomService service;
@@ -100,6 +104,7 @@ public class StudyRoomController {
 	public ModelAndView getLocker() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<LockerVO> lockerList = lockerService.getLockerCount();
+		mv.addObject("imp",impKey);
 		mv.addObject("locL", lockerList);
 		return mv;
 	}
@@ -107,8 +112,14 @@ public class StudyRoomController {
 	@GetMapping("lockerPop")
 	public ModelAndView lockerPop(int lockerNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("imp",impKey);
 		mv.addObject("lockerNum", lockerNum);
 		return mv;
 	}
 	
+	@PostMapping("payments")
+	@ResponseBody
+	public void lockerPay() throws Exception{
+		log.info("들어옴.");
+	}
 }
