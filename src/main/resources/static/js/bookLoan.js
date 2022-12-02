@@ -21,8 +21,8 @@ $("#LoanAlretBtn").click(function(){
 					alert("해당 책을 이미 대출 중입니다.")
 					break;
 				case 1:
-					let check = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
-					if(check){
+					let done = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
+					if(done){
 						opener.location.href="/mypage/loan";
 						break;
 					} else{
@@ -56,8 +56,8 @@ $("#ResAlretBtn").click(function(){
 					alert("해당 책을 이미 대출 중입니다.")
 					break;
 				case 1:
-					let check = window.confirm("도서를 예약했습니다.\n마이페이지에서 확인하시겠습니까?");
-					if(check){
+					let done = window.confirm("도서를 예약했습니다.\n마이페이지에서 확인하시겠습니까?");
+					if(done){
 						opener.location.href="/mypage/bookReserve";
 						break;
 					} else{

@@ -24,7 +24,7 @@ public class BookService {
 	}
 	
 	//도서 디테일
-	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
+	public BookVO getDetail (BookVO bookVO) throws Exception{
 		return bookMapper.getDetail(bookVO);
 	}
 }

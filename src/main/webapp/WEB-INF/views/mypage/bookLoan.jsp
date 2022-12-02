@@ -32,9 +32,9 @@
 <body>
 	<div id="container" class="sub">	
 		<div class="sVisualWrap">
-		<div class="sVisual">
-			<h3>신청하기</h3>
-		</div>
+			<div class="sVisual">
+				<h3>신청하기</h3>
+			</div>
 		</div>
 		<div id="contentGroup">
 			<c:import url="../sideBar/FsideBar.jsp"></c:import>

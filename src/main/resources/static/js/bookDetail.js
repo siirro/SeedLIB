@@ -18,23 +18,26 @@ strOption += "height=" + popupHeight + "px,";
 strOption += "toolbar=no,menubar=no,location=no,";
 strOption += "resizable=yes,status=yes";
 
-let isbn = $("#isbn").val();
-const userName = $("#userName").val();
-
 //좋아요
 $("#likeBtn").click(function(){
+	const bookLikeVO = {
+		isbn : $("#isbn").val(),
+		userName : $("#userName").val(),
+	}
+	
+	console.log(bookLikeVO);
 	
 	$.ajax({
 		type : "POST",
 		url : "like/add",
-		data : {
-			isbn : isbn,
-			userName : userName
-		},
+		data:JSON.stringify(bookLikeVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
 		success : function(){
 			location.reload()
 		},
 		error : function(){
+			console.log(bookLikeVO);
 			location.reload()
 		}
 	})
@@ -42,19 +45,23 @@ $("#likeBtn").click(function(){
 	
 //좋아요 취소	
 $("#unlikeBtn").click(function(){
-	
+	const bookLikeVO = {
+		isbn : $("#isbn").val(),
+		userName : $("#userName").val(),
+	}
+	console.log(bookLikeVO);
 	$.ajax({
 		type : "POST",
 		url : "like/delete",
-		data : {
-			isbn : isbn,
-			userName : userName
-		},
+		data:JSON.stringify(bookLikeVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
 		success : function(){
-			location.reload()
+			//location.reload()
 		},
 		error : function(){
-			location.reload()
+			//location.reload(),
+			console.log(bookLikeVO)
 		}
 	})
 });
@@ -181,10 +188,17 @@ $("#RealShelfBtn").click(function(){
 	
 //-------------------------------------------------
 //로그인 창 띄우기
-$("#LoginBtn").click(function(){
-	window.open('../, "로그인하기", strOption);
+$(".LoginBtn").click(function(){
+	$.ajax({
+		type : "GET",
+		url : "../../member/loginPop",
+		success : function(){
+			window.open('/member/loginPop', "로그인", strOption);
+		},
+		error : function(){
+			console.log("ERROR");
+		}
+	})
 });
-
-
 
 	

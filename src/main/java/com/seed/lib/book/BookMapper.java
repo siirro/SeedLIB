@@ -13,6 +13,6 @@ public interface BookMapper {
 	public BookVO getBookInfo(BookVO bookVO)throws Exception;
 	
 	//도서 디테일페이지
-	public List<BookVO> getDetail (BookVO bookVO) throws Exception;
+	public BookVO getDetail (BookVO bookVO) throws Exception;
 
 }

@@ -27,7 +27,7 @@ public class BookVO {
 	
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
-	private List<MbBookLikeVO> mbBookLikeVO;
+	private List<MbBookLikeVO> mbBookLikeVOs;
 	private List<BookShelfVO> bookShelfVOs;
 	private List<BookPickVO> bookPickVOs;
 	private List<BookLoanVO> loanVOs;

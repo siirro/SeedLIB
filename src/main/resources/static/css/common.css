@@ -136,7 +136,7 @@
 /* tab 카테고리 */
 .tabMove.fixed {position: fixed; top: 0; width: 960px; background-color: #fff; z-index: 99999;}
 .tabMove.fixed .cateTab {margin-bottom: 0;}
-.cateTab {margin-bottom: 30px;}
+.cateTab {margin-bottom: 30px;width: 100%}
 .cateTab.col-5 {margin-bottom: 20px;}
 .cateTab.col-5.new {margin-bottom: 30px;}
 .cateTab li {float: left; position: relative; width: 16.6666%;}

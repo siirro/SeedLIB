@@ -44,7 +44,14 @@ public class MemberController {
 //		return mv;
 //	}	
 	
-
+	//로그인 팝업용
+	@GetMapping("loginPop")
+	public void getLoginPop() throws Exception{
+		//#LoginBtn을 누르면 로그인 팝업창이 뜸
+		//대출 등 서비스 이용때 사용
+		//Ajax는 bookDetail.js에 있어요
+	}
+	
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{

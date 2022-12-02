@@ -4,11 +4,27 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.seed.lib.book.BookLibVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.BookLoanPager;
 
 @Mapper
 public interface BookLoanMapper {
+	
+	//대출하면 도서관이 보유하고 있는 권수 update
+	public BookLibVO setQuanUpdate (BookLibVO libVO) throws Exception;
+	
+	//보유 권수 계산
+	public int getQuan (BookLibVO libVO) throws Exception;
+	
+	//보유 권수가 0일때 able 0으로 update
+	//보유 권수 1일때 able 1로 update
+	public BookVO setAbleUpdate (BookLibVO libVO) throws Exception;
+	
+	//대출하면 책의 대출 횟수 update
+	public BookVO setCountUpdate (BookVO bookVO) throws Exception;
+	
+//----------------------------------------------------------------------	
 
 	//대출+예약 가능한 회원인지? - 해당 도서 대출중 판단
 	public int getBookLoan (BookLoanVO loVO) throws Exception;

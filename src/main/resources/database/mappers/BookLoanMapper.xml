@@ -5,6 +5,32 @@
 
 <mapper namespace="com.seed.lib.book.loan.BookLoanMapper">
 	
+	<!-- 대출하면 책 대출count update -->
+	<update id="setCountUpdate" parameterType="BookVO">
+		UPDATE BOOK
+			SET BOOKCOUNT = #{bookCount}
+			WHERE ISBN = #{isbn}
+	</update>
+	
+	<!-- 보유 권수 계산 -->
+	<select id="getQuan" parameterType="BookLibVO" resultType="Integer">
+		SELECT QUANTITY FROM BOOKLIB WHERE LIBNUM = #{libNum} AND ISBN = #{isbn}
+	</select>
+	
+	<!-- 도서 대출,반납하면 도서관이 보유하고 있는 권수 -1 -->
+	<update id="setQuanUpdate" parameterType="BookLibVO">
+		UPDATE BOOKLIB
+			SET QUANTITY = #{quantity}
+			WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
+	</update>
+	
+	<!-- 보유 권수가 0/1일때 able update -->
+	<update id="setAbleUpdate" parameterType="BookLibVO">
+		UPDATE BOOKLIB
+			SET ABLE = #{able}
+			WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
+	</update>
+	
 	<!-- 대출 가능한 회원인지? - 해당 도서 대출 중인지 -->
 	<select id="getBookLoan" parameterType="BookLoanVO" resultType="Integer">
 		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}

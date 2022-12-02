@@ -35,9 +35,9 @@
 			<result column="bookHeart" property="bookHeart"/>
 			<result column="num" property="num"/>
 
-			<association property="mbBookLikeVO" javaType="MbBookLikeVO">
+			<collection property="mbBookLikeVOs" javaType="MbBookLikeVO">
 				<id column="bookLike" property="bookLike"/>
-			</association>
+			</collection>
 			
 			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
 				<result column="quantity" property="quantity"/>

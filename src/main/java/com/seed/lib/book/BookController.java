@@ -90,7 +90,6 @@ public class BookController {
 	@PostMapping("loan")
 	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {
 		//result 값은 loanMapper 값 or 2 리턴
-		
 		int result = loanService.setLoan(loanVO);
 		return result;
 	}

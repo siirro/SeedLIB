@@ -12,6 +12,13 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/sub.css">
+    
     <!-- 프린트신청 팝업창 css -->
    	<link rel="stylesheet" href="/css/admin/modal.css">
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
@@ -33,16 +40,18 @@
 
 
 <body>
-	<div class="container" class="sub">
+
+	<input type="hidden" id="isbn" value="${bookVO.isbn}">
+	<input type="text" id="userName" value="${member.userName}">
+
+	<div id="container" class="sub">	
 		<div class="sVisualWrap">
 			<div class="sVisual">
 				<h3>통합검색</h3>
 			</div>
 		</div>
-		
 		<div id="contentGroup">
-			<!-- 사이드바 -->
-	       <c:import url="../sideBar/AsideBar.jsp"></c:import>
+			<c:import url="../sideBar/AsideBar.jsp"></c:import>
 			
 			<!-- 메인 내용 -->
 			<div id="contentcore">
@@ -154,24 +163,25 @@
 									
 									<div class="keyword">
 										<c:if test="${not empty member}">
-											<form>
-												<input type="hidden" id="isbn" value="${bookVO.isbn}">
-												<input type="hidden" id="userName" value="${sessionScope.member.userName}">
-											</form>
-												
 											<c:if test="${isShelfExist eq false}">											
-												<button type="button" id="addShelfBtn">책꽂이 담기</button>
+												<button type="button" class="btn white small" id="addShelfBtn">책꽂이 담기</button>
 											</c:if>	
 											<c:if test="${isShelfExist}">											
-												<button type="button" id="addBookBtn">책꽂이 담기</button>
+												<button type="button" class="btn white small" id="addBookBtn">책꽂이 담기</button>
 											</c:if>	
 											
 											<c:if test="${isLikeExist eq false}">
-												<button type="button" id="likeBtn">좋아요</button>
+												<button type="button" class="btn white small" id="likeBtn">좋아요</button>
 											</c:if>
+												<h3>${isLikeExist}</h3>
 											<c:if test="${isLikeExist}">
-												<button type="button" id="unlikeBtn">좋아요 취소</button>
+												<button type="button" class="btn white small" id="unlikeBtn">좋아요 취소</button>
 											</c:if>
+										</c:if>
+										
+										<c:if test="${empty member}">
+											<button type="button" class="btn white small LoginBtn">책꽂이 담기</button>
+											<button type="button" class="btn white small LoginBtn">좋아요</button>
 										</c:if>
 										<span>💚 ${like}</span>
 									</div>
@@ -205,7 +215,6 @@
 													<label for="collectionLibraryAll">전체 도서관</label>
 												</p>
 												<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
-												<input type="text" value="${bookVO}">
 												<c:forEach var="lib" items="${bookVO.libVOs}">
 													<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
 												</c:forEach>
@@ -245,7 +254,7 @@
 																	<td>${lib.libName}</td>
 																	
 																	<!-- 씨앗 도서관일 때 : 대출 가능 / 대출 불가능 - 예약
-																		타 도서관일 때 : 상호대차 가능 / 대출 불가능-->
+																		타 도서관일 때 : 상호대차 가능 / 대출 불가능 - X -->
 																	<td>
 																		<c:choose>
 																			<c:when test="${able eq 1}">
@@ -261,8 +270,8 @@
 																	<td>반납 예정일</td>
 																	
 																	<td>
-																		<c:choose>
-																			<c:if test="${not empty member}">
+																		<c:if test="${not empty member}">
+																			<c:choose>
 																				<c:when test="${where == 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
@@ -279,18 +288,23 @@
 																						<c:when test="${able eq 1}">
 																							<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
 																						</c:when>
+																						<c:when test="${able == 0}">
+																							대출 불가능
+																						</c:when>
 																					</c:choose>
 																				</c:when>
-																			</c:if>
+																			</c:choose>
+																		</c:if>
 																			
-																			<c:if test="${empty member}">
+																		<c:if test="${empty member}">
+																			<c:choose>
 																				<c:when test="${where == 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
-																							<button type="button" class="btn white small" id="LoginBtn" title="대출신청">대출신청</button>
+																							<button type="button" class="btn white small LoginBtn" title="대출신청">대출신청</button>
 																						</c:when>
 																						<c:when test="${able == 0}">
-																							<button type="button" class="btn white small" id="LoginBtn" title="예약신청">예약신청</button>
+																							<button type="button" class="btn white small LoginBtn" title="예약신청">예약신청</button>
 																						</c:when>
 																					</c:choose>
 																				</c:when>
@@ -298,12 +312,15 @@
 																				<c:when test="${where != 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
-																							<button type="button" id="LoginBtn" class="btn white small">상호대차</button>
+																							<button type="button" class="btn white small LoginBtn">상호대차</button>
+																						</c:when>
+																						<c:when test="${able == 0}">
+																							대출 불가능
 																						</c:when>
 																					</c:choose>
 																				</c:when>
-																			</c:if>
-																		</c:choose>
+																			</c:choose>
+																		</c:if>
 																	</td>
 																	
 																	<td>
@@ -790,6 +807,6 @@
 		</div>
 	</div>
 	<c:import url="../temp/footer.jsp"></c:import> 
-
+	
 </body>
 </html>
