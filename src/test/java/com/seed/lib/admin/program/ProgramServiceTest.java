@@ -45,7 +45,8 @@ class ProgramServiceTest {
 		programVO.setProNum(5L);
 		programVO.setProCate("이벤트");
 		programVO.setRecStatus("접수중");
-		programVO.setProName("무료나눔");
+		programVO.setProTitle("무료나눔");
+		programVO.setProContents("문화행사내용");
 		programVO.setTarget("학생");
 		programVO.setTotal(10L);
 		Date prsDate = dateUtil.parseDate("2022-11-23 00:00:00");
@@ -104,7 +105,8 @@ class ProgramServiceTest {
 			String teacher = "강사님";
 			programVO.setProCate("특강"+i);
 			programVO.setRecStatus("예정"+i);
-			programVO.setProName("책이야기"+i);
+			programVO.setProTitle("책이야기"+i);
+			programVO.setProContents("문화행사내용"+i);
 			programVO.setTarget("학생");
 			programVO.setTotal(30L+i);
 			Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");
@@ -138,7 +140,8 @@ class ProgramServiceTest {
 		
 		programVO.setProCate("특강");
 		programVO.setRecStatus("예정");
-		programVO.setProName("책이야기");
+		programVO.setProTitle("책이야기");
+		programVO.setProContents("문화행사내용");
 		programVO.setTarget("학생");
 		programVO.setTotal(30L);
 		Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");
