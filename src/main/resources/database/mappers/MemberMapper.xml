@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.seed.lib.member.MemberMapper">		
+
 		  
 	<update id="setUpdate" parameterType="MemberVO">
 	UPDATE `MEMBER` SET EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
@@ -15,7 +16,6 @@
  	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
 	
 		SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
-	
  
 	</select>
 	

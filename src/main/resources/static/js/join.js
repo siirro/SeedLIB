@@ -101,16 +101,37 @@
 // 	});
 // }
 
-$(".form-ele auto min").on("change",function(){
-    let addr =$(this).closest(".form").find("input[class=form-ele auto min]")
-        if(($this).val==etc) {
-        addr.val("readonly",false);
-        }else{
-        addr.val($(this).val())
-        addr.prop("readonly",true)
-        }
+// $("#domainList").on("change", function(){
+//         $("#email2").val($("#domainList").val())
+//         if($(this).val==etc) {
+//         addr.val("readonly",false);
+//         email2.focus();
 
-})
+//         }else{
+//         addr.val($(this).val())
+//         addr.prop("readonly",true)
+//         }
+
+//     })
+
+
+
+    
+$(".form-ele").on("change", function(){
+      
+    let addr= $("#email2").val($("#domainList").val() )
+
+    console.log($("#domainList").val());
+
+  
+      if($(this).val() == 'etc') {
+        addr.removeAttr("readonly")
+    }else{
+ addr.prop("readonly",true)
+
+    }
+
+ })
 
 
 

@@ -135,10 +135,10 @@
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>
                                                 <td>
                                                     
-                                                    <input type="text" id="emailId" name="email" value="${memberVO.email}" title="이메일 입력" class="form-ele auto eng-mode"  required="required">
+                                                    <input type="text" id="email1" name="email" value="${memberVO.email}" title="이메일 입력" class="form-ele auto eng-mode"  required="required">
                                                     @<br class="mobileShow3">
-                                                    <input type="text" id="emailDomain" name="email" value="${memberVO.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
-                                                    <!-- readonly="readonly" -->
+                                                    <input type="text"   id="email2" name="email" value="${memberVO.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
+                    
                                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
                                                         
                                                             <option value="daum.net">daum.net</option>
@@ -201,6 +201,7 @@
         </div>
 
         <script src="/js/address.js"></script>
+
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
