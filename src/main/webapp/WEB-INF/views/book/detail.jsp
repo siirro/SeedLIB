@@ -135,6 +135,7 @@
 													<span>
 														<a href="#search" onclick="fnSearchKdc('l600');">
 															<c:choose>
+																<c:when test="${book.category eq 0}">총류</c:when>
 																<c:when test="${book.category eq 1}">철학</c:when>
 																<c:when test="${book.category eq 2}">종교</c:when>
 																<c:when test="${book.category eq 3}">사회과학</c:when>

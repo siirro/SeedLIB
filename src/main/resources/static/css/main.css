@@ -59,10 +59,14 @@
 .radi input[type="radio"]:checked + label:before {background: no-repeat left top;}
 
 /* 통합검색 */
-.mainSearchWrap {position: relative; margin-bottom: 30px; text-align: center;}
+.mainSearchWrap {position: relative; margin-bottom: 30px; 
+	/* text-align: center; */
+}
 .mainSearchWrap .btnDetail {display: block; position: absolute; top: 0; right: 0; width: 119px; line-height: 68px; font-size: 1.125em; color: #fff; background-color: #767676;}
 .mainSearchForm {position: relative; padding-left: 258px;}
-.mainSearchForm .searchRadi {position: absolute; left: 0; top: 0; display: block; height: 68px; line-height: 68px; text-align: center; background-color: rgba(0, 0, 0, 0.4);}
+.mainSearchForm .searchRadi {position: absolute; left: 0; top: 0; display: block; height: 68px; line-height: 68px; 
+	/* text-align: center;  */
+	background-color: rgba(0, 0, 0, 0.4);}
 .mainSearchKeyword {position: relative; padding-right: 93px; box-sizing: border-box;}
 .mainSearchKeyword > input {display: block; width: 100%; height: 68px !important;  padding: 0 20px; font-size: 1.250em; border: 0;}
 .mainSearchKeyword .btnSearch {display: block; position: absolute; top: 0; right: 0; width: 93px; line-height: 68px; font-size: 1.125em; color: #fff; background-color: #393939;}
@@ -79,15 +83,40 @@
 .mainAutoSearch .button_wrap .button_box{float:right;}
 
 /* 인기키워드 */
+
+.keywordList {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+	/* margin-top: 0px; */
+}
+.keywordList li {
+	padding: 17px 20px;
+}
+
+.mainBestKeyword .keywordListWrap {
+	overflow: hidden; font-size: 1.05em; line-height: 33px; color: #444;
+	height: 55px; overflow: hidden; color: white;
+}
 .mainBestKeyword {position: absolute; right: -129px; top: -50px; width: 220px; height: 33px; padding-right: 20px;}
 .mainBestKeyword .controlArea {position: absolute; top: 0; right: 0;}
 .mainBestKeyword .controlArea a {display: block;}
 .mainBestKeyword .controlArea a + a {margin-top: 12px;}
 .mainBestKeyword .controlArea a#btnUp {border-right: 7px solid transparent; border-bottom: 10px solid #b8b8b8; border-left: 7px solid transparent}
 .mainBestKeyword .controlArea a#btnDwon {border-top: 10px solid #b8b8b8; border-right: 7px solid transparent; border-left: 7px solid transparent}
-.mainBestKeyword .keywordListWrap {overflow: hidden; font-size: 1.125em; line-height: 33px; color: #444;}
-.mainBestKeyword .keywordListWrap .keywordList li a {line-height: 33px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;}
-.mainBestKeyword .keywordListWrap .keywordList li i {display: inline-block; width: 25px; line-height: 25px; font-style: normal; color: #fff; text-align: center; background-color: #9be15d; border-radius: 25px; margin-right: 7px;}
+
+.mainBestKeyword .keywordListWrap .keywordList li a {
+	line-height: 33px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; 
+	/* text-align: left; */
+}
+.mainBestKeyword .keywordListWrap .keywordList li i {
+	display: inline-block; width: 25px; line-height: 25px; font-style: normal; color: #fff; 
+	text-align: center; 
+	background-color: #9be15d; border-radius: 25px; margin-right: 7px;
+}
 /* 밑에서두번쨰꺼에 display: block;  뻄 */
 
 .boxWrap {overflow: hidden; position: relative; margin-bottom: 30px;}
@@ -100,13 +129,14 @@
 .popupZone .controlGroup .btnSlidePause:before {width:7px;height:9px;margin:-4.5px 0 0 -3.5px;background-position-x:-22px}
 .popupZone .controlGroup .btnSlidePrev {left:0}
 .popupZone .controlGroup .btnSlideNext {right:0}
+
 /* .popupZone {overflow: hidden; position: relative; border: 6px solid #fff;}
 .popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 0; left: 0; z-index: 30; width: 100%; height: 33px; z-index: 101; text-align: right;} 
 .popupZone .controlGroup a {float: left; display: block; position: relative; width: 29px; height: 33px; background-color: rgba(0,0,0,.5);}
 .popupZone .controlGroup .nowpage {display: inline-block; height: 33px; line-height: 33px; padding: 0 20px; background-color: rgba(0,0,0,.5); color:#fff; font-weight: 300; vertical-align: top;}
 .popupZone .controlGroup .nowpage strong {font-weight: 300;}
 .popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 29px; vertical-align: top;}
-.popupZone .controlGroup .pp-controls {float: left;}
+
 .popupZone .controlGroup .arrow {position:absolute;top:0}
 
 .popupZone .controlGroup .listTypeWrap {display:inline-block;vertical-align:middle}
@@ -494,14 +524,34 @@
 /* 팝업존 */
 .popupZone {overflow: hidden; position: relative;}
 .popupZone .controlGroup {overflow: hidden; position: absolute; bottom: 143px; left: 0; z-index: 30; width: 100%; height: 53px; z-index: 101; text-align: right;} 
-/* .popupZone .arrowWrap {overflow: hidden; position: absolute; bottom: 143px; left: 0; z-index: 30; width: 100%; height: 53px; z-index: 101; text-align: right;}  */
+/* .popupZone .arrowWrap {overflow: hidden; position: absolute; bottom: 0; left: 0; z-index: 30; width: 100%; height: 53px; z-index: 101; text-align: right;}  */
 .popupZone .controlGroup a {float: left; display: block; position: relative; width: 53px; height: 53px; background-color: rgba(0,0,0,22%);}
 .popupZone .controlGroup a:before {content: ""; display: block; position: absolute; top: 50%; left: 50%; }
 /* background: url("/include/image/intro/main/btn_control_split.png") 0 0 no-repeat */
 .popupZone .controlGroup .nowpage {display: inline-block; height: 33px; line-height: 33px; padding: 0 20px; background-color: rgba(0,0,0,.5); color:#fff; font-weight: 300; vertical-align: top;}
 .popupZone .controlGroup .nowpage strong {font-weight: 300;}
-.popupZone .controlGroup .arrowWrap {display: inline-block; overflow: hidden; position: relative; min-height: 33px; padding: 0 0px; vertical-align: top;}
-.popupZone .controlGroup .pp-controls {float: left;}
+.popupZone .arrowWrap {
+	bottom: 0; width: 100%; display: inline-block; overflow: hidden; position: absolute; 
+	min-height: 53px; padding: 0 0px; vertical-align: top;
+}
+.popupZone .arrowWrap .pp-controls {
+	display: flex;
+	top: 0;
+    bottom: 0;left: 0;
+    right: 0;
+	margin: 14px auto;
+	float: left; 
+	width: 20%; height: 100%; position: absolute; z-index: 1;
+	/* background-color: rgba(0,0,0,22%);  */
+}
+.pp-controls > li {
+	float: left;
+    margin: 0px;
+    font-size: 25px;
+    color: #00000070;
+	text-indent: -14px;
+	transform: translateX(25px);
+}
 /* .popupZone .controlGroup .arrow {position:absolute;top:0} */
 .popupZone .controlGroup .btnSlidePrev {left:0; position:absolute;top:0}
 .popupZone .controlGroup .btnSlideNext {right:0; position:absolute;top:0}

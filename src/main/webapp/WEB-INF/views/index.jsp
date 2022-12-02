@@ -49,31 +49,61 @@
 					<div class="mainSearchWrap">
 						<div class="mainSearchForm clearfix">
 							<form action="./search/simpleresult" name="mainSearchForm" id="searchForm" method="get">
-								<input type="hidden" name="searchType" value="SIMPLE">
-								<input type="hidden" name="searchManageCode" value="ALL">
+								
 
 								<fieldset>
 									<legend class="blind">통합검색 영역</legend>
 									<div class="searchRadi mainBestKeyword mobileHide" id="mainBestKeyword">
 					
-										<div>
+										<div style="width: 200px;">
 											<div class="controlArea" style="padding: 17px;">
 												<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
 												<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
 											</div>
-											<div class="keywordListWrap" style="height: 55px; overflow: hidden; color: white;">
-												<ol class="keywordList" style="margin-top: 0px;">
-															<li style="padding: 17px 27px 17px 0px;"><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점'); return false;" title="불편한 편의점"><i>1</i>불편한 편의점</a></li>
-												<li><a href="#link" onclick="javascript:fnMainSearchKeyword('흔한남매'); return false;" title="흔한남매"><i>2</i>흔한남매</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('파친코'); return false;" title="파친코"><i>3</i>파친코</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한편의점'); return false;" title="불편한편의점"><i>4</i>불편한편의점</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('하얼빈'); return false;" title="하얼빈"><i>5</i>하얼빈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('불편한 편의점 김호연 장편소설 2'); return false;" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('카카오프렌즈'); return false;" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('아버지의 해방일지'); return false;" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('웹툰'); return false;" title="웹툰"><i>9</i>웹툰</a></li><li><a href="#link" onclick="javascript:fnMainSearchKeyword('신라'); return false;" title="신라"><i>10</i>신라</a></li></ol>
+											<div class="keywordListWrap" >
+												<ol class="keywordList">
+													<li><a href="./search/simpleresult?search=제목" title="불편한 편의점"><i>1</i>조낸조낸조낸불편한 편의점</a></li>
+													<li><a href="#link" onclick="" title="흔한남매"><i>2</i>흔한남매</a></li>
+													<li><a href="#link" onclick="" title="파친코"><i>3</i>파친코</a></li>
+													<li><a href="#link" onclick="" title="불편한편의점"><i>4</i>불편한편의점</a></li>
+													<li><a href="#link" onclick="" title="하얼빈"><i>5</i>하얼빈</a></li>
+													<li><a href="#link" onclick="" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li>
+													<li><a href="#link" onclick="" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li>
+													<li><a href="#link" onclick="" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li>
+													<li><a href="#link" onclick="" title="웹툰"><i>9</i>웹툰</a></li>
+													<li><a href="#link" onclick="" title="신라"><i>10</i>신라</a></li>
+												</ol>
 											</div>
 										</div>
+
+										<script>
+											function Silsigan(){
+												let count = $('.keywordList li').length;
+												let height = ($('.keywordList li').height()+0.5)*2;
+												console.log(count);
+												console.log(height);
+
+												function step(index) {
+													$('.keywordList').delay(2000).animate({
+														top: -height * index,
+													}, 500, function() {
+														step((index + 1) % count);
+													});
+												}
+
+												step(1);
+											};
+
+											Silsigan();
+										</script>
+										
 									</div>
 									<div class="mainSearchKeywordWrap">
 										<div class="mainSearchKeyword">
 											
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
 											<input type="text" onkeyup="enterkey()" title="검색어 입력" class="form-ele" id="totalSearchValue" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
-											<a href="./search/simple" id="searchBtn" title="검색" class="btnSearch">검색</a>
+											<a href="./search/simple" id="searchBtn" title="검색" class="btnSearch" style="text-align: center;">검색</a>
 										</div>
 									</div>
 
@@ -139,8 +169,10 @@
 					</div>
 					<div class="arrowWrap">
 						<div class="pp-controls">
-							<a href="#" class="btnSlidePause" title="슬라이드 멈추기" style="display: none;"></a>
-							<a href="#" class="btnSlidePlay" title="자동으로 슬라이드 넘기기" style="display: block;"></a>
+							<li class="bbb"><a href=""></a></li>
+							<li class="bbb"><a href=""></a></li>
+							<li class="bbb"><a href=""></a></li>
+							<li class="bbb"><a href=""></a></li>
 						</div>
 					</div>
 
@@ -160,6 +192,7 @@
 							const slider = document.querySelector('#slide');
 							const slideLis = slider.querySelectorAll('li')
 							const moveButton = document.querySelector('.controlGroup');
+							let bbb = document.querySelectorAll(".bbb");
 
 							// 주요변수 초기화
 							let currentIdx = 0;
@@ -174,11 +207,21 @@
 							/* 리스너 설치하기 */
 							moveButton.addEventListener('click', moveSlide);
 
+							function showbullet() {
+								for(let i=0; i<slideLis.length;i++) {
+									bbb[i].style.color="#00000070";
+									if(currentIdx == i) {
+										bbb[i].style.color="white";
+									}
+								}
+							}
+
 							function move(gogogo) {
 								currentIdx += (-1 * gogogo);
 								translate += liWidth * gogogo;
 								slider.style.transform = "translateX("+translate+"px)";
 								slider.style.transition = "all "+speedTime+"ms ease";
+								showbullet();
 							}
 
 							/* 버튼 클릭 */
@@ -192,13 +235,12 @@
 									return
 								};
 								move(-1);
-								console.log(currentIdx);
-								console.log(translate);
 							} else {
 								if (currentIdx === 0) {
 									slider.style.transform = "translateX(-1401px)";
-									currentIdx = 3;
+									currentIdx = slideLis.length-1;
 									translate = -1401;
+									
 									return
 								};
 									move(1);
@@ -210,20 +252,18 @@
 									slider.style.transform = "translateX(0px)";
 									currentIdx = 0;
 									translate = 0;
+									showbullet();
 									return
 								};
 								move(-1);
-
-								
 							}
 
 							function showSliding() {
-								setInterval(sliding, 2000);
+								setInterval(sliding, 3000);
 							}
 
 							showSliding();
-
-							
+							showbullet();
 						}
 					</script>
 
