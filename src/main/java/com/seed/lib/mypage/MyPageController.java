@@ -185,24 +185,35 @@ public class MyPageController {
 	
 	
 	//대출 목록
-	@GetMapping("bookLoan")
-	public ModelAndView getLoanList (BookLoanPager pager) throws Exception{
+	@PostMapping("bookLoan")
+	public ModelAndView getLoanList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		//대출 목록
 		List<BookVO> li = loanService.getLoanList(pager);
 		mv.addObject("li", li);
+		
+		//대출 중인 책 권수
+		int count = loanService.getLoanCount(userName, 1);
+		mv.addObject("count", count);
+		
 		mv.setViewName("mypage/bookLoan");
 		
 		return mv;
 	}
 	
 	//대출 이력 목록
-	@GetMapping("bookLoanHistory")
-	public ModelAndView getLoanHistoryList (BookLoanPager pager) throws Exception{
+	@PostMapping("bookLoanHistory")
+	public ModelAndView getLoanHistoryList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookVO> li = loanService.getLoanList(pager);
 		mv.addObject("li", li);
+		
+		//대출 중인 책 권수
+		int count = loanService.getLoanCount(userName, 0);
+		mv.addObject("count", count);
+
 		mv.setViewName("mypage/bookLoanHistory");
 		
 		return mv;
@@ -225,11 +236,16 @@ public class MyPageController {
 	
 	//예약 목록
 	@GetMapping("bookReserve")
-	public ModelAndView getReList (BookLoanPager pager) throws Exception{
+	public ModelAndView getReList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookVO> li = loanService.getReList(pager);
 		mv.addObject("li", li);
+		
+		//대출 중인 책 권수
+		int count = loanService.getReCount(userName);
+		mv.addObject("count", count);
+
 		mv.setViewName("mypage/bookReserve");
 		
 		return mv;
@@ -237,11 +253,16 @@ public class MyPageController {
 	
 	//상호대차 목록
 	@GetMapping("bookMutual")
-	public ModelAndView getMuList (BookLoanPager pager) throws Exception{
+	public ModelAndView getMuList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookVO> li = loanService.getMuList(pager);
 		mv.addObject("li", li);
+		
+		//대출 중인 책 권수
+		int count = loanService.getMuCount(userName);
+		mv.addObject("count", count);
+		
 		mv.setViewName("mypage/bookMutual");
 		
 		return mv;

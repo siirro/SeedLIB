@@ -96,6 +96,12 @@
 		SELECT EXTENSION FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
+	<!-- 대출 책 권수 -->
+	<!-- 1은 대출 중 | 0은 반납 완 -->
+	<select id="getLoanCount" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND RTSTATUS = #{rtStatus}
+	</select>
+	
 	<!-- 대출 연장 신청 -->
 	<!-- 연장 횟수, 만기일 업데이트 -->
 	<!-- <update id="setExtension">
@@ -146,6 +152,11 @@
 		</collection>	
 	</resultMap>
 	
+	<!-- 예약 중인 책 권수 -->
+	<select id="getReCount" parameterType="BookReservationVO" resultType="Integer">
+		SELECT COUNT(RVNUM) FROM LOAN WHERE USERNAME = #{userName}
+	</select>
+	
 	<!-- ================================== -->
 	
 	<!-- 상호대차 신청 -->
@@ -190,7 +201,12 @@
 		</collection>	
 	</resultMap>
 	
-	<!-- from / username 파라미터로 받아서 처리하기 -->
+	<!-- 상호대차 신청한 책 권수 -->
+	<select id="getMuCount" parameterType="BookMutualLoanVO" resultType="Integer">
+		SELECT COUNT(MUNUM) FROM LOAN WHERE USERNAME = #{userName}
+	</select>
+	
+	<!-- FROM 페이지 별로 설정 -->
 	<select id="getCount" resultType="Long" parameterType="BookLoanPager">
     	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = #{userName}
 	</select>

@@ -43,6 +43,9 @@ public interface BookLoanMapper {
 	
 	//대출 연장 - 최대 2번
 	public int setExtension (BookLoanVO loVO) throws Exception;
+	
+	//대출한 책 권수
+	public int getLoanCount (String userName, int rtStatus) throws Exception;
 
 //-----------------------------------------------------------------------	
 	
@@ -54,6 +57,9 @@ public interface BookLoanMapper {
 	
 	//예약 목록
 	public List<BookVO> getReList (BookLoanPager pager) throws Exception;
+	
+	//예약한 책 권수
+	public int getReCount (String userName) throws Exception;
 
 //-----------------------------------------------------------------------	
 	
@@ -62,6 +68,9 @@ public interface BookLoanMapper {
 	
 	//목록
 	public List<BookVO> getMuList (BookLoanPager pager) throws Exception;
+	
+	//상호대출 책 권수
+	public int getMuCount (String userName) throws Exception;
 	
 //-----------------------------------------------------------------------	
 	

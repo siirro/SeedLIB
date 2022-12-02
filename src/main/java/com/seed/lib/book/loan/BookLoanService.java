@@ -87,6 +87,11 @@ public class BookLoanService {
 			return 3;
 		}
 	}
+	
+	//대출한 책 권수
+	public int getLoanCount (String userName, int rtStatus) throws Exception{
+		return loanMapper.getLoanCount(userName, rtStatus);
+	}
 
 //-----------------------------------------------------------------------	
 	
@@ -116,6 +121,11 @@ public class BookLoanService {
 		pager.getRowNum();
 		return loanMapper.getReList(pager);
 	}
+	
+	//대출한 책 권수
+	public int getReCount (String userName) throws Exception{
+		return loanMapper.getReCount(userName);
+	}
 
 //-----------------------------------------------------------------------	
 	
@@ -139,6 +149,11 @@ public class BookLoanService {
 		pager.getNum(totalCount);
 		pager.getRowNum();
 		return loanMapper.getMuList(pager);
+	}
+	
+	//상호대차한 책 권수
+	public int getMuCount (String userName) throws Exception{
+		return loanMapper.getMuCount(userName);
 	}
 	
 //-----------------------------------------------------------------------		
