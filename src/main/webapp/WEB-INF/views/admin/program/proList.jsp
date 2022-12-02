@@ -61,33 +61,34 @@
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <!-- <h6 class="mb-10">Data Table</h6> -->
-                    <div
-                    class="d-flex flex-wrap justify-content-between align-items-center py-3"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
                     <div class="left">
                       <h6>Data Table</h6>
                       <p>Show <span>10</span> entries</p>
                     </div>
                     <div class="right d-flex align-items-center">
-                      <div class="select-style-1" style="margin-bottom: 0;">
-                        <div class="select-position select-sm">
-                          <select name="kind">
-                            <option value="선택안함">선택안함</option>
-                            <option value="구분">구분</option>
-                            <option value="이름">이름</option>
-                            <option value="정원/신청자">정원/신청자</option>
-                            <option value="접수기간">접수기간</option>
-                            <option value="행사기간">행사기간</option>
-                            <option value="접수상태">접수상태</option>
-                          </select>
+                        <div class="select-style-1" style="margin-bottom: 0;">
+                          <div class="select-position select-sm">
+                            <select name="kind">
+                              <option value="선택안함">선택안함</option>
+                              <option value="이름">이름</option>
+                              <option value="접수기간">접수기간</option>
+                              <option value="행사기간">행사기간</option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="table-search">
-                        <form action="#">
-                          <input type="text" placeholder="Search..." />
-                          <button><i class="lni lni-search-alt"></i></button>
-                        </form>
-                      </div>
+                        <div class="table-search">
+                          <form action="#">
+                            <input type="text" name="search" placeholder="검색어를 입력해 주세요"/>
+                            <button><i class="lni lni-search-alt"></i></button>
+                          </form>
+                        </div>
+                        <div>
+                          <button type="submit" class="main-btn btn-sm rounded-md info-btn">
+                            검색
+                            <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
+                          </button>
+                        </div>
                     </div>
                   </div>
                   <div class="table-wrapper table-responsive">
@@ -100,8 +101,8 @@
                               <div class="col-9">
                                 <div class="select-style-1" style="margin-bottom: 0;">
                                   <div class="select-position select-sm">
-                                    <select name="recStatus">
-                                      <option value="구분">구분</option>
+                                    <select name="kind">
+                                      <option value="선택안함">구분</option>
                                       <option value="정기강좌">정기강좌</option>
                                       <option value="특강">특강</option>
                                       <option value="이벤트">이벤트</option>
@@ -114,7 +115,7 @@
                             </div>
                           </h6></th>
                           <th><h6>이름</h6></th>
-                          <th><h6>정원/신청자</h6></th>
+                          <th><h6>신청자/정원</h6></th>
                           <th><h6>접수기간</h6></th>
                           <th><h6>행사기간</h6></th>
                           <th><h6>
@@ -122,14 +123,12 @@
                               <div class="col-9">
                                 <div class="select-style-1" style="margin-bottom: 0;">
                                   <div class="select-position select-sm">
-                                    <select name="recStatus">
-                                      <option value="접수상태">접수상태</option>
-                                      <option value="">예정</option>
-                                      <option value="이름">접수중</option>
-                                      <option value="정원/신청자">마감</option>
-                                      <option value="접수기간">종료</option>
-                                      <option value="행사기간">행사기간</option>
-                                      <option value="접수상태">접수상태</option>
+                                    <select name="kind">
+                                      <option value="선택안함">접수상태</option>
+                                      <option value="예정">예정</option>
+                                      <option value="접수중">접수중</option>
+                                      <option value="마감">마감</option>
+                                      <option value="종료">종료</option>
                                     </select>
                                   </div>
                                 </div>
@@ -156,15 +155,16 @@
                             <p><a href="./proDetail?proNum=${proVO.proNum}">${proVO.proTitle}</a></p>
                           </td>
                           <td class="min-width">
-                            <p>${proVO.total}/</p>
+                            <p>/${proVO.total}</p>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            	<fmt:formatDate value="${proVO.prsDate}" pattern="yyyy-MM-dd"/>
                            	<fmt:formatDate value="${proVO.prlDate}" pattern="~ yyyy-MM-dd"/>
                             <%-- <p>${proVO.prsDate}-${proVO.}</p> --%>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            ${proVO.psDt}
+                           <br>
                            ${proVO.plDt}
                            	<%-- <fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
                            	<fmt:formatDate value="${proVO.plDate}" pattern="~ yyyy-MM-dd HH:mm"/> --%>
@@ -182,7 +182,7 @@
                               </button>
                               <button>
                                 <a href="./proDelete?proNum=${proVO.proNum}" class="text-danger">
-                                    <i class="lni lni-trash-can"></i>
+                                  <i class="lni lni-trash-can"></i>
                                 </a>
                               </button>
                             </div>
