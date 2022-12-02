@@ -61,14 +61,12 @@
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <!-- <h6 class="mb-10">Data Table</h6> -->
-                  <div
-                  class="d-flex flex-wrap justify-content-between align-items-center py-3"
-                >
-                  <div class="left">
-                    <h6>Data Table</h6>
-                    <p>Show <span>10</span> entries</p>
+                  <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+                    <div class="left">
+                      <h6>Data Table</h6>
+                      <p>Show <span>10</span> entries</p>
+                    </div>
                   </div>
-                </div>
                   <div class="table-wrapper table-responsive">
                     <table class="table text-center">
                       <thead>
@@ -96,7 +94,6 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
                           </h6></th>
                           <th class="text-start"><h6>확인</h6></th>
                         </tr>
@@ -120,12 +117,12 @@
                           <td class="min-width">
                             <p>${proVO.total}/</p>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            	<fmt:formatDate value="${proVO.prsDate}" pattern="yyyy-MM-dd"/>
                            	<fmt:formatDate value="${proVO.prlDate}" pattern="~ yyyy-MM-dd"/>
                             <%-- <p>${proVO.prsDate}-${proVO.}</p> --%>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            ${proVO.psDt}
                            ${proVO.plDt}
                            	<%-- <fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
@@ -146,7 +143,7 @@
                               <!-- 삭제버튼 -->
                               <button>
                                 <a href="./proDelete?proNum=${proVO.proNum}" class="text-danger">
-                                    <i class="lni lni-trash-can"></i>
+                                  <i class="lni lni-trash-can"></i>
                                 </a>
                               </button>
                             </div>
