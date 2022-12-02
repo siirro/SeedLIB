@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ page import="java.text.SimpleDateFormat" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,11 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
     <style>
         .contentsGroup {
             display: flex;
@@ -27,7 +32,7 @@
             width: 100%;
             margin-left: 25px;
             margin-top: 50px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -61,7 +66,7 @@
         width: 87%;
         border : 0px;
         border-top: 0.5px solid #cfcece; 
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         }
 
         #rentBtn{
@@ -76,6 +81,9 @@
 </head>
 <body>
     <input type="hidden" id="userName" value="${memberVO.userName}">
+    <input type="hidden" id="email" value="${memberVO.email}">
+    <input type="hidden" id="phone" value="${memberVO.phone}">
+    <input type="hidden" id="imp" value="${imp}">
     <div class="contentsGroup">
         <div class="lockerArea">
             <span class="locker" style="margin-bottom: 10px;">🌱 대 여 정 보 🌱</span>
@@ -83,7 +91,22 @@
             <span id="lockerNum" style="font-size: 25px;" class="locker" value="${lockerNum}">사물함 번호 : ${lockerNum} </span>
         </div>
         <div>
-            <input type="date" id="stDate">-<input type="date" id="enDate" min="" max="">
+            <table class="tbl" style="width: 550px;">
+                <thead>
+                    <tr>
+                        <th>대여시작일자</th>
+                        <th>대여종료일자</th>
+                        <th>총 이용 금액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tabTr">
+                        <td><input type="date" id="stDate" name="stDate" min=""></td>
+                        <td><input type="date" id="enDate" name="enDate" min="" max=""></td>
+                        <td><input type="text" id="price" name="price" readonly style="text-align: end;" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <hr style="margin-top: 30px;">   
         <div>
@@ -108,7 +131,31 @@
         <div class="btnArea">
             <button type="button" class="btn themeBtn" id="rentBtn">사물함 대여</button>
         </div>
+
+        <button onclick="requestPay()">결제하기</button>
     </div>
+
+    <script>
+        function curDate(date){
+            let yyyy = date.getFullYear();
+            let mm = date.getMonth()+1;
+            let dd = date.getDate();
+            mm = mm > 10 ? mm:'0' + mm;
+            dd = dd > 10 ? dd:'0' + dd;
+            let dateString = yyyy+'-'+mm+'-'+dd
+            return dateString;
+        }
+        
+        let date = new Date();
+        $("#stDate").attr("min", curDate(date));
+        const IMP = window.IMP;
+        let initImp = $("#imp").val();
+        IMP.init(initImp);
+
+
+    </script>
+    <script>
+    </script>
    <script src="/js/lockerRent.js"></script> 
 </body>
 </html>

@@ -9,17 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/images/favicon.png">
-    <title>프로그램 목록 : 씨앗도서관 ☘</title>
+    <title>기증도서 목록 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
-    <c:import url="../temp/sidebar-css.jsp"></c:import>
+    <c:import url="./temp/sidebar-css.jsp"></c:import>
     
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
       <!-- ========== header start ========== -->
-      <c:import url="../temp/header.jsp"></c:import>
+      <c:import url="./temp/header.jsp"></c:import>
       <!-- ========== header end ========== -->
 
       <!-- ========== table components start ========== -->
@@ -30,7 +30,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>문화프로그램 목록</h2>
+                  <h2>기증도서 목록</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -39,11 +39,11 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="../main">Dashboard</a>
+                        <a href="./main">Dashboard</a>
                       </li>
-                      <li class="breadcrumb-item"><a href="./proList">문화프로그램 관리</a></li>
+                      <li class="breadcrumb-item"><a href="./donaBoList">기증도서 관리</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        문화프로그램 목록
+                        기증도서 목록
                       </li>
                     </ol>
                   </nav>
@@ -61,33 +61,10 @@
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <!-- <h6 class="mb-10">Data Table</h6> -->
-                    <div
-                    class="d-flex flex-wrap justify-content-between align-items-center py-3"
-                  >
+                  <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
                     <div class="left">
                       <h6>Data Table</h6>
                       <p>Show <span>10</span> entries</p>
-                    </div>
-                    <div class="right d-flex align-items-center">
-                      <div class="select-style-1" style="margin-bottom: 0;">
-                        <div class="select-position select-sm">
-                          <select name="kind">
-                            <option value="선택안함">선택안함</option>
-                            <option value="구분">구분</option>
-                            <option value="이름">이름</option>
-                            <option value="정원/신청자">정원/신청자</option>
-                            <option value="접수기간">접수기간</option>
-                            <option value="행사기간">행사기간</option>
-                            <option value="접수상태">접수상태</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="table-search">
-                        <form action="#">
-                          <input type="text" placeholder="Search..." />
-                          <button><i class="lni lni-search-alt"></i></button>
-                        </form>
-                      </div>
                     </div>
                   </div>
                   <div class="table-wrapper table-responsive">
@@ -95,24 +72,7 @@
                       <thead>
                         <tr>
                           <th class="text-start"><h6>#</h6></th>
-                          <th><h6>
-                            <div class="row justify-content-center">
-                              <div class="col-9">
-                                <div class="select-style-1" style="margin-bottom: 0;">
-                                  <div class="select-position select-sm">
-                                    <select name="recStatus">
-                                      <option value="구분">구분</option>
-                                      <option value="정기강좌">정기강좌</option>
-                                      <option value="특강">특강</option>
-                                      <option value="이벤트">이벤트</option>
-                                      <option value="독서회">독서회</option>
-                                      <option value="기타">기타</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </h6></th>
+                          <th><h6>테스트1</h6></th>
                           <th><h6>이름</h6></th>
                           <th><h6>정원/신청자</h6></th>
                           <th><h6>접수기간</h6></th>
@@ -129,14 +89,13 @@
                                       <option value="정원/신청자">마감</option>
                                       <option value="접수기간">종료</option>
                                       <option value="행사기간">행사기간</option>
-                                      <option value="접수상태">접수상태</option>
                                     </select>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </h6></th>
-                          <th class="text-start"><h6>수정/삭제</h6></th>
+                          <th class="text-start"><h6>확인</h6></th>
                         </tr>
                         <!-- end table row-->
                       </thead>
@@ -158,12 +117,12 @@
                           <td class="min-width">
                             <p>${proVO.total}/</p>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            	<fmt:formatDate value="${proVO.prsDate}" pattern="yyyy-MM-dd"/>
                            	<fmt:formatDate value="${proVO.prlDate}" pattern="~ yyyy-MM-dd"/>
                             <%-- <p>${proVO.prsDate}-${proVO.}</p> --%>
                           </td>
-                           <td class="min-width">
+                          <td class="min-width">
                            ${proVO.psDt}
                            ${proVO.plDt}
                            	<%-- <fmt:formatDate value="${proVO.psDate}" pattern="yyyy-MM-dd HH:mm"/>
@@ -175,14 +134,16 @@
                           </td>
                           <td>
                             <div class="action text-start">
+                              <!-- 수정버튼 -->
                               <button>
                                 <a href="./proUpdate?proNum=${proVO.proNum}" class="text-info">
-                                  <i class="lni lni-pencil-alt"></i>
+                                  <i class="lni lni-check-box"></i>
                                 </a>
                               </button>
+                              <!-- 삭제버튼 -->
                               <button>
                                 <a href="./proDelete?proNum=${proVO.proNum}" class="text-danger">
-                                    <i class="lni lni-trash-can"></i>
+                                  <i class="lni lni-trash-can"></i>
                                 </a>
                               </button>
                             </div>
@@ -229,12 +190,12 @@
       <!-- ========== table components end ========== -->
 
       <!-- ========== footer start =========== -->
-      <c:import url="../temp/footer.jsp"></c:import>
+      <c:import url="./temp/footer.jsp"></c:import>
       <!-- ========== footer end =========== -->
     </main>
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <c:import url="../temp/js.jsp"></c:import>
+    <c:import url="./temp/js.jsp"></c:import>
   </body>
 </html>
