@@ -21,11 +21,12 @@ public class ShelfPager {
 		private boolean next;
 		
 		//검색어 - 이름
-		private String name;
+		private String shName;
+		private String shMemo;
 		//등록일
-		private Date creDate;
-		private Date creDateA;
-		private Date creDateB;
+		private Long creDate;
+		private Long creDateA;
+		private Long creDateB;
 
 		
 		public ShelfPager() {
@@ -83,7 +84,6 @@ public class ShelfPager {
 			}
 		}
 		
-		
 		public Long getPerPage() {
 			if(this.perPage==null) {
 				this.perPage=10L;
@@ -98,12 +98,38 @@ public class ShelfPager {
 			return page;
 		}
 		
-		public String getName() {
-			if(this.name==null) {
-				this.name="";
+		public String getShName() {
+			if(this.shName==null) {
+				this.shName="";
 			}
-			return name;
+			return shName;
 		}
-
-
+		
+		public String getShMemo() {
+			if(this.shMemo==null) {
+				this.shMemo="";
+			}
+			return shMemo;
+		}
+		
+		public Long getCreDate() {
+			if(this.creDate==null) {
+				this.creDate=null;
+			}
+			return creDate;
+		}
+		
+		public Long getCreDateA() {
+			if(this.creDateA==null) {
+				this.creDateA=null;
+			}
+			return creDateA;
+		}
+		
+		public Long getCreDateB() {
+			if(this.creDateB==null) {
+				this.creDateB=null;
+			}
+			return creDateB;
+		}
 }

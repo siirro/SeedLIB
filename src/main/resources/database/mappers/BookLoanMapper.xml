@@ -9,7 +9,7 @@
 	<update id="setCountUpdate" parameterType="BookVO">
 		UPDATE BOOK
 			SET BOOKCOUNT = #{bookCount}
-			WHERE ISBN = #{isbn}
+		WHERE ISBN = #{isbn}
 	</update>
 	
 	<!-- 보유 권수 계산 -->
@@ -21,20 +21,23 @@
 	<update id="setQuanUpdate" parameterType="BookLibVO">
 		UPDATE BOOKLIB
 			SET QUANTITY = #{quantity}
-			WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
+		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
 	
 	<!-- 보유 권수가 0/1일때 able update -->
 	<update id="setAbleUpdate" parameterType="BookLibVO">
 		UPDATE BOOKLIB
 			SET ABLE = #{able}
-			WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
+		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
+	
+	
 	
 	<!-- 대출 가능한 회원인지? - 해당 도서 대출 중인지 -->
 	<select id="getBookLoan" parameterType="BookLoanVO" resultType="Integer">
 		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
+	
 	
 	<!-- 대출 신청 -->
 	<insert id="setLoan" parameterType="BookLoanVO">
@@ -42,7 +45,9 @@
 			VALUES (#{userName}, #{isbn}, now(), 0000, 0, 0)
 	</insert>
 	
+	
 	<!-- 대출 목록 -->
+	<!-- rtStatus가 1이면 대출 중 | 0이면 대출 이력 -->
 	<select id="getLoanList" parameterType="BookLoanPager" resultMap="LoanResult">
 		SELECT L.*, B.*
 			FROM LOAN L
@@ -51,9 +56,15 @@
 		
 			WHERE L.USERNAME = #{userName}
 				AND RTSTATUS = #{rtStatus}
+				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
+				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+				<if test="dateA != null and dateB != null">
+					AND L.REGDATE BETWEEN #{dateA} AND #{dateB}
+				</if>
 			ORDER BY
 			<choose>
 				<when test="select == 'title'">B.TITLE</when>
+				<when test="select == 'isbn'">B.ISBN</when>
 				<otherwise>L.LOANNUM</otherwise>
 			</choose>
 			<choose>
@@ -78,6 +89,7 @@
 			<result column="extension" property="extension"/>
 		</collection>	
 	</resultMap>
+	
 	
 	<!-- 대출 연장 신청 가능? -->
 	<select id="getExCount" parameterType="BookLoanVO" resultType="Integer">
@@ -105,7 +117,11 @@
 				ON B.ISBN = R.ISBN
 		
 			WHERE R.USERNAME = #{userName}
-				AND R.REGDATE BETWEEN #{dateA} AND #{dateB}
+				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
+				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+				<if test="dateA != null and dateB != null">
+					AND E.REGDATE BETWEEN #{dateA} AND #{dateB}
+				</if>
 			ORDER BY
 			<choose>
 				<when test="select == 'title'">B.TITLE</when>
@@ -146,7 +162,11 @@
 				ON B.ISBN = M.ISBN
 		
 			WHERE M.USERNAME = #{userName}
-				AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
+				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
+				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+				<if test="dateA != null and dateB != null">
+					AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
+				</if>
 			ORDER BY
 			<choose>
 				<when test="select == 'title'">B.TITLE</when>

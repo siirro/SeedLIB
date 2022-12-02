@@ -20,6 +20,8 @@ public class BookLoanPager {
 	
 	private boolean rtStatus;
 	private String userName;
+	private String title;
+	private String wirter;
 	
 	//제목 OR date
 	private String select;
@@ -28,8 +30,8 @@ public class BookLoanPager {
 	private String sort;
 	
 	//기간 검색
-	private Date dateA;
-	private Date dateB;
+	private Long dateA;
+	private Long dateB;
 	
 	public BookLoanPager() {
 		this.perPage=9L;
@@ -101,6 +103,7 @@ public class BookLoanPager {
 		return page;
 	}
 	
+	
 	public String getSelect() {
 		if(this.select==null) {
 			this.select="";
@@ -115,19 +118,33 @@ public class BookLoanPager {
 		return sort;
 	}
 	
-	// Date null 값 처리
-//	public Date getDateA() {
-//		if(this.dateA==null) {
-//			this.dateA=;
-//		}
-//		return dateA;
-//		
-//	}public Date getDateB() {
-//		if(this.dateB==null) {
-//			this.dateB=;
-//		}
-//		return dateB;
-//	}
+	public String getTitle() {
+		if(this.title==null) {
+			this.title="";
+		}
+		return title;
+	}
+	
+	public String getWriter() {
+		if(this.wirter==null) {
+			this.wirter="";
+		}
+		return wirter;
+	}
+	
+	public Long getDateA() {
+		if(this.dateA==null) {
+			this.dateA=null;
+		}
+		return dateA;
+	}
+	
+	public Long getDateB() {
+		if(this.dateB==null) {
+			this.dateB=null;
+		}
+		return dateB;
+	}
 
 
 }

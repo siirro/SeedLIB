@@ -26,23 +26,24 @@
 	</select>
 	
 	<select id="getShelfListP" parameterType="ShelfPager" resultType="ShelfPager">
-		SELECT SS.* FROM
-			(SELECT ROWNUM R, S.*
-				FROM SHELF S
-				WHERE S.USERNAME = #{userName}
-					AND S.SHNAME = #{shName}
-					AND S.CREDATE BETWEEN #{creDateA} AND #{creDateB}
-					ORDER BY
-	    			<choose>
-	    				<when test="select == 'name'">S.SHNAME</when>
-	    				<otherwise>S.CREDATE</otherwise>
-	    			</choose>
-	    			<choose>
-	    				<when test="sort == 'desc'">DESC</when>
-	    				<otherwise>ASC</otherwise>
-	    			</choose>
-	    		)SS
-	    WHERE R BETWEEN #{startRow} AND #{lastRow}
+		SELECT *
+			FROM SHELF S
+			WHERE USERNAME = #{userName}
+				AND SHNAME LIKE CONCAT ('%', #{shName}, '%')
+				AND SHMEMO LIKE CONCAT ('%', #{shMemo}, '%')
+				<if test="creDateA != null and creDateB != null">
+					AND CREDATE BETWEEN #{creDateA} AND #{creDateB}				
+				</if>
+			ORDER BY
+    			<choose>
+    				<when test="select == 'name'">SHNAME</when>
+    				<otherwise>CREDATE</otherwise>
+    			</choose>
+    			<choose>
+    				<when test="sort == 'desc'">DESC</when>
+    				<otherwise>ASC</otherwise>
+    			</choose>
+	    LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
@@ -86,9 +87,11 @@
 			ON P.ISBN = B.ISBN
 		
 			WHERE S.SHNUM = #{shNum}
-				AND B.TITLE = #{title}
-				AND B.ISBN = #{isbn}
-				AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
+				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
+				AND B.ISBN LIKE CONCAT ('%', #{isbn}, '%')
+				<if test="regDateA != null and regDateB != null">			
+					AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
+				</if>
 			ORDER BY
    			<choose>
    				<when test="select == 'title'">B.TITLE</when>
@@ -116,8 +119,6 @@
 			<result column="userName" property="userName"/>
 			<result column="creDate" property="creDate"/>
 		</collection>
-			
-		
 	</resultMap>
 	
 	

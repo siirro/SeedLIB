@@ -23,15 +23,12 @@ public class ShelfBookPager {
 		//파라미터
 		//검색어 - 제목
 		private String title;
-		private Long shNum;
 		private Long isbn;
 		
 		//정렬 - 제목 / isbn
 		private String select;
 		//정렬
 		private String sort;
-		//등록일
-		private String regDate;
 		//등록일 00~00일 사이
 		private Long regDateA;
 		private Long regDateB;
@@ -107,13 +104,6 @@ public class ShelfBookPager {
 			return page;
 		}
 		
-		public String getName() {
-			if(this.title==null) {
-				this.title="";
-			}
-			return title;
-		}
-		
 		public String getSelect() {
 			if(this.select==null) {
 				this.select="";
@@ -121,12 +111,6 @@ public class ShelfBookPager {
 			return select;
 		}
 		
-		public Long getShNum() {
-			if(this.shNum==null) {
-				this.shNum=0L;
-			}
-			return shNum;
-		}
 		
 		public String getSort() {
 			if(this.sort==null) {
@@ -137,16 +121,23 @@ public class ShelfBookPager {
 		
 		public Long getIsbn() {
 			if(this.isbn==null) {
-				this.isbn=0L;
+				this.isbn=null;
 			}
 			return isbn;
 		}
 		
-		public Long get() {
-			if(this.isbn==null) {
-				this.isbn=0L;
+		public Long getRegDateA() {
+			if(this.regDateA==null) {
+				this.regDateA=null;
 			}
-			return isbn;
+			return regDateA;
+		}
+		
+		public Long getRegDateb() {
+			if(this.regDateB==null) {
+				this.regDateB=null;
+			}
+			return regDateB;
 		}
 
 
