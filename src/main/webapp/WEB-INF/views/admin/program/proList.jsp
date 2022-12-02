@@ -61,15 +61,15 @@
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <!-- <h6 class="mb-10">Data Table</h6> -->
-                  <div
-                  class="d-flex flex-wrap justify-content-between align-items-center py-3"
-                >
-                  <div class="left">
-                    <h6>Data Table</h6>
-                    <p>Show <span>10</span> entries</p>
-                  </div>
-                  <div class="right d-flex align-items-center">
-                    <div class="select-style-1" style="margin-bottom: 0;">
+                    <div
+                    class="d-flex flex-wrap justify-content-between align-items-center py-3"
+                  >
+                    <div class="left">
+                      <h6>Data Table</h6>
+                      <p>Show <span>10</span> entries</p>
+                    </div>
+                    <div class="right d-flex align-items-center">
+                      <div class="select-style-1" style="margin-bottom: 0;">
                         <div class="select-position select-sm">
                           <select name="kind">
                             <option value="선택안함">선택안함</option>
@@ -81,15 +81,15 @@
                             <option value="접수상태">접수상태</option>
                           </select>
                         </div>
-                    </div>
-                    <div class="table-search">
-                      <form action="#">
-                        <input type="text" placeholder="Search..." />
-                        <button><i class="lni lni-search-alt"></i></button>
-                      </form>
+                      </div>
+                      <div class="table-search">
+                        <form action="#">
+                          <input type="text" placeholder="Search..." />
+                          <button><i class="lni lni-search-alt"></i></button>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </div>
                   <div class="table-wrapper table-responsive">
                     <table class="table text-center">
                       <thead>
@@ -112,7 +112,6 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
                           </h6></th>
                           <th><h6>이름</h6></th>
                           <th><h6>정원/신청자</h6></th>
@@ -136,7 +135,6 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
                           </h6></th>
                           <th class="text-start"><h6>수정/삭제</h6></th>
                         </tr>
