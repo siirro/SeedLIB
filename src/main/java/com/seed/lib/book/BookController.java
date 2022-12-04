@@ -86,6 +86,10 @@ public class BookController {
 	
 //-------------------------------------------------------------------------------
 	//대출 신청
+	public void setLoanFin () throws Exception {
+		
+	}
+	
 	@ResponseBody
 	@PostMapping("loan")
 	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {

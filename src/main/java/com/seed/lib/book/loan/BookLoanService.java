@@ -1,5 +1,8 @@
 package com.seed.lib.book.loan;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seed.lib.book.BookLibVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.BookLoanPager;
+import com.seed.lib.util.DateUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +23,8 @@ public class BookLoanService {
 	
 	@Autowired
 	private BookLoanMapper loanMapper;
+	@Autowired
+	private DateUtil dateUtil;
 	
 	//대출, 반납하면 도서관이 보유하고 있는 권수 update
 		public BookLibVO setQuanUpdate (BookLibVO libVO) throws Exception{
@@ -66,6 +72,22 @@ public class BookLoanService {
 		}else {
 			return 2;
 		}
+	}
+	
+	//반납날짜 계산
+	public Calendar getRtDate (Long LoanLDate) throws Exception{
+		java.util.Date now = new java.util.Date();
+		
+		//날짜 타입 설정
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		
+		//현재 시간 설정
+		Calendar ca = Calendar.getInstance();
+		ca.setTime(now);
+		
+		// 14일 더하기
+		ca.add(Calendar.DATE, 14);
+		return ca;
 	}
 	
 	//목록

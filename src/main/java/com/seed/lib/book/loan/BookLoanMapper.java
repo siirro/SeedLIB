@@ -35,6 +35,9 @@ public interface BookLoanMapper {
 	//대출 신청 (인서트)
 	public int setLoan (BookLoanVO loVO) throws Exception;
 	
+	//반납날짜 계산
+	public Long getRtDate (Long LoanLDate) throws Exception;
+	
 	//대출 목록 stStatus가 1이면 대출중 | 0이면 이력
 	public List<BookVO> getLoanList (BookLoanPager pager) throws Exception;
 	
