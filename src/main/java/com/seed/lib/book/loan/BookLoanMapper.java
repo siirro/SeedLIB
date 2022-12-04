@@ -32,7 +32,7 @@ public interface BookLoanMapper {
 	//대출 가능한 회원인지? - 연체일 기간 지났는지 판단
 	//public int getOverdue () throws Exception;
 	
-	//대출 신청
+	//대출 신청 (인서트)
 	public int setLoan (BookLoanVO loVO) throws Exception;
 	
 	//대출 목록 stStatus가 1이면 대출중 | 0이면 이력
