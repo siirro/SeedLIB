@@ -363,6 +363,8 @@
 							</div>
 							
 							<!-- 같은 장르 자료 -->
+							<input type="hidden" id="category" value="${book.category}">
+							
 							<div id="tabGo3" class="dropBookData">
 								<h5 class="htitle">같은 장르의 자료</h5>
 								<div class="dropContainerBox">
@@ -370,17 +372,27 @@
 										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
-													<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');"><div class="bookImg" style="height: 235.2px;"><img alt="(들썩들썩 지구를 흔드는)바이러스" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;"></div>
-													<div class="bookData">
-														<div class="book_dataInner">
-															<p class="book_name" title="(들썩들썩 지구를 흔드는)바이러스"><strong>(들썩들썩 지구를 흔드는)바이러스</strong></p>
-															<p class="book_writers">
-																<span class="bk_writer">폴 이언 크로스 글; 스티브 브라운 그림; 신동경 옮김</span>
-																<span class="bk_publish">아울북<br>2022</span>
-															</p>
-														</div>
+													<div class="bookData">	
+														<c:forEach var="sc" items="${sameCate}">
+															<h1>${sc }</h1>
+															<div class="book_dataInner" id="sameCateTable">
+																<div>
+																	<a href="#link" onclick="location.href='../book/detail?isbn=${sc.isbn}'">
+																		<img alt="" src="${sc.image}">																
+																	</a>
+																</div>
+																<div>
+																	<p class="book_name" title="${sc.title}">
+																		<strong>${sc.title}</strong>
+																	</p>
+																	<p class="book_writers">
+																		<span class="bk_writer">${sc.writer}</span>
+																		<span class="bk_publish">${sc.publisher}<br>${sc.bookDate}</span>
+																	</p>
+																</div>
+															</div>
+														</c:forEach>
 													</div>
-													</a>
 												</div>
 											</div>
 											<!-- Add Arrows -->
@@ -398,31 +410,25 @@
 									<div class="swipeGallery">
 										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-												<c:choose>
-													<c:when test="samesame">
-														<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
-															<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');">
-																<div class="bookImg" style="height: 235.2px;">
-																	<img alt="(들썩들썩 지구를 흔드는)바이러스" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;">
-																</div>
-																<div class="bookData">
-																	<div class="book_dataInner">
-																		<p class="book_name" title="(들썩들썩 지구를 흔드는)바이러스"><strong>(들썩들썩 지구를 흔드는)바이러스</strong></p>
-																		<p class="book_writers">
-																			<span class="bk_writer">폴 이언 크로스 글; 스티브 브라운 그림; 신동경 옮김</span>
-																			<span class="bk_publish">아울북<br>2022</span>
-																		</p>
-																	</div>
-																</div>
-															</a>
-														</div>
-													</c:when>
-													
-													<c:otherwise>
-														없으면 없음
-													</c:otherwise>
-												</c:choose>
-											</div>
+												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
+													<div class="bookData">
+														<c:forEach var="sw" items="${sameWriter}">
+															<div class="book_dataInner" id="sameCateTable">
+																<a href="#link" onclick="location.href='../book/detail?isbn=${sw.isbn}'">
+																	<img alt="" src="${sw.image}">																
+																</a>
+																
+																<p class="book_name" title="${sw.title}">
+																	<strong>${sw.title}</strong>
+																</p>
+																<p class="book_writers">
+																	<span class="bk_writer">${sw.writer}</span>
+																	<span class="bk_publish">${sw.publisher}<br>${sw.bookDate}</span>
+																</p>
+															</div>
+														</c:forEach>
+													</div>
+												</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
 											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>

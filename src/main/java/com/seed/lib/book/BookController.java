@@ -1,16 +1,20 @@
 package com.seed.lib.book;
 
+import java.awt.print.Book;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -83,11 +87,21 @@ public class BookController {
 		int bookLike = bookLikeService.getBookLike(bookVO);
 		mv.addObject("like", bookLike);
 		
+		//같은 장르 도서
+		List<BookVO> li = bookService.getSameCate(bookVO);
+		mv.addObject("sameCate", li);
+		
+		//같은 작가 도서
+		li = bookService.getSameWriter(bookVO);
+		mv.addObject("sameWriter", li);
+		
 		mv.setViewName("book/detail");
 		
 		return mv;
 	}
+
 	
+
 //-------------------------------------------------------------------------------
 	//대출 신청
 	@ResponseBody

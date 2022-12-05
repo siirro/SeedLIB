@@ -47,6 +47,28 @@
 			
 	</resultMap>
 	
+	<!-- 같은 장르 도서 -->
+	<select id="getSameCate" parameterType="BookVO" resultMap="getSameResult">
+		SELECT * FROM BOOK WHERE CATEGORY = #{category} LIMIT 0, 12;
+	</select>
+	
+	<!-- 같은 작가 도서 -->
+	<select id="getSameWriter" parameterType="BookVO" resultMap="getSameResult">
+		SELECT * FROM BOOK WHERE WRITER = #{writer} LIMIT 0, 12;
+	</select>
+	
+	<resultMap type="BookVO" id="getSameResult">
+		<id column="isbn" property="isbn" />
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="publisher" property="publisher"/>
+			<result column="bookDate" property="bookDate"/>
+			<result column="category" property="category"/>
+			<result column="image" property="image"/>
+			<result column="bookCount" property="bookCount"/>
+			<result column="bookHeart" property="bookHeart"/>
+			<result column="num" property="num"/>
+	</resultMap>
 </mapper>
   
 
