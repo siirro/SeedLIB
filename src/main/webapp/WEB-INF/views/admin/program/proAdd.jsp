@@ -157,7 +157,7 @@
                   <!-- ======= textarea style start ======= -->
                   <h6 class="mb-25">글내용</h6>
                   <div class="input-style-3">
-                    <textarea placeholder="행사 내용을 입력해 주세요" name="proContents" rows="15"></textarea>
+                    <textarea placeholder="행사 내용을 입력해 주세요" name="proContents" rows="15"><c:out value="${proContents}"></c:out></textarea>
                     <span class="icon"
                       ><i class="lni lni-text-format"></i
                     ></span>
