@@ -12,7 +12,7 @@
 
 	<!-- 도서 디테일 -->
 	<select id="getLibDetail" resultMap="getDetailResult" parameterType="BookVO">
-	SELECT b.*, b2.*, l.*
+	SELECT b2.*, l.*
 	FROM book b
 		inner join booklib b2 
 		on b.ISBN = b2.ISBN 
@@ -65,9 +65,6 @@
 			<result column="bookDate" property="bookDate"/>
 			<result column="category" property="category"/>
 			<result column="image" property="image"/>
-			<result column="bookCount" property="bookCount"/>
-			<result column="bookHeart" property="bookHeart"/>
-			<result column="num" property="num"/>
 	</resultMap>
 </mapper>
   

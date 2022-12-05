@@ -89,11 +89,11 @@ public class BookController {
 		
 		//같은 장르 도서
 		List<BookVO> li = bookService.getSameCate(bookVO);
-		mv.addObject("sameCate", li);
+		mv.addObject("cate", li);
 		
 		//같은 작가 도서
 		li = bookService.getSameWriter(bookVO);
-		mv.addObject("sameWriter", li);
+		mv.addObject("wri", li);
 		
 		mv.setViewName("book/detail");
 		

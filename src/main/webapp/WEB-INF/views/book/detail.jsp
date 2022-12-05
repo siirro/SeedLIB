@@ -50,6 +50,7 @@
 				<h3>통합검색</h3>
 			</div>
 		</div>
+		
 		<div id="contentGroup">
 			<c:import url="../sideBar/AsideBar.jsp"></c:import>
 			
@@ -373,8 +374,8 @@
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
 													<div class="bookData">	
-														<c:forEach var="sc" items="${sameCate}">
-															<h1>${sc }</h1>
+														<c:forEach var="sc" items="${cate}">
+															<h1>${sc}</h1>
 															<div class="book_dataInner" id="sameCateTable">
 																<div>
 																	<a href="#link" onclick="location.href='../book/detail?isbn=${sc.isbn}'">
@@ -412,7 +413,7 @@
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
 													<div class="bookData">
-														<c:forEach var="sw" items="${sameWriter}">
+														<c:forEach var="sw" items="${wri}">
 															<div class="book_dataInner" id="sameCateTable">
 																<a href="#link" onclick="location.href='../book/detail?isbn=${sw.isbn}'">
 																	<img alt="" src="${sw.image}">																
@@ -811,6 +812,7 @@
 			<!-- //팝업 : 우편복사 신청 -->
 		</div>
 	</div>
+</div>
 	<c:import url="../temp/footer.jsp"></c:import> 
 	
 </body>
