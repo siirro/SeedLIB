@@ -38,19 +38,25 @@
 	</select>
 	
 	<select id="getLockerPrice" parameterType="String" resultType="int">
-		SELECT PRICE FROM LOCKERRENT
+		SELECT AMOUNT FROM LOCKERRENT
+		WHERE MERCHANT_UID = #{merchant_uid}
+	</select>
+	
+	<select id="getLockerOne" parameterType="String" resultType="LockerVO">
+		SELECT * FROM LOCKERRENT
 		WHERE MERCHANT_UID = #{merchant_uid}
 	</select>
 	
 	<update id="exitMyLocker" parameterType="String">
 		UPDATE LOCKERRENT SET
-		RVABLE=1
+		RENTSTAT=1
 		WHERE MERCHANT_UID = #{merchant_uid}
 	</update> 
 	
 	<insert id="setLockerCancelOne" parameterType="LockerCancelVO">
 		INSERT INTO MONEYBACK
-		
+		(BACKPRICE, BACKDATE, MERCHANT_UID)
+		VALUES(#{cancel_request_amount}, SYSDATE(), #{rentNum})
 	</insert>
 
 </mapper>    

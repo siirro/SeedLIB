@@ -25,6 +25,9 @@ public interface LockerMapper {
 	//사물함 가격 가져오기
 	public int getLockerPrice(String merchant_uid) throws Exception;
 	
+	//특정 사물함 하나 가져오기
+	public LockerVO getLockerOne(String merchant_uid) throws Exception;
+	
 	//사물함 환불하기
 	public int exitMyLocker(String merchant_uid) throws Exception;
 	

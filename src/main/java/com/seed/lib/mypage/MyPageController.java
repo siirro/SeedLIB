@@ -191,28 +191,33 @@ public class MyPageController {
 	
 	@PostMapping("lockerCancel")
 	@ResponseBody
-	public ModelAndView setLockerCancel(
+	public String setLockerCancel(
 			String merchant_uid,
 			String reason,
 			String cancel_request_amount
 			) throws Exception {
 		String msg = "";
-		ModelAndView mv = new ModelAndView("jsonView");
+//		ModelAndView mv = new ModelAndView();
 		
 		//토큰 발급
 		IamportResponse<AccessToken> token=null;
 		token = lockerService.getToken();
 		
+		log.info(cancel_request_amount);
+		
 		Integer checksum = lockerService.getLockerPrice(merchant_uid);
-		checksum = checksum - Integer.parseInt(cancel_request_amount);
-		String code = lockerService.setLockerCancel(token, checksum.toString(), reason, merchant_uid);
+//		checksum = checksum - Integer.parseInt(cancel_request_amount);
+		String code = lockerService.setLockerCancel(token, reason, merchant_uid, checksum.toString(), cancel_request_amount);
+		log.info("token:{}",token.getResponse().getToken());
+		
 			if(code.equals("0")) {
 				//구매 상태 변경
 				int result = lockerService.exitMyLocker(merchant_uid);
 				LockerCancelVO cancelVO = new LockerCancelVO();
-				cancelVO.setMerchant_uid(merchant_uid);
+				cancelVO.setRentNum(lockerService.getLockerOne(merchant_uid).getRentNum());
 				cancelVO.setReason(reason);
-				cancelVO.setChecksum(checksum);
+				cancelVO.setCancel_request_amount(Integer.parseInt(cancel_request_amount));
+
 				int cancelResult = lockerService.setLockerCancelOne(cancelVO);
 					if(result>0) {
 						msg = "success";
@@ -222,8 +227,8 @@ public class MyPageController {
 				} else {
 						msg = "error";
 					}
-				mv.addObject("msg", msg);
-				return mv;
+//				mv.addObject("msg", msg);
+				return msg;
 		}
 	
 	

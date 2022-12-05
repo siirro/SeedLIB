@@ -1,5 +1,7 @@
 package com.seed.lib.admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.donation.DonationService;
+import com.seed.lib.donation.DonationVO;
 import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.HdPager;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -19,10 +24,16 @@ public class AdminController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private DonationService donationService;
+	
 	// 기증도서 목록 조회
 	@GetMapping("donaBoList")
-	public String getDonaBoList()throws Exception{
-		return "admin/donaBoList";
+	public ModelAndView getDonaBoList(HdPager hdPager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<DonationVO> dl = donationService.getAdminDonList(hdPager);
+		mv.addObject("don", dl);
+		return mv;
 	}
 	
 	// 희망도서 목록 조회

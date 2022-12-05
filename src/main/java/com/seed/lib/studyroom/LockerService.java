@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -75,6 +76,10 @@ public class LockerService {
 			return mapper.getLockerPrice(merchant_uid);
 		}
 		
+		public LockerVO getLockerOne(String merchant_uid) throws Exception{
+			return mapper.getLockerOne(merchant_uid);
+		}
+		
 		public int exitMyLocker(String merchant_uid) throws Exception{
 			return mapper.exitMyLocker(merchant_uid);
 		}
@@ -98,27 +103,22 @@ public class LockerService {
 			return token;
 		}	
 		
-		//아임포트 서버에서 전액 환불 진행
-		public String setLockerCancel(IamportResponse<AccessToken> token, String checksum, String reason, String merchant_uid) throws Exception{
+		//아임포트 서버에서 환불 진행
+		public String setLockerCancel(IamportResponse<AccessToken> token, String reason, String merchant_uid, String amount, String cancel_request_amount) throws Exception{
 			RestTemplate restTemplate = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
+			JSONObject body = new JSONObject();
+			
 			headers.add("Content-Type", "application/json");
 			headers.add("Authorization", token.getResponse().getToken());
 			
-			MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+			body.put("merchant_uid", merchant_uid);
+			body.put("amount", cancel_request_amount);
 			
-			params.add("reason", reason);
-			params.add("imp_uid", merchant_uid);
-			params.add("checksum", checksum);
-			
-			HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String,String>>(params,headers);
-			
-			String response = restTemplate.postForObject("http://api.iamport.kr/payments/cancel", request, String.class);
+			HttpEntity<JSONObject> entity = new HttpEntity<JSONObject>(body, headers);
+			JSONObject response = restTemplate.postForObject("http://api.iamport.kr/payments/cancel", entity, JSONObject.class);
+			String code = response.get("code").toString();
 			System.out.println("response: "+response);
-			JSONParser jsonParser = new JSONParser();
-			JSONObject jsonObject = (JSONObject)jsonParser.parse(response);
-			String code = jsonObject.get("code").toString();
-
 			return code;
 		}
 }

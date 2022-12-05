@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class LockerVO {
+	private Integer rentNum;
 	private String imp_uid; 
 	private String merchant_uid;
 	private Integer lockerNum;

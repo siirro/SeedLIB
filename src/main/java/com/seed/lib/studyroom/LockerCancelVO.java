@@ -6,8 +6,8 @@ import lombok.Data;
 public class LockerCancelVO {
 
 	private Integer refundNum;
-	private String merchant_uid;
+	private Integer rentNum;
 	private String reason;
-	private Integer checksum;
+	private Integer cancel_request_amount;
 	
 }

@@ -176,7 +176,7 @@ function requestPay(lockerVO) {
                             opener.location.href="/mypage/lockerHistory"; 
                             window.close();
                         } else{
-                            opener.location.href="../index"; 
+                            opener.location.href="/studyroom/locker"; 
                             window.close();
                         }   
                     }
