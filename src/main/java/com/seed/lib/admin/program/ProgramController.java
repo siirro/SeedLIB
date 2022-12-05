@@ -57,7 +57,7 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 업데이트
+	// 문화프로그램 수정
 	@GetMapping("proUpdate")
 	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
 		
@@ -75,7 +75,7 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 업데이트(POST)
+	// 문화프로그램 수정(POST)
 	@PostMapping("proUpdate")
 	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
 		
@@ -131,7 +131,7 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 목록
+	// 문화프로그램 목록 조회
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		
