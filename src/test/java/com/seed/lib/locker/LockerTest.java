@@ -46,7 +46,7 @@ class LockerTest {
 	public void setMyLockerTest() throws Exception{
 		LockerVO lockerVO = new LockerVO();
 		lockerVO.setUserName("member1");
-		lockerVO.setPrice(1000);
+		lockerVO.setAmount(1000);
 		lockerVO.setStDate("2022-12-01");
 		lockerVO.setEnDate("2022-12-02");
 		lockerVO.setLockerNum(5);

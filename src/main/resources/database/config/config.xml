@@ -32,6 +32,7 @@
 		<typeAlias type="com.seed.lib.studyroom.StudyRoomVO" alias="StudyRoomVO"/>
 		<typeAlias type="com.seed.lib.studyroom.StudyDetailVO" alias="StudyDetailVO"/>
 		<typeAlias type="com.seed.lib.studyroom.LockerVO" alias="LockerVO"/>
+		<typeAlias type="com.seed.lib.studyroom.LockerCancelVO" alias="LockerCancelVO"/>
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>

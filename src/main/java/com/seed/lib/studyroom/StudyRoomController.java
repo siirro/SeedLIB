@@ -117,9 +117,44 @@ public class StudyRoomController {
 		return mv;
 	}
 	
+	@PostMapping("check")
+	@ResponseBody
+	public int checkLocker(@RequestBody LockerVO lockerVO) throws Exception {
+		int result = lockerService.checkLocker(lockerVO);
+		if(result == 0) {
+			return 200;
+		} else {
+			return result;
+		}
+	}
+	
 	@PostMapping("payments")
 	@ResponseBody
-	public void lockerPay() throws Exception{
+	public int lockerPay(String imp_uid, 
+						  String merchant_uid, 
+						  String lockerNum,
+						  String amount, 
+						  String stDate,
+						  String enDate,
+						  String rentDays,
+						  String userName) throws Exception{
 		log.info("들어옴.");
+		
+		LockerVO lockerVO = new LockerVO();
+		lockerVO.setImp_uid(imp_uid);
+		lockerVO.setMerchant_uid(merchant_uid);
+		lockerVO.setLockerNum(Integer.parseInt(lockerNum));
+		lockerVO.setAmount(Integer.parseInt(amount));
+		lockerVO.setStDate(stDate);
+		lockerVO.setEnDate(enDate);
+		lockerVO.setRentDays(Integer.parseInt(rentDays));
+		lockerVO.setUserName(userName);
+		int result = lockerService.setMyLocker(lockerVO);
+		if(result == 1) {
+			return 200;
+		} else {
+			return result;
+		}
+		
 	}
 }

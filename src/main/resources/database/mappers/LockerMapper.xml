@@ -27,31 +27,30 @@
 	
 	<insert id="setMyLocker" parameterType="LockerVO">
 		INSERT INTO LOCKERRENT
-		(LOCKERNUM, PRICE, STDATE, ENDATE, RENTDAYS, RENTSTAT, USERNAME, LOCKERLAST)
-		VALUES(#{lockerNum}, #{price}, #{stDate}, #{enDate}, #{rentDays}, 0, #{userName}, 40);
+		(IMP_UID, MERCHANT_UID, LOCKERNUM, AMOUNT, STDATE, ENDATE, RENTDAYS, RENTSTAT, USERNAME, LOCKERLAST)
+		VALUES(#{imp_uid}, #{merchant_uid}, #{lockerNum}, #{amount}, #{stDate}, #{enDate}, #{rentDays}, 0, #{userName}, 40);
 	</insert>
 	
-	<!-- <select id="getSeatHistory" parameterType="String" resultType="StudyDetailVO">
-		SELECT * FROM STUDYDETAIL 
+	<select id="getLockerHistory" parameterType="String" resultType="LockerVO">
+		SELECT * FROM LOCKERRENT 
 		WHERE USERNAME=#{userName}
+		ORDER BY RENTNUM DESC
 	</select>
 	
-	<update id="exitMySeat" parameterType="StudyDetailVO">
-		UPDATE STUDYDETAIL SET
+	<select id="getLockerPrice" parameterType="String" resultType="int">
+		SELECT PRICE FROM LOCKERRENT
+		WHERE MERCHANT_UID = #{merchant_uid}
+	</select>
+	
+	<update id="exitMyLocker" parameterType="String">
+		UPDATE LOCKERRENT SET
 		RVABLE=1
-		WHERE USERNAME=#{userName} AND SEATNUM=#{seatNum};
+		WHERE MERCHANT_UID = #{merchant_uid}
 	</update> 
 	
-	<resultMap type="LockerVO" id="getLockerResult">
-		<id column="RVNUM" property="rvNum"/>
-		<result column="RVABLE" property="rvAble"/>
-		<result column="SEATNUM" property="seatNum"/>
-		<result column="RVDATE" property="rvDate"/>  
-		<result column="USERNAME" property="userName"/>
-		<association property="roomVO">
-			<id column="ROOMNUM" property="roomNum"/>
-			<result column="ROOMNAME" property="roomName"/>
-			<result column="LASTNUM" property="lastNum"/>
-		</association>
-	</resultMap> -->
+	<insert id="setLockerCancelOne" parameterType="LockerCancelVO">
+		INSERT INTO MONEYBACK
+		
+	</insert>
+
 </mapper>    

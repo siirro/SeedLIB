@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class StudyRoomService {
 	
@@ -32,11 +33,6 @@ public class StudyRoomService {
 			}
 		}
 	}
-	
-	//사용중인 좌석 정보 가져오기
-//	public List<StudyDetailVO> getUseSeat (String roomName) throws Exception {
-//		return mapper.getUseSeat(roomName);
-//	}
 	
 	//마이페이지에서 이용내역 확인하기
 	public List<StudyDetailVO> getSeatHistory (String userName) throws Exception{

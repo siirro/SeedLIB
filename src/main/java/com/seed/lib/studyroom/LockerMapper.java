@@ -18,4 +18,16 @@ public interface LockerMapper {
 	
 	//사물함 신청
 	public int setMyLocker(LockerVO lockerVO) throws Exception;
+	
+	//사물함 대여 조회
+	public List<LockerVO> getLockerHistory(String userName) throws Exception;
+	
+	//사물함 가격 가져오기
+	public int getLockerPrice(String merchant_uid) throws Exception;
+	
+	//사물함 환불하기
+	public int exitMyLocker(String merchant_uid) throws Exception;
+	
+	//환불내역입력하기
+	public int setLockerCancelOne(LockerCancelVO cancelVO) throws Exception;
 }

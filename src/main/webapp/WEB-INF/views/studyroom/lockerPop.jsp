@@ -94,16 +94,16 @@
             <table class="tbl" style="width: 550px;">
                 <thead>
                     <tr>
-                        <th>대여시작일자</th>
-                        <th>대여종료일자</th>
+                        <th style="width: 165px;">대여 시작 일자</th>
+                        <th style="width: 165px;">대여 종료 일자</th>
                         <th>총 이용 금액</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="tabTr">
-                        <td><input type="date" id="stDate" name="stDate" min=""></td>
-                        <td><input type="date" id="enDate" name="enDate" min="" max=""></td>
-                        <td><input type="text" id="price" name="price" readonly style="text-align: end;" value=""></td>
+                        <td style="width: 165px;"><input type="date" id="stDate" name="stDate" min=""></td>
+                        <td style="width: 165px;"><input type="date" style="width: 141px;" id="enDate" name="enDate" min="" max=""></td>
+                        <td><input type="text" id="price" name="price" readonly style="text-align: end;" value="0"></td>
                     </tr>
                 </tbody>
             </table>
@@ -131,8 +131,6 @@
         <div class="btnArea">
             <button type="button" class="btn themeBtn" id="rentBtn">사물함 대여</button>
         </div>
-
-        <button onclick="requestPay()">결제하기</button>
     </div>
 
     <script>

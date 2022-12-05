@@ -34,11 +34,16 @@ import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.studyroom.LockerCancelVO;
+import com.seed.lib.studyroom.LockerService;
+import com.seed.lib.studyroom.LockerVO;
 import com.seed.lib.studyroom.StudyDetailVO;
 import com.seed.lib.studyroom.StudyRoomService;
 import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.FullCalendarVO;
 import com.seed.lib.util.HdPager;
+import com.siot.IamportRestClient.response.AccessToken;
+import com.siot.IamportRestClient.response.IamportResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +57,8 @@ public class MyPageController {
 	private DonationService donationService;
 	@Autowired
 	private StudyRoomService roomService;
+	@Autowired
+	private LockerService lockerService;
 	@Autowired
 	private BookLoanService loanService;
   @Autowired
@@ -110,6 +117,7 @@ public class MyPageController {
 		
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -158,8 +166,7 @@ public class MyPageController {
 				jsonObject.put("display", "background");
 				jsonObject.put("classNames", "room-"+s.getRvAble());
 				js.add(jsonObject);
-			}
-			
+			}			
 			mv.addObject("cl", js);		
 			return mv;
 	}
@@ -174,9 +181,50 @@ public class MyPageController {
 	}
 	
 	@GetMapping("lockerHistory")
-	public void getLockerList() throws Exception{
-		
+	public ModelAndView getLockerList(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUserName());
+		mv.addObject("locker", loList);
+		return mv;
 	}
+	
+	@PostMapping("lockerCancel")
+	@ResponseBody
+	public ModelAndView setLockerCancel(
+			String merchant_uid,
+			String reason,
+			String cancel_request_amount
+			) throws Exception {
+		String msg = "";
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		//토큰 발급
+		IamportResponse<AccessToken> token=null;
+		token = lockerService.getToken();
+		
+		Integer checksum = lockerService.getLockerPrice(merchant_uid);
+		checksum = checksum - Integer.parseInt(cancel_request_amount);
+		String code = lockerService.setLockerCancel(token, checksum.toString(), reason, merchant_uid);
+			if(code.equals("0")) {
+				//구매 상태 변경
+				int result = lockerService.exitMyLocker(merchant_uid);
+				LockerCancelVO cancelVO = new LockerCancelVO();
+				cancelVO.setMerchant_uid(merchant_uid);
+				cancelVO.setReason(reason);
+				cancelVO.setChecksum(checksum);
+				int cancelResult = lockerService.setLockerCancelOne(cancelVO);
+					if(result>0) {
+						msg = "success";
+					} else {
+						msg = "error";
+					}
+				} else {
+						msg = "error";
+					}
+				mv.addObject("msg", msg);
+				return mv;
+		}
 	
 	
 	//오늘 날짜 가져오기
@@ -187,7 +235,8 @@ public class MyPageController {
 		SimpleDateFormat formatter = new SimpleDateFormat(pattern, currentLocale);
 		return formatter.format(today);
 	}
-	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//대출 목록
 	@GetMapping("bookLoan")

@@ -6,12 +6,13 @@ import lombok.Data;
 
 @Data
 public class LockerVO {
-	private Integer rentNum; 
-	private int lockerNum;
-	private int price;
+	private String imp_uid; 
+	private String merchant_uid;
+	private Integer lockerNum;
+	private Integer amount;
 	private String stDate;
 	private String enDate;
-	private int rentDays;
+	private Integer rentDays;
 	private int rentStat;
 	private String userName;
 	private int lockerLast;
