@@ -57,7 +57,7 @@
               </a>
               <ul id="ddmenu_1" class="collapse dropdown-nav">
                 <li>
-                  <a href="#">회원목록</a>
+                  <a href="/admin/member/adMemberList">회원목록</a>
                 </li>
                 <li>
                   <a href="#">Blank Page</a>

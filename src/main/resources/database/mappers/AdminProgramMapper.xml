@@ -31,7 +31,7 @@
 	</select>
 
 	<!--                    행사페이징처리 - 행사 전체갯수                    -->
-	<select id="getProTotalCount" resultType="Long">
+	<select id="getProTotalCount" parameterType="HdPager" resultType="Long">
 		SELECT COUNT(PRONUM) FROM PROGRAM
 	</select>
 	
