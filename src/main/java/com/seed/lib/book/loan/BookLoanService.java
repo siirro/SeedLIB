@@ -123,8 +123,7 @@ public class BookLoanService {
 	}
 	
 	//예약 신청
-	public int setReservation (BookReservationVO reVO) throws Exception{
-		BookLoanVO loVO = new BookLoanVO();
+	public int setReservation (BookLoanVO loVO) throws Exception{
 		// 1이면 해당 도서 대출 중 -> 예약 불가
 		// 0이면 예약 가능 -> setReservation -> 저장 후 1 리턴
 		// 2이면 해당 도서 예약 중 -> 불가
@@ -152,8 +151,7 @@ public class BookLoanService {
 //-----------------------------------------------------------------------	
 	
 	//상호대차
-	public int setMutual (BookMutualLoanVO muVO) throws Exception{
-		BookLoanVO loVO = new BookLoanVO();
+	public int setMutual (BookLoanVO loVO) throws Exception{
 		// 1이면 해당 도서 대출 중 -> 새로 대출신청 불가
 		// 0이면 대출 가능 -> setMutual -> 저장 후 1 리턴
 		// 2이면 해당 도서 대출 중 -> 불가

@@ -110,10 +110,10 @@
 	<!-- ================================== -->
 	
 	<!-- 예약 신청 -->
-	<select id="setReservation">
+	<insert id="setReservation" parameterType="BookLoanVO">
 		INSERT INTO RESERVATION (ISBN, USERNAME, ENABLEDATE)
 			VALUES (#{isbn}, #{userName}, #{enableDate})
-	</select>
+	</insert>
 	
 	<!-- 예약 목록 -->
 	<select id="getReList" parameterType="BookLoanPager" resultMap="ReResult">
@@ -160,10 +160,10 @@
 	<!-- ================================== -->
 	
 	<!-- 상호대차 신청 -->
-	<select id="setMutual">
+	<insert id="setMutual" parameterType="BookLoanVO">
 		INSERT INTO MUTUALLOAN (ISBN, USERNAME)
 			VALUES (#{isbn}, #{userName})
-	</select>
+	</insert>
 	
 	<!-- 상호대차 목록 -->
 	<select id="getMuList" parameterType="BookLoanPager" resultMap="MuResult">

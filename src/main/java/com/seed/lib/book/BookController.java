@@ -92,9 +92,9 @@ public class BookController {
 	//대출 신청
 	@ResponseBody
 	@PostMapping("loan")
-	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {
+	public int setLoanAdd (@RequestBody BookLoanVO loVO) throws Exception {
 		//result 값은 loanMapper 값 or 2 리턴
-		int result = loanService.setLoan(loanVO);
+		int result = loanService.setLoan(loVO);
 		return result;
 	}
 		
@@ -102,8 +102,8 @@ public class BookController {
 	//예약 신청
 	@ResponseBody
 	@PostMapping("reservation")
-	public int setReservationAdd (@RequestBody BookReservationVO reVO) throws Exception {
-		int result = loanService.setReservation(reVO);
+	public int setReservationAdd (@RequestBody BookLoanVO loVO) throws Exception {
+		int result = loanService.setReservation(loVO);
 		//대출 신청한 다음은 1 리턴
 		return result;
 	}
@@ -111,8 +111,8 @@ public class BookController {
 	//상호대차 신청
 	@ResponseBody
 	@PostMapping("mutual")
-	public int setLoanAdd (@RequestBody BookMutualLoanVO muVO) throws Exception {
-		int result = loanService.setMutual(muVO);
+	public int setMutualAdd (@RequestBody BookLoanVO loVO) throws Exception {
+		int result = loanService.setMutual(loVO);
 		return result;
 	}
 	

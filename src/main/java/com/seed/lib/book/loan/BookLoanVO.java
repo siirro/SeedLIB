@@ -1,6 +1,7 @@
 package com.seed.lib.book.loan;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -16,5 +17,8 @@ public class BookLoanVO {
 	//1은 대출 중 | 0은 반납
 	private boolean rtStatus;
 	private int extension;
+	
+	private List<BookMutualLoanVO> muVOs;
+	private List<BookReservationVO> reVOs;
 	
 }

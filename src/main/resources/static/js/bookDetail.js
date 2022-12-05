@@ -85,7 +85,7 @@ $("#addBookBtn").click(function(){
 $("#RealBookBtn").click(function(){
 	const bookPickVO = {
 		isbn : $("#isbn").val(),
-		shNum : $(".shNum").val(),
+		shNum : $(".shNum").val()
 	}
 	
 	console.log(bookPickVO);

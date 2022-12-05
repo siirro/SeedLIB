@@ -1,14 +1,14 @@
 
+console.log(isbn);
+console.log(userName);
+
 //-------------------------------------------------
 //디테일 페이지에서 대출신청 눌렀을 때
 $("#LoanAlretBtn").click(function(){
 	const bookLoanVO = {
-		isbn : $("#isbn").val(),
-		userName : $("#userName").val(),
+		userName : userName,
+		isbn : isbn
 	}
-	
-	console.log(bookLoanVO);
-	
 	$.ajax({
 		type : "POST",
 		url : "/book/loan",
@@ -41,8 +41,8 @@ $("#LoanAlretBtn").click(function(){
 //디테일 페이지에서 예약신청 눌렀을 때
 $("#ResAlretBtn").click(function(){
 	const reVO = {
-		isbn : $("#isbn").val(),
-		userName : $("#userName").val(),
+		isbn : isbn,
+		userName : userName
 	}
 	$.ajax({
 		type : "POST",
@@ -74,11 +74,14 @@ $("#ResAlretBtn").click(function(){
 	
 //-------------------------------------------------
 //디테일 페이지에서 상호대차신청 눌렀을 때
-$("#LoanAlretBtn").click(function(){
+$("#MuAlretBtn").click(function(){
 	const muVO = {
-		isbn : $("#isbn").val(),
-		userName : $("#userName").val(),
+		isbn : isbn,
+		userName : userName
 	}
+	
+	console.log(muVO);
+	
 	$.ajax({
 		type : "POST",
 		url : "/book/mutual",

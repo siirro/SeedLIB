@@ -56,7 +56,7 @@ public interface BookLoanMapper {
 	public int setEnableDate (BookReservationVO reVO) throws Exception;
 	
 	//예약 신청
-	public int setReservation (BookReservationVO reVO) throws Exception;
+	public int setReservation (BookLoanVO loVO) throws Exception;
 	
 	//예약 목록
 	public List<BookVO> getReList (BookLoanPager pager) throws Exception;
@@ -67,7 +67,7 @@ public interface BookLoanMapper {
 //-----------------------------------------------------------------------	
 	
 	//상호대차
-	public int setMutual (BookMutualLoanVO muVO) throws Exception;
+	public int setMutual (BookLoanVO loVO) throws Exception;
 	
 	//목록
 	public List<BookVO> getMuList (BookLoanPager pager) throws Exception;

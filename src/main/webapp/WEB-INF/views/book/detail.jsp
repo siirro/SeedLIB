@@ -42,7 +42,7 @@
 <body>
 
 	<input type="hidden" id="isbn" value="${bookVO.isbn}">
-	<input type="text" id="userName" value="${member.userName}">
+	<input type="hidden" id="userName" value="${member.userName}">
 
 	<div id="container" class="sub">	
 		<div class="sVisualWrap">
@@ -173,7 +173,6 @@
 											<c:if test="${isLikeExist eq false}">
 												<button type="button" class="btn white small" id="likeBtn">좋아요</button>
 											</c:if>
-												<h3>${isLikeExist}</h3>
 											<c:if test="${isLikeExist}">
 												<button type="button" class="btn white small" id="unlikeBtn">좋아요 취소</button>
 											</c:if>
@@ -198,8 +197,8 @@
 								<ul class="cateTab col-4 clearfix">
 									<li class="choiced"><a href="#tabGo1">소장정보</a></li>
 									<li><a href="#tabGo2">책소개</a></li>
-									<li><a href="#shelfBrowsing">같은 장르 도서</a></li>
-									<li><a href="#tagCloude">같은 작가 도서</a></li>
+									<li><a href="#tabGo3">같은 장르 도서</a></li>
+									<li><a href="#tabGo4">같은 작가 도서</a></li>
 								</ul>
 							</div>
 							
@@ -215,7 +214,7 @@
 													<label for="collectionLibraryAll">전체 도서관</label>
 												</p>
 												<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
-												<c:forEach var="lib" items="${bookVO.libVOs}">
+												<c:forEach var="lib" items="${lib.libVOs}">
 													<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
 												</c:forEach>
 												<button type="button" class="listDropdown"><span>리스트 보기</span></button>
@@ -286,7 +285,7 @@
 																				<c:when test="${where != 0}">
 																					<c:choose>
 																						<c:when test="${able eq 1}">
-																							<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
+																							<button type="button" class="btn white small" id="MuAlretBtn" title="상호대차 신청">상호대차</button>
 																						</c:when>
 																						<c:when test="${able == 0}">
 																							대출 불가능
@@ -364,7 +363,7 @@
 							</div>
 							
 							<!-- 같은 장르 자료 -->
-							<div id="bookRelatedSubject" class="dropBookData">
+							<div id="tabGo3" class="dropBookData">
 								<h5 class="htitle">같은 장르의 자료</h5>
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
@@ -393,7 +392,7 @@
 							</div>
 															
 							<!-- 같은 작가 도서 -->
-							<div id="bookRelatedSubject" class="dropBookData">
+							<div id="tabGo4" class="dropBookData">
 								<h5 class="htitle">같은 작가의 도서</h5>
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
