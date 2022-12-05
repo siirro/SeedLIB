@@ -49,35 +49,39 @@ public class BookController {
 		ModelAndView mv = new ModelAndView();
 		
 		// 세션에서 한 유저의 정보를 꺼냄
-		MemberVO memberVO2 = (MemberVO)session.getAttribute("memberVO");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 
 		// 비어있지 않다면 모델앤뷰에 넣기
-		if(memberVO2 != null) {
-			mv.addObject("member", memberVO2);			
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+			
+			//유저 개인 좋아요 정보
+			MbBookLikeVO bookLikeVO = new MbBookLikeVO();
+			bookLikeVO.setUserName(memberVO.getUserName());
+			bookLikeVO.setIsbn(bookVO.getIsbn());
+			
+			boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
+			mv.addObject("isLikeExist", isLikeExist);
+			
+			//책꽂이 존재 유무
+			BookShelfVO shelfVO = new BookShelfVO();
+			shelfVO.setUserName(memberVO.getUserName());
+			
+			boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
+			mv.addObject("isShelfExist", isShelfExist);
 		}
 		
 		//도서 상세정보
 		bookVO = bookService.getBookInfo(bookVO);
 		mv.addObject("bookVO", bookVO);
 		
-		//유저 개인 좋아요 정보
-		MbBookLikeVO bookLikeVO = new MbBookLikeVO();
-		//유저 정보
-		MemberVO memberVO = new MemberVO();
-		bookLikeVO.setIsbn(bookVO.getIsbn());
-		bookLikeVO.setUserName(memberVO.getUserName());
-		
-		boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
-		mv.addObject("isLikeExist", isLikeExist);
+		//도서관 보유 정보
+		bookVO = bookService.getLibDetail(bookVO);
+		mv.addObject("lib", bookVO);
 		
 		//책 좋아요 총갯수
 		int bookLike = bookLikeService.getBookLike(bookVO);
 		mv.addObject("like", bookLike);
-		
-		//책꽂이 존재 유무
-		BookShelfVO shelfVO = new BookShelfVO();
-		boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
-		mv.addObject("isShelfExist", isShelfExist);
 		
 		mv.setViewName("book/detail");
 		
@@ -86,10 +90,6 @@ public class BookController {
 	
 //-------------------------------------------------------------------------------
 	//대출 신청
-	public void setLoanFin () throws Exception {
-		
-	}
-	
 	@ResponseBody
 	@PostMapping("loan")
 	public int setLoanAdd (@RequestBody BookLoanVO loanVO) throws Exception {

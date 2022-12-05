@@ -244,14 +244,14 @@
 															</tr>
 														</thead>
 														<tbody>
-															<c:forEach var="lib" items="${bookVO.libVOs}">
-															<c:forEach var="bl" items="${bookVO.bookLibVOs}">
-																<c:set var="where" value="${lib.libNum}"/>
+															<c:forEach var="li" items="${lib.libVOs}">
+															<c:forEach var="bl" items="${lib.bookLibVOs}">
+																<c:set var="where" value="${li.libNum}"/>
 																<c:set var="quan" value="${bl.quantity}" />
 																<c:set var="able" value="${bl.able}" />
 																
 																<tr class="MA">
-																	<td>${lib.libName}</td>
+																	<td>${li.libName}</td>
 																	
 																	<!-- 씨앗 도서관일 때 : 대출 가능 / 대출 불가능 - 예약
 																		타 도서관일 때 : 상호대차 가능 / 대출 불가능 - X -->

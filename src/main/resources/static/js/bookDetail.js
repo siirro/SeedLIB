@@ -18,53 +18,47 @@ strOption += "height=" + popupHeight + "px,";
 strOption += "toolbar=no,menubar=no,location=no,";
 strOption += "resizable=yes,status=yes";
 
+let isbn = $("#isbn").val();
+const userName = $("#userName").val();
+
 //좋아요
 $("#likeBtn").click(function(){
-	const bookLikeVO = {
-		isbn : $("#isbn").val(),
-		userName : $("#userName").val(),
-	}
-	
-	console.log(bookLikeVO);
-	
+
 	$.ajax({
 		type : "POST",
 		url : "like/add",
-		data:JSON.stringify(bookLikeVO),
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
+		data : {
+			isbn : isbn,
+			userName : userName
+		},
 		success : function(){
 			location.reload()
 		},
 		error : function(){
-			console.log(bookLikeVO);
 			location.reload()
 		}
 	})
 });
-	
+
 //좋아요 취소	
 $("#unlikeBtn").click(function(){
-	const bookLikeVO = {
-		isbn : $("#isbn").val(),
-		userName : $("#userName").val(),
-	}
-	console.log(bookLikeVO);
+
 	$.ajax({
 		type : "POST",
 		url : "like/delete",
-		data:JSON.stringify(bookLikeVO),
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
+		data : {
+			isbn : isbn,
+			userName : userName
+		},
 		success : function(){
-			//location.reload()
+			location.reload()
 		},
 		error : function(){
-			//location.reload(),
-			console.log(bookLikeVO)
+			location.reload()
 		}
 	})
 });
+
 
 //-------------------------------------------------
 //디테일 페이지에서 책꽂이에 책 저장하기 눌렀을 때

@@ -11,7 +11,7 @@
 	</select>
 
 	<!-- 도서 디테일 -->
-	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
+	<select id="getLibDetail" resultMap="getDetailResult" parameterType="BookVO">
 	SELECT b.*, b2.*, l.*
 	FROM book b
 		inner join booklib b2 
@@ -34,10 +34,6 @@
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
 			<result column="num" property="num"/>
-
-			<collection property="mbBookLikeVOs" javaType="MbBookLikeVO">
-				<id column="bookLike" property="bookLike"/>
-			</collection>
 			
 			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
 				<result column="quantity" property="quantity"/>

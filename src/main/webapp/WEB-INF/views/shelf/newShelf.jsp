@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="/css/book/shelf.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
+    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
     <link rel="icon" href="/images/favicon.png">
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
 </head>
 
 <body>
-	<input type="hidden" id="userName" value="${sessionScope.member.userName}">
+	<input type="text" id="userName" value="${member.userName}">
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 새 책 꽂 이 🌱</span>
