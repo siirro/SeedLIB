@@ -76,9 +76,6 @@
 									<p class="title">사물함 번호: ${list.lockerNum}</p>
 									<ul class="info">
 										<li>
-											<span id="amount${list.lockerNum}" amount="${list.amount}">결제 금액: ${list.amount}</span>
-										</li>
-										<li>
 											<span id="stDate${list.lockerNum}" stDate="${list.stDate}">대여 시작일: ${list.stDate}</span>
 											<span id="enDate${list.lockerNum}" enDate="${list.enDate}">대여 종료일: ${list.enDate}</span>
 											<c:choose>	
@@ -89,6 +86,9 @@
 													<span>대여 상태: 대여 종료</span>
 												</c:when>
 											</c:choose>
+										</li>
+										<li>
+											<span id="amount${list.lockerNum}" amount="${list.amount}">결제 금액: ${list.amount}</span>
 										</li>
 										<c:if test="${list.rentStat eq 0}">
 											<li class="status"><button class="cncl" data-num-cncl="${list.lockerNum}">환불 요청</button></li>

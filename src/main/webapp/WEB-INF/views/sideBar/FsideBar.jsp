@@ -11,7 +11,7 @@
               <li id="lnb1_1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do">대출반납조회</a> </li> 
               <li id="lnb1_1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do">관심도서목록</a> </li> 
               <li id="lnb1_1_2"><a href="/intro/menu/10004/program/30002/searchDetail.do">상호대차조회</a> </li> 
-              <li id="lnb1_1_1"><a href="/intro/menu/10003/program/30001/searchSimple.do">희망도서신청조회</a> </li> 
+              <li id="lnb1_5"><a href="/mypage/hopeList" id="hopeList" class="hopeList on">희망도서신청조회</a> </li> 
               <li id="lnb1_6"><a href="/mypage/donList" id="donList" class="donList on">도서기증신청조회</a></li> 
             </ul> 
           </li> 
