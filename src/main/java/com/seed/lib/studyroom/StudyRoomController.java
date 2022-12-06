@@ -102,6 +102,7 @@ public class StudyRoomController {
 	
 	@GetMapping("locker")
 	public ModelAndView getLocker() throws Exception{
+		lockerService.exitAllLocker();
 		ModelAndView mv = new ModelAndView();
 		List<LockerVO> lockerList = lockerService.getLockerCount();
 		mv.addObject("imp",impKey);

@@ -121,4 +121,8 @@ public class LockerService {
 			System.out.println("response: "+response);
 			return code;
 		}
+		
+		public int exitAllLocker() throws Exception{
+			return mapper.exitAllLocker();
+		}
 }

@@ -182,6 +182,7 @@ public class MyPageController {
 	
 	@GetMapping("lockerHistory")
 	public ModelAndView getLockerList(HttpSession session) throws Exception{
+		lockerService.exitAllLocker();
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUserName());
