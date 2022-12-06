@@ -192,7 +192,7 @@ public class MyPageController {
 	
 	@PostMapping("lockerCancel")
 	@ResponseBody
-	public String setLockerCancel(
+	public int setLockerCancel(
 			String merchant_uid,
 			String reason,
 			String cancel_request_amount
@@ -220,16 +220,10 @@ public class MyPageController {
 				cancelVO.setCancel_request_amount(Integer.parseInt(cancel_request_amount));
 
 				int cancelResult = lockerService.setLockerCancelOne(cancelVO);
-					if(result>0) {
-						msg = "success";
-					} else {
-						msg = "error";
-					}
-				} else {
-						msg = "error";
-					}
-//				mv.addObject("msg", msg);
-				return msg;
+				return lockerService.setLockerCancelOne(cancelVO);
+			} else {
+				return 0;
+			}
 		}
 	
 	

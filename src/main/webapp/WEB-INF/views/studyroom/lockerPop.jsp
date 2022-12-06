@@ -128,6 +128,13 @@
                  </tbody>
             </table>
         </div>
+        <div>
+            <ul>
+                <li>1인 1개 사물함 이용 원칙, 타인에게 대여하거나 양도 할 수 없습니다.</li>
+                <li>대여 기간이 종료되면 사물함을 정리해야 합니다.</li>
+                <li>대여 기간 종료 후에 사물함을 정리하지 않은 경우 불이익을 받을 수 있습니다.(강제 철거, 폐기)</li>
+            </ul>
+        </div>
         <div class="btnArea">
             <button type="button" class="btn themeBtn" id="rentBtn">사물함 대여</button>
         </div>
