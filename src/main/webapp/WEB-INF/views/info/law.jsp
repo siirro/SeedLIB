@@ -88,28 +88,49 @@
                     <dd class="btnArea"><a class="btn" href="#link" onclick="fnAdminLink();">바로가기</a></dd>
                 </dl>
                 
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시평생교육원 운영에 관한 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-11-01-00-009-20200331.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
                 
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시평생교육원 운영에 관한 조례 시행규칙</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-11-01-00-010-20191122.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
-                
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시작은도서관 설치 및 운영 지원에 관한 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-10-02-00-001-20181228.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
-                
-                <dl class="lawBox">
-                    <dt class="txtArea">안양시 독서문화 진흥 조례</dt>
-                    <dd class="btnArea"><a class="btn" href="http://jachilaw.com/DATA/GG-AY/PDF/1-10-01-00-011-20160106.PDF" target="_blank" title="새 창 열기">바로가기</a></dd>
-                </dl>
                 
                 <!-- End Of the Real Contents-->
 
+                <!-- 결제테스트 -->
+                <!-- jQuery -->
+                <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+                <!-- iamport.payment.js -->
+                <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+
+                <!-- <button onclick="requestPay()">결제하기</button>
+                ...
+                <script>
+                    var IMP = window.IMP; // 생략 가능
+                    IMP.init("내꺼"); // 예: imp00000000
+
+                function requestPay() {
+                    // IMP.request_pay(param, callback) 결제창 호출
+                    console.log("?");
+                    IMP.request_pay({ // param
+                        pg: "html5_inicis",
+                        pay_method: "card",
+                        merchant_uid: "ORD20180131-0000011",
+                        name: "노르웨이 회전 의자",
+                        amount: 64900,
+                        buyer_email: "gildong@gmail.com",
+                        buyer_name: "홍길동",
+                        buyer_tel: "010-4242-4242",
+                        buyer_addr: "서울특별시 강남구 신사동",
+                        buyer_postcode: "01181"
+                    }, function (rsp) { // callback
+                        if (rsp.success) {
+                            console.log("성공");
+                            // 결제 성공 시 로직,
+                            
+                        } else {
+                            console.log("실패");
+                        }
+                    });
+                }
+                </script> -->
+                <!-- 결제테스트 -->
             </div>
             <!-- 컨텐츠넣어 -->
         </div>

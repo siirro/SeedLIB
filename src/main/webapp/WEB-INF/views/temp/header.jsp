@@ -98,7 +98,7 @@
 					</ul> 
 				</li> 
 				
-				<li id="gnb4" class="hehehe"> <a href="/guide/manners"> <em>도서관안내</em> </a> 
+				<li id="gnb3" class="hehehe"> <a href="/guide/manners"> <em>도서관안내</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb3_1"><a href="/guide/manners">도서관예절</a> </li> 
 						<li id="gnb3_2"><a href="/guide/time">이용시간</a> </li> 
@@ -157,7 +157,7 @@
 				</c:if>
 			</ul>
 			
-			<div id="submenuArea" style="width: 1357px; left: 0px;"></div>
+			<div id="submenuArea" style="left: 0px;"></div>
 		</div>
 	</div>
 </div>
@@ -241,9 +241,19 @@
 </script>
 <script>
 	let hUrl = document.location.href;
-	if(hUrl.includes("search")) {
+	if(hUrl.includes("search/")) {
 		$("#gnb1").addClass("active");
 	}
+	if(hUrl.includes("guide/")) {
+		$("#gnb3").addClass("active");
+	}
+	if(hUrl.includes("info/")) {
+		$("#gnb4").addClass("active");
+	}
+	if(hUrl.includes("mypage/")) {
+		$("#gnb6").addClass("active");
+	}
+
 </script>
 
 <script>
