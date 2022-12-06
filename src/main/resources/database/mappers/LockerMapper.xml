@@ -53,6 +53,12 @@
 		WHERE MERCHANT_UID = #{merchant_uid}
 	</update> 
 	
+	<update id="exitAllLocker">
+		UPDATE LOCKERRENT SET
+		RENTSTAT=1
+		WHERE ENDATE <![CDATA[<]]> CURDATE()
+	</update>
+	
 	<insert id="setLockerCancelOne" parameterType="LockerCancelVO">
 		INSERT INTO MONEYBACK
 		(BACKPRICE, BACKDATE, MERCHANT_UID)

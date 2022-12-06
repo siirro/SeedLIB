@@ -33,4 +33,7 @@ public interface LockerMapper {
 	
 	//환불내역입력하기
 	public int setLockerCancelOne(LockerCancelVO cancelVO) throws Exception;
+	
+	//날짜 지난 사물함 전체 퇴거
+	public int exitAllLocker() throws Exception;
 }

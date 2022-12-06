@@ -232,6 +232,8 @@ public class MyPageController {
 		}
 	
 	
+	
+	
 	//오늘 날짜 가져오기
 	public static String getCurrentDate() {
 		Date today = new java.util.Date();
