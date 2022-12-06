@@ -288,11 +288,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">형태사항</th>
-                                                                    <td class="ta_l"><p>248page</p></td>
+                                                                    <td class="ta_l"><p>?page</p></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">ISBN사항</th>
-                                                                    <td class="ta_l">${list.isbn} 03190 ￦14000</td>
+                                                                    <td class="ta_l">${list.isbn} 03190(이건모지) ￦1000000</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">수상주기</th>

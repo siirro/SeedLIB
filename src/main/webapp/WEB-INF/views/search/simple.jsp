@@ -221,7 +221,7 @@
                                                             <tr>
                                                                 <th scope="row">형태사항</th>
                                                                 <td class="ta_l">
-                                                                        <p>248page</p>
+                                                                        <p>?page</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
