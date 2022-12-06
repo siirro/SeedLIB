@@ -75,7 +75,7 @@ public class BookLoanService {
 	}
 	
 	//반납날짜 계산
-	public Calendar getRtDate (Long LoanLDate) throws Exception{
+	public Calendar getRtDate () throws Exception{
 		java.util.Date now = new java.util.Date();
 		
 		//날짜 타입 설정
@@ -87,6 +87,7 @@ public class BookLoanService {
 		
 		// 14일 더하기
 		ca.add(Calendar.DATE, 14);
+		log.info("&&&&&&&&&&&&&&&&&&&&&& : {}", ca);
 		return ca;
 	}
 	
