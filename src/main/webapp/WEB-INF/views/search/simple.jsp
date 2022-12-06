@@ -54,6 +54,8 @@
                 <!-- Contents Start-->
                 <form action="./simpleresult" id="searchForm" name="searchForm" method="get">
 
+                    <input type="hidden" id="userName" value="${member.userName}">
+
                     <!-- 서치랩 -->
                     <div class="searchWrap">
                         <div class="searchFormWeb">
@@ -142,15 +144,18 @@
                                                             
                                                     </ul>
                                                 </div>
+
+                                                
                         
                                                 <div class="bookDetailInfo">
                                                     <ol>
-                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
+                                                        <li class="tlqkf"><a id="btn_haveInfo${status.count}" onclick="bookInfo1(${list.isbn})" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
                                                         <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
                                                         <li><button class="btn" title="찜하기 새창열림" style="padding: 0px 15px; height: 30px; background-color: #fff; color: #00e3ae; border: 1px solid #00e3ae;">찜</a></li>
                                                     </ol>
                                                 </div>
 
+                                                
                                                 
                                             </div>
                                         </div>
@@ -165,30 +170,25 @@
                                                                 <th scope="col">도서관</th>
                                                                 <th scope="col">대출상태</th>
                                                                 <th scope="col">반납예정일</th>
-                                                                <th scope="col">청구기호</th>
-                                                                <th scope="col">예약</th>
+                                                                <th scope="col">대출 및 예약</th>
+                                                                <th scope="col">자료실</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                                <tr class="MA">
+                                                        <tbody class="cnrkgktpdy">
+                                                                <!-- <tr class="MA">
                                                                     <td></td>
-                                                                    <td>
-                                                                        대출중
-                                                                        <br>(예약가능)
-                                                                        <br>(예약:1명)
-                                                                    </td>
+                                                                    <td>대출중<br>(예약가능)<br>(예약:1명)</td>
                                                                     <td>2022.11.25</td>
-                                                                    <td>833.6-히12나=c.2 <a href="#print" onclick="javascript:fnCallNoPrintPop('101783087', 'MO'); return false" class="print" title="청구기호 출력 새창열림"><span class="blind">청구기호 출력</span></a></td>
-                                                                    <td>
-                                                                            <a href="javascript:;" onclick="javascript:reservationApplyProc('101783087','EM0000167633'); return false" class="btn white small">대출예약</a>
-                                                                        
-                                                                    </td>
-                                                                </tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
 
                                         
                                         <!-- 서지정보 -->
@@ -212,21 +212,21 @@
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">저자사항</th>
-                                                                <td class="ta_l">나넷 스톤 지음;, 고유경 옮김</td>
+                                                                <td class="ta_l">${list.writer}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">발행사항</th>
-                                                                <td class="ta_l">서울:프런티어,2018</td>
+                                                                <td class="ta_l">서울:${list.publisher},${list.bookDate}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">형태사항</th>
                                                                 <td class="ta_l">
-                                                                        <p>248page</p>
+                                                                        <p>?page</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">ISBN사항</th>
-                                                                <td class="ta_l">9788947544320 03190 ￦14000</td>
+                                                                <td class="ta_l">${list.isbn} 03190 ￦14000</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">수상주기</th>
@@ -474,6 +474,105 @@ let kw = '${param.search}'
         f.innerHTML=f.innerHTML.replace(regex, '<span class="highlight word">'+kw+'</span>');
     });
 </script>
+<script>
 
+    function bookInfo1(isbn) {
+
+        $.ajax({
+            type:"GET",
+            url :"./simpleresultInfo1",
+            traditional:true, //배열을 전송할 때 사용, true
+            data:{
+                isbn:isbn
+            },
+            success : function(data){
+                // console.log("성공");
+                // console.log("그냥데이터",data.detail);
+
+                const detail = data.detail;
+                //let str = JSON.stringify(data);
+                //console.log(str);
+                
+                $.each(detail, function(index, item) { // 데이터 =item
+                    let ableMsg = "";
+                    let cc = "";
+                    let cnrk = "";
+                    let cnrkgktpdy = document.querySelectorAll(".cnrkgktpdy");
+
+                    for(let i=0;i<item.libVOs.length; i++) {
+                        
+                        if(item.bookLibVOs[i].quantity!=0) {
+                            ableMsg = "대출 가능<br>(대출 가능 권수 : "+item.bookLibVOs[i].quantity+"권)";
+                        } else {
+                            ableMsg = "대출 불가능"
+                        }
+                        
+                        if(item.libVOs[i].libNum == 0) {
+                            if(item.bookLibVOs[i].able == 1) {
+                                cc = '<button type="button" onclick="setLoan('+isbn+')" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>';
+                            } else {
+                                cc = '<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>';
+                            }
+                        } else {
+                            if(item.bookLibVOs[i].able == 1) {
+                                cc = '<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>';
+                            }
+                        }
+                        
+                        // let dsffs = '<tr class="MA"><td></td><td>대출중<br>(예약가능)<br>(예약:1명)</td><td>2022.11.25</td><td></td><td></td></tr>';
+                        cnrk += '<tr class="MA"><td>'+item.libVOs[i].libName+'</td><td>'+ableMsg+'</td><td>반납예정일</td><td>'+cc+'</td><td></td></tr>';
+                        
+                    }
+                    $(".cnrkgktpdy").html(cnrk);
+
+                });
+            },
+            error   : function(){
+                console.log("실패");
+            }
+        })
+    }
+
+    
+    //-------------------------------------------------
+    //디테일 페이지에서 대출신청 눌렀을 때
+    function setLoan(isbn) {
+        console.log("되니");
+        console.log($("#userName").val());
+
+        const bookLoanVO = {
+            isbn : isbn,
+            userName : $("#userName").val()
+        }
+        
+        $.ajax({
+            type : "POST",
+            url : "/book/loan",
+            data:JSON.stringify(bookLoanVO),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success:function(data){
+                switch (data){
+                    case 2:
+                        alert("해당 책을 이미 대출 중입니다.")
+                        break;
+                    case 1:
+                        let check = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
+                        if(check){
+                            opener.location.href="/mypage/loan";
+                            break;
+                        } else{
+                            opener.location.href="../"; 
+                            break;
+                        } 
+                    }
+                },
+            error:function(){
+                console.log("ERROR");
+            }
+        })
+    }
+
+</script>
 </body>
 </html>

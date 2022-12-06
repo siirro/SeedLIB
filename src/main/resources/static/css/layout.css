@@ -56,7 +56,10 @@
 #topmenu > li > a {display: block; text-align: center; line-height: 100px; font-size: 1.375em; letter-spacing: -1px; padding: 0 26px;}
 #topmenu > li > a strong {font-weight: normal;}
 #topmenu > li.active > a {color: #00e3ae;}
-#topmenu > li > ul {display: none; overflow: hidden; position: relative; z-index: 89; padding: 10px 0; height: 285px; background-color: #fff; border-top: 1px solid #ececec; border-left: 1px solid #ececec; border-bottom: 1px solid #ececec; box-sizing: border-box;}
+#topmenu > li > ul {display: none; overflow: hidden; position: relative; z-index: 89; padding: 10px 0; height: 285px; 
+	background-color: #fff; border-top: 1px solid #ececec; border-left: 1px solid #ececec; 
+	/* border-bottom: 1px solid #ececec;  */
+	box-sizing: border-box;}
 #topmenu > li > ul > li {padding: 4px 5px; font-size: 0.938em; letter-spacing: -1.5px;}
 #topmenu .current {color: #6b64be;}
 #topmenu > li > ul > li > ul {display: none;}
@@ -65,7 +68,7 @@
 #topmenu > li#gnb2 > a {padding: 0 33px;}
 #topmenu > li#gnb2 > ul {width: 142px;}
 #topmenu > li#gnb3 > a {padding: 0 25px;}
-#topmenu > li#gnb3 > ul {width: 173px;}
+#topmenu > li#gnb3 > ul {width: 128px;}
 #topmenu > li#gnb4 > ul {width: 128px;}
 #topmenu > li#gnb5 > ul {width: 148px;}
 #topmenu > li#gnb6 > ul {width: 148px; border-right: 1px solid #ececec;}
@@ -117,7 +120,7 @@
 #lnb .MkSub .MkTab {display: none;}
 
 /* contents */
-#contents {position: relative; z-index: 10; padding: 60px 0 0; font-size: 1.063em; color: #646464;}
+#contents {position: relative; z-index: 10; padding: 40px 0 0; font-size: 1.063em; color: #646464;}
 
 /* navi */
 .naviandtitle {overflow: hidden; position: relative;}
