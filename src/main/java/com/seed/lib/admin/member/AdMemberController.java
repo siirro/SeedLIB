@@ -18,6 +18,7 @@ public class AdMemberController {
 	@Autowired
 	private AdMemberService adMemberService;
 	
+	// 어드민 회원정보 목록
 	@GetMapping("adMemberList")
 	public ModelAndView getAdMemberList(HdPager hdPager)throws Exception{
 		
@@ -25,7 +26,9 @@ public class AdMemberController {
 		
 		List<MemberVO> memberVOs = adMemberService.getAdMemberList(hdPager);
 		
+		// 회원 정보를 담고있는 List를 보냄
 		mv.addObject("memberList", memberVOs);
+		// 페이징 처리할 변수들을 보냄
 		mv.addObject("pager", hdPager);
 		mv.setViewName("admin/member/adMemberList");
 		

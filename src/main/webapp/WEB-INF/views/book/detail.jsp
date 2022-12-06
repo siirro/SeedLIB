@@ -714,7 +714,7 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<!-- 입금 정보 -->
-										<div class="post_info_wrap">
+										<div class="post_info_wrap" style="display:none">
 											<div class="btn_wrap">
 												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
 											</div>
