@@ -29,12 +29,12 @@ public class BookService {
 	}
 	
 	//같은 장르 도서
-	public List<BookVO> getSameCate (BookVO bookVO) throws Exception{
-		return bookMapper.getSameCate(bookVO);
+	public List<BookVO> getSameCate (Long category) throws Exception{
+		return bookMapper.getSameCate(category);
 	}
 	
 	//같은 작가 도서
-	public List<BookVO> getSameWriter (BookVO bookVO) throws Exception{
-		return bookMapper.getSameWriter(bookVO);
+	public List<BookVO> getSameWriter (String writer) throws Exception{
+		return bookMapper.getSameWriter(writer);
 	}
 }

@@ -317,7 +317,7 @@ input[type='checkbox']:focus + label, input[type='radio']:focus + label {outline
 .dropBookData .htitle {border-bottom: 1px solid #e2e2e2; padding-bottom: 15px; margin-bottom: 20px;}
 .dropBookData .htitle span {font-size: 0.708em; color: #646464; font-weight: normal; padding-left: 10px;}
 .dropBookData .htitle span img {margin: 0 5px}
-.dropContainerBox {display: block;}
+.dropContainerBox {display: block !important;}
 .dropContainerBox .graphBox {min-height: 300px; border: 1px solid #e2e2e2; background-color: #f8f8f8; padding: 20px; box-sizing: border-box;}
 .dropContainerBox .recommendLibrary {margin-bottom: 5px;}
 .dropContainerBox .recommendLibrary select {min-width: 200px;}

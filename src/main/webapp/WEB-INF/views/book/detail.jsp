@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/new_search.css">
     
     <!-- 프린트신청 팝업창 css -->
    	<link rel="stylesheet" href="/css/admin/modal.css">
@@ -203,6 +204,7 @@
 								</ul>
 							</div>
 							
+							
 							<!-- 소장 정보 -->
 							<div class="dropBookData" id="tabGo1">
 								<div class="dropBookData" id="tabGo1">
@@ -364,80 +366,78 @@
 							</div>
 							
 							<!-- 같은 장르 자료 -->
-							<input type="hidden" id="category" value="${book.category}">
-							
 							<div id="tabGo3" class="dropBookData">
 								<h5 class="htitle">같은 장르의 자료</h5>
+								
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
-										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
+										<div class="swiper-container swiper01 MA swiper-container-initialized swiper-container-horizontal" style="display: block;">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
-													<div class="bookData">	
-														<c:forEach var="sc" items="${cate}">
-															<h1>${sc}</h1>
-															<div class="book_dataInner" id="sameCateTable">
-																<div>
-																	<a href="#link" onclick="location.href='../book/detail?isbn=${sc.isbn}'">
-																		<img alt="" src="${sc.image}">																
-																	</a>
-																</div>
-																<div>
-																	<p class="book_name" title="${sc.title}">
-																		<strong>${sc.title}</strong>
-																	</p>
-																	<p class="book_writers">
-																		<span class="bk_writer">${sc.writer}</span>
-																		<span class="bk_publish">${sc.publisher}<br>${sc.bookDate}</span>
-																	</p>
-																</div>
+												
+												<c:forEach var="sc" items="${cate}">
+													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
+														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
+														<div class="bookImg" style="height: 161px;">
+															<img alt="" src="${sc.image}" onerror="javascript:fnNoImgBook(this); return false;">
+														</div>
+														<div class="bookData">
+															<div class="book_dataInner">
+																<p class="book_name" title="Sheep on a farm "><strong>${sc.title}</strong></p>
+																<p class="book_writers">
+																	<span class="bk_writer">${sc.writer}</span>
+																	<span class="bk_publish">${sc.publisher}<br>${sc.bookDate}</span>
+																</p>
 															</div>
-														</c:forEach>
+														</div>
+														</a>
 													</div>
-												</div>
+												</c:forEach>
 											</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
 											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-										<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-									</div>
+												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+											</div>
+										</div>
+									</div>	
 								</div>
-							</div>
 															
 							<!-- 같은 작가 도서 -->
 							<div id="tabGo4" class="dropBookData">
-								<h5 class="htitle">같은 작가의 도서</h5>
+								<h5 class="htitle">같은 작가의 자료</h5>
+								
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
-										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
+										<div class="swiper-container swiper01 MA swiper-container-initialized swiper-container-horizontal" style="display: block;">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
-													<div class="bookData">
-														<c:forEach var="sw" items="${wri}">
-															<div class="book_dataInner" id="sameCateTable">
-																<a href="#link" onclick="location.href='../book/detail?isbn=${sw.isbn}'">
-																	<img alt="" src="${sw.image}">																
-																</a>
-																
-																<p class="book_name" title="${sw.title}">
-																	<strong>${sw.title}</strong>
-																</p>
+												
+												<c:forEach var="sw" items="${wri}">
+													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
+														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
+														<div class="bookImg" style="height: 161px;">
+															<img alt="" src="${sw.image}" onerror="javascript:fnNoImgBook(this); return false;">
+														</div>
+														<div class="bookData">
+															<div class="book_dataInner">
+																<p class="book_name" title="Sheep on a farm "><strong>${sw.title}</strong></p>
 																<p class="book_writers">
 																	<span class="bk_writer">${sw.writer}</span>
 																	<span class="bk_publish">${sw.publisher}<br>${sw.bookDate}</span>
 																</p>
 															</div>
-														</c:forEach>
+														</div>
+														</a>
 													</div>
-												</div>
+												</c:forEach>
+											</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
 											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-										<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-									</div>
+												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+											</div>
+										</div>
+									</div>	
 								</div>
-							</div>
-						</div>	
 					</div>
 					<!-- 책 디테일 끝 -->
 				</div>

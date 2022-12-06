@@ -1,6 +1,7 @@
 package com.seed.lib.book;
 
 import java.awt.print.Book;
+import java.io.Console;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
@@ -88,11 +89,11 @@ public class BookController {
 		mv.addObject("like", bookLike);
 		
 		//같은 장르 도서
-		List<BookVO> li = bookService.getSameCate(bookVO);
+		List<BookVO> li = bookService.getSameCate(bookService.getBookInfo(bookVO).getCategory());
 		mv.addObject("cate", li);
 		
 		//같은 작가 도서
-		li = bookService.getSameWriter(bookVO);
+		li = bookService.getSameWriter(bookService.getBookInfo(bookVO).getWriter());
 		mv.addObject("wri", li);
 		
 		mv.setViewName("book/detail");

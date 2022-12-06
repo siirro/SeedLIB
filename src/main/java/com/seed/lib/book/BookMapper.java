@@ -16,9 +16,9 @@ public interface BookMapper {
 	public BookVO getLibDetail (BookVO bookVO) throws Exception;
 	
 	//같은 장르 도서
-	public List<BookVO> getSameCate (BookVO bookVO) throws Exception;
+	public List<BookVO> getSameCate (Long category) throws Exception;
 	
 	//같은 작가 도서
-	public List<BookVO> getSameWriter (BookVO bookVO) throws Exception;
+	public List<BookVO> getSameWriter (String writer) throws Exception;
 
 }

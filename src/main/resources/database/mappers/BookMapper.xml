@@ -48,12 +48,12 @@
 	</resultMap>
 	
 	<!-- 같은 장르 도서 -->
-	<select id="getSameCate" parameterType="BookVO" resultMap="getSameResult">
+	<select id="getSameCate" parameterType="Long" resultMap="getSameResult">
 		SELECT * FROM BOOK WHERE CATEGORY = #{category} LIMIT 0, 12;
 	</select>
 	
 	<!-- 같은 작가 도서 -->
-	<select id="getSameWriter" parameterType="BookVO" resultMap="getSameResult">
+	<select id="getSameWriter" parameterType="String" resultMap="getSameResult">
 		SELECT * FROM BOOK WHERE WRITER = #{writer} LIMIT 0, 12;
 	</select>
 	
