@@ -162,7 +162,7 @@ pageEncoding="UTF-8"%>
                                         </tr>
                                         <tr>
                                             <th scope="row">이메일</th>
-                                            <td><input type="text" name="email" value="${memberVO.email}" readonly></td>
+                                            <td><input type="text" id="email" name="email" value="${memberVO.email}" readonly></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -205,7 +205,7 @@ pageEncoding="UTF-8"%>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                            <td><input type="text" id="hYear" name="hYear" value="" maxlength="4" class="form-ele auto numeric"></td>
+                                            <td><input type="text" id="hopYear" name="hopYear" value="" maxlength="4" class="form-ele auto numeric"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="isbn">ISBN</label></th>
@@ -224,6 +224,7 @@ pageEncoding="UTF-8"%>
                                     </tbody>
                                 </table>
                             </div>
+                            <input type="hidden" name="image" id="image" value="">
                         </form>
                         <div class="btnGroup">
                             <a href="../" id="listBtn" class="btn cncl">취소</a>

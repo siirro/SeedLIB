@@ -18,6 +18,11 @@ public class HopeVO {
 	private Date hopDate;
 	private int hopStat;
 	private Long isbn;
+	private String image;
+	private String email;
+	private String price;
+	private Long hopYear;
+	private Long category;
 	
 	private StatusVO statusVO;
 	private LibVO libVO;

@@ -13,7 +13,16 @@
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="./temp/sidebar-css.jsp"></c:import>
-    
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+      .index{
+        padding: 15 5px !important;
+        width: 30px;
+      }
+    </style>
+
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
@@ -39,7 +48,7 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="./main">Dashboard</a>
+                        <a href="./main">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item"><a href="./hopeBoList">희망도서 관리</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
@@ -60,19 +69,12 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
-                  <!-- <h6 class="mb-10">Data Table</h6> -->
-                  <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                    <div class="left">
-                      <h6>Data Table</h6>
-                      <p>Show <span>10</span> entries</p>
-                    </div>
-                  </div>
                   <div class="table-wrapper table-responsive">
                     <table class="table text-center">
                       <thead>
                         <tr>
-                          <th class="text-start"><h6>#</h6></th>
-                          <th><h6>책 제목</h6></th>
+                          <th class="index"><h6>🌱</h6></th>
+                          <th style="width: 220px;"><h6>희망도서명</h6></th>
                           <th><h6>저자</h6></th>
                           <th><h6>출판사</h6></th>
                           <th><h6>ISBN</h6></th>
@@ -83,7 +85,7 @@
                               <div class="col-9">
                                 <div class="select-style-1" style="margin-bottom: 0;">
                                   <div class="select-position select-sm">
-                                    <select name="recStatus">
+                                    <select name="libNum">
                                       <option value="">신청 도서관</option>
                                       <option value="0">씨앗 도서관</option>
                                       <option value="1">새싹 도서관</option>
@@ -102,7 +104,7 @@
                               <div class="col-9">
                                 <div class="select-style-1" style="margin-bottom: 0;">
                                   <div class="select-position select-sm">
-                                    <select name="recStatus">
+                                    <select name="searchKeyword">
                                       <option value="">신청 상태</option>
                                       <option value="0">신청 중</option>
                                       <option value="1">신청 취소</option>
@@ -121,10 +123,8 @@
                       <tbody>
                       	<c:forEach items="${hop}" var="h" varStatus="a">
                           <tr>
-                            <td>
-                              <div class="employee-image">
+                            <td class="index">
                                 <p>${a.index + 1}</p>
-                              </div>
                             </td>
                             <td class="min-width">
                               <p>${h.hopTitle}</p>
@@ -153,9 +153,9 @@
                             <td>
                               <div class="action text-start">
                                 <!-- 수정버튼 -->
-                                <button type="button" class="processBtn" data-hop-num="${h.hopNum}">
+                                <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
                                     <i class="lni lni-check-box"></i>
-                                </button>
+                                </a>
                               </div>
                             </td>
                           </tr>
@@ -207,5 +207,8 @@
 
     <!-- ========= All Javascript files linkup ======== -->
     <c:import url="./temp/js.jsp"></c:import>
+
+    <!-- 개별 js 적용 -->
+    <script src="/js/admin/hope.js"></script>
   </body>
 </html>

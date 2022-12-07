@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.seed.lib.book.BookVO;
 import com.seed.lib.util.HdPager;
 
 @Mapper
@@ -27,4 +28,12 @@ public interface HopeMapper {
 //신청 취소	
 	public int setUpdateHope(HopeVO hopeVO) throws Exception;
 	
+//Admin 페이지
+	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception;
+	public HopeVO getHopeOne(HopeVO hopeVO) throws Exception;
+	public int setHopeCncl(HopeVO hopeVO) throws Exception; 
+	public Long bookCount() throws Exception;
+	public int setHopeOne(BookVO bookVO) throws Exception;
+	public int setLibOne(Map<String, Object> map) throws Exception;
+	public int setAdminHopeStat(HopeVO hopeVO) throws Exception;
 }

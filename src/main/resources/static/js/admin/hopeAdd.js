@@ -214,22 +214,6 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
     }
 }
 
-//직접입력
-$("#selfApply").click(function(){
-    $("#hopTitle").val("");
-    $("#hopWriter").val("");
-    $("#hopPublisher").val("");
-    $("#hopYear").val("");
-    $("#isbn").val("");
-    $("#price").val("");
-    $("#hopTitle").attr("readonly", "false");
-    $("#hopWriter").attr("readonly", "false");
-    $("#hopPublisher").attr("readonly", "false");
-    $("#hopYear").attr("readonly", "false");
-    $("#isbn").attr("readonly", "false");
-    $("#price").attr("readonly", "false");
-})
-
 //희망도서신청
 $("#registBtn").click(function(){
     let check = window.confirm("신청하시겠습니까?");
@@ -237,8 +221,8 @@ $("#registBtn").click(function(){
         hLibCheck = false;
         hTitleCheck = false;
         hWriterCheck = false;
-        hMemoCheck = false;
-        if($("#hopLib").val()!=""){
+        categoryCheck = false;
+        if($("#hopLib").attr("libNum")!=""){
             hLibCheck = true;
         }
         if($("#hopTitle").val().length>0){
@@ -256,88 +240,43 @@ $("#registBtn").click(function(){
         if($("#hopMemo").val().length>0){
             hMemoCheck = true;
         }
-        if(hLibCheck&&hTitleCheck&&hWriterCheck&&hMemoCheck){
+        if($("#category").val()!=""){
+            categoryCheck = true;
+        }
+        if(hLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck){
             let libVO={
-                libNum:$("#hopLib").val()
+                libNum:$("#hopLib").attr("libNum")
             }
             let hopeVO = {
+                hopNum:$("#registBtn").attr("value"),
                 hopTitle:$("#hopTitle").val(),
                 hopWriter:$("#hopWriter").val(),
                 hopPublisher:$("#hopPublisher").val(),
                 isbn:$("#isbn").val(),
                 userName:$("#userName").val(),
-                hopMemo:$("#hopMemo").val(),
                 image:$("#image").val(),
                 email:$("#email").val(),
                 price:$("#price").val(),
                 hopYear:$("#hopYear").val(),
+                category:$("#category").val(),
                 libVO:libVO
             }
             $.ajax({
                 type:"POST",
-                url:"/hope/bookCheck",
+                url:"/admin/hopeAdd",
                 data:JSON.stringify(hopeVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success:function(data){
-                    switch (data) {
-                        case 111:
-                          $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                          break;
-                        case 222:
-                          alert("해당 도서관에 이미 신청 중인 도서입니다");
-                          break;
-                        case 333:
-                            alert("이번 달에 신청 가능한 횟수를 초과하였습니다");
-                            location.href="../";
-                            break;  
-                        case 200:
-                            console.log("Num: ", hopeVO.libVO.libNum);
-                            $.ajax({
-                                type:"POST",
-                                url:"/hope/setHope",
-                                data: JSON.stringify(hopeVO),
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success:function(data){
-                                    console.log(data);
-                                    alert("희망 도서 신청 완료했습니다");
-                                    location.href="../mypage/hopeList";
-                                },error:function(error){
-                                    console.log("errorㅠㅠ", data);
-                                    console.log(error);
-                                    location.href="/hope/setHope";
-                                }                
-                            })
-                            break;
-                      }
-                    // console.log(data);
-                    // if(data==111){
-                    //     $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                    // }else if(data==222){
-                    //     alert("해당 도서관에 이미 신청 중인 도서입니다");
-                    // }
-                }
-
-            })
-
-            // $.ajax({
-            //     type:"POST",
-            //     url:"/hope/setHope",
-            //     data: JSON.stringify(hopeVO),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success:function(data){
-            //         console.log(data);
-            //         alert("희망 도서 신청 완료");
-            //         // location.href="../";
-            //     },error:function(error){
-            //         console.log("errorㅠㅠ", data);
-            //         console.log(error);
-            //         // location.href="./";
-
-            //     }                
-            // })
+                    success:function(data){
+                        console.log(data);
+                        alert("희망 도서 신청 완료했습니다");
+                        // location.href="../mypage/hopeList";
+                    },error:function(error){
+                        console.log("errorㅠㅠ", error);
+                        console.log(error);
+                        // location.href="/hope/setHope";
+                    }                
+                })
         }else{
             alert("신청 정보를 확인 후 신청해주세요");
             location.reload();
@@ -346,6 +285,26 @@ $("#registBtn").click(function(){
     }else{
         return;
     }
+})
+
+$("#cnclBtn").click(function(){
+    let hopeVO = {
+        userName:$("#userName").val(),
+        hopNum:$("#cnclBtn").attr("value")
+    }
+    $.ajax({
+        type:"POST",
+        url:"/admin/hopeAddCncl",
+        data:JSON.stringify(hopeVO),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success:function(map){
+                    alert(map.msg);
+                    location.href=map.url;
+                },error:function(map){
+                    console.log("통신 error");
+                }
+    })
 })
 
 

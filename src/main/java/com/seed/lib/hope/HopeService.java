@@ -1,5 +1,6 @@
 package com.seed.lib.hope;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,5 +58,50 @@ public class HopeService {
 		hdPager.makeRow();
 		hdPager.getNum(hopeMapper.getTotalCount(hdPager));
 		return hopeMapper.getHopeList(hdPager);
+	}
+	
+	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception{
+		hdPager.makeRow();
+		hdPager.getNum(hopeMapper.getTotalCount(hdPager));
+		return hopeMapper.getAdminHopList(hdPager);
+	}
+	
+	public HopeVO getHopeOne(HopeVO hopeVO) throws Exception{
+		return hopeMapper.getHopeOne(hopeVO);
+	}
+	
+	public int setHopeCncl(HopeVO hopeVO) throws Exception{
+		return hopeMapper.setHopeCncl(hopeVO);
+	}
+	
+	public int setHopeOne(HopeVO hopeVO) throws Exception{
+		BookVO bookVO = new BookVO();
+		bookVO.setIsbn(hopeVO.getIsbn());
+		bookVO.setTitle(hopeVO.getHopTitle());
+		bookVO.setWriter(hopeVO.getHopWriter());
+		bookVO.setPublisher(hopeVO.getHopPublisher());
+		bookVO.setBookDate(hopeVO.getHopYear());
+		bookVO.setCategory(hopeVO.getCategory());
+		bookVO.setImage(hopeVO.getImage());
+		bookVO.setNum(hopeMapper.bookCount()+1L);
+		Map<String, Object> map = new HashMap<>();
+		int result = hopeMapper.setHopeOne(bookVO);
+		map.put("libNum", hopeVO.getLibVO().getLibNum());
+		map.put("isbn", hopeVO.getIsbn());
+		if(result<0) {
+			throw new Exception();
+		}else {
+			result = hopeMapper.setLibOne(map);
+			if(result<0) {
+				throw new Exception();
+			}else {
+				result = hopeMapper.setAdminHopeStat(hopeVO);
+				if(result<0) {
+					throw new Exception();
+				} else {
+					return result;
+				}
+			}
+		}
 	}
 }
