@@ -668,7 +668,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"/>
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
@@ -685,7 +685,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																		<input type="text" disabled id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" />
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -713,50 +713,58 @@
 											</div>
 										</div>
 										<!-- //신청정보 입력 -->
-										<!-- 입금 정보 -->
-										<div class="post_info_wrap" style="display:none">
-											<div class="btn_wrap">
-												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
-											</div>
-											<div class="inner">
-												<ul class="post_info_list">
-													<li>
-														<strong class="tit">복사 요금(복사면 단위)</strong>
-														<table class="tbl_copy_charge">
-															<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
-															<colgroup>
-																<col>
-																<col>
-																<col>
-																<col>
-																<col>
-															</colgroup>
-															<thead>
-																<tr>
-																	<th scope="col"></th>
-																	<th scope="col">총 페이지</th>
-																	<th scope="col">1장 가격</th>
-																	<th scope="col">제본 가격</th>
-																	<th scope="col">결제 금액</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td class="title"><span>상품1</span></td>
-																	<td><span>30장</span></td>
-																	<td><span>60</span></td>
-																	<td><span>3000</span></td>
-																	<td><span>1800+3000</span></td>
-																</tr>
-															</tbody>
-														</table>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<!-- //입금 정보 -->
 										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
+											<button type="button" id="cartBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
+											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+										</div>
+										<!-- 입금 정보 -->
+										<div style="display:flex" id="order">
+											<div class="post_info_wrap">
+												<div class="btn_wrap">
+													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
+												</div>
+												<div class="inner">
+													<ul class="post_info_list">
+														<li>
+															<strong class="tit">복사 요금(복사면 단위)</strong>
+															<table class="tbl_copy_charge">
+																<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
+																<colgroup>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																</colgroup>
+																<thead>
+																	<tr>
+																		<th scope="col">제목</th>
+																		<th scope="col">총 페이지</th>
+																		<th scope="col">1장 가격</th>
+																		<th scope="col">총페이지 가격</th>
+																		<th scope="col">제본 가격</th>
+																		<th scope="col">결제 금액</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td class="title"><span>${bookVO.title}</span></td>
+																		<td id="tdTtp"><span></span></td>
+																		<td id="tdPa"><span>60</span></td>
+																		<td id="tdTtpPay"><span>1800</span></td>
+																		<td id="tdPrinPay"><span>3000</span></td>
+																		<td id="tdTtPay"><span>4800</span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- //입금 정보 -->
+										</div>
+										<div class="btn_wrap center mb30" id="payBtn2">
 										</div>
 									</fieldset>
 								</form>

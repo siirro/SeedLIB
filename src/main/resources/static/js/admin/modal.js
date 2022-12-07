@@ -38,36 +38,52 @@ $("#print").click(function(){
             // console.log("끝 페이지 블러");
 
             let caStPage = $("#ipCaStPage").val();
-            console.log("시작페이지 : ",caStPage);
+            // console.log("시작페이지 : ",caStPage);
             let caLsPage = $("#ipCaLsPage").val();
-            console.log("끝 페이지 : ",caLsPage);
+            // console.log("끝 페이지 : ",caLsPage);
 
             if(caLsPage > caStPage){
 
                 // console.log("마지막 페이지가 크다면 찍혀라");
-                $("#ipCaTtPage").val(caLsPage-caStPage);
+                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+
+                let caTtPage = $("#ipCaTtPage").val();
+                $("#tdTtp").text(caTtPage);
             }
+            let caTtPage = $("#ipCaTtPage").val();
+            $("#tdTtp").text(caTtPage);
         },
         change : function(){
 
             // console.log("끝 페이지 체인지");
 
             let caStPage = $("#ipCaStPage").val();
-            console.log("시작페이지 : ",caStPage);
+            // console.log("시작페이지 : ",caStPage);
             let caLsPage = $("#ipCaLsPage").val();
-            console.log("끝 페이지 : ",caLsPage);
+            // console.log("끝 페이지 : ",caLsPage);
 
             if(caLsPage > caStPage){
 
                 // console.log("마지막 페이지가 크다면 찍혀라");
 
                 // 총페이지수에 빼기한것을 넣기
-                $("#ipCaTtPage").val(caLsPage-caStPage);
+                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+
+                $("#tdTtp").text("");
+                let caTtPage = $("#ipCaTtPage").val();
+                // console.log("체인지이벤트 총페이지 : ", caTtPage);
+                $("#tdTtp").text(caTtPage);
 
             }else if(caLsPage === caStPage){
 
                 // 페이지수가 같으면 1페이지로 입력
+                // console.log("같다!");
                 $("#ipCaTtPage").val(1);
+
+                $("#tdTtp").text("");
+                let caTtPage = $("#ipCaTtPage").val();
+                // console.log("체인지이벤트 총페이지 : ", caTtPage);
+                $("#tdTtp").text(caTtPage);
 
             }else {
 
@@ -80,6 +96,15 @@ $("#print").click(function(){
 
             }
         }
+    });
+
+    $("#payBtn").click(function(){
+
+        // 결제하기 버튼 생성
+        $("#payBtn2").append('<button type="button" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>');
+
+        $("#order").css('display','flex').hide().fadeIn();
+
     });
 
 });
