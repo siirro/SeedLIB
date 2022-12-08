@@ -29,6 +29,7 @@ let hWriterCheck = false;
 let hopYearCheck = false;
 let isbnCheck = false;
 let hMemoCheck = false;
+let date = new Date();
 
 function getKey(){
     $.ajax({
@@ -70,6 +71,11 @@ $("#searchBtn").click(function(){
         alert("검색어를 입력하세요");
         return;
     }
+})
+
+$("#hopYear").focus(function(){
+    let max = date.getFullYear();
+    $(this).attr("max", max);
 })
 
 
@@ -222,6 +228,8 @@ $("#registBtn").click(function(){
         hTitleCheck = false;
         hWriterCheck = false;
         categoryCheck = false;
+        hYearCheck = false;
+        isbnCheck = false;
         if($("#hopLib").attr("libNum")!=""){
             hLibCheck = true;
         }
@@ -234,16 +242,31 @@ $("#registBtn").click(function(){
         if($("#hopPublisher").val().length<1){
             $("#hopPublisher").val("미상");
         }
+        if($("#hopYear").val()==""){
+            alert("발행연도를 입력하세요");
+            return;
+        } else if($("#hopYear").val()>date.getFullYear()){
+            alert("발행연도를 다시 입력하세요");
+            return;
+        } else{
+            hYearCheck = true;
+        }
         if($("#isbn").val().length<1){
-            $("#isbn").val("0000000000000");
-        }
-        if($("#hopMemo").val().length>0){
-            hMemoCheck = true;
-        }
-        if($("#category").val()!=""){
+            alert("isbn을 입력하세요");
+            return;
+        } else{
+            isbnCheck = true;
+        }    
+        if($("#category").val()==""){
+            alert("카테고리를 입력하세요");
+            return;
+        } else{
             categoryCheck = true;
         }
-        if(hLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck){
+        if($("#price").val()==""){
+            $("#price").val("0");
+        }
+        if(hLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck&&hYearCheck){
             let libVO={
                 libNum:$("#hopLib").attr("libNum")
             }
@@ -270,11 +293,11 @@ $("#registBtn").click(function(){
                     success:function(data){
                         console.log(data);
                         alert("희망 도서 신청 완료했습니다");
-                        // location.href="../mypage/hopeList";
+                        location.href="../mypage/hopeList";
                     },error:function(error){
                         console.log("errorㅠㅠ", error);
-                        console.log(error);
-                        // location.href="/hope/setHope";
+                        alert("서버 문제로 처리가 불가합니다");
+                        location.href="/hope/setHope";
                     }                
                 })
         }else{

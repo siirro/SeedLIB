@@ -77,6 +77,7 @@ public class HopeService {
 	@Transactional(rollbackFor = Exception.class)
 	public int setHopeOne(HopeVO hopeVO) throws Exception{
 		BookVO bookVO = new BookVO();
+		Map<String, Object> map = new HashMap<>();
 		bookVO.setIsbn(hopeVO.getIsbn());
 		bookVO.setTitle(hopeVO.getHopTitle());
 		bookVO.setWriter(hopeVO.getHopWriter());
@@ -85,10 +86,9 @@ public class HopeService {
 		bookVO.setCategory(hopeVO.getCategory());
 		bookVO.setImage(hopeVO.getImage());
 		bookVO.setNum(hopeMapper.bookCount()+1L);
-		Map<String, Object> map = new HashMap<>();
-		int result = hopeMapper.setHopeOne(bookVO);
 		map.put("libNum", hopeVO.getLibVO().getLibNum());
 		map.put("isbn", hopeVO.getIsbn());
+		int result = hopeMapper.setHopeOne(bookVO);
 		if(result<0) {
 			throw new Exception();
 		}else {

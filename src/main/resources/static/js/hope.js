@@ -56,13 +56,9 @@ $("#searchBtn").click(function(){
     $(".pagination").empty();
     $(".result_screen").empty();
     $(".listWrap").empty();
-    $("#hTitle").empty();
-    $("#hWriter").empty();
-    $("#hPublisher").empty();
-    $("#hopYear").empty();
-    $("#isbn").empty();
-    $("#price").empty();
-    query = $("#query").val();
+    self();
+    $("#titleInfo").text("해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 신청 불가");
+    query = $("#query").val();    
     if(query!=""){
        getKey();
        getSearch();            
@@ -216,19 +212,26 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
 
 //직접입력
 $("#selfApply").click(function(){
+   self();
+})
+
+function self(){
+    $("#hopLib").val("");
     $("#hopTitle").val("");
     $("#hopWriter").val("");
     $("#hopPublisher").val("");
     $("#hopYear").val("");
+    $("#hopMemo").val("");
+    $("#image").val("");
     $("#isbn").val("");
     $("#price").val("");
-    $("#hopTitle").attr("readonly", "false");
-    $("#hopWriter").attr("readonly", "false");
-    $("#hopPublisher").attr("readonly", "false");
-    $("#hopYear").attr("readonly", "false");
-    $("#isbn").attr("readonly", "false");
-    $("#price").attr("readonly", "false");
-})
+    $("#hopTitle").attr("readonly", false);
+    $("#hopWriter").attr("readonly", false);
+    $("#hopPublisher").attr("readonly", false);
+    $("#hopYear").attr("readonly", false);
+    $("#isbn").attr("readonly", false);
+    $("#price").attr("readonly", false);
+}
 
 //희망도서신청
 $("#registBtn").click(function(){
@@ -283,8 +286,10 @@ $("#registBtn").click(function(){
                     switch (data) {
                         case 111:
                           $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
+                          alert("해당 도서관에서 소장 중인 도서입니다");
                           break;
                         case 222:
+                          $("#titleInfo").text("해당 도서관에 이미 신청 중인 도서입니다");
                           alert("해당 도서관에 이미 신청 중인 도서입니다");
                           break;
                         case 333:
@@ -311,34 +316,10 @@ $("#registBtn").click(function(){
                             })
                             break;
                       }
-                    // console.log(data);
-                    // if(data==111){
-                    //     $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                    // }else if(data==222){
-                    //     alert("해당 도서관에 이미 신청 중인 도서입니다");
-                    // }
                 }
 
             })
-
-            // $.ajax({
-            //     type:"POST",
-            //     url:"/hope/setHope",
-            //     data: JSON.stringify(hopeVO),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success:function(data){
-            //         console.log(data);
-            //         alert("희망 도서 신청 완료");
-            //         // location.href="../";
-            //     },error:function(error){
-            //         console.log("errorㅠㅠ", data);
-            //         console.log(error);
-            //         // location.href="./";
-
-            //     }                
-            // })
-        }else{
+       }else{
             alert("신청 정보를 확인 후 신청해주세요");
             location.reload();
             return;

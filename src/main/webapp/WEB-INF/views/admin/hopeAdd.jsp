@@ -162,17 +162,17 @@
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                                            <td><input type="text" id="hopYear" name="hopYear" value="${hope.hopYear}" maxlength="4" class="form-control"></td>
+                                                            <td><input type="number" id="hopYear" min="1500", max="", step="1", name="hopYear" value="${hope.hopYear}" maxlength="4" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="isbn">ISBN</label></th>
                                                             <td>
-                                                                <input type="text" id="isbn" name="isbn" value="${hope.isbn}" maxlength="30" class="form-control">
+                                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="${hope.isbn}" maxlength="30" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="price">정가</label></th>
-                                                            <td><input type="text" readonly id="price" name="price" value="${hope.price}" class="form-control"></td>
+                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="${hope.price}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>

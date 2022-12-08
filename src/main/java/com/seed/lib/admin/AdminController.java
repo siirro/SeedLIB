@@ -83,7 +83,6 @@ public class AdminController {
 	@ResponseBody
 	public Map<String, String> setHopeOne(@RequestBody HopeVO hopeVO)throws Exception{
 		Map<String, String> map = new HashMap<>();
-		log.info("hopeVO:{}",hopeVO);
 		int result = hopeService.setHopeOne(hopeVO);
 		if(result>0) {
 			map.put("msg", "신청 반려 처리했습니다");
