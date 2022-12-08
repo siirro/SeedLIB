@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/new_search.css">
     <link rel="stylesheet" href="/css/mypage_book.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>

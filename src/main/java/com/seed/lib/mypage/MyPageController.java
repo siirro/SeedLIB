@@ -185,7 +185,7 @@ public class MyPageController {
 	
 	
 	//대출 목록
-	@PostMapping("bookLoan")
+	@GetMapping("bookLoan")
 	public ModelAndView getLoanList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -203,7 +203,7 @@ public class MyPageController {
 	}
 	
 	//대출 이력 목록
-	@PostMapping("bookLoanHistory")
+	@GetMapping("bookLoanHistory")
 	public ModelAndView getLoanHistoryList (String userName, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -220,7 +220,7 @@ public class MyPageController {
 	}
 	
 	//대출 연장 - 최대 2번
-	@PostMapping("extension")
+	@GetMapping("extension")
 	public String setExtension (BookLoanVO loVO) throws Exception{
 		// 연장 횟수가 0, 1일때만 신청 가능 -> setExtension -> 저장 후 +1 리턴
 		// 2이면 불가능 -> 3 리턴

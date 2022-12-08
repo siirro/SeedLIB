@@ -42,7 +42,7 @@
 	<!-- 대출 신청 -->
 	<insert id="setLoan" parameterType="BookLoanVO">
 		INSERT INTO LOAN(USERNAME, ISBN, LOANSDATE, LOANLDATE, OVERDUE, RTSTATUS)
-			VALUES (#{userName}, #{isbn}, now(), 0000, 0, 0)
+			VALUES (#{userName}, #{isbn}, now(), now()+14, 0, 0)
 	</insert>
 	
 	

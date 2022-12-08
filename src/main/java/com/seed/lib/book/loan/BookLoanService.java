@@ -23,36 +23,7 @@ public class BookLoanService {
 	
 	@Autowired
 	private BookLoanMapper loanMapper;
-	@Autowired
-	private DateUtil dateUtil;
 	
-	//대출, 반납하면 도서관이 보유하고 있는 권수 update
-		public BookLibVO setQuanUpdate (BookLibVO libVO) throws Exception{
-			// bookCount +1 / -1해서 받아오기
-			
-			BookLoanVO loVO = new BookLoanVO();
-			//대출 성공했을 떄 -> 0 -> 저장 후 1
-			int result = loanMapper.setLoan(loVO);
-			if (result == 1) {
-				return loanMapper.setQuanUpdate(libVO);			
-			}else {
-				return null;
-			}
-		}
-	
-	//보유 권수가 0일때 able 0으로 update
-	//보유 권수 1일때 able 1로 update
-	public BookVO setAbleUpdate (BookLibVO libVO) throws Exception{
-		//책 보유 권수에 따라 able update
-		int count = loanMapper.getQuan(libVO);
-			//1권 이상이면 대출 가능 -> able = 1
-		if(count >= 1) {
-			return loanMapper.setAbleUpdate(libVO);						
-			//0권이면 대출 불가 -> able = 0
-		}else {
-			return loanMapper.setAbleUpdate(libVO);	
-		}
-	}
 	
 	//대출하면 책의 대출 횟수 update
 	public BookVO setCountUpdate (BookVO bookVO) throws Exception{
@@ -66,29 +37,22 @@ public class BookLoanService {
 	public int setLoan (BookLoanVO loVO) throws Exception{
 		// 0이면 대출 가능 -> setLoan -> 저장 후 1 리턴
 		// 2이면 해당 도서 대출 중 -> 불가
+		
+		BookLibVO libVO = new BookLibVO();
+		BookVO bookVO = new BookVO();
+		
 		int enable = loanMapper.getBookLoan(loVO);
 		if(enable == 0) {
-			return loanMapper.setLoan(loVO);
+			//대출하기 SQL
+			loanMapper.setLoan(loVO);
+			//대출 횟수
+			loanMapper.setCountUpdate(bookVO);
+			//대출 가능 권수
+			return loanMapper.setQuanUpdate(libVO.getQuantity()-1);
+			
 		}else {
 			return 2;
 		}
-	}
-	
-	//반납날짜 계산
-	public Calendar getRtDate () throws Exception{
-		java.util.Date now = new java.util.Date();
-		
-		//날짜 타입 설정
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		
-		//현재 시간 설정
-		Calendar ca = Calendar.getInstance();
-		ca.setTime(now);
-		
-		// 14일 더하기
-		ca.add(Calendar.DATE, 14);
-		log.info("&&&&&&&&&&&&&&&&&&&&&& : {}", ca);
-		return ca;
 	}
 	
 	//목록

@@ -12,7 +12,7 @@ import com.seed.lib.util.BookLoanPager;
 public interface BookLoanMapper {
 	
 	//대출하면 도서관이 보유하고 있는 권수 update
-	public BookLibVO setQuanUpdate (BookLibVO libVO) throws Exception;
+	public int setQuanUpdate (int quan) throws Exception;
 	
 	//보유 권수 계산
 	public int getQuan (BookLibVO libVO) throws Exception;
