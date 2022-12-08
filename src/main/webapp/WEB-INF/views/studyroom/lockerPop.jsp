@@ -113,7 +113,7 @@
             <div style="margin-bottom: 15px;">
                 <span style="font-size: 17px;">● 이용 금액</span>
             </div>
-            <table class="tbl">
+            <table class="tbl" style="width: 550px;">
                 <thead>
                     <tr>
                         <th scope="col" style="padding: 0 15px;">1일 이용 금액</th>
@@ -128,11 +128,11 @@
                  </tbody>
             </table>
         </div>
-        <div>
+        <div style="margin-top: 10px;">
             <ul>
-                <li>1인 1개 사물함 이용 원칙, 타인에게 대여하거나 양도 할 수 없습니다.</li>
-                <li>대여 기간이 종료되면 사물함을 정리해야 합니다.</li>
-                <li>대여 기간 종료 후에 사물함을 정리하지 않은 경우 불이익을 받을 수 있습니다.(강제 철거, 폐기)</li>
+                <li>✅ 1인 1개 사물함 이용 원칙, 타인에게 대여하거나 양도 할 수 없습니다.</li>
+                <li>✅ 대여 기간이 종료되면 사물함을 정리해야 합니다.</li>
+                <li>✅ 대여 기간 종료 후에 사물함을 정리하지 않은 경우 불이익을 받을 수 있습니다.(강제 철거, 폐기)</li>
             </ul>
         </div>
         <div class="btnArea">

@@ -74,6 +74,7 @@ public class HopeService {
 		return hopeMapper.setHopeCncl(hopeVO);
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
 	public int setHopeOne(HopeVO hopeVO) throws Exception{
 		BookVO bookVO = new BookVO();
 		bookVO.setIsbn(hopeVO.getIsbn());

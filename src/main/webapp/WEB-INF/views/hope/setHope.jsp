@@ -167,7 +167,9 @@ pageEncoding="UTF-8"%>
                                     </tbody>
                                 </table>
                             </div>
-
+                            <div><h4 class="htitle" style="margin-top: 10px;">신청 도서 정보</h4>
+                                <p class="emp1 ref" id="titleInfo" style="content: none;">* 표시는 필수 입력 사항입니다</p>
+                            </div>
                             <div class="boardWrap mt10">
                                 <table class="board-view">
                                     <caption>희망도서 정보</caption>
@@ -205,17 +207,22 @@ pageEncoding="UTF-8"%>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                            <td><input type="text" id="hopYear" name="hopYear" value="" maxlength="4" class="form-ele auto numeric"></td>
+                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="hopYear" name="hopYear" value="" maxlength="4" class="form-ele auto numeric">
+                                                <p class="emp1 ref" id="titleInfo">숫자만 입력 가능</p>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="isbn">ISBN</label></th>
                                             <td>
-                                                <input type="text" id="isbn" name="isbn" value="" maxlength="30" class="form-ele auto eng-mode">
+                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="" maxlength="30" class="form-ele auto eng-mode">
+                                                <p class="emp1 ref" id="titleInfo">숫자만 입력 가능</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="price">정가</label></th>
-                                            <td><input type="text" id="price" name="price" value="" class="form-ele auto numeric"></td>
+                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="price" name="price" value="" class="form-ele auto numeric">
+                                                <p class="emp1 ref" id="titleInfo">숫자만 입력 가능</p>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>

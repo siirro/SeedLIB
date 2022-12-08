@@ -36,7 +36,7 @@
 				INNER JOIN
 				STATUS S
 				ON HS.STATNUM=S.STATNUM 
-			WHERE USERNAME=#{userName} AND HS.STATNUM=0 AND YEAR(HOPDATE)=YEAR(SYSDATE()) AND MONTH(HOPDATE)=MONTH(SYSDATE());
+			WHERE USERNAME=#{userName} AND HS.STATNUM IN(0,2) AND YEAR(HOPDATE)=YEAR(SYSDATE()) AND MONTH(HOPDATE)=MONTH(SYSDATE());
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
