@@ -30,7 +30,7 @@ $("#LoanAlretBtn").click(function(){
 				case 1:
 					let done = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(done){
-						opener.location.href="/mypage/loan";
+						opener.location.href="/mypage/book/loan";
 						break;
 					} else{
                         opener.location.href="../";
@@ -48,14 +48,14 @@ $("#LoanAlretBtn").click(function(){
 //-------------------------------------------------
 //디테일 페이지에서 예약신청 눌렀을 때
 $("#ResAlretBtn").click(function(){
-	const reVO = {
+	const bookLoanVO = {
 		isbn : isbn,
 		userName : userName
 	}
 	$.ajax({
 		type : "POST",
 		url : "/book/reservation",
-		data:JSON.stringify(reVO),
+		data:JSON.stringify(bookLoanVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success:function(data){
@@ -66,11 +66,11 @@ $("#ResAlretBtn").click(function(){
 				case 1:
 					let done = window.confirm("도서를 예약했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(done){
-						opener.location.href="/mypage/bookReserve";
+						opener.location.href="/mypage/book/reservation";
 						break;
 					} else{
-                        opener.location.href="../"; 
                         location.reload();
+                        opener.location.href="../"; 
                         break;
                     } 
 				}
@@ -84,17 +84,18 @@ $("#ResAlretBtn").click(function(){
 //-------------------------------------------------
 //디테일 페이지에서 상호대차신청 눌렀을 때
 $("#MuAlretBtn").click(function(){
-	const muVO = {
+	const bookLoanVO = {
 		isbn : isbn,
-		userName : userName
+		userName : userName,
+		libNum : libNum
 	}
 	
-	console.log(muVO);
+	console.log(bookLoanVO);
 	
 	$.ajax({
 		type : "POST",
 		url : "/book/mutual",
-		data:JSON.stringify(muVO),
+		data:JSON.stringify(bookLoanVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success:function(data){
@@ -105,11 +106,11 @@ $("#MuAlretBtn").click(function(){
 				case 1:
 					let check = window.confirm("도서를 상호대차 신청했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/mypage/bookMutual";
+						opener.location.href="/mypage/book/mutual";
 						break;
 					} else{
-                        opener.location.href="../";
                         location.reload(); 
+                        opener.location.href="../";
                         break;
                     } 
 				}

@@ -26,16 +26,31 @@
 		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
 	
-	<select id="getRtDate" parameterType="BookVO" resultType="Date">
+	<select id="getRtDate" parameterType="Long" resultMap="rtDateResult">
 		SELECT MIN(LOANLDATE) FROM LOAN WHERE ISBN = #{isbn}
 	</select>
+	<resultMap type="BookLoanVO" id="rtDateResult">
+		<id column="loanNum" property="loanNum"/>
+		<result column="loanLDate" property="loanLDate"/>
+	</resultMap>
 	
 	
 	
-	
+	<!-- isbn 없이 마이페이지에서 사용 -->
 	<!-- 대출 가능한 회원인지? - 해당 도서 대출 중인지 -->
 	<select id="getBookLoan" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+		SELECT COUNT(LOANNUM) FROM LOAN
+		WHERE USERNAME = #{userName} AND RTSTATUS = #{rtStatus} AND ISBN = #{isbn}
+	</select>
+	
+	<!-- 대출 가능한 회원인지? - 해당 도서 상호대차 중인지 -->
+	<select id="getMuCount" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(MUNUM) FROM MUTUALLOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
+	</select>
+	
+	<!-- 대출 가능한 회원인지? - 해당 도서 예약 중인지 -->
+	<select id="getReCount" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(RVNUM) FROM RESERVATION WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
 	
@@ -96,12 +111,6 @@
 		SELECT EXTENSION FROM LOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
-	<!-- 대출 책 권수 -->
-	<!-- 1은 대출 중 | 0은 반납 완 -->
-	<select id="getLoanCount" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(LOANNUM) FROM LOAN WHERE USERNAME = #{userName} AND RTSTATUS = #{rtStatus}
-	</select>
-	
 	<!-- 대출 연장 신청 -->
 	<!-- 연장 횟수, 만기일 업데이트 -->
 	<!-- <update id="setExtension">
@@ -111,8 +120,8 @@
 	
 	<!-- 예약 신청 -->
 	<insert id="setReservation" parameterType="BookLoanVO">
-		INSERT INTO RESERVATION (ISBN, USERNAME, ENABLEDATE)
-			VALUES (#{isbn}, #{userName}, #{enableDate})
+		INSERT INTO RESERVATION (ISBN, USERNAME, ENABLEDATE, REGDATE)
+			VALUES (#{isbn}, #{userName}, #{enableDate}, now())
 	</insert>
 	
 	<!-- 예약 목록 -->
@@ -152,17 +161,12 @@
 		</collection>	
 	</resultMap>
 	
-	<!-- 예약 중인 책 권수 -->
-	<select id="getReCount" parameterType="BookReservationVO" resultType="Integer">
-		SELECT COUNT(RVNUM) FROM LOAN WHERE USERNAME = #{userName}
-	</select>
-	
 	<!-- ================================== -->
 	
 	<!-- 상호대차 신청 -->
 	<insert id="setMutual" parameterType="BookLoanVO">
-		INSERT INTO MUTUALLOAN (ISBN, USERNAME)
-			VALUES (#{isbn}, #{userName})
+		INSERT INTO MUTUALLOAN (ISBN, USERNAME, REGDATE)
+			VALUES (#{isbn}, #{userName}, now())
 	</insert>
 	
 	<!-- 상호대차 목록 -->
@@ -200,11 +204,6 @@
 			<result column="userName" property="userName"/>
 		</collection>	
 	</resultMap>
-	
-	<!-- 상호대차 신청한 책 권수 -->
-	<select id="getMuCount" parameterType="BookMutualLoanVO" resultType="Integer">
-		SELECT COUNT(MUNUM) FROM LOAN WHERE USERNAME = #{userName}
-	</select>
 	
 	<!-- FROM 페이지 별로 설정 -->
 	<select id="getCount" resultType="Long" parameterType="BookLoanPager">

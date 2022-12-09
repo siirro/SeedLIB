@@ -194,7 +194,9 @@ public class MyPageController {
 		mv.addObject("li", li);
 		
 		//대출 중인 책 권수
-		int count = loanService.getLoanCount(userName, 1);
+		BookLoanVO loVO = new BookLoanVO();
+		loVO.setRtStatus(1);
+		int count = loanService.getBookLoan(loVO);
 		mv.addObject("count", count);
 		
 		mv.setViewName("mypage/bookLoan");
@@ -211,7 +213,9 @@ public class MyPageController {
 		mv.addObject("li", li);
 		
 		//대출 중인 책 권수
-		int count = loanService.getLoanCount(userName, 0);
+		BookLoanVO loVO = new BookLoanVO();
+		loVO.setRtStatus(0);
+		int count = loanService.getBookLoan(loVO);
 		mv.addObject("count", count);
 
 		mv.setViewName("mypage/bookLoanHistory");
@@ -243,7 +247,8 @@ public class MyPageController {
 		mv.addObject("li", li);
 		
 		//대출 중인 책 권수
-		int count = loanService.getReCount(userName);
+		BookLoanVO loVO = new BookLoanVO();
+		int count = loanService.getReCount(loVO);
 		mv.addObject("count", count);
 
 		mv.setViewName("mypage/bookReserve");
@@ -260,7 +265,8 @@ public class MyPageController {
 		mv.addObject("li", li);
 		
 		//대출 중인 책 권수
-		int count = loanService.getMuCount(userName);
+		BookLoanVO loVO = new BookLoanVO();
+		int count = loanService.getMuCount(loVO);
 		mv.addObject("count", count);
 		
 		mv.setViewName("mypage/bookMutual");

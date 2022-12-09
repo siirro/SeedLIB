@@ -23,7 +23,7 @@ public interface BookLoanMapper {
 	public void setCountUpdate (Long isbn) throws Exception;
 	
 	//가장 빠른 반납날짜 불러오기
-	public Date getRtDate (BookLoanVO loanVO) throws Exception;
+	public Date getRtDate (Long isbn) throws Exception;
 	
 //----------------------------------------------------------------------	
 
@@ -44,9 +44,6 @@ public interface BookLoanMapper {
 	
 	//대출 연장 - 최대 2번
 	public int setExtension (BookLoanVO loVO) throws Exception;
-	
-	//대출한 책 권수
-	public int getLoanCount (String userName, int rtStatus) throws Exception;
 
 //-----------------------------------------------------------------------	
 	
@@ -60,7 +57,7 @@ public interface BookLoanMapper {
 	public List<BookVO> getReList (BookLoanPager pager) throws Exception;
 	
 	//예약한 책 권수
-	public int getReCount (String userName) throws Exception;
+	public int getReCount (BookLoanVO loVO) throws Exception;
 
 //-----------------------------------------------------------------------	
 	
@@ -71,7 +68,7 @@ public interface BookLoanMapper {
 	public List<BookVO> getMuList (BookLoanPager pager) throws Exception;
 	
 	//상호대출 책 권수
-	public int getMuCount (String userName) throws Exception;
+	public int getMuCount (BookLoanVO loVO) throws Exception;
 	
 //-----------------------------------------------------------------------	
 	
