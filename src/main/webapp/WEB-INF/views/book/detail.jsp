@@ -254,13 +254,14 @@
 																
 																<tr class="MA">
 																	<td>
+																		
 																		<c:choose>
-																			<c:when test="${where == 0}"><input type="hidden" class="libNum" value="0">씨앗도서관</c:when>
-																			<c:when test="${where == 1}"><input type="hidden" class="libNum" value="1">새싹도서관</c:when>
-																			<c:when test="${where == 2}"><input type="hidden" class="libNum" value="2">쑥쑥도서관</c:when>
-																			<c:when test="${where == 3}"><input type="hidden" class="libNum" value="3">새봄도서관</c:when>
-																			<c:when test="${where == 4}"><input type="hidden" class="libNum" value="4">도란도란도서관</c:when>
-																			<c:when test="${where == 5}"><input type="hidden" class="libNum" value="5">뿌리도서관</c:when>
+																			<c:when test="${where == 0}">씨앗도서관</c:when>
+																			<c:when test="${where == 1}">새싹도서관</c:when>
+																			<c:when test="${where == 2}">쑥쑥도서관</c:when>
+																			<c:when test="${where == 3}">새봄도서관</c:when>
+																			<c:when test="${where == 4}">도란도란도서관</c:when>
+																			<c:when test="${where == 5}">뿌리도서관</c:when>
 																		</c:choose>
 																	</td>
 																	
@@ -280,12 +281,13 @@
 																	
 																	<td>
 																		<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
-																		<c:if test="${rtDate.loanLDate != null}">-</c:if>
+																		<c:if test="${rtDate.loanLDate == null}">-</c:if>
 																	</td>
 																	
 																	<td>
 																		<c:if test="${not empty member}">
 																			<c:if test="${where == 0}">
+																				<input type="hidden" class="libNumL" value="${where}">
 																				<c:if test="${quan >= 1}">
 																					<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
 																				</c:if>
@@ -296,6 +298,7 @@
 																				
 																			<c:if test="${where != 0}">
 																				<c:if test="${quan >= 1}">
+																					<input type="hidden" class="libNumM" value="${where}">
 																					<button type="button" class="btn white small" id="MuAlretBtn" title="상호대차 신청">상호대차</button>
 																				</c:if>
 																				<c:if test="${quan == 0}">

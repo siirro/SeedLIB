@@ -2,16 +2,18 @@
 console.log(isbn);
 console.log(userName);
 
-const libNum = $(".libNum").val();
+const libNumL = $(".libNumL").val();
+const libNumM = $(".libNumM").val();
 
-console.log(libNum);
+console.log(libNumL);
+console.log(libNumM);
 //-------------------------------------------------
 //디테일 페이지에서 대출신청 눌렀을 때
 $("#LoanAlretBtn").click(function(){
 	const bookLoanVO = {
 		userName : userName,
 		isbn : isbn,
-		libNum : libNum
+		libNum : libNumL
 	}
 	
 	console.log(bookLoanVO);
@@ -87,7 +89,7 @@ $("#MuAlretBtn").click(function(){
 	const bookLoanVO = {
 		isbn : isbn,
 		userName : userName,
-		libNum : libNum
+		libNum : libNumM
 	}
 	
 	console.log(bookLoanVO);

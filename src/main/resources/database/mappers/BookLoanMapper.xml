@@ -26,13 +26,9 @@
 		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
 	
-	<select id="getRtDate" parameterType="Long" resultMap="rtDateResult">
+	<select id="getRtDate" parameterType="Long" resultType="java.sql.Date">
 		SELECT MIN(LOANLDATE) FROM LOAN WHERE ISBN = #{isbn}
 	</select>
-	<resultMap type="BookLoanVO" id="rtDateResult">
-		<id column="loanNum" property="loanNum"/>
-		<result column="loanLDate" property="loanLDate"/>
-	</resultMap>
 	
 	
 	
