@@ -131,8 +131,8 @@
 				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
-						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
-						<li id="gnb6_4"><a href="/mypage/bookMutual">상호대차조회</a> </li> 
+						<li id="gnb6_2"><a href="/mypage/book/loan">도서이용내역</a> </li> 
+						<li id="gnb6_4"><a href="/mypage/book/mutual">상호대차조회</a> </li> 
 						<li id="gnb6_5"><a href="/shelf/list">관심도서목록</a> </li> 
 						<li id="gnb6_6"><a href="/mypage/hopeList">희망도서조회</a> </li> 
 						<li id="gnb6_7"><a href="/mypage/donList">도서기증조회</a> </li> 

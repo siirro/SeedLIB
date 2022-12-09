@@ -7,6 +7,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* -----  loan  ----- */
 /* 타이틀 */
+.content {
+	width: 60%;
+	margin: auto;
+	margin-left: 280px;
+}
+
 
 #divWrapper {
     min-width: 1200px;
@@ -18,20 +24,110 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     margin: 10px auto 0;
 }
 
-.box {
-    width: 1200px;
-    min-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
+
 .sub-title {
-    color: #323232;
+	color: #323232;
     font-size: 30px;
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: 20px;
     padding-left: 10px;
-    border-bottom: 4px solid #8ed1de;
+    border-bottom: 4px solid #76E170;
     margin-bottom: 10px;
     padding-bottom: 10px;
     box-sizing: border-box;
+    height: 60px;
 }
+
+/* ----- Tab ----- */
+
+.divTabMenu1 {
+	width: 100%;
+	height: 50px;
+	box-sizing: border-box;
+	margin-top:20px; 
+}
+
+.divTabMenu1 ul {
+	width : 80%;
+	display: flex;
+	justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+	border: 1.5px solid #323232;
+	padding: 15px;
+}
+
+.divTabMenu1 li {
+	font-weight : bold;
+	font-size: 20px;
+}
+
+.divTabMenu2 {
+	margin-top: 30px;
+	margin-left : 30px;
+	margin-right: 60px;
+}
+
+.divTabMenu2 ul {
+	display: flex;
+	align-items: center;
+	border-bottom: 4px solid #76E170;
+}
+
+.divTabMenu2 li {
+	font-weight : bold;
+	font-size : 17px;
+	margin: 20px;
+	margin-bottom: 10px;
+}
+
+/* ----- divContent ----- */
+.divContent {
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.loanSearch {
+	background-color: #A8E2BD;
+	padding: 20px;
+}
+
+.loanSearch p {
+	font-weight: bold;
+	font-size: 17px;
+	margin-bottom: 15px;
+}
+
+.bunch {
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.btnType5 {
+	padding: 5px;
+	margin-left: 10px;
+}
+
+/* list */
+.loanList {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.listTable {
+	margin-top: 20px;
+}
+
+.listTable-t {
+	align-content: center;
+	align-items: center;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+

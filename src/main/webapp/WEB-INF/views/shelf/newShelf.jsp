@@ -27,27 +27,28 @@
 </head>
 
 <body>
-	<input type="text" id="userName" value="${member.userName}">
+	<input type="hidden" id="userName" value="${member.userName}">
 	<div class="contentsGroup">
         <div class="seatArea">
             <span class="book" style="margin-bottom: 10px;">🌱 새 책 꽂 이 🌱</span>
             <hr style="width: 35%;"> 
         </div>
-        <hr style="margin-top: 30px;">   
-        <div>
+        <hr style="margin-top: 30px;"> 
+          
+        <div class="shelf-con">
             <div class="shelfCon">
 	            <div class="shelfName">
-	            	<span>새 책꽂이 명</span>
-	            	<input type="text" id="shName" placeholder="책꽂이 명은 한 글자 이상이어야 합니다.">
+	            	<span>📗 새 책꽂이 명 : </span>
+	            	<input type="text" id="shName">
 	            </div>
 	            <div class="shelfMemo">
-	            	<span>책꽂이 설명</span>
+	            	<span>💚 책꽂이 설명 : </span>
 	            	<textarea type="text" id="shMemo" rows="3"></textarea>
 	            </div>
 	        </div>
         	<div class="btnArea">
-				<button type="button" id="RealShelfBtn" title="저장">저장</button>
-				<a href="javascript:window.close();" title="닫기">닫기</a>
+				<button type="button" class="btn white small" id="RealShelfBtn" title="저장">저장</button>
+				<a href="javascript:window.close();" class="btn white small" title="닫기">닫기</a>
 			</div>
 		</div>
     </div>

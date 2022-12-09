@@ -53,7 +53,7 @@
 	<!-- 대출 신청 -->
 	<insert id="setLoan" parameterType="BookLoanVO">
 		INSERT INTO LOAN(USERNAME, ISBN, LOANSDATE, LOANLDATE, OVERDUE, RTSTATUS)
-			VALUES (#{userName}, #{isbn}, now(), (SELECT date_add(now(),interval 14 DAY)), 0, 0)
+			VALUES (#{userName}, #{isbn}, now(), (SELECT date_add(now(),interval 14 DAY)), 0, 1)
 	</insert>
 	
 	

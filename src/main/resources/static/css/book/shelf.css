@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/* add Book */
 .contentsGroup {
 	display: flex;
 	flex-direction: column;
@@ -7,7 +8,7 @@
 }
        
 .seatArea {
-	width: 100%;
+	width: 80%;
     margin-left: 25px;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -24,16 +25,37 @@
 
 .bookTitle {
    display: block;
-   font-size: 25px;
+   font-size: 20px;
    font-weight: bold;
+   width: 60%;
 }
 
 .shelfCon {
 	display: flex;
+	align-items: center;
+    flex-direction: column;
+}
+
+.shelf-flex-a {
+	display: flex;
+	align-items: center;
+    justify-content: space-evenly;
+}
+
+.shelf-flex-b {
+	margin-top: 20px;
+}
+
+.shelfTI span{
+	margin-right: 5px;
 }
 
 .btnArea {
-	margin-top: 30px;
+	margin-top: 50px;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #revBtn{
@@ -41,3 +63,43 @@
     text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
     font-size: 18px !important;
 }
+
+.btn-flex-a {
+	margin-bottom: 50px;
+}
+
+#RealBookBtn {
+	margin-right: 10px;
+}
+
+#closeBtn {
+	margin-left: 10px;
+}
+
+/* ----- new Shelf ----- */
+.shelf-con {
+	width: 60%
+}
+
+.shelfCon {
+	display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.shelfMemo {
+	margin-top : 20px;
+	display: flex;
+	width: 100%;
+}
+
+.shelfMemo span {
+	margin-right: 5px;
+}
+
+.shelfName span {
+	margin-right: 5px;
+}
+
+
+

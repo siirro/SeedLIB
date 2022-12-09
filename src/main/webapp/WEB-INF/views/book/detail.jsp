@@ -254,7 +254,6 @@
 																
 																<tr class="MA">
 																	<td>
-																		
 																		<c:choose>
 																			<c:when test="${where == 0}">씨앗도서관</c:when>
 																			<c:when test="${where == 1}">새싹도서관</c:when>
@@ -280,8 +279,13 @@
 																	</td>
 																	
 																	<td>
-																		<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
-																		<c:if test="${rtDate.loanLDate == null}">-</c:if>
+																		<c:choose>
+																			<c:when test="${where == 0}">
+																				<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
+																				<c:if test="${rtDate.loanLDate == null}">-</c:if>
+																			</c:when>
+																			<c:otherwise>해당 도서관으로 문의 바랍니다.</c:otherwise>
+																		</c:choose> 
 																	</td>
 																	
 																	<td>

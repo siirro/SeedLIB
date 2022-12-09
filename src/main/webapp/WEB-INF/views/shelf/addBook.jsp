@@ -28,8 +28,8 @@
 
 <body>
 	<form name="form" action="/shelf/addBook" method="POST">
-	<input type="text" id="userName" value="${member.userName}">
-	<input type="text" id="isbn" value="${isbn}">
+	<input type="hidden" id="userName" value="${member.userName}">
+	<input type="hidden" id="isbn" value="${isbn}">
 	
 	<div class="contentsGroup">
         <div class="seatArea">
@@ -38,23 +38,29 @@
             <span class="bookTitle">📖 ${title}</span>
         </div>
         <hr style="margin-top: 30px;">   
+        
         <div>
             <div class="shelfCon">
-	            <div class="shelfTI">
-	            	<span>담을 곳</span>
-	            </div>
-	            <div class="shelfSelect">
-	            	<select class="shNum" id="list_id" name="list_id" class="selectBox1">
-						<c:forEach items="${list}" var="shelf">															
-							<option value="${shelf.shNum}">${shelf.shName}</option>
-						</c:forEach>
-					</select>	
-	            </div>
+            	<div class="shelf-flex-a">
+		            <div class="shelfTI">
+		            	<span><strong>💚 담을 곳 : </strong></span>
+		            </div>
+		            <div class="shelfSelect">
+		            	<select class="shNum" id="list_id" name="list_id" class="selectBox1">
+							<c:forEach items="${list}" var="shelf">															
+								<option value="${shelf.shNum}">${shelf.shName}</option>
+							</c:forEach>
+						</select>	
+		            </div>
+            	</div>
+				<div class="shelf-flex-b">	
+					<button type="button" id="addShelfBtn" class="btn white small" title="새 책꽂이 만들기">새로운 책꽂이</button>
+        		</div>
 	        </div>
+
         	<div class="btnArea">
-				<button type="button" id="addShelfBtn" title="새 책꽂이 만들기">새로운 책꽂이</button>
-				<button type="button" id="RealBookBtn" title="저장">저장</button>
-				<a href="javascript:window.close();" title="닫기">닫기</a>
+				<button type="button" id="RealBookBtn" class="btn white small" title="저장">저장</button>
+				<a href="javascript:window.close();" id="closeBtn" class="btn white small" title="닫기">닫기</a>
 			</div>
 		</div>
     </div>

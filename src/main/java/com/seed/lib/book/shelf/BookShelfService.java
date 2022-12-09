@@ -59,7 +59,12 @@ public class BookShelfService {
 		//	-> 저장 후 1 리턴
 		// 2이면 동일한 이름의 책꽂이 존재 -> 저장 X
 		if(result==0) {
-			return bookShelfMapper.setShelfAdd(shelfVO);
+			if(shelfVO.getShName() != "") {
+				return bookShelfMapper.setShelfAdd(shelfVO);				
+			}else {
+				return 3;
+			}
+			
 		}else {
 			return 2;
 		}

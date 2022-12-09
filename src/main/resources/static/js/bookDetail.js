@@ -158,6 +158,9 @@ $("#RealShelfBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
+				case 3 :
+					alert("책꽂이 이름을 설정해 주세요.")
+					break;
 				case 2:
 					alert("해당 이름의 책꽂이가 이미 존재합니다.")
 					break;
