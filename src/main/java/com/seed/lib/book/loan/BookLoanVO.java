@@ -18,6 +18,8 @@ public class BookLoanVO {
 	private int rtStatus;
 	private int extension;
 	
+	private Long libNum;
+	
 	private List<BookMutualLoanVO> muVOs;
 	private List<BookReservationVO> reVOs;
 	

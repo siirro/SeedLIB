@@ -17,15 +17,12 @@
 		SELECT QUANTITY FROM BOOKLIB WHERE LIBNUM = #{libNum} AND ISBN = #{isbn}
 	</select>
 	
-	<!-- 도서 대출,반납하면 도서관이 보유하고 있는 권수 -1 -->
+	<!-- 도서 대출하면 도서관이 보유하고 있는 권수 -1 -->
 	<update id="setQuanUpdate" parameterType="BookLibVO">
 		UPDATE BOOKLIB
 			SET QUANTITY
-				= (SELECT QUANTITY FROM BOOKLIB WHERE ISBN = #{isbn} AND LIBNUM = #{libNum})
-				<choose>
-					<when test="what == 'loan'">-1</when>
-					<otherwise>+1</otherwise>
-				</choose>
+				= (SELECT QUANTITY FROM BOOKLIB
+					WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}) -1
 		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
 	

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.seed.lib.book.BookLibVO;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.book.LibVO;
 import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.DateUtil;
 
@@ -24,11 +25,6 @@ public class BookLoanService {
 	@Autowired
 	private BookLoanMapper loanMapper;
 	
-	
-	//대출하면 책의 대출 횟수 update
-	public BookVO setCountUpdate (Long isbn) throws Exception{
-		return loanMapper.setCountUpdate(isbn);
-	}
 	
 	//가장 빠른 반납날짜 불러오기
 	public Date getRtDate (BookLoanVO loanVO) throws Exception{
@@ -44,19 +40,29 @@ public class BookLoanService {
 		// 2이면 해당 도서 대출 중 -> 불가
 		
 		BookLibVO libVO = new BookLibVO();
-		BookVO bookVO = new BookVO();
 		
 		int enable = loanMapper.getBookLoan(loVO);
 		if(enable == 0) {
+			//파라미터
+			Long isbn = loVO.getIsbn();
+			Long libNum = loVO.getLibNum();
+			
+			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%% isbn : {}", isbn);
+			log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%% libNum : {}", libNum);
+			
 			//대출하기 SQL
 			loanMapper.setLoan(loVO);
 			log.info("&&&&&&&&&&&&&&&&&&& : 대출 sql{}");
+			
 			//대출 횟수
-			loanMapper.setCountUpdate(bookVO.getIsbn());
+			loanMapper.setCountUpdate(isbn);
 			log.info("&&&&&&&&&&&&&&&&&&& : 대출횟수 {}");
+			
 			//대출 가능 권수
 			log.info("&&&&&&&&&&&&&&&&&&& : 대출권수{}");
-			return loanMapper.setQuanUpdate(libVO.getQuantity()-1);
+			loanMapper.setQuanUpdate(isbn, libNum);
+			
+			return 1;
 			
 		}else {
 			return 2;

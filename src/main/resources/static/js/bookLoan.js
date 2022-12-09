@@ -2,17 +2,20 @@
 console.log(isbn);
 console.log(userName);
 
-const what = $("#LoanAlretBtn").val();
+const libNum = $(".libNum").val();
 
-console.log(what);
+console.log(libNum);
 //-------------------------------------------------
 //디테일 페이지에서 대출신청 눌렀을 때
 $("#LoanAlretBtn").click(function(){
 	const bookLoanVO = {
 		userName : userName,
 		isbn : isbn,
-		what : what
+		libNum : libNum
 	}
+	
+	console.log(bookLoanVO);
+	
 	$.ajax({
 		type : "POST",
 		url : "/book/loan",
@@ -30,7 +33,8 @@ $("#LoanAlretBtn").click(function(){
 						opener.location.href="/mypage/loan";
 						break;
 					} else{
-                        opener.location.href="../"; 
+                        opener.location.href="../";
+                        location.reload();
                         break;
                     } 
 				}
@@ -66,6 +70,7 @@ $("#ResAlretBtn").click(function(){
 						break;
 					} else{
                         opener.location.href="../"; 
+                        location.reload();
                         break;
                     } 
 				}
@@ -103,7 +108,8 @@ $("#MuAlretBtn").click(function(){
 						opener.location.href="/mypage/bookMutual";
 						break;
 					} else{
-                        opener.location.href="../"; 
+                        opener.location.href="../";
+                        location.reload(); 
                         break;
                     } 
 				}

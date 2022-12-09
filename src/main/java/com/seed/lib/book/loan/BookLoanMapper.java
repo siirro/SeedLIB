@@ -12,14 +12,15 @@ import com.seed.lib.util.BookLoanPager;
 @Mapper
 public interface BookLoanMapper {
 	
-	//대출하면 도서관이 보유하고 있는 권수 update
-	public int setQuanUpdate (int quan) throws Exception;
 	
 	//보유 권수 계산
 	public int getQuan (BookLibVO libVO) throws Exception;
 	
+	//대출하면 도서관이 보유하고 있는 권수 update
+	public void setQuanUpdate (Long isbn, Long libNum) throws Exception;
+	
 	//대출하면 책의 대출 횟수 update
-	public BookVO setCountUpdate (Long isbn) throws Exception;
+	public void setCountUpdate (Long isbn) throws Exception;
 	
 	//가장 빠른 반납날짜 불러오기
 	public Date getRtDate (BookLoanVO loanVO) throws Exception;

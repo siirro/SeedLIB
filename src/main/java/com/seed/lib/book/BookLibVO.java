@@ -11,7 +11,4 @@ public class BookLibVO {
 	private int quantity;
 	private int able;
 	
-	//대출인지 반납인지 | mapper용
-	private String what;
-	
 }
