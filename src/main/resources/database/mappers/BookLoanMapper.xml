@@ -6,9 +6,9 @@
 <mapper namespace="com.seed.lib.book.loan.BookLoanMapper">
 	
 	<!-- 대출하면 책 대출count update -->
-	<update id="setCountUpdate" parameterType="BookVO">
-		UPDATE BOOK
-			SET BOOKCOUNT = #{bookCount}
+	<update id="setCountUpdate" parameterType="Long">
+		UPDATE BOOK SET BOOKCOUNT
+			= (SELECT BOOKCOUNT FROM BOOK WHERE ISBN = #{isbn})+1
 		WHERE ISBN = #{isbn}
 	</update>
 	
@@ -20,16 +20,19 @@
 	<!-- 도서 대출,반납하면 도서관이 보유하고 있는 권수 -1 -->
 	<update id="setQuanUpdate" parameterType="BookLibVO">
 		UPDATE BOOKLIB
-			SET QUANTITY = #{quantity}
+			SET QUANTITY
+				= (SELECT QUANTITY FROM BOOKLIB WHERE ISBN = #{isbn} AND LIBNUM = #{libNum})
+				<choose>
+					<when test="what == 'loan'">-1</when>
+					<otherwise>+1</otherwise>
+				</choose>
 		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
 	</update>
 	
-	<!-- 보유 권수가 0/1일때 able update -->
-	<update id="setAbleUpdate" parameterType="BookLibVO">
-		UPDATE BOOKLIB
-			SET ABLE = #{able}
-		WHERE ISBN = #{isbn} AND LIBNUM = #{libNum}
-	</update>
+	<select id="getRtDate" parameterType="BookVO" resultType="Date">
+		SELECT MIN(LOANLDATE) FROM LOAN WHERE ISBN = #{isbn}
+	</select>
+	
 	
 	
 	
@@ -42,7 +45,7 @@
 	<!-- 대출 신청 -->
 	<insert id="setLoan" parameterType="BookLoanVO">
 		INSERT INTO LOAN(USERNAME, ISBN, LOANSDATE, LOANLDATE, OVERDUE, RTSTATUS)
-			VALUES (#{userName}, #{isbn}, now(), now()+14, 0, 0)
+			VALUES (#{userName}, #{isbn}, now(), (SELECT date_add(now(),interval 14 DAY)), 0, 0)
 	</insert>
 	
 	

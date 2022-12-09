@@ -2,12 +2,16 @@
 console.log(isbn);
 console.log(userName);
 
+const what = $("#LoanAlretBtn").val();
+
+console.log(what);
 //-------------------------------------------------
 //디테일 페이지에서 대출신청 눌렀을 때
 $("#LoanAlretBtn").click(function(){
 	const bookLoanVO = {
 		userName : userName,
-		isbn : isbn
+		isbn : isbn,
+		what : what
 	}
 	$.ajax({
 		type : "POST",

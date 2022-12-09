@@ -36,6 +36,7 @@
 			<result column="num" property="num"/>
 			
 			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
+				<result column="libNum" property="libNum"/>
 				<result column="quantity" property="quantity"/>
 				<result column="able" property="able"/>
 			</collection>

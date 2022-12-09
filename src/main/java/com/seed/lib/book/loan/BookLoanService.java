@@ -26,8 +26,13 @@ public class BookLoanService {
 	
 	
 	//대출하면 책의 대출 횟수 update
-	public BookVO setCountUpdate (BookVO bookVO) throws Exception{
-		return loanMapper.setCountUpdate(bookVO);
+	public BookVO setCountUpdate (Long isbn) throws Exception{
+		return loanMapper.setCountUpdate(isbn);
+	}
+	
+	//가장 빠른 반납날짜 불러오기
+	public Date getRtDate (BookLoanVO loanVO) throws Exception{
+		return loanMapper.getRtDate(loanVO);
 	}
 	
 //----------------------------------------------------------------------	
@@ -45,9 +50,12 @@ public class BookLoanService {
 		if(enable == 0) {
 			//대출하기 SQL
 			loanMapper.setLoan(loVO);
+			log.info("&&&&&&&&&&&&&&&&&&& : 대출 sql{}");
 			//대출 횟수
-			loanMapper.setCountUpdate(bookVO);
+			loanMapper.setCountUpdate(bookVO.getIsbn());
+			log.info("&&&&&&&&&&&&&&&&&&& : 대출횟수 {}");
 			//대출 가능 권수
+			log.info("&&&&&&&&&&&&&&&&&&& : 대출권수{}");
 			return loanMapper.setQuanUpdate(libVO.getQuantity()-1);
 			
 		}else {

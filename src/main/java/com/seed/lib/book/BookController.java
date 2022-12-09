@@ -85,6 +85,11 @@ public class BookController {
 		bookVO = bookService.getLibDetail(bookVO);
 		mv.addObject("lib", bookVO);
 		
+		//반납일
+		BookLoanVO loanVO = new BookLoanVO();
+		loanService.getRtDate(loanVO);
+		mv.addObject("rtDate", loanVO);
+		
 		//책 좋아요 총갯수
 		int bookLike = bookLikeService.getBookLike(bookVO);
 		mv.addObject("like", bookLike);

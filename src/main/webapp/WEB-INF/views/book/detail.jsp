@@ -246,82 +246,80 @@
 															</tr>
 														</thead>
 														<tbody>
-															<c:forEach var="li" items="${lib.libVOs}">
-															<c:forEach var="bl" items="${lib.bookLibVOs}">
+														
+															<c:forEach var="li" items="${lib.bookLibVOs}">
 																<c:set var="where" value="${li.libNum}"/>
-																<c:set var="quan" value="${bl.quantity}" />
-																<c:set var="able" value="${bl.able}" />
+																<c:set var="quan" value="${li.quantity}" />
+																<c:set var="able" value="${li.able}" />
 																
 																<tr class="MA">
-																	<td>${li.libName}</td>
+																	<td>
+																		<c:choose>
+																			<c:when test="${where == 0}">씨앗도서관</c:when>
+																			<c:when test="${where == 1}">새싹도서관</c:when>
+																			<c:when test="${where == 2}">쑥쑥도서관</c:when>
+																			<c:when test="${where == 3}">새봄도서관</c:when>
+																			<c:when test="${where == 4}">도란도란도서관</c:when>
+																			<c:when test="${where == 5}">뿌리도서관</c:when>
+																		</c:choose>
+																	</td>
 																	
 																	<!-- 씨앗 도서관일 때 : 대출 가능 / 대출 불가능 - 예약
 																		타 도서관일 때 : 상호대차 가능 / 대출 불가능 - X -->
 																	<td>
 																		<c:choose>
-																			<c:when test="${able eq 1}">
+																			<c:when test="${quan >= 1}">
 																				대출 가능
 																				<h6>(대출 가능 권수 : ${quan})</h6>
 																			</c:when>
-																			<c:when test="${able eq 0}">
+																			<c:when test="${quan eq 0}">
 																				대출 불가능
 																			</c:when>
 																		</c:choose>
 																	</td>
 																	
-																	<td>반납 예정일</td>
+																	<td>
+																		<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
+																		<c:if test="${rtDate.loanLDate != null}">-</c:if>
+																	</td>
 																	
 																	<td>
 																		<c:if test="${not empty member}">
-																			<c:choose>
-																				<c:when test="${where == 0}">
-																					<c:choose>
-																						<c:when test="${able eq 1}">
-																							<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
-																						</c:when>
-																						<c:when test="${able == 0}">
-																							<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
-																						</c:when>
-																					</c:choose>
-																				</c:when>
+																			<c:if test="${where == 0}">
+																				<c:if test="${quan >= 1}">
+																					<button type="button" value="loan" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
+																				</c:if>
+																				<c:if test="${quan == 0}">
+																					<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
+																				</c:if>
+																			</c:if>
 																				
-																				<c:when test="${where != 0}">
-																					<c:choose>
-																						<c:when test="${able eq 1}">
-																							<button type="button" class="btn white small" id="MuAlretBtn" title="상호대차 신청">상호대차</button>
-																						</c:when>
-																						<c:when test="${able == 0}">
-																							대출 불가능
-																						</c:when>
-																					</c:choose>
-																				</c:when>
-																			</c:choose>
+																			<c:if test="${where != 0}">
+																				<c:if test="${quan >= 1}">
+																					<button type="button" class="btn white small" id="MuAlretBtn" title="상호대차 신청">상호대차</button>
+																				</c:if>
+																				<c:if test="${quan == 0}">
+																					대출 불가능
+																				</c:if>
+																			</c:if>
 																		</c:if>
 																			
 																		<c:if test="${empty member}">
-																			<c:choose>
-																				<c:when test="${where == 0}">
-																					<c:choose>
-																						<c:when test="${able eq 1}">
-																							<button type="button" class="btn white small LoginBtn" title="대출신청">대출신청</button>
-																						</c:when>
-																						<c:when test="${able == 0}">
-																							<button type="button" class="btn white small LoginBtn" title="예약신청">예약신청</button>
-																						</c:when>
-																					</c:choose>
-																				</c:when>
-																				
-																				<c:when test="${where != 0}">
-																					<c:choose>
-																						<c:when test="${able eq 1}">
-																							<button type="button" class="btn white small LoginBtn">상호대차</button>
-																						</c:when>
-																						<c:when test="${able == 0}">
-																							대출 불가능
-																						</c:when>
-																					</c:choose>
-																				</c:when>
-																			</c:choose>
+																			<c:if test="${where == 0}">
+																				<c:if test="${quan >= 1}">
+																					<button type="button" class="btn white small LoginBtn" title="대출신청">대출신청</button>
+																				</c:if>
+																				<c:if test="${quan == 0}">
+																					<button type="button" class="btn white small LoginBtn" title="예약신청">예약신청</button>
+																				</c:if>
+																			</c:if>	
+																			
+																			<c:if test="${where != 0}">
+																				<c:if test="${quan >= 1}">
+																					<button type="button" class="btn white small LoginBtn">상호대차</button>
+																				</c:if>
+																				<c:if test="${quan == 0}">대출 불가능</c:if>
+																			</c:if>
 																		</c:if>
 																	</td>
 																	
@@ -337,7 +335,6 @@
 																		</c:choose>
 																	</td>
 																</tr>
-															</c:forEach>
 															</c:forEach>
 														</tbody>
 													</table>
