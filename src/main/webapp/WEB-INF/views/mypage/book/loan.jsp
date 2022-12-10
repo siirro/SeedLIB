@@ -121,43 +121,44 @@
 	                                <table class="listTable-t">
 	                                    <thead>
 	                                        <tr>
-	                                            <th scope="col" data-class="expand">제목</th>
-	                                            <th scope="col" data-hide="phone">저자</th>
-	                                            <th scope="col" data-hide="phone">isbn</th>
-	                                            <th scope="col" data-hide="phone">대출일</th>
-	                                            <th scope="col" data-hide="phone">반납 예정일</th>
+	                                            <th scope="col" class="th-title">제목</th>
+	                                            <th scope="col" >저자</th>
+	                                            <th scope="col" >대출일</th>
+	                                            <th scope="col" >반납 예정일</th>
 	                                            <th></th>
-	                                            <th scope="col" data-hide="phone" class="">연장횟수</th>
+	                                            <th scope="col" class="">연장횟수</th>
 	                                            <th></th>
 	                                        </tr>
 	                                    </thead>
 	                                    
 	                                    <tbody>
 	                                      	<c:forEach items="${li}" var="book">
-	                                        	<tr>
-	                                        		<c:if test="${book} != null">
+		                                      	<c:forEach var="lo" items="${book.loanVOs}">
+			                                      	<c:set var="sd" value="${lo.loanSDate}"/>
+			                                      	<c:set var="sd" value="${lo.loanLDate}"/>
+		                                        	<tr>
 	                                        			<td>${book.title}</td>
 	                                        			<td>${book.writer}</td>
-	                                        			<td>${book.isbn}</td>
-	                                        			<td>${book.loanVOs[3].loanSDate}</td>
-	                                        			<td>${book.loanVOs[3].loanLDate}</td>
+	                                        			<td>${sd}</td>
+	                                        			<td>${ld}</td>
 	                                        			<td>
+				                                      		<input type="hidden" class="isbn" value="${book.isbn}">
 	                                        				<button type="button" class="btn white small" id="Btn" title="도서반납">도서반납</button>
 	                                        			</td>
-	                                        			<td>${book.loanVOs[7].extension}</td>
+	                                        			<td>${lo.extension}</td>
 	                                        			<td>
+	                                        				<input type="hidden" class="isbn" value="${book.isbn}">
 	                                        				<button type="button" class="btn white small" id="Btn" title="대출연장">대출연장</button>
 	                                        			</td>
-	                                        		</c:if>
-	                                        		
-	                                        		<c:otherwise>
-	                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출 중인 도서가 없습니다.</td>
-	                                        		</c:otherwise>
-	                                         </tr>
+		                                        		
+		                                        		<c:if test="${book} == null">
+		                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출 중인 도서가 없습니다.</td>
+		                                        		</c:if>
+		                                         	</tr>
+			                                	</c:forEach>
 	                                        </c:forEach>
 	                                    </tbody>
 	                                </table>
-                        		
                         	</div>
                         </div>
                         

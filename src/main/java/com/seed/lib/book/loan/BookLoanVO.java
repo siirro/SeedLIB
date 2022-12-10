@@ -13,7 +13,7 @@ public class BookLoanVO {
 	private Long isbn;
 	private Date loanSDate;
 	private Date loanLDate;
-	private boolean overDue;
+	private int overDue;
 	//1은 대출 중 | 0은 반납
 	private int rtStatus;
 	private int extension;

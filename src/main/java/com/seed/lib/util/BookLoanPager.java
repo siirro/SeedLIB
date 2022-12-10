@@ -18,7 +18,7 @@ public class BookLoanPager {
 	private boolean pre;
 	private boolean next;
 	
-	private boolean rtStatus;
+	private int rtStatus;
 	private String userName;
 	private String title;
 	private String wirter;
