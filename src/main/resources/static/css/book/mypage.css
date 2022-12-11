@@ -127,10 +127,24 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .listTable-t td {
 	padding : 5px;
+	padding-right : 10px;
+}
+
+.padding-x {
+	padding : 5px;
+	padding-right : 0px;
 }
 
 .th-title {
 	width: 20%;
+}
+
+.th-title-2 {
+	width: 60%;
+}
+
+.th-title-3 {
+	width: 50%;
 }
 
 

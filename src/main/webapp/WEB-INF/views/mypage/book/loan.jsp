@@ -142,7 +142,7 @@
 	                                        			<td>${sd}</td>
 	                                        			<td>${ld}</td>
 	                                        			<td>
-				                                      		<input type="hidden" class="isbn" value="${book.isbn}">
+				                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
 	                                        				<button type="button" class="btn white small" id="Btn" title="도서반납">도서반납</button>
 	                                        			</td>
 	                                        			<td>${lo.extension}</td>

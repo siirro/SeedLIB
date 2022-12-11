@@ -44,7 +44,7 @@ public class BookLoanPager {
 	
 	//1. mapper에서 사용할 값 계산
 	public void getRowNum()throws Exception{
-		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
+		this.startRow = ((this.getPage()-1)*this.getPerPage()+1)-1;
 		this.lastRow = this.getPage()*this.getPerPage();
 	}
 	

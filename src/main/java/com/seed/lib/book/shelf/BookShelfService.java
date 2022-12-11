@@ -46,7 +46,7 @@ public class BookShelfService {
 	
 	//책꽂이 목록 - Pager O | 검색 : 이름, 생성날짜
 	public List<BookShelfVO> getShelfListP (ShelfPager pager) throws Exception{
-		Long totalCount = bookShelfMapper.getCount(pager);
+		Long totalCount = bookShelfMapper.getShelfCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();
 		return bookShelfMapper.getShelfListP(pager);
@@ -105,7 +105,7 @@ public class BookShelfService {
 	
 	//pager
 	public Long getCount (ShelfPager pager) throws Exception{
-		return bookShelfMapper.getCount(pager);
+		return bookShelfMapper.getShelfCount(pager);
 	}
 	
 	public Long getBookCount (ShelfBookPager pager) throws Exception{

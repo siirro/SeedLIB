@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.ShelfBookPager;
 import com.seed.lib.util.ShelfPager;
@@ -33,13 +34,26 @@ public class BookShelfController {
 		//마이페이지 - Pager O
 		//shelf/list?userName=
 	@GetMapping("list")
-	public ModelAndView getShelfListP (ShelfPager pager) throws Exception {
+	public ModelAndView getShelfListP (HttpSession session, ShelfPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookShelfVO> ar = bookShelfService.getShelfListP(pager);
-		mv.addObject("list", ar);
-		mv.setViewName("shelf/list");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//책꽂이 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookShelfVO> li = bookShelfService.getShelfListP(pager);
+			mv.addObject("li", li);
 			
+			//책꽂이 갯수
+			Long count = bookShelfService.getCount(pager);
+			mv.addObject("count", count);
+			
+			mv.addObject("pager", pager);
+		}
+		
 		return mv;
 	}
 	
@@ -57,8 +71,6 @@ public class BookShelfController {
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
 		}
-		
-		mv.setViewName("shelf/newShelf");
 		return mv;
 	}
 	
@@ -164,8 +176,11 @@ public class BookShelfController {
 		List<BookVO> ar = bookShelfService.getBookList(pager);
 		mv.addObject("list", ar);
 		
+		//갯수
+		Long count = bookShelfService.getBookCount(pager);
+		mv.addObject("count", count);
+		
 		mv.addObject("pager", pager);
-		mv.setViewName("shelf/bookList");
 		return mv;
 	}
 }

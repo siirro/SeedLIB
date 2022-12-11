@@ -1,8 +1,5 @@
 
 
-console.log(isbn);
-console.log(userName);
-
 const libNumL = $(".libNumL").val();
 const libNumM = $(".libNumM").val();
 
@@ -126,13 +123,19 @@ $("#MuAlretBtn").click(function(){
 	
 //-------------------------------------------------
 //마이페이지에서 연장신청 눌렀을 때
+
+//class
+let isbnC = $(".isbnC").val();
+console.log("isbnC : ", isbnC);
+
 $(".ExAlretBtn").click(function(){
 	
 	const bookLoanVO = {
-		isbn : $(".isbnC").val(),
+		isbn : isbnC,
 		userName : userName
 	}
 	
+	console.log("isbnCC", isbnC);
 	console.log("isbn", isbn);
 	console.log(bookLoanVO);
 	

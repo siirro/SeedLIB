@@ -193,14 +193,11 @@ public class MyPageController {
 
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
-			
-			log.info("&&&&&&&&&&&&&& us : {}", memberVO.getUserName());
 					
 			//대출 목록
 			pager.setUserName(memberVO.getUserName());
 			pager.setRtStatus(1);
 			List<BookVO> li = loanService.getLoanList(pager);
-			log.info("&&&&&&&&&&&&&& li : {}", li);
 			mv.addObject("li", li);
 			
 			//대출 중인 책 권수
@@ -208,7 +205,6 @@ public class MyPageController {
 			loVO.setRtStatus(1);
 			loVO.setUserName(memberVO.getUserName());
 			int count = loanService.getBookLoan(loVO);
-			log.info("&&&&&&&&&&&&&& c : {}", count);
 			mv.addObject("count", count);
 		}
 		
@@ -224,8 +220,6 @@ public class MyPageController {
 		
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
-			
-			log.info("&&&&&&&&&&&&&& us : {}", memberVO.getUserName());
 					
 			//대출 목록
 			pager.setUserName(memberVO.getUserName());
@@ -236,6 +230,7 @@ public class MyPageController {
 			//대출 중인 책 권수
 			BookLoanVO loVO = new BookLoanVO();
 			loVO.setRtStatus(0);
+			loVO.setUserName(memberVO.getUserName());
 			int count = loanService.getBookLoan(loVO);
 			mv.addObject("count", count);
 		}
@@ -259,37 +254,49 @@ public class MyPageController {
 	
 	//예약 목록
 	@GetMapping("book/reservation")
-	public ModelAndView getReList (String userName, BookLoanPager pager) throws Exception{
+	public ModelAndView getReList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getReList(pager);
-		mv.addObject("li", li);
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
-		//대출 중인 책 권수
-		BookLoanVO loVO = new BookLoanVO();
-		int count = loanService.getReCount(loVO);
-		mv.addObject("count", count);
-
-		mv.setViewName("mypage/book/rservation");
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//예약 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getReList(pager);
+			mv.addObject("li", li);
 		
+			//예약 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getReCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
 	//상호대차 목록
 	@GetMapping("book/mutual")
-	public ModelAndView getMuList (String userName, BookLoanPager pager) throws Exception{
+	public ModelAndView getMuList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getMuList(pager);
-		mv.addObject("li", li);
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
-		//대출 중인 책 권수
-		BookLoanVO loVO = new BookLoanVO();
-		int count = loanService.getMuCount(loVO);
-		mv.addObject("count", count);
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//상호대차 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getMuList(pager);
+			mv.addObject("li", li);
 		
-		mv.setViewName("mypage/book/mutual");
-		
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getMuCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	

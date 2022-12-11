@@ -143,22 +143,27 @@
 		SELECT E.*, B.*
 			FROM RESERVATION E
 				INNER JOIN BOOK B
-				ON B.ISBN = R.ISBN
+				ON B.ISBN = E.ISBN
 		
-			WHERE R.USERNAME = #{userName}
-				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
-				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+			WHERE E.USERNAME = #{userName}
+				<choose>
+					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
 				<if test="dateA != null and dateB != null">
 					AND E.REGDATE BETWEEN #{dateA} AND #{dateB}
 				</if>
+				
 			ORDER BY
 			<choose>
-				<when test="select == 'title'">B.TITLE</when>
-				<otherwise>E.REGDATE</otherwise>
+				<when test="sortHow == 'title'">B.TITLE</when>
+				<when test="sortHow == 'isbn'">B.ISBN</when>
+				<otherwise>E.RVNUM</otherwise>
 			</choose>
 			<choose>
-				<when test="sort == 'desc'">&#160;DESC</when>
-				<otherwise>&#160;ASC</otherwise>
+				<when test="sort == 'desc'">DESC</when>
+				<otherwise>ASC</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{lastRow}	
 	</select>
@@ -191,19 +196,24 @@
 				ON B.ISBN = M.ISBN
 		
 			WHERE M.USERNAME = #{userName}
-				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
-				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+				<choose>
+					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
 				<if test="dateA != null and dateB != null">
 					AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
 				</if>
+				
 			ORDER BY
 			<choose>
-				<when test="select == 'title'">B.TITLE</when>
-				<otherwise>M.REGDATE</otherwise>
+				<when test="sortHow == 'title'">B.TITLE</when>
+				<when test="sortHow == 'isbn'">B.ISBN</when>
+				<otherwise>M.MUNUM</otherwise>
 			</choose>
 			<choose>
-				<when test="sort == 'desc'">&#160;DESC</when>
-				<otherwise>&#160;ASC</otherwise>
+				<when test="sort == 'desc'">DESC</when>
+				<otherwise>ASC</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{lastRow}	
 	</select>
@@ -216,6 +226,8 @@
 		<collection property="muVOs" javaType="List" ofType="BookMutualLoanVO">
 			<id column="loanNum" property="loanNum"/>
 			<result column="userName" property="userName"/>
+			<result column="regDate" property="regDate"/>
+			<result column="libNum" property="libNum"/>
 		</collection>	
 	</resultMap>
 	

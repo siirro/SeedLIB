@@ -20,13 +20,24 @@ public class ShelfPager {
 		private boolean pre;
 		private boolean next;
 		
-		//검색어 - 이름
-		private String shName;
-		private String shMemo;
+		private String userName;
+		private Long shNum;
+		
+		//제목 OR 작가
+		private String select;
+		
+		//검색어
+		private String search;	
+		
+		//정렬
+		private String sort;
+		
+		//정렬 기준
+		private String sortHow;
+		
 		//등록일
-		private Long creDate;
-		private Long creDateA;
-		private Long creDateB;
+		private Long dateA;
+		private Long dateB;
 
 		
 		public ShelfPager() {
@@ -36,7 +47,7 @@ public class ShelfPager {
 		
 		//1. mapper에서 사용할 값 계산
 		public void getRowNum()throws Exception{
-			this.startRow = (this.getPage()-1)*this.getPerPage()+1;
+			this.startRow = ((this.getPage()-1)*this.getPerPage()+1)-1;
 			this.lastRow = this.getPage()*this.getPerPage();
 		}
 		
@@ -98,38 +109,45 @@ public class ShelfPager {
 			return page;
 		}
 		
-		public String getShName() {
-			if(this.shName==null) {
-				this.shName="";
+		public String getSelect() {
+			if(this.select==null) {
+				this.select="";
 			}
-			return shName;
+			return select;
 		}
 		
-		public String getShMemo() {
-			if(this.shMemo==null) {
-				this.shMemo="";
+		public String getSort() {
+			if(this.sort==null) {
+				this.sort="";
 			}
-			return shMemo;
+			return sort;
 		}
 		
-		public Long getCreDate() {
-			if(this.creDate==null) {
-				this.creDate=null;
+		public String getSearch() {
+			if(this.search==null) {
+				this.search="";
 			}
-			return creDate;
+			return search;
 		}
 		
-		public Long getCreDateA() {
-			if(this.creDateA==null) {
-				this.creDateA=null;
+		public Long getDateA() {
+			if(this.dateA==null) {
+				this.dateA=null;
 			}
-			return creDateA;
+			return dateA;
 		}
 		
-		public Long getCreDateB() {
-			if(this.creDateB==null) {
-				this.creDateB=null;
+		public Long getDateB() {
+			if(this.dateB==null) {
+				this.dateB=null;
 			}
-			return creDateB;
+			return dateB;
+		}
+		
+		public String getsortHow() {
+			if(this.sortHow==null) {
+				this.sortHow="";
+			}
+			return sortHow;
 		}
 }
