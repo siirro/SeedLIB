@@ -125,6 +125,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	padding: 10px;
 }
 
+.listTable-t td {
+	padding : 5px;
+}
+
 .th-title {
 	width: 20%;
 }

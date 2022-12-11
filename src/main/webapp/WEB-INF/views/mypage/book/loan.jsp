@@ -85,23 +85,23 @@
                         		<p>선택조건으로 조회</p>
                         		<form id="form" name="form" action="/mypage/book/loan" method="get">
                         			<span class="bunch">
-	                                    <select id="si" name="si" class="selectBox1" title="검색항목">
+	                                    <select id="select" name="select" class="selectBox1" title="검색항목">
 	                                        <option value="title">제목</option>
 	                                        <option value="writer">저자</option>
 	                                    </select>
-	                                    <input id="sw" name="sw" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
+	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
 	                                </span>
 	                                <span class="bunch">
 	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
 	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
 	                                </span>
 	                                <span class="bunch">
-	                                    <select id="oi" name="oi" class="selectBox1" title="정렬 검색항목">
+	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
 	                                        <option value="title">제목</option>
-	                                        <option value="author">저자</option>
+	                                        <option value="isbn">ISBN</option>
 	                                        <option value="loan_date">대출일</option>
 	                                    </select>
-	                                    <select id="sort" name="os" class="selectBox1" title="정렬 순서">
+	                                    <select id="sort" name="sort" class="selectBox1" title="정렬 순서">
 	                                        <option value="asc">오름차순</option>
 	                                        <option value="desc">내림차순</option>
 	                                    </select>
@@ -135,7 +135,7 @@
 	                                      	<c:forEach items="${li}" var="book">
 		                                      	<c:forEach var="lo" items="${book.loanVOs}">
 			                                      	<c:set var="sd" value="${lo.loanSDate}"/>
-			                                      	<c:set var="sd" value="${lo.loanLDate}"/>
+			                                      	<c:set var="ld" value="${lo.loanLDate}"/>
 		                                        	<tr>
 	                                        			<td>${book.title}</td>
 	                                        			<td>${book.writer}</td>
@@ -147,8 +147,8 @@
 	                                        			</td>
 	                                        			<td>${lo.extension}</td>
 	                                        			<td>
-	                                        				<input type="hidden" class="isbn" value="${book.isbn}">
-	                                        				<button type="button" class="btn white small" id="Btn" title="대출연장">대출연장</button>
+	                                        				<input type="text" class="isbnC" value="${book.isbn}">
+	                                        				<button type="button" class="btn white small ExAlretBtn" title="대출연장">대출연장</button>
 	                                        			</td>
 		                                        		
 		                                        		<c:if test="${book} == null">
@@ -159,6 +159,7 @@
 	                                        </c:forEach>
 	                                    </tbody>
 	                                </table>
+	                            </div>
                         	</div>
                         </div>
                         

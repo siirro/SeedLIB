@@ -136,5 +136,13 @@ public class BookController {
 		return result;
 	}
 	
+	//연장 신청
+	@ResponseBody
+	@PostMapping("extension")
+	public int setExtensionAdd (@RequestBody BookLoanVO loVO) throws Exception {
+		int result = loanService.setExtension(loVO);
+		return result;
+	}	
+	
 	
 }

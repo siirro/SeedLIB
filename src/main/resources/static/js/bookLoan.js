@@ -1,4 +1,5 @@
 
+
 console.log(isbn);
 console.log(userName);
 
@@ -122,4 +123,46 @@ $("#MuAlretBtn").click(function(){
 			}
 		})
 	});	
+	
+//-------------------------------------------------
+//마이페이지에서 연장신청 눌렀을 때
+$(".ExAlretBtn").click(function(){
+	
+	const bookLoanVO = {
+		isbn : $(".isbnC").val(),
+		userName : userName
+	}
+	
+	console.log("isbn", isbn);
+	console.log(bookLoanVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/book/extension",
+		data:JSON.stringify(bookLoanVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success:function(data){
+			switch (data){
+				case 3:
+					alert("대출 연장은 총 3번까지 가능합니다.")
+					break;
+				case 1:
+					let check = window.confirm("대출 연장을 완료했습니다.");
+					if(check){
+						location.reload(); 
+                        opener.location.href="../";
+						break;
+					} else{
+                        location.reload(); 
+                        opener.location.href="../";
+                        break;
+                    } 
+				}
+			},
+			error:function(){
+				console.log("ERROR");
+			}
+		})
+	});		
 

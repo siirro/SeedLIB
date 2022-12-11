@@ -76,15 +76,19 @@
 		
 			WHERE L.USERNAME = #{userName}
 				AND RTSTATUS = #{rtStatus}
-				AND B.TITLE LIKE CONCAT ('%', #{title}, '%')
-				AND B.WRITER LIKE CONCAT ('%', #{writer}, '%')
+				<choose>
+					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
 				<if test="dateA != null and dateB != null">
 					AND L.REGDATE BETWEEN #{dateA} AND #{dateB}
 				</if>
+				
 			ORDER BY
 			<choose>
-				<when test="select == 'title'">B.TITLE</when>
-				<when test="select == 'isbn'">B.ISBN</when>
+				<when test="sortHow == 'title'">B.TITLE</when>
+				<when test="sortHow == 'isbn'">B.ISBN</when>
 				<otherwise>L.LOANNUM</otherwise>
 			</choose>
 			<choose>
@@ -117,9 +121,14 @@
 	</select>
 	
 	<!-- 대출 연장 신청 -->
-	<!-- 연장 횟수, 만기일 업데이트 -->
-	<!-- <update id="setExtension">
-	</update> -->
+	<update id="setExtension" parameterType="BookLoanVO">
+		UPDATE LOAN SET EXTENSION
+				= (SELECT EXTENSION FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}) +1
+					AND LOANLDATE
+				= (SELECT date_add(
+					(SELECT LOANLDATE FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}), interval 7 DAY))
+		WHERE ISBN = #{isbn} AND USERNAME = #{userName};
+	</update>
 	
 	<!-- ================================== -->
 	

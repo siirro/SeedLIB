@@ -71,11 +71,13 @@ public class BookLoanService {
 	
 	//대출 연장 - 최대 2번
 	public int setExtension (BookLoanVO loVO) throws Exception{
-		// 연장 횟수가 0, 1일때만 신청 가능 -> setExtension -> 저장 후 +1 리턴
+		// 연장 횟수가 0, 1일때만 신청 가능
+		//	-> setExtension -> 저장(연장횟수, 반납일) 리턴 -> 1 리턴
 		// 2이면 불가능 -> 3 리턴
 		int count = loanMapper.getExCount(loVO);
 		if(count < 2) {
-			return loanMapper.setExtension(loVO);
+			loanMapper.setExtension(loVO);
+			return 1;
 		}else {
 			return 3;
 		}
