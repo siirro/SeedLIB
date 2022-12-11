@@ -13,11 +13,10 @@ public class HopeVO {
 	private String hopTitle;
 	private String hopWriter;
 	private String hopPublisher;
-	private String userName;
 	private String hopMemo;
 	private Date hopDate;
-	private int hopStat;
 	private Long isbn;
+	private String userName;
 	private String image;
 	private String email;
 	private String price;

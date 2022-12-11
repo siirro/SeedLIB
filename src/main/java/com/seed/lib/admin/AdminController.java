@@ -54,6 +54,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		List<HopeVO> hl = hopeService.getAdminHopList(hdPager);
 		mv.addObject("hop", hl);
+		mv.addObject("pager", hdPager);
 		return mv;
 	}
 	
