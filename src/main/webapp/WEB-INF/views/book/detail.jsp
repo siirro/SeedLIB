@@ -12,14 +12,6 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/button.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/sub.css">
-    <link rel="stylesheet" href="/css/new_search.css">
-    
     <!-- 프린트신청 팝업창 css -->
    	<link rel="stylesheet" href="/css/admin/modal.css">
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
@@ -33,6 +25,7 @@
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
+    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
     <script type="text/javascript" defer src="/js/bookLoan.js"></script>
     <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
@@ -41,11 +34,7 @@
 
 
 <body>
-
-	<input type="hidden" id="isbn" value="${bookVO.isbn}">
-	<input type="hidden" id="userName" value="${member.userName}">
-
-	<div id="container" class="sub">	
+	<div class="container" class="sub">
 		<div class="sVisualWrap">
 			<div class="sVisual">
 				<h3>통합검색</h3>
@@ -53,7 +42,8 @@
 		</div>
 		
 		<div id="contentGroup">
-			<c:import url="../sideBar/AsideBar.jsp"></c:import>
+			<!-- 사이드바 -->
+	       <c:import url="../sideBar/AsideBar.jsp"></c:import>
 			
 			<!-- 메인 내용 -->
 			<div id="contentcore">
@@ -131,6 +121,7 @@
 										<span class="bk_date">${bookVO.bookDate}</span>
 									</div>
 									
+
 									<div class="book_publisher">
 										<span class="bk_writer">ISBN : ${bookVO.isbn}</span>
 									</div>
@@ -142,6 +133,7 @@
 												<span>
 													<a href="#search" onclick="fnSearchKdc('l600');">
 														<c:choose>
+															<c:when test="${book.category eq 0}">총류</c:when>
 															<c:when test="${book.category eq 1}">철학</c:when>
 															<c:when test="${book.category eq 2}">종교</c:when>
 															<c:when test="${book.category eq 3}">사회과학</c:when>
@@ -164,26 +156,27 @@
 									</div>
 									
 									<div class="keyword">
-										<c:if test="${not empty member}">
+										<c:if test="not empty member">
+										</c:if>
+											<form>
+												<input type="hidden" id="isbn" value="${bookVO.isbn}">
+												<input type="hidden" id="userName" value="${sessionScope.member.userName}">
+											</form>
+									
+												
 											<c:if test="${isShelfExist eq false}">											
-												<button type="button" class="btn white small" id="addShelfBtn">책꽂이 담기</button>
+												<button type="button" id="addShelfBtn">책꽂이 담기</button>
 											</c:if>	
 											<c:if test="${isShelfExist}">											
-												<button type="button" class="btn white small" id="addBookBtn">책꽂이 담기</button>
+												<button type="button" id="addBookBtn">책꽂이 담기</button>
 											</c:if>	
 											
 											<c:if test="${isLikeExist eq false}">
-												<button type="button" class="btn white small" id="likeBtn">좋아요</button>
+												<button type="button" id="likeBtn">좋아요</button>
 											</c:if>
 											<c:if test="${isLikeExist}">
-												<button type="button" class="btn white small" id="unlikeBtn">좋아요 취소</button>
+												<button type="button" id="unlikeBtn">좋아요 취소</button>
 											</c:if>
-										</c:if>
-										
-										<c:if test="${empty member}">
-											<button type="button" class="btn white small LoginBtn">책꽂이 담기</button>
-											<button type="button" class="btn white small LoginBtn">좋아요</button>
-										</c:if>
 										<span>💚 ${like}</span>
 									</div>
 								</div>
@@ -199,11 +192,10 @@
 								<ul class="cateTab col-4 clearfix">
 									<li class="choiced"><a href="#tabGo1">소장정보</a></li>
 									<li><a href="#tabGo2">책소개</a></li>
-									<li><a href="#tabGo3">같은 장르 도서</a></li>
-									<li><a href="#tabGo4">같은 작가 도서</a></li>
+									<li><a href="#shelfBrowsing">같은 장르 도서</a></li>
+									<li><a href="#tagCloude">같은 작가 도서</a></li>
 								</ul>
 							</div>
-							
 							
 							<!-- 소장 정보 -->
 							<div class="dropBookData" id="tabGo1">
@@ -217,7 +209,8 @@
 													<label for="collectionLibraryAll">전체 도서관</label>
 												</p>
 												<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
-												<c:forEach var="lib" items="${lib.libVOs}">
+												<input type="text" value="${bookVO}">
+												<c:forEach var="lib" items="${bookVO.libVOs}">
 													<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
 												</c:forEach>
 												<button type="button" class="listDropdown"><span>리스트 보기</span></button>
@@ -246,88 +239,52 @@
 															</tr>
 														</thead>
 														<tbody>
-														
-															<c:forEach var="li" items="${lib.bookLibVOs}">
-																<c:set var="where" value="${li.libNum}"/>
-																<c:set var="quan" value="${li.quantity}" />
-																<c:set var="able" value="${li.able}" />
+															<c:forEach var="lib" items="${bookVO.libVOs}">
+															<c:forEach var="bl" items="${bookVO.bookLibVOs}">
+																<c:set var="where" value="${lib.libNum}"/>
+																<c:set var="quan" value="${bl.quantity}" />
+																<c:set var="able" value="${bl.able}" />
 																
 																<tr class="MA">
-																	<td>
-																		<c:choose>
-																			<c:when test="${where == 0}">씨앗도서관</c:when>
-																			<c:when test="${where == 1}">새싹도서관</c:when>
-																			<c:when test="${where == 2}">쑥쑥도서관</c:when>
-																			<c:when test="${where == 3}">새봄도서관</c:when>
-																			<c:when test="${where == 4}">도란도란도서관</c:when>
-																			<c:when test="${where == 5}">뿌리도서관</c:when>
-																		</c:choose>
-																	</td>
+																	<td>${lib.libName}</td>
 																	
 																	<!-- 씨앗 도서관일 때 : 대출 가능 / 대출 불가능 - 예약
-																		타 도서관일 때 : 상호대차 가능 / 대출 불가능 - X -->
+																		타 도서관일 때 : 상호대차 가능 / 대출 불가능-->
 																	<td>
 																		<c:choose>
-																			<c:when test="${quan >= 1}">
+																			<c:when test="${able eq 1}">
 																				대출 가능
 																				<h6>(대출 가능 권수 : ${quan})</h6>
 																			</c:when>
-																			<c:when test="${quan eq 0}">
+																			<c:when test="${able eq 0}">
 																				대출 불가능
 																			</c:when>
 																		</c:choose>
 																	</td>
 																	
+																	<td>반납 예정일</td>
+																	
 																	<td>
 																		<c:choose>
 																			<c:when test="${where == 0}">
-																				<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
-																				<c:if test="${rtDate.loanLDate == null}">-</c:if>
+																				<c:choose>
+																					<c:when test="${able eq 1}">
+																						<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
+																					</c:when>
+																					<c:when test="${able == 0}">
+																						<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
+																					</c:when>
+																				</c:choose>
 																			</c:when>
-																			<c:otherwise>해당 도서관으로 문의 바랍니다.</c:otherwise>
-																		</c:choose> 
-																	</td>
-																	
-																	<td>
-																		<c:if test="${not empty member}">
-																			<c:if test="${where == 0}">
-																				<input type="hidden" class="libNumL" value="${where}">
-																				<c:if test="${quan >= 1}">
-																					<button type="button" class="btn white small" id="LoanAlretBtn" title="대출신청">대출신청</button>
-																				</c:if>
-																				<c:if test="${quan == 0}">
-																					<button type="button" class="btn white small" id="ResAlretBtn" title="예약신청">예약신청</button>
-																				</c:if>
-																			</c:if>
-																				
-																			<c:if test="${where != 0}">
-																				<c:if test="${quan >= 1}">
-																					<input type="hidden" class="libNumM" value="${where}">
-																					<button type="button" class="btn white small" id="MuAlretBtn" title="상호대차 신청">상호대차</button>
-																				</c:if>
-																				<c:if test="${quan == 0}">
-																					대출 불가능
-																				</c:if>
-																			</c:if>
-																		</c:if>
 																			
-																		<c:if test="${empty member}">
-																			<c:if test="${where == 0}">
-																				<c:if test="${quan >= 1}">
-																					<button type="button" class="btn white small LoginBtn" title="대출신청">대출신청</button>
-																				</c:if>
-																				<c:if test="${quan == 0}">
-																					<button type="button" class="btn white small LoginBtn" title="예약신청">예약신청</button>
-																				</c:if>
-																			</c:if>	
-																			
-																			<c:if test="${where != 0}">
-																				<c:if test="${quan >= 1}">
-																					<button type="button" class="btn white small LoginBtn">상호대차</button>
-																				</c:if>
-																				<c:if test="${quan == 0}">대출 불가능</c:if>
-																			</c:if>
-																		</c:if>
+																			<c:when test="${where != 0}">
+																				<c:choose>
+																					<c:when test="${able eq 1}">
+																						<button type="button" id="MuAlretBtn" class="btn white small">상호대차</button>
+																					</c:when>
+																				</c:choose>
+																			</c:when>
+																		</c:choose>
 																	</td>
 																	
 																	<td>
@@ -342,6 +299,7 @@
 																		</c:choose>
 																	</td>
 																</tr>
+															</c:forEach>
 															</c:forEach>
 														</tbody>
 													</table>
@@ -370,78 +328,74 @@
 							</div>
 							
 							<!-- 같은 장르 자료 -->
-							<div id="tabGo3" class="dropBookData">
+							<div id="bookRelatedSubject" class="dropBookData">
 								<h5 class="htitle">같은 장르의 자료</h5>
-								
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
-										<div class="swiper-container swiper01 MA swiper-container-initialized swiper-container-horizontal" style="display: block;">
+										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-												
-												<c:forEach var="sc" items="${cate}">
-													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
-														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
-														<div class="bookImg" style="height: 161px;">
-															<img alt="" src="${sc.image}" onerror="javascript:fnNoImgBook(this); return false;">
+												<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
+													<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');"><div class="bookImg" style="height: 235.2px;"><img alt="(들썩들썩 지구를 흔드는)바이러스" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;"></div>
+													<div class="bookData">
+														<div class="book_dataInner">
+															<p class="book_name" title="(들썩들썩 지구를 흔드는)바이러스"><strong>(들썩들썩 지구를 흔드는)바이러스</strong></p>
+															<p class="book_writers">
+																<span class="bk_writer">폴 이언 크로스 글; 스티브 브라운 그림; 신동경 옮김</span>
+																<span class="bk_publish">아울북<br>2022</span>
+															</p>
 														</div>
-														<div class="bookData">
-															<div class="book_dataInner">
-																<p class="book_name" title="Sheep on a farm "><strong>${sc.title}</strong></p>
-																<p class="book_writers">
-																	<span class="bk_writer">${sc.writer}</span>
-																	<span class="bk_publish">${sc.publisher}<br>${sc.bookDate}</span>
-																</p>
-															</div>
-														</div>
-														</a>
 													</div>
-												</c:forEach>
+													</a>
+												</div>
 											</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
 											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-											</div>
-										</div>
-									</div>	
+										<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+									</div>
 								</div>
+							</div>
 															
 							<!-- 같은 작가 도서 -->
-							<div id="tabGo4" class="dropBookData">
-								<h5 class="htitle">같은 작가의 자료</h5>
-								
+							<div id="bookRelatedSubject" class="dropBookData">
+								<h5 class="htitle">같은 작가의 도서</h5>
 								<div class="dropContainerBox">
 									<div class="swipeGallery">
-										<div class="swiper-container swiper01 MA swiper-container-initialized swiper-container-horizontal" style="display: block;">
+										<div class="swiper-container swiper03 swiper-container-initialized swiper-container-horizontal">
 											<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-												
-												<c:forEach var="sw" items="${wri}">
-													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
-														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
-														<div class="bookImg" style="height: 161px;">
-															<img alt="" src="${sw.image}" onerror="javascript:fnNoImgBook(this); return false;">
+												<c:choose>
+													<c:when test="samesame">
+														<div class="swiper-slide swiper-slide-active" style="width: 168px; margin-right: 30px;">
+															<a href="javascript:;" onclick="fnDetail('105323926,105826127', '9788950901530', 'MO');">
+																<div class="bookImg" style="height: 235.2px;">
+																	<img alt="(들썩들썩 지구를 흔드는)바이러스" src="https://shopping-phinf.pstatic.net/main_3360141/33601414637.20220726094755.jpg" onerror="javascript:fnNoImgBook(this); return false;">
+																</div>
+																<div class="bookData">
+																	<div class="book_dataInner">
+																		<p class="book_name" title="(들썩들썩 지구를 흔드는)바이러스"><strong>(들썩들썩 지구를 흔드는)바이러스</strong></p>
+																		<p class="book_writers">
+																			<span class="bk_writer">폴 이언 크로스 글; 스티브 브라운 그림; 신동경 옮김</span>
+																			<span class="bk_publish">아울북<br>2022</span>
+																		</p>
+																	</div>
+																</div>
+															</a>
 														</div>
-														<div class="bookData">
-															<div class="book_dataInner">
-																<p class="book_name" title="Sheep on a farm "><strong>${sw.title}</strong></p>
-																<p class="book_writers">
-																	<span class="bk_writer">${sw.writer}</span>
-																	<span class="bk_publish">${sw.publisher}<br>${sw.bookDate}</span>
-																</p>
-															</div>
-														</div>
-														</a>
-													</div>
-												</c:forEach>
+													</c:when>
+													
+													<c:otherwise>
+														없으면 없음
+													</c:otherwise>
+												</c:choose>
 											</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
 											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-											</div>
-										</div>
-									</div>	
+										<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+									</div>
 								</div>
+							</div>
+						</div>	
 					</div>
 					<!-- 책 디테일 끝 -->
 				</div>
@@ -496,25 +450,20 @@
 															<thead>
 																<tr>
 																	<th scope="col"></th>
-																	<th scope="col">B5</th>
 																	<th scope="col">A4</th>
+																	<th scope="col">B4</th>
 																</tr>
 															</thead>
 															<tbody>
 																<tr>
 																	<td class="title"><span>흑백</span></td>
-																	<td><span>60원</span></td>
 																	<td><span>70원</span></td>
+																	<td><span>90원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>칼라</span></td>
-																	<td><span>400원</span></td>
 																	<td><span>500원</span></td>
-																</tr>
-																<tr>
-																	<td class="title"><span>고서</span></td>
-																	<td><span>100원</span></td>
-																	<td><span>120원</span></td>
+																	<td><span>800원</span></td>
 																</tr>
 															</tbody>
 														</table>
@@ -590,7 +539,7 @@
 																	<div class="input_select_wrap2">
 																		<select title="용지크기 선택" id="prSize">
 																			<option value="A4">A4</option>
-																			<option value="B5">B5</option>
+																			<option value="B4">B4</option>
 																		</select>
 																	</div>
 																</td>
@@ -715,7 +664,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"/>
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
@@ -732,7 +681,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																		<input type="text" disabled id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" />
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -760,50 +709,58 @@
 											</div>
 										</div>
 										<!-- //신청정보 입력 -->
-										<!-- 입금 정보 -->
-										<div class="post_info_wrap">
-											<div class="btn_wrap">
-												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
-											</div>
-											<div class="inner">
-												<ul class="post_info_list">
-													<li>
-														<strong class="tit">복사 요금(복사면 단위)</strong>
-														<table class="tbl_copy_charge">
-															<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
-															<colgroup>
-																<col>
-																<col>
-																<col>
-																<col>
-																<col>
-															</colgroup>
-															<thead>
-																<tr>
-																	<th scope="col"></th>
-																	<th scope="col">총 페이지</th>
-																	<th scope="col">1장 가격</th>
-																	<th scope="col">제본 가격</th>
-																	<th scope="col">결제 금액</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td class="title"><span>상품1</span></td>
-																	<td><span>30장</span></td>
-																	<td><span>60</span></td>
-																	<td><span>3000</span></td>
-																	<td><span>1800+3000</span></td>
-																</tr>
-															</tbody>
-														</table>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<!-- //입금 정보 -->
 										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
+											<button type="button" id="cartBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
+											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+										</div>
+										<!-- 입금 정보 -->
+										<div style="display:none" id="order">
+											<div class="post_info_wrap">
+												<div class="btn_wrap">
+													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
+												</div>
+												<div class="inner">
+													<ul class="post_info_list">
+														<li>
+															<strong class="tit">복사 요금(복사면 단위)</strong>
+															<table class="tbl_copy_charge">
+																<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
+																<colgroup>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																</colgroup>
+																<thead>
+																	<tr>
+																		<th scope="col">제목</th>
+																		<th scope="col">총 페이지</th>
+																		<th scope="col">1장 가격</th>
+																		<th scope="col">총페이지 가격</th>
+																		<th scope="col">제본 가격</th>
+																		<th scope="col">결제 금액</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td class="title"><span>${bookVO.title}</span></td>
+																		<td id="tdTtp"><span></span></td>
+																		<td id="tdPa"><span></span></td>
+																		<td id="tdTtpPrice"><span></span></td>
+																		<td id="tdPrinPay"><span></span></td>
+																		<td id="tdTtPay"><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- //입금 정보 -->
+										</div>
+										<div class="btn_wrap center mb30" id="payBtn2">
 										</div>
 									</fieldset>
 								</form>
@@ -816,8 +773,7 @@
 			<!-- //팝업 : 우편복사 신청 -->
 		</div>
 	</div>
-</div>
 	<c:import url="../temp/footer.jsp"></c:import> 
-	
+
 </body>
 </html>

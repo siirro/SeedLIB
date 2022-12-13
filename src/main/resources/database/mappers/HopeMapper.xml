@@ -36,12 +36,12 @@
 				INNER JOIN
 				STATUS S
 				ON HS.STATNUM=S.STATNUM 
-			WHERE USERNAME=#{userName} AND HS.STATNUM=0 AND YEAR(HOPDATE)=YEAR(SYSDATE()) AND MONTH(HOPDATE)=MONTH(SYSDATE());
+			WHERE USERNAME=#{userName} AND HS.STATNUM IN(0,2) AND YEAR(HOPDATE)=YEAR(SYSDATE()) AND MONTH(HOPDATE)=MONTH(SYSDATE());
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
 		INSERT INTO HOPE VALUES
-		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName})		
+		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName}, #{image}, #{email}, #{price}, #{hopYear}, 0)		
 	</insert>
 	
 	<insert id="setHopeStat" parameterType="HopeVO">
@@ -84,8 +84,38 @@
 		ORDER BY H.HOPNUM DESC 
 </select>
 
+<select id="getHopeList" parameterType="HdPager" resultMap="HopeVOResult">
+	SELECT * FROM HOPE H
+		INNER JOIN
+		HOSTAT HS
+		ON H.HOPNUM=HS.HOPNUM
+			INNER JOIN
+			STATUS S
+			ON HS.STATNUM=S.STATNUM 
+		INNER JOIN
+		HOPLIB HL
+		ON H.HOPNUM=HL.HOPNUM
+			INNER JOIN
+			LIBRARY L
+			ON HL.LIBNUM=L.LIBNUM
+	WHERE USERNAME=#{userName} <include refid="search"></include>
+	ORDER BY HS.STATNUM, H.HOPNUM DESC 
+</select>	
 
-	<select id="getHopeList" parameterType="HdPager" resultMap="HopeVOResult">
+<update id="setUpdateHope" parameterType="HopeVO">
+	UPDATE HOPE H
+		INNER JOIN
+		HOSTAT HS
+		ON H.HOPNUM=HS.HOPNUM
+			INNER JOIN
+			STATUS S
+			ON HS.STATNUM=S.STATNUM
+			SET HS.STATNUM=1
+	WHERE USERNAME=#{userName} AND H.HOPNUM=#{hopNum}
+</update>
+
+<!-- Admin 관련 -->
+	<select id="getAdminHopList" parameterType="HdPager" resultMap="HopeVOResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
 			HOSTAT HS
@@ -99,12 +129,28 @@
 				INNER JOIN
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
-		WHERE USERNAME=#{userName} <include refid="search"></include>
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND HS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
 		ORDER BY HS.STATNUM, H.HOPNUM DESC 
 	</select>
-	
 
-	<update id="setUpdateHope" parameterType="HopeVO">
+	<select id="getHopeOne" parameterType="HopeVO" resultMap="HopeVOResult">
+		SELECT * FROM HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+			INNER JOIN
+			HOPLIB HL
+			ON H.HOPNUM=HL.HOPNUM
+				INNER JOIN
+				LIBRARY L
+				ON HL.LIBNUM=L.LIBNUM
+		WHERE H.HOPNUM=#{hopNum}
+	</select>
+	
+	<update id="setHopeCncl" parameterType="HopeVO">
 		UPDATE HOPE H
 			INNER JOIN
 			HOSTAT HS
@@ -112,18 +158,29 @@
 				INNER JOIN
 				STATUS S
 				ON HS.STATNUM=S.STATNUM
-				SET HS.STATNUM=1
+				SET HS.STATNUM=3
 		WHERE USERNAME=#{userName} AND H.HOPNUM=#{hopNum}
 	</update>
 	
-	
-<!-- 기증도서관련 -->	
-	<insert id="setDonation" parameterType="DonationVO">
-		INSERT HOPE VALUES
-		(0, #{dLib}, #{dTitle}, #{dWriter}, #{dPublisher}, #{userName}, #{dMemo}, 0, SYSDATE())		
+	<select id="bookCount" resultType="Long">
+		SELECT COUNT(*) FROM BOOK		
+	</select>
+
+	<insert id="setHopeOne" parameterType="BookVO">
+		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, CATEGORY, IMAGE, BOOKCOUNT, BOOKHEART, NUM, REGDATE)
+		VALUES (#{isbn}, #{title}, #{writer}, #{publisher}, #{bookDate}, #{category}, #{image}, 0, 0, #{num}, SYSDATE());
 	</insert>
 	
-<!-- 열람실예약관련 -->
+	<insert id="setLibOne" parameterType="Map">
+		INSERT INTO BOOKLIB
+		(BLIBNUM, LIBNUM, ISBN, QUANTITY, ABLE)
+		VALUES(0, #{libNum}, #{isbn}, 1, 1)
+	</insert>
+	
+	<update id="setAdminHopeStat" parameterType="HopeVO">
+		UPDATE HOSTAT SET STATNUM=2
+		WHERE HOPNUM=#{hopNum}
+	</update>	
 
 <!-- resultMap -->
 	<resultMap type="BookVO" id="haveResult">
@@ -154,6 +211,10 @@
 		<result column="HOPMEMO" property="hopMemo"/>
 		<result column="HOPDATE" property="hopDate"/>
 		<result column="ISBN" property="isbn"/>
+		<result column="IMAGE" property="image"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PRICE" property="price"/>
+		<result column="HOPYEAR" property="hopYear"/>
 	<association property="statusVO">
 		<id column="STATNUM" property="statNum"/>
 		<result column="STATNAME" property="statName"/>
@@ -174,6 +235,7 @@
 		<result column="HOPMEMO" property="hopMemo"/>
 		<result column="HOPDATE" property="HOPDATE"/>
 		<result column="ISBN" property="isbn"/>
+		<result column="IMAGE" property="image"/>
 	<association property="libVO">
 		<id column="LIBNUM" property="libNum"/>
 		<result column="LIBNAME" property="libName"/>

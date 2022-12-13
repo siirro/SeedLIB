@@ -81,8 +81,35 @@
 		WHERE USERNAME=#{userName} AND D.DONNUM=#{donNum}
 	</update>
 	
+<!-- Admin 영역 -->
+<sql id="searchAdmin">
+		 L.LIBNUM LIKE CONCAT(#{libNum},'%')
+		 AND <choose>
+				<when test="searchType==0">DONTITLE</when>
+				<when test="searchType==2">DONWRITER</when>
+				<when test="searchType==3">DONWRITER</when>
+				<otherwise>DONPUBLISHER</otherwise>
+			 </choose>
+			LIKE CONCAT('%', #{searchKeyword}, '%')
+</sql>	
 	
-<!-- 열람실예약관련 -->
+	<select id="getAdminDonList" parameterType="HdPager" resultMap="adminListResult">
+		SELECT * FROM DONATION D
+			INNER JOIN
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
+				INNER JOIN
+				STATUS S
+				ON DS.STATNUM=S.STATNUM 
+			INNER JOIN
+			DONLIB DL
+			ON D.DONNUM=DL.DONNUM
+				INNER JOIN
+				LIBRARY L
+				ON DL.LIBNUM=L.LIBNUM
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM = #{searchType}
+		ORDER BY DS.STATNUM, D.DONNUM DESC 
+	</select>
 
 <!-- resultMap -->
 <resultMap type="DonationVO" id="DonationVOResult">
@@ -103,4 +130,23 @@
 		<result column="LIBNAME" property="libName"/>
 	</association>
 </resultMap>	
+
+<resultMap type="DonationVO" id="adminListResult">
+	<id column="DONNUM" property="donNum"/>
+		<result column="DONTITLE" property="donTitle"/>
+		<result column="DONWRITER" property="donWriter"/>
+		<result column="DONPUBLISHER" property="donPublisher"/>
+		<result column="DONMEMO" property="donMemo"/>
+		<result column="DONDATE" property="donDate"/>
+		<result column="USERNAME" property="userName"/>
+		<result column="EMAILAGREE" property="emailAgree"/>
+	<association property="statusVO">
+		<id column="STATNUM" property="statNum"/>
+		<result column="STATNAME" property="statName"/>
+	</association>
+	<association property="libVO">
+		<id column="LIBNUM" property="libNum"/>
+		<result column="LIBNAME" property="libName"/>
+	</association>
+</resultMap>
 </mapper>    

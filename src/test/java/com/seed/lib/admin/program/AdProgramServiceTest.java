@@ -15,18 +15,18 @@ import com.seed.lib.util.DateUtil;
 import com.seed.lib.util.HdPager;
 
 @SpringBootTest
-class ProgramServiceTest {
+class AdProgramServiceTest {
 
 	@Autowired
-	private ProgramService programService;
+	private AdProgramService programService;
 	
 	@Autowired
-	private ProgramMapper programMapper;
+	private AdProgramMapper programMapper;
 	
 	//@Test
 	void setProgramDeleteTest()throws Exception{
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(104L);
 		
@@ -40,12 +40,13 @@ class ProgramServiceTest {
 	void setProgramUpdateTest()throws Exception{
 		
 		DateUtil dateUtil = new DateUtil();
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(5L);
 		programVO.setProCate("이벤트");
 		programVO.setRecStatus("접수중");
-		programVO.setProName("무료나눔");
+		programVO.setProTitle("무료나눔");
+		programVO.setProContents("문화행사내용");
 		programVO.setTarget("학생");
 		programVO.setTotal(10L);
 		Date prsDate = dateUtil.parseDate("2022-11-23 00:00:00");
@@ -67,7 +68,7 @@ class ProgramServiceTest {
 	//@Test
 	void getProgramDetailTest()throws Exception{
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(4L);
 		
@@ -81,7 +82,7 @@ class ProgramServiceTest {
 	void getProgramListTest()throws Exception{
 		
 		HdPager hdPager = new HdPager();
-		List<ProgramVO> programVOs = programService.getProgramList(hdPager);
+		List<AdProgramVO> programVOs = programService.getProgramList(hdPager);
 		
 		assertNotEquals(0, programVOs.size());
 		
@@ -94,7 +95,7 @@ class ProgramServiceTest {
 		
 		for(int i=0; i<100; i++) {
 			
-			ProgramVO programVO = new ProgramVO();
+			AdProgramVO programVO = new AdProgramVO();
 			
 			String psDt = "2022-11-23";
 			String psTime = "09:00";
@@ -104,7 +105,8 @@ class ProgramServiceTest {
 			String teacher = "강사님";
 			programVO.setProCate("특강"+i);
 			programVO.setRecStatus("예정"+i);
-			programVO.setProName("책이야기"+i);
+			programVO.setProTitle("책이야기"+i);
+			programVO.setProContents("문화행사내용"+i);
 			programVO.setTarget("학생");
 			programVO.setTotal(30L+i);
 			Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");
@@ -133,12 +135,13 @@ class ProgramServiceTest {
 		String name = "효경";
 		String teacher = "강사님";
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		DateUtil dateUtil = new DateUtil();
 		
 		programVO.setProCate("특강");
 		programVO.setRecStatus("예정");
-		programVO.setProName("책이야기");
+		programVO.setProTitle("책이야기");
+		programVO.setProContents("문화행사내용");
 		programVO.setTarget("학생");
 		programVO.setTotal(30L);
 		Date prsDate = dateUtil.parseDate("2022-08-02 00:00:00");

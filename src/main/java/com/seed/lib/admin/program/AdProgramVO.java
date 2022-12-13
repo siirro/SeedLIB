@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class ProgramVO {
+public class AdProgramVO {
 
 	// 행사번호
 	private Long proNum;
@@ -16,8 +16,10 @@ public class ProgramVO {
 	private String proCate;
 	// 접수상태
 	private String recStatus;
-	// 행사이름
-	private String proName;
+	// 행사제목
+	private String proTitle;
+	// 행사내용
+	private String proContents;
 	// 대상자
 	private String target;
 	// 정원

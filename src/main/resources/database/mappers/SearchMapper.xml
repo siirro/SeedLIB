@@ -37,39 +37,39 @@ ORDER BY
 <choose>
 		<when test="kind == 'score'">
 		    case when TITLE = #{searchTitle} then 0
-		    when TITLE LIKE CONCAT(#{searchTitle}, '%') then 1
-		    when TITLE LIKE CONCAT('%', #{searchTitle}, '%') then 2
-		    when TITLE LIKE CONCAT('%', #{searchTitle}) then 3
-		    when WRITER = #{searchWriter} then 4
-		    when WRITER LIKE CONCAT(#{searchWriter}, '%') then 5
-		    when WRITER LIKE CONCAT('%', #{searchWriter}, '%') then 6
-		    when WRITER LIKE CONCAT('%', #{searchWriter}) then 7
-		    when PUBLISHER = #{searchPublisher} then 8
+		    when WRITER = #{searchWriter} then 1
+		    when PUBLISHER = #{searchPublisher} then 2
+		    when TITLE LIKE CONCAT(#{searchTitle}, '%') then 3
+		    when TITLE LIKE CONCAT('%', #{searchTitle}, '%') then 4
+		    when TITLE LIKE CONCAT('%', #{searchTitle}) then 5
+		    when WRITER LIKE CONCAT(#{searchWriter}, '%') then 6
+		    when WRITER LIKE CONCAT('%', #{searchWriter}, '%') then 7
+		    when WRITER LIKE CONCAT('%', #{searchWriter}) then 8
 		    when PUBLISHER LIKE CONCAT(#{searchPublisher}, '%') then 9
 		    when PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%') then 10
 		    when PUBLISHER LIKE CONCAT('%', #{searchPublisher}) then 11
-		    else 12 end
+		    else 12 end, TITLE ASC
 		</when>
 		<when test="kind == 'title'">
 			case when TITLE = #{searchTitle} then 0
 		    when TITLE LIKE CONCAT(#{searchTitle}, '%') then 1
 		    when TITLE LIKE CONCAT('%', #{searchTitle}, '%') then 2
 		    when TITLE LIKE CONCAT('%', #{searchTitle}) then 3
-		    else 4 end
+		    else 4 end, TITLE ASC
 		</when>
 		<when test="kind == 'writer'">
 			case when WRITER = #{searchWriter} then 0
 		    when WRITER LIKE CONCAT(#{searchWriter}, '%') then 1
 		    when WRITER LIKE CONCAT('%', #{searchWriter}, '%') then 2
 		    when WRITER LIKE CONCAT('%', #{searchWriter}) then 3
-		    else 4 end
+		    else 4 end, WRITER ASC
 		</when>
 		<when test="kind == 'publisher'">
 			case when PUBLISHER = #{searchPublisher} then 0
 		    when PUBLISHER LIKE CONCAT(#{searchPublisher}, '%') then 1
 		    when PUBLISHER LIKE CONCAT('%', #{searchPublisher}, '%') then 2
 		    when PUBLISHER LIKE CONCAT('%', #{searchPublisher}) then 3
-		    else 4 end
+		    else 4 end, PUBLISHER ASC
 		</when>
 		<otherwise>NUM</otherwise>
 	</choose>
@@ -158,39 +158,36 @@ ORDER BY
 	<choose>
 		<when test="kind == 'score'">
 		    case when TITLE = #{search} then 0
-		    when TITLE LIKE CONCAT(#{search}, '%') then 1
-		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
-		    when TITLE LIKE CONCAT('%', #{search}) then 3
-		    when WRITER = #{search} then 4
+		    when WRITER = #{search} then 1
+		    when PUBLISHER = #{search} then 2
+		    when TITLE LIKE CONCAT(#{search}, '%') then 3
+		    when TITLE LIKE CONCAT('%', #{search}, '%') then 4
 		    when WRITER LIKE CONCAT(#{search}, '%') then 5
 		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
-		    when WRITER LIKE CONCAT('%', #{search}) then 7
-		    when PUBLISHER = #{search} then 8
-		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
-		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
-		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
-		    else 12 end
+		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 7
+		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 8
+		    else 9 end, TITLE ASC, WRITER ASC, PUBLISHER ASC
 		</when>
 		<when test="kind == 'title'">
 			case when TITLE = #{search} then 0
 		    when TITLE LIKE CONCAT(#{search}, '%') then 1
 		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
 		    when TITLE LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
+		    else 4 end, TITLE ASC, WRITER ASC, PUBLISHER ASC
 		</when>
 		<when test="kind == 'writer'">
 			case when WRITER = #{search} then 0
 		    when WRITER LIKE CONCAT(#{search}, '%') then 1
 		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
 		    when WRITER LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
+		    else 4 end, WRITER ASC, TITLE ASC
 		</when>
 		<when test="kind == 'publisher'">
 			case when PUBLISHER = #{search} then 0
 		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
 		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
 		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
+		    else 4 end, PUBLISHER ASC
 		</when>
 		<otherwise>NUM</otherwise>
 	</choose>
@@ -203,46 +200,7 @@ LIMIT #{startRow}, #{perPage}
 <select id="getSearchSimpleCount" parameterType="Pager" resultType="Long">
 SELECT COUNT(ISBN) FROM BOOK 
 WHERE CONCAT(TITLE, WRITER, PUBLISHER, ISBN) REGEXP #{search}
-ORDER BY
-<choose>
-		<when test="kind == 'score'">
-		    case when TITLE = #{search} then 0
-		    when TITLE LIKE CONCAT(#{search}, '%') then 1
-		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
-		    when TITLE LIKE CONCAT('%', #{search}) then 3
-		    when WRITER = #{search} then 4
-		    when WRITER LIKE CONCAT(#{search}, '%') then 5
-		    when WRITER LIKE CONCAT('%', #{search}, '%') then 6
-		    when WRITER LIKE CONCAT('%', #{search}) then 7
-		    when PUBLISHER = #{search} then 8
-		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 9
-		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 10
-		    when PUBLISHER LIKE CONCAT('%', #{search}) then 11
-		    else 12 end
-		</when>
-		<when test="kind == 'title'">
-			case when TITLE = #{search} then 0
-		    when TITLE LIKE CONCAT(#{search}, '%') then 1
-		    when TITLE LIKE CONCAT('%', #{search}, '%') then 2
-		    when TITLE LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
-		</when>
-		<when test="kind == 'writer'">
-			case when WRITER = #{search} then 0
-		    when WRITER LIKE CONCAT(#{search}, '%') then 1
-		    when WRITER LIKE CONCAT('%', #{search}, '%') then 2
-		    when WRITER LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
-		</when>
-		<when test="kind == 'publisher'">
-			case when PUBLISHER = #{search} then 0
-		    when PUBLISHER LIKE CONCAT(#{search}, '%') then 1
-		    when PUBLISHER LIKE CONCAT('%', #{search}, '%') then 2
-		    when PUBLISHER LIKE CONCAT('%', #{search}) then 3
-		    else 4 end
-		</when>
-		<otherwise>NUM</otherwise>
-	</choose>
+
 </select>
 	
 </mapper>    

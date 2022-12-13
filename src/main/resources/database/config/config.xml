@@ -5,7 +5,7 @@
 
   <configuration>
   	<typeAliases>
-  		<typeAlias type="com.seed.lib.admin.program.ProgramVO" alias="ProgramVO"/>
+  		<typeAlias type="com.seed.lib.admin.program.AdProgramVO" alias="AdProgramVO"/>
   		<typeAlias type="com.seed.lib.admin.book.BookPrintVO" alias="BookPrintVO"/>
   		<typeAlias type="com.seed.lib.book.order.BoOrderVO" alias="BoOrderVO"/>
   		
@@ -31,6 +31,8 @@
 		<typeAlias type="com.seed.lib.util.SearchDetailPager" alias="SearchDetailPager"/>
 		<typeAlias type="com.seed.lib.studyroom.StudyRoomVO" alias="StudyRoomVO"/>
 		<typeAlias type="com.seed.lib.studyroom.StudyDetailVO" alias="StudyDetailVO"/>
+		<typeAlias type="com.seed.lib.studyroom.LockerVO" alias="LockerVO"/>
+		<typeAlias type="com.seed.lib.studyroom.LockerCancelVO" alias="LockerCancelVO"/>
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>

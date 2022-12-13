@@ -18,14 +18,14 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/admin/program/*")
 @Slf4j
-public class ProgramController {
+public class AdProgramController {
 
 	@Autowired
-	private ProgramService programService;
+	private AdProgramService programService;
 	
 	// 문화프로그램 삭제
 	@GetMapping("proDelete")
-	public ModelAndView setProgramDelete(ProgramVO programVO)throws Exception{
+	public ModelAndView setProgramDelete(AdProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
@@ -57,9 +57,9 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 업데이트
+	// 문화프로그램 수정
 	@GetMapping("proUpdate")
-	public ModelAndView setProgramUpdateView(ProgramVO programVO)throws Exception{
+	public ModelAndView setProgramUpdateView(AdProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -75,9 +75,9 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 업데이트(POST)
+	// 문화프로그램 수정(POST)
 	@PostMapping("proUpdate")
-	public ModelAndView setProgramUpdate(ProgramVO programVO)throws Exception{
+	public ModelAndView setProgramUpdate(AdProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
@@ -111,7 +111,7 @@ public class ProgramController {
 	
 	// 문화 프로그램 상세정보
 	@GetMapping("proDetail")
-	public ModelAndView getProgramDetail(ProgramVO programVO)throws Exception{
+	public ModelAndView getProgramDetail(AdProgramVO programVO)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -131,13 +131,13 @@ public class ProgramController {
 		return mv;
 	}
 	
-	// 문화프로그램 목록
+	// 문화프로그램 목록 조회
 	@GetMapping("proList")
 	public ModelAndView getProgramList(HdPager hdPager)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-		List<ProgramVO> ar = programService.getProgramList(hdPager);
+		List<AdProgramVO> ar = programService.getProgramList(hdPager);
 		mv.addObject("proList", ar);
 		mv.addObject("pager", hdPager);
 		mv.setViewName("admin/program/proList");
@@ -153,7 +153,7 @@ public class ProgramController {
 	
 	// 문화프로그램 추가(POST)
 	@PostMapping("proAdd")
-	public ModelAndView setProgramAdd(ProgramVO programVO, String name, String teacher)throws Exception{
+	public ModelAndView setProgramAdd(AdProgramVO programVO, String name, String teacher)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		int result = 0;

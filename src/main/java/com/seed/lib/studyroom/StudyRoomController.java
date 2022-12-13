@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +26,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StudyRoomController {
 	
+	@Value("${locker.imp.key}")
+	private String impKey;
+	
 	@Autowired
 	private StudyRoomService service;
 	
+	@Autowired
+	private LockerService lockerService;
 	
 	@GetMapping("roomList")
 	public void getRoomList() throws Exception{
@@ -95,8 +101,61 @@ public class StudyRoomController {
 //////////////////////////////////////////////////////////////////////////////////////////
 	
 	@GetMapping("locker")
-	public void getLocker() throws Exception{
-		
+	public ModelAndView getLocker() throws Exception{
+		lockerService.exitAllLocker();
+		ModelAndView mv = new ModelAndView();
+		List<LockerVO> lockerList = lockerService.getLockerCount();
+		mv.addObject("imp",impKey);
+		mv.addObject("locL", lockerList);
+		return mv;
 	}
 	
+	@GetMapping("lockerPop")
+	public ModelAndView lockerPop(int lockerNum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("imp",impKey);
+		mv.addObject("lockerNum", lockerNum);
+		return mv;
+	}
+	
+	@PostMapping("check")
+	@ResponseBody
+	public int checkLocker(@RequestBody LockerVO lockerVO) throws Exception {
+		int result = lockerService.checkLocker(lockerVO);
+		if(result == 0) {
+			return 200;
+		} else {
+			return result;
+		}
+	}
+	
+	@PostMapping("payments")
+	@ResponseBody
+	public int lockerPay(String imp_uid, 
+						  String merchant_uid, 
+						  String lockerNum,
+						  String amount, 
+						  String stDate,
+						  String enDate,
+						  String rentDays,
+						  String userName) throws Exception{
+		log.info("들어옴.");
+		
+		LockerVO lockerVO = new LockerVO();
+		lockerVO.setImp_uid(imp_uid);
+		lockerVO.setMerchant_uid(merchant_uid);
+		lockerVO.setLockerNum(Integer.parseInt(lockerNum));
+		lockerVO.setAmount(Integer.parseInt(amount));
+		lockerVO.setStDate(stDate);
+		lockerVO.setEnDate(enDate);
+		lockerVO.setRentDays(Integer.parseInt(rentDays));
+		lockerVO.setUserName(userName);
+		int result = lockerService.setMyLocker(lockerVO);
+		if(result == 1) {
+			return 200;
+		} else {
+			return result;
+		}
+		
+	}
 }
