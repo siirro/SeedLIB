@@ -14,9 +14,9 @@ public class DonationVO {
 	private String donTitle;
 	private String donWriter;
 	private String donPublisher;
+	private String userName;
 	private String donMemo;
 	private Date donDate;
-	private String userName;
 	private String emailAgree;
 	
 	private StatusVO statusVO;

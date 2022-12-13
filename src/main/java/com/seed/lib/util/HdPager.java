@@ -17,6 +17,10 @@ public class HdPager {
 	private boolean pre;
 	private boolean next;
 	
+	// 어드민 문화프로그램 목록 검색
+	private String kind;
+	private String search;
+	
 	private Long searchType;
 	private String userName;
 	private String searchKeyword;

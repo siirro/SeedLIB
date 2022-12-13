@@ -5,7 +5,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>사물함 대여 : 씨앗도서관 ☘️</title>
+    <title>사물함 대여 : 씨앗도서관 ☘️ </title>
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
 	<style>
 	
 		.contentArea{
@@ -19,7 +24,7 @@
 			margin-bottom: 20px !important;
 		}
 
-		.seatInfo{
+		.lockerInfo{
 			display: flex;
 			margin-top: 30px;
 			margin-bottom: 15px;
@@ -67,12 +72,12 @@
 			display: block;
 		}
 		
-		.seatArea{
+		.lockerArea{
 			display: inline-block;
 			margin-left: 65px;
 			margin-top: 45px;
 		}
-		.seatList{
+		.lockerList{
 			align-items: center;
 		    justify-content: center;
     		display: flex;
@@ -98,7 +103,7 @@
 			background:#8c8989;
 		}
 		
-		.seatBlank{
+		.lockerBlank{
 			width:30px;
 			background: transparent;
 			/* background: #77e270; */
@@ -116,7 +121,7 @@
 <div id="container" class="sub">	
 <div class="sVisualWrap">
 	<div class="sVisual">
-		<h3 id="roomName" data-room-name="${useList[0].roomVO.roomName}">사물함 대여</h3>
+		<h3>사물함 대여</h3>
 	</div>
 </div>
 <div id="contentGroup">
@@ -137,7 +142,7 @@
 	   </ul>
 	</div>
 	<!--Forced tab Show Que-->
-	<div class="seatInfo">
+	<div class="lockerInfo">
 		<div>
 			<table style="width:210px;">
 				<tbody>
@@ -151,15 +156,15 @@
 		</div>
 	</div>
 <div style="display: inline-block; width:95%; text-align: center; border: 1px; border-style: solid;">
-      <ul class="seatArea">
-         <c:forEach begin="1" end="40" step="1" var="r" varStatus="status">
+      <ul class="lockerArea">
+         <c:forEach begin="1" end="${locL[0].lockerLast}" step="1" var="r" varStatus="status">
 			 <c:set var="loop_flag" value="false" />
-				<c:forEach items="${useList}" var="ul">
-					<c:if test="${ul.seatNum eq r && ul.rvAble eq 0}">
-						<li class="seatList used">
+				<c:forEach items="${locL}" var="l">
+					<c:if test="${l.lockerNum eq r && l.rentStat eq 0}">
+						<li class="lockerList used">
 							<div>
 							   <span></span>
-								  <button class="resBtn" data-res-num="${r}" available="N">${r}</button>
+								  <button class="resBtn" data-rent-num="${r}" available="N">${r}</button>
 							   <span></span>
 							</div>
 						 </li>
@@ -167,16 +172,16 @@
 						</c:if>
 					</c:forEach>
 				<c:if test="${not loop_flag}">	
-					<li class="seatList">
+					<li class="lockerList">
 						<div>
 						<span></span>
-							<button class="resBtn" data-res-num="${r}" available="Y">${r}</button>
+							<button class="resBtn" data-rent-num="${r}" available="Y">${r}</button>
 						<span></span>
 						</div>
 					</li>	
 				</c:if>	
             <c:if test="${(status.index)%5 eq 0}">
-               <li class="seatBlank seatList"></li>
+               <li class="lockerBlank lockerList"></li>
             </c:if>
             <c:if test="${(status.index)%20 eq 0}">
                <li class="passage"></li>
@@ -187,8 +192,8 @@
 
 <div style="width: 100%;">
 	<dl class="linkBox">
-		<dt class="txtArea">열람실 좌석 조회/퇴실 체크는 마이페이지에서 가능합니다</dt>
-		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/lockerHistory">신청조회</a></dd>
+		<dt class="txtArea">사물함 대여 조회는 마이페이지에서 가능합니다</dt>
+		<dd class="btnArea"><a class="btn write themeBtn" href="/mypage/lockerHistory">대여조회</a></dd>
 	</dl>
 </div>
 					<!-- End Of the Real Contents-->
@@ -200,6 +205,6 @@
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->	
-<script src="/js/studyroomRes.js"></script>		
+<script src="/js/lockerRent.js"></script>		
 </body>
 </html>

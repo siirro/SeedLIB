@@ -62,12 +62,12 @@
                 <div class="card-style mb-30">
                   <h6 class="mb-25">프로그램 이름</h6>
                   <div class="input-style-3">
-                    <input type="text" name="proName" placeholder="프로그램 이름을 입력하세요" />
+                    <input type="text" name="proTitle" placeholder="프로그램 이름을 입력해 주세요" />
                     <span class="icon"><i class="lni lni-bulb"></i></span>
                   </div>
                   <h6 class="mb-25">프로그램 참여 인원 수</h6>
                   <div class="input-style-3">
-                    <input type="number" name="total" placeholder="참여인원 수를 입력하세요" />
+                    <input type="number" name="total" placeholder="참여인원 수를 입력해 주세요" />
                     <span class="icon"><i class="lni lni-user"></i></span>
                   </div>
                   <!-- end input -->
@@ -137,7 +137,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-3">
-                        <input type="text" name="name" placeholder="강사님 이름을 입력하세요" />
+                        <input type="text" name="name" placeholder="강사님 이름을 입력해 주세요" />
                         <span class="icon"><i class="lni lni-user"></i></span>
                       </div>
                     </div>
@@ -145,13 +145,40 @@
                       <div class="select-style-1">
                         <div class="select-position">
                           <select name="teacher">
-                            <option value="직접입력">직접입력</option>
-                            <option value="강사">강사</option>
-                            <option value="작가">작가</option>
+                            <option value="강사님">강사님</option>
+                            <option value="작가님">작가님</option>
                             <option value="선생님">선생님</option>
                           </select>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <!-- end select -->
+                  <!-- ======= textarea style start ======= -->
+                  <h6 class="mb-25">글내용</h6>
+                  <div class="input-style-3">
+                    <textarea placeholder="행사 내용을 입력해 주세요" name="proContents" rows="15"><c:out value="${proContents}"></c:out></textarea>
+                    <span class="icon"
+                      ><i class="lni lni-text-format"></i
+                    ></span>
+                  </div>
+                  <!-- ======= textarea style end ======= -->
+                </div>
+                <!-- end card -->
+                <!-- ======= input style end ======= -->
+
+                <!-- ======= select style start ======= -->
+                <div class="card-style mb-30">
+                  <div class="select-style-1">
+                    <h6 class="mb-25">대상자 선택</h6>
+                    <div class="select-position">
+                      <select name="target">
+                        <option value="누구나">누구나</option>
+                        <option value="유아">유아</option>
+                        <option value="어린이">어린이</option>
+                        <option value="청소년">청소년</option>
+                        <option value="성인">성인</option>
+                      </select>
                     </div>
                   </div>
                   <!-- end select -->
@@ -169,38 +196,6 @@
                     </div>
                   </div>
                   <!-- end select -->
-                </div>
-                <!-- end card -->
-                <!-- ======= input style end ======= -->
-
-                <!-- ======= select style start ======= -->
-                <div class="card-style mb-30">
-                  <div class="select-style-1">
-                    <h6 class="mb-25">대상자 선택</h6>
-                    <div class="select-position">
-                      <select name="target">
-                        <option value="선택안함">선택안함</option>
-                        <option value="유아">유아</option>
-                        <option value="어린이">어린이</option>
-                        <option value="청소년">청소년</option>
-                        <option value="성인">성인</option>
-                        <option value="누구나">누구나</option>
-                      </select>
-                    </div>
-                  </div>
-                  <!-- end select -->
-                  <div class="select-style-1">
-                    <h6 class="mb-25">접수상태 선택</h6>
-                    <div class="select-position">
-                      <select name="recStatus">
-                        <option value="선택안함">선택안함</option>
-                        <option value="예정">예정</option>
-                        <option value="접수중">접수중</option>
-                        <option value="마감">마감</option>
-                        <option value="종료">종료</option>
-                      </select>
-                    </div>
-                  </div>
                   <div class="col-12">
                     <div
                       class="

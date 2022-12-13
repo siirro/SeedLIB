@@ -2,6 +2,8 @@ package com.seed.lib.search;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.Pager;
 import com.seed.lib.util.SearchDetailPager;
 
@@ -24,16 +28,47 @@ public class SearchController {
 	
 	@Autowired
 	private SearchService searchService;
+	@Autowired
+	private BookService bookService;
 	
 	@GetMapping("simple")
 	public String getSearch()throws Exception{
 		return "search/simple";
 	}
 	
+	// 소장정보
+	@GetMapping("simpleresultInfo1")
+	@ResponseBody
+	public ModelAndView simpleresultInfo1(HttpSession session, Long isbn)throws Exception{
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		
+		
+		BookVO bookVO = new BookVO();
+		bookVO.setIsbn(isbn);
+		//도서 북립정보
+		List<BookVO> ar = bookService.getDetail(bookVO);
+		
+		mv.addObject("detail", ar);
+		return mv;
+		
+		
+	}
+	
 	@GetMapping("simpleresult")
 	@ResponseBody
-	public ModelAndView getSearchSimple(Pager pager)throws Exception{
+	public ModelAndView getSearchSimple(HttpSession session, Pager pager)throws Exception{
+		
+		
 		ModelAndView mv = new ModelAndView();
+		
+		// 세션에서 한 유저의 정보를 꺼냄
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		// 비어있지 않다면 모델앤뷰에 넣기
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);			
+		} 
 		
 		List<BookVO> ar = searchService.getSearchSimple(pager);
 		Long count = searchService.getSearchSimpleCount(pager);
@@ -53,6 +88,7 @@ public class SearchController {
 		
 		log.info("kind는? {}", pager.getKind());
 		
+	
 		return mv;
 	}
 	
