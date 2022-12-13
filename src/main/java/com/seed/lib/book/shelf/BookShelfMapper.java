@@ -51,7 +51,7 @@ public interface BookShelfMapper {
 	public List<BookVO> getBookList (ShelfBookPager pager) throws Exception;
 	
 	//pager
-	public Long getCount (ShelfPager pager) throws Exception;
+	public Long getShelfCount (ShelfPager pager) throws Exception;
 	public Long getBookCount (ShelfBookPager pager) throws Exception;
 
 }

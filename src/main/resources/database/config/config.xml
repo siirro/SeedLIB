@@ -45,9 +45,10 @@
 		 <typeAlias type="java.util.Map" alias="Map"/>
 		 <typeAlias type="java.lang.Long" alias="Long"/>
 		 <typeAlias type="java.lang.Integer" alias="Integer"/>
+		 
 
 		 
-		 
+		 	 
 
  
  </typeAliases>

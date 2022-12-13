@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class ShelfBookPager {
 	
-	//책꽂이에 저장된 책 목록에서 사용 - 제목, isbn, 등록일
 	
 		private Long page;
 		private Long startNum;
@@ -20,31 +19,34 @@ public class ShelfBookPager {
 		private boolean pre;
 		private boolean next;
 		
-		//파라미터
-		//검색어 - 제목
-		private String title;
+		private String userName;
 		private Long shNum;
-		private Long isbn;
 		
-		//정렬 - 제목 / isbn
+		//제목 OR 작가
 		private String select;
+		
+		//검색어
+		private String search;	
+		
 		//정렬
 		private String sort;
+		
+		//정렬 기준
+		private String sortHow;
+		
 		//등록일
-		private String regDate;
-		//등록일 00~00일 사이
-		private Long regDateA;
-		private Long regDateB;
+		private Long dateA;
+		private Long dateB;
 
 		
 		public ShelfBookPager() {
-			this.perPage=5L;
+			this.perPage=10L;
 			this.perBlock=5L;
 		}
 		
 		//1. mapper에서 사용할 값 계산
 		public void getRowNum()throws Exception{
-			this.startRow = (this.getPage()-1)*this.getPerPage()+1;
+			this.startRow = ((this.getPage()-1)*this.getPerPage()+1)-1;
 			this.lastRow = this.getPage()*this.getPerPage();
 		}
 		
@@ -92,7 +94,6 @@ public class ShelfBookPager {
 			}
 		}
 		
-		
 		public Long getPerPage() {
 			if(this.perPage==null) {
 				this.perPage=10L;
@@ -107,25 +108,11 @@ public class ShelfBookPager {
 			return page;
 		}
 		
-		public String getName() {
-			if(this.title==null) {
-				this.title="";
-			}
-			return title;
-		}
-		
 		public String getSelect() {
 			if(this.select==null) {
 				this.select="";
 			}
 			return select;
-		}
-		
-		public Long getShNum() {
-			if(this.shNum==null) {
-				this.shNum=0L;
-			}
-			return shNum;
 		}
 		
 		public String getSort() {
@@ -135,20 +122,31 @@ public class ShelfBookPager {
 			return sort;
 		}
 		
-		public Long getIsbn() {
-			if(this.isbn==null) {
-				this.isbn=0L;
+		public String getSearch() {
+			if(this.search==null) {
+				this.search="";
 			}
-			return isbn;
+			return search;
 		}
 		
-		public Long get() {
-			if(this.isbn==null) {
-				this.isbn=0L;
+		public Long getDateA() {
+			if(this.dateA==null) {
+				this.dateA=null;
 			}
-			return isbn;
+			return dateA;
 		}
-
-
-
+		
+		public Long getDateB() {
+			if(this.dateB==null) {
+				this.dateB=null;
+			}
+			return dateB;
+		}
+		
+		public String getsortHow() {
+			if(this.sortHow==null) {
+				this.sortHow="";
+			}
+			return sortHow;
+		}
 }

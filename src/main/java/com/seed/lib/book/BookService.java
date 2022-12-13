@@ -23,8 +23,18 @@ public class BookService {
 		return bookMapper.getBookInfo(bookVO);
 	}
 	
-	//도서 디테일
-	public List<BookVO> getDetail (BookVO bookVO) throws Exception{
-		return bookMapper.getDetail(bookVO);
+	//도서관 보유 정보
+	public BookVO getLibDetail (BookVO bookVO) throws Exception{
+		return bookMapper.getLibDetail(bookVO);
+	}
+	
+	//같은 장르 도서
+	public List<BookVO> getSameCate (Long category) throws Exception{
+		return bookMapper.getSameCate(category);
+	}
+	
+	//같은 작가 도서
+	public List<BookVO> getSameWriter (String writer) throws Exception{
+		return bookMapper.getSameWriter(writer);
 	}
 }

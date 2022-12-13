@@ -11,4 +11,5 @@ public class BookReservationVO {
 	private Long isbn;
 	private String userName;
 	private Date enableDate;
+	private Date regDate;
 }

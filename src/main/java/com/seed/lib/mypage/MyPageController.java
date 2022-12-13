@@ -241,31 +241,60 @@ public class MyPageController {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//대출 목록
-	@GetMapping("bookLoan")
-	public ModelAndView getLoanList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/loan")
+	public ModelAndView getLoanList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getLoanList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookLoan");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//대출 목록
+			pager.setUserName(memberVO.getUserName());
+			pager.setRtStatus(1);
+			List<BookVO> li = loanService.getLoanList(pager);
+			mv.addObject("li", li);
+			
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setRtStatus(1);
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getBookLoan(loVO);
+			mv.addObject("count", count);
+		}
 		
 		return mv;
 	}
 	
 	//대출 이력 목록
-	@GetMapping("bookLoanHistory")
-	public ModelAndView getLoanHistoryList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/loanHistory")
+	public ModelAndView getLoanHistoryList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getLoanList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookLoan");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//대출 목록
+			pager.setUserName(memberVO.getUserName());
+			pager.setRtStatus(0);
+			List<BookVO> li = loanService.getLoanList(pager);
+			mv.addObject("li", li);
+		
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setRtStatus(0);
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getBookLoan(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
 	//대출 연장 - 최대 2번
-	@PostMapping("extension")
+	@GetMapping("extension")
 	public String setExtension (BookLoanVO loVO) throws Exception{
 		// 연장 횟수가 0, 1일때만 신청 가능 -> setExtension -> 저장 후 +1 리턴
 		// 2이면 불가능 -> 3 리턴
@@ -280,26 +309,50 @@ public class MyPageController {
 	}	
 	
 	//예약 목록
-	@GetMapping("bookReserve")
-	public ModelAndView getReList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/reservation")
+	public ModelAndView getReList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getReList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookReserve");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//예약 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getReList(pager);
+			mv.addObject("li", li);
+		
+			//예약 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getReCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
 	//상호대차 목록
-	@GetMapping("bookMutual")
-	public ModelAndView getMuList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/mutual")
+	public ModelAndView getMuList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getMuList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookMutual");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//상호대차 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getMuList(pager);
+			mv.addObject("li", li);
+		
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getMuCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
