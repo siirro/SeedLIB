@@ -28,6 +28,8 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
 	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
+	<!-- SweetAlert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -567,7 +569,7 @@
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="복사 색상 선택" id="prColor">
+																		<select title="복사 색상 선택" name="caColor" id="prColor">
 																			<option value="N">흑백</option>
 																			<option value="Y">컬러</option>
 																		</select>
@@ -575,7 +577,7 @@
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="용지크기 선택" id="prSize">
+																		<select title="용지크기 선택" name="caSize" id="prSize">
 																			<option value="A4">A4</option>
 																			<option value="B5">B4</option>
 																		</select>
