@@ -754,8 +754,12 @@
 											</div>
 										</div>
 										<!-- //신청정보 입력 -->
+										<div class="btn_wrap center mb30">
+											<button type="button" id="cartBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
+											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+										</div>
 										<!-- 입금 정보 -->
-										<div class="post_info_wrap">
+										<div class="post_info_wrap" style="display:none">
 											<div class="btn_wrap">
 												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
 											</div>
@@ -774,20 +778,22 @@
 															</colgroup>
 															<thead>
 																<tr>
-																	<th scope="col"></th>
+																	<th scope="col">제본</th>
 																	<th scope="col">총 페이지</th>
 																	<th scope="col">1장 가격</th>
+																	<th scope="col">총페이지 가격</th>
 																	<th scope="col">제본 가격</th>
 																	<th scope="col">결제 금액</th>
 																</tr>
 															</thead>
 															<tbody>
 																<tr>
-																	<td class="title"><span>상품1</span></td>
-																	<td><span>30장</span></td>
-																	<td><span>60</span></td>
-																	<td><span>3000</span></td>
-																	<td><span>1800+3000</span></td>
+																	<td class="title"><span>${bookVO.title}</span></td>
+																	<td id="tdTtp"><span></span></td>
+																	<td id="tdPa"><span></span></td>
+																	<td id="tdTtpPrice"><span></span></td>
+																	<td id="tdPrinPay"><span></span></td>
+																	<td id="tdTtPay"><span></span></td>
 																</tr>
 															</tbody>
 														</table>
