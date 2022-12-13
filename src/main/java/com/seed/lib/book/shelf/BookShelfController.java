@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.ShelfBookPager;
 import com.seed.lib.util.ShelfPager;
@@ -33,13 +34,26 @@ public class BookShelfController {
 		//마이페이지 - Pager O
 		//shelf/list?userName=
 	@GetMapping("list")
-	public ModelAndView getShelfListP (ShelfPager pager) throws Exception {
+	public ModelAndView getShelfListP (HttpSession session, ShelfPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookShelfVO> ar = bookShelfService.getShelfListP(pager);
-		mv.addObject("list", ar);
-		mv.setViewName("shelf/list");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//책꽂이 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookShelfVO> li = bookShelfService.getShelfListP(pager);
+			mv.addObject("li", li);
 			
+			//책꽂이 갯수
+			Long count = bookShelfService.getCount(pager);
+			mv.addObject("count", count);
+			
+			mv.addObject("pager", pager);
+		}
+		
 		return mv;
 	}
 	
@@ -47,13 +61,22 @@ public class BookShelfController {
 		//동일한 이름 있을 시 생성 불가
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
-	public String setNewShelf (BookShelfVO shelfVO) throws Exception{
-		return "shelf/newShelf";
+	public ModelAndView setNewShelf (BookShelfVO shelfVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		// 세션에서 한 유저의 정보를 꺼냄
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		// 비어있지 않다면 모델앤뷰에 넣기
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+		}
+		return mv;
 	}
 	
 	@ResponseBody
 	@PostMapping("newShelf")
-	public int setShelfAdd (@RequestBody BookShelfVO shelfVO) throws Exception{
+	public int setShelfAdd (@RequestBody BookShelfVO shelfVO, HttpSession session) throws Exception{
 		// 0이면 mapper -> 값 0 | 1이면 1 리턴
 		int result = bookShelfService.setShelfAdd(shelfVO);
 		return result;
@@ -89,10 +112,20 @@ public class BookShelfController {
 		//동일한 책 있으면 저장 불가
 		//shelf/addBook?isbn= &userName=
 	@GetMapping("addBook")
-	public ModelAndView setBookAdd (String userName, Long isbn) throws Exception{
+	public ModelAndView setBookAdd (String userName, Long isbn, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("userName", userName);
-		mv.addObject("isbn", isbn);
+		BookPickVO pickVO = new BookPickVO();
+		
+		// 세션에서 한 유저의 정보를 꺼냄
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		// 비어있지 않다면 모델앤뷰에 넣기
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+			
+			pickVO.setIsbn(isbn);
+			mv.addObject("isbn", isbn);
+		}
 		
 		//저장 화면에 제목 띄우는 용
 		String title = bookShelfService.getBookTitle(isbn);
@@ -111,7 +144,6 @@ public class BookShelfController {
 		int result = bookShelfService.setBookAdd(pickVO);
 		return result;
 	}
-	
 	
 	//책꽂이에서 책 삭제
 		//마이페이지 - 책꽂이 상세페이지 - 선택 삭제 버튼
@@ -144,8 +176,11 @@ public class BookShelfController {
 		List<BookVO> ar = bookShelfService.getBookList(pager);
 		mv.addObject("list", ar);
 		
+		//갯수
+		Long count = bookShelfService.getBookCount(pager);
+		mv.addObject("count", count);
+		
 		mv.addObject("pager", pager);
-		mv.setViewName("shelf/bookList");
 		return mv;
 	}
 }

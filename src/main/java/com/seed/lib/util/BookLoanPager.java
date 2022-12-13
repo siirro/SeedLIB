@@ -18,18 +18,24 @@ public class BookLoanPager {
 	private boolean pre;
 	private boolean next;
 	
-	private boolean rtStatus;
+	private int rtStatus;
 	private String userName;
 	
-	//제목 OR date
+	//제목 OR 작가
 	private String select;
+	
+	//검색어
+	private String search;	
 	
 	//정렬
 	private String sort;
 	
+	//정렬 기준
+	private String sortHow;
+	
 	//기간 검색
-	private Date dateA;
-	private Date dateB;
+	private Long dateA;
+	private Long dateB;
 	
 	public BookLoanPager() {
 		this.perPage=9L;
@@ -38,7 +44,7 @@ public class BookLoanPager {
 	
 	//1. mapper에서 사용할 값 계산
 	public void getRowNum()throws Exception{
-		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
+		this.startRow = ((this.getPage()-1)*this.getPerPage()+1)-1;
 		this.lastRow = this.getPage()*this.getPerPage();
 	}
 	
@@ -101,6 +107,7 @@ public class BookLoanPager {
 		return page;
 	}
 	
+	
 	public String getSelect() {
 		if(this.select==null) {
 			this.select="";
@@ -115,19 +122,33 @@ public class BookLoanPager {
 		return sort;
 	}
 	
-	// Date null 값 처리
-//	public Date getDateA() {
-//		if(this.dateA==null) {
-//			this.dateA=;
-//		}
-//		return dateA;
-//		
-//	}public Date getDateB() {
-//		if(this.dateB==null) {
-//			this.dateB=;
-//		}
-//		return dateB;
-//	}
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		return search;
+	}
+	
+	public Long getDateA() {
+		if(this.dateA==null) {
+			this.dateA=null;
+		}
+		return dateA;
+	}
+	
+	public Long getDateB() {
+		if(this.dateB==null) {
+			this.dateB=null;
+		}
+		return dateB;
+	}
+	
+	public String getsortHow() {
+		if(this.sortHow==null) {
+			this.sortHow="";
+		}
+		return sortHow;
+	}
 
 
 }
