@@ -449,25 +449,20 @@
 															<thead>
 																<tr>
 																	<th scope="col"></th>
-																	<th scope="col">B5</th>
 																	<th scope="col">A4</th>
+																	<th scope="col">B4</th>
 																</tr>
 															</thead>
 															<tbody>
 																<tr>
 																	<td class="title"><span>흑백</span></td>
-																	<td><span>60원</span></td>
 																	<td><span>70원</span></td>
+																	<td><span>90원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>칼라</span></td>
-																	<td><span>400원</span></td>
 																	<td><span>500원</span></td>
-																</tr>
-																<tr>
-																	<td class="title"><span>고서</span></td>
-																	<td><span>100원</span></td>
-																	<td><span>120원</span></td>
+																	<td><span>800원</span></td>
 																</tr>
 															</tbody>
 														</table>
@@ -543,7 +538,7 @@
 																	<div class="input_select_wrap2">
 																		<select title="용지크기 선택" id="prSize">
 																			<option value="A4">A4</option>
-																			<option value="B5">B5</option>
+																			<option value="B4">B4</option>
 																		</select>
 																	</div>
 																</td>
@@ -718,7 +713,7 @@
 											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
 										</div>
 										<!-- 입금 정보 -->
-										<div style="display:flex" id="order">
+										<div style="display:none" id="order">
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
 													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
@@ -751,10 +746,10 @@
 																	<tr>
 																		<td class="title"><span>${bookVO.title}</span></td>
 																		<td id="tdTtp"><span></span></td>
-																		<td id="tdPa"><span>60</span></td>
-																		<td id="tdTtpPay"><span>1800</span></td>
-																		<td id="tdPrinPay"><span>3000</span></td>
-																		<td id="tdTtPay"><span>4800</span></td>
+																		<td id="tdPa"><span></span></td>
+																		<td id="tdTtpPrice"><span></span></td>
+																		<td id="tdPrinPay"><span></span></td>
+																		<td id="tdTtPay"><span></span></td>
 																	</tr>
 																</tbody>
 															</table>
