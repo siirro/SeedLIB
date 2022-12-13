@@ -85,13 +85,12 @@
 									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
 										<span class="blind">페이스북</span>
 									</a>
-									<a href="#print" id="snsPrint" title="인쇄" class="snsPrint">
-										<img alt="" src="/images/printer.png">
-										<span class="">현재화면 프린트</span>
+									<a href="#print" id="print" title="제본신청">
+										<img alt="책프린트" src="/images/printer.png">
+										<span class="">현재 책 프린트</span>
 									</a>
 								</div>
 							</li>
-							<li class="mobileHide"><a href="../print/boCart?isbn=" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a></li>
 						</ul>
 					</div>
 				</div> <!-- 상단 메뉴 끝 -->
@@ -188,11 +187,6 @@
 									</div>
 								</div>
 								<!-- // 간략보기 -->
-								
-							<!-- 복사 버튼 -->
-							<div>
-								<button type="button" id="print" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">도서 프린트</button>	
-							</div>
 							</div>
 							<!-- 하단 책 상세정보 -->
 							<div class="tabMove">
@@ -715,7 +709,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
@@ -732,7 +726,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																		<input type="text" disabled id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
