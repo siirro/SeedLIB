@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="icon" href="/images/favicon.png">
     <title>희망 도서 신청 : 씨앗도서관 ☘️</title>
 </head>
 <body>
