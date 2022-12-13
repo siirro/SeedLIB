@@ -39,7 +39,7 @@
 
 <div class="naviandtitle">
 	<h3>도서관소식</h3>
-	<div class="navi"><a href="/intro/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 이용안내 <i class="arrow"></i>도서관소식</div>
+	<div class="navi"><a href="/intro/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 도서관소식 <i class="arrow"></i>공지사항</div>
 	<div class="snsFarm">
 		<ul class="snsBtnArea clearfix">
 			<li>
@@ -73,6 +73,10 @@
 					<!--Real Contents Start-->
 					<!-- 게시글 상세화면 -->
 					<div class="boardWrap">
+					
+					<div>
+					<button type="button" id="update" class="btn btn-primary"><a href="./update">글수정</a></button>
+					 </div>		
 						<table class="board-view">
 							<caption>도서관소식 상세화면 : 제목, 도서관, 작성일, 조회수, 첨부파일, 내용으로 구성</caption>
 							<colgroup>
@@ -92,44 +96,26 @@
 								
 								<tr>
 									<th scope="row">작성일</th>
-									<td>2022-11-24</td>
+									<td>${boardVO.regDate}</td>
 								</tr>
 								
 								<tr>
 									<th scope="row">조회수</th>
-									<td>146</td>
+									<td>${boardVO.hit}</td>
 								</tr>
 								
 									<tr>
 										<th scope="row">첨부파일</th>
 										<td>
-											
+										<a href=""></a>	
 										</td>
 									</tr>
 								
 								<tr>
 									<td colspan="2" class="content">
-										<strong>2022년 송년의 달을 맞이하여 호계도서관에서는 다양한 행사를 준비하였습니다.<br>
-이용자분들의 많은 관심 부탁드립니다. 감사합니다.</strong><br>
-<br>
-<strong><span style="background-color:#f1c40f;">ㅁ '계묘년(</span></strong><span style="background-color:#f1c40f;">癸卯年</span><strong><span style="background-color:#f1c40f;">)' 맞이 토끼책 대출하고 책표지 종이가방 만들기</span></strong><br>
-&nbsp; &nbsp; - 일시 : 12.6.(화) ~ 재료 소진 시까지<br>
-&nbsp; &nbsp; - 대상 : 안양시민 100명<br>
-&nbsp; &nbsp; - 장소 : 호계도서관 별관 1층 어린이자료실<br>
-&nbsp; &nbsp; - 내용 : 계묘년의 주인공인 토끼가 등장하는 책을 대출하는 이용자에게 책표지 가방을 만들어 볼 수 있는 기회를 제공<br>
-<br>
-<strong><span style="background-color:#f1c40f;">ㅁ 2023, 나의 북(book)킷리스트 소개하기&nbsp;</span></strong><br>
-&nbsp; &nbsp; - 일시 : 12.6.(화) ~ 12.25.(일)<br>
-&nbsp; &nbsp; - 대상 : 안양시민<br>
-&nbsp; &nbsp; - 장소 : 본관 1층 로비<br>
-&nbsp; &nbsp; - 내용 : 새해에는 꼭 읽고 싶은 나만의 책 목록을 적고 설치된 게시판에 붙여 내용 공유하기&nbsp;<br>
-<br>
-<b><span style="background-color:#f1c40f;">ㅁ 『아빠 쉬는 날』 그림책 원화전시&nbsp;</span></b><br>
-&nbsp; &nbsp; - 일시 : 12.6.(화) ~ 12.25.(일)<br>
-&nbsp; &nbsp; - 대상 : 안양시민<br>
-&nbsp; &nbsp; - 장소 : 본관 1층 로비<br>
-&nbsp; &nbsp; - 내용 : 상상만발 책그림전 당선 및 북스타트 도서 선정작. 차야다 작가의 아빠 쉬는 날 원화전시<br>
-&nbsp;
+									
+								   <strong> ${boardVO.contents} </strong>
+
 									</td>
 								</tr>
 							</tbody>
@@ -145,7 +131,7 @@
 					</div>
 
 					<div class="btnGroup">
-						<a href="#none" id="listBtn" class="btn list">목록</a>
+						<a href="/" id="listBtn" class="btn list">목록</a>
 					</div>
 					
 					
