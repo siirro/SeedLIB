@@ -65,10 +65,21 @@
                     <input type="text" name="proTitle" placeholder="프로그램 이름을 입력해 주세요" />
                     <span class="icon"><i class="lni lni-bulb"></i></span>
                   </div>
-                  <h6 class="mb-25">프로그램 참여 인원 수</h6>
-                  <div class="input-style-3">
-                    <input type="number" name="total" placeholder="참여인원 수를 입력해 주세요" />
-                    <span class="icon"><i class="lni lni-user"></i></span>
+                  <div class="select-style-1">
+                    <h6 class="mb-25">프로그램 참여 인원 선택</h6>
+                    <div class="select-position">
+                      <select name="total">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                      </select>
+                    </div>
                   </div>
                   <!-- end input -->
                 </div>

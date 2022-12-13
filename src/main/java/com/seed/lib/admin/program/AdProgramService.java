@@ -14,18 +14,18 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class ProgramService {
+public class AdProgramService {
 
 	@Autowired
-	private ProgramMapper programMapper;
+	private AdProgramMapper programMapper;
 	
 	// 프로그램 삭제
-	public int setProgramDelete(ProgramVO programVO)throws Exception{
+	public int setProgramDelete(AdProgramVO programVO)throws Exception{
 		return programMapper.setProgramDelete(programVO);
 	}
 	
 	// 프로그램 상세정보 수정
-	public int setProgramUpdate(ProgramVO programVO)throws Exception{
+	public int setProgramUpdate(AdProgramVO programVO)throws Exception{
 		
 		programVO = programMapper.getProgramDetail(programVO);
 		
@@ -41,19 +41,19 @@ public class ProgramService {
 	}
 	
 	// 프로그램 상세정보 출력
-	public ProgramVO getProgramDetail(ProgramVO programVO)throws Exception{
+	public AdProgramVO getProgramDetail(AdProgramVO programVO)throws Exception{
 		return programMapper.getProgramDetail(programVO);
 	}
 	
 	// 프로그램 목록 출력
-	public List<ProgramVO> getProgramList(HdPager hdPager)throws Exception{
+	public List<AdProgramVO> getProgramList(HdPager hdPager)throws Exception{
 		hdPager.makeRow();
 		hdPager.getNum(programMapper.getProTotalCount(hdPager));
 		return programMapper.getProgramList(hdPager);
 	}
 	
 	// 프로그램 추가
-	public int setProgramAdd(ProgramVO programVO, String name, String teacher)throws Exception{
+	public int setProgramAdd(AdProgramVO programVO, String name, String teacher)throws Exception{
 		
 		// String을 Date타입으로 바꿔주는 객체
 		
