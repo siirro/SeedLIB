@@ -27,7 +27,7 @@
             <div class="col-lg-7 col-md-7 col-6">
               <div class="header-right">
                 <!-- 로그인하지 않았을때 로그인 아이콘O -->
-                <c:if test="${empty amdin}">
+                <c:if test="${empty sessionScope.memberVO}">
                 <div class="ml-15 d-none d-md-flex">
                   <a 
                   	class="main-btn btn-sm rounded-md info-btn"
@@ -40,7 +40,7 @@
                 </c:if>
                 <!-- notification start -->
                 <!-- 로그인 했을때 아이콘 -->
-                <c:if test="${not empty admin}">
+                <c:if test="${not empty sessionScope.memberVO}">
                 <div class="notification-box ml-15 d-none d-md-flex">
                   <button
                     class="dropdown-toggle"
@@ -172,7 +172,7 @@
                   >
                     <div class="profile-info">
                       <div class="info">
-                        <h6>${admin.name}</h6>
+                        <h6>${sessionScope.memberVO.name}</h6>
                         <div class="image">
                           <img
                             src="/images/logo200.png" 
