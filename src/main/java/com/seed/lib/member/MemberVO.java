@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 import com.seed.lib.admin.book.BookPrintVO;
 import com.seed.lib.book.BookVO;
 
@@ -35,7 +36,7 @@ import lombok.Data;
 	
 	private List<RoleVO> roleVOs;
 
-
+//
 //	@Override
 //	public Collection<? extends GrantedAuthority> getAuthorities() {
 //
@@ -47,8 +48,8 @@ import lombok.Data;
 //		}
 //		return authorities;
 //	}
-//
-//
+
+
 //	@Override
 //	public String getUsername() {
 //		// TODO Auto-generated method stub
@@ -68,13 +69,13 @@ import lombok.Data;
 //		// TODO Auto-generated method stub
 //		return true;
 //	}
-
+//
 //	@Override
 //	public boolean isCredentialsNonExpired() {
 //		// TODO Auto-generated method stub
 //		return true;
 //	}	
-
+//
 
 
 }

@@ -146,7 +146,7 @@
 span.essential {padding: 0 2px; vertical-align: -5px;}
 .attach a:hover, .attach a:focus {text-decoration: underline;}
 .readonly {background-color: #f8f8f8;}
-.board-view {table-layout: fixed; border-top: 2px solid #666; empty-cells: show;}
+.board-view {table-layout: fixed; margin: 30px 0; border-top: 2px solid #666; empty-cells: show;}
 .board-view th, .board-view td {padding: 6px 10px; text-align: left; border-bottom: 1px solid #e2e2e2;}
 .board-view th {font-weight: normal; text-align: center; background-color: #f8f8f8; color: #464646;}
 .board-view th + th {border-left: 1px solid #d5d5d5}

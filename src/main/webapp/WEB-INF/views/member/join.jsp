@@ -44,7 +44,7 @@
                                <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
                             
                             <p class="birth"><label for="birthd_year">생년월일</label>
-                               <input type="text" name="birth" id="birthd_year" maxlength="2022"></p>
+                               <input type="date" name="birth" id="birthd_year" maxlength="2022"></p>
                           
                             <p class="gender"><label for="gen">성별</label>
 					
@@ -121,11 +121,11 @@
                         <div class="form">
                             <p><label for="email">이메일 주소</label>
                                     
-                                    <input type="text" id="email1" name="email"  title="이메일 입력" class="form-ele auto eng-mode" >
+                                    <input type="text" id="email1" name="email"  title="이메일 입력" class="form-ele auto eng-mode" required="required" >
                                     <span class="mobileShow3">@</span>
-                                    <input type="text" id="email2" name="email" title="이메일 도메인 입력">
+                                    <input type="text"  readonly id="email2" name="email" title="이메일 도메인 입력"  >
                             
-                                    <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
+                                    <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele">
                                         
                                             <option value="daum.net">daum.net</option>
                                         
