@@ -85,13 +85,12 @@
 									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
 										<span class="blind">페이스북</span>
 									</a>
-									<a href="#print" id="print" title="인쇄">
+									<a href="#print" id="print" title="제본신청">
 										<img alt="책프린트" src="/images/printer.png">
 										<span class="">현재 책 프린트</span>
 									</a>
 								</div>
 							</li>
-							<li class="mobileHide"><a href="../print/boCart?isbn=" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a></li>
 						</ul>
 					</div>
 				</div> <!-- 상단 메뉴 끝 -->
