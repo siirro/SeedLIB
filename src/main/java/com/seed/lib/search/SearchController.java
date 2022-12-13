@@ -47,9 +47,9 @@ public class SearchController {
 		BookVO bookVO = new BookVO();
 		bookVO.setIsbn(isbn);
 		//도서 북립정보
-		BookVO ar = bookService.getLibDetail(bookVO);
+//		List<BookVO> ar = bookService.getLibDetail(bookVO);
 		
-		mv.addObject("detail", ar);
+//		mv.addObject("detail", ar);
 		return mv;
 		
 		
