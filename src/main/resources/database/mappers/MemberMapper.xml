@@ -7,8 +7,9 @@
 
 		  
 	<update id="setUpdate" parameterType="MemberVO">
-	UPDATE `MEMBER` SET EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
-	WHERE USERNAME =#{userName}
+	UPDATE `MEMBER` SET
+	 EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
+	WHERE USERNAME = #{userName}
 	
 	</update>
 
@@ -34,7 +35,7 @@
 		VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
 		</insert> 
 
-			  <select id="getLogin" parameterType="String" resultMap="getLoginResult">
+			  <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
 			
 				SELECT M.*, R.*
 					FROM MEMBER M
@@ -50,14 +51,11 @@
 					  
 		<resultMap type="MemberVO" id="getLoginResult">
 		<id column="username" property="userName" />
-		<result column="name" property="name"/>
+	    <id column="name" property="name" />
 		<result column="gender" property="gender"/>		
 		<result column="birth" property="birth"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
-		<result column="post" property="post"/>
-		<result column="address1" property="address1"/>
-		<result column="address2" property="address2"/>
 		<result column="regdate" property="regDate"/>
 		<result column="enabled" property="enabled"/>
 		<result column="loanstatus" property="loanStatus"/>
@@ -68,8 +66,6 @@
 		</collection>
 		</resultMap>
 		
-		
-		
-		
+
 		
 </mapper>    

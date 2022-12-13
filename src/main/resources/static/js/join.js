@@ -126,12 +126,15 @@ $(".form-ele").on("change", function(){
   
       if($(this).val() == 'etc') {
         addr.removeAttr("readonly")
+        $("#email2").val=""
     }else{
- addr.prop("readonly",true)
+        addr.prop("readonly",true)
 
     }
 
  })
+
+
 
 
 
