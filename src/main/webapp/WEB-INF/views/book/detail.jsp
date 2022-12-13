@@ -752,7 +752,7 @@
 											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
 										</div>
 										<!-- 입금 정보 -->
-										<div class="post_info_wrap" style="display:none">
+										<div class="post_info_wrap" style="display:none" id="order">
 											<div class="btn_wrap">
 												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
 											</div>
@@ -796,9 +796,7 @@
 											</div>
 										</div>
 										<!-- //입금 정보 -->
-										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
-										</div>
+										<div class="btn_wrap center mb30" id="payBtn2"></div>
 									</fieldset>
 								</form>
 							</div>
