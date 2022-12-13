@@ -28,8 +28,6 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
 	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
-	<!-- 프린트신청 팝업창 유효성검사 js -->
-	<!-- <script src="/js/admin/adCart.js"></script> -->
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -497,18 +495,13 @@
 															<tbody>
 																<tr>
 																	<td class="title"><span>흑백</span></td>
-																	<td><span>60원</span></td>
 																	<td><span>70원</span></td>
+																	<td><span>90원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>칼라</span></td>
-																	<td><span>400원</span></td>
 																	<td><span>500원</span></td>
-																</tr>
-																<tr>
-																	<td class="title"><span>고서</span></td>
-																	<td><span>100원</span></td>
-																	<td><span>120원</span></td>
+																	<td><span>800원</span></td>
 																</tr>
 															</tbody>
 														</table>
@@ -584,7 +577,7 @@
 																	<div class="input_select_wrap2">
 																		<select title="용지크기 선택" id="prSize">
 																			<option value="A4">A4</option>
-																			<option value="B5">B5</option>
+																			<option value="B5">B4</option>
 																		</select>
 																	</div>
 																</td>
@@ -770,6 +763,7 @@
 														<table class="tbl_copy_charge">
 															<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
 															<colgroup>
+																<col>
 																<col>
 																<col>
 																<col>
