@@ -11,8 +11,8 @@
 	</select>
 
 	<!-- 도서 디테일 -->
-	<select id="getDetail" resultMap="getDetailResult" parameterType="BookVO">
-	SELECT b.*, b2.*, l.*
+	<select id="getLibDetail" resultMap="getDetailResult" parameterType="BookVO">
+	SELECT b2.*, l.*
 	FROM book b
 		inner join booklib b2 
 		on b.ISBN = b2.ISBN 
@@ -34,13 +34,9 @@
 			<result column="bookCount" property="bookCount"/>
 			<result column="bookHeart" property="bookHeart"/>
 			<result column="num" property="num"/>
-
-			<association property="mbBookLikeVO" javaType="MbBookLikeVO">
-				<id column="bookLike" property="bookLike"/>
-			</association>
 			
 			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
-				<id column="blibnum" property="blibnum"/>
+				<result column="libNum" property="libNum"/>
 				<result column="quantity" property="quantity"/>
 				<result column="able" property="able"/>
 			</collection>
@@ -49,8 +45,27 @@
 				<id column="libNum" property="libNum"/>
 				<result column="libName" property="libName"/>
 			</collection>
+			
 	</resultMap>
 	
+	<!-- 같은 장르 도서 -->
+	<select id="getSameCate" parameterType="Long" resultMap="getSameResult">
+		SELECT * FROM BOOK WHERE CATEGORY = #{category} LIMIT 0, 12;
+	</select>
+	
+	<!-- 같은 작가 도서 -->
+	<select id="getSameWriter" parameterType="String" resultMap="getSameResult">
+		SELECT * FROM BOOK WHERE WRITER = #{writer} LIMIT 0, 12;
+	</select>
+	
+	<resultMap type="BookVO" id="getSameResult">
+		<id column="isbn" property="isbn" />
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="publisher" property="publisher"/>
+			<result column="bookDate" property="bookDate"/>
+			<result column="category" property="category"/>
+			<result column="image" property="image"/>
+	</resultMap>
 </mapper>
   
-
