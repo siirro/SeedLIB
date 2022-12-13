@@ -44,6 +44,13 @@ public class DonationService {
 		hdPager.getNum(donationMapper.getTotalCount(hdPager));
 		return donationMapper.getDonList(hdPager);
 	}
+	
+	//어드민
+	public List<DonationVO> getAdminDonList(HdPager hdPager) throws Exception{
+		hdPager.makeRow();
+		hdPager.getNum(donationMapper.getTotalCount(hdPager));
+		return donationMapper.getAdminDonList(hdPager);
+	}
 
 
 }

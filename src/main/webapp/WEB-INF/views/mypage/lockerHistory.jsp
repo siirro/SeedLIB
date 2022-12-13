@@ -6,12 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/button.css">
-    <link rel="stylesheet" href="/css/layout.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous">
+	</script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<style>
 		#searchBtn{
 			width: 20%; 
@@ -55,10 +56,10 @@
 					<div class="articleWrap">
 						<ul class="article-list reserve">
 							<c:choose>
-								<c:when test="${not empty hlist}">
+								<c:when test="${not empty locker}">
 								 <!-- <li>신청한 희망 도서는 ${hlist.size()} 권입니다</li> -->
 								</c:when>
-								<c:when test="${empty hlist}">
+								<c:when test="${empty locker}">
 									<c:choose>
 										<c:when test="${not empty pager.searchKeyword}">
 								 			<li>[${pager.searchKeyword}] 의 검색 결과가 없습니다</li>
@@ -69,21 +70,28 @@
 									</c:choose>		
 								</c:when>
 							</c:choose>
-							<c:forEach items="${hlist}" var="list">	
+							<c:forEach items="${locker}" var="list">	
 								<li>
-									<p class="title">사물함 번호: ${list.hopTitle}</p>
+									<input type="hidden" id="merchant_uid${list.lockerNum}" merchant_uid="${list.merchant_uid}">
+									<p class="title">사물함 번호: ${list.lockerNum}</p>
 									<ul class="info">
 										<li>
-											<span> : ${list.hopWriter}</span>
-											<span>사용 금액: ${list.hopPublisher}</span>
+											<span id="stDate${list.lockerNum}" stDate="${list.stDate}">대여 시작일: ${list.stDate}</span>
+											<span id="enDate${list.lockerNum}" enDate="${list.enDate}">대여 종료일: ${list.enDate}</span>
+											<c:choose>	
+												<c:when test="${list.rentStat eq 0}">
+													<span>대여 상태: 대여 중</span>
+												</c:when>
+												<c:when test="${list.rentStat eq 1}">
+													<span>대여 상태: 대여 종료</span>
+												</c:when>
+											</c:choose>
 										</li>
 										<li>
-											<span>대여 시작일: ${list.libVO.libName}</span>
-											<span>대여 종료일: ${list.hopDate}</span>
-											<span>대여 상태: ${list.statusVO.statName}</span>
+											<span id="amount${list.lockerNum}" amount="${list.amount}">결제 금액: ${list.amount}</span>
 										</li>
-										<c:if test="${list.statusVO.statName eq '신청 중'}">
-											<li class="status"><button class="cncl" data-num-cncl="${list.hopNum}">환불 요청</button></li>
+										<c:if test="${list.rentStat eq 0}">
+											<li class="status"><button class="cncl" data-num-cncl="${list.lockerNum}">환불 요청</button></li>
 										</c:if>										
 									</ul>
 								</li>
@@ -105,6 +113,6 @@
 <!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->
-		<script src="/js/hopeList.js"></script>
+		<script src="/js/lockerList.js"></script>
 </body>
 </html>

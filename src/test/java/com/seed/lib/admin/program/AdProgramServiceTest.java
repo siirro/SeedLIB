@@ -15,18 +15,18 @@ import com.seed.lib.util.DateUtil;
 import com.seed.lib.util.HdPager;
 
 @SpringBootTest
-class ProgramServiceTest {
+class AdProgramServiceTest {
 
 	@Autowired
-	private ProgramService programService;
+	private AdProgramService programService;
 	
 	@Autowired
-	private ProgramMapper programMapper;
+	private AdProgramMapper programMapper;
 	
 	//@Test
 	void setProgramDeleteTest()throws Exception{
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(104L);
 		
@@ -40,7 +40,7 @@ class ProgramServiceTest {
 	void setProgramUpdateTest()throws Exception{
 		
 		DateUtil dateUtil = new DateUtil();
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(5L);
 		programVO.setProCate("이벤트");
@@ -68,7 +68,7 @@ class ProgramServiceTest {
 	//@Test
 	void getProgramDetailTest()throws Exception{
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		
 		programVO.setProNum(4L);
 		
@@ -82,7 +82,7 @@ class ProgramServiceTest {
 	void getProgramListTest()throws Exception{
 		
 		HdPager hdPager = new HdPager();
-		List<ProgramVO> programVOs = programService.getProgramList(hdPager);
+		List<AdProgramVO> programVOs = programService.getProgramList(hdPager);
 		
 		assertNotEquals(0, programVOs.size());
 		
@@ -95,7 +95,7 @@ class ProgramServiceTest {
 		
 		for(int i=0; i<100; i++) {
 			
-			ProgramVO programVO = new ProgramVO();
+			AdProgramVO programVO = new AdProgramVO();
 			
 			String psDt = "2022-11-23";
 			String psTime = "09:00";
@@ -135,7 +135,7 @@ class ProgramServiceTest {
 		String name = "효경";
 		String teacher = "강사님";
 		
-		ProgramVO programVO = new ProgramVO();
+		AdProgramVO programVO = new AdProgramVO();
 		DateUtil dateUtil = new DateUtil();
 		
 		programVO.setProCate("특강");

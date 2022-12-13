@@ -34,11 +34,16 @@ import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.studyroom.LockerCancelVO;
+import com.seed.lib.studyroom.LockerService;
+import com.seed.lib.studyroom.LockerVO;
 import com.seed.lib.studyroom.StudyDetailVO;
 import com.seed.lib.studyroom.StudyRoomService;
 import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.FullCalendarVO;
 import com.seed.lib.util.HdPager;
+import com.siot.IamportRestClient.response.AccessToken;
+import com.siot.IamportRestClient.response.IamportResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +57,8 @@ public class MyPageController {
 	private DonationService donationService;
 	@Autowired
 	private StudyRoomService roomService;
+	@Autowired
+	private LockerService lockerService;
 	@Autowired
 	private BookLoanService loanService;
   @Autowired
@@ -110,6 +117,7 @@ public class MyPageController {
 		
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////	
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -158,8 +166,7 @@ public class MyPageController {
 				jsonObject.put("display", "background");
 				jsonObject.put("classNames", "room-"+s.getRvAble());
 				js.add(jsonObject);
-			}
-			
+			}			
 			mv.addObject("cl", js);		
 			return mv;
 	}
@@ -174,9 +181,52 @@ public class MyPageController {
 	}
 	
 	@GetMapping("lockerHistory")
-	public void getLockerList() throws Exception{
-		
+	public ModelAndView getLockerList(HttpSession session) throws Exception{
+		lockerService.exitAllLocker();
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUserName());
+		mv.addObject("locker", loList);
+		return mv;
 	}
+	
+	@PostMapping("lockerCancel")
+	@ResponseBody
+	public int setLockerCancel(
+			String merchant_uid,
+			String reason,
+			String cancel_request_amount
+			) throws Exception {
+		String msg = "";
+//		ModelAndView mv = new ModelAndView();
+		
+		//토큰 발급
+		IamportResponse<AccessToken> token=null;
+		token = lockerService.getToken();
+		
+		log.info(cancel_request_amount);
+		
+		Integer checksum = lockerService.getLockerPrice(merchant_uid);
+//		checksum = checksum - Integer.parseInt(cancel_request_amount);
+		String code = lockerService.setLockerCancel(token, reason, merchant_uid, checksum.toString(), cancel_request_amount);
+		log.info("token:{}",token.getResponse().getToken());
+		
+			if(code.equals("0")) {
+				//구매 상태 변경
+				int result = lockerService.exitMyLocker(merchant_uid);
+				LockerCancelVO cancelVO = new LockerCancelVO();
+				cancelVO.setRentNum(lockerService.getLockerOne(merchant_uid).getRentNum());
+				cancelVO.setReason(reason);
+				cancelVO.setCancel_request_amount(Integer.parseInt(cancel_request_amount));
+
+				int cancelResult = lockerService.setLockerCancelOne(cancelVO);
+				return lockerService.setLockerCancelOne(cancelVO);
+			} else {
+				return 0;
+			}
+		}
+	
+	
 	
 	
 	//오늘 날짜 가져오기
@@ -187,34 +237,64 @@ public class MyPageController {
 		SimpleDateFormat formatter = new SimpleDateFormat(pattern, currentLocale);
 		return formatter.format(today);
 	}
-	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//대출 목록
-	@GetMapping("bookLoan")
-	public ModelAndView getLoanList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/loan")
+	public ModelAndView getLoanList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getLoanList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookLoan");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//대출 목록
+			pager.setUserName(memberVO.getUserName());
+			pager.setRtStatus(1);
+			List<BookVO> li = loanService.getLoanList(pager);
+			mv.addObject("li", li);
+			
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setRtStatus(1);
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getBookLoan(loVO);
+			mv.addObject("count", count);
+		}
 		
 		return mv;
 	}
 	
 	//대출 이력 목록
-	@GetMapping("bookLoanHistory")
-	public ModelAndView getLoanHistoryList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/loanHistory")
+	public ModelAndView getLoanHistoryList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getLoanList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookLoan");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//대출 목록
+			pager.setUserName(memberVO.getUserName());
+			pager.setRtStatus(0);
+			List<BookVO> li = loanService.getLoanList(pager);
+			mv.addObject("li", li);
+		
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setRtStatus(0);
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getBookLoan(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
 	//대출 연장 - 최대 2번
-	@PostMapping("extension")
+	@GetMapping("extension")
 	public String setExtension (BookLoanVO loVO) throws Exception{
 		// 연장 횟수가 0, 1일때만 신청 가능 -> setExtension -> 저장 후 +1 리턴
 		// 2이면 불가능 -> 3 리턴
@@ -229,26 +309,50 @@ public class MyPageController {
 	}	
 	
 	//예약 목록
-	@GetMapping("bookReserve")
-	public ModelAndView getReList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/reservation")
+	public ModelAndView getReList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getReList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookReserve");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//예약 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getReList(pager);
+			mv.addObject("li", li);
+		
+			//예약 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getReCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	
 	//상호대차 목록
-	@GetMapping("bookMutual")
-	public ModelAndView getMuList (BookLoanPager pager) throws Exception{
+	@GetMapping("book/mutual")
+	public ModelAndView getMuList (HttpSession session, BookLoanPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> li = loanService.getMuList(pager);
-		mv.addObject("li", li);
-		mv.setViewName("mypage/bookMutual");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//상호대차 목록
+			pager.setUserName(memberVO.getUserName());
+			List<BookVO> li = loanService.getMuList(pager);
+			mv.addObject("li", li);
+		
+			//대출 중인 책 권수
+			BookLoanVO loVO = new BookLoanVO();
+			loVO.setUserName(memberVO.getUserName());
+			int count = loanService.getMuCount(loVO);
+			mv.addObject("count", count);
+		}
 		return mv;
 	}
 	

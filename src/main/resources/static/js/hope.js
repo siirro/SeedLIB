@@ -20,12 +20,13 @@ let hopPublisher="";
 let datetime="";
 let isbn="";
 let price=0;
+let image="";
 let searchOne="";
 ///유효성검사///////////////////////////////////////////////////
 let hLibCheck = false;
 let hTitleCheck = false;
 let hWriterCheck = false;
-let hYearCheck = false;
+let hopYearCheck = false;
 let isbnCheck = false;
 let hMemoCheck = false;
 
@@ -55,13 +56,9 @@ $("#searchBtn").click(function(){
     $(".pagination").empty();
     $(".result_screen").empty();
     $(".listWrap").empty();
-    $("#hTitle").empty();
-    $("#hWriter").empty();
-    $("#hPublisher").empty();
-    $("#hYear").empty();
-    $("#isbn").empty();
-    $("#price").empty();
-    query = $("#query").val();
+    self();
+    $("#titleInfo").text("해당 도서관에 소장중 또는 정리중인 도서가 있을 경우 신청 불가");
+    query = $("#query").val();    
     if(query!=""){
        getKey();
        getSearch();            
@@ -94,10 +91,10 @@ function getSearch(){
                         $.each(searchArr[0], (function(index, item){
                             if(item.isbn.length<15){
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }else{
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }                                
                             $(".listWrap").append(searchOne);
                         })
@@ -167,7 +164,7 @@ $(".pagination").on("click",".page",function(){
 }) 
 
 //검색 후 도서 입력
-function hopeApply(title, authors, publisher, datetime, isbn, price){
+function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
         $(".pagination").empty();
@@ -176,6 +173,7 @@ function hopeApply(title, authors, publisher, datetime, isbn, price){
 
         hopTitle = title;
         hopWriter=authors;
+        $("#image").val(thumbnail);
         if(hopWriter.length<1){
             hopWriter="미상";
         }
@@ -198,13 +196,13 @@ function hopeApply(title, authors, publisher, datetime, isbn, price){
         $("#hopTitle").val(hopTitle);
         $("#hopWriter").val(hopWriter);
         $("#hopPublisher").val(hopPublisher);
-        $("#hYear").val(datetime);
+        $("#hopYear").val(datetime);
         $("#isbn").val(isbn);
         $("#price").val(price);
         $("#hopTitle").attr("readonly", "true");
         $("#hopWriter").attr("readonly", "true");
         $("#hopPublisher").attr("readonly", "true");
-        $("#hYear").attr("readonly", "true");
+        $("#hopYear").attr("readonly", "true");
         $("#isbn").attr("readonly", "true");
         $("#price").attr("readonly", "true");
     } else{
@@ -214,19 +212,26 @@ function hopeApply(title, authors, publisher, datetime, isbn, price){
 
 //직접입력
 $("#selfApply").click(function(){
+   self();
+})
+
+function self(){
+    $("#hopLib").val("");
     $("#hopTitle").val("");
     $("#hopWriter").val("");
     $("#hopPublisher").val("");
-    $("#hYear").val("");
+    $("#hopYear").val("");
+    $("#hopMemo").val("");
+    $("#image").val("");
     $("#isbn").val("");
     $("#price").val("");
-    $("#hopTitle").attr("readonly", "false");
-    $("#hopWriter").attr("readonly", "false");
-    $("#hopPublisher").attr("readonly", "false");
-    $("#hopYear").attr("readonly", "false");
-    $("#isbn").attr("readonly", "false");
-    $("#price").attr("readonly", "false");
-})
+    $("#hopTitle").attr("readonly", false);
+    $("#hopWriter").attr("readonly", false);
+    $("#hopPublisher").attr("readonly", false);
+    $("#hopYear").attr("readonly", false);
+    $("#isbn").attr("readonly", false);
+    $("#price").attr("readonly", false);
+}
 
 //희망도서신청
 $("#registBtn").click(function(){
@@ -250,7 +255,6 @@ $("#registBtn").click(function(){
         }
         if($("#isbn").val().length<1){
             $("#isbn").val("0000000000000");
-
         }
         if($("#hopMemo").val().length>0){
             hMemoCheck = true;
@@ -266,6 +270,10 @@ $("#registBtn").click(function(){
                 isbn:$("#isbn").val(),
                 userName:$("#userName").val(),
                 hopMemo:$("#hopMemo").val(),
+                image:$("#image").val(),
+                email:$("#email").val(),
+                price:$("#price").val(),
+                hopYear:$("#hopYear").val(),
                 libVO:libVO
             }
             $.ajax({
@@ -278,8 +286,10 @@ $("#registBtn").click(function(){
                     switch (data) {
                         case 111:
                           $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
+                          alert("해당 도서관에서 소장 중인 도서입니다");
                           break;
                         case 222:
+                          $("#titleInfo").text("해당 도서관에 이미 신청 중인 도서입니다");
                           alert("해당 도서관에 이미 신청 중인 도서입니다");
                           break;
                         case 333:
@@ -301,39 +311,15 @@ $("#registBtn").click(function(){
                                 },error:function(error){
                                     console.log("errorㅠㅠ", data);
                                     console.log(error);
-                                    location.href="./";
+                                    location.href="/hope/setHope";
                                 }                
                             })
                             break;
                       }
-                    // console.log(data);
-                    // if(data==111){
-                    //     $("#titleInfo").text("해당 도서관에서 소장 중인 도서입니다");
-                    // }else if(data==222){
-                    //     alert("해당 도서관에 이미 신청 중인 도서입니다");
-                    // }
                 }
 
             })
-
-            // $.ajax({
-            //     type:"POST",
-            //     url:"/hope/setHope",
-            //     data: JSON.stringify(hopeVO),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success:function(data){
-            //         console.log(data);
-            //         alert("희망 도서 신청 완료");
-            //         // location.href="../";
-            //     },error:function(error){
-            //         console.log("errorㅠㅠ", data);
-            //         console.log(error);
-            //         // location.href="./";
-
-            //     }                
-            // })
-        }else{
+       }else{
             alert("신청 정보를 확인 후 신청해주세요");
             location.reload();
             return;

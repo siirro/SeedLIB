@@ -19,5 +19,8 @@ public interface DonationMapper {
 	//마이페이지
 	public Long getTotalCount(HdPager hdPager) throws Exception;
 	public List<DonationVO> getDonList(HdPager hdPager) throws Exception;
+	
+	//어드민
+	public List<DonationVO> getAdminDonList(HdPager hdPager) throws Exception;
 
 }

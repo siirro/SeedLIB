@@ -126,7 +126,6 @@
 </div>
 <div id="contentGroup">
        <c:import url="../sideBar/BsideBar.jsp"></c:import>
-	   <input type="hidden" id="imp" value="${imp}">
 <div id="contentcore">
 	<div class="naviandtitle">
 		<h3>사물함 대여</h3>

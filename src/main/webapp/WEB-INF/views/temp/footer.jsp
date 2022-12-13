@@ -7,7 +7,7 @@
             <ul class="fnb clearfix">
                 <li><a href="/policy/personal"><span>개인정보처리방침</span></a></li>
                 <li><a href="/policy/email">이메일추출방지정책</a></li>
-                <li><a href="/intro/law">도서관관련법규</a></li>
+                <li><a href="/info/law">도서관관련법규</a></li>
             </ul>
             <div class="familySite mobileHide">
                 <select name="relateSite" id="relateSite" title="관련기관 사이트 바로가기 선택">

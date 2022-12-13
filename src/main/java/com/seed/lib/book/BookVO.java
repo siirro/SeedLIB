@@ -1,5 +1,6 @@
 package com.seed.lib.book;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.seed.lib.book.like.MbBookLikeVO;
@@ -24,10 +25,10 @@ public class BookVO {
 	private Long bookCount;
 	private Long bookHeart;
 	private Long num;
+	private Date regDate;
 	
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
-	private List<MbBookLikeVO> mbBookLikeVO;
 	private List<BookShelfVO> bookShelfVOs;
 	private List<BookPickVO> bookPickVOs;
 	private List<BookLoanVO> loanVOs;

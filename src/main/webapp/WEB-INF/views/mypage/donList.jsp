@@ -27,7 +27,7 @@
 			padding: 6px 15px;
 		}
 	</style>
-<title>도서 기증 신청 조회</title>
+<title>도서 기증 신청 조회 : 씨앗도서관 ☘️ </title>
 </head>
 <body>
 	<!-- header -->
@@ -43,7 +43,7 @@
 
 <div id="contentcore">
 <div class="naviandtitle">
-	<h3>도서기증신청조회 : 씨앗도서관 ☘️ </h3>
+	<h3>도서기증신청조회</h3>
 	<div class="navi"><a href="../" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 마이페이지 <i class="arrow"></i>도서기증신청조회</div>
 </div>
 <div id="contents" class="contentArea">

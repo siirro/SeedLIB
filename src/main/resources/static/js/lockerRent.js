@@ -4,8 +4,6 @@ let popUp = "";
 
 let used = "";
 
-console.log($("#imp").val());
-
 let price = 0;
 let rentDays = 0;
 let enDate = new Date();
@@ -43,11 +41,10 @@ $(".lockerList").on("click",".resBtn",function(){
     }
 })
 
-$("#stDate").blur(function(){
+$("#stDate").change(function(){
     let startDate = $("#stDate").val();
     console.log(startDate);
     stDate = new Date(startDate.substr(0,4),startDate.substr(5,2),startDate.substr(8,2));
-
     let enDateMin = startDate;
     let enDateMax = stDate;
     console.log(dateForm(enDateMax));
@@ -61,7 +58,26 @@ $("#enDate").change(function(){
     rentDays =  Math.abs((newEnDate.getTime() - newStDate.getTime())/(1000*60*60*24))+1;
     console.log(rentDays);
     price = 500*rentDays;
-    $("#price").val(price);
+    if(isNaN(rentDays)){
+        $("#price").val(0);
+        return;
+    }else{
+        $("#price").val(price);
+    }
+})
+
+$("#stDate").change(function(){
+    let newStDate = new Date($("#stDate").val());
+    let newEnDate = new Date($("#enDate").val());
+    rentDays =  Math.abs((newEnDate.getTime() - newStDate.getTime())/(1000*60*60*24))+1;
+    console.log(rentDays);
+    price = 500*rentDays;
+    if(isNaN(rentDays)){
+        $("#price").val(0);
+        return;
+    }else{
+        $("#price").val(price);
+    }
 })
 
 $("#rentBtn").click(function(){
@@ -70,13 +86,19 @@ $("#rentBtn").click(function(){
     console.log("s:",sDate, "e:",eDate, "p:",price)
     if(sDate==='null'||eDate==='null'||price<1){
         alert("대여 정보를 다시 확인해주세요");
+        return;    
+    }
+
+    if(eDate<sDate){
+        alert("선택하신 날짜가 올바르지 않습니다\n다시 선택 후 신청해주세요");
         return;
     }
-    let check = window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
+
+    let check = window.confirm("환불 신청은 마이페이지의 [사물함 대여 조회]에서 가능합니다");
     if(check){
         let lockerVO={
             lockerNum:$("#lockerNum").attr("value"),
-            price:price,
+            amount:price,
             userName:$("#userName").val(),
             stDate:sDate,
             enDate:eDate,
@@ -84,8 +106,30 @@ $("#rentBtn").click(function(){
             email:$("#email").val(),
             phone:$("#phone").val()
         }
-        console.log(lockerVO);
-        requestPay(lockerVO);
+        $.ajax({
+            type:"POST",
+            url:"/studyroom/check",
+            data:JSON.stringify(lockerVO),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json", 
+            success:function(data){
+                switch (data) {
+                    case 111:
+                        alert("해당 사물함은 이미 이용 중입니다");
+                        window.close();
+                        break;
+                    case 222:
+                        alert("이미 이용 중인 사물함이 있습니다\n사물함은 1인당 1개만 신청 가능합니다");
+                        opener.location.href="/mypage/lockerHistory"; 
+                        window.close();
+                        break;
+                    case 200:
+                        requestPay(lockerVO);
+                    }    
+            },error:function(data){
+                console.log("에러남ㅠㅠ", data);
+            }
+        })
     }
 })
 
@@ -115,20 +159,33 @@ function requestPay(lockerVO) {
         if (rsp.success) {
             $.ajax({
                 type: "POST",
-                url: "/studyroom/payments", // 예: https://www.myservice.com/payments/complete
-                data: {
-                    'imp_uid': rsp.imp_uid,
-                    'merchant_uid': rsp.merchant_uid,
-                    'amount': price,
-                    'lockerVO':lockerVO
-                 },success:function(){
-
-                },error:function(){
-
+                url: "/studyroom/payments",
+                  data: {
+                    'imp_uid':rsp.imp_uid,
+                    'merchant_uid':rsp.merchant_uid,
+                    'lockerNum':lockerVO.lockerNum,
+                    'amount':price,
+                    'stDate':lockerVO.stDate,
+                    'enDate':lockerVO.enDate,
+                    'rentDays':lockerVO.rentDays,
+                    'userName':lockerVO.userName
+                 },success:function(data){
+                    if(data>0){
+                        let check=window.confirm("사물함 예약을 완료했습니다\n마이페이지에서 확인하시겠습니까?");
+                        if(check){
+                            opener.location.href="/mypage/lockerHistory"; 
+                            window.close();
+                        } else{
+                            opener.location.href="/studyroom/locker"; 
+                            window.close();
+                        }   
+                    }
+                },error:function(data){
+                    console.log("에러남ㅠㅠ", data);
                 }
             })    
         } else {
-        
+            console.log("에러남ㅠㅠ", data);
         }
     });
   }

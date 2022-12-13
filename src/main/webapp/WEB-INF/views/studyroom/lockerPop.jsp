@@ -94,16 +94,16 @@
             <table class="tbl" style="width: 550px;">
                 <thead>
                     <tr>
-                        <th>대여시작일자</th>
-                        <th>대여종료일자</th>
+                        <th style="width: 165px;">대여 시작 일자</th>
+                        <th style="width: 165px;">대여 종료 일자</th>
                         <th>총 이용 금액</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="tabTr">
-                        <td><input type="date" id="stDate" name="stDate" min=""></td>
-                        <td><input type="date" id="enDate" name="enDate" min="" max=""></td>
-                        <td><input type="text" id="price" name="price" readonly style="text-align: end;" value=""></td>
+                        <td style="width: 165px;"><input type="date" id="stDate" name="stDate" min=""></td>
+                        <td style="width: 165px;"><input type="date" style="width: 141px;" id="enDate" name="enDate" min="" max=""></td>
+                        <td><input type="text" id="price" name="price" readonly style="text-align: end;" value="0"></td>
                     </tr>
                 </tbody>
             </table>
@@ -113,7 +113,7 @@
             <div style="margin-bottom: 15px;">
                 <span style="font-size: 17px;">● 이용 금액</span>
             </div>
-            <table class="tbl">
+            <table class="tbl" style="width: 550px;">
                 <thead>
                     <tr>
                         <th scope="col" style="padding: 0 15px;">1일 이용 금액</th>
@@ -128,11 +128,16 @@
                  </tbody>
             </table>
         </div>
+        <div style="margin-top: 10px;">
+            <ul>
+                <li>✅ 1인 1개 사물함 이용 원칙, 타인에게 대여하거나 양도 할 수 없습니다.</li>
+                <li>✅ 대여 기간이 종료되면 사물함을 정리해야 합니다.</li>
+                <li>✅ 대여 기간 종료 후에 사물함을 정리하지 않은 경우 불이익을 받을 수 있습니다.(강제 철거, 폐기)</li>
+            </ul>
+        </div>
         <div class="btnArea">
             <button type="button" class="btn themeBtn" id="rentBtn">사물함 대여</button>
         </div>
-
-        <button onclick="requestPay()">결제하기</button>
     </div>
 
     <script>

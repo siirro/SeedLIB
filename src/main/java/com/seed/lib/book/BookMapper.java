@@ -12,7 +12,13 @@ public interface BookMapper {
 	// 도서 상세정보 출력
 	public BookVO getBookInfo(BookVO bookVO)throws Exception;
 	
-	//도서 디테일페이지
-	public List<BookVO> getDetail (BookVO bookVO) throws Exception;
+	//도서관 보유 정보
+	public BookVO getLibDetail (BookVO bookVO) throws Exception;
+	
+	//같은 장르 도서
+	public List<BookVO> getSameCate (Long category) throws Exception;
+	
+	//같은 작가 도서
+	public List<BookVO> getSameWriter (String writer) throws Exception;
 
 }

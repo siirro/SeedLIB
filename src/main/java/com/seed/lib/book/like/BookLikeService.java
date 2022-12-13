@@ -28,7 +28,7 @@ public class BookLikeService {
 		int exist = bookLikeMapper.getLikeExist(bookLikeVO);
 		boolean isExist = false;
 		
-		if (exist == 1) {
+		if (exist >= 1) {
 			isExist = true;
 		}
 		return isExist;

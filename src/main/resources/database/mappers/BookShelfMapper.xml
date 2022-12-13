@@ -25,24 +25,29 @@
 		SELECT * FROM SHELF WHERE USERNAME = #{userName}
 	</select>
 	
-	<select id="getShelfListP" parameterType="ShelfPager" resultType="ShelfPager">
-		SELECT SS.* FROM
-			(SELECT ROWNUM R, S.*
-				FROM SHELF S
-				WHERE S.USERNAME = #{userName}
-					AND S.SHNAME = #{shName}
-					AND S.CREDATE BETWEEN #{creDateA} AND #{creDateB}
-					ORDER BY
-	    			<choose>
-	    				<when test="select == 'name'">S.SHNAME</when>
-	    				<otherwise>S.CREDATE</otherwise>
-	    			</choose>
-	    			<choose>
-	    				<when test="sort == 'desc'">DESC</when>
-	    				<otherwise>ASC</otherwise>
-	    			</choose>
-	    		)SS
-	    WHERE R BETWEEN #{startRow} AND #{lastRow}
+	<select id="getShelfListP" parameterType="ShelfPager" resultType="BookShelfVO">
+		SELECT *
+			FROM SHELF S
+			WHERE USERNAME = #{userName}
+				<choose>
+					<when test="select == 'name'">AND S.NAME LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'memo'">AND S.MEMO LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
+				<if test="dateA != null and dateB != null">
+					AND S.CREDATE BETWEEN #{dateA} AND #{dateB}
+				</if>
+			ORDER BY
+   			<choose>
+   				<when test="sortHow == 'name'">S.NAME</when>
+   				<when test="sortHow == 'memo'">S.MEMO</when>
+   				<otherwise>S.CREDATE</otherwise>
+   			</choose>
+   			<choose>
+   				<when test="sort == 'desc'">DESC</when>
+   				<otherwise>ASC</otherwise>
+   			</choose>
+	    LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<insert id="setShelfAdd" parameterType="BookShelfVO">
@@ -86,13 +91,20 @@
 			ON P.ISBN = B.ISBN
 		
 			WHERE S.SHNUM = #{shNum}
-				AND B.TITLE = #{title}
-				AND B.ISBN = #{isbn}
-				AND P.REGDATE BETWEEN #{regDateA} AND #{regDateB}
+				<choose>
+					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
+					<otherwise>AND B.ISBN LIKE CONCAT ('%', #{search}, '%')</otherwise>
+				</choose>
+				
+				<if test="dateA != null and dateB != null">
+					AND P.REGDATE BETWEEN #{dateA} AND #{dateB}
+				</if>
 			ORDER BY
    			<choose>
-   				<when test="select == 'title'">B.TITLE</when>
-   				<when test="select == 'isbn'">B.ISBN</when>
+   				<when test="sortHow == 'title'">B.TITLE</when>
+   				<when test="sortHow == 'writer'">B.WRITER</when>
+   				<when test="sortHow == 'isbn'">B.ISBN</when>
    				<otherwise>P.REGDATE</otherwise>
    			</choose>
    			<choose>
@@ -106,18 +118,18 @@
 		<id column="isbn" property="isbn"/>
 			<result column="title" property="title"/>
 			<result column="writer" property="writer"/>
-		<association property="bookPickVOs" javaType="BookPickVO">
+		<collection property="bookPickVOs" javaType="List" ofType="BookPickVO">
 			<id column="pickNum" property="pickNum"/>
-		</association>
+			<result column="isbn" property="isbn"/>
+			<result column="shNum" property="shNum"/>
+			<result column="regDate" property="regDate"/>
+		</collection>
 		<collection property="bookShelfVOs" javaType="List" ofType="BookShelfVO">
 			<id column="shNum" property="shNum"/>
 			<result column="shName" property="shName"/>
 			<result column="shMemo" property="shMemo"/>
-			<result column="userName" property="userName"/>
 			<result column="creDate" property="creDate"/>
 		</collection>
-			
-		
 	</resultMap>
 	
 	
@@ -126,7 +138,7 @@
 	</select>
 	
 	
-	<select id="getBookCount" resultType="Long" parameterType="ShelfPager">
+	<select id="getBookCount" resultType="Long" parameterType="ShelfBookPager">
     	SELECT COUNT(PICKNUM) FROM PICK WHERE SHNUM = #{shNum}
 	</select>
 </mapper>

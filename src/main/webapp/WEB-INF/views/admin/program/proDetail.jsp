@@ -81,12 +81,9 @@
                     </div>
                     
                     <h4>프로그램내용</h4>
-                    <textarea rows="20" cols="">
+                    <pre>
                     	<c:out value="${proVO.proContents}"></c:out>
-                    </textarea>
-                    <p>
-                      ${proVO.proContents}
-                    </p>
+                    </pre>
                     
                     <div class="text-success">
 	                    <hr>
