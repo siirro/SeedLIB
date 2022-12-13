@@ -8,12 +8,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
-    <title>Form Elements | PlainAdmin Demo</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
     
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
@@ -67,7 +63,7 @@
                 <div class="card-style mb-30">
                   <h6 class="mb-25">프로그램 이름</h6>
                   <div class="input-style-3">
-                    <input type="text" name="proName" value="${proVO.proName}"/>
+                    <input type="text" name="proTitle" value="${proVO.proTitle}"/>
                     <span class="icon"><i class="lni lni-bulb"></i></span>
                   </div>
                   <h6 class="mb-25">프로그램 참여 인원 수</h6>
@@ -150,9 +146,8 @@
                       <div class="select-style-1">
                         <div class="select-position">
                           <select name="teacher">
-                            <option value="">직접입력</option>
-                            <option value="강사">강사</option>
-                            <option value="작가">작가</option>
+                            <option value="강사">강사님</option>
+                            <option value="작가">작가님</option>
                             <option value="선생님">선생님</option>
                           </select>
                         </div>
@@ -160,20 +155,15 @@
                     </div>
                   </div>
                   <!-- end select -->
-                  <div class="select-style-1">
-                    <h6 class="mb-25">행사구분 선택</h6>
-                    <div class="select-position">
-                      <select name="proCate">
-                        <option value="선택안함">선택안함</option>
-                        <option value="정기강좌">정기강좌</option>
-                        <option value="특강">특강</option>
-                        <option value="이벤트">이벤트</option>
-                        <option value="독서회">독서회</option>
-                        <option value="기타">기타</option>
-                      </select>
-                    </div>
+                  <!-- ======= textarea style start ======= -->
+                  <h6 class="mb-25">글내용</h6>
+                  <div class="input-style-3">
+                    <textarea name="proContents" rows="15"><c:out value="${proVO.proContents}"></c:out></textarea>
+                    <span class="icon"
+                      ><i class="lni lni-text-format"></i
+                    ></span>
                   </div>
-                  <!-- end select -->
+                  <!-- ======= textarea style end ======= -->
                 </div>
                 <!-- end card -->
                 <!-- ======= input style end ======= -->
@@ -195,17 +185,19 @@
                   </div>
                   <!-- end select -->
                   <div class="select-style-1">
-                    <h6 class="mb-25">접수상태 선택</h6>
+                    <h6 class="mb-25">행사구분 선택</h6>
                     <div class="select-position">
-                      <select name="recStatus">
+                      <select name="proCate">
                         <option value="선택안함">선택안함</option>
-                        <option value="예정">예정</option>
-                        <option value="접수중">접수중</option>
-                        <option value="마감">마감</option>
-                        <option value="종료">종료</option>
+                        <option value="정기강좌">정기강좌</option>
+                        <option value="특강">특강</option>
+                        <option value="이벤트">이벤트</option>
+                        <option value="독서회">독서회</option>
+                        <option value="기타">기타</option>
                       </select>
                     </div>
                   </div>
+                  <!-- end select -->
                   <div class="col-12">
                     <div
                       class="
