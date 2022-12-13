@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +56,7 @@ public class AdminController {
 		List<HopeVO> hl = hopeService.getAdminHopList(hdPager);
 		mv.addObject("hop", hl);
 		mv.addObject("pager", hdPager);
+		mv.addObject("url","/admin/hopeBoList?"+hdPager);
 		return mv;
 	}
 	

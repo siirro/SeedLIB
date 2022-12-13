@@ -11,13 +11,11 @@ $("#libNum").change(function(){
     libNum:libNum,
     searchKeyword:searchKeyword
     }
+  console.log(hdPager.libNum, hdPager.searchKeyword);
 
-    console.log(hdPager.libNum, hdPager.searchKeyword);
-
-    if(hdPager.searchKeyword === ""){
+  if(hdPager.searchKeyword === ""){
 
     }
-
     $.ajax({
       type:"GET",
       url:"/admin/hopeBoList",
@@ -26,6 +24,7 @@ $("#libNum").change(function(){
       dataType: "json", 
       success: function(data){
         console.log("성공");
+
       }
     })
 })
