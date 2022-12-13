@@ -82,22 +82,7 @@
 						<div class="pageSearch">
 							<div class="schForm">
 								
-									<select name="manageCd" id="manageCd" title="도서관 선택" class="schSel">
-										<option value="ALL">전체도서관</option>
-										
-											<option value="MA">새싹도서관</option>
-										
-											<option value="MI">쑥쑥도서관</option>
-										
-											<option value="MH">새봄도서관</option>
-										
-											<option value="ME">도란도란도서관</option>
-										
-											<option value="MB">나무도서관</option>
-										
-									</select>
-								
-								
+					
 								<select name="searchCondition" id="searchCondition" title="검색방법 선택" class="schSel1">
 									<option value="title">제목</option>
 									<option value="contents">내용</option>
@@ -129,12 +114,10 @@
 							</colgroup>
 							<thead>
 								<tr>
+								    <th scope="col" class="mobileHide">선택</th>
 									<th scope="col" class="mobileHide">번호</th>
-
-									
 									<th scope="col" class="mobileHide">제목</th>
-										<th scope="col" class="mobileHide">첨부</th>
-									<th scope="col" class="mobileHide">작성자</th>
+									<th scope="col" class="mobileHide">첨부</th>
 									<th scope="col" class="mobileHide">작성일</th>
 									<th scope="col" class="mobileHide">조회수</th>
 								</tr>
@@ -142,11 +125,10 @@
 							<tbody>
 								<c:forEach items="${list}" var="vo">
 								<tr>
+									<td><input type="checkbox"></td>
 									<td>${vo.boardNum}</td>
 									<td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
-									
 									<td> <img src="../../../../images/ico_attach.png"> </td>
-									<td>${vo.writer}</td>
 									<td>${vo.regDate}</td>
 									<td>${vo.hit}</td>
 								</tr>	
@@ -157,33 +139,30 @@
 				  <div>
 					
 					<!-- //게시판 목록 -->
+					<div>
+					<button type="button" class="btn btn-primary"><a href="./add"> 글쓰기</a></button>
+					<span><button type="button" class="btn btn-denger">전체선택</button></span>
+					<span><button type="button" class="btn btn-primary">삭제</button></span>
+				</div>
+					
 					
 					
 					
 					
 					<!-- 페이징 -->
+					<c:if test="not empty list">
 					<div class="pagingWrap">
-						
+						<input type="hidden" name="page" value="${pager.page}">
 							<p class="paging">
-								<a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
-								<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
+								<a href="./list?page=1" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span>맨 첫 페이지로 가기</a>
+								<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span> 이전 10개 보기</a>
 								<span class="current">1</span>
-								<a href="javascript:fnList(2);">2</a>
-								<a href="javascript:fnList(3);">3</a>
-								<a href="javascript:fnList(4);">4</a>
-								<a href="javascript:fnList(5);">5</a>
-								<a href="javascript:fnList(6);">6</a>
-								<a href="javascript:fnList(7);">7</a>
-								<a href="javascript:fnList(8);">8</a>
-								<a href="javascript:fnList(9);">9</a>
-								<a href="javascript:fnList(10);">10</a>
+								
 								<a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
 								<a href="javascript:fnList(354);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
-
-
-							</p>
-						
+                 			</p>	
 					</div>
+					</c:if>
 					<!-- //페이징 -->
 
 					<!-- End Of the Real Contents-->

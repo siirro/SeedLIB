@@ -15,7 +15,7 @@
 //	@Override
 //	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //	 MemberVO memberVO = memberMapper.getLogin(username);
-//		return null;
+//		return memberVO;
 //	}
 //	
 //

@@ -1,6 +1,9 @@
 package com.seed.lib.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -13,7 +16,7 @@ public class BoardVO {
  private String writer;
  private Date regDate;
  private Long hit;
- private boolean secret;
+ private List<BoardFileVO> boardFileVOs;
  
- private BoardFileVO[] boardFileVOs;
+ private MultipartFile[] files;
 }

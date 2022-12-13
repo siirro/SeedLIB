@@ -1,5 +1,8 @@
 package com.seed.lib.board;
 
+import lombok.Data;
+
+@Data
 public class BoardFileVO {
 	
 	private Long fileNum;
