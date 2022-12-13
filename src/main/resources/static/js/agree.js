@@ -87,9 +87,6 @@ $(".check").each(function (item) {
 
 
     
-
-
-    
   
 
 

@@ -54,57 +54,63 @@ public class MyPageController {
 	private StudyRoomService roomService;
 	@Autowired
 	private BookLoanService loanService;
-  @Autowired
+    @Autowired
 	private MemberService memberService;
+    @Autowired
+  	private MypageService mypageService;
 	
-	@GetMapping("myIndex")
-	public void getIndex(HttpSession session) throws Exception{
-		
+	
+  
+  
+    @GetMapping("myIndex")
+	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv =new ModelAndView();
+	 
 		MemberVO memberVO =(MemberVO)session.getAttribute("memberVO");
-		
-		
-	}
+	   
+		memberVO= mypageService.getMyPage(memberVO);
+
+		mv.addObject("vo", memberVO);
+		mv.setViewName("mypage/myIndex");
+		return mv;
+	    }
 	
-	@GetMapping("memberCheck")
-	public String memberCheck() throws Exception {
-	
-     return "mypage/memberCheck"; 
-     
-	}
-	
-	@PostMapping("memberCheck")
-	@ResponseBody
-	public String memberCheck2(String id, String pw, HttpSession session) throws Exception {
-		log.info("PW:{}",pw);
-		log.info("ID:{}",id);
-		session.setAttribute("result", "ok");
+		@GetMapping("memberCheck")
+		public String memberCheck() throws Exception {
 		
-     return ""; 
-     
-	}
+	     return "mypage/memberCheck"; 
+	     
+		}
+	
+		@PostMapping("memberCheck")
+		@ResponseBody
+		public String memberCheck2(String id, String pw, HttpSession session) throws Exception {
+			log.info("PW:{}",pw);
+			log.info("ID:{}",id);
+			session.setAttribute("result", "ok");
+			
+	     return ""; 
+	     
+		}
 	
 	@GetMapping("memberModify")
-	public ModelAndView setUpdate(MemberVO memberVO,ModelAndView mv,HttpSession session)throws Exception {
-//		String result = session.getAttribute("result").toString();
-//		if(result.equals("ok")) {
-//			
-//		} else {
-//			
-//		}
+	public ModelAndView setUpdate(HttpSession session)throws Exception {
+	
+		ModelAndView mv =new ModelAndView();
+		MemberVO memberVO =new MemberVO();
 		memberVO= (MemberVO)session.getAttribute("memberVO");
-		mv.addObject("memberVO",memberVO);
+		memberVO = mypageService.getMyPage(memberVO);
+		mv.addObject("vo", memberVO);
 		mv.setViewName("mypage/memberModify");
 		return mv;
 	}
 	
 	@PostMapping("memberModify")
-	public ModelAndView setUpdate(MemberVO memberVO, HttpSession session)throws Exception{
+	public ModelAndView setUpdate(MemberVO memberVO)throws Exception{
 		
-		int result = memberService.setUpdate(memberVO);
 		ModelAndView mv =new ModelAndView();
-		log.info("이메일 {} ", memberVO.getEmail());
-		mv.setViewName("redirect:./myIndex");
+		int result = memberService.setUpdate(memberVO);
+		mv.setViewName("redirect:myIndex?userName="+memberVO.getUserName());
 		
 		return mv;
 		

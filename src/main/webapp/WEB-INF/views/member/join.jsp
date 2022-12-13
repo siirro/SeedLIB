@@ -44,7 +44,7 @@
                                <input type="text" name="name" id="user_name"  class="textInput" required="required"></p>
                             
                             <p class="birth"><label for="birthd_year">생년월일</label>
-                               <input type="text" name="birth" id="birthd_year" maxlength="2022"></p>
+                               <input type="date" name="birth" id="birthd_year" maxlength="2022"></p>
                           
                             <p class="gender"><label for="gen">성별</label>
 					
