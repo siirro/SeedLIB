@@ -4,30 +4,16 @@ let libNum = $("#libNum").val();
 let searchKeyword = $("#searchKeyword").val();
 
 $("#libNum").change(function(){
-  console.log($(this).val()); 
   let libNum = $("#libNum").val();
   let searchKeyword = $("#searchKeyword").val();
-  let hdPager = {
-    libNum:libNum,
-    searchKeyword:searchKeyword
-    }
-  console.log(hdPager.libNum, hdPager.searchKeyword);
+    $("#searchFrm").submit();
+});
 
-  if(hdPager.searchKeyword === ""){
-
-    }
-    $.ajax({
-      type:"GET",
-      url:"/admin/hopeBoList",
-      data:JSON.stringify(hdPager),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json", 
-      success: function(data){
-        console.log("성공");
-
-      }
-    })
-})
+$("#searchKeyword").change(function(){
+  let libNum = $("#libNum").val();
+  let searchKeyword = $("#searchKeyword").val();
+    $("#searchFrm").submit();
+});
 
 
 $(".processBtn").click(function(){
