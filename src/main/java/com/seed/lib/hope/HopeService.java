@@ -11,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.HdPager;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class HopeService {
 
 	@Autowired
@@ -62,7 +65,8 @@ public class HopeService {
 	
 	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception{
 		hdPager.makeRow();
-		hdPager.getNum(hopeMapper.getTotalCount(hdPager));
+		hdPager.getNum(hopeMapper.getAdminTotalCount(hdPager));
+		log.info("hd:{}",hdPager);
 		return hopeMapper.getAdminHopList(hdPager);
 	}
 	

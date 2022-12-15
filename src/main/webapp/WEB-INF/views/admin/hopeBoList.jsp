@@ -168,7 +168,7 @@
                     <!-- end table -->
                   </div>
                   <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
+                    <ul class="pagination" style=" justify-content:center;">
                       <c:if test="${pager.pre}">
 	                      <li class="page-item">
 	                        <a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.startNum-1}" aria-label="Previous">
