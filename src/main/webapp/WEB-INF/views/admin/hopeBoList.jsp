@@ -86,7 +86,7 @@
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
-                                      <select name="libNum" id="libNum">
+                                      <select class="searchValue" name="libNum" id="libNum">
                                         <option value="">신청 도서관</option>
                                         <option value="0">씨앗 도서관</option>
                                         <option value="1">새싹 도서관</option>
@@ -105,7 +105,7 @@
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
-                                      <select name="searchKeyword" id="searchKeyword">
+                                      <select class="searchValue" name="searchKeyword" id="searchKeyword">
                                         <option value="">신청 상태</option>
                                         <option value="0">신청 중</option>
                                         <option value="1">신청 취소</option>
@@ -171,17 +171,17 @@
                     <ul class="pagination justify-content-end">
                       <c:if test="${pager.pre}">
 	                      <li class="page-item">
-	                        <a class="page-link text-success" href="./hopeBoList?page=${pager.startNum-1}" aria-label="Previous">
+	                        <a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.startNum-1}" aria-label="Previous">
 	                          <span aria-hidden="true">&laquo;</span>
 	                        </a>
 	                      </li>
                       </c:if>
                       <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-	                      <li class="page-item"><a class="page-link text-success" href="./hopeBoList?page=${i}">${i}</a></li>
+	                      <li class="page-item"><a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${i}">${i}</a></li>
                       </c:forEach>
                       <c:if test="${pager.next}">
 	                      <li class="page-item">
-	                        <a class="page-link text-success" href="./hopeBoList?page=${pager.lastNum+1}" aria-label="Next">
+	                        <a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.lastNum+1}" aria-label="Next">
 	                          <span aria-hidden="true">&raquo;</span>
 	                        </a>
 	                      </li>
