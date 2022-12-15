@@ -31,10 +31,17 @@
 		VALUES(#{imp_uid}, #{merchant_uid}, #{lockerNum}, #{amount}, #{stDate}, #{enDate}, #{rentDays}, 0, #{userName}, 40);
 	</insert>
 	
-	<select id="getLockerHistory" parameterType="String" resultType="LockerVO">
+		<select id="getLockerTotalCount" parameterType="HdPager" resultType="Long">
+		SELECT count(*) FROM LOCKERRENT 
+		WHERE USERNAME=#{userName}
+		ORDER BY RENTNUM DESC
+	</select>
+	
+	<select id="getLockerHistory" parameterType="HdPager" resultType="LockerVO">
 		SELECT * FROM LOCKERRENT 
 		WHERE USERNAME=#{userName}
 		ORDER BY RENTNUM DESC
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<select id="getLockerPrice" parameterType="String" resultType="int">

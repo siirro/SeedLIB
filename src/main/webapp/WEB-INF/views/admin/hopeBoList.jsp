@@ -167,7 +167,7 @@
                     </table>
                     <!-- end table -->
                   </div>
-                  <nav aria-label="Page navigation example">
+                  <nav aria-label="Page navigation">
                     <ul class="pagination" style=" justify-content:center;">
                       <c:if test="${pager.pre}">
 	                      <li class="page-item">

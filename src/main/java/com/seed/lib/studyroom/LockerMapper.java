@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.seed.lib.util.HdPager;
+
 @Mapper
 public interface LockerMapper {
 	
@@ -19,8 +21,11 @@ public interface LockerMapper {
 	//사물함 신청
 	public int setMyLocker(LockerVO lockerVO) throws Exception;
 	
+	//사물함 대여 조회 갯수
+	public Long getLockerTotalCount(HdPager hdPager) throws Exception;
+	
 	//사물함 대여 조회
-	public List<LockerVO> getLockerHistory(String userName) throws Exception;
+	public List<LockerVO> getLockerHistory(HdPager hdPager) throws Exception;
 	
 	//사물함 가격 가져오기
 	public int getLockerPrice(String merchant_uid) throws Exception;
