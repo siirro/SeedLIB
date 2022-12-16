@@ -86,7 +86,7 @@
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
-                                      <select class="searchValue" name="libNum" id="libNum">
+                                      <select class="searchValue" name="libNum" id="libNum" value="${param.libNum}">
                                         <option value="">신청 도서관</option>
                                         <option value="0">씨앗 도서관</option>
                                         <option value="1">새싹 도서관</option>
@@ -105,7 +105,7 @@
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
-                                      <select class="searchValue" name="searchKeyword" id="searchKeyword">
+                                      <select class="searchValue" name="searchKeyword" id="searchKeyword" value="${param.searchKeyword}">
                                         <option value="">신청 상태</option>
                                         <option value="0">신청 중</option>
                                         <option value="1">신청 취소</option>
