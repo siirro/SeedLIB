@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +23,9 @@ import com.seed.lib.member.MemberVO;
 @Controller
 @RequestMapping("donation")
 public class DonationController {
+	
+	@Value("${kakao.api.key}")
+	private String apiKey;
 
 	@Autowired
 	private DonationService donationService;
@@ -60,6 +63,12 @@ public class DonationController {
 		map.put("libNum", donationVO.getLibVO().getLibNum());
 		int result = donationService.setDon(donationVO, map);
 		return result;
+	}
+	
+	@GetMapping("searchDon")
+	@ResponseBody
+	public String searchDon(String result) throws Exception{
+	return apiKey;
 	}
 	
 }

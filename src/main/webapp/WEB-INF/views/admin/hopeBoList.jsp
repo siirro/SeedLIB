@@ -21,6 +21,16 @@
         padding: 15 5px !important;
         width: 30px;
       }
+
+      #searchBtn{
+        color: #219653 !important;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.3rem;
+        padding: 0.25rem 0.5rem;
+      }
+
+      
     </style>
 
   </head>
@@ -81,7 +91,7 @@
                           <th><h6>신청자</h6></th>
                           <th><h6>신청일자</h6></th>
                           <form action="hopeBoList" method="get" id="searchFrm">
-                            <th><h6>
+                            <th style="width: 180px;"><h6>
                               <div class="row justify-content-center">
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
@@ -100,7 +110,7 @@
                                 </div>
                               </div>
                             </h6></th>
-                            <th><h6>
+                            <th style="width: 160px;"><h6>
                               <div class="row justify-content-center">
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
@@ -117,8 +127,8 @@
                                 </div>
                               </div>
                             </h6></th>
+                            <th class="text-start"><button id="searchBtn">조회</buttn></th>
                           </form>
-                          <th class="text-start"><h6>✅</h6></th>
                         </tr>
                         <!-- end table row-->
                       </thead>
@@ -153,7 +163,7 @@
                               <p>${h.statusVO.statName}</p>
                             </td>
                             <td>
-                              <div class="action text-start">
+                              <div class="action text-start" style="justify-content: center;">
                                 <!-- 수정버튼 -->
                                 <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
                                     <i class="lni lni-check-box"></i>

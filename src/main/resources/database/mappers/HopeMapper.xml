@@ -40,7 +40,8 @@
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
-		INSERT INTO HOPE VALUES
+		INSERT INTO HOPE
+		(HOPNUM, HOPTITLE, HOPWRITER, HOPPUBLISHER, HOPMEMO, HOPDATE, ISBN, USERNAME, IMAGE, EMAIL, PRICE, HOPYEAR, CATEGORY)
 		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName}, #{image}, #{email}, #{price}, #{hopYear}, 0)		
 	</insert>
 	

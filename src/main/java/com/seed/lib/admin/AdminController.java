@@ -45,7 +45,17 @@ public class AdminController {
 	public ModelAndView getDonaBoList(HdPager hdPager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<DonationVO> dl = donationService.getAdminDonList(hdPager);
+		log.info("pager:{}", hdPager);		
 		mv.addObject("don", dl);
+		mv.addObject("pager", hdPager);
+		return mv;
+	}
+	
+	@GetMapping("donAdd")
+	public ModelAndView getDonOne(DonationVO donationVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		donationVO = donationService.getDonOne(donationVO);
+		mv.addObject("don", donationVO);
 		return mv;
 	}
 	
