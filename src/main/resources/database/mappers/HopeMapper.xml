@@ -57,7 +57,7 @@
 		
 <!-- 마이페이지 영역 -->
 <sql id="search">
-		 AND L.LIBNUM LIKE CONCAT(#{libNum},'%')
+		 L.LIBNUM LIKE CONCAT(#{libNum},'%')
 		 AND <choose>
 				<when test="searchType==0">HOPTITLE</when>
 				<when test="searchType==1">HOPWRITER</when>
@@ -80,7 +80,7 @@
 				INNER JOIN
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
-		WHERE USERNAME=#{userName} <include refid="search"></include>
+		WHERE USERNAME=#{userName} AND <include refid="search"></include>
 		ORDER BY H.HOPNUM DESC 
 </select>
 
@@ -98,8 +98,9 @@
 			INNER JOIN
 			LIBRARY L
 			ON HL.LIBNUM=L.LIBNUM
-	WHERE USERNAME=#{userName} <include refid="search"></include>
+	WHERE USERNAME=#{userName} AND <include refid="search"></include>
 	ORDER BY HS.STATNUM, H.HOPNUM DESC 
+	LIMIT #{startRow}, #{perPage}
 </select>	
 
 <update id="setUpdateHope" parameterType="HopeVO">
@@ -115,6 +116,24 @@
 </update>
 
 <!-- Admin 관련 -->
+	<select id="getAdminTotalCount" parameterType="HdPager" resultType="Long">
+		SELECT COUNT(H.HOPNUM) FROM HOPE H
+				INNER JOIN
+				HOSTAT HS
+				ON H.HOPNUM=HS.HOPNUM
+					INNER JOIN
+					STATUS S
+					ON HS.STATNUM=S.STATNUM 
+				INNER JOIN
+				HOPLIB HL
+				ON H.HOPNUM=HL.HOPNUM
+					INNER JOIN
+					LIBRARY L
+					ON HL.LIBNUM=L.LIBNUM
+			WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND HS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
+			ORDER BY H.HOPNUM DESC 
+	</select>
+
 	<select id="getAdminHopList" parameterType="HdPager" resultMap="HopeVOResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
@@ -131,6 +150,7 @@
 				ON HL.LIBNUM=L.LIBNUM
 		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND HS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
 		ORDER BY HS.STATNUM, H.HOPNUM DESC 
+		LIMIT #{startRow}, #{perPage}
 	</select>
 
 	<select id="getHopeOne" parameterType="HopeVO" resultMap="HopeVOResult">

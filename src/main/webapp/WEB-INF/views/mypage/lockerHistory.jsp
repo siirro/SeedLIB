@@ -100,10 +100,17 @@
 					</div>
 					<!-- //게시판 목록 -->
 					<!-- 페이징 -->
-					<div class="pagingWrap">
-						<div class="pagination">
-						</div>
-					</div>
+					<c:if test="${not empty locker}">
+                        <div class="pagingWrap">
+                            <p class="paging">
+                                <a href="./lockerHistory?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.startNum-1}" class="btn-paging prev ${pager.pre?'':'disabledLink'}"><span class="blind">이전 3개 보기</span></a>
+                                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+                                    <a href="./lockerHistory?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${i}" id="ppaaggee${i}">${i}</a>
+                                </c:forEach>
+                                <a href="./lockerHistory?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 3개 보기</span></a>
+                            </p>
+                        </div>
+                        </c:if>
 					<!-- //페이징 -->
 					<!-- End Of the Real Contents-->
 				</div>
@@ -114,5 +121,29 @@
 <c:import url="../temp/footer.jsp"></c:import>
 <!-- //footer -->
 		<script src="/js/lockerList.js"></script>
+		<script>
+			try {
+				// 페이징 활성화 
+					// 화살표들 disabledLink 클래스 걸려있으면 누를수없게 a태그에서 href 속성을 삭제시킴
+					let disables = document.querySelectorAll(".disabledLink")
+					disables.forEach(element => {
+						element.removeAttribute('href');
+					});
+
+					let urll = window.location.href;
+					let urlnn = urll.lastIndexOf('=')+1;
+					urllastt = urll.substring(urlnn);
+
+					//파라미터로 받은 페이지 번호에 해당하는 id를 찾아서 걔를 초록색으로 바꿈.
+					let ppaaggee = document.querySelector('#'+"ppaaggee"+'${pager.page}');
+
+					ppaaggee.style.background="#9be15d";
+					ppaaggee.style.color="#fff";
+				// 페이징 활성화 
+				
+			} catch (error) {
+				
+			}
+		</script>
 </body>
 </html>

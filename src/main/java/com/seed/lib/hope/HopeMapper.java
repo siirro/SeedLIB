@@ -29,6 +29,7 @@ public interface HopeMapper {
 	public int setUpdateHope(HopeVO hopeVO) throws Exception;
 	
 //Admin 페이지
+	public Long getAdminTotalCount(HdPager hdPager) throws Exception;
 	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception;
 	public HopeVO getHopeOne(HopeVO hopeVO) throws Exception;
 	public int setHopeCncl(HopeVO hopeVO) throws Exception; 

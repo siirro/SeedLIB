@@ -66,6 +66,7 @@
 				ON DL.LIBNUM=L.LIBNUM
 		WHERE USERNAME=#{userName} <include refid="search"></include>
 		ORDER BY DS.STATNUM, D.DONNUM DESC 
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 
@@ -107,8 +108,9 @@
 				INNER JOIN
 				LIBRARY L
 				ON DL.LIBNUM=L.LIBNUM
-		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM = #{searchType}
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM = #{searchKeyword}
 		ORDER BY DS.STATNUM, D.DONNUM DESC 
+		LIMIT #{startRow}, #{perPage}
 	</select>
 
 <!-- resultMap -->

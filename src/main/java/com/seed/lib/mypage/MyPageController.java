@@ -187,12 +187,14 @@ public class MyPageController {
 	}
 	
 	@GetMapping("lockerHistory")
-	public ModelAndView getLockerList(HttpSession session) throws Exception{
+	public ModelAndView getLockerList(HttpSession session, HdPager hdPager) throws Exception{
 		lockerService.exitAllLocker();
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUserName());
+		hdPager.setUserName(memberVO.getUserName());
+		List<LockerVO> loList = lockerService.getLockerHistory(hdPager);
 		mv.addObject("locker", loList);
+		mv.addObject("pager", hdPager);
 		return mv;
 	}
 	

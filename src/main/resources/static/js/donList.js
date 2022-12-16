@@ -5,3 +5,4 @@ function enterkey(){
        $("#searchBtn").click();
    }
 }
+

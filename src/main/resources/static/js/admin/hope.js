@@ -1,19 +1,22 @@
 console.log("연결");
 
-let libNum = $("#libNum").val();
-let searchKeyword = $("#searchKeyword").val();
+let libNum = "";
+let searchKeyword = "";
 
-$("#libNum").change(function(){
-  let libNum = $("#libNum").val();
-  let searchKeyword = $("#searchKeyword").val();
-    $("#searchFrm").submit();
+$(".searchValue").change(function(){
+  libNum = $("#libNum").val();
+  searchKeyword = $("#searchKeyword").val();
+  console.log(libNum, searchKeyword);
+  $("#libNum").val(libNum);
+  $("#searchKeyword").val(searchKeyword);
+  $("#searchFrm").submit();
 });
 
-$("#searchKeyword").change(function(){
-  let libNum = $("#libNum").val();
-  let searchKeyword = $("#searchKeyword").val();
-    $("#searchFrm").submit();
-});
+// $("#searchKeyword").change(function(){
+//   let libNum = $("#libNum").val();
+//   let searchKeyword = $("#searchKeyword").val();
+//     $("#searchFrm").submit();
+// });
 
 
 $(".processBtn").click(function(){

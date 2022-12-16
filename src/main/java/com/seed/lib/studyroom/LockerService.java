@@ -15,6 +15,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.seed.lib.util.HdPager;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.AccessToken;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -68,8 +69,10 @@ public class LockerService {
 					return mapper.setMyLocker(lockerVO);
 		}
 		
-		public List<LockerVO> getLockerHistory(String userName) throws Exception{
-			return mapper.getLockerHistory(userName);
+		public List<LockerVO> getLockerHistory(HdPager hdPager) throws Exception{
+			hdPager.makeRow();
+			hdPager.getNum(mapper.getLockerTotalCount(hdPager));
+			return mapper.getLockerHistory(hdPager);
 		}
 		
 		public int getLockerPrice(String merchant_uid) throws Exception{

@@ -56,7 +56,6 @@ public class AdminController {
 		List<HopeVO> hl = hopeService.getAdminHopList(hdPager);
 		mv.addObject("hop", hl);
 		mv.addObject("pager", hdPager);
-		mv.addObject("url","/admin/hopeBoList?"+hdPager);
 		return mv;
 	}
 	
