@@ -14,21 +14,20 @@ let totalCount=0;
 let totalBlock=0;
 let searchResult ="";
 ///검색결과입력/////////////////////////////////////////////////
-let hopTitle="";
-let hopWriter="";
-let hopPublisher="";
-let datetime="";
+let title="";
+let writer="";
+let publisher="";
+let bookDate="";
 let isbn="";
 let price=0;
 let image="";
 let searchOne="";
 ///유효성검사///////////////////////////////////////////////////
-let hLibCheck = false;
-let hTitleCheck = false;
-let hWriterCheck = false;
-let hopYearCheck = false;
+let libCheck = false;
+let titleCheck = false;
+let writerCheck = false;
+let yearCheck = false;
 let isbnCheck = false;
-let hMemoCheck = false;
 let date = new Date();
 
 function getKey(){
@@ -40,7 +39,6 @@ function getKey(){
                 result:1
             },success:function(result){
                 apiKey = result;
-                console.log(apiKey);
             }
 })
 }
@@ -57,10 +55,10 @@ $("#searchBtn").click(function(){
     $(".pagination").empty();
     $(".result_screen").empty();
     $(".listWrap").empty();
-    $("#hTitle").empty();
-    $("#hWriter").empty();
-    $("#hPublisher").empty();
-    $("#hopYear").empty();
+    $("#title").empty();
+    $("#writer").empty();
+    $("#publisher").empty();
+    $("#bookDate").empty();
     $("#isbn").empty();
     $("#price").empty();
     query = $("#query").val();
@@ -73,7 +71,7 @@ $("#searchBtn").click(function(){
     }
 })
 
-$("#hopYear").focus(function(){
+$("#bookDate").focus(function(){
     let max = date.getFullYear();
     $(this).attr("max", max);
 })
@@ -101,10 +99,10 @@ function getSearch(){
                         $.each(searchArr[0], (function(index, item){
                             if(item.isbn.length<15){
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="bookApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }else{
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="bookApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }                                
                             $(".listWrap").append(searchOne);
                         })
@@ -173,28 +171,50 @@ $(".pagination").on("click",".page",function(){
     getSearch(); 
 }) 
 
+//직접입력
+$("#selfApply").click(function(){
+    self();
+ })
+ 
+ function self(){
+     $("#bookLib").val("");
+     $("#title").val("");
+     $("#writer").val("");
+     $("#publisher").val("");
+     $("#bookDate").val("");
+     $("#image").val("");
+     $("#isbn").val("");
+     $("#price").val("");
+     $("#title").attr("readonly", false);
+     $("#writer").attr("readonly", false);
+     $("#publisher").attr("readonly", false);
+     $("#bookDate").attr("readonly", false);
+     $("#isbn").attr("readonly", false);
+     $("#price").attr("readonly", false);
+ }
+
 //검색 후 도서 입력
-function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
+function bookApply(title, authors, publisher, datetime, isbn, price, thumbnail){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
         $(".pagination").empty();
         $(".result_screen").empty();
         $(".listWrap").empty();
 
-        hopTitle = title;
-        hopWriter=authors;
+        title = title;
+        writer=authors;
         $("#image").val(thumbnail);
-        $("viewBook").attr("src", thumbnail);
-        if(hopWriter.length<1){
-            hopWriter="미상";
+        $("#viewBook").attr("src", thumbnail);
+        if(writer.length<1){
+            writer="미상";
         }
-        hopPublisher=publisher;
-        if(hopPublisher.length<1){
-            hopPublisher="미상";
+        publisher=publisher;
+        if(publisher.length<1){
+            publisher="미상";
         }
-        datetime=datetime.substr(0,4);
-        if(datetime.length<1){
-            datetime=0000;
+        bookDate=datetime.substr(0,4);
+        if(bookDate.length<1){
+            bookDate=0000;
         }
         isbn=isbn;
         if(isbn.length<1){
@@ -204,16 +224,16 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
         if(price.length<1){
             price=0;
         }
-        $("#hopTitle").val(hopTitle);
-        $("#hopWriter").val(hopWriter);
-        $("#hopPublisher").val(hopPublisher);
-        $("#hopYear").val(datetime);
+        $("#title").val(title);
+        $("#writer").val(writer);
+        $("#publisher").val(publisher);
+        $("#bookDate").val(bookDate);
         $("#isbn").val(isbn);
         $("#price").val(price);
-        $("#hopTitle").attr("readonly", "true");
-        $("#hopWriter").attr("readonly", "true");
-        $("#hopPublisher").attr("readonly", "true");
-        $("#hopYear").attr("readonly", "true");
+        $("#title").attr("readonly", "true");
+        $("#writer").attr("readonly", "true");
+        $("#publisher").attr("readonly", "true");
+        $("#bookDate").attr("readonly", "true");
         $("#isbn").attr("readonly", "true");
         $("#price").attr("readonly", "true");
     } else{
@@ -225,32 +245,32 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
 $("#registBtn").click(function(){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
-        hLibCheck = false;
-        hTitleCheck = false;
-        hWriterCheck = false;
+        libCheck = false;
+        titleCheck = false;
+        writerCheck = false;
         categoryCheck = false;
-        hYearCheck = false;
+        yearCheck = false;
         isbnCheck = false;
-        if($("#hopLib").attr("libNum")!=""){
-            hLibCheck = true;
+        if($("#bookLib").val()!=""){
+            libCheck = true;
         }
-        if($("#hopTitle").val().length>0){
-            hTitleCheck = true;
+        if($("#title").val().length>0){
+            titleCheck = true;
         }
-        if($("#hopWriter").val().length>0){
-            hWriterCheck = true;
+        if($("#writer").val().length>0){
+            writerCheck = true;
         }
-        if($("#hopPublisher").val().length<1){
-            $("#hopPublisher").val("미상");
+        if($("#publisher").val().length<1){
+            $("#publisher").val("미상");
         }
-        if($("#hopYear").val()==""){
+        if($("#bookDate").val()==""){
             alert("발행연도를 입력하세요");
             return;
-        } else if($("#hopYear").val()>date.getFullYear()){
+        } else if($("#bookDate").val()>date.getFullYear()){
             alert("발행연도를 다시 입력하세요");
             return;
         } else{
-            hYearCheck = true;
+            yearCheck = true;
         }
         if($("#isbn").val().length<1){
             alert("isbn을 입력하세요");
@@ -267,11 +287,11 @@ $("#registBtn").click(function(){
         if($("#price").val()==""){
             $("#price").val("0");
         }
-        if(hLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck&&hYearCheck){
+        if(libCheck&&titleCheck&&writerCheck&&categoryCheck&&yearCheck){
             let libVO={
-                libNum:$("#hopLib").attr("libNum")
+                libNum:$("#bookLib").val()
             }
-            let hopeVO = {
+            let bookVO = {
                 hopNum:$("#registBtn").attr("value"),
                 hopTitle:$("#hopTitle").val(),
                 hopWriter:$("#hopWriter").val(),

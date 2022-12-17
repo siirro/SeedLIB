@@ -130,11 +130,12 @@
                         <div class="searchFormWeb">
                             <div class="searchToparea">
                                 <div class="searchBardiv hope">
-                                    <div class="searchInputbox" style="margin-right: 0px;">
+                                    <div class="searchInputbox">
                                         <input hidden="hidden">
                                         <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="도서명을 입력하세요." autocomplete="off">
                                         <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-                                    </div>
+                                      </div>
+                                        <a href="" class="btn input" style="color: #ffffff;" id="selfApply" title="직접입력 설정">직접입력</a>
                                 </div>
                             </div>
                         </div>
@@ -169,8 +170,8 @@
                                                     <!-- input style card start -->
                                                     <div style="display: flex; justify-content: center;">
                                                       <div class="card-style mb-30">
-                                                        <div class="card-image">
-                                                            <img id="viewBook" style="width:200px;"
+                                                        <div class="card-image" style="margin-bottom: 0px;">
+                                                            <img id="viewBook" style="width:200px; height: auto;"
                                                               src="/images/favicon.png"
                                                               alt="씨앗도서관"
                                                             />
@@ -201,7 +202,7 @@
                                                         <tr>
                                                             <th scope="row"><label for="title">도서명</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" id="title" name="title" value="${hope.hopTitle}" class="form-control">
+                                                                <input type="text" id="title" name="title" value="" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
