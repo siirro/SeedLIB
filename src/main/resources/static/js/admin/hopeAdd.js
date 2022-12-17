@@ -291,13 +291,11 @@ $("#registBtn").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                     success:function(data){
-                        console.log(data);
-                        alert("희망 도서 신청 완료했습니다");
-                        location.href="../mypage/hopeList";
+                        alert(data.msg);
+                        location.href="../admin/hopeBoList";
                     },error:function(error){
                         console.log("errorㅠㅠ", error);
                         alert("서버 문제로 처리가 불가합니다");
-                        location.href="/hope/setHope";
                     }                
                 })
         }else{

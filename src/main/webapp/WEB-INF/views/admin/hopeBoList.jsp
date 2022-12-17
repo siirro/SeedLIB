@@ -127,7 +127,7 @@
                                 </div>
                               </div>
                             </h6></th>
-                            <th class="text-start"><button id="searchBtn">조회</buttn></th>
+                            <th class="text-start" style="width: 50px;"><button id="searchBtn">조회</buttn></th>
                           </form>
                         </tr>
                         <!-- end table row-->
@@ -163,12 +163,14 @@
                               <p>${h.statusVO.statName}</p>
                             </td>
                             <td>
-                              <div class="action text-start" style="justify-content: center;">
-                                <!-- 수정버튼 -->
-                                <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
+                              <c:if test="${h.statusVO.statNum eq 0}">
+                                <div class="action text-start" style="justify-content: center;">
+                                  <!-- 수정버튼 -->
+                                  <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
                                     <i class="lni lni-check-box"></i>
-                                </a>
-                              </div>
+                                  </a>
+                                </div>
+                              </c:if>
                             </td>
                           </tr>
                           </c:forEach>

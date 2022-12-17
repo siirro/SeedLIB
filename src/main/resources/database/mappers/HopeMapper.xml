@@ -5,6 +5,10 @@
 
 <mapper namespace="com.seed.lib.hope.HopeMapper">
 <!-- 희망도서관련 -->
+	<select id="isHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
+	</select>
+
 	<select id="getHaveBook" parameterType="Map" resultType="int">
 		SELECT COUNT(*) FROM BOOK B
 			INNER JOIN
@@ -42,6 +46,7 @@
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
 		INSERT INTO HOPE
 		(HOPNUM, HOPTITLE, HOPWRITER, HOPPUBLISHER, HOPMEMO, HOPDATE, ISBN, USERNAME, IMAGE, EMAIL, PRICE, HOPYEAR, CATEGORY)
+		VALUES
 		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName}, #{image}, #{email}, #{price}, #{hopYear}, 0)		
 	</insert>
 	

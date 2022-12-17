@@ -265,7 +265,7 @@ $("#registBtn").click(function(){
         if($("#price").val()==""){
             $("#price").val("0");
         }
-        if(dLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck&&hYearCheck){
+        if(dLibCheck&&dTitleCheck&&dWriterCheck&&categoryCheck&&dYearCheck){
             let libVO={
                 libNum:$("#donLib").attr("libNum")
             }
@@ -290,13 +290,40 @@ $("#registBtn").click(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                     success:function(data){
-                        console.log(data);
-                        alert("기증 도서 신청 완료했습니다");
-                        location.href="../mypage/donList";
-                    },error:function(error){
+                        if(data.result>0){
+                            alert(data.msg);
+                            location.href="../admin/donaBoList";
+                        }else{
+                            let qCheck = window.confirm(data.msg);
+                            if(qCheck){
+                                console.log("수량 추가할거야");
+                                $.ajax({
+                                    type:"POST",
+                                    url:"/admin/updateQuantity",
+                                    data:JSON.stringify(donationVO),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                        success:function(data){
+                                            if(data.result>0){
+                                                alert(data.msg);
+                                                location.href="../admin/donaBoList";
+                                            }else{
+                                                alert(data.msg);
+                                            }        
+                                        },error:function(error){
+                                            console.log("errorㅠㅠ", error);
+                                            alert("서버 문제로 처리가 불가합니다");
+                                            location.reload();
+                                        }                
+                                    })
+                                }else{
+                                    return;
+                                }
+                    }
+                },error:function(error){
                         console.log("errorㅠㅠ", error);
                         alert("서버 문제로 처리가 불가합니다");
-                        location.href="/don/setdon";
+                        location.reload();
                     }                
                 })
         }else{

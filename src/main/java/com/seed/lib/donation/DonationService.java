@@ -38,7 +38,6 @@ public class DonationService {
 			}
 		}
 	}
-
 	
 	//마이페이지
 	public List<DonationVO> getDonList(HdPager hdPager) throws Exception{
@@ -63,33 +62,48 @@ public class DonationService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public int setDonOne(DonationVO donationVO) throws Exception{
-		BookVO bookVO = new BookVO();
-		Map<String, Object> map = new HashMap<>();
-		bookVO.setIsbn(donationVO.getIsbn());
-		bookVO.setTitle(donationVO.getDonTitle());
-		bookVO.setWriter(donationVO.getDonWriter());
-		bookVO.setPublisher(donationVO.getDonPublisher());
-		bookVO.setBookDate(donationVO.getDonYear());
-		bookVO.setCategory(donationVO.getCategory());
-		bookVO.setImage(donationVO.getImage());
-		bookVO.setNum(donationMapper.bookCount()+1L);
-		map.put("libNum", donationVO.getLibVO().getLibNum());
-		map.put("isbn", donationVO.getIsbn());
-		int result = donationMapper.setDonOne(bookVO);
+	public int setDonOne(DonationVO donationVO, Map<String, Object> map) throws Exception{
+		int result = donationMapper.isHaveBook(map);
+			if(result>0) {
+				result = donationMapper.getHaveBook(map);
+				if(result>0) {
+					return 0;					
+				} 			
+			} else {
+				BookVO bookVO = new BookVO();
+				bookVO.setIsbn(donationVO.getIsbn());
+				bookVO.setTitle(donationVO.getDonTitle());
+				bookVO.setWriter(donationVO.getDonWriter());
+				bookVO.setPublisher(donationVO.getDonPublisher());
+				bookVO.setBookDate(donationVO.getDonYear());
+				bookVO.setCategory(donationVO.getCategory());
+				bookVO.setImage(donationVO.getImage());
+				bookVO.setNum(donationMapper.bookCount()+1L);
+				result = donationMapper.setDonOne(bookVO);
+			}
+				result = donationMapper.setLibOne(map);
+				if(result<1) {
+					throw new Exception();
+				}else {
+					result = donationMapper.setAdminDonStat(donationVO);
+					if(result<1) {
+						throw new Exception();
+					} else {
+						return result;
+					}
+				}
+			}
+	
+	public int updateQuantity(DonationVO donationVO, Map<String, Object> map) throws Exception{
+		int result = donationMapper.updateQuantity(map);
 		if(result<0) {
 			throw new Exception();
 		}else {
-			result = donationMapper.setLibOne(map);
+			result = donationMapper.setAdminDonStat(donationVO);
 			if(result<0) {
 				throw new Exception();
-			}else {
-				result = donationMapper.setAdminDonStat(donationVO);
-				if(result<0) {
-					throw new Exception();
-				} else {
-					return result;
-				}
+			} else {
+				return result;
 			}
 		}
 	}

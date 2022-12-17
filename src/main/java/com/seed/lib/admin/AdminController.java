@@ -25,6 +25,7 @@ import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.HdPager;
 
 import lombok.extern.slf4j.Slf4j;
+import retrofit2.http.POST;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -61,15 +62,35 @@ public class AdminController {
 	
 	@PostMapping("donAdd")
 	@ResponseBody
-	public Map<String, String> setDonOne(@RequestBody DonationVO donationVO)throws Exception{
-		Map<String, String> map = new HashMap<>();
-		int result = donationService.setDonOne(donationVO);
+	public Map<String, Object> setDonOne(@RequestBody DonationVO donationVO)throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		map.put("isbn", donationVO.getIsbn());
+		map.put("libNum", donationVO.getLibVO().getLibNum());
+		int result = donationService.setDonOne(donationVO, map);
 		if(result>0) {
-			map.put("msg", "신청 반려 처리했습니다");
+			map.put("result", result);
+			map.put("msg", "기증도서 신청 처리를 완료했습니다");
 		}else {
-			map.put("msg", "존재하지 않는 신청 건입니다");
+			map.put("result", result);
+			map.put("msg", "이미 입고된 책입니다\n수량을 수정하시겠습니까?");
 		}
-		map.put("url", "/admin/donaBoList");
+		return map;
+	}
+	
+	@PostMapping("updateQuantity")
+	@ResponseBody
+	public Map<String, Object>  updateQuantity (@RequestBody DonationVO donationVO) throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		map.put("isbn", donationVO.getIsbn());
+		map.put("libNum", donationVO.getLibVO().getLibNum());
+		int result = donationService.updateQuantity(donationVO, map);
+		if(result>0) {
+			map.put("result", result);
+			map.put("msg", "입고 도서 수량 수정 처리를 완료했습니다");
+		}else {
+			map.put("result", result);
+			map.put("msg", "입고 도서 수량 수정 처리를 실패했습니다");
+		}
 		return map;
 	}
 	
@@ -125,7 +146,7 @@ public class AdminController {
 		Map<String, String> map = new HashMap<>();
 		int result = hopeService.setHopeOne(hopeVO);
 		if(result>0) {
-			map.put("msg", "신청 반려 처리했습니다");
+			map.put("msg", "희망 도서 신청 처리를 완료했습니다");
 		}else {
 			map.put("msg", "존재하지 않는 신청 건입니다");
 		}

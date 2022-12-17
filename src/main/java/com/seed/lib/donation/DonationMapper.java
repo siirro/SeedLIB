@@ -27,6 +27,9 @@ public interface DonationMapper {
 	public DonationVO getDonOne(DonationVO donationVO) throws Exception;
 	public int setDonCncl(DonationVO donationVO) throws Exception; 
 	public Long bookCount() throws Exception;
+	public int isHaveBook(Map<String, Object> map) throws Exception;
+	public int getHaveBook(Map<String, Object> map) throws Exception;
+	public int updateQuantity(Map<String, Object> map) throws Exception;
 	public int setDonOne(BookVO bookVO) throws Exception;
 	public int setLibOne(Map<String, Object> map) throws Exception;
 	public int setAdminDonStat(DonationVO donationVO) throws Exception;

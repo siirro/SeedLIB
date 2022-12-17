@@ -85,16 +85,6 @@
 	</update>
 	
 <!-- Admin 영역 -->
-<sql id="searchAdmin">
-		 L.LIBNUM LIKE CONCAT(#{libNum},'%')
-		 AND <choose>
-				<when test="searchType==0">DONTITLE</when>
-				<when test="searchType==2">DONWRITER</when>
-				<when test="searchType==3">DONWRITER</when>
-				<otherwise>DONPUBLISHER</otherwise>
-			 </choose>
-			LIKE CONCAT('%', #{searchKeyword}, '%')
-</sql>	
 	
 	<select id="getAdminTotalCount" parameterType="HdPager" resultType="Long">
 	SELECT COUNT(D.DONNUM) FROM DONATION D
@@ -128,7 +118,7 @@
 				INNER JOIN
 				LIBRARY L
 				ON DL.LIBNUM=L.LIBNUM
-		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM = #{searchKeyword}
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
 		ORDER BY DS.STATNUM, D.DONNUM DESC 
 		LIMIT #{startRow}, #{perPage}
 	</select>
@@ -165,6 +155,27 @@
 	<select id="bookCount" resultType="Long">
 		SELECT COUNT(*) FROM BOOK		
 	</select>
+	
+	<select id="isHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
+	</select>
+	
+	<select id="getHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
+	</select>
+	
+	<update id="updateQuantity" parameterType="Map">
+		UPDATE BOOKLIB
+		SET QUANTITY=QUANTITY+1
+		WHERE ISBN=#{isbn} AND LIBNUM=#{libNum}	
+	</update>
 
 	<insert id="setDonOne" parameterType="BookVO">
 		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, CATEGORY, IMAGE, BOOKCOUNT, BOOKHEART, NUM, REGDATE)
