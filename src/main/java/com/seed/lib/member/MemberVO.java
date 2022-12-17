@@ -12,8 +12,8 @@ import com.seed.lib.book.BookVO;
 import lombok.Data;
 
 @Data
-//public class MemberVO  implements UserDetails{
-	public class MemberVO {
+public class MemberVO  implements UserDetails{
+//	public class MemberVO {
 	
 	private String userName;
 	private String password;
@@ -36,46 +36,46 @@ import lombok.Data;
 	
 	private List<RoleVO> roleVOs;
 
-//
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//
-//		List<GrantedAuthority> authorities =new ArrayList<>();
-//		for (RoleVO roleVO: roleVOs) {
-//		authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
-//			roleVO.getRoleName();
-//			
-//		}
-//		return authorities;
-//	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		List<GrantedAuthority> authorities =new ArrayList<>();
+		for (RoleVO roleVO: roleVOs) {
+		authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
+			roleVO.getRoleName();
+			
+		}
+		return authorities;
+	}
 
 
-//	@Override
-//	public String getUsername() {
-//		// TODO Auto-generated method stub
-//		return this.userName;
-//	}
-//
-//
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}
-//
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}	
-//
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.userName;
+	}
+
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}	
+
 
 
 }

@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/layout.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-
+ <link rel="shortcut icon" href="/images/favicon.png">
+    <title>대여규칙 : 씨앗도서관 ☘</title>
 </head>
 <body>
     <div class="wrap">
@@ -88,13 +89,12 @@
 		<tr>
 			<th scope="col">구분</th>
 			<th scope="col">개인회원</th>
-			<th scope="col">가족회원</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>대출방법</td>
-			<td class="ta_l" colspan="2">본인 회원증(모바일 또는 실물 회원증) 제시</td>
+			<td>대출조건</td>
+			<td class="ta_l" colspan="2">씨앗 도서관 회원</td>
 		</tr>
 		<tr>
 			<td>대출기한 및 권수</td>
@@ -103,20 +103,11 @@
 				<li>1인 5권 이내</li>
 				<li>14일간 (2주)</li>
 			</ul>
-
-			<div>※DVD : 1인당 2점 X 가족회원수<br>
-			&nbsp; (가족구성원별&nbsp;2점 대출 가능)</div>
-			</td>
-			<td class="ta_l">
-			<ul class="dot-list">
-				<li>가족수 x 5권</li>
-				<li>14일간 (2주)</li>
-			</ul>
 			</td>
 		</tr>
 		<tr>
-			<td>동일도서 재대출</td>
-			<td class="ta_l" colspan="2">반납 후 3일 이후에 재대출 가능(예약이 없을 시 1주일 연장 가능)</td>
+			<td>도서 연장</td>
+			<td class="ta_l" colspan="2">예약이 없을 시 1주일 연장 가능</td>
 		</tr>
 		<tr>
 			<td>반납</td>
@@ -207,7 +198,7 @@
 			<td>가능 권수</td>
 			<td class="ta_l pl20">
 			<ul class="dot-list">
-				<li>2권<br>
+				<li>3권<br>
 				※대출을 원하는 책이 대출중인 경우 예약가능(대출가능도서는 예약불가)</li>
 			</ul>
 			</td>

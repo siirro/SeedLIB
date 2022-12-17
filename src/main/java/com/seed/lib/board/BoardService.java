@@ -29,8 +29,8 @@ public class BoardService {
 	
 
 	
-	public List<BoardVO> getList(BoardVO boardVO)throws Exception{
-		return boardMapper.getList(boardVO);
+	public List<BoardVO> getList(Pager pager)throws Exception{
+		return boardMapper.getList(pager);
 	}
 	
 	public BoardVO getDetail(BoardVO boardVO)throws Exception{
@@ -60,10 +60,21 @@ public class BoardService {
 		   boardFileVO.setFileName(fileName);
 		   boardFileVO.setOriName(f.getOriginalFilename());
 		   boardFileVO.setBoardNum(boardVO.getBoardNum());
-		   boardMapper.setFileAdd(boardFileVO);
+		     boardMapper.setFileAdd(boardFileVO);
 		  } 
 		}
 
+		return result;
+	}
+	
+	public int setUdate(BoardVO boardVO)throws Exception {
+
+		int result = boardMapper.setUpdate(boardVO);
+		return result;
+	}
+	
+	public int setDelete(BoardVO boardVO)throws Exception{
+		int result= boardMapper.setDelete(boardVO);
 		return result;
 	}
 
