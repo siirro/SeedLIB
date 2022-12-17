@@ -197,7 +197,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="title">희망도서명</label><span class="essential themeFC">*</span></th>
+                                                            <th scope="row"><label for="title">기증도서명</label><span class="essential themeFC">*</span></th>
                                                             <td>
                                                                 <input type="text" id="donTitle" name="donTitle" value="${don.donTitle}" class="form-control">
                                                             </td>

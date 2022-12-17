@@ -51,8 +51,8 @@ public class DonationController {
 	}
 
 	@GetMapping("setDon")
-	public void setHope()throws Exception{
-//		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	public void setDon(HttpSession session)throws Exception{
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
 	}
 	

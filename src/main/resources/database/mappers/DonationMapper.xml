@@ -8,7 +8,8 @@
 	<insert id="setDon" parameterType="DonationVO" useGeneratedKeys="true" keyProperty="donNum">
 		INSERT INTO DONATION
 		(DONNUM, DONTITLE, DONWRITER, DONPUBLISHER, DONMEMO, DONDATE, EMAILAGREE, ISBN, USERNAME, IMAGE, EMAIL, PRICE, DONYEAR, CATEGORY)
-		(#{donNum}, #{donTitle}, #{donWriter}, #{donPublisher}, #{donMemo}, SYSDATE(),  #{emailAgree}, 0, #{userName}, 0, #{email}, 0, 0, 0)		
+		VALUES
+		(#{donNum}, #{donTitle}, #{donWriter}, #{donPublisher}, #{donMemo}, SYSDATE(), #{emailAgree}, 0, #{userName}, 0, #{email}, 0, 0, 0)		
 	</insert>
 	
 	<insert id="setDonStat" parameterType="DonationVO">

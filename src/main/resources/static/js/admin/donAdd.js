@@ -57,12 +57,12 @@ $("#searchBtn").click(function(){
     $(".pagination").empty();
     $(".result_screen").empty();
     $(".listWrap").empty();
-    $("#hTitle").empty();
-    $("#hWriter").empty();
-    $("#hPublisher").empty();
-    $("#donYear").empty();
-    $("#isbn").empty();
-    $("#price").empty();
+    $("#donTitle").val("");
+    $("#donWriter").val("");
+    $("#donPublisher").val("");
+    $("#donYear").val("");
+    $("#isbn").val("");
+    $("#price").val("");
     query = $("#query").val();
     if(query!=""){
        getKey();
@@ -133,7 +133,6 @@ function paging(totalCount){
     if(curBlock<totalBlock){
         next=true;
     }
-    console.log("page: ",pageNum,"totalcount: ",totalCount,"totalpage: ",totalPage,"totalblock: ",totalBlock,"startnum: ",startNum,"startrow: ",startRow, "curBlock: ",curBlock, "lastNum: ", lastNum)
     let r='<div class="pagDiv"><ul class="pageList"><li class="pageSet"><button type="button" class="page btn-paging prev" id="pagePre" data-num="'+(startNum-5)+'"></button></li>'
     if(pageNum==totalPage){
         alert("마지막 페이지입니다")
@@ -270,7 +269,7 @@ $("#registBtn").click(function(){
             let libVO={
                 libNum:$("#donLib").attr("libNum")
             }
-            let doneVO = {
+            let donationVO = {
                 donNum:$("#registBtn").attr("value"),
                 donTitle:$("#donTitle").val(),
                 donWriter:$("#donWriter").val(),
@@ -292,7 +291,7 @@ $("#registBtn").click(function(){
                 dataType: "json",
                     success:function(data){
                         console.log(data);
-                        alert("희망 도서 신청 완료했습니다");
+                        alert("기증 도서 신청 완료했습니다");
                         location.href="../mypage/donList";
                     },error:function(error){
                         console.log("errorㅠㅠ", error);

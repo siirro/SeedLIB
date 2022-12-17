@@ -59,6 +59,34 @@ public class AdminController {
 		return mv;
 	}
 	
+	@PostMapping("donAdd")
+	@ResponseBody
+	public Map<String, String> setDonOne(@RequestBody DonationVO donationVO)throws Exception{
+		Map<String, String> map = new HashMap<>();
+		int result = donationService.setDonOne(donationVO);
+		if(result>0) {
+			map.put("msg", "신청 반려 처리했습니다");
+		}else {
+			map.put("msg", "존재하지 않는 신청 건입니다");
+		}
+		map.put("url", "/admin/donaBoList");
+		return map;
+	}
+	
+	@PostMapping("donAddCncl")
+	@ResponseBody
+	public Map<String, String> setDonCncl(@RequestBody DonationVO donationVO)throws Exception{
+		Map<String, String> map = new HashMap<>();
+		int result = donationService.setDonCncl(donationVO);
+		if(result>0) {
+			map.put("msg", "신청 반려 처리했습니다");
+		}else {
+			map.put("msg", "존재하지 않는 신청 건입니다");
+		}
+		map.put("url", "/admin/donaBoList");
+		return map;
+	}
+	
 	// 희망도서 목록 조회
 	@GetMapping("hopeBoList")
 	public ModelAndView getHopeBoList(HdPager hdPager)throws Exception{
