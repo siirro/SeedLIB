@@ -12,6 +12,7 @@ import com.seed.lib.util.HdPager;
 public interface HopeMapper {
 
 //검증용
+	public int isHaveBook(Map<String, Object> map) throws Exception;
 	public int getHaveBook(Map<String, Object> map) throws Exception;
 	public int getOverLapBook(Map<String, Object> map) throws Exception;
 	public int getMonth(HopeVO hopeVO) throws Exception;

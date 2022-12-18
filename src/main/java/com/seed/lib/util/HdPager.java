@@ -29,7 +29,6 @@ public class HdPager {
 	
 	public void makeRow() {
 		this.startRow = (this.getPage()-1)*perPage;		
-		this.lastRow = this.getPage()*this.getPerPage();
 	}
 	
 	public Long getPage() {

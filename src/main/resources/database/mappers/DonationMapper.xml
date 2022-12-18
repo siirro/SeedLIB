@@ -6,8 +6,10 @@
 <mapper namespace="com.seed.lib.donation.DonationMapper">
 <!-- 기증도서관련 -->
 	<insert id="setDon" parameterType="DonationVO" useGeneratedKeys="true" keyProperty="donNum">
-		INSERT INTO DONATION VALUES
-		(#{donNum}, #{donTitle}, #{donWriter}, #{donPublisher}, #{donMemo}, SYSDATE(), #{userName}, #{emailAgree})		
+		INSERT INTO DONATION
+		(DONNUM, DONTITLE, DONWRITER, DONPUBLISHER, DONMEMO, DONDATE, EMAILAGREE, ISBN, USERNAME, IMAGE, EMAIL, PRICE, DONYEAR, CATEGORY)
+		VALUES
+		(#{donNum}, #{donTitle}, #{donWriter}, #{donPublisher}, #{donMemo}, SYSDATE(), #{emailAgree}, 0, #{userName}, 0, #{email}, 0, 0, 0)		
 	</insert>
 	
 	<insert id="setDonStat" parameterType="DonationVO">
@@ -83,16 +85,24 @@
 	</update>
 	
 <!-- Admin 영역 -->
-<sql id="searchAdmin">
-		 L.LIBNUM LIKE CONCAT(#{libNum},'%')
-		 AND <choose>
-				<when test="searchType==0">DONTITLE</when>
-				<when test="searchType==2">DONWRITER</when>
-				<when test="searchType==3">DONWRITER</when>
-				<otherwise>DONPUBLISHER</otherwise>
-			 </choose>
-			LIKE CONCAT('%', #{searchKeyword}, '%')
-</sql>	
+	
+	<select id="getAdminTotalCount" parameterType="HdPager" resultType="Long">
+	SELECT COUNT(D.DONNUM) FROM DONATION D
+			INNER JOIN
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
+				INNER JOIN
+				STATUS S
+				ON DS.STATNUM=S.STATNUM 
+			INNER JOIN
+			DONLIB DL
+			ON D.DONNUM=DL.DONNUM
+				INNER JOIN
+				LIBRARY L
+				ON DL.LIBNUM=L.LIBNUM
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
+		ORDER BY D.DONNUM DESC 
+</select>
 	
 	<select id="getAdminDonList" parameterType="HdPager" resultMap="adminListResult">
 		SELECT * FROM DONATION D
@@ -108,10 +118,81 @@
 				INNER JOIN
 				LIBRARY L
 				ON DL.LIBNUM=L.LIBNUM
-		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM = #{searchKeyword}
+		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND DS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
 		ORDER BY DS.STATNUM, D.DONNUM DESC 
 		LIMIT #{startRow}, #{perPage}
 	</select>
+
+	<select id="getDonOne" parameterType="DonationVO" resultMap="DonationVOResult">
+		SELECT * FROM DONATION D
+			INNER JOIN
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
+				INNER JOIN
+				STATUS S
+				ON DS.STATNUM=S.STATNUM 
+			INNER JOIN
+			DONLIB DL
+			ON D.DONNUM=DL.DONNUM
+				INNER JOIN
+				LIBRARY L
+				ON DL.LIBNUM=L.LIBNUM
+		WHERE D.DONNUM=#{donNum}
+	</select>
+	
+	<update id="setDonCncl" parameterType="DonationVO">
+		UPDATE DONATION D
+			INNER JOIN
+			DOSTAT DS
+			ON D.DONNUM=DS.DONNUM
+				INNER JOIN
+				STATUS S
+				ON DS.STATNUM=S.STATNUM
+				SET DS.STATNUM=3
+		WHERE USERNAME=#{userName} AND D.DONNUM=#{donNum}
+	</update>
+	
+	<select id="bookCount" resultType="Long">
+		SELECT MAX(NUM) FROM BOOK	
+	</select>
+	
+	<select id="isHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
+	</select>
+	
+	<select id="getHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
+	</select>
+	
+	<update id="updateQuantity" parameterType="Map">
+		UPDATE BOOKLIB
+		SET QUANTITY=QUANTITY+1
+		WHERE ISBN=#{isbn} AND LIBNUM=#{libNum}	
+	</update>
+
+	<insert id="setDonOne" parameterType="BookVO">
+		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, CATEGORY, IMAGE, BOOKCOUNT, BOOKHEART, NUM, REGDATE)
+		VALUES (#{isbn}, #{title}, #{writer}, #{publisher}, #{bookDate}, #{category}, #{image}, 0, 0, #{num}, SYSDATE());
+	</insert>
+	
+	<insert id="setLibOne" parameterType="Map">
+		INSERT INTO BOOKLIB
+		(BLIBNUM, LIBNUM, ISBN, QUANTITY, ABLE)
+		VALUES(0, #{libNum}, #{isbn}, 1, 1)
+	</insert>
+	
+	<update id="setAdminDonStat" parameterType="DonationVO">
+		UPDATE DOSTAT SET STATNUM=2
+		WHERE DONNUM=#{donNum}
+	</update>	
+	
 
 <!-- resultMap -->
 <resultMap type="DonationVO" id="DonationVOResult">
@@ -123,6 +204,11 @@
 		<result column="DONDATE" property="donDate"/>
 		<result column="USERNAME" property="userName"/>
 		<result column="EMAILAGREE" property="emailAgree"/>
+		<result column="ISBN" property="isbn"/>
+		<result column="IMAGE" property="image"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PRICE" property="price"/>
+		<result column="DONYEAR" property="donYear"/>
 	<association property="statusVO">
 		<id column="STATNUM" property="statNum"/>
 		<result column="STATNAME" property="statName"/>

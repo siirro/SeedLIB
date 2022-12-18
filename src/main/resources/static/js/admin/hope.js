@@ -3,14 +3,14 @@ console.log("연결");
 let libNum = "";
 let searchKeyword = "";
 
-$(".searchValue").change(function(){
-  libNum = $("#libNum").val();
-  searchKeyword = $("#searchKeyword").val();
-  console.log(libNum, searchKeyword);
-  $("#libNum").val(libNum);
-  $("#searchKeyword").val(searchKeyword);
-  $("#searchFrm").submit();
-});
+// $(".searchValue").change(function(){
+//   libNum = $("#libNum").val();
+//   searchKeyword = $("#searchKeyword").val();
+//   console.log(libNum, searchKeyword);
+//   $("#libNum").val(libNum);
+//   $("#searchKeyword").val(searchKeyword);
+//   $("#searchFrm").submit();
+// });
 
 // $("#searchKeyword").change(function(){
 //   let libNum = $("#libNum").val();

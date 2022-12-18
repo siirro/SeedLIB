@@ -27,6 +27,8 @@ public class BookVO {
 	private Long num;
 	private Date regDate;
 	
+	private LibVO libVO;
+	
 	private List<LibVO> libVOs;
 	private List<BookLibVO> bookLibVOs;
 	private List<BookShelfVO> bookShelfVOs;
