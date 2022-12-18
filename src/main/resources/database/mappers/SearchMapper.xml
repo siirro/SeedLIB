@@ -5,6 +5,64 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
+<select id="getAccessionBook" resultType="BookVO">
+SELECT * FROM BOOK
+ORDER BY REGDATE DESC
+LIMIT 0, 5
+</select>
+
+<select id="getPopularBook" resultType="BookVO">
+SELECT * FROM BOOK
+ORDER BY BOOKHEART DESC
+LIMIT 0, 5
+</select>
+
+<select id="getSearchInfo" resultMap="getDetailResult2" parameterType="BookVO">
+	SELECT B.*, BL.*, L.*
+	FROM BOOK B
+		INNER JOIN BOOKLIB BL
+		ON B.ISBN = BL.ISBN
+		INNER JOIN LIBRARY L
+		ON L.LIBNUM  = BL.LIBNUM
+	WHERE B.ISBN = #{isbn}
+	</select>
+	
+	<resultMap type="BookVO" id="getDetailResult2">
+		<id column="isbn" property="isbn" />
+			<result column="title" property="title"/>
+			<result column="writer" property="writer"/>
+			<result column="publisher" property="publisher"/>
+			<result column="bookDate" property="bookDate"/>
+			<result column="category" property="category"/>
+			<result column="image" property="image"/>
+			<result column="bookCount" property="bookCount"/>
+			<result column="bookHeart" property="bookHeart"/>
+			<result column="num" property="num"/>
+			
+			<collection property="bookLibVOs" javaType="List" ofType="BookLibVO">
+				<id column="libnum" property="libNum"/>
+				<result column="quantity" property="quantity"/>
+				<result column="able" property="able"/>
+			</collection>
+			
+			<collection property="libVOs" javaType="List" ofType="LibVO">
+				<id column="libNum" property="libNum"/>
+				<result column="libName" property="libName"/>
+			</collection>
+	</resultMap>
+
+<select id="getPopularWord" resultType="PopularVO">
+SELECT WORD, COUNT(WORD) AS COUNT
+FROM POPULAR
+GROUP BY WORD
+ORDER BY COUNT DESC
+LIMIT 0, 10
+</select>
+
+<insert id="setPopularWord" parameterType="Pager">
+INSERT INTO POPULAR VALUES ("${search}");
+</insert>
+
 <select id="getBookStatusTotal" resultType="Long">
 SELECT COUNT(BLIBNUM) FROM BOOKLIB WHERE LIBNUM=0
 </select>
