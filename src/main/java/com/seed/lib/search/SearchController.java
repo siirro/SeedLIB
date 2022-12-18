@@ -47,9 +47,8 @@ public class SearchController {
 		BookVO bookVO = new BookVO();
 		bookVO.setIsbn(isbn);
 		//도서 북립정보
-//		List<BookVO> ar = bookService.getLibDetail(bookVO);
-		
-//		mv.addObject("detail", ar);
+		List<BookVO> ar = searchService.getSearchInfo(bookVO);
+		mv.addObject("detail", ar);
 		return mv;
 		
 		
@@ -61,6 +60,10 @@ public class SearchController {
 		
 		
 		ModelAndView mv = new ModelAndView();
+		
+//		log.info("서치단어는? {}",pager.getSearch());
+		int result = searchService.setPopularWord(pager);
+		
 		
 		// 세션에서 한 유저의 정보를 꺼냄
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
@@ -99,6 +102,12 @@ public class SearchController {
 	
 	@GetMapping("detailResult")
 	public ModelAndView getSearchDetail(SearchDetailPager searchDetailPager)throws Exception{
+		
+		log.info("서치단어는? {}",searchDetailPager.getSearchTitle());
+		Pager pager = new Pager();
+		pager.setSearch(searchDetailPager.getSearchTitle());
+		int result = searchService.setPopularWord(pager);
+
 		ModelAndView mv = new ModelAndView();
 		List<BookVO> ar = searchService.getSearchDetail(searchDetailPager);
 		long count = searchService.getSearchDetailCount(searchDetailPager);

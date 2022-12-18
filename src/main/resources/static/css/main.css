@@ -1,7 +1,14 @@
 @charset "utf-8";
 
 
+.bookList > li:nth-child(1) {
+	margin-left: 0px;
+}
 
+.bookList {
+	display: flex;
+    justify-content: center;
+}
 
 /* 배경이미지 */
 .backImg {position: absolute; left: 0; top: 0; width: 100%; height: 349px; z-index: 0;}
@@ -115,7 +122,9 @@
 .mainBestKeyword .keywordListWrap .keywordList li i {
 	display: inline-block; width: 25px; line-height: 25px; font-style: normal; color: #fff; 
 	text-align: center; 
-	background-color: #9be15d; border-radius: 25px; margin-right: 7px;
+	background-color: #9be15d; border-radius: 25px; 
+	margin-right: 7px; 
+    margin-left: 5px;
 }
 /* 밑에서두번쨰꺼에 display: block;  뻄 */
 
@@ -359,7 +368,11 @@
 .bookZone .tab > li a {display: inline-block; font-size: 1.563em; font-weight: 500; color: #777;}
 .bookZone .tab > li.on a {color: #222;}
 .bookList {display: flex; flex-wrap: wrap; margin-left: 0px;}
-.bookList > li {float: left; width: calc(20% - 70px); margin-left: 70px; text-align: center; box-sizing: border-box;}
+.bookList > li {
+	float: left; width: calc(20% - 70px); 
+	margin-left: 70px; 
+	text-align: center; 
+	box-sizing: border-box;}
 .bookList .cover {display: block; position: relative; padding: 0 0 4.761% 0;}
 .bookList .cover a {display: block; position: relative; width: 100%; padding-top: 133.333%;}
 .bookList .cover img {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
