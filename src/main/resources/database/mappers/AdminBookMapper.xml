@@ -2,62 +2,10 @@
 		<!DOCTYPE mapper
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seed.lib.admin.book.AdminBookMapper">
+<mapper namespace="com.seed.lib.admin.calendar.AdminCalendarMapper">
 
-	<!--                     도서 목록                     -->
-	<select id="getAdBookList" resultType="BookVO">
-		SELECT * FROM BOOK
-		ORDER BY ISBN DESC
-		limit 10, 24
+	<select id="getSchedule" resultType="AdminCalendarVO">
+		SELECT * FROM SCHEDULE 
 	</select>
-	
-	<!-- 유효성 검사 -->
-	<select id="bookCount" resultType="Long">
-		SELECT MAX(NUM) FROM BOOK	
-	</select>
-	
-	<select id="isHaveBook" parameterType="Map" resultType="int">
-		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
-	</select>
-	
-	<select id="getHaveBook" parameterType="Map" resultType="int">
-		SELECT COUNT(*) FROM BOOK B
-			INNER JOIN
-			BOOKLIB BL
-			ON B.ISBN=BL.ISBN
-				INNER JOIN
-				LIBRARY L
-				ON BL.LIBNUM=L.LIBNUM
-		WHERE B.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
-	</select>
-	
-	<!--                     도서 추가                     -->
-	<update id="updateQuantity" parameterType="Map">
-		UPDATE BOOKLIB
-		SET QUANTITY=QUANTITY+1
-		WHERE ISBN=#{isbn} AND LIBNUM=#{libNum}	
-	</update>
-
-	<insert id="setBookAdd" parameterType="BookVO">
-		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, CATEGORY, IMAGE, BOOKCOUNT, BOOKHEART, NUM, REGDATE)
-		VALUES (#{isbn}, #{title}, #{writer}, #{publisher}, #{bookDate}, #{category}, #{image}, 0, 0, #{num}, SYSDATE());
-	</insert>
-	
-	<insert id="setLibOne" parameterType="Map">
-		INSERT INTO BOOKLIB
-		(BLIBNUM, LIBNUM, ISBN, QUANTITY, ABLE)
-		VALUES(0, #{libNum}, #{isbn}, 1, 1)
-	</insert>
-	
-	<update id="setBookUpdate"  parameterType="BookVO">
-		UPDATE BOOK
-		SET TITLE=#{title}, WRITER=#{writer}, PUBLISHER=#{publisher}, BOOKDATE=#{bookDate}, CATEGORY=#{category}
-		WHERE ISBN=#{isbn}
-	</update>
-	
-	<delete id="setBookDelete">
-		DELETE FROM BOOK
-		WHERE ISBN=#{isbn}
-	</delete>
 	
 </mapper>
