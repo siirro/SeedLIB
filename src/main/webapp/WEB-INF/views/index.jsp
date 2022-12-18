@@ -57,8 +57,8 @@
 					
 										<div style="width: 200px;">
 											<div class="controlArea" style="padding: 17px;">
-												<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
-												<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
+												<a href="#" id="btnUp" class="upupup" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
+												<a href="#" id="btnDwon" class="sfsdf" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
 											</div>
 											<div class="keywordListWrap" >
 												<ol class="keywordList">
@@ -77,24 +77,72 @@
 										</div>
 
 										<script>
+											
+
 											function Silsigan(){
+												let iindex = 1;
 												let count = $('.keywordList li').length;
 												let height = ($('.keywordList li').height()+0.5)*2;
-												console.log(count);
-												console.log(height);
+												
 
 												function step(index) {
 													$('.keywordList').delay(2000).animate({
 														top: -height * index,
 													}, 500, function() {
 														step((index + 1) % count);
+														iindex = index;
+														
 													});
+													// console.log(count);
+													// console.log(height);
 												}
 
 												step(1);
+
+												const updownbtn = document.querySelector('.controlArea');
+												updownbtn.addEventListener('click', ssSlide);
+
+
+												/* 버튼 클릭 */
+												function ssSlide(event) {
+													event.preventDefault();
+													if (event.target.className === 'upupup') {
+														// if (currentIdx === slideLis.length -1) {
+														// 	slider.style.transform = "translateX(0px)";
+														// 	currentIdx = 0;
+														// 	translate = 0;
+														// 	return
+														// };
+														// move(-1);
+
+														let cutop = $('.keywordList').css("top").replace(/[^0-9]/g, "");
+														$('.keywordList').css("top", -(cutop-67))
+														let zzz = parseInt($('.keywordList').css("top").replace(/[^0-9]/g, "")/67);
+														console.log("현재의 top"+zzz);
+														step(iindex+1);
+
+													} else {
+														// if (currentIdx === 0) {
+														// 	slider.style.transform = "translateX(-1401px)";
+														// 	currentIdx = slideLis.length-1;
+														// 	translate = -1401;
+															
+														// 	return
+														// };
+														// 	move(1);
+														// }
+														let cutop = $('.keywordList').css("top").replace(/[^0-9]/g, "");
+														$('.keywordList').css("top", -(cutop+67))
+														let zzz = parseInt($('.keywordList').css("top").replace(/[^0-9]/g, "")/67);
+														console.log("현재의 top"+zzz);
+														step(iindex-1);
+
+													}
+												}
 											};
 
 											Silsigan();
+
 										</script>
 										
 									</div>
