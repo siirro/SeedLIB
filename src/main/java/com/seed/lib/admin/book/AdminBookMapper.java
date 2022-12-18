@@ -22,4 +22,9 @@ public interface AdminBookMapper {
 	public int setBookAdd(BookVO bookVO)throws Exception;
 	public int setLibOne(Map<String, Object> map) throws Exception;
 	
+	//도서 수정
+	public int setBookUpdate(BookVO bookVO) throws Exception;
+	
+	//도서 삭제
+	public int setBookDelete(String isbn) throws Exception;
 }

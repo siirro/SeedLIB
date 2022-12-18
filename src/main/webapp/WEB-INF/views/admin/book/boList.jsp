@@ -70,7 +70,7 @@
               <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
                 <div class="card-style-2 mb-30">
                   <div class="card-image">
-                    <a href="./boDetail?isbn=${bookVO.isbn}">
+                    <a href="../../book/detail?isbn=${bookVO.isbn}">
                       <img
                         src="${bookVO.image}"
                         alt=""
@@ -78,7 +78,7 @@
                     </a>
                   </div>
                   <div class="card-content" style="overflow: hidden;">
-                    <h4><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
+                    <h4><a href="../../book/detail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
                   </div>
                 </div>
               </div>

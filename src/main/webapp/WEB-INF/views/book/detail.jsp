@@ -70,26 +70,73 @@
 					
 					<div class="snsFarm">
 						<ul class="snsBtnArea clearfix">
-							<li>
-								<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-								<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-									<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
-										<span class="blind">단축URL</span>
-									</a>
-									<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
-										<span class="blind">카카오스토리</span>
-									</a>
-									<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
-										<span class="blind">트위터</span>
-									</a>
-									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
-										<span class="blind">페이스북</span>
-									</a>
-									<a href="#print" id="print" title="제본신청">
-										<img alt="책프린트" src="/images/printer.png">
-										<span class="">현재 책 프린트</span>
-									</a>
-								</div>
+							<c:set var="admin" value="false"></c:set>
+							<c:if test="${empty memberVO}">
+										<li>
+										<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
+													<span class="blind">단축URL</span>
+												</a>
+												<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
+													<span class="blind">카카오스토리</span>
+												</a>
+												<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
+													<span class="blind">트위터</span>
+												</a>
+												<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
+													<span class="blind">페이스북</span>
+												</a>
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										<c:set var="admin" value="true"></c:set>
+										</li>	
+									</c:if>
+									<c:if test="${not empty memberVO}">
+										<c:forEach items="${sessionScope.memberVO.roleVOs}" var="r">
+												<c:if test="${r.getRoleName() eq 'ROLE_ADMIN'}">
+													<li style="display: flex;">
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<a href="../admin/book/boUpdate?isbn=${bookVO.isbn}" id="bookUpdate" title="도서 수정" class="snsShare">
+																<img alt="수정" src="/images/refresh.png">
+															</a>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">수정</p>
+														</div>
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<button type="button" id="bookDelete" title="도서 삭제" class="snsShare" value="${bookVO.isbn}">
+																<img width="40px;" alt="삭제" src="/images/trash.png">
+															</buton>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">삭제</p>
+														</div>
+													<c:set var="admin" value="true"></c:set>
+													</li>
+												</c:if>
+										</c:forEach>	
+									<c:if test="${admin eq 'false'}">
+											<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
+													<span class="blind">단축URL</span>
+												</a>
+												<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
+													<span class="blind">카카오스토리</span>
+												</a>
+												<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
+													<span class="blind">트위터</span>
+												</a>
+												<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
+													<span class="blind">페이스북</span>
+												</a>
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										</c:if>
+									</c:if>
 							</li>
 						</ul>
 					</div>
@@ -813,5 +860,37 @@
 </div>
 	<c:import url="../temp/footer.jsp"></c:import> 
 	
+	<script>
+		$("#bookDelete").click(function(){
+			console.log("sdsdfjsdfsdfklsdf");
+			let check = window.confirm("삭제하시겠습니까?");
+			if(check){
+				let isbn = $(this).val();
+				console.log(isbn);
+					$.ajax({
+						type:"POST",
+						url:"/admin/book/boDelete",
+						dataType: "json",
+						data:{
+							isbn:isbn
+						},
+							success:function(data){
+								if(data.result>0){
+									alert(data.msg);
+									location.href="../";
+								}else{
+										alert(data.msg);
+										}        
+									},error:function(error){
+										console.log("errorㅠㅠ", error);
+										alert("서버 문제로 처리가 불가합니다");
+										location.reload();
+									}                
+								})
+				}else{
+					return;
+				}
+				})
+	</script>
 </body>
 </html>

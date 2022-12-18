@@ -89,7 +89,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>도서 등록</h2>
+                  <h2>도서 수정</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -104,7 +104,7 @@
                         <a href="./boList">도서 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        도서 등록
+                        도서 수정
                       </li>
                     </ol>
                   </nav>
@@ -122,46 +122,6 @@
             <div class="row" style="justify-content: center;">
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" style="width:70%;">
                 <div class="card-style-2 mb-30" style="width:100%;">
-                  <div>
-                    <!--Real Contents Start-->
-                    <!-- 서치영역 -->
-                    <form id="searchForm" name="searchForm" method="get">
-                    <div class="searchWrap">
-                        <div class="searchFormWeb">
-                            <div class="searchToparea">
-                                <div class="searchBardiv hope">
-                                    <div class="searchInputbox">
-                                        <input hidden="hidden">
-                                        <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="도서명을 입력하세요." autocomplete="off">
-                                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-                                      </div>
-                                        <a href="" class="btn input" style="color: #ffffff;" id="selfApply" title="직접입력 설정">직접입력</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- 서치결과영역 -->
-                        <div class="searchResultWrap">
-                            <div class="result_box">
-                                <div class="listSetting">
-                                    <div class="result_screen">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bookList listViewStyle hope">
-                            <ul class="listWrap">
-                            </ul>
-                        </div>						
-                            </form>
-                            <!-- 서치영역 끝 -->
-                            <!-- 페이징 -->
-                            <div class="pagingWrap">
-                                <div class="pagination">
-                                </div>
-                            </div>
-                            <!-- 페이징 끝-->                
-                </div>
                     <div>
                         <form id="registForm" name="registForm" action-="boAdd" method="post">
                                             <div class="boardWrap mt10">
@@ -172,7 +132,7 @@
                                                       <div class="card-style mb-30">
                                                         <div class="card-image" style="margin-bottom: 0px;">
                                                             <img id="viewBook" style="width:200px; height: auto;"
-                                                              src="/images/favicon.png"
+                                                              src="${bookVO.image}"
                                                               alt="씨앗도서관"
                                                             />
                                                         </div>
@@ -186,52 +146,34 @@
                                                     </colgroup>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row"><label for="libCode">신청도서관</label><span class="essential">*</span></th>
-                                                            <td>
-                                                              <select name="bookLib" id="bookLib" class="form-ele auto">
-                                                                <option value="">도서관선택</option>
-                                                                        <option value="0">씨앗도서관</option>
-                                                                        <option value="1">새싹도서관</option>
-                                                                        <option value="2">쑥쑥도서관</option>
-                                                                        <option value="3">새봄도서관</option>
-                                                                        <option value="4">도란도란도서관</option>
-                                                                        <option value="5">뿌리도서관</option>
-                                                              </select>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
                                                             <th scope="row"><label for="title">도서명</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" id="title" name="title" value="" class="form-control">
+                                                                <input type="text" id="title" name="title" value="${bookVO.title}" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="author">저자</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="writer" name="writer" value="" class="form-control"></td>
+                                                            <td><input type="text" id="writer" name="writer" value="${bookVO.writer}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="publisher">출판사</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="publisher" name="publisher" value="" class="form-control"></td>
+                                                            <td><input type="text" id="publisher" name="publisher" value="${bookVO.publisher}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="publishYear">발행연도</label></th>
-                                                            <td><input type="number" id="bookDate" min="1500", max="", step="1", name="bookDate" value="" maxlength="4" class="form-control"></td>
+                                                            <th scope="row"><label for="publishYear">발행연도</label><span class="essential themeFC">*</span></th>
+                                                            <td><input type="number" id="bookDate" min="1500", max="", step="1", name="bookDate" value="${bookVO.bookDate}" maxlength="4" class="form-control"></td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="isbn">ISBN</label></th>
+                                                            <th scope="row"><label for="isbn">ISBN</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="" maxlength="30" class="form-control">
+                                                                <input type="text" id="isbn" name="isbn" value="${bookVO.isbn}" readonly maxlength="30" class="form-control">
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><label for="price">정가</label></th>
-                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                           <th scope="row"><label for="requestReason">카테고리</label><span class="essential themeFC">*</span></th>
                                                           <td><div class="select-position">
                                                             <select name="category" id="category">
-                                                              <option value="">선택 안함</option>
+                                                              <option value="">선택안함</option>
                                                               <option value="0">000 : 총류</option>
                                                               <option value="1">100 : 철학</option>
                                                               <option value="2">200 : 종교</option>
@@ -251,7 +193,7 @@
                                             <input type="hidden" name="image" id="image" value="">
                                         </form>
                                         <div class="btnGroup">
-                                          <button type="button" id="registBtn" class="btn themeBtn" value="">도서 등록</button>
+                                          <button type="button" id="updateBtn" class="btn themeBtn" value="">도서 수정</button>
                                           <button type="button" id="cnclBtn" class="btn cncl" value="">취소</button>
                                         </div>
                                         <!-- End Of the Real Contents-->

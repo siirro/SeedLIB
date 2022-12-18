@@ -49,4 +49,15 @@
 		VALUES(0, #{libNum}, #{isbn}, 1, 1)
 	</insert>
 	
+	<update id="setBookUpdate"  parameterType="BookVO">
+		UPDATE BOOK
+		SET TITLE=#{title}, WRITER=#{writer}, PUBLISHER=#{publisher}, BOOKDATE=#{bookDate}, CATEGORY=#{category}
+		WHERE ISBN=#{isbn}
+	</update>
+	
+	<delete id="setBookDelete">
+		DELETE FROM BOOK
+		WHERE ISBN=#{isbn}
+	</delete>
+	
 </mapper>

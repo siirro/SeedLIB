@@ -376,3 +376,91 @@ $("#cnclBtn").click(function(){
 })
 
 
+$("#updateBtn").click(function(){
+    let check = window.confirm("수정하시겠습니까?");
+    if(check){
+        libCheck = false;
+        titleCheck = false;
+        writerCheck = false;
+        categoryCheck = false;
+        yearCheck = false;
+        isbnCheck = false;
+        if($("#bookLib").val()!=""){
+            libCheck = true;
+        }
+        if($("#title").val().length>0){
+            titleCheck = true;
+        }
+        if($("#writer").val().length>0){
+            writerCheck = true;
+        }
+        if($("#publisher").val().length<1){
+            $("#publisher").val("미상");
+        }
+        if($("#bookDate").val()==""){
+            alert("발행연도를 입력하세요");
+            return;
+        } else if($("#bookDate").val()>date.getFullYear()){
+            alert("발행연도를 다시 입력하세요");
+            return;
+        } else{
+            yearCheck = true;
+        }
+        if($("#isbn").val().length<1){
+            alert("isbn을 입력하세요");
+            return;
+        } else{
+            isbnCheck = true;
+        }    
+        if($("#category").val()==""){
+            alert("카테고리를 입력하세요");
+            return;
+        } else{
+            categoryCheck = true;
+        }
+        if($("#price").val()==""){
+            $("#price").val("0");
+        }
+        if(libCheck&&titleCheck&&writerCheck&&categoryCheck&&yearCheck){
+            let libVO={
+                libNum:$("#bookLib").val()
+            }
+            let bookVO = {
+                isbn:$("#isbn").val(),
+                title:$("#title").val(),
+                writer:$("#writer").val(),
+                publisher:$("#publisher").val(),
+                bookDate:$("#bookDate").val(),
+                category:$("#category").val(),
+                image:$("#image").val(),
+                libVO:libVO
+            }
+            $.ajax({
+                type:"POST",
+                url:"/admin/book/boUpdate",
+                data:JSON.stringify(bookVO),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                    success:function(data){
+                        if(data.result>0){
+                            alert(data.msg);
+                            location.href=data.url;
+                        }else{
+                                alert(data.msg);
+                                }        
+                            },error:function(error){
+                                console.log("errorㅠㅠ", error);
+                                alert("서버 문제로 처리가 불가합니다");
+                                location.reload();
+                            }                
+                        })
+        }else{
+            alert("신청 정보를 확인 후 신청해주세요");
+            location.reload();
+            return;
+        }
+    }else{
+        return;
+    }
+})
+

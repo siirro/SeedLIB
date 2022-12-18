@@ -51,6 +51,7 @@ public class AdminBookService {
 				}
 			}	
 	
+	//수량 추가
 	public int updateQuantity(BookVO bookVO, Map<String, Object> map) throws Exception{
 		int result = adminBookMapper.updateQuantity(map);
 		if(result<0) {
@@ -59,5 +60,15 @@ public class AdminBookService {
 				return result;
 			}
 		}
+	
+	//도서 수정
+	public int setBookUpdate(BookVO bookVO) throws Exception{
+		return adminBookMapper.setBookUpdate(bookVO);
+	}
+	
+	//도서 삭제
+	public int setBookDelete(String isbn) throws Exception{
+		return adminBookMapper.setBookDelete(isbn);
+	}
 
 }
