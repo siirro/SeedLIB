@@ -45,7 +45,7 @@
                         <a href="./proList">문화프로그램 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        문화프로그렘 상세정보
+                        문화프로그램 상세정보
                       </li>
                     </ol>
                   </nav>
@@ -62,9 +62,6 @@
             <!-- ========= card-style-2 start ========= -->
             <div class="row">
               <div class="col-12">
-                <div class="title mt-30 mb-30">
-                  <h2>Cards</h2>
-                </div>
               </div>
               <!-- end col -->
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
@@ -118,7 +115,7 @@
 
                     <h4>행사일정</h4>
                     <p>
-                      ${proVO.psDt}
+                      ${proVO.psDt} ~ ${proVO.plDt}
                     </p>
 
                     <div class="text-success">
@@ -163,11 +160,7 @@
 
               <div class="col-xl-8 col-lg-4 col-md-6 col-sm-6">
                 <div class="card-style mb-30">
-                  <h6 class="mb-10">Striped Table</h6>
-                  <p class="text-sm mb-20">
-                    For Striped Table—light padding and only horizontal
-                    dividers.
-                  </p>
+                  <h6 class="mb-10">신청자 목록</h6>
                   <div class="table-wrapper table-responsive">
                     <table class="table striped-table">
                       <thead>
