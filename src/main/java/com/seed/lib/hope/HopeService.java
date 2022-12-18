@@ -94,6 +94,9 @@ public class HopeService {
 			bookVO.setImage(hopeVO.getImage());
 			bookVO.setNum(hopeMapper.bookCount()+1L);
 			result = hopeMapper.setHopeOne(bookVO);
+			if(result<1) {
+				throw new Exception();
+			}
 		}
 		
 		if(result<1) {

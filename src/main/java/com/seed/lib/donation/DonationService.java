@@ -11,12 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.util.HdPager;
+import com.seed.lib.util.MailService;
 
 @Service
 public class DonationService {
 	
 	@Autowired
 	private DonationMapper donationMapper;
+	
+	@Autowired
+	private MailService mailService;
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int setDon(DonationVO donationVO, Map<String, Object> map) throws Exception{
@@ -80,6 +84,9 @@ public class DonationService {
 				bookVO.setImage(donationVO.getImage());
 				bookVO.setNum(donationMapper.bookCount()+1L);
 				result = donationMapper.setDonOne(bookVO);
+				if(result<1) {
+					throw new Exception();
+				}
 			}
 				result = donationMapper.setLibOne(map);
 				if(result<1) {
@@ -89,6 +96,9 @@ public class DonationService {
 					if(result<1) {
 						throw new Exception();
 					} else {
+						if(donationVO.getEmailAgree().equals("Y")) {
+							mailService.sendMail(donationVO.getEmail(),donationVO.getUserName(),"D");
+						}
 						return result;
 					}
 				}
@@ -103,6 +113,9 @@ public class DonationService {
 			if(result<0) {
 				throw new Exception();
 			} else {
+				if(donationVO.getEmailAgree().equals("Y")) {
+					mailService.sendMail(donationVO.getEmail(),donationVO.getUserName(),"D");
+				}
 				return result;
 			}
 		}

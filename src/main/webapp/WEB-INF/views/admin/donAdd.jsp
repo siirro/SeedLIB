@@ -178,7 +178,7 @@
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">이메일</th>
-                                                            <td><input type="text" name="email" class="form-control" value="${don.email}" readonly></td>
+                                                            <td><input type="text" id="email" name="email" class="form-control" value="${don.email}" readonly></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -246,6 +246,21 @@
                                                             </select>
                                                           </div></td>
                                                         </tr>
+                                                        <tr>
+                                                          <th scope="row"><label for="agree">이메일 수신 여부</label><span class="essential themeFC">*</span></th>
+                                                          <td>
+                                                            <c:choose>
+                                                              <c:when test="${don.emailAgree eq 'Y'}">
+                                                                동의 <input type="radio" name="emailAgree" value="Y" checked readonly class="emailAgree"><br>
+                                                                비동의 <input type="radio" name="emailAgree" value="N" readonly class="emailAgree">
+                                                              </c:when>
+                                                              <c:when test="${don.emailAgree eq 'N'}">
+                                                                동의 <input type="radio" name="emailAgree" value="Y" readonly class="emailAgree"><br>
+                                                                비동의 <input type="radio" name="emailAgree" value="N" checked readonly class="emailAgree">
+                                                              </c:when>
+                                                            </c:choose>
+                                                          </td>
+                                                      </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

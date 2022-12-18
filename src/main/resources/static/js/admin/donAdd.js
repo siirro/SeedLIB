@@ -273,6 +273,7 @@ $("#registBtn").click(function(){
                 donTitle:$("#donTitle").val(),
                 donWriter:$("#donWriter").val(),
                 donPublisher:$("#donPublisher").val(),
+                emailAgree:$(".emailAgree").val(),
                 isbn:$("#isbn").val(),
                 userName:$("#userName").val(),
                 image:$("#image").val(),

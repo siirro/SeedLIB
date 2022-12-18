@@ -292,31 +292,57 @@ $("#registBtn").click(function(){
                 libNum:$("#bookLib").val()
             }
             let bookVO = {
-                hopNum:$("#registBtn").attr("value"),
-                hopTitle:$("#hopTitle").val(),
-                hopWriter:$("#hopWriter").val(),
-                hopPublisher:$("#hopPublisher").val(),
                 isbn:$("#isbn").val(),
-                userName:$("#userName").val(),
-                image:$("#image").val(),
-                email:$("#email").val(),
-                price:$("#price").val(),
-                hopYear:$("#hopYear").val(),
+                title:$("#title").val(),
+                writer:$("#writer").val(),
+                publisher:$("#publisher").val(),
+                bookDate:$("#bookDate").val(),
                 category:$("#category").val(),
+                image:$("#image").val(),
+                price:$("#price").val(),
                 libVO:libVO
             }
             $.ajax({
                 type:"POST",
-                url:"/admin/hopeAdd",
-                data:JSON.stringify(hopeVO),
+                url:"/admin/book/boAdd",
+                data:JSON.stringify(bookVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                     success:function(data){
-                        alert(data.msg);
-                        location.href="../admin/hopeBoList";
-                    },error:function(error){
+                        if(data.result>0){
+                            alert(data.msg);
+                            location.href="../book/boList";
+                        }else{
+                            let qCheck = window.confirm(data.msg);
+                            if(qCheck){
+                                console.log("수량 추가할거야");
+                                $.ajax({
+                                    type:"POST",
+                                    url:"/admin/book/updateQuantity",
+                                    data:JSON.stringify(bookVO),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                        success:function(data){
+                                            if(data.result>0){
+                                                alert(data.msg);
+                                                location.href="../book/boList";
+                                            }else{
+                                                alert(data.msg);
+                                            }        
+                                        },error:function(error){
+                                            console.log("errorㅠㅠ", error);
+                                            alert("서버 문제로 처리가 불가합니다");
+                                            location.reload();
+                                        }                
+                                    })
+                                }else{
+                                    return;
+                                }
+                    }
+                },error:function(error){
                         console.log("errorㅠㅠ", error);
                         alert("서버 문제로 처리가 불가합니다");
+                        location.reload();
                     }                
                 })
         }else{

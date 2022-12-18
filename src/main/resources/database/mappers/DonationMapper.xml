@@ -153,7 +153,7 @@
 	</update>
 	
 	<select id="bookCount" resultType="Long">
-		SELECT COUNT(*) FROM BOOK		
+		SELECT MAX(NUM) FROM BOOK	
 	</select>
 	
 	<select id="isHaveBook" parameterType="Map" resultType="int">

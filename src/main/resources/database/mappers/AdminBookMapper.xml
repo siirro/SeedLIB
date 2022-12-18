@@ -11,10 +11,42 @@
 		limit 10, 24
 	</select>
 	
+	<!-- 유효성 검사 -->
+	<select id="bookCount" resultType="Long">
+		SELECT MAX(NUM) FROM BOOK	
+	</select>
+	
+	<select id="isHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
+	</select>
+	
+	<select id="getHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK B
+			INNER JOIN
+			BOOKLIB BL
+			ON B.ISBN=BL.ISBN
+				INNER JOIN
+				LIBRARY L
+				ON BL.LIBNUM=L.LIBNUM
+		WHERE B.ISBN=#{isbn} AND L.LIBNUM=#{libNum}		
+	</select>
+	
 	<!--                     도서 추가                     -->
-	<insert id="setAdBookAdd" parameterType="BookVO" useGeneratedKeys="true" keyProperty="isbn">
-		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, ABLE, CATEGORY, QUANTLTY, IMAGE, BOOKCOUNT, BOOKHEART, NUM)
-		VALUES (#{isbn}, #{title}, #{writer}, #{publisher}, #{bDate}, 1, #{category}, #{quantity}, #{image}, 0, 0, 0);
+	<update id="updateQuantity" parameterType="Map">
+		UPDATE BOOKLIB
+		SET QUANTITY=QUANTITY+1
+		WHERE ISBN=#{isbn} AND LIBNUM=#{libNum}	
+	</update>
+
+	<insert id="setBookAdd" parameterType="BookVO">
+		INSERT INTO BOOK (ISBN, TITLE, WRITER, PUBLISHER, BOOKDATE, CATEGORY, IMAGE, BOOKCOUNT, BOOKHEART, NUM, REGDATE)
+		VALUES (#{isbn}, #{title}, #{writer}, #{publisher}, #{bookDate}, #{category}, #{image}, 0, 0, #{num}, SYSDATE());
+	</insert>
+	
+	<insert id="setLibOne" parameterType="Map">
+		INSERT INTO BOOKLIB
+		(BLIBNUM, LIBNUM, ISBN, QUANTITY, ABLE)
+		VALUES(0, #{libNum}, #{isbn}, 1, 1)
 	</insert>
 	
 </mapper>
