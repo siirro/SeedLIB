@@ -40,12 +40,12 @@ public class MemberService {
 	}
 	
 	// 로그인 처리는 Security에서 처리함
-//	public MemberVO getLogin(MemberVO memberVO)throws Exception {
-//		
-//		return memberMapper.getLogin(memberVO);
-//	
-//	
-//	}
+	public MemberVO getLogin(MemberVO memberVO)throws Exception {
+		
+		return memberMapper.getLogin(memberVO);
+	
+	
+	}
 		
 
 }
