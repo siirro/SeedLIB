@@ -351,53 +351,58 @@ $("#print").click(function(){
 
 });
 
-// 제본 결제!
-const IMP = window.IMP;
-let init = $("#imp")
-console.log("imp키 : ", init);
-IMP.init(init);
+// // 제본 결제!
+// const IMP = window.IMP;
+// let impKey = $("#prinImp").val();
+// console.log("임프키 : ", impKey);
+// IMP.init(impKey);
 
-let merchant_uid = new Date().getTime();
-let bookName = $("#prinBook").text();
-console.log("프린 북 : ", bookName);
-console.log("결제금액", amount);
-let email = $("#ipEmail").val();
-console.log("이메일 : ", email);
-let userName = $("#ipUserName").val();
-console.log("유저이름 : ",userName);
-let phone = $("#ipPhone").val();
-console.log("폰 : ",phone);
+// let merchant_uid = new Date().getTime();
+// let bookName = $("#prinBook").text();
+// console.log("프린 북 : ", bookName);
+// console.log("결제금액", amount);
+// let email = $("#ipEmail").val();
+// console.log("이메일 : ", email);
+// let userName = $("#ipUserName").val();
+// console.log("유저이름 : ",userName);
+// let phone = $("#ipPhone").val();
+// console.log("폰 : ",phone);
 
-function requestPay() {
-    // IMP.request_pay(param, callback) 결제창 호출
-    IMP.request_pay({ // param
-        pg: "html5_inicis",
-        pay_method: "card",
-        merchant_uid: merchant_uid,
-        name: bookName,
-        amount: amount,
-        buyer_email: email,
-        buyer_name: userName,
-        buyer_tel: phone
-    }, function (rsp) { // callback
-        if (rsp.success) {
-            // 결제 성공 시 로직,
-            $.ajax({
-                type: "POST",
-                url: "boOrder",
-                data: {
-                    'imp_uid':rsp.imp_uid,
-                    'merchant_uid':rsp.merchant_uid,
-                    'printNum':lockerVO.lockerNum,
-                    'amount':amount,
-                    'userName':userName
-                }
-            });
-        } else {
-            // 결제 실패 시 로직,
-        }
-    });
-  }
+// let printNum = '';
+// function requestPay() {
+//     console.log(IMP);
+//     //  IMP.request_pay(param, callback);
+//     IMP.request_pay({ // param
+//         pg: "html5_inicis",
+//         pay_method: "card",
+//         merchant_uid: merchant_uid,
+//         name: bookName,
+//         amount: amount,
+//         buyer_email: email,
+//         buyer_name: userName,
+//         buyer_tel: phone
+//     }, function (rsp) { // callback
+//         if (rsp.success) {
+//             // 결제 성공 시 로직,
+//             console.log("결제 성공!");
+//             $.ajax({
+//                 type: "POST",
+//                 url: "/print/boOrder",
+//                 data: {
+//                     'imp_uid':rsp.imp_uid,
+//                     'merchant_uid':rsp.merchant_uid,
+//                     'printNum':printNum,
+//                     'amount':amount,
+//                     'userName':userName
+//                 }
+//             });
+//         } else {
+//             // 결제 실패 시 로직,
+//             alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+//             console.log("에러ㅠㅠ");
+//         }
+//     });
+// }
 
 
 $("#close").click(function(){

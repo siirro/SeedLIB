@@ -44,10 +44,39 @@ public class BoOrderController {
 		return mv;
 	}
 	
-	// 도서 바구니 추가
-	@GetMapping("boAdCart")
-	public String setBoAdCart()throws Exception{
-		return "print/boAdCart";
+	// 도서 바구니 추가	
+	@PostMapping("boAdCart")
+	public ModelAndView setBoAdCart(BookPrintVO bookPrintVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = 0;
+		String title = "실패..";
+		String text = "바구니 추가를 실패했습니다.";
+		String icon = "error";
+		String button = "확인";
+		String url = "redirect:../";
+		
+		result = boOrderService.setBoCart(bookPrintVO);
+		
+		if(result > 0) {
+			
+			result = 1;
+			title = "성공!!";
+			text = "바구니 추가를 성공했습니다";
+			icon = "success";
+			url="../print/boCart";
+			
+		}
+		
+		mv.addObject("title", title);
+		mv.addObject("text", text);
+		mv.addObject("icon", icon);
+		mv.addObject("button", button);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 	
 }

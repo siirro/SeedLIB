@@ -89,9 +89,9 @@
                     </h4>
                   </div>
                 </div> -->
-                <div class="card mb-3" style="border-radius: 4px; width: 15rem; overflow: hidden;">
-                  <img class="card-img-top" style="width: 100%; height: 300px;" src="${bookVO.image}" alt="Card image cap">
-                  <div class="card-body" style="height: 97px; overflow: hidden; word-wrap: break-word;">
+                <div class="card mb-3" style="border-radius: 4px; width: 12rem; overflow: hidden; padding: 5px;">
+                  <img class="card-img-top" style="width: 100%; height: 220px;" src="${bookVO.image}" alt="Card image cap">
+                  <div class="card-body" style="height: 93px; overflow: hidden; word-wrap: break-word;">
                     <p class="card-text"><a style="color: #262d3f;" href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></p>
                   </div>
                 </div>
