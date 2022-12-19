@@ -6,7 +6,7 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.seed.lib.admin.program.AdProgramVO" alias="AdProgramVO"/>
-  		<typeAlias type="com.seed.lib.admin.book.BookPrintVO" alias="BookPrintVO"/>
+  		<typeAlias type="com.seed.lib.book.order.BookPrintVO" alias="BookPrintVO"/>
   		<typeAlias type="com.seed.lib.book.order.BoOrderVO" alias="BoOrderVO"/>
   		
   		<typeAlias type="com.seed.lib.book.BookVO" alias="BookVO"/>

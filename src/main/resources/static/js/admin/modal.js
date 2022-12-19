@@ -1,8 +1,12 @@
 // modal.js
+
+// 프린트 결제 금액
+let amount = 0;
+
 $("#confirm").click(function(){
+
     modalClose(); // 모달 닫기 함수 호출
-    
-    // 컨펌 이벤트 처리
+
 });
 
 // 모달창을 띄우는 버튼을 클릭 했을때 이벤트
@@ -72,6 +76,9 @@ $("#print").click(function(){
 
     });
 
+    // 시작페이지, 끝페이지 입력값 체크
+    let check = false;
+
     // 시작페이지 마지막페이지를 계산해서 총 페이지 값 넣어주기
     $("#ipCaStPage").blur(function(){
         
@@ -104,14 +111,37 @@ $("#print").click(function(){
             if(parseInt(caLsPage) > parseInt(caStPage)){
 
                 // console.log("마지막 페이지가 크다면 찍혀라");
-                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+                $("#ipCaTtPage").val(parseInt((caLsPage-caStPage)+1));
 
                 let caTtPage = $("#ipCaTtPage").val();
                 $("#tdTtp").text(caTtPage+"장");
 
-            }else if(caTtPage==''){
+                check = true;
 
-                $("#tdTtp").text(0+"장");
+            }else if(parseInt(caLsPage) === parseInt(caStPage)){
+
+                // 페이지수가 같으면 1페이지로 입력
+                // console.log("같다!");
+                $("#ipCaTtPage").val(1);
+
+                $("#tdTtp").text("");
+                let caTtPage = $("#ipCaTtPage").val();
+                // console.log("체인지이벤트 총페이지 : ", caTtPage);
+                $("#tdTtp").text(caTtPage+"장");
+
+                check = true;
+
+            }else if(caStPage==''){
+
+                check = false;
+
+            }else if(caLsPage==''){
+
+                check = false;
+
+            }else{
+
+                check = false;
 
             }
 
@@ -130,13 +160,14 @@ $("#print").click(function(){
                 // console.log("마지막 페이지가 크다면 찍혀라");
 
                 // 총페이지수에 빼기한것을 넣기
-                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+                $("#ipCaTtPage").val(parseInt((caLsPage-caStPage)+1));
 
                 $("#tdTtp").text("");
                 let caTtPage = $("#ipCaTtPage").val();
                 // console.log("체인지이벤트 총페이지 : ", caTtPage);
                 $("#tdTtp").text(caTtPage+"장");
 
+                check = true;
             }else if(parseInt(caLsPage) === parseInt(caStPage)){
 
                 // 페이지수가 같으면 1페이지로 입력
@@ -148,6 +179,8 @@ $("#print").click(function(){
                 // console.log("체인지이벤트 총페이지 : ", caTtPage);
                 $("#tdTtp").text(caTtPage+"장");
 
+                check = true;
+
             }else if(parseInt(caLsPage) < parseInt(caStPage)){
 
                 // 마지막페이지수가 작으면 값을 지움
@@ -157,24 +190,59 @@ $("#print").click(function(){
                 // 경고문(?) 띄우기
                 $("#ipResult").html("‼ 시작 페이지가 큽니다. 다시 입력해 주세요 ‼");
 
-            }else if(caTtPage==''){
-                $("#tdTtp").text(0+"장");
+                check = false;
+
             }
+
         }
     });
 
-    $("#binding").blur(function(){
+    $("#binding").on({
 
-        let bind = $("#binding").val();
+        blur : function(){
 
-        if(bind=='N'){
-            console.log("제본하지않음");
-            $("#tdPrinPay").text(0+"원");
-        }else if(bind=='Y'){
-            console.log("제본함")
-            $("#tdPrinPay").text(3000+"원");
-        }else{
-            $("#tdPrinPay").text(0+"원");
+            let bind = $("#binding").val();
+            console.log("제본선택 : ", bind);
+
+            if(bind=='N'){
+
+                console.log("블러 제본하지않음");
+                console.log("값이 뭐니?",$(this).val());
+                $("#tdPrinPay").text(0+"원");
+
+            }else if(bind=='Y'){
+                // console.log("제본함")
+                let caTtPage = $("#ipCaTtPage").val();
+                console.log("총 페이지 : ",caTtPage);
+                if(parseInt(caTtPage) < 50){
+                    console.log("50매 이하")
+                    console.log("50 총 페이지 : ",caTtPage);
+
+                    $("#tdPrinPay").text(2000+"원");
+
+                }else if(100 <= parseInt(caTtPage)){
+                    
+                    console.log("100매 이상")
+                    console.log("100 총 페이지 : ",caTtPage);
+
+                    $("#tdPrinPay").text(4000+"원");
+
+                }else if(50 <= parseInt(caTtPage) < 100){
+
+                    console.log("50이상 100이내")
+                    console.log("50-100 총 페이지 : ",caTtPage);
+
+                    $("#tdPrinPay").text(3000+"원");
+
+                }
+
+            }else{
+
+                console.log("블러 나머지 값이 뭐니?",$(this).val());
+                $("#tdPrinPay").text(0+"원");
+
+            }
+        
         }
 
     });
@@ -184,56 +252,154 @@ $("#print").click(function(){
 
     $("#payBtn").click(function(){
 
-        // 한번 클릭시 증가
-        count++;
+        if(!check){
+            // console.log("찍히닝?");
+            swal({
+                title: "확인",
+                text: "필수 정보를 입력해 주세요",
+                icon: "warning",
+                button: "닫기",
+            });
+            
+            $("#ipResult").html("‼ 필수 정보를 입력해 주세요 ‼");
+            $("#ipCaStPage").focus();
 
-        // 버튼 한번만 생기게 
-        if(count==1){
-            // 결제하기 버튼 생성
-            $("#payBtn2").append('<button type="button" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>');
-            $("#order").css('display','flex').hide().fadeIn();
-
-        }
-
-        // 1장 가격
-        // 컬러 : 0-흑백 1-컬러, 크기 : 0-A4 1-B4
-        if(pgcolor==0&&pgsize===0){
-            console.log("흑백&A4")
-            $("#tdPa").text("70원");
-        }else if(pgcolor==0&&pgsize==1){
-            console.log("흑백&B5")
-            $("#tdPa").text("60원");
-        }else if(pgcolor==1&&pgsize==0){
-            console.log("컬러&A4")
-            $("#tdPa").text("500원");
         }else{
-            $("#tdPa").text("400원");
+    
+            // 한번 클릭시 증가
+            count++;
+    
+            // 버튼 한번만 생기게 
+            if(count==1){
+    
+                // 결제하기 버튼 생성
+                $("#payBtn2").append('<button type="button" onclick="requestPay()" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>');
+                $("#order").css('display','flex').hide().fadeIn();
+    
+            }
+    
+            // 1장 가격
+            // 컬러 : 0-흑백 1-컬러, 크기 : 0-A4 1-B4
+            if(pgcolor===0 && pgsize===0){
+    
+                // 흑백&A4
+                $("#tdPa").text("70원");
+    
+            }else if(pgcolor==0&&pgsize==1){
+    
+                // 흑백&B4
+                $("#tdPa").text("60원");
+    
+            }else if(pgcolor==1&&pgsize==0){
+    
+                // 컬러&A4
+                $("#tdPa").text("500원");
+    
+            }else{
+    
+                $("#tdPa").text("400원");
+    
+            }
+    
+            // 총 페이지 가격
+            let ttp = $("#tdTtp").text();
+            let pa = $("#tdPa").text();
+    
+            ttp = ttp.split('장', 1);
+            pa = pa.split('원', 1);
+    
+            let price = parseInt(ttp)*parseInt(pa);
+    
+            // NaN처리
+            if(isNaN(price)){
+    
+                price = 0;
+    
+            };
+            
+            let bind = $("#binding").val();
+    
+            if(bind==''){
+
+                console.log("바인드 비어있니? ", bind);
+
+                $("#tdPrinPay").text("0원");
+    
+            }
+    
+            $("#tdTtpPrice").text(price+"원");
+    
+            // 제본가격
+
+            let pay = $("#tdPrinPay").text();
+            console.log("pay : ", pay);
+
+            let printPay = pay.split('원', 1);
+            console.log("bin : ", printPay);
+            console.log("price : ", price);
+
+            amount = price+parseInt(printPay)
+
+            console.log("결제하기 눌렀을때 금액 : ", amount);
+
+            $("#tdTtPay").text(price+parseInt(printPay)+"원");
+
+
         }
-
-        // 총 페이지 가격
-        let ttp = $("#tdTtp").text();
-        let pa = $("#tdPa").text();
-
-        // console.log("어떻게 되닝? : ", ttp);
-        ttp = ttp.split('장', 1);
-        pa = pa.split('원', 1);
-        // console.log("잘렸니? : ", ttp);
-
-        let price = parseInt(ttp)*parseInt(pa);
-
-        // NaN처리
-        if(isNaN(price)){
-            price = 0;
-        };
-
-        $("#tdTtpPrice").text(price+"원");
-
-        // 제본가격
-        
 
     });
 
 });
+
+// 제본 결제!
+const IMP = window.IMP;
+let init = $("#imp")
+console.log("imp키 : ", init);
+IMP.init(init);
+
+let merchant_uid = new Date().getTime();
+let bookName = $("#prinBook").text();
+console.log("프린 북 : ", bookName);
+console.log("결제금액", amount);
+let email = $("#ipEmail").val();
+console.log("이메일 : ", email);
+let userName = $("#ipUserName").val();
+console.log("유저이름 : ",userName);
+let phone = $("#ipPhone").val();
+console.log("폰 : ",phone);
+
+function requestPay() {
+    // IMP.request_pay(param, callback) 결제창 호출
+    IMP.request_pay({ // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: merchant_uid,
+        name: bookName,
+        amount: amount,
+        buyer_email: email,
+        buyer_name: userName,
+        buyer_tel: phone
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            // 결제 성공 시 로직,
+            $.ajax({
+                type: "POST",
+                url: "boOrder",
+                data: {
+                    'imp_uid':rsp.imp_uid,
+                    'merchant_uid':rsp.merchant_uid,
+                    'printNum':lockerVO.lockerNum,
+                    'amount':amount,
+                    'userName':userName
+                }
+            });
+        } else {
+            // 결제 실패 시 로직,
+        }
+    });
+  }
+
+
 $("#close").click(function(){
     modalClose(); // 모달 닫기 함수 호출
 });

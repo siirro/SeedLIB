@@ -26,10 +26,12 @@
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
 	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
-	<!-- 프린트신청 팝업창 유효성검사 js -->
-	<!-- <script src="/js/admin/adCart.js"></script> -->
+	<!-- SweetAlert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -137,6 +139,26 @@
 											</div>
 										</c:if>
 									</c:if>
+							<li>
+								<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+								<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+									<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
+										<span class="blind">단축URL</span>
+									</a>
+									<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
+										<span class="blind">카카오스토리</span>
+									</a>
+									<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
+										<span class="blind">트위터</span>
+									</a>
+									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
+										<span class="blind">페이스북</span>
+									</a>
+									<a href="#" id="print" title="제본신청">
+										<img alt="책프린트" src="/images/printer.png">
+										<span class="">현재 책 프린트</span>
+									</a>
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -544,18 +566,13 @@
 															<tbody>
 																<tr>
 																	<td class="title"><span>흑백</span></td>
-																	<td><span>60원</span></td>
 																	<td><span>70원</span></td>
+																	<td><span>90원</span></td>
 																</tr>
 																<tr>
 																	<td class="title"><span>칼라</span></td>
-																	<td><span>400원</span></td>
 																	<td><span>500원</span></td>
-																</tr>
-																<tr>
-																	<td class="title"><span>고서</span></td>
-																	<td><span>100원</span></td>
-																	<td><span>120원</span></td>
+																	<td><span>800원</span></td>
 																</tr>
 															</tbody>
 														</table>
@@ -611,7 +628,7 @@
 														<tbody id="contents_pc">
 															<tr>
 																<td>
-																	<span>${bookVO.title}</span>
+																	<span id="prinBook">${bookVO.title}</span>
 																</td>
 																<td>
 																	<span>${bookVO.bookDate}</span>
@@ -621,7 +638,7 @@
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="복사 색상 선택" id="prColor">
+																		<select title="복사 색상 선택" name="caColor" id="prColor">
 																			<option value="N">흑백</option>
 																			<option value="Y">컬러</option>
 																		</select>
@@ -629,9 +646,9 @@
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
-																		<select title="용지크기 선택" id="prSize">
+																		<select title="용지크기 선택" name="caSize" id="prSize">
 																			<option value="A4">A4</option>
-																			<option value="B5">B5</option>
+																			<option value="B5">B4</option>
 																		</select>
 																	</div>
 																</td>
@@ -656,7 +673,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		<input type="text" disabled id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
@@ -756,7 +773,8 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																		<input type="hidden" disabled id="ipUserName" class="input_text" value="${member.userName}"/>
+																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
@@ -773,7 +791,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" disabled id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																		<input type="text" disabled id="ipEmail" name="email" class="input_text" value="${member.email}" style="border: 1px solid #fff0" aria-label="이메일"/>
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -806,52 +824,54 @@
 											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
 										</div>
 										<!-- 입금 정보 -->
-										<div class="post_info_wrap" style="display:none">
-											<div class="btn_wrap">
-												<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
-											</div>
-											<div class="inner">
-												<ul class="post_info_list">
-													<li>
-														<strong class="tit">복사 요금(복사면 단위)</strong>
-														<table class="tbl_copy_charge">
-															<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
-															<colgroup>
-																<col>
-																<col>
-																<col>
-																<col>
-																<col>
-															</colgroup>
-															<thead>
-																<tr>
-																	<th scope="col">제본</th>
-																	<th scope="col">총 페이지</th>
-																	<th scope="col">1장 가격</th>
-																	<th scope="col">총페이지 가격</th>
-																	<th scope="col">제본 가격</th>
-																	<th scope="col">결제 금액</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td class="title"><span>${bookVO.title}</span></td>
-																	<td id="tdTtp"><span></span></td>
-																	<td id="tdPa"><span></span></td>
-																	<td id="tdTtpPrice"><span></span></td>
-																	<td id="tdPrinPay"><span></span></td>
-																	<td id="tdTtPay"><span></span></td>
-																</tr>
-															</tbody>
-														</table>
-													</li>
-												</ul>
+										<div style="display:none" id="order">
+											<div class="post_info_wrap">
+												<div class="btn_wrap">
+													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
+												</div>
+												<div class="inner">
+													<ul class="post_info_list">
+														<li>
+															<strong class="tit">복사 요금(복사면 단위)</strong>
+															<table class="tbl_copy_charge">
+																<caption><span class="ir_text">복사 서비스 복사요금(면당)</span></caption>
+																<colgroup>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																	<col>
+																</colgroup>
+																<thead>
+																	<tr>
+																		<th scope="col">제본</th>
+																		<th scope="col">총 페이지</th>
+																		<th scope="col">1장 가격</th>
+																		<th scope="col">총페이지 가격</th>
+																		<th scope="col">제본 가격</th>
+																		<th scope="col">결제 금액</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td class="title"><span>${bookVO.title}</span></td>
+																		<td id="tdTtp"><span></span></td>
+																		<td id="tdPa"><span></span></td>
+																		<td id="tdTtpPrice"><span></span></td>
+																		<td id="tdPrinPay"><span></span></td>
+																		<td id="tdTtPay"><span id="prAmount"></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</ul>
+												</div>
 											</div>
 										</div>
+										<input type="hidden" id="imp" value="${imp}">
 										<!-- //입금 정보 -->
-										<div class="btn_wrap center mb30">
-											<button type="submit" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">신청</button>
-										</div>
+										<div class="btn_wrap center mb30" id="payBtn2"></div>
 									</fieldset>
 								</form>
 							</div>

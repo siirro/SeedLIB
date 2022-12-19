@@ -16,12 +16,6 @@
                     <b>메뉴</b>
                   </button>
                 </div>
-                <div class="header-search d-none d-md-flex">
-                  <form action="#">
-                    <input type="text" placeholder="Search..." />
-                    <button><i class="lni lni-search-alt"></i></button>
-                  </form>
-                </div>
               </div>
             </div>
             <div class="col-lg-7 col-md-7 col-6">
@@ -31,7 +25,7 @@
                 <div class="ml-15 d-none d-md-flex">
                   <a 
                   	class="main-btn btn-sm rounded-md info-btn"
-                  	href="/admin/adLogin"
+                  	href="/member/login"
                   	>
                   	<b>로그인</b>
                     <i class="lni lni-lock-alt ms-1"></i>
@@ -154,44 +148,36 @@
                   </ul>
                 </div>
                 <!-- message end -->
-                <!-- filter start -->
-                <div class="filter-box ml-15 d-none d-md-flex">
-                  <button class="" type="button" id="filter">
-                    <i class="lni lni-funnel"></i>
-                  </button>
-                </div>
-                <!-- filter end -->
                 <!-- profile start -->
                 <div class="profile-box ml-15">
-                  <button
-                    class="dropdown-toggle bg-transparent border-0"
-                    type="button"
-                    id="profile"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <div class="profile-info">
-                      <div class="info">
+                  <div class="profile-info">
+                    <div class="info">
+                      <button
+                        class="dropdown-toggle bg-transparent border-0"
+                        type="button"
+                        id="profile"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >
                         <h6>${sessionScope.memberVO.name}</h6>
-                        <div class="image">
-                          <img
-                            src="/images/logo200.png" 
-                            alt="씨앗도서관"
-                          />
-                          <span class="status"></span>
-                        </div>
+                      </button>
+                      <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="profile"
+                      >
+                        <li>
+                          <a href="/admin/adLogout"> <i class="lni lni-exit"></i>로그아웃</a>
+                        </li>
+                      </ul>
+                      <div class="image">
+                        <img
+                          src="/images/logo200.png" 
+                          alt="씨앗도서관"
+                        />
+                        <span class="status"></span>
                       </div>
                     </div>
-                    <i class="lni lni-chevron-down"></i>
-                  </button>
-                  <ul
-                    class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="profile"
-                  >
-                    <li>
-                      <a href="/admin/adLogout"> <i class="lni lni-exit"></i>로그아웃</a>
-                    </li>
-                  </ul>
+                  </div>
                 </div>
                 </c:if>
                 <!-- profile end -->
