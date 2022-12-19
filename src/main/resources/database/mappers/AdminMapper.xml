@@ -3,6 +3,27 @@
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.AdminMapper">
+	
+	<!--                        대쉬보드 공지사항 갯수                        -->
+	<select id="getDashBodList" resultType="Integer">
+		SELECT COUNT(BOARDNUM) FROM BOARD
+	</select>
+	
+	<!--                        대쉬보드 회원 목록 갯수                        -->
+	<select id="getDashMemList" resultType="Integer">
+		SELECT COUNT(USERNAME) FROM MEMBER
+	</select>
+	
+	<!--                      대쉬보드 문화프로그램 목록 갯수                      -->
+	<select id="getDashProList" resultType="Integer">
+		SELECT COUNT(PRONUM) FROM PROGRAM
+	</select>
+	
+	<!--                         대쉬보드 도서 목록 갯수                         -->
+	<select id="getDashBookList" resultType="Integer">
+		SELECT COUNT(ISBN) FROM BOOK
+	</select>
+
 	<insert id="setAdminRole" parameterType="MemberVO">
 		INSERT INTO MEMBER_ROLE VALUES (
 			(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_ADMIN'),#{userName}

@@ -68,7 +68,7 @@
               <!-- end col -->
               <c:forEach items="${list}" var="bookVO">
               <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
-                <div class="card-style-2 mb-30">
+                <!-- <div class="card-style-2 mb-30">
                   <div class="card-image">
                     <a href="./boDetail?isbn=${bookVO.isbn}">
                       <img
@@ -77,11 +77,35 @@
                       />
                     </a>
                   </div>
-                  <div class="card-content" style="overflow: hidden;">
-                    <h4><a href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
+                  <div class="card-content">
+                    <h4 class="bookList">
+                      <a 
+                      	style="
+                      	  overflow: hidden;
+						  text-overflow: ellipsis;
+                      	"
+                        href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}
+                      </a>
+                    </h4>
+                  </div>
+                </div> -->
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="${bookVO.image}" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text"><a>${bookVO.title}</a></p>
                   </div>
                 </div>
               </div>
+              <!-- <ul class="bookList clearfix">
+                <li>
+                  <span class="cover">
+                    <a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
+                      <img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
+                    </a>
+                  </span>
+                  <span class="txt">불편한 편의점 :김호연 장편소설</span>
+                </li>
+              </ul> -->
               </c:forEach>
               <!-- end col -->
             </div>

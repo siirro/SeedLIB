@@ -26,6 +26,8 @@
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
 	<script type="text/javascript" defer="defer" src="/js/admin/modal.js"></script>
 	<!-- SweetAlert -->
@@ -85,7 +87,7 @@
 									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
 										<span class="blind">페이스북</span>
 									</a>
-									<a href="#print" id="print" title="제본신청">
+									<a href="#" id="print" title="제본신청">
 										<img alt="책프린트" src="/images/printer.png">
 										<span class="">현재 책 프린트</span>
 									</a>
@@ -559,7 +561,7 @@
 														<tbody id="contents_pc">
 															<tr>
 																<td>
-																	<span>${bookVO.title}</span>
+																	<span id="prinBook">${bookVO.title}</span>
 																</td>
 																<td>
 																	<span>${bookVO.bookDate}</span>
@@ -604,7 +606,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		<input type="text" disabled id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
@@ -704,7 +706,8 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" placeholder="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호"  required="" />
+																		<input type="hidden" disabled id="ipUserName" class="input_text" value="${member.userName}"/>
+																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
@@ -721,7 +724,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" disabled id="ipEmail" name="email" class="input_text" placeholder="${member.email}" style="border: 1px solid #fff0" aria-label="이메일" required="" />
+																		<input type="text" disabled id="ipEmail" name="email" class="input_text" value="${member.email}" style="border: 1px solid #fff0" aria-label="이메일"/>
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -790,7 +793,7 @@
 																		<td id="tdPa"><span></span></td>
 																		<td id="tdTtpPrice"><span></span></td>
 																		<td id="tdPrinPay"><span></span></td>
-																		<td id="tdTtPay"><span></span></td>
+																		<td id="tdTtPay"><span id="prAmount"></span></td>
 																	</tr>
 																</tbody>
 															</table>
@@ -799,6 +802,7 @@
 												</div>
 											</div>
 										</div>
+										<input type="hidden" id="imp" value="${imp}">
 										<!-- //입금 정보 -->
 										<div class="btn_wrap center mb30" id="payBtn2"></div>
 									</fieldset>

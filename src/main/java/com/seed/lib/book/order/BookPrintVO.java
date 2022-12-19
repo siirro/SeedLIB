@@ -1,4 +1,4 @@
-package com.seed.lib.admin.book;
+package com.seed.lib.book.order;
 
 import com.seed.lib.book.BookVO;
 import com.seed.lib.member.MemberVO;

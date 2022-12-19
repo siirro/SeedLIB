@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.seed.lib.admin.book.BookPrintVO;
-
 @Mapper
 public interface BoOrderMapper {
 

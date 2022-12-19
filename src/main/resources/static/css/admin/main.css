@@ -2,6 +2,11 @@
 /*===========================
 		COMMON css
 ===========================*/
+
+.bookList {
+  
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 html {
   scroll-behavior: smooth;
@@ -1045,8 +1050,7 @@ h6,
 }
 .card-style-2 .card-content h4 a {
   color: inherit;
-  margin-bottom: 15px;
-  display: block;
+  margin-bottom: 10px;
 }
 .card-style-2 .card-content h4 a:hover {
   color: #4a6cf7;
@@ -5652,7 +5656,7 @@ h6,
   padding: 20px 0px;
   height: 100vh;
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   top: 0;
   left: 0;
