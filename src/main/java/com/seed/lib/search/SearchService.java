@@ -20,6 +20,25 @@ public class SearchService {
 	@Autowired
 	private SearchMapper searchMapper;
 	
+	public List<BookVO> getAccessionBook()throws Exception{
+		return searchMapper.getAccessionBook();
+	}
+	public List<BookVO> getPopularBook()throws Exception{
+		return searchMapper.getPopularBook();
+	}
+	
+	public List<BookVO> getSearchInfo(BookVO bookVO) throws Exception{
+		return searchMapper.getSearchInfo(bookVO);
+	}
+	
+	public List<PopularVO> getPopularWord()throws Exception{
+		return searchMapper.getPopularWord();
+	}
+	
+	public int setPopularWord(Pager pager)throws Exception{
+		return searchMapper.setPopularWord(pager);
+	}
+	
 	public Long getBookStatusEach(Long num)throws Exception{
 		return searchMapper.getBookStatusEach(num);
 	}

@@ -14,10 +14,16 @@ public class DonationVO {
 	private String donTitle;
 	private String donWriter;
 	private String donPublisher;
-	private String userName;
 	private String donMemo;
 	private Date donDate;
 	private String emailAgree;
+	private Long isbn;
+	private String userName;
+	private String image;
+	private String email;
+	private String price;
+	private Long donYear;
+	private Long category;
 	
 	private StatusVO statusVO;
 	private LibVO libVO;

@@ -19,7 +19,7 @@
     <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
-    <c:import url="./temp/sidebar-css.jsp"></c:import>
+    <c:import url="../temp/sidebar-css.jsp"></c:import>
     <style>
           .pagination{
         display: flex;
@@ -78,7 +78,7 @@
     <main class="main-wrapper">
     
       <!-- ========== header start ========== -->
-      <c:import url="./temp/header.jsp"></c:import>
+      <c:import url="../temp/header.jsp"></c:import>
       <!-- ========== header end ========== -->
 
       <!-- ========== card components start ========== -->
@@ -89,7 +89,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>희망 도서 신청 정보</h2>
+                  <h2>도서 수정</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -101,10 +101,10 @@
                         <a href="../main">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item">
-                        <a href="./hopeBoList">희망 도서 관리</a>
+                        <a href="./boList">도서 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        희망 도서 신청 정보
+                        도서 수정
                       </li>
                     </ol>
                   </nav>
@@ -122,111 +122,52 @@
             <div class="row" style="justify-content: center;">
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" style="width:70%;">
                 <div class="card-style-2 mb-30" style="width:100%;">
-                  <div>
-                    <!--Real Contents Start-->
-                    <!-- 서치영역 -->
-                    <form id="searchForm" name="searchForm" method="get">
-                    <div class="searchWrap">
-                        <div class="searchFormWeb">
-                            <div class="searchToparea">
-                                <div class="searchBardiv hope">
-                                    <div class="searchInputbox" style="margin-right: 0px;">
-                                        <input hidden="hidden">
-                                        <input type="text" id="query" name="query" title="제목을 입력하세요." onkeyup="enterkey()" value="" placeholder="도서명을 입력하세요." autocomplete="off">
-                                        <input type="button" id="searchBtn" title="검색" class="unifiedSearchbtn">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- 서치결과영역 -->
-                        <div class="searchResultWrap">
-                            <div class="result_box">
-                                <div class="listSetting">
-                                    <div class="result_screen">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bookList listViewStyle hope">
-                            <ul class="listWrap">
-                            </ul>
-                        </div>						
-                            </form>
-                            <!-- 서치영역 끝 -->
-                            <!-- 페이징 -->
-                            <div class="pagingWrap">
-                                <div class="pagination">
-                                </div>
-                            </div>
-                            <!-- 페이징 끝-->
-                
-                </div>
                     <div>
-                        <form id="registForm" name="registForm" action-="setHope" method="post">
-                                            <div><h4 class="htitle">신청자 정보</h4></div>
-                                            <div class="boardWrap">
+                        <form id="registForm" name="registForm" action-="boAdd" method="post">
+                                            <div class="boardWrap mt10">
                                                 <table class="board-view">
-                                                    <colgroup>
-                                                        <col style="width:20%">
-                                                        <col>
+                                                  <thead>
+                                                    <!-- input style card start -->
+                                                    <div style="display: flex; justify-content: center;">
+                                                      <div class="card-style mb-30">
+                                                        <div class="card-image" style="margin-bottom: 0px;">
+                                                            <img id="viewBook" style="width:200px; height: auto;"
+                                                              src="${bookVO.image}"
+                                                              alt="씨앗도서관"
+                                                            />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <!-- end card -->
+                                                  </thead>
+                                                  <div><h4 class="htitle">도서 정보</h4></div>
+                                                    <colgroup><col style="width:20%">
+                                                    <col>
                                                     </colgroup>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">신청자명</th>
-                                                            <td><input type="text" id="userName" name="userName" class="form-control" value="${hope.userName}" readonly></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">이메일</th>
-                                                            <td><input type="text" name="email" class="form-control" value="${hope.email}" readonly></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                
-                                            <div class="boardWrap mt10">
-                                                <table class="board-view">
-                                                  <div><h4 class="htitle">희망도서 정보</h4></div>
-                                                    <colgroup><col style="width:20%">
-                                                    <col>
-                                                    </colgroup><tbody>
-                                                        <tr>
-                                                            <th scope="row"><label for="libCode">신청도서관</label><span class="essential">*</span></th>
+                                                            <th scope="row"><label for="title">도서명</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" readonly name="hopLib" id="hopLib" class="form-control" libNum="${hope.libVO.libNum}" value="${hope.libVO.libName}">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><label for="title">희망도서명</label><span class="essential themeFC">*</span></th>
-                                                            <td>
-                                                                <input type="text" id="hopTitle" name="hopTitle" value="${hope.hopTitle}" class="form-control">
+                                                                <input type="text" id="title" name="title" value="${bookVO.title}" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="author">저자</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="hopWriter" name="hopWriter" value="${hope.hopWriter}" class="form-control"></td>
+                                                            <td><input type="text" id="writer" name="writer" value="${bookVO.writer}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="publisher">출판사</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="hopPublisher" name="hopPublisher" value="${hope.hopPublisher}" class="form-control"></td>
+                                                            <td><input type="text" id="publisher" name="publisher" value="${bookVO.publisher}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="publishYear">발행연도</label></th>
-                                                            <td><input type="number" id="hopYear" min="1500", max="", step="1", name="hopYear" value="${hope.hopYear}" maxlength="4" class="form-control"></td>
+                                                            <th scope="row"><label for="publishYear">발행연도</label><span class="essential themeFC">*</span></th>
+                                                            <td><input type="number" id="bookDate" min="1500", max="", step="1", name="bookDate" value="${bookVO.bookDate}" maxlength="4" class="form-control"></td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="isbn">ISBN</label></th>
+                                                            <th scope="row"><label for="isbn">ISBN</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="${hope.isbn}" maxlength="30" class="form-control">
+                                                                <input type="text" id="isbn" name="isbn" value="${bookVO.isbn}" readonly maxlength="30" class="form-control">
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><label for="price">정가</label></th>
-                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="${hope.price}" class="form-control"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>
-                                                            <td><textarea readonly name="hopMemo" id="hopMemo" class="form-control">${hope.hopMemo}</textarea></td>
                                                         </tr>
                                                         <tr>
                                                           <th scope="row"><label for="requestReason">카테고리</label><span class="essential themeFC">*</span></th>
@@ -249,11 +190,11 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <input type="hidden" name="image" id="image" value="${hope.image}">
+                                            <input type="hidden" name="image" id="image" value="">
                                         </form>
                                         <div class="btnGroup">
-                                          <button type="button" id="registBtn" class="btn themeBtn" value="${hope.hopNum}">입고 완료</button>
-                                          <button type="button" id="cnclBtn" class="btn cncl" value="${hope.hopNum}">신청 반려</button>
+                                          <button type="button" id="updateBtn" class="btn themeBtn" value="">도서 수정</button>
+                                          <button type="button" id="cnclBtn" class="btn cncl" value="">취소</button>
                                         </div>
                                         <!-- End Of the Real Contents-->
                     </div>
@@ -274,13 +215,14 @@
       <!-- ========== card components end ========== -->
 
       <!-- ========== footer start =========== -->
-      <c:import url="./temp/footer.jsp"></c:import>
+      <c:import url="../temp/footer.jsp"></c:import>
       <!-- ========== footer end =========== -->
       
     </main>
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="/js/admin/hopeAdd.js"></script>
+    <c:import url="../temp/js.jsp"></c:import>
+    <script src="/js/admin/boAdd.js"></script>
   </body>
 </html>

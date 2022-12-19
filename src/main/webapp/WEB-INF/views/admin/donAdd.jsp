@@ -89,7 +89,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>희망 도서 신청 정보</h2>
+                  <h2>기증 도서 신청 정보</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -101,10 +101,10 @@
                         <a href="../main">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item">
-                        <a href="./hopeBoList">희망 도서 관리</a>
+                        <a href="./donBoList">기증 도서 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        희망 도서 신청 정보
+                        기증 도서 신청 정보
                       </li>
                     </ol>
                   </nav>
@@ -163,8 +163,8 @@
                 
                 </div>
                     <div>
-                        <form id="registForm" name="registForm" action-="setHope" method="post">
-                                            <div><h4 class="htitle">신청자 정보</h4></div>
+                        <form id="registForm" name="registForm" action-="setDon" method="post">
+                                            <div><h4 class="dtitle">신청자 정보</h4></div>
                                             <div class="boardWrap">
                                                 <table class="board-view">
                                                     <colgroup>
@@ -174,11 +174,11 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">신청자명</th>
-                                                            <td><input type="text" id="userName" name="userName" class="form-control" value="${hope.userName}" readonly></td>
+                                                            <td><input type="text" id="userName" name="userName" class="form-control" value="${don.userName}" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">이메일</th>
-                                                            <td><input type="text" name="email" class="form-control" value="${hope.email}" readonly></td>
+                                                            <td><input type="text" id="email" name="email" class="form-control" value="${don.email}" readonly></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -186,47 +186,47 @@
                 
                                             <div class="boardWrap mt10">
                                                 <table class="board-view">
-                                                  <div><h4 class="htitle">희망도서 정보</h4></div>
+                                                  <div><h4 class="dtitle">기증도서 정보</h4></div>
                                                     <colgroup><col style="width:20%">
                                                     <col>
                                                     </colgroup><tbody>
                                                         <tr>
                                                             <th scope="row"><label for="libCode">신청도서관</label><span class="essential">*</span></th>
                                                             <td>
-                                                                <input type="text" readonly name="hopLib" id="hopLib" class="form-control" libNum="${hope.libVO.libNum}" value="${hope.libVO.libName}">
+                                                                <input type="text" readonly name="donLib" id="donLib" class="form-control" libNum="${don.libVO.libNum}" value="${don.libVO.libName}">
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="title">희망도서명</label><span class="essential themeFC">*</span></th>
+                                                            <th scope="row"><label for="title">기증도서명</label><span class="essential themeFC">*</span></th>
                                                             <td>
-                                                                <input type="text" id="hopTitle" name="hopTitle" value="${hope.hopTitle}" class="form-control">
+                                                                <input type="text" id="donTitle" name="donTitle" value="${don.donTitle}" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="author">저자</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="hopWriter" name="hopWriter" value="${hope.hopWriter}" class="form-control"></td>
+                                                            <td><input type="text" id="donWriter" name="donWriter" value="${don.donWriter}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="publisher">출판사</label><span class="essential themeFC">*</span></th>
-                                                            <td><input type="text" id="hopPublisher" name="hopPublisher" value="${hope.hopPublisher}" class="form-control"></td>
+                                                            <td><input type="text" id="donPublisher" name="donPublisher" value="${don.donPublisher}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="publishYear">발행연도</label></th>
-                                                            <td><input type="number" id="hopYear" min="1500", max="", step="1", name="hopYear" value="${hope.hopYear}" maxlength="4" class="form-control"></td>
+                                                            <td><input type="number" id="donYear" min="1500", max="", step="1", name="donYear" value="${don.donYear}" maxlength="4" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="isbn">ISBN</label></th>
                                                             <td>
-                                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="${hope.isbn}" maxlength="30" class="form-control">
+                                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="isbn" name="isbn" value="${don.isbn}" maxlength="30" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="price">정가</label></th>
-                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="${hope.price}" class="form-control"></td>
+                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="${don.price}" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row"><label for="requestReason">의견</label><span class="essential themeFC">*</span></th>
-                                                            <td><textarea readonly name="hopMemo" id="hopMemo" class="form-control">${hope.hopMemo}</textarea></td>
+                                                            <td><textarea readonly name="donMemo" id="donMemo" class="form-control">${don.donMemo}</textarea></td>
                                                         </tr>
                                                         <tr>
                                                           <th scope="row"><label for="requestReason">카테고리</label><span class="essential themeFC">*</span></th>
@@ -246,14 +246,29 @@
                                                             </select>
                                                           </div></td>
                                                         </tr>
+                                                        <tr>
+                                                          <th scope="row"><label for="agree">이메일 수신 여부</label><span class="essential themeFC">*</span></th>
+                                                          <td>
+                                                            <c:choose>
+                                                              <c:when test="${don.emailAgree eq 'Y'}">
+                                                                동의 <input type="radio" name="emailAgree" value="Y" checked readonly class="emailAgree"><br>
+                                                                비동의 <input type="radio" name="emailAgree" value="N" readonly class="emailAgree">
+                                                              </c:when>
+                                                              <c:when test="${don.emailAgree eq 'N'}">
+                                                                동의 <input type="radio" name="emailAgree" value="Y" readonly class="emailAgree"><br>
+                                                                비동의 <input type="radio" name="emailAgree" value="N" checked readonly class="emailAgree">
+                                                              </c:when>
+                                                            </c:choose>
+                                                          </td>
+                                                      </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <input type="hidden" name="image" id="image" value="${hope.image}">
+                                            <input type="hidden" name="image" id="image" value="${don.image}">
                                         </form>
                                         <div class="btnGroup">
-                                          <button type="button" id="registBtn" class="btn themeBtn" value="${hope.hopNum}">입고 완료</button>
-                                          <button type="button" id="cnclBtn" class="btn cncl" value="${hope.hopNum}">신청 반려</button>
+                                          <button type="button" id="registBtn" class="btn themeBtn" value="${don.donNum}">입고 완료</button>
+                                          <button type="button" id="cnclBtn" class="btn cncl" value="${don.donNum}">신청 반려</button>
                                         </div>
                                         <!-- End Of the Real Contents-->
                     </div>
@@ -281,6 +296,6 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="/js/admin/hopeAdd.js"></script>
+    <script src="/js/admin/donAdd.js"></script>
   </body>
 </html>

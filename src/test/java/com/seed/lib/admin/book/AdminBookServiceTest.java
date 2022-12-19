@@ -35,10 +35,7 @@ class AdminBookServiceTest {
 		bookVO.setPublisher("출판사");
 		bookVO.setBookDate(2022L);
 		bookVO.setImage("이미지");
-		
-		int result = adminBookService.setAdBookAdd(bookVO);
-		
-		assertEquals(1, result);
+
 		
 	}
 

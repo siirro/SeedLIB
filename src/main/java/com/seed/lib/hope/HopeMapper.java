@@ -12,6 +12,7 @@ import com.seed.lib.util.HdPager;
 public interface HopeMapper {
 
 //검증용
+	public int isHaveBook(Map<String, Object> map) throws Exception;
 	public int getHaveBook(Map<String, Object> map) throws Exception;
 	public int getOverLapBook(Map<String, Object> map) throws Exception;
 	public int getMonth(HopeVO hopeVO) throws Exception;
@@ -29,6 +30,7 @@ public interface HopeMapper {
 	public int setUpdateHope(HopeVO hopeVO) throws Exception;
 	
 //Admin 페이지
+	public Long getAdminTotalCount(HdPager hdPager) throws Exception;
 	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception;
 	public HopeVO getHopeOne(HopeVO hopeVO) throws Exception;
 	public int setHopeCncl(HopeVO hopeVO) throws Exception; 

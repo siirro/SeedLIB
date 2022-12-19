@@ -1,34 +1,22 @@
 console.log("연결");
 
-let libNum = $("#libNum").val();
-let searchKeyword = $("#searchKeyword").val();
+let libNum = "";
+let searchKeyword = "";
 
-$("#libNum").change(function(){
-  console.log($(this).val()); 
-  let libNum = $("#libNum").val();
-  let searchKeyword = $("#searchKeyword").val();
-  let hdPager = {
-    libNum:libNum,
-    searchKeyword:searchKeyword
-    }
+// $(".searchValue").change(function(){
+//   libNum = $("#libNum").val();
+//   searchKeyword = $("#searchKeyword").val();
+//   console.log(libNum, searchKeyword);
+//   $("#libNum").val(libNum);
+//   $("#searchKeyword").val(searchKeyword);
+//   $("#searchFrm").submit();
+// });
 
-    console.log(hdPager.libNum, hdPager.searchKeyword);
-
-    if(hdPager.searchKeyword === ""){
-
-    }
-
-    $.ajax({
-      type:"GET",
-      url:"/admin/hopeBoList",
-      data:JSON.stringify(hdPager),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json", 
-      success: function(data){
-        console.log("성공");
-      }
-    })
-})
+// $("#searchKeyword").change(function(){
+//   let libNum = $("#libNum").val();
+//   let searchKeyword = $("#searchKeyword").val();
+//     $("#searchFrm").submit();
+// });
 
 
 $(".processBtn").click(function(){

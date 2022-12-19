@@ -196,7 +196,7 @@ pageEncoding="UTF-8"%>
                                 </tr>
                                 <tr>
                                     <th scope="row">이메일</th>
-                                    <td><input type="text" class="required" name="email" value="${memberVO.email}" readonly></td>
+                                    <td><input type="text" class="required" id="email" name="email" value="${memberVO.email}" readonly></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">주소</th>

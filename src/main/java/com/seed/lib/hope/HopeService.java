@@ -11,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.HdPager;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class HopeService {
 
 	@Autowired
@@ -62,7 +65,7 @@ public class HopeService {
 	
 	public List<HopeVO> getAdminHopList(HdPager hdPager) throws Exception{
 		hdPager.makeRow();
-		hdPager.getNum(hopeMapper.getTotalCount(hdPager));
+		hdPager.getNum(hopeMapper.getAdminTotalCount(hdPager));
 		return hopeMapper.getAdminHopList(hdPager);
 	}
 	
@@ -76,28 +79,35 @@ public class HopeService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int setHopeOne(HopeVO hopeVO) throws Exception{
-		BookVO bookVO = new BookVO();
 		Map<String, Object> map = new HashMap<>();
-		bookVO.setIsbn(hopeVO.getIsbn());
-		bookVO.setTitle(hopeVO.getHopTitle());
-		bookVO.setWriter(hopeVO.getHopWriter());
-		bookVO.setPublisher(hopeVO.getHopPublisher());
-		bookVO.setBookDate(hopeVO.getHopYear());
-		bookVO.setCategory(hopeVO.getCategory());
-		bookVO.setImage(hopeVO.getImage());
-		bookVO.setNum(hopeMapper.bookCount()+1L);
 		map.put("libNum", hopeVO.getLibVO().getLibNum());
 		map.put("isbn", hopeVO.getIsbn());
-		int result = hopeMapper.setHopeOne(bookVO);
-		if(result<0) {
+		int result = hopeMapper.isHaveBook(map);
+		if(result<1) {
+			BookVO bookVO = new BookVO();
+			bookVO.setIsbn(hopeVO.getIsbn());
+			bookVO.setTitle(hopeVO.getHopTitle());
+			bookVO.setWriter(hopeVO.getHopWriter());
+			bookVO.setPublisher(hopeVO.getHopPublisher());
+			bookVO.setBookDate(hopeVO.getHopYear());
+			bookVO.setCategory(hopeVO.getCategory());
+			bookVO.setImage(hopeVO.getImage());
+			bookVO.setNum(hopeMapper.bookCount()+1L);
+			result = hopeMapper.setHopeOne(bookVO);
+			if(result<1) {
+				throw new Exception();
+			}
+		}
+		
+		if(result<1) {
 			throw new Exception();
 		}else {
 			result = hopeMapper.setLibOne(map);
-			if(result<0) {
+			if(result<1) {
 				throw new Exception();
 			}else {
 				result = hopeMapper.setAdminHopeStat(hopeVO);
-				if(result<0) {
+				if(result<1) {
 					throw new Exception();
 				} else {
 					return result;

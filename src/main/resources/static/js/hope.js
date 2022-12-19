@@ -39,7 +39,6 @@ function getKey(){
                 result:1
             },success:function(result){
                 apiKey = result;
-                console.log(apiKey);
             }
 })
 }

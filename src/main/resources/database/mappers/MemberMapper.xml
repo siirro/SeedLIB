@@ -63,6 +63,7 @@
 		<result column="birth" property="birth"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
+		<result column="address1" property="address1"/>
 		<result column="regdate" property="regDate"/>
 		<result column="address1" property="address1"/>
 		<result column="enabled" property="enabled"/>

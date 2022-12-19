@@ -14,27 +14,27 @@ let totalCount=0;
 let totalBlock=0;
 let searchResult ="";
 ///검색결과입력/////////////////////////////////////////////////
-let hopTitle="";
-let hopWriter="";
-let hopPublisher="";
+let donTitle="";
+let donWriter="";
+let donPublisher="";
 let datetime="";
 let isbn="";
 let price=0;
 let image="";
 let searchOne="";
 ///유효성검사///////////////////////////////////////////////////
-let hLibCheck = false;
-let hTitleCheck = false;
-let hWriterCheck = false;
-let hopYearCheck = false;
+let dLibCheck = false;
+let dTitleCheck = false;
+let dWriterCheck = false;
+let donYearCheck = false;
 let isbnCheck = false;
-let hMemoCheck = false;
+let dMemoCheck = false;
 let date = new Date();
 
 function getKey(){
     $.ajax({
             type:"GET",
-            url:"http://localhost:81/hope/searchHope",
+            url:"http://localhost:81/donation/searchDon",
             async:false,
             data:{
                 result:1
@@ -56,12 +56,12 @@ $("#searchBtn").click(function(){
     $(".pagination").empty();
     $(".result_screen").empty();
     $(".listWrap").empty();
-    $("#hTitle").empty();
-    $("#hWriter").empty();
-    $("#hPublisher").empty();
-    $("#hopYear").empty();
-    $("#isbn").empty();
-    $("#price").empty();
+    $("#donTitle").val("");
+    $("#donWriter").val("");
+    $("#donPublisher").val("");
+    $("#donYear").val("");
+    $("#isbn").val("");
+    $("#price").val("");
     query = $("#query").val();
     if(query!=""){
        getKey();
@@ -72,7 +72,7 @@ $("#searchBtn").click(function(){
     }
 })
 
-$("#hopYear").focus(function(){
+$("#donYear").focus(function(){
     let max = date.getFullYear();
     $(this).attr("max", max);
 })
@@ -100,10 +100,10 @@ function getSearch(){
                         $.each(searchArr[0], (function(index, item){
                             if(item.isbn.length<15){
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(1,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="doneApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(1,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }else{
                                 searchOne ='<li><div class="bookArea"><div class="bookImg"><img src="'+item.thumbnail+'"alt="'+item.title+'"></div><div class="bookData"><div class="book_dataInner"><p class="book_name1" title="'+item.title+'">'+item.title+'</p><ul class="dot-list clearfix mb10"><li><span>저자</span> : '+item.authors+'</li><li><span>발행자</span> : '+item.publisher+'</li><li><span>발행년도</span> : '+item.datetime.substr(0,10)+'</li><li><span>ISBN</span> : '+item.isbn.substr(11,13)+'</li><li><span>가격</span> : '+item.price+'</li></ul>';
-                                searchOne = searchOne+('<button type="button" onclick="hopeApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
+                                searchOne = searchOne+('<button type="button" onclick="doneApply(\''+item.title+'\',\''+item.authors+'\',\''+item.publisher+'\',\''+item.datetime.substr(0,4)+'\',\''+item.isbn.substr(11,13)+'\',\''+item.price+'\',\''+item.thumbnail+'\')" id="applyBtn" class="aplBtn">신청</button></div></div></div></li>');
                             }                                
                             $(".listWrap").append(searchOne);
                         })
@@ -132,7 +132,6 @@ function paging(totalCount){
     if(curBlock<totalBlock){
         next=true;
     }
-    console.log("page: ",pageNum,"totalcount: ",totalCount,"totalpage: ",totalPage,"totalblock: ",totalBlock,"startnum: ",startNum,"startrow: ",startRow, "curBlock: ",curBlock, "lastNum: ", lastNum)
     let r='<div class="pagDiv"><ul class="pageList"><li class="pageSet"><button type="button" class="page btn-paging prev" id="pagePre" data-num="'+(startNum-5)+'"></button></li>'
     if(pageNum==totalPage){
         alert("마지막 페이지입니다")
@@ -173,22 +172,22 @@ $(".pagination").on("click",".page",function(){
 }) 
 
 //검색 후 도서 입력
-function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
+function doneApply(title, authors, publisher, datetime, isbn, price, thumbnail){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
         $(".pagination").empty();
         $(".result_screen").empty();
         $(".listWrap").empty();
 
-        hopTitle = title;
-        hopWriter=authors;
+        donTitle = title;
+        donWriter=authors;
         $("#image").val(thumbnail);
-        if(hopWriter.length<1){
-            hopWriter="미상";
+        if(donWriter.length<1){
+            donWriter="미상";
         }
-        hopPublisher=publisher;
-        if(hopPublisher.length<1){
-            hopPublisher="미상";
+        donPublisher=publisher;
+        if(donPublisher.length<1){
+            donPublisher="미상";
         }
         datetime=datetime.substr(0,4);
         if(datetime.length<1){
@@ -202,16 +201,16 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
         if(price.length<1){
             price=0;
         }
-        $("#hopTitle").val(hopTitle);
-        $("#hopWriter").val(hopWriter);
-        $("#hopPublisher").val(hopPublisher);
-        $("#hopYear").val(datetime);
+        $("#donTitle").val(donTitle);
+        $("#donWriter").val(donWriter);
+        $("#donPublisher").val(donPublisher);
+        $("#donYear").val(datetime);
         $("#isbn").val(isbn);
         $("#price").val(price);
-        $("#hopTitle").attr("readonly", "true");
-        $("#hopWriter").attr("readonly", "true");
-        $("#hopPublisher").attr("readonly", "true");
-        $("#hopYear").attr("readonly", "true");
+        $("#donTitle").attr("readonly", "true");
+        $("#donWriter").attr("readonly", "true");
+        $("#donPublisher").attr("readonly", "true");
+        $("#donYear").attr("readonly", "true");
         $("#isbn").attr("readonly", "true");
         $("#price").attr("readonly", "true");
     } else{
@@ -223,32 +222,32 @@ function hopeApply(title, authors, publisher, datetime, isbn, price, thumbnail){
 $("#registBtn").click(function(){
     let check = window.confirm("신청하시겠습니까?");
     if(check){
-        hLibCheck = false;
-        hTitleCheck = false;
-        hWriterCheck = false;
+        dLibCheck = false;
+        dTitleCheck = false;
+        dWriterCheck = false;
         categoryCheck = false;
-        hYearCheck = false;
+        dYearCheck = false;
         isbnCheck = false;
-        if($("#hopLib").attr("libNum")!=""){
-            hLibCheck = true;
+        if($("#donLib").attr("libNum")!=""){
+            dLibCheck = true;
         }
-        if($("#hopTitle").val().length>0){
-            hTitleCheck = true;
+        if($("#donTitle").val().length>0){
+            dTitleCheck = true;
         }
-        if($("#hopWriter").val().length>0){
-            hWriterCheck = true;
+        if($("#donWriter").val().length>0){
+            dWriterCheck = true;
         }
-        if($("#hopPublisher").val().length<1){
-            $("#hopPublisher").val("미상");
+        if($("#donPublisher").val().length<1){
+            $("#donPublisher").val("미상");
         }
-        if($("#hopYear").val()==""){
+        if($("#donYear").val()==""){
             alert("발행연도를 입력하세요");
             return;
-        } else if($("#hopYear").val()>date.getFullYear()){
+        } else if($("#donYear").val()>date.getFullYear()){
             alert("발행연도를 다시 입력하세요");
             return;
         } else{
-            hYearCheck = true;
+            dYearCheck = true;
         }
         if($("#isbn").val().length<1){
             alert("isbn을 입력하세요");
@@ -265,36 +264,66 @@ $("#registBtn").click(function(){
         if($("#price").val()==""){
             $("#price").val("0");
         }
-        if(hLibCheck&&hTitleCheck&&hWriterCheck&&categoryCheck&&hYearCheck){
+        if(dLibCheck&&dTitleCheck&&dWriterCheck&&categoryCheck&&dYearCheck){
             let libVO={
-                libNum:$("#hopLib").attr("libNum")
+                libNum:$("#donLib").attr("libNum")
             }
-            let hopeVO = {
-                hopNum:$("#registBtn").attr("value"),
-                hopTitle:$("#hopTitle").val(),
-                hopWriter:$("#hopWriter").val(),
-                hopPublisher:$("#hopPublisher").val(),
+            let donationVO = {
+                donNum:$("#registBtn").attr("value"),
+                donTitle:$("#donTitle").val(),
+                donWriter:$("#donWriter").val(),
+                donPublisher:$("#donPublisher").val(),
+                emailAgree:$(".emailAgree").val(),
                 isbn:$("#isbn").val(),
                 userName:$("#userName").val(),
                 image:$("#image").val(),
                 email:$("#email").val(),
                 price:$("#price").val(),
-                hopYear:$("#hopYear").val(),
+                donYear:$("#donYear").val(),
                 category:$("#category").val(),
                 libVO:libVO
             }
             $.ajax({
                 type:"POST",
-                url:"/admin/hopeAdd",
-                data:JSON.stringify(hopeVO),
+                url:"/admin/donAdd",
+                data:JSON.stringify(donationVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                     success:function(data){
-                        alert(data.msg);
-                        location.href="../admin/hopeBoList";
-                    },error:function(error){
+                        if(data.result>0){
+                            alert(data.msg);
+                            location.href="../admin/donaBoList";
+                        }else{
+                            let qCheck = window.confirm(data.msg);
+                            if(qCheck){
+                                console.log("수량 추가할거야");
+                                $.ajax({
+                                    type:"POST",
+                                    url:"/admin/updateQuantity",
+                                    data:JSON.stringify(donationVO),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                        success:function(data){
+                                            if(data.result>0){
+                                                alert(data.msg);
+                                                location.href="../admin/donaBoList";
+                                            }else{
+                                                alert(data.msg);
+                                            }        
+                                        },error:function(error){
+                                            console.log("errorㅠㅠ", error);
+                                            alert("서버 문제로 처리가 불가합니다");
+                                            location.reload();
+                                        }                
+                                    })
+                                }else{
+                                    return;
+                                }
+                    }
+                },error:function(error){
                         console.log("errorㅠㅠ", error);
                         alert("서버 문제로 처리가 불가합니다");
+                        location.reload();
                     }                
                 })
         }else{
@@ -308,14 +337,14 @@ $("#registBtn").click(function(){
 })
 
 $("#cnclBtn").click(function(){
-    let hopeVO = {
+    let donationVO = {
         userName:$("#userName").val(),
-        hopNum:$("#cnclBtn").attr("value")
+        donNum:$("#cnclBtn").attr("value")
     }
     $.ajax({
         type:"POST",
-        url:"/admin/hopeAddCncl",
-        data:JSON.stringify(hopeVO),
+        url:"/admin/donAddCncl",
+        data:JSON.stringify(donationVO),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success:function(map){

@@ -33,13 +33,14 @@
 		<typeAlias type="com.seed.lib.studyroom.StudyDetailVO" alias="StudyDetailVO"/>
 		<typeAlias type="com.seed.lib.studyroom.LockerVO" alias="LockerVO"/>
 		<typeAlias type="com.seed.lib.studyroom.LockerCancelVO" alias="LockerCancelVO"/>
+		<typeAlias type="com.seed.lib.admin.calendar.AdminCalendarVO" alias="AdminCalendarVO"/>
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardVO" alias="BoardVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardFileVO" alias="BoardFileVO"/>
 		 
-		 
+		 <typeAlias type="com.seed.lib.search.PopularVO" alias="PopularVO"/>
 		 
 		 <typeAlias type="java.util.List" alias="List"/>
 		 <typeAlias type="java.util.Map" alias="Map"/>
