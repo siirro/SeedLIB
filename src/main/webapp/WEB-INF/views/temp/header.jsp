@@ -42,7 +42,27 @@
 							<li><a href="/member/agree">회원가입</a></li>
 						</sec:authorize>
 
-						
+						<c:set var="admin" value="false"></c:set>
+						<c:choose>
+							<c:when test="${not empty memberVO}">
+								<c:forEach items="${sessionScope.memberVO.roleVOs}" var="r">
+									<c:if test="${r.getRoleName() eq 'ROLE_ADMIN'}">
+										<c:set var="admin" value="true"></c:set>
+										<li><a href="/member/logout">로그아웃</a></li>
+										<li><a href="/admin/main">관리자페이지</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${admin eq 'false'}">
+									<li><a href="/member/logout">로그아웃</a></li>
+									<li><a href="/mypage/myIndex">마이페이지</a></li>
+								</c:if>
+							</c:when>
+							<c:otherwise>
+								<li><a href="/member/login">로그인</a></li>
+								<li><a href="/member/agree">회원가입</a></li>
+							</c:otherwise>
+						</c:choose>
+						 
 						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>
 				</div>
@@ -127,30 +147,16 @@
 						<li id="gnb5_5"><a href="/seoksu/menu/10158/bbs/20004/bbsPostList.do">분실물센터</a> </li> 
 					</ul> 
 				</li> 
-				<c:set var="admin" value="false"></c:set>
-				<c:if test="${not empty memberVO}">
-				<c:forEach items="${sessionScope.memberVO.roleVOs}" var="r">
-						<c:if test="${r.getRoleName() eq 'ROLE_ADMIN'}">
-						  <c:set var="admin" value="true"></c:set>
-							<li id="gnb6" class="hehehe"> <a href="/admin/main"> <em>관리자페이지</em> </a>
-								<ul style="display: none;"> 
-								</ul>
-							</li>
-						</c:if>
-				</c:forEach>	
-				<c:if test="${admin eq 'false'}">
-					<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
-						<ul style="display: none;"> 
-							<li id="gnb6_1"><a href="#">나의정보</a> </li> 
-							<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
-							<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
-							<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 
-							<li id="gnb6_9"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
-							<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
-						</ul>
-					</li>
-				</c:if>
-				</c:if>
+				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
+					<ul style="display: none;"> 
+						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
+						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
+						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
+						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 
+						<li id="gnb6_9"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
+						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
+					</ul>
+				</li>
 			</ul>
 			
 			<div id="submenuArea" style="left: 0px;"></div>

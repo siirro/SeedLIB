@@ -33,6 +33,9 @@ import retrofit2.http.POST;
 public class AdminController {
 
 	@Autowired
+	private AdminService adminService;
+	
+	@Autowired
 	private MemberService memberService;
 	
 	@Autowired
@@ -156,20 +159,32 @@ public class AdminController {
 	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////	
-	
-	// 어드민 로그아웃
-	@GetMapping("adLogout")
-	public String setAdLogout(HttpSession session)throws Exception{
-		
-		session.invalidate();
-		
-		return "redirect:../admin/main";
-	}
 		
 	// 어드민 메인 페이지
 	@GetMapping("main")
-	public String getAdMain()throws Exception{
-		return "admin/main";
+	public ModelAndView getAdMain()throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		// 대쉬보드 공지사항 갯수
+		int dshBodList = adminService.getDashBodListI();
+		
+		// 대쉬보드 회원 목록 갯수
+		int dshMemList = adminService.getDashMemList();
+		
+		// 대쉬보드 문화프로그램 목록 갯수
+		int dshProList = adminService.getDashProList();
+		
+		// 대보드 도서 목록 갯수
+		int dshBoList = adminService.getDashBookList();
+		
+		mv.addObject("dshBodList", dshBodList);
+		mv.addObject("dshMemList", dshMemList);
+		mv.addObject("dshProList", dshProList);
+		mv.addObject("dshBoList", dshBoList);
+		mv.setViewName("admin/main");
+		
+		return mv;
 	}
 	
 }

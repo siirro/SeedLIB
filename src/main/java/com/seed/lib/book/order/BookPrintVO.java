@@ -1,15 +1,22 @@
-package com.seed.lib.admin.book;
-
-import com.seed.lib.book.BookVO;
-import com.seed.lib.member.MemberVO;
+package com.seed.lib.book.order;
 
 import lombok.Data;
 
 @Data
 public class BookPrintVO {
 
+
 	// 제본 주문번호
 	private Long caNum;
+	
+	// 제본 횟수
+	private Integer caCount;
+	
+	// 컬러
+	private String caColor;
+	
+	// 용지
+	private String caSize;
 	
 	// 제본 시작 페이지번호
 	private Long caStPage;

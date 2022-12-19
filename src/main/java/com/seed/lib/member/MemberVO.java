@@ -6,19 +6,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.seed.lib.admin.book.BookPrintVO;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.book.order.BookPrintVO;
 
 import lombok.Data;
 
 @Data
 public class MemberVO  implements UserDetails, OAuth2User{
-	private String userName;
+	private String username;
 	private String password;
 	private String name;
 	private String gender;
@@ -64,7 +65,7 @@ public class MemberVO  implements UserDetails, OAuth2User{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.userName;
+		return this.username;
 	}
 
 

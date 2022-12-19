@@ -30,7 +30,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>eCommerce Dashboard</h2>
+                  <h2>SeedLib Dashboard</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -42,7 +42,7 @@
                         <a href="#0">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        eCommerce
+                        SeedGraph
                       </li>
                     </ol>
                   </nav>
@@ -60,8 +60,8 @@
                   <i class="lni lni-cart-full"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">New Orders</h6>
-                  <h3 class="text-bold mb-10">34567</h3>
+                  <h6 class="mb-10">공지사항</h6>
+                  <h3 class="text-bold mb-10">${dshBodList}</h3>
                   <p class="text-sm text-success">
                     <i class="lni lni-arrow-up"></i> +2.00%
                     <span class="text-gray">(30 days)</span>
@@ -77,8 +77,8 @@
                   <i class="lni lni-dollar"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">Total Income</h6>
-                  <h3 class="text-bold mb-10">$74,567</h3>
+                  <h6 class="mb-10">도서</h6>
+                  <h3 class="text-bold mb-10">${dshBoList}</h3>
                   <p class="text-sm text-success">
                     <i class="lni lni-arrow-up"></i> +5.45%
                     <span class="text-gray">Increased</span>
@@ -94,8 +94,8 @@
                   <i class="lni lni-credit-cards"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">Total Expense</h6>
-                  <h3 class="text-bold mb-10">$24,567</h3>
+                  <h6 class="mb-10">문화행사</h6>
+                  <h3 class="text-bold mb-10">${dshProList}</h3>
                   <p class="text-sm text-danger">
                     <i class="lni lni-arrow-down"></i> -2.00%
                     <span class="text-gray">Expense</span>
@@ -111,8 +111,8 @@
                   <i class="lni lni-user"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">New User</h6>
-                  <h3 class="text-bold mb-10">34567</h3>
+                  <h6 class="mb-10">씨앗 회원</h6>
+                  <h3 class="text-bold mb-10">${dshMemList}</h3>
                   <p class="text-sm text-danger">
                     <i class="lni lni-arrow-down"></i> -25.00%
                     <span class="text-gray"> Earning</span>

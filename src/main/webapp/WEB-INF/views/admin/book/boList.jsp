@@ -68,17 +68,10 @@
               <!-- end col -->
               <c:forEach items="${list}" var="bookVO">
               <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
-                <div class="card-style-2 mb-30">
-                  <div class="card-image">
-                    <a href="../../book/detail?isbn=${bookVO.isbn}">
-                      <img
-                        src="${bookVO.image}"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content" style="overflow: hidden;">
-                    <h4><a href="../../book/detail?isbn=${bookVO.isbn}">${bookVO.title}</a></h4>
+                <div class="card mb-3" style="border-radius: 4px; width: 15rem; overflow: hidden;">
+                  <img class="card-img-top" style="width: 100%; height: 300px;" src="${bookVO.image}" alt="Card image cap">
+                  <div class="card-body" style="height: 97px; overflow: hidden; word-wrap: break-word;">
+                    <p class="card-text"><a style="color: #262d3f;" href="../../book/detail?isbn=${bookVO.isbn}">${bookVO.title}</a></p>
                   </div>
                 </div>
               </div>
