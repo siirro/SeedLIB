@@ -111,7 +111,7 @@ $("#print").click(function(){
             if(parseInt(caLsPage) > parseInt(caStPage)){
 
                 // console.log("마지막 페이지가 크다면 찍혀라");
-                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+                $("#ipCaTtPage").val(parseInt((caLsPage-caStPage)+1));
 
                 let caTtPage = $("#ipCaTtPage").val();
                 $("#tdTtp").text(caTtPage+"장");
@@ -160,7 +160,7 @@ $("#print").click(function(){
                 // console.log("마지막 페이지가 크다면 찍혀라");
 
                 // 총페이지수에 빼기한것을 넣기
-                $("#ipCaTtPage").val(parseInt(caLsPage-caStPage+1));
+                $("#ipCaTtPage").val(parseInt((caLsPage-caStPage)+1));
 
                 $("#tdTtp").text("");
                 let caTtPage = $("#ipCaTtPage").val();
