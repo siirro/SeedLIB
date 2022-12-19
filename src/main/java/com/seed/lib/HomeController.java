@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import com.nimbusds.jose.proc.SecurityContext;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.search.PopularVO;
 import com.seed.lib.search.SearchService;
@@ -68,6 +69,9 @@ public class HomeController {
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();
 		List<BookVO> popularBook = searchService.getPopularBook();
+		List<AdProgramVO> newProgram = searchService.getNewProgram();
+		log.info("뉴프로그램 {}", newProgram);
+		mv.addObject("nP", newProgram);
 		mv.addObject("popular", ar);
 		mv.addObject("accessionBook", accessionBook);
 		mv.addObject("popularBook", popularBook);

@@ -9,6 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
@@ -64,21 +66,22 @@
               <div class="col-12">
               </div>
               <!-- end col -->
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+              <div class="col-xl-8 col-lg-4 col-md-6 col-sm-6">
                 <div class="card-style-2 mb-30">
-                  <div class="card-image">
-                      <!-- 이미지 어떤걸 넣을까 고민중 -->
+                  <!-- <div class="card-image">
+                      
                       <img src="/images/logo200.png" alt="씨앗도서관"/>
-                  </div>
+                  </div> -->
                   <div class="card-content">
-                    <h4>${proVO.proTitle}</h4>
+                    <h4 style="color: #abce74;">${proVO.proTitle}</h4>
 
                     <div class="text-success">
 	                    <hr>
                     </div>
                     
                     <h4>프로그램내용</h4>
-                    <pre>
+                    <pre style="max-height: 400px;
+                    white-space: break-spaces;">
                     	<c:out value="${proVO.proContents}"></c:out>
                     </pre>
                     
@@ -158,7 +161,8 @@
               </div>
               <!-- end col -->
 
-              <div class="col-xl-8 col-lg-4 col-md-6 col-sm-6">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+
                 <div class="card-style mb-30">
                   <h6 class="mb-10">신청자 목록</h6>
                   <div class="table-wrapper table-responsive">

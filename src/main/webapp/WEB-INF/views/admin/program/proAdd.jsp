@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>뿌리깊은 관리자 : 씨앗도서관 ☘</title>
     
     <!-- ========== All CSS files linkup & sidebar ========= -->
@@ -55,14 +56,14 @@
           <!-- ========== title-wrapper end ========== -->
 
           <!-- ========== form-elements-wrapper start ========== -->
-          <form action="./proAdd" method="post">
+          <form action="./proAdd" id="addForm" method="post">
             <div class="row">
               <div class="col-lg-6">
                 <!-- input style start -->
                 <div class="card-style mb-30">
                   <h6 class="mb-25">프로그램 이름</h6>
                   <div class="input-style-3">
-                    <input type="text" name="proTitle" placeholder="프로그램 이름을 입력해 주세요" />
+                    <input type="text" id="proTitle" name="proTitle" placeholder="프로그램 이름을 입력해 주세요" />
                     <span class="icon"><i class="lni lni-bulb"></i></span>
                   </div>
                   <div class="select-style-1">
@@ -90,12 +91,12 @@
                 <div class="card-style mb-30">
                   <div class="input-style-1">
                     <h6 class="mb-25">접수시작 날짜</h6>
-                    <input type="date" name="prsDate" />
+                    <input type="date" id="data1" name="prsDate" />
                   </div>
                   <!-- end input -->
                   <div class="input-style-1">
                     <h6 class="mb-25">접수마감 날짜</h6>
-                    <input type="date" name="prlDate" />
+                    <input type="date" id="data2" name="prlDate" />
                   </div>
                   <!-- end input -->
                   <div class="row">
@@ -104,7 +105,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="psDt" />
+                        <input type="date" id="data3" name="psDt" />
                       </div>
                       <!-- end input -->
                     </div>
@@ -121,7 +122,7 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="input-style-1">
-                        <input type="date" name="plDt" />
+                        <input type="date" id="data4" name="plDt" />
                       </div>
                       <!-- end input -->
                     </div>
@@ -168,7 +169,7 @@
                   <!-- ======= textarea style start ======= -->
                   <h6 class="mb-25">글내용</h6>
                   <div class="input-style-3">
-                    <textarea placeholder="행사 내용을 입력해 주세요" name="proContents" rows="15"><c:out value="${proContents}"></c:out></textarea>
+                    <textarea placeholder="행사 내용을 입력해 주세요" id="proContents" name="proContents" rows="15"><c:out value="${proContents}"></c:out></textarea>
                     <span class="icon"
                       ><i class="lni lni-text-format"></i
                     ></span>
@@ -216,17 +217,7 @@
                         flex-wrap
                       "
                     >
-                      <button
-                        class="
-                          main-btn
-                          info-btn
-                          rounded-md
-                          btn-hover
-                          w-100
-                          text-center
-                        "
-                        type="submit"
-                      >
+                      <button class="main-btn info-btn rounded-md btn-hover w-100 text-center" id="addBtn" type="button">
                         <b>개설하기</b>
                         <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                       </button>
@@ -255,5 +246,26 @@
 
     <!-- ========= All Javascript files linkup ======== -->
     <c:import url="../temp/js.jsp"></c:import>
+
+    <script>
+
+      
+      $("#addBtn").on("click", function(){
+        
+        if($("#proTitle").val().length>0&&$("#proContents").val().length>0) {
+
+          if($("#data1").val().length>0&&$("#data2").val().length>0&&$("#data3").val().length>0&&$("#data4").val().length>0) {
+            console.log("등록하자")
+            $("#addForm").submit();
+
+          } else {
+            alert("일정 정보를 입력해주세요")
+          }
+          
+        } else {
+          alert("필수 요소를 입력해주세요");
+        }
+      })
+    </script>
   </body>
 </html>
