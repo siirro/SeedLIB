@@ -89,9 +89,9 @@
                     </h4>
                   </div>
                 </div> -->
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="${bookVO.image}" alt="Card image cap">
-                  <div class="card-body">
+                <div class="card mb-3" style="border-radius: 4px; width: 15rem; overflow: hidden;">
+                  <img class="card-img-top" style="width: 100%; height: 300px;" src="${bookVO.image}" alt="Card image cap">
+                  <div class="card-body" style="height: 95px; overflow: hidden; word-wrap: break-word;">
                     <p class="card-text"><a>${bookVO.title}</a></p>
                   </div>
                 </div>
