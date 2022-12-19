@@ -70,6 +70,19 @@ public interface BookLoanMapper {
 	//상호대출 책 권수
 	public int getMuCount (BookLoanVO loVO) throws Exception;
 	
+//-----------------------------------------------------------------------
+	
+	//반납 - myreturn
+	public int setReturn (BookLoanVO loanVO) throws Exception;
+	
+	//반납 상태 업데이트 - Loan
+	public 
+	
+	//연체 여부 확인 - 반납일/대출만기일 비교
+	
+	//연체 여부 업데이트 - Loan
+	
+	
 //-----------------------------------------------------------------------	
 	
 	public Long getCount (BookLoanPager pager) throws Exception;

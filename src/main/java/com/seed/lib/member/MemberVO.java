@@ -30,6 +30,7 @@ import lombok.Data;
 	private boolean loanStatus;
 	private Integer ovMyrCount;
 	private boolean dropStatus;
+	private Long ovDate;
 	
 	private List<BookPrintVO> bookPrintVOs;
 	private BookVO bookVO;
