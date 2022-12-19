@@ -43,7 +43,7 @@ public class BookShelfController {
 			mv.addObject("member", memberVO);
 					
 			//책꽂이 목록
-			pager.setUserName(memberVO.getUserName());
+			pager.setUserName(memberVO.getUsername());
 			List<BookShelfVO> li = bookShelfService.getShelfListP(pager);
 			mv.addObject("li", li);
 			

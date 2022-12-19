@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="/css/layout.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 
+ <link rel="shortcut icon" href="/images/favicon.png">
+    <title>이용시간 : 씨앗도서관 ☘</title>
 </head>
 <body>
     <div class="wrap">

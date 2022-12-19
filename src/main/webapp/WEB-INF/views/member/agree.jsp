@@ -9,7 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-
+ <link rel="shortcut icon" href="/images/favicon.png">
+    <title>약관동의 : 씨앗도서관 ☘</title>
 </head>
 <body>
 

@@ -4,7 +4,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.seed.lib.admin.book.BookPrintVO;
 import com.seed.lib.book.BookVO;
@@ -12,9 +17,7 @@ import com.seed.lib.book.BookVO;
 import lombok.Data;
 
 @Data
-//public class MemberVO  implements UserDetails{
-	public class MemberVO {
-	
+public class MemberVO  implements UserDetails, OAuth2User{
 	private String userName;
 	private String password;
 	private String name;
@@ -35,47 +38,66 @@ import lombok.Data;
 	private BookVO bookVO;
 	
 	private List<RoleVO> roleVOs;
-
-//
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//
-//		List<GrantedAuthority> authorities =new ArrayList<>();
-//		for (RoleVO roleVO: roleVOs) {
-//		authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
-//			roleVO.getRoleName();
-//			
-//		}
-//		return authorities;
-//	}
+	
+	//OAuth2User, Token등 정보 저장
+	private Map<String, Object> attributes;
+	
+	//====== Social Login ===========
+	//Kakao, Naver, Google
+	private String social;
+	private String token;
 
 
-//	@Override
-//	public String getUsername() {
-//		// TODO Auto-generated method stub
-//		return this.userName;
-//	}
-//
-//
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}
-//
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		// TODO Auto-generated method stub
-//		return true;
-//	}	
-//
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		List<GrantedAuthority> authorities =new ArrayList<>();
+		for (RoleVO roleVO: roleVOs) {
+		authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
+			roleVO.getRoleName();
+			
+		}
+		return authorities;
+	}
 
 
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.userName;
+	}
+
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}	
+
+	 @Override
+	    public boolean isEnabled() {
+	        return true;
+	    }
+
+
+
+		@Override
+		public Map<String, Object> getAttributes() {
+			// TODO Auto-generated method stub
+			return this.attributes;
+		}
+	
 }

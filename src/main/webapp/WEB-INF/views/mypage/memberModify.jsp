@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+    
 
 <!DOCTYPE html>
 <html>
@@ -76,6 +78,8 @@
                             <div class="memberWrap">
 
                                 <form action="./memberModify" id="registForm" name="registForm" method="post">
+                                <sec:authentication property="Principal" var="vo"/>
+                                
                                 <input type="hidden" id="handphone" name="handphone">
                                 <input type="hidden" id="eMail" name="eMail">
                                 <div class="boardWrap mt30">
@@ -93,8 +97,8 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="memId">아이디</label></th>
-                                                <td>${vo.userName}</td>                                              
-                                                  <input type="hidden" name="userName" value="${vo.userName}">
+                                                <td>${vo.username}</td>                                              
+                                                  <input type="hidden" name="username" value="${vo.username}">
                                             </tr>
                                             <tr class="mobileShowTr">
                                                 <th scope="row" class="ta_l pl10">비밀번호</th>
@@ -184,7 +188,8 @@
 
                                 <div class="btnGroup">
                                     <button type="submit" id="updateBtn" class="btn themeBtn">수정확인</button>
-                                    <button type="button" id="deleteAccount" class="btn btn-primary">회원탈퇴</button>
+                                    <a href="/member/delete?userame = ${vo.username}" id="deleteAccount" class="btn btn-primary">회원탈퇴</a>
+                                    
                                 </form>
 
                                 </div>

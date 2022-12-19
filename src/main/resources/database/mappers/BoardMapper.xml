@@ -5,8 +5,96 @@
 
 <mapper namespace="com.seed.lib.board.BoardMapper">
 
+<!-- 
+			<sql id="search">	
+	 		<choose>
+				<when test="kind=='title'">TITLE</when>
+				
+				\,1111jn
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<when test="kind=='contents'">COTNENTS</when>
+				<otherwise>CONTENTS</otherwise>
+			 </choose>
+			LIKE CONCAT('%', #{search}, '%')
+			</sql>
 
-
+ -->
 			<delete id="FileDelete" parameterType="BoardFileVO">
 			
 			DELETE FROM BOARDFILE WHERE FILENUM=#{fileNum}
@@ -31,7 +119,7 @@
 			 
 			 
 			 
-			 <delete id="Delete" parameterType="BoardVO">
+			 <delete id="setDelete" parameterType="BoardVO">
 			
 			     DELETE BOARD WHERE BOARDNUM=#{boardNum}
 			  
@@ -60,9 +148,9 @@
 				
 					SELECT * FROM BOARD 
 					ORDER BY BOARDNUM DESC
-				<!-- 
+		<!-- 		 <include refid="search"></include>
 					limit #{startRow}, #{perPage}
-				 -->
+			-->		
 					
 			</select>
 			

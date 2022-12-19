@@ -9,7 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut" href="/images/favicon.png">
+<link rel="shortcut icon" href="/images/favicon.png">
+
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 
@@ -56,45 +57,91 @@
 									<div class="searchRadi mainBestKeyword mobileHide" id="mainBestKeyword">
 					
 										<div style="width: 200px;">
-											<div class="controlArea" style="padding: 17px;">
-												<a href="#up" id="btnUp" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
-												<a href="#dwon" id="btnDwon" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
-											</div>
+
+											<!-- <div class="controlArea" style="padding: 17px;">
+												<a href="#" id="btnUp" class="upupup" title="인기검색어 위로 넘기기"><span class="blind">위</span></a>
+												<a href="#" id="btnDwon" class="sfsdf" title="인기검색어 아래로 넘기기"><span class="blind">아래</span></a>
+											</div> -->
 											<div class="keywordListWrap" >
 												<ol class="keywordList">
-													<li><a href="./search/simpleresult?search=제목" title="불편한 편의점"><i>1</i>조낸조낸조낸불편한 편의점</a></li>
-													<li><a href="#link" onclick="" title="흔한남매"><i>2</i>흔한남매</a></li>
-													<li><a href="#link" onclick="" title="파친코"><i>3</i>파친코</a></li>
-													<li><a href="#link" onclick="" title="불편한편의점"><i>4</i>불편한편의점</a></li>
-													<li><a href="#link" onclick="" title="하얼빈"><i>5</i>하얼빈</a></li>
-													<li><a href="#link" onclick="" title="불편한 편의점 김호연 장편소설 2"><i>6</i>불편한 편의점 김호연 장편소설 2</a></li>
-													<li><a href="#link" onclick="" title="카카오프렌즈"><i>7</i>카카오프렌즈</a></li>
-													<li><a href="#link" onclick="" title="아버지의 해방일지"><i>8</i>아버지의 해방일지</a></li>
-													<li><a href="#link" onclick="" title="웹툰"><i>9</i>웹툰</a></li>
-													<li><a href="#link" onclick="" title="신라"><i>10</i>신라</a></li>
+
+
+													<c:forEach items="${popular}" var="list" varStatus="status">
+														<li><a href="./search/simpleresult?search=${list.word}" title="${list.word}"><i>${status.count}</i><span style="margin-left: 5px;">${list.word}</span></a></li>
+													</c:forEach>
+													<!-- <li><a href="./search/simpleresult?search=제목" title="불편한 편의점"><i>1</i>조낸조낸조낸불편한 편의점</a></li>
+													<li><a href="#link" onclick="" title="흔한남매"><i>2</i>흔한남매</a></li> -->
 												</ol>
 											</div>
 										</div>
 
 										<script>
+											
+
 											function Silsigan(){
+												let iindex = 1;
 												let count = $('.keywordList li').length;
 												let height = ($('.keywordList li').height()+0.5)*2;
-												console.log(count);
-												console.log(height);
+												
 
 												function step(index) {
 													$('.keywordList').delay(2000).animate({
 														top: -height * index,
 													}, 500, function() {
 														step((index + 1) % count);
+														iindex = index;
+														
 													});
+													// console.log(count);
+													// console.log(height);
 												}
 
 												step(1);
+
+												// const updownbtn = document.querySelector('.controlArea');
+												// updownbtn.addEventListener('click', ssSlide);
+
+
+												/* 버튼 클릭 */
+												function ssSlide(event) {
+													event.preventDefault();
+													if (event.target.className === 'upupup') {
+														// if (currentIdx === slideLis.length -1) {
+														// 	slider.style.transform = "translateX(0px)";
+														// 	currentIdx = 0;
+														// 	translate = 0;
+														// 	return
+														// };
+														// move(-1);
+
+														let cutop = $('.keywordList').css("top").replace(/[^0-9]/g, "");
+														$('.keywordList').css("top", -(cutop-67))
+														let zzz = parseInt($('.keywordList').css("top").replace(/[^0-9]/g, "")/67);
+														console.log("현재의 top"+zzz);
+														step(iindex+1);
+
+													} else {
+														// if (currentIdx === 0) {
+														// 	slider.style.transform = "translateX(-1401px)";
+														// 	currentIdx = slideLis.length-1;
+														// 	translate = -1401;
+															
+														// 	return
+														// };
+														// 	move(1);
+														// }
+														let cutop = $('.keywordList').css("top").replace(/[^0-9]/g, "");
+														$('.keywordList').css("top", -(cutop+67))
+														let zzz = parseInt($('.keywordList').css("top").replace(/[^0-9]/g, "")/67);
+														console.log("현재의 top"+zzz);
+														step(iindex-1);
+
+													}
+												}
 											};
 
 											Silsigan();
+
 										</script>
 										
 									</div>
@@ -333,7 +380,7 @@
 							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
 							<ul class="clearfix">
 								<li><a href="/member/login">로그인</a></li>
-								<li><a href="/member/join">회원가입</a></li>
+								<li><a href="/member/agree">회원가입</a></li>
 							</ul>
 							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
 						</div>
@@ -771,28 +818,24 @@
 			<!-- 북리스트 -->
 			<div class="bookZone">
 				<ul class="tab book clearfix">
-					<li class="on"><a href="#libraryPopularBook">공공도서관 인기도서</a></li>
-					<li><a href="#recommendBook">추천도서</a></li>
-					<li><a href="#accessionBook">신착도서</a></li>
-					<li><a href="#popularBookMonth">대출베스트</a></li>
+					<li class="on"><a href="javascript:popularBook()">공공도서관 인기도서</a></li>
+					<li><a href="javascript:recommendBook();">추천도서</a></li>
+					<li><a href="javascript:accessionBook()">신착도서</a></li>
 				</ul>
 				
-				<div id="libraryPopularBook" class="bookListWrap">
+				<div id="popularBook" class="bookListWrap">
 					<ul class="bookList clearfix">
+						<c:forEach items="${popularBook}" var="list1">
 						<li>
 							<span class="cover">
 								<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
-									<img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
+									<img src="${list1.image}" alt="${list1.title}" onerror="javascript:fnImageLoadError(this); return false;">
 								</a>
 							</span>
-							<span class="txt">불편한 편의점 :김호연 장편소설</span>
+							<span class="txt">${list1.title}</span>
 						</li>
+						</c:forEach>
 					</ul>
-					<div class="more mobileHide">
-						<a href="/seoksu/libraryPopularBookList.do">
-							<span class="blind">더보기</span>
-						</a>
-					</div>
 				</div>
 			
 				<div id="recommendBook" class="bookListWrap" style="display: none;">
@@ -805,58 +848,81 @@
 							</span>
 							<span class="txt">걱정 많은 어른들을 위한 화학 이야기</span>
 						</li>
+						<li>
+							<span class="cover">
+								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+									<img src="https://image.aladin.co.kr/product/25415/58/cover200/k032633114_1.jpg" alt="IT 엔지니어를 위한 네트워크 입문 =Introduction to networks for IT engineers" onerror="javascript:fnNoImgBook(this);">
+								</a>
+							</span>
+							<span class="txt">IT 엔지니어를 위한 네트워크 입문 =Introduction to networks for IT engineers</span>
+						</li>
+						<li>
+							<span class="cover">
+								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+									<img src="https://image.aladin.co.kr/product/29396/69/cover/k402837513_1.jpg" alt="어느 날 내 죽음에 네가 들어왔다" onerror="javascript:fnNoImgBook(this);">
+								</a>
+							</span>
+							<span class="txt">어느 날 내 죽음에 네가 들어왔다</span>
+						</li>
+						<li>
+							<span class="cover">
+								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+									<img src="https://image.aladin.co.kr/product/27920/22/cover200/k122734505_2.jpg" alt="기묘한 미술관 :아름답고 서늘한 명화 속 미스터리" onerror="javascript:fnNoImgBook(this);">
+								</a>
+							</span>
+							<span class="txt">기묘한 미술관 :아름답고 서늘한 명화 속 미스터리</span>
+						</li>
+						<li>
+							<span class="cover">
+								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+									<img src="http://image.aladin.co.kr/product/15533/81/cover/k852533629_1.jpg" alt="바깥은 여름 :김애란 소설" onerror="javascript:fnNoImgBook(this);">
+								</a>
+							</span>
+							<span class="txt">바깥은 여름 :김애란 소설</span>
+						</li>
 					</ul>
-					<div class="more mobileHide">
-						<a href="/seoksu/recommendBookList.do">
-							<span class="blind">더보기</span>
-						</a>
-					</div>
 				</div>
 			
 				<div id="accessionBook" class="bookListWrap" style="display: none;">
 					<ul class="bookList clearfix">
+						<c:forEach items="${accessionBook}" var="list3" >
 						<li>
 							<span class="cover">
 								<a href="#link" onclick="fnAccessionBookDetail('106022579', '9788949162485', 'MO'); return false;">
-									<img src="https://shopping-phinf.pstatic.net/main_3543928/35439288618.20221101102653.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="랑랑 형제 떡집">
+									<img src="${list3.image}" onerror="javascript:fnNoImgBook(this); return false;" alt="랑랑 형제 떡집">
 								</a>
 							</span>
-							<span class="txt">랑랑 형제 떡집</span>
+							<span class="txt">${list3.title}</span>
 						</li>
+						</c:forEach>
 					</ul>
-					<div class="more mobileHide">
-						<a href="/seoksu/accessionBookList.do">
-							<span class="blind">더보기</span>
-						</a>
-					</div>
 				</div>
 			
-				<div id="popularBookMonth" class="bookListWrap" style="display: none;">
-					<ul class="bookList clearfix">
-						<li>
-							<span class="cover">
-								<a href="" onclick="fnPopularBookMonthDetail('19632613', '9788954654753', 'MO'); return false;">
-									<img src="https://image.aladin.co.kr/product/17970/0/cover500/8954654754_1.jpg" onerror="javascript:fnNoImgBook(this); return false;" alt="체리새우: 비밀글입니다 : 황영미 장편소설 ">
-								</a>
-							</span>
-							<span class="txt">체리새우: 비밀글입니다 : 황영미 장편소설 </span>
-						</li>
-					</ul>
-		
-					<div class="more mobileHide">
-						<a href="/seoksu/popularBookMonthList.do">
-							<span class="blind">더보기</span>
-						</a>
-					</div>
-				</div>
+				
 			</div>
 
 			<script>
-				$(function(){
-					$("#accessionBook").load("/bookAccession");
-					$("#popularBookMonth").load("/bookPopularMonth");
-					$("#recommendBook").load("/bookRecommend");
-				});
+				function popularBook() {
+					
+					$("#recommendBook").hide();
+					$("#accessionBook").hide();
+					$("#popularBook").fadeIn();
+				}
+
+				function recommendBook() {
+					
+					$("#accessionBook").hide();
+					$("#popularBook").hide();
+					$("#recommendBook").fadeIn();
+				}
+
+				function accessionBook() {
+
+					$("#popularBook").hide();
+					$("#recommendBook").hide();
+					$("#accessionBook").fadeIn();
+				}
+
 			</script>
 
 		</div>
@@ -869,7 +935,7 @@
 <c:import url="./temp/footer.jsp"></c:import>
 <!-- //footer -->
 
-
+<script type="text/javascript"></script>
 
 <!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
 <input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">

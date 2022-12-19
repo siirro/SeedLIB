@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 도서관소식 : 씨앗도서관 ☘️ </title>
+ <link rel="icon" href="/images/favicon.png">
+	<title>도서관소식 : 씨앗도서관 ☘️ </title>
+	<c:import url="../temp/header.jsp"></c:import>
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css"> 
@@ -14,8 +16,6 @@
 <body>
 
 <div id="wrap">
-<!-- header  -->
-<c:import url="../temp/header.jsp"></c:import>
 
 <div id="container" class="sub">
 		
@@ -39,21 +39,6 @@
 <div class="naviandtitle">
 	<h3>도서관소식</h3>
 	<div class="navi"><a href="/intro/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 도서관소식 <i class="arrow"></i>공지사항</div>
-	<div class="snsFarm">
-		<ul class="snsBtnArea clearfix">
-			<li>
-				<a href="#snsGroup" id="sns" title="SNS 공유하기" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-				<div id="snsGroup" class="snsList clearfix">
-					<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();"><span class="blind">단축URL</span></a>
-					<a href="#sns2" id="sns2" title="QR코드 레이어팝업 열림" class="snsQr" data-tooltip="chartSns"><span class="blind">QR코드</span></a>
-					<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory('https://lib.anyang.go.kr/intro/menu/10037/bbs/20001/bbsPostList.do'); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory"><span class="blind">카카오스토리</span></a>
-					<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter('https://lib.anyang.go.kr/intro/menu/10037/bbs/20001/bbsPostList.do'); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter"><span class="blind">트위터</span></a>
-					<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook('https://lib.anyang.go.kr/intro/menu/10037/bbs/20001/bbsPostList.do'); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook"><span class="blind">페이스북</span></a>
-				</div>
-			</li>
-			<li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('intro'); return false;"><span class="blind">현재화면 프린트</span></a></li>
-		</ul>
-	</div>
 </div>
 
 
@@ -83,11 +68,11 @@
 							<div class="schForm">
 								
 					
-								<select name="searchCondition" id="searchCondition" title="검색방법 선택" class="schSel1">
+								<select name="kind" id="searchCondition" title="검색방법 선택" class="schSel1">
 									<option value="title">제목</option>
 									<option value="contents">내용</option>
 								</select>
-								<input type="text" name="searchKeyword" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
+								<input type="text" name="search" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
 								<a href="#link" id="searchBtn" class="btn input">검색</a>
 							</div>
 						</div>

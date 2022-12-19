@@ -5,6 +5,10 @@
 
 <mapper namespace="com.seed.lib.hope.HopeMapper">
 <!-- 희망도서관련 -->
+	<select id="isHaveBook" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE ISBN=#{isbn}
+	</select>
+
 	<select id="getHaveBook" parameterType="Map" resultType="int">
 		SELECT COUNT(*) FROM BOOK B
 			INNER JOIN
@@ -40,7 +44,9 @@
 	</select>
 
 	<insert id="setHope" parameterType="HopeVO" useGeneratedKeys="true" keyProperty="hopNum">
-		INSERT INTO HOPE VALUES
+		INSERT INTO HOPE
+		(HOPNUM, HOPTITLE, HOPWRITER, HOPPUBLISHER, HOPMEMO, HOPDATE, ISBN, USERNAME, IMAGE, EMAIL, PRICE, HOPYEAR, CATEGORY)
+		VALUES
 		(#{hopNum}, #{hopTitle}, #{hopWriter}, #{hopPublisher}, #{hopMemo}, SYSDATE(), #{isbn}, #{userName}, #{image}, #{email}, #{price}, #{hopYear}, 0)		
 	</insert>
 	
@@ -57,7 +63,7 @@
 		
 <!-- 마이페이지 영역 -->
 <sql id="search">
-		 AND L.LIBNUM LIKE CONCAT(#{libNum},'%')
+		 L.LIBNUM LIKE CONCAT(#{libNum},'%')
 		 AND <choose>
 				<when test="searchType==0">HOPTITLE</when>
 				<when test="searchType==1">HOPWRITER</when>
@@ -80,7 +86,7 @@
 				INNER JOIN
 				LIBRARY L
 				ON HL.LIBNUM=L.LIBNUM
-		WHERE USERNAME=#{userName} <include refid="search"></include>
+		WHERE USERNAME=#{userName} AND <include refid="search"></include>
 		ORDER BY H.HOPNUM DESC 
 </select>
 
@@ -98,8 +104,9 @@
 			INNER JOIN
 			LIBRARY L
 			ON HL.LIBNUM=L.LIBNUM
-	WHERE USERNAME=#{userName} <include refid="search"></include>
+	WHERE USERNAME=#{userName} AND <include refid="search"></include>
 	ORDER BY HS.STATNUM, H.HOPNUM DESC 
+	LIMIT #{startRow}, #{perPage}
 </select>	
 
 <update id="setUpdateHope" parameterType="HopeVO">
@@ -115,6 +122,24 @@
 </update>
 
 <!-- Admin 관련 -->
+	<select id="getAdminTotalCount" parameterType="HdPager" resultType="Long">
+		SELECT COUNT(H.HOPNUM) FROM HOPE H
+				INNER JOIN
+				HOSTAT HS
+				ON H.HOPNUM=HS.HOPNUM
+					INNER JOIN
+					STATUS S
+					ON HS.STATNUM=S.STATNUM 
+				INNER JOIN
+				HOPLIB HL
+				ON H.HOPNUM=HL.HOPNUM
+					INNER JOIN
+					LIBRARY L
+					ON HL.LIBNUM=L.LIBNUM
+			WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND HS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
+			ORDER BY H.HOPNUM DESC 
+	</select>
+
 	<select id="getAdminHopList" parameterType="HdPager" resultMap="HopeVOResult">
 		SELECT * FROM HOPE H
 			INNER JOIN
@@ -131,6 +156,7 @@
 				ON HL.LIBNUM=L.LIBNUM
 		WHERE L.LIBNUM LIKE CONCAT(#{libNum},'%') AND HS.STATNUM LIKE CONCAT(#{searchKeyword},'%')
 		ORDER BY HS.STATNUM, H.HOPNUM DESC 
+		LIMIT #{startRow}, #{perPage}
 	</select>
 
 	<select id="getHopeOne" parameterType="HopeVO" resultMap="HopeVOResult">
@@ -163,7 +189,7 @@
 	</update>
 	
 	<select id="bookCount" resultType="Long">
-		SELECT COUNT(*) FROM BOOK		
+		SELECT MAX(NUM) FROM BOOK
 	</select>
 
 	<insert id="setHopeOne" parameterType="BookVO">

@@ -26,9 +26,14 @@ public class FileManager {
 		StringBuffer bf =new StringBuffer();
 		bf.append(fileName); 
 		bf.append("_"); 
-		bf.append(files.getOriginalFilename());
 		
-		log.info(bf.toString());
+		// 파일 확장자 분리
+		String ex= files.getOriginalFilename();
+		ex= ex.substring(ex.lastIndexOf("."));
+				
+		//bf.append(files.getOriginalFilename());
+		bf.append(ex);
+		fileName=bf.toString();
 		
 		// 파일 저장
 	    File file = new File(path , bf.toString());

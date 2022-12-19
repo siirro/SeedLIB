@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.seed.lib.book.BookVO;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.util.HdPager;
 
@@ -21,6 +22,16 @@ public interface DonationMapper {
 	public List<DonationVO> getDonList(HdPager hdPager) throws Exception;
 	
 	//어드민
+	public Long getAdminTotalCount(HdPager hdPager) throws Exception;
 	public List<DonationVO> getAdminDonList(HdPager hdPager) throws Exception;
+	public DonationVO getDonOne(DonationVO donationVO) throws Exception;
+	public int setDonCncl(DonationVO donationVO) throws Exception; 
+	public Long bookCount() throws Exception;
+	public int isHaveBook(Map<String, Object> map) throws Exception;
+	public int getHaveBook(Map<String, Object> map) throws Exception;
+	public int updateQuantity(Map<String, Object> map) throws Exception;
+	public int setDonOne(BookVO bookVO) throws Exception;
+	public int setLibOne(Map<String, Object> map) throws Exception;
+	public int setAdminDonStat(DonationVO donationVO) throws Exception;
 
 }

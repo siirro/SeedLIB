@@ -78,7 +78,7 @@
 					<button type="button" id="update" class="btn btn-primary"><a href="./update">글수정</a></button>
 					 </div>		
 						<table class="board-view">
-							<caption>도서관소식 상세화면 : 제목, 도서관, 작성일, 조회수, 첨부파일, 내용으로 구성</caption>
+							<caption>도서관소식 상세화면 : 제목, 작성일, 조회수, 첨부파일, 내용으로 구성</caption>
 							<colgroup>
 							<col style="width:20%">
 							<col>
@@ -86,14 +86,9 @@
 							<tbody>
 								<tr>
 									<th scope="row">제목</th>
-									<td>2022년 호계도서관 송년의 달 행사 안내 </td>
+									<td>${boardVO.title}</td>
 								</tr>
-								
-									<tr>
-										<th scope="row">도서관</th>
-										<td>호계도서관</td>
-									</tr>
-								
+						
 								<tr>
 									<th scope="row">작성일</th>
 									<td>${boardVO.regDate}</td>
@@ -106,9 +101,15 @@
 								
 									<tr>
 										<th scope="row">첨부파일</th>
+                     					 <c:forEach items="${boardVO.boardFileVOs}" var="files">
 										<td>
-										<a href=""></a>	
+                          				  <span class="material-symbols-outlined"></span>
+                                          <a href="/fileDown/board/${files.fileNum}">
+                                            ${files.oriName}</a>
+										
 										</td>
+										 </c:forEach>
+										
 									</tr>
 								
 								<tr>

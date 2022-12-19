@@ -24,21 +24,25 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+
 	
-	@GetMapping("delete")
-	@ResponseBody
-	public void FileDelete()throws Exception{
-		
-	}
-	
+//	@GetMapping("delete")
+//	@ResponseBody
+//	public void FileDelete()throws Exception{
+//		
+//		
+//		
+//	}
+//	
 	
 	@GetMapping("list")
-	public ModelAndView getList(BoardVO boardVO) throws Exception{
+	public ModelAndView getList(Pager pager) throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		List<BoardVO> ar = boardService.getList(boardVO);
+		List<BoardVO> ar = boardService.getList(pager);
 		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("board/list");
 		
 		return mv;
@@ -73,6 +77,28 @@ public class BoardController {
 		
 		return "redirect:./list"; 
 	}
+	
+	
+	@GetMapping("update")
+	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv)throws Exception{
+		boardVO = boardService.getDetail(boardVO);
+		mv.addObject("boardVO", boardVO);
+		mv.setViewName("/board/notice/update");
+		return mv;
 
+	}
+
+	@PostMapping("update")
+	public String setUpdate(BoardVO boardVO) throws Exception{
+		int result = boardService.setUdate(boardVO);
+
+		return "redirect:/notice/detail?boardNum="+boardVO.getBoardNum();
+	}
+
+	@GetMapping("delete")
+	@ResponseBody
+	public int Delete(BoardVO boardVO) throws Exception{
+		return boardService.setDelete(boardVO);
+	}
 	
 }

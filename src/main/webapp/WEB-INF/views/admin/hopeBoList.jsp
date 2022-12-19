@@ -21,6 +21,16 @@
         padding: 15 5px !important;
         width: 30px;
       }
+
+      #searchBtn{
+        color: #219653 !important;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.3rem;
+        padding: 0.25rem 0.5rem;
+      }
+
+      
     </style>
 
   </head>
@@ -80,43 +90,45 @@
                           <th><h6>ISBN</h6></th>
                           <th><h6>신청자</h6></th>
                           <th><h6>신청일자</h6></th>
-                          <th><h6>
-                            <div class="row justify-content-center">
-                              <div class="col-9">
-                                <div class="select-style-1" style="margin-bottom: 0;">
-                                  <div class="select-position select-sm">
-                                    <select name="libNum" id="libNum">
-                                      <option value="">신청 도서관</option>
-                                      <option value="0">씨앗 도서관</option>
-                                      <option value="1">새싹 도서관</option>
-                                      <option value="2">쑥쑥 도서관</option>
-                                      <option value="3">새봄 도서관</option>
-                                      <option value="4">도란도란 도서관</option>
-                                      <option value="5">뿌리 도서관</option>
-                                    </select>
+                          <form action="hopeBoList" method="get" id="searchFrm">
+                            <th style="width: 180px;"><h6>
+                              <div class="row justify-content-center">
+                                <div class="col-9">
+                                  <div class="select-style-1" style="margin-bottom: 0;">
+                                    <div class="select-position select-sm">
+                                      <select class="searchValue" name="libNum" id="libNum" value="${param.libNum}">
+                                        <option value="">신청 도서관</option>
+                                        <option value="0">씨앗 도서관</option>
+                                        <option value="1">새싹 도서관</option>
+                                        <option value="2">쑥쑥 도서관</option>
+                                        <option value="3">새봄 도서관</option>
+                                        <option value="4">도란도란 도서관</option>
+                                        <option value="5">뿌리 도서관</option>
+                                      </select>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </h6></th>
-                          <th><h6>
-                            <div class="row justify-content-center">
-                              <div class="col-9">
-                                <div class="select-style-1" style="margin-bottom: 0;">
-                                  <div class="select-position select-sm">
-                                    <select name="searchKeyword" id="searchKeyword">
-                                      <option value="">신청 상태</option>
-                                      <option value="0">신청 중</option>
-                                      <option value="1">신청 취소</option>
-                                      <option value="2">입고 완료</option>
-                                      <option value="3">신청 반려</option>
-                                    </select>
+                            </h6></th>
+                            <th style="width: 160px;"><h6>
+                              <div class="row justify-content-center">
+                                <div class="col-9">
+                                  <div class="select-style-1" style="margin-bottom: 0;">
+                                    <div class="select-position select-sm">
+                                      <select class="searchValue" name="searchKeyword" id="searchKeyword" value="${param.searchKeyword}">
+                                        <option value="">신청 상태</option>
+                                        <option value="0">신청 중</option>
+                                        <option value="1">신청 취소</option>
+                                        <option value="2">입고 완료</option>
+                                        <option value="3">신청 반려</option>
+                                      </select>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </h6></th>
-                          <th class="text-start"><h6>✅</h6></th>
+                            </h6></th>
+                            <th class="text-start" style="width: 50px;"><button id="searchBtn">조회</buttn></th>
+                          </form>
                         </tr>
                         <!-- end table row-->
                       </thead>
@@ -151,12 +163,14 @@
                               <p>${h.statusVO.statName}</p>
                             </td>
                             <td>
-                              <div class="action text-start">
-                                <!-- 수정버튼 -->
-                                <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
+                              <c:if test="${h.statusVO.statNum eq 0}">
+                                <div class="action text-start" style="justify-content: center;">
+                                  <!-- 수정버튼 -->
+                                  <a href="/admin/hopeAdd?hopNum=${h.hopNum}" type="button" class="processBtn" data-hop-num="${h.hopNum}">
                                     <i class="lni lni-check-box"></i>
-                                </a>
-                              </div>
+                                  </a>
+                                </div>
+                              </c:if>
                             </td>
                           </tr>
                           </c:forEach>
@@ -165,21 +179,21 @@
                     </table>
                     <!-- end table -->
                   </div>
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination" style=" justify-content:center;">
                       <c:if test="${pager.pre}">
 	                      <li class="page-item">
-	                        <a class="page-link text-success" href="./hop?page=${pager.startNum-1}" aria-label="Previous">
+	                        <a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.startNum-1}" aria-label="Previous">
 	                          <span aria-hidden="true">&laquo;</span>
 	                        </a>
 	                      </li>
                       </c:if>
                       <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-	                      <li class="page-item"><a class="page-link text-success" href="./hop?page=${i}">${i}</a></li>
+	                      <li class="page-item"><a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${i}">${i}</a></li>
                       </c:forEach>
                       <c:if test="${pager.next}">
 	                      <li class="page-item">
-	                        <a class="page-link text-success" href="./hop?page=${pager.lastNum+1}" aria-label="Next">
+	                        <a class="page-link text-success" href="./hopeBoList?libNum=${pager.libNum}&searchKeyword=${pager.searchKeyword}&page=${pager.lastNum+1}" aria-label="Next">
 	                          <span aria-hidden="true">&raquo;</span>
 	                        </a>
 	                      </li>

@@ -37,7 +37,7 @@ function agreeCheck(){
 
 //기증도서신청
 $("#donBtn").click(function(){
-    let check = window.confirm("소장 중인 도서를 기증 신청하시겠습니까?(기증 신청한 도서는 반환되지 않습니다)");
+    let check = window.confirm("소장 중인 도서를 기증 신청하시겠습니까?\n(기증 신청한 도서는 반환되지 않습니다)");
     if(check){
         let result = agreeCheck();
         if(result==false){
@@ -78,6 +78,7 @@ $("#donBtn").click(function(){
                 userName:$("#userName").val(),
                 donMemo:$("#donMemo").val(),
                 emailAgree:emailAgree,
+                email:$("#email").val(),
                 libVO:libVO
             }
             $.ajax({
