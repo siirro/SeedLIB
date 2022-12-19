@@ -273,7 +273,7 @@ $("#print").click(function(){
             if(count==1){
     
                 // 결제하기 버튼 생성
-                $("#payBtn2").append('<button type="button" onclick="requestPay()" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>');
+                $("#payBtn2").append('<button type="button" id="printCaAdd" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">추가하기</button>');
                 $("#order").css('display','flex').hide().fadeIn();
     
             }
@@ -325,7 +325,12 @@ $("#print").click(function(){
 
                 $("#tdPrinPay").text("0원");
     
-            }
+            }else if(isNaN(bind)){
+                console.log("바인드 NaN");
+
+                bind = 0;
+    
+            };
     
             $("#tdTtpPrice").text(price+"원");
     
@@ -342,8 +347,14 @@ $("#print").click(function(){
 
             console.log("결제하기 눌렀을때 금액 : ", amount);
 
+            $("#ipCaAmount").val(amount);
+
             $("#tdTtPay").text(price+parseInt(printPay)+"원");
 
+            $("#printCaAdd").click(function(){
+                
+                $("#postFrm").submit();
+            });
 
         }
 

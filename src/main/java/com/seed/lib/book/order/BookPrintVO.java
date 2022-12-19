@@ -1,5 +1,7 @@
 package com.seed.lib.book.order;
 
+import java.util.List;
+
 import com.seed.lib.book.BookVO;
 import com.seed.lib.member.MemberVO;
 
@@ -38,7 +40,7 @@ public class BookPrintVO {
 	// 회원 아이디
 	private String userName;
 	
-	// 도서
-	private String isbn;
+	// 도서 여러개
+	private BookVO bookVO;
 	
 }

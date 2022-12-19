@@ -442,7 +442,7 @@
 					<!-- 책 디테일 끝 -->
 				</div>
 			</div>
-			<form action="../print/boAdCart" id="postFrm" name="postFrm" class="pFrm"  method="post">
+			<form action="../print/boAdCart" id="postFrm" class="pFrm"  method="post">
 				<!-- 팝업 : 우편복사 신청 -->
 				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 					<div class="layer_popup basket_layer">
@@ -567,6 +567,7 @@
 																	<span>${bookVO.bookDate}</span>
 																</td>
 																<td>
+																	<input type="hidden" name="isbn" value="${bookVO.isbn}">
 																	<span id="prinIsbn">${bookVO.isbn}</span>
 																</td>
 																<td>
@@ -606,7 +607,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" disabled id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		<input type="text" readonly id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
@@ -706,16 +707,11 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="hidden" readonly id="ipUserName" class="input_text" value="${member.userName}"/>
+																		<input type="hidden" readonly id="ipUserName" name="userName" class="input_text" value="${member.userName}"/>
 																		<input type="text" readonly id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
-			
-																	<span class="input_check_wrap">
-																		<input type="checkbox" id="smsApply" name="smsApply" class="input_check" checked />
-																		<label for="smsApply">접수내역 알림 신청</label>
-																	</span>
 																</td>
 															</tr>
 															<tr>
@@ -736,16 +732,7 @@
 																	</div>
 																</td>
 															</tr>
-															<tr>
-																<th scope="row">
-																	<label for="etc">기타 전달사항 <span class="option_item">(선택)</span></label>
-																</th>
-																<td>
-																	<div class="input_text_wrap">
-																		<input type="text" id="etc" name="etc" class="input_text" style="border: 1px solid #fff0" aria-label="기타 전달사항" />
-																	</div>
-																</td>
-															</tr> <!-- //우편복사 수령 정보 -->
+															<!-- //우편복사 수령 정보 -->
 														</tbody>
 													</table>
 												</div>
@@ -753,8 +740,7 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<div class="btn_wrap center mb30">
-											<button type="submit" id="cartBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
-											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
 										</div>
 										<!-- 입금 정보 -->
 										<div style="display:none" id="order">
@@ -794,6 +780,7 @@
 																		<td id="tdTtpPrice"><span></span></td>
 																		<td id="tdPrinPay"><span></span></td>
 																		<td id="tdTtPay"><span id="prAmount"></span></td>
+																		<input type="hidden" id="ipCaAmount" name="caAmount" value="">
 																	</tr>
 																</tbody>
 															</table>

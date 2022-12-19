@@ -2,6 +2,8 @@ package com.seed.lib.book.order;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.seed.lib.member.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,16 +33,18 @@ public class BoOrderController {
 	
 	// 바구니 제본신청 목록
 	@GetMapping("boCart")
-	public ModelAndView getBoCartList()throws Exception{
+	public ModelAndView getBoCartList(HttpSession session)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
 		BookPrintVO bookPrintVO = new BookPrintVO();
-		bookPrintVO.setUserName("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
-		List<BookPrintVO> bookPrintVOs = boOrderService.getBoCartList(bookPrintVO);
+//		bookPrintVO.setUserName(memberVO.getUserName());
 		
-		mv.addObject("list", bookPrintVOs);
+		memberVO = boOrderService.getBoCartList(memberVO);
+		
+		mv.addObject("list", memberVO);
 		mv.setViewName("print/boCart");
 		
 		return mv;
@@ -46,9 +52,13 @@ public class BoOrderController {
 	
 	// 도서 바구니 추가	
 	@PostMapping("boAdCart")
-	public ModelAndView setBoAdCart(BookPrintVO bookPrintVO)throws Exception{
+	public ModelAndView setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		
+		bookPrintVO.setUserName(memberVO.getUserName());
 		
 		int result = 0;
 		String title = "실패..";

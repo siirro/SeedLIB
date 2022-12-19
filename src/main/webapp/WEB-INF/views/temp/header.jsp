@@ -42,6 +42,7 @@
 								</c:forEach>
 								<c:if test="${admin eq 'false'}">
 									<li><a href="/member/logout">로그아웃</a></li>
+									<li><a href="/print/boCart">내바구니</a></li>
 									<li><a href="/mypage/myIndex">마이페이지</a></li>
 								</c:if>
 							</c:when>
