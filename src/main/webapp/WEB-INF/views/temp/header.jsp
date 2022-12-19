@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
+    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!-- CSS & JQUERY -->
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/default.css">
@@ -30,16 +31,16 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-					<c:choose>
-						<c:when test="${not empty memberVO}">
-							<li><a href="/member/logout">로그아웃</a></li>
+					<sec:authorize access="isAuthenticated()">
+							<li><a href="/member/ent_id">로그아웃</a></li>
+							<li><button type="button" id="kakao">카카오 로그아웃</button></li>
+							
 							<li><a href="/mypage/myIndex">마이페이지</a></li>
-						</c:when>
-						<c:otherwise>
+						</sec:authorize >
+						<sec:authorize access="!isAuthenticated()">	
 							<li><a href="/member/login">로그인</a></li>
 							<li><a href="/member/agree">회원가입</a></li>
-						</c:otherwise>
-					</c:choose> 
+						</sec:authorize>
 
 						
 						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
@@ -267,3 +268,11 @@
  </script>
 
 <script src="/js/indexcopy.js"></script>
+
+<script type="text/javascript">
+$("#kakao").click(function(){
+	$.get("https://developers.kakao.com/logout",function(){
+		location.reload();
+	})
+})
+</script>

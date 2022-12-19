@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut" href="/images/favicon.png">
+ <link rel="shortcut icon" href="/images/favicon.png">
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 
@@ -333,7 +333,7 @@
 							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
 							<ul class="clearfix">
 								<li><a href="/member/login">로그인</a></li>
-								<li><a href="/member/join">회원가입</a></li>
+								<li><a href="/member/agree">회원가입</a></li>
 							</ul>
 							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
 						</div>
@@ -869,7 +869,7 @@
 <c:import url="./temp/footer.jsp"></c:import>
 <!-- //footer -->
 
-
+<script type="text/javascript"></script>
 
 <!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
 <input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">

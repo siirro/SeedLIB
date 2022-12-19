@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +103,8 @@
 										</div>
 										<div class="myInfoList">
 											<ul class="dot-list">
-												<li><span>아이디</span> : ${vo.userName} </li>
+											<sec:authentication property="Principal" var="vo"/>
+												<li><span>아이디</span> : ${vo.username} </li>
 												<li><span>회원가입일</span> : ${vo.regDate} </li>
 												<li><span>휴대폰번호</span> : ${vo.phone} </li>
 												

@@ -12,9 +12,11 @@
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/button.css">
-<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/unified_search.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-
+ <link rel="shortcut icon" href="/images/favicon.png">
+ <title> 로그인 : 씨앗도서관</title>
+ 
 </head>
 <body>
 
@@ -80,6 +82,7 @@
                             <!--Real Contents Start-->
                             <div class="loginWrap" >
                                 <form action="./login" name="loginForm" id="loginForm" class="loginForm" method="post">
+                                				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 <input type="hidden" name="returnUrl" value="aHR0cHM6Ly9saWIuYW55YW5nLmdvLmtyL2ludHJvL2luZGV4LmRv">
                                     <div class="loginGroup clearfix">
                                         <div class="loginArea">
@@ -88,18 +91,24 @@
                                             
                                             
                                                 <label for="userId"><span class="blind">아이디</span></label>
-                                                <input type="text" id="userId" name="userName" placeholder="아이디">
+                                                <input type="text" id="userId" name="userName" value="${cookie.userName.value}" placeholder="아이디">
                                             </div>
                                             <div class="inpArea">
                                                 <label for="userPw"><span class="blind">비밀번호</span></label>
                                                 <input type="password" id="userPw" name="password" placeholder="비밀번호">
                                             </div>
-                                          
-                                
+
                                             <input type="submit" id="loginBtn" title="로그인" value="로그인" class="btnLogin themeBtn">
                                             
+                                            
+                                            <div class=rememberme>
+                                            <input type="checkbox" name="rememberId" class="remember" id="rememberMe">
+                                            <label class="" for="">ID 기억하기</label>
+                                            </div>
+                                           
+   
                                             <div>
-                                            <a href="kakao_login.php" class="btn_join_kakao" style="color:#FFF;"><i class="icon"></i><i class="division"></i>카카오 로그인</a>
+                                            <a href="/oauth2/authorization/kakao" class="btn_join_kakao" style="color:#FFF;"><i class="icon"></i><i class="division"></i>카카오 로그인</a>
                                             <a href="google_login.php" class="btn_join_google" style="color:#FFF;"><i class="icon"></i><i class="division"></i>구글 로그인</a>
                                             
                                             </div>
@@ -107,7 +116,7 @@
                                             <div class="checkArea clearfix">
                                                 <a href="/intro/memberFindIdCertify.do">아이디 찾기</a>
                                                 <a href="/intro/memberFindPwdCertify.do">비밀번호 재발급</a>
-                                                <a href="./agree">회원가입</a>
+                                                <a href="/member/agree">회원가입</a>
                                             </div>
                                         </div>
                                     </div>
@@ -130,5 +139,8 @@
      <c:import url="../temp/footer.jsp"></c:import>
      <!-- //footer -->
 
+<script type="text/javascript">
+history.replaceState({},null,location.pathname)
+</script>
 </body>
 </html>
