@@ -2,40 +2,46 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.seed.lib.member.MemberMapper">		
-
-		  
-	<update id="setUpdate" parameterType="MemberVO">
-	UPDATE `MEMBER` SET
-	 EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
-	WHERE USERNAME = #{userName}
 	
-	</update>
-
-
- 	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
-	
-		SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
- 
-	</select>
-	
-	<insert id="setMemberRole" parameterType="MemberVO">
-		
-		INSERT INTO MEMBER_ROLE VALUES (
-	(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_MEMBER'),#{userName}
-)		
-	</insert>
+	<mapper namespace="com.seed.lib.member.MemberMapper">		
 	
 	
+				<delete id="setDelete" parameterType="MemberVO">
+					DELETE MEMBER WHERE USERNAME=#{userName}
+				</delete>
+							  
+			<update id="setUpdate" parameterType="MemberVO">
+			UPDATE `MEMBER` SET
+			 EMAIL=#{email}, PHONE=#{phone}, POST=#{post}, ADDRESS1=#{address1}, ADDRESS2= #{address2}
+			WHERE USERNAME = #{userName}
+			
+			</update>
+
+
+		 	<select id="getIdCheck" parameterType="MemberVO" resultType="String">
+			
+				SELECT COUNT(USERNAME) FROM MEMBER WHERE USERNAME = #{userName} and PASSWORD = #{password}
+		 
+			</select>
+	
+			<insert id="setMemberRole" parameterType="MemberVO">
+				
+				INSERT INTO MEMBER_ROLE VALUES (
+			(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_MEMBER'),#{userName}
+		      )		
+			</insert>
+	
+	
 	
 
-		<insert id="setJoin" parameterType="MemberVO">
-		INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
-		VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
-		</insert> 
+			<insert id="setJoin" parameterType="MemberVO">
+			INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
+			VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
+			</insert> 
 
-			  <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+
+
+			  <select id="getLogin" parameterType="String" resultMap="getLoginResult">
 			
 				SELECT M.*, R.*
 					FROM MEMBER M
@@ -45,19 +51,21 @@
 					  INNER JOIN
 					  ROLE R 
 					  ON MR.ROLENUM =R.ROLENUM
-					  WHERE M.USERNAME= #{userName}
+					  WHERE M.USERNAME= #{username}
 					  
 			</select>
 					  
 		<resultMap type="MemberVO" id="getLoginResult">
 		<id column="username" property="userName" />
-	    <id column="name" property="name" />
+		<id column="password" property="password" />
+	    <result column="name" property="name" />
 		<result column="gender" property="gender"/>		
 		<result column="birth" property="birth"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
 		<result column="address1" property="address1"/>
 		<result column="regdate" property="regDate"/>
+		<result column="address1" property="address1"/>
 		<result column="enabled" property="enabled"/>
 		<result column="loanstatus" property="loanStatus"/>
 		<result column="ovmyrcount" property="ovMyrCount"/>

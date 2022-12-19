@@ -11,15 +11,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodReturnValueHandler;
 
+import kotlin.jvm.Throws;
 import lombok.extern.slf4j.Slf4j;
+import retrofit2.http.POST;
 
 @Controller
 @Slf4j
@@ -54,29 +58,37 @@ public class MemberController {
 	
 	
 	@GetMapping("login")
-	public void getLogin() throws Exception{
-		log.info("get 진입");
+	public void getLogin(@RequestParam(defaultValue = "false", required = false) boolean error, String message, Model model) throws Exception{
+	if(error){
+		model.addAttribute("meg","ID와 PW를 확인해 주세요.");
+	}
+		
+	}
+	
+	@PostMapping("login")
+	public String getLogin()throws Exception{
+		return "member/login";
 				
 	}	
 	
-	@PostMapping("login")
-	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
-		ModelAndView mv =new ModelAndView();
-		memberVO= memberService.getLogin(memberVO);
-		if(memberVO!=null) {
-			session.setAttribute("memberVO", memberVO);
-			String dest = (String)session.getAttribute("dest");
-        	String uri = (dest == null) ? "index":dest;
-			mv.addObject("memberVO", memberVO);
-			mv.setViewName(uri);
-//			mv.setViewName("redirect:../");
-		}else {
-	         mv.setViewName("redirect:../member/login");   
-
-		}
-		
-	      return mv;
-	}
+//	@PostMapping("login")
+//	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
+//		ModelAndView mv =new ModelAndView();
+//		memberVO= memberService.getLogin(memberVO);
+//		if(memberVO!=null) {
+//			session.setAttribute("memberVO", memberVO);
+//			String dest = (String)session.getAttribute("dest");
+//        	String uri = (dest == null) ? "index":dest;
+//			mv.addObject("memberVO", memberVO);
+//			mv.setViewName(uri);
+////			mv.setViewName("redirect:../");
+//		}else {
+//	         mv.setViewName("redirect:../member/login");   
+//
+//		}
+//		
+//	      return mv;
+//	}
 	 
 
 	
@@ -119,13 +131,24 @@ public class MemberController {
 		return mv;	
 	}
 
-	@GetMapping("logout")
-	public String getLogout(HttpSession session)throws Exception{
-		log.info("==== 내가만든 logout 메서드=====");
-		session.invalidate();
+	@GetMapping("delete")
+	@ResponseBody
+	public ModelAndView setdelete(MemberVO memberVO) throws Exception{
+		ModelAndView mv =new ModelAndView();
+		int result = memberService.setDelete(memberVO);
+		mv.setViewName("redirect:../");
 		
-		return "redirect:../";
+		return mv;
+		
+		
 	}
+	
+//	@GetMapping("logout")
+//	public String getLogout(HttpSession session)throws Exception{
+//		session.invalidate();
+//		
+//		return "redirect:../";
+//	}
 
 
 	

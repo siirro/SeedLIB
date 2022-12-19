@@ -117,7 +117,7 @@ public class MyPageController {
 		
 		ModelAndView mv =new ModelAndView();
 		int result = memberService.setUpdate(memberVO);
-		mv.setViewName("redirect:myIndex?userName="+memberVO.getUserName());
+		mv.setViewName("redirect:myIndex?userName="+memberVO.getUsername());
 		
 		return mv;
 		
@@ -128,7 +128,7 @@ public class MyPageController {
 	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-			hdPager.setUserName(memberVO.getUserName());
+			hdPager.setUserName(memberVO.getUsername());
 			List<HopeVO> hl = hopeService.getHopeList(hdPager);
 			mv.addObject("hlist", hl);
 			mv.addObject("pager", hdPager);
@@ -146,7 +146,7 @@ public class MyPageController {
 	public ModelAndView setDList(HdPager hdPager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-			hdPager.setUserName(memberVO.getUserName());
+			hdPager.setUserName(memberVO.getUsername());
 			List<DonationVO> dl = donationService.getDonList(hdPager);
 			mv.addObject("dlist", dl);
 			mv.addObject("pager", hdPager);
@@ -158,7 +158,7 @@ public class MyPageController {
 		roomService.changeAllSeat();
 		ModelAndView mv = new ModelAndView();
 			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-			String userName = memberVO.getUserName();
+			String userName = memberVO.getUsername();
 			log.info(userName);
 			List<StudyDetailVO> sdl = roomService.getSeatHistory(userName);
 			List<FullCalendarVO> cl = new ArrayList<>();
@@ -191,8 +191,11 @@ public class MyPageController {
 		lockerService.exitAllLocker();
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUsername());
+
 		hdPager.setUserName(memberVO.getUserName());
 		List<LockerVO> loList = lockerService.getLockerHistory(hdPager);
+
 		mv.addObject("locker", loList);
 		mv.addObject("pager", hdPager);
 		return mv;
@@ -259,7 +262,7 @@ public class MyPageController {
 			mv.addObject("member", memberVO);
 					
 			//대출 목록
-			pager.setUserName(memberVO.getUserName());
+			pager.setUserName(memberVO.getUsername());
 			pager.setRtStatus(1);
 			List<BookVO> li = loanService.getLoanList(pager);
 			mv.addObject("li", li);
@@ -267,7 +270,7 @@ public class MyPageController {
 			//대출 중인 책 권수
 			BookLoanVO loVO = new BookLoanVO();
 			loVO.setRtStatus(1);
-			loVO.setUserName(memberVO.getUserName());
+			loVO.setUserName(memberVO.getUsername());
 			int count = loanService.getBookLoan(loVO);
 			mv.addObject("count", count);
 		}
@@ -286,7 +289,7 @@ public class MyPageController {
 			mv.addObject("member", memberVO);
 					
 			//대출 목록
-			pager.setUserName(memberVO.getUserName());
+			pager.setUserName(memberVO.getUsername());
 			pager.setRtStatus(0);
 			List<BookVO> li = loanService.getLoanList(pager);
 			mv.addObject("li", li);
@@ -294,7 +297,7 @@ public class MyPageController {
 			//대출 중인 책 권수
 			BookLoanVO loVO = new BookLoanVO();
 			loVO.setRtStatus(0);
-			loVO.setUserName(memberVO.getUserName());
+			loVO.setUserName(memberVO.getUsername());
 			int count = loanService.getBookLoan(loVO);
 			mv.addObject("count", count);
 		}
@@ -327,13 +330,13 @@ public class MyPageController {
 			mv.addObject("member", memberVO);
 					
 			//예약 목록
-			pager.setUserName(memberVO.getUserName());
+			pager.setUserName(memberVO.getUsername());
 			List<BookVO> li = loanService.getReList(pager);
 			mv.addObject("li", li);
 		
 			//예약 중인 책 권수
 			BookLoanVO loVO = new BookLoanVO();
-			loVO.setUserName(memberVO.getUserName());
+			loVO.setUserName(memberVO.getUsername());
 			int count = loanService.getReCount(loVO);
 			mv.addObject("count", count);
 		}
@@ -351,13 +354,13 @@ public class MyPageController {
 			mv.addObject("member", memberVO);
 					
 			//상호대차 목록
-			pager.setUserName(memberVO.getUserName());
+			pager.setUserName(memberVO.getUsername());
 			List<BookVO> li = loanService.getMuList(pager);
 			mv.addObject("li", li);
 		
 			//대출 중인 책 권수
 			BookLoanVO loVO = new BookLoanVO();
-			loVO.setUserName(memberVO.getUserName());
+			loVO.setUserName(memberVO.getUsername());
 			int count = loanService.getMuCount(loVO);
 			mv.addObject("count", count);
 		}

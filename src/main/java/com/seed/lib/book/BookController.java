@@ -63,7 +63,7 @@ public class BookController {
 			
 			//유저 개인 좋아요 정보
 			MbBookLikeVO bookLikeVO = new MbBookLikeVO();
-			bookLikeVO.setUserName(memberVO.getUserName());
+			bookLikeVO.setUserName(memberVO.getUsername());
 			bookLikeVO.setIsbn(bookVO.getIsbn());
 			
 			boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
@@ -71,7 +71,7 @@ public class BookController {
 			
 			//책꽂이 존재 유무
 			BookShelfVO shelfVO = new BookShelfVO();
-			shelfVO.setUserName(memberVO.getUserName());
+			shelfVO.setUserName(memberVO.getUsername());
 			
 			boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
 			mv.addObject("isShelfExist", isShelfExist);

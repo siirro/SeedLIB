@@ -17,10 +17,10 @@
 .loginWrap .checkArea a {display:inline-block; position:relative; font-size:1.063em; line-height:1; color:#666; vertical-align:middle; }
 .loginWrap .checkArea a + a::before {content:"";display:inline-block;width:1px;height:13px;margin:2px 20px;vertical-align:middle;background:#ccc}
 .loginDesc,.joinDesc {clear:both; padding: 20px 25px; text-align: left; background-color: #f8f8f8;}
-
+.rememberme{margin-right:400px}
 .loginBottom {position: relative; margin-top: 40px;}
 .loginBottom .btn {font-size: 1.176em;}
-
+.btn_join_kakao{margin-right:400px; background:#ccc}
 /* find ID/PW */
 .findWrap {text-align: center; padding: 7px; background: url(../images/bg_pattern.png) 0 0;}
 .findForm {background-color: #fff;}
