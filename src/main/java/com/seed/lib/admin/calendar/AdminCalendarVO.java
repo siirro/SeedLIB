@@ -9,7 +9,7 @@ public class AdminCalendarVO {
 	
 	private Long id;
 	private String title;
-	private Date start;
-	private Date end;
+	private String start;
+	private String end;
 
 }
