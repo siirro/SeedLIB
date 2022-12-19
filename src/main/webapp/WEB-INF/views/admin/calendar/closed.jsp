@@ -69,11 +69,53 @@
         color: #f3fefa;
     }
 
+    td .fc-day-mon{
+      background-color: #ff4c4c !important;
+    }
+
+    a {
+      color: #795548 !important;
+    }
+
     </style>
 <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
+    <!-- Button trigger modal -->
+    <button type="button" id="eventModalBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal" style="display: none;">
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">일정 등록</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <tr>
+              <th scope="row"><label for="eventTitle">일정 명</label><span class="essential themeFC">*</span></th>
+              <td>
+                  <input type="text" id="eventTitle" name="title" value="" class="form-control">
+              </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="eventStart">시작일자</label><span class="essential themeFC">*</span></th>
+                <td><input type="date" id="eventStart" name="start" value="" class="form-control"></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="eventEnd">종료일자</label><span class="essential themeFC">*</span></th>
+                <td><input type="date" id="eventEnd" name="end" value="" class="form-control"></td>
+            </tr>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="eventBtn" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
     
@@ -124,6 +166,7 @@
                 <div class="card-style-2 mb-30" style="width:100%;">
                   <div>
                       <!--Real Contents Start-->
+                      <h1>매 주 월요일은 휴관일입니다</h1>
                       <div id='calendar'></div>
                       <!-- End Of the Real Contents-->
                       </div>
@@ -159,15 +202,15 @@
         let data = '${cl}';
         let id = "";
         data = JSON.parse(data);
-        console.log("data", data)
         let calendarEl = document.getElementById('calendar');
             calendar = new FullCalendar.Calendar(calendarEl, {
-          locale: 'ko', // the initial locale. of not specified, uses the first one
-          initialView: 'dayGridMonth',
-          events: data
+            locale: 'ko', // the initial locale. of not specified, uses the first one
+            initialView: 'dayGridMonth',
+            editable: true,
+            events: data
         })
         
-            calendar.render();
+        calendar.render();
         makeCalendar();
     
         });
@@ -182,36 +225,57 @@
           makeCalendar();
          })
     
+      function curDate(date){
+            let yyyy = date.getFullYear();
+            let mm = date.getMonth()+1;
+            let dd = date.getDate();
+            mm = mm > 10 ? mm:'0' + mm;
+            dd = dd > 10 ? dd:'0' + dd;
+            let dateString = yyyy+'-'+mm+'-'+dd
+            return dateString;
+      }
         
+      let date = new Date();
+        $("#eventStart").attr("min", curDate(date));
+
         
-        $(document).on("click","#exitBtn",function (info) {
-          let exitNum = $(this).parent().prev().text();
-          userName=$("#userName").val();
-          let check = window.confirm("퇴실하시겠습니까?");
+        $("#calendar").on("click",".fc-scrollgrid-sync-inner",function (info) {
+          let start = $(this).parent().attr("data-date");
+
+          let check = window.confirm("일정을 추가하시겠습니까?");
           if(check) {
-            $.ajax({
-              type:"POST",
-              url:"/mypage/exitSeat",
-              data:{
-                exitNum:exitNum,
-                userName:userName
-              },success:function(data){
-                if(data>0){
-                  alert("퇴실 완료했습니다");
-                  location.reload();
-                }else{
-                  alert("서버 문제로 퇴실 처리가 미완료되었습니다\n관리자에게 문의바랍니다")
-                }
-              },error:function(){
-                alert("서버 문제로 퇴실 처리가 미완료되었습니다\n관리자에게 문의바랍니다")
-              }	
+            $("#eventModalBtn").click();
+            $("#eventStart").val(start);
+
+            $("#eventBtn").click(function(){
+              let eventStart = $("#eventStart").val();
+              let eventEnd =  $("#eventEnd").val();
+              let eventTitle = $("#eventTitle").val(); 
+              console.log(eventTitle,eventStart,eventEnd);
+              $.ajax({
+                type:"POST",
+                url:"/admin/calendar/addEvent",
+                data:{
+                  title:eventTitle,
+                  start:eventStart,
+                  end:eventEnd
+                },success:function(data){
+                  if(data>0){
+                    alert("일정 추가했습니다");
+                    location.reload();
+                  }else{
+                    alert("서버 문제로 일정 등록 처리가 실패되었습니다\n서버 관리자에게 문의바랍니다")
+                  }
+                },error:function(){
+                  alert("서버 문제로 일정 등록 처리가 실패되었습니다\n서버 관리자에게 문의바랍니다")
+                }	
+              })
+
             })
           }		
         });
     
     function makeCalendar(){
-    
-    
       if($(".fc-bg-event").hasClass("room-0")){
         let exitBtn = '<div style="display:flex; justify-content: center;" class="room">';		
         exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn"">퇴실</button></div>';
