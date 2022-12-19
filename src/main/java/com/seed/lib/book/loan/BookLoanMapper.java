@@ -76,7 +76,7 @@ public interface BookLoanMapper {
 	public int setReturn (BookLoanVO loanVO) throws Exception;
 	
 	//반납 상태 업데이트 - Loan
-	public 
+	//public 
 	
 	//연체 여부 확인 - 반납일/대출만기일 비교
 	
