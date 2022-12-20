@@ -36,7 +36,7 @@
 
 			<insert id="setJoin" parameterType="MemberVO">
 			INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
-			VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
+			VALUES ( #{username}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
 			</insert> 
 
 
@@ -56,7 +56,7 @@
 			</select>
 					  
 		<resultMap type="MemberVO" id="getLoginResult">
-		<id column="username" property="userName" />
+		<id column="username" property="username" />
 		<id column="password" property="password" />
 	    <result column="name" property="name" />
 		<result column="gender" property="gender"/>		

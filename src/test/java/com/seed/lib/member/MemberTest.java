@@ -28,7 +28,7 @@ class MemberTest {
 		memberVO.setPost("aasf");
 		memberVO.setAddress1("asdf");
 		memberVO.setAddress2("aasdff");
-		
+		memberVO.setBirth(null);
 		int result= mapper.setJoin(memberVO);
 		assertEquals(1, result);
 	

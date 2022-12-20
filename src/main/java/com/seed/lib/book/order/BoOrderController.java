@@ -59,7 +59,7 @@ public class BoOrderController {
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
-		bookPrintVO.setUserName(memberVO.getUserName());
+		bookPrintVO.setUserName(memberVO.getUsername());
 		
 		log.info("에이작스 했니?");
 		log.info("bookPrint {} ", bookPrintVO.getCaAmount());
