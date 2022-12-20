@@ -169,18 +169,18 @@ $(".ExAlretBtn").click(function(){
 //-------------------------------------------------
 //마이페이지에서 반납신청 눌렀을 때
 $("#ReturnAlretBtn").click(function(){
-	const MyReturnVO = {
+	const returnVO = {
 		userName : userName,
 		isbn : isbn,
 		loanNum : $(".loanNum").val()
 	}
 	
-	console.log(MyReturnVO);
+	console.log(returnVO);
 	
 	$.ajax({
 		type : "POST",
 		url : "/book/return",
-		data:JSON.stringify(bookLoanVO),
+		data:JSON.stringify(returnVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success:function(data){
