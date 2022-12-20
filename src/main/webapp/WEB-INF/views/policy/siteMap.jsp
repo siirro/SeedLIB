@@ -102,8 +102,8 @@
                         </li>
                         <li id="smb4"> <a href="" class="themeColor"> <em>도서관소식</em> </a> 
                             <ul> 
-                                <li id="smb4_1"><a href="">공지사항</a> </li> 
-                                <li id="smb4_2"><a href="">자주하는질문</a> </li> 
+                                <li id="smb4_1"><a href="/board/list">공지사항</a> </li> 
+                                <li id="smb4_2"><a href="/qna/list">자주하는질문</a> </li> 
                                 <li id="smb4_9"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">도서관에바란다</a> </li>
                                 <li id="smb4_4"><a href="/seoksu/menu/10141/contents/40010/contents.do">자유게시판</a> </li>
                                 <li id="smb4_10"><a href="/seoksu/menu/10158/bbs/20004/bbsPostList.do">분실물센터</a> </li> 

@@ -12,6 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>프로그램 목록 : 씨앗도서관 ☘</title>
+    <style>
+      #changeBtn:hover {
+        cursor: pointer;
+      }
+    </style>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
@@ -100,7 +105,8 @@
                           <tr>
                             <!-- <th class="text-start"><h6>#</h6></th> -->
                             <th><h6>
-                              <div class="row justify-content-center">
+                              구분
+                              <!-- <div class="row justify-content-center">
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
@@ -115,14 +121,14 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                             </h6></th>
                             <th><h6>이름</h6></th>
                             <th><h6>신청자/정원</h6></th>
                             <th><h6>접수기간</h6></th>
                             <th><h6>행사기간</h6></th>
-                            <th><h6>
-                              <div class="row justify-content-center">
+                            <th><h6>접수상태
+                              <!-- <div class="row justify-content-center">
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
@@ -136,7 +142,7 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                             </h6></th>
                             <th class="text-start"><h6>수정/삭제</h6></th>
                           </tr>
@@ -174,8 +180,105 @@
                               <%-- <p>${proVO.total}</p> --%>
                             </td>
                             <td class="min-width">
-                              <span class="status-btn active-btn">${proVO.recStatus}</span>
+                              <!-- onclick="FnChangeStatus()"  -->
+                              <c:choose>
+                                <c:when test="${proVO.recStatus eq '예정'}">
+                                  <span id="changeBtn" class="status-btn success-btn" proNum="${proVO.proNum}"
+                                  data-bs-toggle="modal" data-bs-target="#exampleModal${proVO.proNum}">${proVO.recStatus}</span>
+                                </c:when>
+                                <c:when test="${proVO.recStatus eq '접수중'}">
+                                  <span id="changeBtn" class="status-btn active-btn" proNum="${proVO.proNum}"
+                                  data-bs-toggle="modal" data-bs-target="#exampleModal${proVO.proNum}">${proVO.recStatus}</span>
+                                </c:when>
+                                <c:when test="${proVO.recStatus eq '마감'}">
+                                  <span id="changeBtn" class="status-btn close-btn" proNum="${proVO.proNum}"
+                                  data-bs-toggle="modal" data-bs-target="#exampleModal${proVO.proNum}">${proVO.recStatus}</span>
+                                </c:when>
+                                <c:otherwise>
+                                  <span id="changeBtn" class="status-btn success-btn" proNum="${proVO.proNum}"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal${proVO.proNum}">${proVO.recStatus}</span>
+                                </c:otherwise>
+                                
+                              </c:choose>
+
+                              
                             </td>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal${proVO.proNum}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: #a9d66a;">접수상태 변경</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                        <input type="hidden" name="proNum" value="${proVO.proNum}">
+                                        <div class="modal-body">
+
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input check${proVO.proNum}" type="radio" name="recStatus" id="inlineRadio1" value="예정">
+                                            <label class="form-check-label" for="inlineRadio1">접수예정</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input check${proVO.proNum}" type="radio" name="recStatus" id="inlineRadio2" value="접수중">
+                                            <label class="form-check-label" for="inlineRadio2">접수중</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input check${proVO.proNum}" type="radio" name="recStatus" id="inlineRadio3" value="마감">
+                                            <label class="form-check-label" for="inlineRadio3">접수마감</label>
+                                          </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                          <button type="button" onclick="FnUpdate(${proVO.proNum})" id="statusBtn" class="btn btn-primary" style="background: #a9d66a; border-color: #a9d66a;">변경</button>
+                                        </div>
+
+                                        <script>
+                                          
+                                          function FnUpdate(num) {
+                                            let status = "";
+                                            // console.log($("input[class='check"+num+"']:checked").val())
+                                            $(".check"+num).each(function(index, item){
+                                              console.log(item);
+                                              if($(item).prop("checked")){
+                                                status = $(item).val();
+                                                console.log(status);
+                                              }
+                                            })
+
+                                            if(status.length<1) {
+                                              alert("상태를 선택해주세요");
+                                            } else {
+                                              console.log("??");
+                                              $.ajax({
+                                              type: "GET",
+                                              url: "./proUpdateStatus",
+                                              traditional: true,
+                                              data: {
+                                                proNum: num,
+                                                recStatus: status
+                                              },
+                                              success: function(data){
+                                                location.href="./proList"
+                                              },
+                                              error: function(){
+                                                console.log("에러");
+                                              }
+                                            })
+                                            }
+
+                                            
+
+                                           
+                                          }
+                                        </script>
+                                </div>
+                              </div>
+                            </div>
+
+
                             <td>
                               <div class="action text-start">
                                 <button onclick="location.href='./proUpdate?proNum=${proVO.proNum}'" type="button">
@@ -247,6 +350,10 @@
         if(confirm("프로그램을 삭제하시겠습니까?")) {
           location.href='./proDelete?proNum='+num;
         }
+      }
+
+      function FnChangeStatus(){
+        console.log("?");
       }
     </script>
   </body>
