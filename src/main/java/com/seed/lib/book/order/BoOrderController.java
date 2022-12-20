@@ -67,7 +67,7 @@ public class BoOrderController {
 	// 도서 바구니 추가	
 	@PostMapping("boAdCart")
 	@ResponseBody
-	public String setBoAdCart(String imp_uid, 
+	public int setBoAdCart(String imp_uid, 
 							  String merchant_uid, 
 							  String printNum,
 							  String amount,
@@ -82,9 +82,11 @@ public class BoOrderController {
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
+		if(result > 0) {
+			return result;
+		}
 		
-		
-		return "search/simple";
+		return result;
 	}
 	
 }
