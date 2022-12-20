@@ -48,7 +48,7 @@ public class HomeController {
 
 		
 	
-	@GetMapping("/")
+@GetMapping("/")
 	public ModelAndView setHome(HttpSession session) throws Exception{
 //		Enumeration<String> en =session.getAttributeNames();
 //		

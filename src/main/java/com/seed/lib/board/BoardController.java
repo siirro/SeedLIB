@@ -83,7 +83,7 @@ public class BoardController {
 	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv)throws Exception{
 		boardVO = boardService.getDetail(boardVO);
 		mv.addObject("boardVO", boardVO);
-		mv.setViewName("/board/notice/update");
+		mv.setViewName("/board/update");
 		return mv;
 
 	}
@@ -92,7 +92,7 @@ public class BoardController {
 	public String setUpdate(BoardVO boardVO) throws Exception{
 		int result = boardService.setUdate(boardVO);
 
-		return "redirect:/notice/detail?boardNum="+boardVO.getBoardNum();
+		return "redirect:/board/detail?boardNum="+boardVO.getBoardNum();
 	}
 
 	@GetMapping("delete")

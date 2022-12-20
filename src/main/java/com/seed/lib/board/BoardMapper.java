@@ -16,4 +16,7 @@ public interface BoardMapper {
 	public int setUpdate(BoardVO boardVO) throws Exception;
 	public int setDelete(BoardVO boardVO) throws Exception;
 	public int setFileAdd(BoardFileVO boardFileVO)throws Exception;
+	public int FileDelete(BoardFileVO boardFileVO)throws Exception;
+	public BoardFileVO getDetailFile(BoardFileVO boardFileVO)throws Exception;
+
 }
