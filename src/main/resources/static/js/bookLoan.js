@@ -30,12 +30,10 @@ $("#LoanAlretBtn").click(function(){
 				case 1:
 					let done = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(done){
-						opener.location.href="/mypage/book/loan";
-						break;
+						location.href="/mypage/book/loan";
 					} else{
-                        opener.location.href="../";
+                        location.href="../";
                         location.reload();
-                        break;
                     } 
 				}
 			},

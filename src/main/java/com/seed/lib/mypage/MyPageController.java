@@ -170,7 +170,7 @@ public class MyPageController {
 	public ModelAndView getSeatHistory (HttpSession session, MemberVO memberVO) throws Exception{
 		roomService.changeAllSeat();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	   Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -304,7 +304,7 @@ public class MyPageController {
 	@GetMapping("book/loanHistory")
 	public ModelAndView getLoanHistoryList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-		Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
