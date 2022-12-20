@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -125,9 +127,12 @@ public class MyPageController {
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////	
 	@GetMapping("hopeList")
-	public ModelAndView setHList(HdPager hdPager, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	public ModelAndView setHList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+	    ModelAndView mv = new ModelAndView();
 			hdPager.setUserName(memberVO.getUsername());
 			List<HopeVO> hl = hopeService.getHopeList(hdPager);
 			mv.addObject("hlist", hl);
@@ -143,9 +148,12 @@ public class MyPageController {
 	}
 	
 	@GetMapping("donList")
-	public ModelAndView setDList(HdPager hdPager, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	public ModelAndView setDList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+	    ModelAndView mv = new ModelAndView();
 			hdPager.setUserName(memberVO.getUsername());
 			List<DonationVO> dl = donationService.getDonList(hdPager);
 			mv.addObject("dlist", dl);
@@ -154,10 +162,13 @@ public class MyPageController {
 	}
 	
 	@GetMapping("seatHistory")
-	public ModelAndView getSeatHistory (HttpSession session) throws Exception{
+	public ModelAndView getSeatHistory (HttpSession session, MemberVO memberVO) throws Exception{
 		roomService.changeAllSeat();
-		ModelAndView mv = new ModelAndView();
-			MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+	    ModelAndView mv = new ModelAndView();
 			String userName = memberVO.getUsername();
 			log.info(userName);
 			List<StudyDetailVO> sdl = roomService.getSeatHistory(userName);
@@ -187,10 +198,13 @@ public class MyPageController {
 	}
 	
 	@GetMapping("lockerHistory")
-	public ModelAndView getLockerList(HttpSession session, HdPager hdPager) throws Exception{
+	public ModelAndView getLockerList(HttpSession session, HdPager hdPager, MemberVO memberVO) throws Exception{
 		lockerService.exitAllLocker();
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+	    ModelAndView mv = new ModelAndView();
 
 		hdPager.setUserName(memberVO.getUsername());
 		List<LockerVO> loList = lockerService.getLockerHistory(hdPager);

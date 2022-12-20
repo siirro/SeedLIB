@@ -50,7 +50,6 @@ public class HopeController {
 	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
-	    log.info("mvo:{}",memberVO);
 	    ModelAndView mv = new ModelAndView();
 		mv.addObject("memberVO", memberVO);
 		mv.setViewName("hope/setHope");
