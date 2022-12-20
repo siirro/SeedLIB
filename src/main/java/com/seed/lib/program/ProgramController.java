@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 import com.seed.lib.util.ProgramPager;
 
 @Controller
@@ -22,6 +24,9 @@ public class ProgramController {
 	
 	@Autowired
 	private ProgramService programService;
+	
+	@Autowired
+	private MypageService mypageService;
 	
 	//목록
 	@GetMapping("list")
@@ -36,9 +41,13 @@ public class ProgramController {
 	
 	//상세페이지
 	@GetMapping("detail")
-	public ModelAndView getDetail (HttpSession session, AdProgramVO apVO) throws Exception{
+	public ModelAndView getDetail (HttpSession session, MemberVO memberVO, AdProgramVO apVO) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+		
 		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
