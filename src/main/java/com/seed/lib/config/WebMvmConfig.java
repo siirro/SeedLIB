@@ -17,13 +17,13 @@ public class WebMvmConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(applicationInterceptor)
-				.addPathPatterns("/hope/setHope")
-				.addPathPatterns("/donation/setDon")
-				.addPathPatterns("/studyroom/**")
-//				.addPathPatterns("/mypage/**")
-				.excludePathPatterns("/index")
-        		.excludePathPatterns("/css/**", "/images/**", "/js/**");
+//		registry.addInterceptor(applicationInterceptor)
+//				.addPathPatterns("/hope/setHope")
+//				.addPathPatterns("/donation/setDon")
+//				.addPathPatterns("/studyroom/**")
+////				.addPathPatterns("/mypage/**")
+//				.excludePathPatterns("/index")
+//        		.excludePathPatterns("/css/**", "/images/**", "/js/**");
 	}
 
 	

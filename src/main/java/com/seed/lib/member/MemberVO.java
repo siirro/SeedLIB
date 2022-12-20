@@ -69,6 +69,11 @@ public class MemberVO implements UserDetails, OAuth2User{
 		// TODO Auto-generated method stub
 		return this.userName;
 	}
+	
+	public String getUserName() {
+		// TODO Auto-generated method stub
+		return this.userName;
+	}
 
 
 	@Override

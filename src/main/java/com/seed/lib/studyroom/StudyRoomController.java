@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,6 +38,9 @@ public class StudyRoomController {
 	@Autowired
 	private LockerService lockerService;
 	
+	@Autowired
+	private MypageService mypageService;
+	
 	@GetMapping("roomList")
 	public void getRoomList() throws Exception{
 		service.changeAllSeat();
@@ -43,10 +49,13 @@ public class StudyRoomController {
 	
 	@PostMapping("roomList")
 	@ResponseBody
-	public Map<String, String> sendRoomList(String roomNum, HttpSession session) throws Exception{
-		log.info("$$$$$$$$$$$$$$$$$$$rn:{}",roomNum);
-		Map<String, String> mv = new HashMap<>();
-				MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	public Map<String, String> sendRoomList(String roomNum, HttpSession session, MemberVO memberVO) throws Exception{
+			SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		    Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+
+		    Map<String, String> mv = new HashMap<>();
 					if(memberVO.getGender().equals("여")&&roomNum.equals("1")) {
 						mv.put("msg", "[일반열람실(여)] 좌석 정보를 불러옵니다");
 						mv.put("url", "./roomInfo?roomNum=1");

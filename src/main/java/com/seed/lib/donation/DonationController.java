@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 
 
 @Controller
@@ -29,6 +33,9 @@ public class DonationController {
 
 	@Autowired
 	private DonationService donationService;
+	
+	@Autowired
+	private MypageService mypageService;
 	
 	@GetMapping("donInfo")
 	public void donInfo() throws Exception{
@@ -51,9 +58,15 @@ public class DonationController {
 	}
 
 	@GetMapping("setDon")
-	public void setDon(HttpSession session)throws Exception{
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		
+	public ModelAndView setDon(HttpSession session, MemberVO memberVO)throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+	    ModelAndView mv = new ModelAndView();
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("donation/setDon");
+		return mv;
 	}
 	
 	@PostMapping("setDon")
