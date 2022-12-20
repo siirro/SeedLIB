@@ -1,6 +1,5 @@
 package com.seed.lib.mypage;
 
-//import java.sql.Date;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,11 +71,8 @@ public class MyPageController {
   
   
     @GetMapping("myIndex")
-	public ModelAndView getMyPage(HttpSession session) throws Exception{
+	public ModelAndView getMyPage(HttpSession session, MemberVO memberVO) throws Exception{
 		ModelAndView mv =new ModelAndView();
-	 
-		MemberVO memberVO =(MemberVO)session.getAttribute("memberVO");
-	   
 		memberVO= mypageService.getMyPage(memberVO);
 
 		mv.addObject("vo", memberVO);
@@ -101,10 +99,10 @@ public class MyPageController {
 		}
 	
 	@GetMapping("memberModify")
-	public ModelAndView setUpdate(HttpSession session)throws Exception {
-	
+	public ModelAndView setUpdate(HttpSession session, MemberVO memberVO)throws Exception {
+		
+	    
 		ModelAndView mv =new ModelAndView();
-		MemberVO memberVO =new MemberVO();
 		memberVO= (MemberVO)session.getAttribute("memberVO");
 		memberVO = mypageService.getMyPage(memberVO);
 		mv.addObject("vo", memberVO);

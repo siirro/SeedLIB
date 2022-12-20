@@ -38,18 +38,18 @@ public class HomeController {
 	
 @GetMapping("/")
 	public ModelAndView setHome(HttpSession session) throws Exception{
-//		Enumeration<String> en =session.getAttributeNames();
-//		
-//		while(en.hasMoreElements()) {
-//			String key = en.nextElement();
-//			log.info("key=>{}",key);
-//			
-//		}
-//		
-//		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-//		if(context != null) {
-//		log.info("context=>{}",context);
-//		}
+		Enumeration<String> en =session.getAttributeNames();
+		
+		while(en.hasMoreElements()) {
+			String key = en.nextElement();
+			log.info("key=>{}",key);
+			
+		}
+		
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		if(context != null) {
+		log.info("context=>{}",context);
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		

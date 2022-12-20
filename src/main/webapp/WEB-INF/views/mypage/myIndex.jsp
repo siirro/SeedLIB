@@ -85,7 +85,8 @@
 							<div class="myInfoBox">
 								<div class="myInner">
 									<div class="myTop">
-										<div class="title"><strong class="name"> ${vo.name} </strong> 님, 안녕하세요.</div>
+										
+										<div class="title"><strong class="name"> <sec:authentication property="Principal.name"/> </strong> 님, 안녕하세요.</div>
 										<div class="btnModify">
 											
 											
