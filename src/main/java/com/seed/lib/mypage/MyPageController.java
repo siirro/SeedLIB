@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -134,7 +134,7 @@ public class MyPageController {
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -155,7 +155,7 @@ public class MyPageController {
 	@GetMapping("donList")
 	public ModelAndView setDList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -170,7 +170,7 @@ public class MyPageController {
 	public ModelAndView getSeatHistory (HttpSession session, MemberVO memberVO) throws Exception{
 		roomService.changeAllSeat();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -206,7 +206,7 @@ public class MyPageController {
 	public ModelAndView getLockerList(HttpSession session, HdPager hdPager, MemberVO memberVO) throws Exception{
 		lockerService.exitAllLocker();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -273,7 +273,7 @@ public class MyPageController {
 	@GetMapping("book/loan")
 	public ModelAndView getLoanList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
@@ -303,7 +303,7 @@ public class MyPageController {
 	@GetMapping("book/loanHistory")
 	public ModelAndView getLoanHistoryList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
@@ -345,7 +345,7 @@ public class MyPageController {
 	@GetMapping("book/reservation")
 	public ModelAndView getReList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
@@ -373,7 +373,7 @@ public class MyPageController {
 	@GetMapping("book/mutual")
 	public ModelAndView getMuList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
@@ -400,7 +400,7 @@ public class MyPageController {
 	@GetMapping("program")
 	public ModelAndView getMyPro (HttpSession session, MemberVO memberVO, ProgramPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 

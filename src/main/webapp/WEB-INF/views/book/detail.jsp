@@ -122,15 +122,16 @@
 												<span>
 													<a href="#search" onclick="fnSearchKdc('l600');">
 														<c:choose>
-															<c:when test="${book.category eq 1}">철학</c:when>
-															<c:when test="${book.category eq 2}">종교</c:when>
-															<c:when test="${book.category eq 3}">사회과학</c:when>
-															<c:when test="${book.category eq 4}">자연과학</c:when>
-															<c:when test="${book.category eq 5}">기술과학</c:when>
-															<c:when test="${book.category eq 6}">예술</c:when>
-															<c:when test="${book.category eq 7}">언어(어학)</c:when>
-															<c:when test="${book.category eq 8}">문학</c:when>
-															<c:when test="${book.category eq 9}">역사</c:when>
+															<c:when test="${bookVO.category eq 0}">총류</c:when>
+															<c:when test="${bookVO.category eq 1}">철학</c:when>
+															<c:when test="${bookVO.category eq 2}">종교</c:when>
+															<c:when test="${bookVO.category eq 3}">사회과학</c:when>
+															<c:when test="${bookVO.category eq 4}">자연과학</c:when>
+															<c:when test="${bookVO.category eq 5}">기술과학</c:when>
+															<c:when test="${bookVO.category eq 6}">예술</c:when>
+															<c:when test="${bookVO.category eq 7}">언어(어학)</c:when>
+															<c:when test="${bookVO.category eq 8}">문학</c:when>
+															<c:when test="${bookVO.category eq 9}">역사</c:when>
 														</c:choose>
 													</a>
 												</span>
@@ -188,7 +189,7 @@
 										<div class="whereLibrary webViewOnly">
 											<div class="thisBook-libraryselecter">
 												<c:forEach var="lib" items="${lib.libVOs}">
-													<a href="#chk" class="${lib.libName}" data-name="${lib.libName}">${lib.libName}</a>
+													<a href="" class="${lib.libName}" data-name="${lib.libName}">${lib.libName}</a>
 												</c:forEach>
 												<button type="button" class="listDropdown"><span>리스트 보기</span></button>
 											</div>
@@ -251,8 +252,8 @@
 																	<td>
 																		<c:choose>
 																			<c:when test="${where == 0}">
-																				<c:if test="${rtDate.loanLDate != null}">${rtDate.loanLDate}</c:if>
-																				<c:if test="${rtDate.loanLDate == null}">-</c:if>
+																				<c:if test="${rtDate != null}">${rtDate}</c:if>
+																				<c:if test="${rtDate == null}">-</c:if>
 																			</c:when>
 																			<c:otherwise>해당 도서관으로 문의 바랍니다.</c:otherwise>
 																		</c:choose> 

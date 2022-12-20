@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +42,7 @@ public class BookShelfController {
 	@GetMapping("list")
 	public ModelAndView getShelfListP (HttpSession session, MemberVO memberVO, ShelfPager pager) throws Exception {
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 		
@@ -71,7 +72,7 @@ public class BookShelfController {
 	@GetMapping("newShelf")
 	public ModelAndView setNewShelf (BookShelfVO shelfVO, MemberVO memberVO, HttpSession session) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 		
@@ -123,7 +124,7 @@ public class BookShelfController {
 	@GetMapping("addBook")
 	public ModelAndView setBookAdd (String userName, Long isbn, MemberVO memberVO, HttpSession session) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 		
@@ -177,7 +178,7 @@ public class BookShelfController {
 	@GetMapping("bookList")
 	public ModelAndView getBookList (Long num, HttpSession session, MemberVO memberVO, ShelfBookPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 
