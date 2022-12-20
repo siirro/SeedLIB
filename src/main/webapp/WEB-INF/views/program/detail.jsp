@@ -37,6 +37,11 @@
 		            </div>
 		    
 		            <div id="contents" class="contentArea">
+		            	${can} - 0이면 신청가능 / 1이면 불가
+		            	${vo}
+		            	${vo.proNum}
+		            	${member.userName}
+		            	<button type="button" class="btn white small" id="ProAlretBtn" title="신청">신청</button>
 		            </div>
 		        </div>
 		    </div>
