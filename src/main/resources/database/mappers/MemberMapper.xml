@@ -26,7 +26,7 @@
 	
 			<insert id="setMemberRole" parameterType="MemberVO">
 				
-				INSERT INTO MEMBER_ROLE VALUES (
+			INSERT INTO MEMBER_ROLE VALUES (
 			(SELECT ROLENUM  FROM  ROLE WHERE ROLENAME ='ROLE_MEMBER'),#{userName}
 		      )		
 			</insert>
@@ -36,7 +36,7 @@
 
 			<insert id="setJoin" parameterType="MemberVO">
 			INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
-			VALUES ( #{username}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
+			VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
 			</insert> 
 
 
@@ -51,12 +51,12 @@
 					  INNER JOIN
 					  ROLE R 
 					  ON MR.ROLENUM =R.ROLENUM
-					  WHERE M.USERNAME= #{username}
+					  WHERE M.USERNAME= #{userName}
 					  
 			</select>
 					  
 		<resultMap type="MemberVO" id="getLoginResult">
-		<id column="username" property="username" />
+		<id column="username" property="userName" />
 		<id column="password" property="password" />
 	    <result column="name" property="name" />
 		<result column="gender" property="gender"/>		

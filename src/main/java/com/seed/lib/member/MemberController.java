@@ -34,19 +34,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	
-//	@GetMapping("idCheck")
-//	@ResponseBody
-//	public ModelAndView getIdCheck(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception {
-//	
-//		log.info("login 성공");
-//		memberVO= memberService.getLogin(memberVO);
-//		ModelAndView mv =new ModelAndView();
-//		
-//		session.setAttribute("member", memberVO);
-//
-//		return mv;
-//	}	
+
 	
 	//로그인 팝업용
 	@GetMapping("loginPop")
@@ -143,12 +131,12 @@ public class MemberController {
 		
 	}
 	
-	@GetMapping("logout")
-	public String getLogout(HttpSession session)throws Exception{
-		session.invalidate();
-		
-		return "redirect:../";
-	}
+//	@GetMapping("logout")
+//	public String getLogout(HttpSession session)throws Exception{
+//		session.invalidate();
+//		
+//		return "redirect:../";
+//	}
 
 
 	
