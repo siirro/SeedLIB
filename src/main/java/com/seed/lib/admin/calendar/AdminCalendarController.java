@@ -39,7 +39,7 @@ public class AdminCalendarController {
 			jsonObject.put("id", a.getId());
 			jsonObject.put("title", a.getTitle());
 			jsonObject.put("start", a.getStart());
-			jsonObject.put("start", a.getEnd());
+			jsonObject.put("end", a.getEnd());
 			//jsonObject.put("display", "background");
 			js.add(jsonObject);
 		}			

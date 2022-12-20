@@ -77,6 +77,26 @@
       color: #795548 !important;
     }
 
+    .red{
+			border-radius: 5px;
+			background-color: #ff4c4c;
+			font-weight: bold;
+			color: #ffffff;
+			font-size: 17px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+		}
+
+		.blue{
+			border-radius: 5px;
+			background-color: #3788d8;
+			font-weight: bold;
+			color: #ffffff;
+			font-size: 17px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgb(0 0 0 / 30%);
+		}
+
     </style>
 <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -166,7 +186,17 @@
                 <div class="card-style-2 mb-30" style="width:100%;">
                   <div>
                       <!--Real Contents Start-->
-                      <h1>매 주 월요일은 휴관일입니다</h1>
+                      <div>
+                        <table style="width:210px;">
+                          <tbody>
+                            <tr>
+                              <td style="width:100px; text-align: center; " class="red">휴관일</td>
+                              <td style="width: 10px;"></td>							
+                              <td style="width:100px; text-align: center; " class="blue">행사</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div id='calendar'></div>
                       <!-- End Of the Real Contents-->
                       </div>
@@ -258,7 +288,8 @@
                 data:{
                   title:eventTitle,
                   start:eventStart,
-                  end:eventEnd
+                  end:eventEnd,
+                  allDay:allDay
                 },success:function(data){
                   if(data>0){
                     alert("일정 추가했습니다");
