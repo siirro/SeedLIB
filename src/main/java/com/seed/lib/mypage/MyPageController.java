@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -253,10 +254,14 @@ public class MyPageController {
 	
 	//대출 목록
 	@GetMapping("book/loan")
-	public ModelAndView getLoanList (HttpSession session, BookLoanPager pager) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getLoanList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		ModelAndView mv = new ModelAndView();
 
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);

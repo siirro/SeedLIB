@@ -32,8 +32,7 @@
 	<!-- <script src="/js/admin/adCart.js"></script> -->
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
+
     <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -191,13 +190,8 @@
 									<div class="dropContainerBox">
 										<div class="whereLibrary webViewOnly">
 											<div class="thisBook-libraryselecter">
-												<p>
-													<input type="checkbox" id="collectionLibraryAll" name="collectionLibraryAll" value="collectionLibraryAll" class="check" checked="checked">
-													<label for="collectionLibraryAll">전체 도서관</label>
-												</p>
-												<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
 												<c:forEach var="lib" items="${lib.libVOs}">
-													<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
+													<a href="#chk" class="${lib.libName}" data-name="${lib.libName}">${lib.libName}</a>
 												</c:forEach>
 												<button type="button" class="listDropdown"><span>리스트 보기</span></button>
 											</div>
@@ -797,6 +791,7 @@
 	</div>
 </div>
 	<c:import url="../temp/footer.jsp"></c:import> 
-	
+	<script type="text/javascript" src="/js/bookDetail.js"></script>
+    <script type="text/javascript" src="/js/bookLoan.js"></script>
 </body>
 </html>
