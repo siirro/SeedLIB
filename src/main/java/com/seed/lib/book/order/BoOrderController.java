@@ -52,23 +52,19 @@ public class BoOrderController {
 	
 	// 도서 바구니 추가	
 	@PostMapping("boAdCart")
-	@ResponseBody
-	public int setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
+	public String setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
 		
-//		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
 		bookPrintVO.setUserName(memberVO.getUsername());
 		
-		log.info("에이작스 했니?");
-		log.info("bookPrint {} ", bookPrintVO.getCaAmount());
-		log.info("bookPint {} ", bookPrintVO.getBookVO().getIsbn());
-		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
 		
-		return result;
+		
+		return "search/simple";
 	}
 	
 }
