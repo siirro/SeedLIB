@@ -14,5 +14,9 @@ public class AdminCalendarService {
 	public List<AdminCalendarVO> getSchedule() throws Exception{
 		return calendarMapper.getSchedule();
 	}
+	
+	public int setSchedule(AdminCalendarVO calendarVO) throws Exception{
+		return calendarMapper.setSchedule(calendarVO);
+	}
 
 }

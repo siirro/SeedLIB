@@ -10,7 +10,7 @@
     <aside class="sidebar-nav-wrapper">
     <!-- ======== sidebar-nav start =========== -->
         <div class="navbar-logo">
-          <a href="/admin/main">
+          <a href="/">
             <img src="/images/logo200.png" alt="씨앗도서관">
           </a>
         </div>
@@ -348,6 +348,7 @@
                 <span class="text">Notifications</span>
               </a>
             </li>
+            <span class="divider"><hr /></span>
           </ul>
         </nav>
       </aside>

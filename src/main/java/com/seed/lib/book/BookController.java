@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/book/*")
 public class BookController {
+	
+	@Value("${print.imp.key}")
+	private String printImpkey;
 	
 	@Autowired
 	private BookService bookService;
@@ -100,6 +104,9 @@ public class BookController {
 		//같은 작가 도서
 		li = bookService.getSameWriter(bookService.getBookInfo(bookVO).getWriter());
 		mv.addObject("wri", li);
+		
+		// 프린트 결제 키
+		mv.addObject("imp", printImpkey);
 		
 		mv.setViewName("book/detail");
 		

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nimbusds.jose.proc.SecurityContext;
+//import com.nimbusds.jose.proc.SecurityContext;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.search.PopularVO;
@@ -48,26 +48,22 @@ public class HomeController {
 
 		
 	
-	
-		@GetMapping("/")
-		public ModelAndView setHome(HttpSession session) throws Exception{
+@GetMapping("/")
+	public ModelAndView setHome(HttpSession session) throws Exception{
+//		Enumeration<String> en =session.getAttributeNames();
+//		
+//		while(en.hasMoreElements()) {
+//			String key = en.nextElement();
+//			log.info("key=>{}",key);
+//			
+//		}
+//		
+//		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+//		if(context != null) {
+//		log.info("context=>{}",context);
+//		}
+		
 		ModelAndView mv = new ModelAndView();
-		
-		Enumeration<String> en =session.getAttributeNames();
-		
-		while(en.hasMoreElements()) {
-			String key = en.nextElement();
-			log.info("key=>{}",key);
-			
-		}
-		
-		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-		if(context != null) {
-		log.info("context=>{}",context);
-		}
-		
-		int result = roomService.changeAllSeat();
-		log.info("changeSeat:{}", result);
 		
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();

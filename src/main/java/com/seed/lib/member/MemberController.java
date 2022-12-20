@@ -65,30 +65,30 @@ public class MemberController {
 		
 	}
 	
-	@PostMapping("login")
-	public String getLogin()throws Exception{
-		return "member/login";
-				
-	}	
-	
 //	@PostMapping("login")
-//	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
-//		ModelAndView mv =new ModelAndView();
-//		memberVO= memberService.getLogin(memberVO);
-//		if(memberVO!=null) {
-//			session.setAttribute("memberVO", memberVO);
-//			String dest = (String)session.getAttribute("dest");
-//        	String uri = (dest == null) ? "index":dest;
-//			mv.addObject("memberVO", memberVO);
-//			mv.setViewName(uri);
-////			mv.setViewName("redirect:../");
-//		}else {
-//	         mv.setViewName("redirect:../member/login");   
-//
-//		}
-//		
-//	      return mv;
-//	}
+//	public String getLogin()throws Exception{
+//		return "member/login";
+//				
+//	}	
+	
+	@PostMapping("login")
+	public ModelAndView getLogin(MemberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception{
+		ModelAndView mv =new ModelAndView();
+		memberVO= memberService.getLogin(memberVO);
+		if(memberVO!=null) {
+			session.setAttribute("memberVO", memberVO);
+			String dest = (String)session.getAttribute("dest");
+        	String uri = (dest == null) ? "index":dest;
+			mv.addObject("memberVO", memberVO);
+			mv.setViewName(uri);
+//			mv.setViewName("redirect:../");
+		}else {
+	         mv.setViewName("redirect:../member/login");   
+
+		}
+		
+	      return mv;
+	}
 	 
 
 	
@@ -143,12 +143,12 @@ public class MemberController {
 		
 	}
 	
-//	@GetMapping("logout")
-//	public String getLogout(HttpSession session)throws Exception{
-//		session.invalidate();
-//		
-//		return "redirect:../";
-//	}
+	@GetMapping("logout")
+	public String getLogout(HttpSession session)throws Exception{
+		session.invalidate();
+		
+		return "redirect:../";
+	}
 
 
 	

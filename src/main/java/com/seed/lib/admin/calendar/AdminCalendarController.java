@@ -11,13 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.studyroom.StudyDetailVO;
 import com.seed.lib.util.FullCalendarVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("admin/calendar/*")
+@Slf4j
 public class AdminCalendarController {
 	
 	@Autowired
@@ -35,15 +39,22 @@ public class AdminCalendarController {
 			jsonObject.put("id", a.getId());
 			jsonObject.put("title", a.getTitle());
 			jsonObject.put("start", a.getStart());
-			jsonObject.put("display", "background");
+			jsonObject.put("start", a.getEnd());
+			//jsonObject.put("display", "background");
 			js.add(jsonObject);
 		}			
 		mv.addObject("cl", js);		
 		return mv;
 	}
 	
-	@PostMapping("closed")
-	public void setClosedDays () throws Exception{
-		
+	@PostMapping("addEvent")
+	@ResponseBody
+	public int setSchedule (String title, String start, String end) throws Exception{
+		AdminCalendarVO calendarVO = new AdminCalendarVO();
+		calendarVO.setTitle(title);
+		calendarVO.setStart(start);
+		calendarVO.setEnd(end);
+		log.info("calendar:{}", calendarVO);
+		return calendarService.setSchedule(calendarVO);
 	}
 }
