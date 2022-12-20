@@ -43,7 +43,7 @@ class BoOrderServiceTest {
 		bookPrintVO.setCaTtPage(20L);
 		bookPrintVO.setCaAmount(3000L);
 		bookPrintVO.setUserName("member");
-		//bookPrintVO.setBookVO(bookVO);
+		bookPrintVO.setBookVO(bookVO);
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
