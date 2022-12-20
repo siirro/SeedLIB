@@ -19,7 +19,7 @@ class MemberTest {
 	@Test
 	void test() throws Exception {
 		MemberVO memberVO =new MemberVO();
-		memberVO.setUsername("admin0");
+		memberVO.setUserName("admin0");
 		memberVO.setPassword(passwordEncoder.encode("admin0"));
 		memberVO.setName("admin");
 		memberVO.setEmail("asf@asdf");

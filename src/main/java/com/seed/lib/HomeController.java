@@ -32,19 +32,7 @@ public class HomeController {
 	@Autowired
 	private SearchService searchService;
 	
-	@GetMapping("/admin")
-	@ResponseBody
-	public String admin() throws Exception {
-		return "admin Role";	
-	}
-	
 
-	@GetMapping("/user")
-	@ResponseBody
-	public String member()throws Exception {
-	
-		return "Member Role";
-	}
 
 		
 	

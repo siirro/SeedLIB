@@ -21,7 +21,7 @@ import lombok.Data;
 @Data
 public class MemberVO implements UserDetails, OAuth2User{
 //public class MemberVO {
-	private String username;
+	private String userName;
 	private String password;
 	private String name;
 	private String gender;
@@ -67,7 +67,7 @@ public class MemberVO implements UserDetails, OAuth2User{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.username;
+		return this.userName;
 	}
 
 

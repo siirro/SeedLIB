@@ -23,7 +23,7 @@ class BoOrderServiceTest {
 	void getBoCartListTest()throws Exception{
 		
 		MemberVO memberVO = new MemberVO();
-		memberVO.setUsername("mbkoo");
+		memberVO.setUserName("mbkoo");
 		
 		// MemberVO memberVO2 = boOrderService.getBoCartList(memberVO);
 		

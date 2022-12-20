@@ -17,10 +17,10 @@ public class MemberSecurityService extends DefaultOAuth2UserService implements U
 	private MemberMapper memberMapper;
 	
 	@Override //로그인, 권한정보 리턴
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 	 MemberVO memberVO = null;
 	try {
-		memberVO = memberMapper.getLogin(username);
+		memberVO = memberMapper.getLogin(userName);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

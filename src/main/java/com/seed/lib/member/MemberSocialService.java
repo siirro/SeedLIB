@@ -56,7 +56,7 @@ public class MemberSocialService extends DefaultOAuth2UserService{
 		Map<String, Object> ka = auth2User.getAttribute("kakao_account");
 		
 		MemberVO memberVO = new MemberVO();
-		memberVO.setUsername(auth2User.getName());//id
+		memberVO.setUserName(auth2User.getName());//id
 		
 		//pw가 없으므로, 비워두거나, 랜덤한 값으로 생성
 		//memberVO.setPw(null);
@@ -80,7 +80,7 @@ public class MemberSocialService extends DefaultOAuth2UserService{
 		
 		
 		
-		return (OAuth2User) memberVO;
+		return  memberVO;
 	}
 
 }
