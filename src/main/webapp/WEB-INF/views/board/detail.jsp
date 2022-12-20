@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,6 +89,12 @@
 									<th scope="row">제목</th>
 									<td>${boardVO.title}</td>
 								</tr>
+								
+								<tr>
+									<th scope="row">작성자</th>
+									<td>${boardVO.writer}</td>
+								</tr>
+						
 						
 								<tr>
 									<th scope="row">작성일</th>
@@ -103,8 +110,8 @@
 										<th scope="row">첨부파일</th>
                      					 <c:forEach items="${boardVO.boardFileVOs}" var="files">
 										<td>
-                          				  <span class="material-symbols-outlined"></span>
-                                          <a href="/fileDown/board/${files.fileNum}">
+                          				  <span class="material-symbols-outlined">
+                                          <a href="/fileDown/qna/${files.fileNum}"></span>
                                             ${files.oriName}</a>
 										
 										</td>

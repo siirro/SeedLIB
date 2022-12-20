@@ -191,9 +191,8 @@ public class MyPageController {
 		lockerService.exitAllLocker();
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		List<LockerVO> loList = lockerService.getLockerHistory(memberVO.getUsername());
 
-		hdPager.setUserName(memberVO.getUserName());
+		hdPager.setUserName(memberVO.getUsername());
 		List<LockerVO> loList = lockerService.getLockerHistory(hdPager);
 
 		mv.addObject("locker", loList);

@@ -9,85 +9,6 @@
 			<sql id="search">	
 	 		<choose>
 				<when test="kind=='title'">TITLE</when>
-				
-				\,1111jn
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				<when test="kind=='contents'">COTNENTS</when>
 				<otherwise>CONTENTS</otherwise>
 			 </choose>
@@ -176,7 +97,6 @@
 					<result column="writer" property="writer"/>
 					<result column="regdate" property="regDate"/>
 					<result column="hit" property="hit"/>
-					<result column="secret" property="secret"/>
 			    
 			     <collection property="boardFileVOs" javaType="List" ofType="BoardFileVO">
 					<id column="fileNum" property="fileNum"/>

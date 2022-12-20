@@ -39,6 +39,7 @@
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardVO" alias="BoardVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardFileVO" alias="BoardFileVO"/>
+		 <typeAlias type="com.seed.lib.board.qna.QnaVO" alias="QnaVO"/>
 		 
 		 <typeAlias type="com.seed.lib.search.PopularVO" alias="PopularVO"/>
 		 

@@ -32,7 +32,7 @@
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
 					<sec:authorize access="isAuthenticated()">
-							<li><a href="/member/ent_id">로그아웃</a></li>
+							<li><a href="/member/logout">로그아웃</a></li>
 							<li><button type="button" id="kakao">카카오 로그아웃</button></li>
 							
 							<li><a href="/mypage/myIndex">마이페이지</a></li>

@@ -52,7 +52,7 @@ public class BoardService {
 	
 			for (MultipartFile f: boardVO.getFiles()) {
 		if(!f.isEmpty()){
-			log.info("fileName:", f.getOriginalFilename());
+			log.info("fileName:{}", f.getOriginalFilename());
 			String fileName= fileManager.saveFile(f, path);
 			
 			BoardFileVO boardFileVO=new BoardFileVO();
@@ -67,6 +67,7 @@ public class BoardService {
 		return result;
 	}
 	
+
 	public int setUdate(BoardVO boardVO)throws Exception {
 
 		int result = boardMapper.setUpdate(boardVO);
@@ -76,6 +77,11 @@ public class BoardService {
 	public int setDelete(BoardVO boardVO)throws Exception{
 		int result= boardMapper.setDelete(boardVO);
 		return result;
+	}
+	
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception{
+		return boardMapper.getDetailFile(boardFileVO);
+		
 	}
 
 }

@@ -19,4 +19,6 @@ public class BoardVO {
  private List<BoardFileVO> boardFileVOs;
  
  private MultipartFile[] files;
+
+
 }

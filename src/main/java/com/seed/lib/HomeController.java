@@ -48,8 +48,11 @@ public class HomeController {
 
 		
 	
-	@GetMapping("/")
-	public String setHome(HttpSession session) throws Exception{
+	
+		@GetMapping("/")
+		public ModelAndView setHome(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		Enumeration<String> en =session.getAttributeNames();
 		
 		while(en.hasMoreElements()) {
@@ -62,8 +65,7 @@ public class HomeController {
 		if(context != null) {
 		log.info("context=>{}",context);
 		}
-	public ModelAndView setHome() throws Exception{
-		ModelAndView mv = new ModelAndView();
+		
 		int result = roomService.changeAllSeat();
 		log.info("changeSeat:{}", result);
 		
