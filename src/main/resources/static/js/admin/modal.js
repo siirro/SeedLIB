@@ -1,3 +1,5 @@
+
+
 // modal.js
 
 // 프린트 결제 금액
@@ -283,6 +285,7 @@ $("#print").click(function(){
 
                 // 결제내역 창 뜸
                 $("#order").css('display','flex').hide().fadeIn();
+                $("#payBtnWrap").css('display','flex').hide().fadeIn();
 
             }
     
@@ -335,6 +338,14 @@ $("#print").click(function(){
             let printPay = pay.split('원', 1);
             console.log("bin : ", printPay);
             console.log("price : ", price);
+
+            // NaN처리
+            if(isNaN(printPay)){
+
+                printPay = 0;
+    
+            };
+            console.log("bin : ", printPay);
 
             amount = price+parseInt(printPay)
 
@@ -426,58 +437,68 @@ $("#print").click(function(){
 });
 
 
-// // 제본 결제!
-// const IMP = window.IMP;
-// let impKey = $("#prinImp").val();
-// console.log("임프키 : ", impKey);
-// IMP.init(impKey);
+// 제본 결제!
 
-// let merchant_uid = new Date().getTime();
-// let bookName = $("#prinBook").text();
-// console.log("프린 북 : ", bookName);
-// console.log("결제금액", amount);
-// let email = $("#ipEmail").val();
-// console.log("이메일 : ", email);
-// let userName = $("#ipUserName").val();
-// console.log("유저이름 : ",userName);
-// let phone = $("#ipPhone").val();
-// console.log("폰 : ",phone);
 
-// let printNum = '';
-// function requestPay() {
-//     console.log(IMP);
-//     //  IMP.request_pay(param, callback);
-//     IMP.request_pay({ // param
-//         pg: "html5_inicis",
-//         pay_method: "card",
-//         merchant_uid: merchant_uid,
-//         name: bookName,
-//         amount: amount,
-//         buyer_email: email,
-//         buyer_name: userName,
-//         buyer_tel: phone
-//     }, function (rsp) { // callback
-//         if (rsp.success) {
-//             // 결제 성공 시 로직,
-//             console.log("결제 성공!");
-//             $.ajax({
-//                 type: "POST",
-//                 url: "/print/boOrder",
-//                 data: {
-//                     'imp_uid':rsp.imp_uid,
-//                     'merchant_uid':rsp.merchant_uid,
-//                     'printNum':printNum,
-//                     'amount':amount,
-//                     'userName':userName
-//                 }
-//             });
-//         } else {
-//             // 결제 실패 시 로직,
-//             alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-//             console.log("에러ㅠㅠ");
-//         }
-//     });
-// }
+
+let merchant_uid = new Date().getTime();
+let bookName = $("#prinBook").text();
+console.log("프린 북 : ", bookName);
+console.log("결제금액", amount);
+let email = $("#ipEmail").val();
+console.log("이메일 : ", email);
+let username = $("#ipUserName").val();
+console.log("유저이름 : ",username);
+let phone = $("#ipPhone").val();
+console.log("폰 : ",phone);
+
+
+
+
+
+let printNum = '';
+
+const IMP = window.IMP;
+let impKey = $('#prinImp').val();
+IMP.init(impKey);
+
+function requestPay() {
+    //  IMP.request_pay(param, callback);
+    IMP.request_pay({ // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: merchant_uid,
+        name: bookName,
+        amount: amount,
+        buyer_email: email,
+        buyer_name: username,
+        buyer_tel: phone
+    }, function (rsp) { // callback
+        // console.log(IMP);
+        // console.log("유저 : ", username)
+        // console.log(rsp.imp_uid);
+        // console.log(rsp.merchant_uid);
+        if (rsp.success) {
+            // 결제 성공 시 로직,
+            console.log("결제 성공!");
+            $.ajax({
+                type: "POST",
+                url: "/print/boOrder",
+                data: {
+                    'imp_uid':rsp.imp_uid,
+                    'merchant_uid':rsp.merchant_uid,
+                    'printNum':printNum,
+                    'amount':amount,
+                    'userName':userName
+                }
+            });
+        } else {
+            // 결제 실패 시 로직,
+            alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+            console.log("에러ㅠㅠ");
+        }
+    });
+}
 
 
 $("#close").click(function(){
