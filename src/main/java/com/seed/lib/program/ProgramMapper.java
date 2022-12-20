@@ -34,12 +34,12 @@ public interface ProgramMapper {
 	//신청취소
 	public int setDel (MemberProgramVO mpVO) throws Exception;
 	
+	//승인하면 승인여부 업뎃
+	public int setStateUpdate (MemberProgramVO mpVO)throws Exception;
+	
 	//--------------- 마이페이지 ---------------
 	//신청 목록
 	public List<AdProgramVO> getMyPro (ProgramPager pager) throws Exception;
-	
-	//종료된 프로그램 목록
-	public List<AdProgramVO> getMyProEnd (ProgramPager pager) throws Exception;
 	
 	//--------------- Mapper ---------------
 	public Long getCount (ProgramPager pager) throws Exception;

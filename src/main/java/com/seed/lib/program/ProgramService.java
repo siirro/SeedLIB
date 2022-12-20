@@ -87,21 +87,13 @@ public class ProgramService {
 	}
 	
 	//--------------- 마이페이지 ---------------
-	//신청 목록
+	//신청 목록 - 신청/종료
 	public List<AdProgramVO> getMyPro (ProgramPager pager) throws Exception{
 		Long totalCount = programMapper.getCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();
 		return programMapper.getMyPro(pager);
 	}
-	
-	//종료된 프로그램 목록
-	public List<AdProgramVO> getMyProEnd (ProgramPager pager) throws Exception{
-		Long totalCount = programMapper.getCount(pager);
-		pager.getNum(totalCount);
-		pager.getRowNum();
-		return programMapper.getMyProEnd(pager);
-	}	
 	
 	//--------------- Mapper ---------------
 	public Long getCount (ProgramPager pager) throws Exception{

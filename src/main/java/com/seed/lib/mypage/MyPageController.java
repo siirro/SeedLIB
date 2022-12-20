@@ -365,7 +365,7 @@ public class MyPageController {
 	}
 	
 	//프로그램 신청 목록
-	@GetMapping("program/")
+	@GetMapping("program")
 	public ModelAndView getMyPro (HttpSession session, ProgramPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
@@ -373,28 +373,11 @@ public class MyPageController {
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
 					
-			//예약 목록
+			//목록
 			pager.setUserName(memberVO.getUserName());
 			List<AdProgramVO> li = programService.getMyPro(pager);
 			mv.addObject("li", li);
 		}
 		return mv;
 	}
-	
-	//종료된 프로그램 목록
-	public ModelAndView getMyProEnd (HttpSession session, ProgramPager pager) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//예약 목록
-			pager.setUserName(memberVO.getUserName());
-			List<AdProgramVO> li = programService.getMyProEnd(pager);
-			mv.addObject("li", li);
-		}
-		return mv;
-	}
-	
 }
