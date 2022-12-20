@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.board.BoardVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Controller
@@ -23,13 +24,13 @@ public class QnaController {
 	private QnaService qnaService;
 
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(BoardPager boardPager) throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		List<QnaVO> ar = qnaService.getList(pager);
+		List<QnaVO> ar = qnaService.getList(boardPager);
 		mv.addObject("list",ar);
-		mv.addObject("pager",pager);
+		mv.addObject("pager",boardPager);
 		mv.setViewName("qna/list");
 		
 		return mv;
@@ -40,8 +41,6 @@ public class QnaController {
 	
 	ModelAndView mv =new ModelAndView();
 	qnaVO= qnaService.getDetail(qnaVO);
-	
-	
 	mv.addObject("qnaVO",qnaVO);
 	mv.setViewName("qna/detail");
 		
@@ -69,7 +68,7 @@ public class QnaController {
 	public ModelAndView setUpdate(QnaVO qnaVO, ModelAndView mv)throws Exception{
 		qnaVO= qnaService.getDetail(qnaVO);
 		mv.addObject("qnaVO", qnaVO);
-		mv.setViewName("/qna/update");
+		mv.setViewName("qna/update");
 		return mv;
 
 	}

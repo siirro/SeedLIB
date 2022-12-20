@@ -36,8 +36,6 @@
             <h2>회원정보</h2>
             <ul id="lnb" class="lnb">
                                         <li id="lnb9_1"><a href="/" class="current">로그인</a> </li>
-                                        <li id="lnb9_2"><a href="/intro/memberFindIdCertify.do">아이디찾기</a></li>
-                                        <li id="lnb9_3"><a href="/intro/memberFindPwdCertify.do">비밀번호 재발급</a></li>
                                         <li id="lnb9_4"><a href="./join">회원가입</a></li>
                                     </ul>
         </div>
@@ -108,14 +106,12 @@
                                            
    
                                             <div>
-                                            <a href="/oauth2/authorization/kakao" class="btn_join_kakao" style="color:#FFF;"><i class="icon"></i><i class="division"></i>카카오 로그인</a>
-                                            <a href="google_login.php" class="btn_join_google" style="color:#FFF;"><i class="icon"></i><i class="division"></i>구글 로그인</a>
+                                            <a href="/oauth2/authorization/kakao" class="btn_join_kakao";><i class="icon"></i><i class="division"></i>카카오 로그인</a>
                                             
                                             </div>
                                             <div class="member_confirm_line"></div>
                                             <div class="checkArea clearfix">
                                                 <a href="/intro/memberFindIdCertify.do">아이디 찾기</a>
-                                                <a href="/intro/memberFindPwdCertify.do">비밀번호 재발급</a>
                                                 <a href="/member/agree">회원가입</a>
                                             </div>
                                         </div>

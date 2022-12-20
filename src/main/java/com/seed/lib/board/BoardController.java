@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Controller
@@ -36,13 +37,13 @@ public class BoardController {
 //	
 	
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(BoardPager boardPager) throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		List<BoardVO> ar = boardService.getList(pager);
+		List<BoardVO> ar = boardService.getList(boardPager);
 		mv.addObject("list",ar);
-		mv.addObject("pager",pager);
+		mv.addObject("pager",boardPager);
 		mv.setViewName("board/list");
 		
 		return mv;
@@ -83,7 +84,7 @@ public class BoardController {
 	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv)throws Exception{
 		boardVO = boardService.getDetail(boardVO);
 		mv.addObject("boardVO", boardVO);
-		mv.setViewName("/board/update");
+		mv.setViewName("board/update");
 		return mv;
 
 	}

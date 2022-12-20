@@ -6,19 +6,6 @@
 <mapper namespace="com.seed.lib.board.qna.QnaMapper">
 
 
-			<sql id="search">	
-	 		<choose>
-				<when test="kind=='title'">TITLE</when>
-				<when test="kind=='contents'">COTNENTS</when>
-				<otherwise>CONTENTS</otherwise>
-			 </choose>
-			LIKE CONCAT('%', #{search}, '%')
-			</sql>
-
-
-			 
-			 
-			 
 			 <delete id="setDelete" parameterType="QnaVO">
 			
 			     DELETE QNA WHERE QNANUM=#{qnaNum}
@@ -42,16 +29,21 @@
 			</insert>
 			
 			
+			<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
+				SELECT COUNT(QNANUM)
+				FROM QNA
+				ORDER BY QNANUM DESC
+				
+			</select>
 			
-			<select id="getList" parameterType="QnaVO" resultType="QnaVO">
+			<select id="getList" parameterType="BoardPager" resultType="QnaVO">
 			
 				
 					SELECT * FROM QNA 
 					ORDER BY QNANUM DESC
-		 		 <include refid="search"></include>
-		 		<!-- 	
-					limit #{startRow}, #{perPage}
-			-->		
+					LIMIT #{startRow}, #{perPage}
+					
+		 		
 					
 			</select>
 			

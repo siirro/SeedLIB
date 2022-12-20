@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.board.wishboard.WishMapper">
+
+
+			<!-- <sql id="search">	
+	 		<choose>
+				<when test="kind=='title'">TITLE</when>
+				<when test="kind=='contents'">COTNENTS</when>
+				<otherwise>CONTENTS</otherwise>
+			 </choose>
+			LIKE CONCAT('%', #{search}, '%')
+			</sql> -->
+
+
+			 <delete id="setDelete" parameterType="wishVO">
+			
+			     DELETE WISHBOARD WHERE WISHNUM=#{wishNum}
+			  
+			  </delete>
+			  
+			  
+			 
+			 <update id="setUpdate" parameterType="wishVO">
+			
+			 UPDATE WISHBOARD SET TITLE= #{title}, CONTENTS={contents} WHERE WISHNUM=#{wishNum}
+			
+			 </update>
+			 
+			 
+
+			<insert id="setAdd" parameterType="wishVO" useGeneratedKeys="true" keyProperty="wishNum">
+			
+				INSERT INTO WISHBOARD VALUES(#{wishNum},#{title},#{contents},#{writer},now(),0,0)
+			
+			</insert>
+			
+			
+			
+			<select id="getList" parameterType="wishVO" resultType="wishVO">
+			
+				
+					SELECT * FROM WISHBOARD 
+					ORDER BY WISHNUM DESC
+		 		<!-- 	 <include refid="search"></include>
+		 			
+					limit #{startRow}, #{perPage}
+			-->		
+					
+			</select>
+			
+			
+				<select id="getDetail" parameterType="QnaVO" resultType="QnaVO">
+			
+					SELECT * FROM WISHBOARD WHERE WISHNUM=#{wishNum}
+			
+			
+			</select>
+
+
+
+
+</mapper>

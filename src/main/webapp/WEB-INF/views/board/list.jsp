@@ -72,8 +72,9 @@
 									<option value="title">제목</option>
 									<option value="contents">내용</option>
 								</select>
+								
 								<input type="text" name="search" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
-								<a href="#link" id="searchBtn" class="btn input">검색</a>
+								<button type="button" class="btn input" id="searchBtn"> 검색</button>
 							</div>
 						</div>
 					</fieldset>
@@ -135,19 +136,19 @@
 					
 					
 					<!-- 페이징 -->
-					<c:if test="not empty list">
-					<div class="pagingWrap">
-						<input type="hidden" name="page" value="${pager.page}">
-							<p class="paging">
-								<a href="./list?page=1" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span>맨 첫 페이지로 가기</a>
-								<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span> 이전 10개 보기</a>
-								<span class="current">1</span>
-								
-								<a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
-								<a href="javascript:fnList(354);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
-                 			</p>	
-					</div>
-					</c:if>
+					<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item ${pager.pre?'':'disabled'}">
+				      <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
+				    </li>
+					    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a> </li>
+						</c:forEach>
+					<li class="page-item ${pager.next?'':'disabled'}">
+				      <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
+				    </li>
+				  </ul>
+			</nav>
 					<!-- //페이징 -->
 
 					<!-- End Of the Real Contents-->

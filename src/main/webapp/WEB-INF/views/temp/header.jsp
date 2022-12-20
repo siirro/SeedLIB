@@ -37,7 +37,6 @@
 						
 										<li><a href="/member/logout" id="login">로그아웃</a></li>							
 										<li><a href="/print/boCart">내바구니</a></li>
-										<li><a href="/mypage/myIndex">마이페이지</a></li>
 										
 							<sec:authorize access="hasRole('ADMIN')"> 
 									<li><a href="/admin/main">관리자페이지</a></li>

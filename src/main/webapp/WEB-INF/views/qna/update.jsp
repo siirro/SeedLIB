@@ -88,16 +88,32 @@
                                             <tbody>
                                                 <tr>
                                                     <th scope="row"><label for="title">제목</label></th>
-                                                    <td><input type="text" id="title" name="title" value="${qnaVO.title}" class="form-ele full"></td>
+                                                    <td><input type="text" id="title" name="title" class="form-ele full"></td>
                                                 </tr>
-                                                 
+                                                 <tr>
+                                                    <th scope="row"><label for="title">작성일</label></th>
+                                                    <td>${boardVO.regDate}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">작성자</th>
+                                                    <td>${boardVO.writer}</td>
+                                                </tr>
+                                                
+                                                 <tr>
+                                                   <th scope="row">첨부파일</th>
+                                                     <td>
+                                                     <button type="button" id="fileAdd" class="btn-primary">파일 선택</button>
+                                                     <div class="mb-3" id="fileResult"></div>
+                                                    </td>
+                                               </tr>
+                                                    
                                                  </tbody>
                                              </table>
                                     
                                                 
                                                 
                                                 <div class="textarea">
-                                                   <textarea name="contents" value="${qnaVO.contents}" title="질문 내용 입력" id="contents1"></textarea>
+                                                   <textarea name="contents" title="질문 내용 입력" id="contents1"></textarea>
                                                 </div>
                                                
                                     </div>
@@ -106,8 +122,8 @@
                                 
                                 <!-- //게시글 등록 -->
                                 <div class="btnGroup">
-                                    <a href="./list" id="listBtn" class="btn cncl">삭제</a>
-                                    <button type="submit" id="registBtn" class="btn themeBtn"> 수정</button>
+                                    <a href="./list" id="listBtn" class="btn cncl">취소</a>
+                                    <button type="submit" id="registBtn" class="btn themeBtn"> 등록</button>
                                 </div>
                             </form>
                                 <!-- End Of the Real Contents-->

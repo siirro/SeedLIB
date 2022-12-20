@@ -55,25 +55,37 @@
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
 
+				<div>
 				
 					<ul class="faqList">
-						
-						
+						<c:forEach items="${list}" var="qna">
+									
 									<li class="q1">
 										<div class="q">
 											<span class="ico themeBG">Q</span>
-											<p><a href="#faq" title="축소됨">123</a></p>
+											<input type="hidden" value="${qna.qnaNum}">
+											<p><a href="#faq" title="축소됨">${qna.title}</a></p>
 										</div>
+										
 									
 										<div class="a" tabindex="0" style="display: none;">
 											<span class="ico themeBG1">A</span>
-											<p><a href="#faq" title="내용">123</a></p> 
+											<p><a href="#faq" title="내용">${qna.contents}</a></p> 
 											</div>
-								        </li>
 							
+								        </li>
+								</c:forEach>        
+								        
 					</ul>
-									
-
+						
+				</div>		
+				
+					
+					<div class="add">
+					<button type="button" class="btn btn-primary"><a href="./add"> 글쓰기</a></button>
+					</div>
+					
+					
 					<!-- 페이징 -->
 					<div class="pagingWrap">
 						

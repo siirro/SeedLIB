@@ -1,4 +1,4 @@
-package com.seed.lib.board.wish;
+package com.seed.lib.board.wishboard;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 public class WishVO {
 	
 
-  private Long freeNum;
+  private Long wishNum;
   private String title;
   private String contents;
   private String writer;
