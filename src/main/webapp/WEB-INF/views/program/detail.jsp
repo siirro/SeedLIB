@@ -25,14 +25,14 @@
 	            </div>
 	        </div>
 	        <div id="contentGroup">
-		        <c:import url="../sideBar/AsideBar.jsp"></c:import>
+		        <c:import url="../sideBar/BsideBar.jsp"></c:import>
 		        
 		        <div id="contentcore">
 		            <div class="naviandtitle">
-		                <h3>통합검색</h3>
+		                <h3>문화행사 신청</h3>
 		                <div class="navi">
-		                    <a href="/seoksu/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
-		                    <i class="arrow"></i> 자료검색 <i class="arrow"></i>소장자료검색<i class="arrow"></i>통합검색
+		                    <a href="/" title="홈으로 이동" class="home"><span class="blind">홈</span></a>
+		                    <i class="arrow"></i> 문화행사/참여 <i class="arrow"></i>문화행사 신청
 		                </div>
 		            </div>
 		    
