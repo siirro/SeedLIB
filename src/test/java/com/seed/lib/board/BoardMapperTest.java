@@ -2,8 +2,6 @@ package com.seed.lib.board;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,19 +15,16 @@ class BoardMapperTest  {
 	public void BoardMapperTest()throws Exception {
 		BoardVO boardVO =new BoardVO();
 		
-	
-
 		for(int i=0; i<30; i++) {
 		boardVO.setTitle("title"+i);
 		boardVO.setWriter("writer"+i);
+		boardVO.setContents("contents"+i);
 		
+
 		int result = boardService.setAdd(boardVO);
-		assertNotNull(boardVO);
+		assertEquals(30, result);
 		
-		if(i%10==0) {
-			Thread.sleep(500);
 		
-		 }
 		}
 	} 
 }

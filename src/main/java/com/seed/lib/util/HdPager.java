@@ -8,6 +8,7 @@ public class HdPager {
 	private Long page;
 	private Long perPage=10L;
 	private Long startRow;
+	private Long lastRow;
 	private Long perBlock=3L;
 	private Long totalPage;
 	
@@ -58,7 +59,7 @@ public class HdPager {
 		return this.libNum;
 	}
 	
-	public Long getNum(Long totalCount) {
+	public void getNum(Long totalCount) {
 		//totalPage 계산
 		 Long totalPage = totalCount/this.getPerPage();
 		 //totalCount에서 perPage 나눴을때 0이 아니라면 totalPage는 +1
@@ -101,7 +102,7 @@ public class HdPager {
 				next=true;
 			}
 		
-		return 0L;
+//		return 0L;
 	}
 	
 }

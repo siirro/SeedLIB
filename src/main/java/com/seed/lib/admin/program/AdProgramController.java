@@ -119,6 +119,8 @@ public class AdProgramController {
 		
 		// 뒤에 시간빼고 앞에 날짜만 파싱 -> 2022-09-09
 		programVO.setPsDt(programVO.getPsDt().substring(0,programVO.getPsDt().indexOf(" ")));
+		programVO.setPlDt(programVO.getPlDt().substring(0,programVO.getPlDt().indexOf(" ")));
+
 		
 		if(programVO != null) {
 			

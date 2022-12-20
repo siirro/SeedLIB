@@ -29,8 +29,8 @@ public class BoardService {
 	
 
 	
-	public List<BoardVO> getList(BoardVO boardVO)throws Exception{
-		return boardMapper.getList(boardVO);
+	public List<BoardVO> getList(Pager pager)throws Exception{
+		return boardMapper.getList(pager);
 	}
 	
 	public BoardVO getDetail(BoardVO boardVO)throws Exception{
@@ -52,7 +52,7 @@ public class BoardService {
 	
 			for (MultipartFile f: boardVO.getFiles()) {
 		if(!f.isEmpty()){
-			log.info("fileName:", f.getOriginalFilename());
+			log.info("fileName:{}", f.getOriginalFilename());
 			String fileName= fileManager.saveFile(f, path);
 			
 			BoardFileVO boardFileVO=new BoardFileVO();
@@ -60,11 +60,28 @@ public class BoardService {
 		   boardFileVO.setFileName(fileName);
 		   boardFileVO.setOriName(f.getOriginalFilename());
 		   boardFileVO.setBoardNum(boardVO.getBoardNum());
-		   boardMapper.setFileAdd(boardFileVO);
+		     boardMapper.setFileAdd(boardFileVO);
 		  } 
 		}
 
 		return result;
+	}
+	
+
+	public int setUdate(BoardVO boardVO)throws Exception {
+
+		int result = boardMapper.setUpdate(boardVO);
+		return result;
+	}
+	
+	public int setDelete(BoardVO boardVO)throws Exception{
+		int result= boardMapper.setDelete(boardVO);
+		return result;
+	}
+	
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception{
+		return boardMapper.getDetailFile(boardFileVO);
+		
 	}
 
 }

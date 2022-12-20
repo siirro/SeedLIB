@@ -20,6 +20,56 @@
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="./temp/sidebar-css.jsp"></c:import>
+    <style>
+          .pagination{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+
+    .pagDiv{
+        width: 700px;
+    }
+
+    
+    .pageList {
+        list-style:none;
+        padding-left:0px;
+        width: 500px;
+        margin-left: auto;
+        /* margin-right: auto; */
+    }
+
+    .pageSet{
+        float: left;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #pageNext{
+        width: 30px;
+        /* background-color: #77af9c;
+        color: #d7fff1; */
+        color: #0cc086;
+
+    }
+
+    #pagePre{
+        width: 30px;
+        color: #0cc086;
+    }
+
+    .aplBtn{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 3px 15px;
+        background-color: #06e3ab;
+        color: #f3fefa;
+    }
+
+    </style>
 <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
@@ -183,16 +233,16 @@
                                                           <td><div class="select-position">
                                                             <select name="category" id="category">
                                                               <option value="">선택안함</option>
-                                                              <option value="000">총류</option>
-                                                              <option value="100">철학</option>
-                                                              <option value="200">종교</option>
-                                                              <option value="300">사회과학</option>
-                                                              <option value="400">자연과학</option>
-                                                              <option value="500">기술과학</option>
-                                                              <option value="600">예술</option>
-                                                              <option value="700">언어</option>
-                                                              <option value="800">문학</option>
-                                                              <option value="900">역사</option>
+                                                              <option value="0">000 : 총류</option>
+                                                              <option value="1">100 : 철학</option>
+                                                              <option value="2">200 : 종교</option>
+                                                              <option value="3">300 : 사회과학</option>
+                                                              <option value="4">400 : 자연과학</option>
+                                                              <option value="5">500 : 기술과학</option>
+                                                              <option value="6">600 : 예술</option>
+                                                              <option value="7">700 : 언어</option>
+                                                              <option value="8">800 : 문학</option>
+                                                              <option value="9">900 : 역사</option>
                                                             </select>
                                                           </div></td>
                                                         </tr>

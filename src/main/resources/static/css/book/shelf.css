@@ -32,18 +32,17 @@
 
 .shelfCon {
 	display: flex;
-	align-items: center;
-    flex-direction: column;
 }
 
 .shelf-flex-a {
 	display: flex;
 	align-items: center;
     justify-content: space-evenly;
+    margin-right: 10px;
 }
 
 .shelf-flex-b {
-	margin-top: 20px;
+	margin-left: 10px;
 }
 
 .shelfTI span{
@@ -51,11 +50,19 @@
 }
 
 .btnArea {
-	margin-top: 50px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.bbbb {
+	margin-left: 10px;
+}
+
+.bbba {
+	margin-right: 10px;
 }
 
 #revBtn{

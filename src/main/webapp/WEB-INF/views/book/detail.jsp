@@ -34,8 +34,7 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
+
     <link rel="icon" href="/images/favicon.png">
 	<title>통합검색 : 씨앗도서관 ☘️ </title>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -51,6 +50,7 @@
 		<div class="sVisualWrap">
 			<div class="sVisual">
 				<h3>통합검색</h3>
+				<h3>${member}</h3>
 			</div>
 		</div>
 		
@@ -69,29 +69,52 @@
 						<i class="arrow"></i>소장자료검색
 						<i class="arrow"></i>통합검색
 					</div>
-					
+
 					<div class="snsFarm">
 						<ul class="snsBtnArea clearfix">
-							<li>
-								<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-								<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-									<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
-										<span class="blind">단축URL</span>
-									</a>
-									<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
-										<span class="blind">카카오스토리</span>
-									</a>
-									<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
-										<span class="blind">트위터</span>
-									</a>
-									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
-										<span class="blind">페이스북</span>
-									</a>
-									<a href="#" id="print" title="제본신청">
-										<img alt="책프린트" src="/images/printer.png">
-										<span class="">현재 책 프린트</span>
-									</a>
-								</div>
+							<c:set var="admin" value="false"></c:set>
+							<c:if test="${empty member}">
+										<li>
+										<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										<c:set var="admin" value="true"></c:set>
+										</li>	
+									</c:if>
+									<c:if test="${not empty member}">
+										<c:forEach items="${member.roleVOs}" var="r">
+												<c:if test="${r.roleName eq 'ROLE_ADMIN'}">
+													<li style="display: flex;">
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<a href="../admin/book/boUpdate?isbn=${bookVO.isbn}" id="bookUpdate" title="도서 수정" class="snsShare">
+																<img alt="수정" src="/images/refresh.png">
+															</a>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">수정</p>
+														</div>
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<button type="button" id="bookDelete" title="도서 삭제" class="snsShare" value="${bookVO.isbn}">
+																<img width="40px;" alt="삭제" src="/images/trash.png">
+															</buton>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">삭제</p>
+														</div>
+													<c:set var="admin" value="true"></c:set>
+													</li>
+												</c:if>
+										</c:forEach>	
+									<c:if test="${admin eq 'false'}">
+											<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										</c:if>
+									</c:if>
 							</li>
 						</ul>
 					</div>
@@ -208,13 +231,8 @@
 									<div class="dropContainerBox">
 										<div class="whereLibrary webViewOnly">
 											<div class="thisBook-libraryselecter">
-												<p>
-													<input type="checkbox" id="collectionLibraryAll" name="collectionLibraryAll" value="collectionLibraryAll" class="check" checked="checked">
-													<label for="collectionLibraryAll">전체 도서관</label>
-												</p>
-												<!--아래 span 클릭시 클릭한 span 과 같은 이름의 도서관 table list 삭제-->
 												<c:forEach var="lib" items="${lib.libVOs}">
-													<a href="#chk" class="MA" data-name="MA">${lib.libName}</a>
+													<a href="#chk" class="${lib.libName}" data-name="${lib.libName}">${lib.libName}</a>
 												</c:forEach>
 												<button type="button" class="listDropdown"><span>리스트 보기</span></button>
 											</div>
@@ -806,61 +824,8 @@
 	</div>
 </div>
 	<c:import url="../temp/footer.jsp"></c:import> 
-
-<!-- <script>
-	// 제본 결제!
-	const IMP = window.IMP;
-	let impKey = $("#prinImp").val();
-	console.log("임프키 : ", impKey);
-	IMP.init(impKey);
-
-	let merchant_uid = new Date().getTime();
-	let bookName = $("#prinBook").text();
-	console.log("프린 북 : ", bookName);
-	console.log("결제금액", amount);
-	let email = $("#ipEmail").val();
-	console.log("이메일 : ", email);
-	let userName = $("#ipUserName").val();
-	console.log("유저이름 : ",userName);
-	let phone = $("#ipPhone").val();
-	console.log("폰 : ",phone);
-
-	let printNum = '';
-	function requestPay() {
-		console.log(IMP);
-		//  IMP.request_pay(param, callback);
-		IMP.request_pay({ // param
-			pg: "html5_inicis",
-			pay_method: "card",
-			merchant_uid: merchant_uid,
-			name: bookName,
-			amount: amount,
-			buyer_email: email,
-			buyer_name: userName,
-			buyer_tel: phone
-		}, function (rsp) { // callback
-			if (rsp.success) {
-				// 결제 성공 시 로직,
-				console.log("결제 성공!");
-				$.ajax({
-					type: "POST",
-					url: "/print/boOrder",
-					data: {
-						'imp_uid':rsp.imp_uid,
-						'merchant_uid':rsp.merchant_uid,
-						'printNum':printNum,
-						'amount':amount,
-						'userName':userName
-					}
-				});
-			} else {
-				// 결제 실패 시 로직,
-				alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-				console.log("에러ㅠㅠ");
-			}
-		});
-	}
-</script> -->
-
+	
+	<script type="text/javascript" src="/js/bookDetail.js"></script>
+    <script type="text/javascript" src="/js/bookLoan.js"></script>
 </body>
 </html>

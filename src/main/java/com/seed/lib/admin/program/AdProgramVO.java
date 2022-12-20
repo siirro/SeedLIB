@@ -2,8 +2,11 @@ package com.seed.lib.admin.program;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.seed.lib.program.MemberProgramVO;
 
 import lombok.Data;
 
@@ -47,6 +50,8 @@ public class AdProgramVO {
 	private String psTime;
 	
 	private String plTime;
+	
+	private List<MemberProgramVO> mpVOs;
 	
 	
 	public void makeDate() {

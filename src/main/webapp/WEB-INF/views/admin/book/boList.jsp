@@ -96,16 +96,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <ul class="bookList clearfix">
-                <li>
-                  <span class="cover">
-                    <a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
-                      <img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점 :김호연 장편소설" onerror="javascript:fnImageLoadError(this); return false;">
-                    </a>
-                  </span>
-                  <span class="txt">불편한 편의점 :김호연 장편소설</span>
-                </li>
-              </ul> -->
               </c:forEach>
               <!-- end col -->
             </div>

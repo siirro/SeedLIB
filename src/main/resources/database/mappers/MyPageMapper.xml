@@ -7,12 +7,37 @@
 
  <!-- 마이페이지 -->
 		
-		<select id="getMyPage" parameterType="MemberVO" resultType="MemberVO">
-			
-				SELECT *FROM MEMBER WHERE USERNAME= #{userName}
+		<select id="getMyPage" parameterType="MemberVO" resultMap="getMyPageResult">
+				SELECT M.*, R.*
+					FROM MEMBER M
+					  INNER JOIN
+					  MEMBER_ROLE MR
+					  ON M.USERNAME = MR.USERNAME
+					  INNER JOIN
+					  ROLE R 
+					  ON MR.ROLENUM =R.ROLENUM
+					  WHERE M.USERNAME= #{userName}
      	</select>
 					  
-		
+		<resultMap type="MemberVO" id="getMyPageResult">
+		<id column="username" property="userName" />
+		<id column="password" property="password" />
+	    <result column="name" property="name" />
+		<result column="gender" property="gender"/>		
+		<result column="birth" property="birth"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="address1" property="address1"/>
+		<result column="regdate" property="regDate"/>
+		<result column="address1" property="address1"/>
+		<result column="enabled" property="enabled"/>
+		<result column="loanstatus" property="loanStatus"/>
+		<result column="ovmyrcount" property="ovMyrCount"/>
+		<result column="dropstatus" property="dropStatus"/>
+		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+			<result column="roleName" property="roleName"/>
+		</collection>
+		</resultMap>
 		
 	
 </mapper>    

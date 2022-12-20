@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
+    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!-- CSS & JQUERY -->
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/default.css">
@@ -30,9 +31,20 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-						<c:set var="admin" value="false"></c:set>
-						<c:choose>
-							<c:when test="${not empty memberVO}">
+					<sec:authorize access="isAuthenticated()">
+							<li><a href="/member/logout">로그아웃</a></li>
+							<li><button type="button" id="kakao">카카오 로그아웃</button></li>
+							<li><a href="/print/boCart">내바구니</a></li>
+							<li><a href="/mypage/myIndex">마이페이지</a></li>
+						</sec:authorize >
+						
+						<sec:authorize access="!isAuthenticated()">	
+							<li><a href="/member/login">로그인</a></li>
+							<li><a href="/member/agree">회원가입</a></li>
+						</sec:authorize>
+
+						
+						<sec:authorize access="hasRole('ADMIN')"> 
 								<c:forEach items="${sessionScope.memberVO.roleVOs}" var="r">
 									<c:if test="${r.getRoleName() eq 'ROLE_ADMIN'}">
 										<c:set var="admin" value="true"></c:set>
@@ -40,17 +52,8 @@
 										<li><a href="/admin/main">관리자페이지</a></li>
 									</c:if>
 								</c:forEach>
-								<c:if test="${admin eq 'false'}">
-									<li><a href="/member/logout">로그아웃</a></li>
-									<li><a href="/print/boCart">내바구니</a></li>
-									<li><a href="/mypage/myIndex">마이페이지</a></li>
-								</c:if>
-							</c:when>
-							<c:otherwise>
-								<li><a href="/member/login">로그인</a></li>
-								<li><a href="/member/agree">회원가입</a></li>
-							</c:otherwise>
-						</c:choose>
+								
+							</sec:authorize>
 						 
 						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>
@@ -100,7 +103,7 @@
 
 				<li id="gnb2" class="hehehe"> <a href="/seoksu/menu/10123/contents/40005/contents.do"> <em>문화참여</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb2_1"><a href="/seoksu/menu/10124/program/30015/lectureList.do">문화행사신청</a> </li> 
+						<li id="gnb2_1"><a href="/program/list">문화행사신청</a> </li> 
 						<li id="gnb2_2"><a href="/hope/hopeInfo" id="hopeInfo2" class="hopeInfo2 setHope2 on">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo" id="donInfo2" class="donInfo2 setDon2 on">소장도서기증</a></li> 
 						<li id="gnb2_4"><a href="/studyroom/roomList" id="roomList2" class="roomList2 roomInfo2 on">열람실 조회/예약</a></li> 
@@ -131,9 +134,8 @@
 				<li id="gnb5" class="hehehe"> <a href="/board/list"> <em>도서관소식</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb5_1"><a href="/board/list">공지사항</a> </li> 
-						<li id="gnb5_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
-						<li id="gnb5_3"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">도서관에바란다</a> </li>
-						<li id="gnb5_4"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">자유게시판</a> </li>
+						<li id="gnb5_2"><a href="/qna/list">자주하는질문</a> </li> 
+						<li id="gnb5_3"><a href="/wish/list">도서관에바란다</a> </li>
 						<li id="gnb5_5"><a href="/seoksu/menu/10158/bbs/20004/bbsPostList.do">분실물센터</a> </li> 
 					</ul> 
 				</li> 
@@ -264,3 +266,11 @@
  </script>
 
 <script src="/js/indexcopy.js"></script>
+
+<script type="text/javascript">
+$("#kakao").click(function(){
+	$.get("https://developers.kakao.com/logout",function(){
+		location.reload();
+	})
+})
+</script>

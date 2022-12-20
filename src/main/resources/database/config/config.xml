@@ -22,6 +22,9 @@
 		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfBookPager"/>
 		<typeAlias type="com.seed.lib.util.BookPager" alias="BookPager"/>
 		<typeAlias type="com.seed.lib.util.BookLoanPager" alias="BookLoanPager"/>
+		
+		<typeAlias type="com.seed.lib.program.MemberProgramVO" alias="MemberProgramVO"/>
+		<typeAlias type="com.seed.lib.util.ProgramPager" alias="ProgramPager"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>
@@ -33,13 +36,15 @@
 		<typeAlias type="com.seed.lib.studyroom.StudyDetailVO" alias="StudyDetailVO"/>
 		<typeAlias type="com.seed.lib.studyroom.LockerVO" alias="LockerVO"/>
 		<typeAlias type="com.seed.lib.studyroom.LockerCancelVO" alias="LockerCancelVO"/>
+		<typeAlias type="com.seed.lib.admin.calendar.AdminCalendarVO" alias="AdminCalendarVO"/>
 
 		 <typeAlias type="com.seed.lib.member.MemberVO" alias="MemberVO"/>
 		 <typeAlias type="com.seed.lib.member.RoleVO" alias="RoleVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardVO" alias="BoardVO"/>
 		 <typeAlias type="com.seed.lib.board.BoardFileVO" alias="BoardFileVO"/>
+		 <typeAlias type="com.seed.lib.board.qna.QnaVO" alias="QnaVO"/>
 		 
-		 
+		 <typeAlias type="com.seed.lib.search.PopularVO" alias="PopularVO"/>
 		 
 		 <typeAlias type="java.util.List" alias="List"/>
 		 <typeAlias type="java.util.Map" alias="Map"/>

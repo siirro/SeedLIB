@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seed.lib.program.ProgramMapper">
+
+	<resultMap type="AdProgramVO" id="ProgramRe">
+		<id column="proNum" property="proNum"/>
+			<result column="proCate" property="proCate"/>
+			<result column="recStatus" property="recStatus"/>
+			<result column="proTitle" property="proTitle"/>
+			<result column="proContents" property="proContents"/>
+			<result column="target" property="target"/>
+			<result column="total" property="total"/>
+			<result column="prsDate" property="prsDate"/>
+			<result column="prlDate" property="prlDate"/>
+			<result column="psDate" property="psDate"/>
+			<result column="plDate" property="plDate"/>
+			<result column="proTeacher" property="proTeacher"/>
+			<result column="proPlace" property="proPlace"/>
+		<collection property="mpVOs" javaType="List" ofType="MemberProgramVO">
+			<id column="mpNum" property="mpNum"/>
+				<result column="userName" property="userName"/>
+				<result column="proCheck" property="proCheck"/>
+				<result column="proState" property="proState"/>
+		</collection>
+	</resultMap>
+
+	<!-- 프로그램 목록 -->
+	<select id="getList" parameterType="ProgramPager" resultMap="ProgramRe">
+		SELECT * FROM PROGRAM P
+		<if test="search != null">
+			WHERE
+				<choose>
+					<when test="select == 'title'">P.PRONAME LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'content'">P.PROCONTENTS LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
+				<if test="target != null">
+					<choose>
+						<when test="target == '유아'"> AND P.TARGET = '유아'</when>
+						<when test="target == '어린이'"> AND P.TARGET = '어린이'</when>
+						<when test="target == '청소년'"> AND P.TARGET = '청소년'</when>
+						<when test="target == '성인'"> AND P.TARGET = '성인'</when>
+					</choose>
+				</if>
+				
+				<if test="category != null">
+					<choose>
+						<when test="category == '정기강좌'"> AND P.CATEGORY = '정기강좌'</when>
+						<when test="category == '이벤트'"> AND P.CATEGORY = '이벤트'</when>
+						<when test="category == '특강'"> AND P.CATEGORY = '특강'</when>
+						<when test="category == '독서회'"> AND P.CATEGORY = '독서회'</when>
+						<when test="category == '기타'"> AND P.CATEGORY = '기타'</when>
+					</choose>
+				</if>
+				
+				<if test="status != null">
+					<choose>
+						<when test="status == '예정'"> AND P.RECSTATUS = '예정'</when>
+						<when test="status == '접수중'"> AND P.RECSTATUS = '접수중'</when>
+						<when test="status == '마감'"> AND P.RECSTATUS = '마감'</when>
+						<when test="status == '종료'"> AND P.RECSTATUS = '종료'</when>
+					</choose>
+				</if>	
+		</if>
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<!-- 곧 신청 마감~ -->
+	<select id="getSoonList" parameterType="AdProgramVO" resultMap="ProgramRe">
+		SELECT * FROM PROGRAM P
+			ORDER BY P.PRLDATE ASC LIMIT 0, 3;
+	</select>
+
+	<!-- 상세페이지 -->
+	<select id="getDetail" parameterType="AdProgramVO" resultMap="ProgramRe">
+		SELECT * FROM PROGRAM WHERE PRONUM = #{proNum}
+	</select>
+
+	<!-- 프로그램 신청하기 insert -->
+	<insert id="setAdd" parameterType="MemberProgramVO">
+		INSERT INTO MEMBERPROGRAM (USERNAME, PRONUM)
+			VALUES (#{userName}, #{proNum});
+	</insert>
+
+	<!-- 프로그램 신청하기 update -->
+	<update id="setUpdate" parameterType="MemberProgramVO">
+		UPDATE MEMBERPROGRAM
+			SET PROSTATE = 1
+			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
+	</update>
+
+	<!-- 신청 상태 확인 -->
+	<select id="getMyState" parameterType="MemberProgramVO">
+		SELECT PROSTATE FROM MEMBERPROGRAM
+			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
+	</select>
+	
+	<!-- 신청여부 확인 -->
+	<select id="getMyCount" parameterType="MemberProgramVO">
+		SELECT COUNT(MPNUM) FROM MEMBERPROGRAM
+			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
+	</select>
+	
+	<!-- 신청 취소 -->
+	<update id="setDel" parameterType="MemberProgramVO">
+		UPDATE MEMBERPROGRAM
+			SET PROSTATE = 0
+			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
+	</update>
+	
+	<!-- 승인 -->
+	<update id="setStateUpdate" parameterType="MemberProgramVO">
+		UPDATE MEMBERPROGRAM
+			SET PROCHECK = 1
+			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
+	</update>
+	
+	
+	<!-- ===== 마이페이지 ===== -->
+	<!-- 신청 목록 / 1이면 신청 | 0이면 취소 -->
+	<select id="getMyPro" parameterType="ProgramPager" resultMap="ProgramRe">
+		SELECT P.*,  MP.MPNUM, MP.PROCHECK, MP.PROSTATE 
+		FROM PROGRAM P
+			INNER JOIN MEMBERPROGRAM MP		
+		WHERE MP.USERNAME = #{userName}
+			<choose>
+				<when test="status == '종료'">AND P.RECSTATUS = '종료'</when>
+				<otherwise>AND P.RECSTATUS != '종료'</otherwise>
+			</choose>
+			
+			<if test="search != null">
+				<choose>
+					<when test="select == 'title'"> AND P.PRONAME LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'content'"> AND P.PROCONTENTS LIKE CONCAT ('%', #{search}, '%')</when>
+				</choose>
+				
+				<if test="category != null">
+					<choose>
+						<when test="category == '정기강좌'"> AND P.CATEGORY = '정기강좌'</when>
+						<when test="category == '이벤트'"> AND P.CATEGORY = '이벤트'</when>
+						<when test="category == '특강'"> AND P.CATEGORY = '특강'</when>
+						<when test="category == '독서회'"> AND P.CATEGORY = '독서회'</when>
+						<when test="category == '기타'"> AND P.CATEGORY = '기타'</when>
+					</choose>
+				</if>
+				
+				<if test="state != null">
+					<choose>
+						<when test="state == '1'"> AND MP.PROSTATE = 1</when>
+						<otherwise>AND MP.PROSTATE = 0</otherwise>
+					</choose>
+				</if>
+				
+				<if test="check != null">
+					<choose>
+						<when test="check == '1'"> AND MP.PROCHECK = 1</when>
+						<otherwise>AND MP.PROCHEKC = 0</otherwise>
+					</choose>
+				</if>
+		</if>
+		
+		ORDER BY
+			<choose>
+				<when test="sort == 'old'"> P.PLDATE ASC</when>
+				<when test="sort == 'new'"> P.PLDATE DESC</when>
+			</choose>
+		LIMIT #{startNum}, #{perPage}
+	</select>
+	
+	
+	
+	<!-- pager -->
+	<select id="getCount" resultType="Long" parameterType="ProgramPager">
+    	SELECT COUNT(PRONUM) FROM PROGRAM
+	</select>
+
+
+
+
+
+</mapper>

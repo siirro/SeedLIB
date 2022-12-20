@@ -95,7 +95,7 @@
 				<when test="sort == 'desc'">DESC</when>
 				<otherwise>ASC</otherwise>
 			</choose>
-			LIMIT #{startRow}, #{perPage};
+			LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<resultMap type="BookVO" id="LoanResult">
@@ -127,7 +127,7 @@
 					AND LOANLDATE
 				= (SELECT date_add(
 					(SELECT LOANLDATE FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}), interval 7 DAY))
-		WHERE ISBN = #{isbn} AND USERNAME = #{userName};
+		WHERE ISBN = #{isbn} AND USERNAME = #{userName}
 	</update>
 	
 	<!-- ================================== -->

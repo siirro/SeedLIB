@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,7 @@ import com.seed.lib.book.loan.BookReservationVO;
 import com.seed.lib.book.shelf.BookShelfService;
 import com.seed.lib.book.shelf.BookShelfVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,13 +56,18 @@ public class BookController {
 	@Autowired
 	private BookLoanService loanService;
 	
+	@Autowired
+	private MypageService mypageService;
+	
 	//도서 디테일
 	@GetMapping("detail")
-	public ModelAndView getDetail (BookVO bookVO, HttpSession session) throws Exception{
+	public ModelAndView getDetail (BookVO bookVO, MemberVO memberVO, HttpSession session) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		ModelAndView mv = new ModelAndView();
-		
-		// 세션에서 한 유저의 정보를 꺼냄
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 
 		// 비어있지 않다면 모델앤뷰에 넣기
 		if(memberVO != null) {
@@ -67,7 +75,7 @@ public class BookController {
 			
 			//유저 개인 좋아요 정보
 			MbBookLikeVO bookLikeVO = new MbBookLikeVO();
-			bookLikeVO.setUserName(memberVO.getUserName());
+			bookLikeVO.setUserName(memberVO.getUsername());
 			bookLikeVO.setIsbn(bookVO.getIsbn());
 			
 			boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
@@ -75,7 +83,7 @@ public class BookController {
 			
 			//책꽂이 존재 유무
 			BookShelfVO shelfVO = new BookShelfVO();
-			shelfVO.setUserName(memberVO.getUserName());
+			shelfVO.setUserName(memberVO.getUsername());
 			
 			boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
 			mv.addObject("isShelfExist", isShelfExist);
