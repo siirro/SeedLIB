@@ -186,12 +186,17 @@ $("#ReturnAlretBtn").click(function(){
 		success:function(data){
 			switch (data){
 				case 2:
-					alert("해당 책을 이미 대출 중입니다.")
-					break;
-				case 1:
-					let done = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
+					let done = window.confirm("도서를 반납했습니다.");
 					if(done){
-						location.href="/mypage/book/loan";
+						location.href="/mypage/book/loanHistory";
+					} else{
+                        location.href="../";
+                        location.reload();
+                    } 
+				case 1:
+					done = window.confirm("도서를 반납했습니다.\n연체일만큼 도서를 대출할 수 없습니다.");
+					if(done){
+						location.href="/mypage/book/loanHistory";
 					} else{
                         location.href="../";
                         location.reload();
