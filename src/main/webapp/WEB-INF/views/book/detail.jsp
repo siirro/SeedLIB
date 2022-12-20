@@ -69,30 +69,9 @@
 					</div>
 					
 					<div class="snsFarm">
-						<ul class="snsBtnArea clearfix">
-							<li>
-								<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-								<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-									<a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();" data-clipboard-text="https://me2.do/FNlmGWJe">
-										<span class="blind">단축URL</span>
-									</a>
-									<a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory(''); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory">
-										<span class="blind">카카오스토리</span>
-									</a>
-									<a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter(''); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter">
-										<span class="blind">트위터</span>
-									</a>
-									<a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook(''); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook">
-										<span class="blind">페이스북</span>
-									</a>
-									<a href="#print" id="snsPrint" title="인쇄" class="snsPrint">
-										<img alt="" src="/images/printer.png">
-										<span class="">현재화면 프린트</span>
-									</a>
-								</div>
-							</li>
-							<li class="mobileHide"><a href="../print/boCart?isbn=" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a></li>
-						</ul>
+						<div class="snsBtnArea clearfix">
+							<a href="../print/boCart?isbn=" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a>
+						</div>
 					</div>
 				</div> <!-- 상단 메뉴 끝 -->
 				

@@ -19,7 +19,28 @@ public class ProgramPager {
 	
 	private String userName;
 	
-	private String kind;
+	//검색 종류 - 제목/내용
+	private String select;
+	
+	//대상
+	private String target;
+	
+	//카테고리
+	private String category;
+	
+	//접수 상태
+	private String status;
+	
+	//신청 상태
+	private String state;
+	
+	//승인여부
+	private String check;
+	
+	//정렬
+	private String sort;
+	
+	//검색어
 	private String search;
 
 	
@@ -113,20 +134,46 @@ public class ProgramPager {
 		return perBlock;
 	}
 	
-	public String getSearch() {
-		if(this.search==null) {
-			this.search="";
+	public String getSelect() {
+		if(this.select==null) {
+			this.select="";
 		}
-		return search;
+		return select;
 	}
 	
-	public String getKind() {
-		if(this.kind==null) {
-			this.kind="score";
+	public String getTarget() {
+		if(this.target==null) {
+			this.target="";
 		}
-		return kind;
+		return target;
 	}
 	
+	public String getCategory() {
+		if(this.category==null) {
+			this.category="";
+		}
+		return category;
+	}
+	
+	public String getStatus() {
+		if(this.status==null) {
+			this.status="";
+		}
+		return status;
+	}
+	
+	public String getState() {
+		if(this.state==null) {
+			this.state="";
+		}
+		return state;
+	}
 
-
+	public String getCheck() {
+		if(this.check==null) {
+			this.check="";
+		}
+		return check;
+	}
+	
 }

@@ -38,33 +38,30 @@
 				</choose>
 				
 				<if test="target != null">
-					AND
 					<choose>
-						<when test="target == '유아'"> P.TARGET = '유아'</when>
-						<when test="target == '어린이'"> P.TARGET = '어린이'</when>
-						<when test="target == '청소년'"> P.TARGET = '청소년'</when>
-						<when test="target == '성인'"> P.TARGET = '성인'</when>
+						<when test="target == '유아'"> AND P.TARGET = '유아'</when>
+						<when test="target == '어린이'"> AND P.TARGET = '어린이'</when>
+						<when test="target == '청소년'"> AND P.TARGET = '청소년'</when>
+						<when test="target == '성인'"> AND P.TARGET = '성인'</when>
 					</choose>
 				</if>
 				
 				<if test="category != null">
-					AND
 					<choose>
-						<when test="category == '정기강좌'"> P.CATEGORY = '정기강좌'</when>
-						<when test="category == '이벤트'"> P.CATEGORY = '이벤트'</when>
-						<when test="category == '특강'"> P.CATEGORY = '특강'</when>
-						<when test="category == '독서회'"> P.CATEGORY = '독서회'</when>
-						<when test="category == '기타'"> P.CATEGORY = '기타'</when>
+						<when test="category == '정기강좌'"> AND P.CATEGORY = '정기강좌'</when>
+						<when test="category == '이벤트'"> AND P.CATEGORY = '이벤트'</when>
+						<when test="category == '특강'"> AND P.CATEGORY = '특강'</when>
+						<when test="category == '독서회'"> AND P.CATEGORY = '독서회'</when>
+						<when test="category == '기타'"> AND P.CATEGORY = '기타'</when>
 					</choose>
 				</if>
 				
 				<if test="status != null">
-					AND
 					<choose>
-						<when test="status == '예정'"> P.RECSTATUS = '예정'</when>
-						<when test="status == '접수중'"> P.RECSTATUS = '접수중'</when>
-						<when test="status == '마감'"> P.RECSTATUS = '마감'</when>
-						<when test="status == '종료'"> P.RECSTATUS = '종료'</when>
+						<when test="status == '예정'"> AND P.RECSTATUS = '예정'</when>
+						<when test="status == '접수중'"> AND P.RECSTATUS = '접수중'</when>
+						<when test="status == '마감'"> AND P.RECSTATUS = '마감'</when>
+						<when test="status == '종료'"> AND P.RECSTATUS = '종료'</when>
 					</choose>
 				</if>	
 		</if>
@@ -135,34 +132,32 @@
 			</choose>
 			
 			<if test="search != null">
-				AND
 				<choose>
-					<when test="select == 'title'">P.PRONAME LIKE CONCAT ('%', #{search}, '%')</when>
-					<when test="select == 'content'">P.PROCONTENTS LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'title'"> AND P.PRONAME LIKE CONCAT ('%', #{search}, '%')</when>
+					<when test="select == 'content'"> AND P.PROCONTENTS LIKE CONCAT ('%', #{search}, '%')</when>
 				</choose>
 				
 				<if test="category != null">
-					AND
 					<choose>
-						<when test="category == '정기강좌'"> P.CATEGORY = '정기강좌'</when>
-						<when test="category == '이벤트'"> P.CATEGORY = '이벤트'</when>
-						<when test="category == '특강'"> P.CATEGORY = '특강'</when>
-						<when test="category == '독서회'"> P.CATEGORY = '독서회'</when>
-						<when test="category == '기타'"> P.CATEGORY = '기타'</when>
+						<when test="category == '정기강좌'"> AND P.CATEGORY = '정기강좌'</when>
+						<when test="category == '이벤트'"> AND P.CATEGORY = '이벤트'</when>
+						<when test="category == '특강'"> AND P.CATEGORY = '특강'</when>
+						<when test="category == '독서회'"> AND P.CATEGORY = '독서회'</when>
+						<when test="category == '기타'"> AND P.CATEGORY = '기타'</when>
 					</choose>
 				</if>
 				
 				<if test="state != null">
 					<choose>
-						<when test="state == '1'"> MP.PROSTATE = 1</when>
-						<otherwise>MP.PROSTATE = 0</otherwise>
+						<when test="state == '1'"> AND MP.PROSTATE = 1</when>
+						<otherwise>AND MP.PROSTATE = 0</otherwise>
 					</choose>
 				</if>
 				
 				<if test="check != null">
 					<choose>
-						<when test="check == '1'"> MP.PROCHECK = 1</when>
-						<otherwise>MP.PROCHEKC = 0</otherwise>
+						<when test="check == '1'"> AND MP.PROCHECK = 1</when>
+						<otherwise>AND MP.PROCHEKC = 0</otherwise>
 					</choose>
 				</if>
 		</if>
@@ -179,7 +174,7 @@
 	
 	<!-- pager -->
 	<select id="getCount" resultType="Long" parameterType="ProgramPager">
-    	SELECT COUNT(MPNUM) FROM LOAN
+    	SELECT COUNT(PRONUM) FROM PROGRAM
 	</select>
 
 
