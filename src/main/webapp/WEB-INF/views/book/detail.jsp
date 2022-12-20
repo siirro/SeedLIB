@@ -77,7 +77,7 @@
 										<li>
 										<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
 											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-												<a href="#print" id="print" title="제본신청">
+												<a href="#" id="print2" title="제본신청">
 													<img alt="책프린트" src="/images/printer.png">
 													<span class="">현재 책 프린트</span>
 												</a>
@@ -108,7 +108,7 @@
 									<c:if test="${admin eq 'false'}">
 											<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
 											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-												<a href="#print" id="print" title="제본신청">
+												<a href="#" id="print" title="제본신청">
 													<img alt="책프린트" src="/images/printer.png">
 													<span class="">현재 책 프린트</span>
 												</a>

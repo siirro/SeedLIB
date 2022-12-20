@@ -69,24 +69,41 @@ public class BoOrderController {
 	@ResponseBody
 	public int setBoAdCart(String imp_uid, 
 							  String merchant_uid, 
-							  String printNum,
-							  String amount,
-							  String userName)throws Exception{
+							  String caNum,
+							  String caColor,
+							  String caSize,
+							  String caStPage,
+							  String caLsPage,
+							  String caTtPage,
+							  String caAmount,
+							  String userName,
+							  String isbn)throws Exception{
+		log.info("여기로 왔니?");
+		log.info("UID =====> {} ", imp_uid);
+		log.info("MERCHAN======> {} ", merchant_uid);
 		
 		BookPrintVO bookPrintVO = new BookPrintVO();	
 		bookPrintVO.setImp_uid(imp_uid);
 		bookPrintVO.setMerchant_uid(merchant_uid);
-		bookPrintVO.setCaNum(Long.parseLong(printNum));
-		bookPrintVO.setCaAmount(Long.parseLong(amount));
+		bookPrintVO.setCaNum(Long.parseLong(caNum));
+		bookPrintVO.setCaColor(caColor);
+		bookPrintVO.setCaSize(caSize);
+		bookPrintVO.setCaStPage(Long.parseLong(caStPage));
+		bookPrintVO.setCaLsPage(Long.parseLong(caLsPage));
+		bookPrintVO.setCaTtPage(Long.parseLong(caTtPage));
+		bookPrintVO.setCaAmount(Long.parseLong(caAmount));
 		bookPrintVO.setUserName(userName);
+		bookPrintVO.setIsbn(Long.parseLong(isbn));
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
-		if(result > 0) {
+		if(result==0) {
+			return 200;
+		}else {
+			
 			return result;
 		}
 		
-		return result;
 	}
 	
 }

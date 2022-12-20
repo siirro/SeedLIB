@@ -1,5 +1,3 @@
-
-
 // modal.js
 
 // 프린트 결제 금액
@@ -358,27 +356,27 @@ $("#print").click(function(){
             
             // $("#printCaAdd").click(function(){
                 
-            //     // 컬러
-            //     let caColor = $("#prColor").val();
-            //     console.log("색 : ", caColor);
-            //     // 용지
-            //     let caSize = $("#prSize").val();
-            //     console.log("사이즈 : ", caSize);
-            //     // 복사 시작
-            //     let caStPage = $("#ipCaStPage").val();
-            //     console.log("시작 페이지 : ", caStPage);
-            //     // 복사 마지막
-            //     let caLsPage = $("#ipCaLsPage").val();
-            //     console.log("마지막 페이지 : ", caLsPage);
-            //     // 복사 총 페이지
-            //     let caTtPage = $("#ipCaTtPage").val();
-            //     console.log("총 페이지 : ", caTtPage);
-            //     // 제본 총 금액
-            //     let caAmount = $("#ipCaAmount").val();
-            //     console.log("총 금액 : ", caAmount);
-            //     // 도서 isbn
-            //     let isbn = $("#ipIsbn").val();
-            //     console.log("도서 : ", isbn);
+                // // 컬러
+                // let caColor = $("#prColor").val();
+                // console.log("색 : ", caColor);
+                // // 용지
+                // let caSize = $("#prSize").val();
+                // console.log("사이즈 : ", caSize);
+                // // 복사 시작
+                // let caStPage = $("#ipCaStPage").val();
+                // console.log("시작 페이지 : ", caStPage);
+                // // 복사 마지막
+                // let caLsPage = $("#ipCaLsPage").val();
+                // console.log("마지막 페이지 : ", caLsPage);
+                // // 복사 총 페이지
+                // let caTtPage = $("#ipCaTtPage").val();
+                // console.log("총 페이지 : ", caTtPage);
+                // // 제본 총 금액
+                // let caAmount = $("#ipCaAmount").val();
+                // console.log("총 금액 : ", caAmount);
+                // // 도서 isbn
+                // let isbn = $("#ipIsbn").val();
+                // console.log("도서 : ", isbn);
 
             //     // $.ajax({
             //     //     type: "POST",
@@ -439,7 +437,27 @@ $("#print").click(function(){
 
 // 제본 결제!
 
-
+// 컬러
+// let caColor = $("#prColor").val();
+// console.log("색 : ", caColor);
+// // 용지
+// let caSize = $("#prSize").val();
+// console.log("사이즈 : ", caSize);
+// // 복사 시작
+// let caStPage = $("#ipCaStPage").val();
+// console.log("시작 페이지 : ", caStPage);
+// // 복사 마지막
+// let caLsPage = $("#ipCaLsPage").val();
+// console.log("마지막 페이지 : ", caLsPage);
+// // 복사 총 페이지
+// let caTtPage = $("#ipCaTtPage").val();
+// console.log("총 페이지 : ", caTtPage);
+// // 제본 총 금액
+// let caAmount = $("#ipCaAmount").val();
+// console.log("총 금액 : ", caAmount);
+// // 도서 isbn
+// let isbn = $("#ipIsbn").val();
+// console.log("도서 : ", isbn);
 
 let merchant_uid = new Date().getTime();
 let bookName = $("#prinBook").text();
@@ -456,7 +474,7 @@ console.log("폰 : ",phone);
 
 
 
-let printNum = '';
+let caNum = 0;
 
 const IMP = window.IMP;
 let impKey = $('#prinImp').val();
@@ -481,15 +499,58 @@ function requestPay() {
         if (rsp.success) {
             // 결제 성공 시 로직,
             console.log("결제 성공!");
+            // 컬러
+            let caColor = $("#prColor").val();
+            console.log("색 : ", caColor);
+            // 용지
+            let caSize = $("#prSize").val();
+            console.log("사이즈 : ", caSize);
+            // 복사 시작
+            let caStPage = $("#ipCaStPage").val();
+            console.log("시작 페이지 : ", caStPage);
+            // 복사 마지막
+            let caLsPage = $("#ipCaLsPage").val();
+            console.log("마지막 페이지 : ", caLsPage);
+            // 복사 총 페이지
+            let caTtPage = $("#ipCaTtPage").val();
+            console.log("총 페이지 : ", caTtPage);
+            // 제본 총 금액
+            let caAmount = $("#ipCaAmount").val();
+            console.log("총 금액 : ", caAmount);
+            // 회원 아이디
+            let username = $("#ipUserName").val();
+            console.log("유저이름 : ",username);
+            // 도서 isbn
+            let isbn = $("#ipIsbn").val();
+            console.log("도서 : ", isbn);
             $.ajax({
                 type: "POST",
-                url: "/print/boOrder",
+                url: "/print/boAdCart",
                 data: {
                     'imp_uid':rsp.imp_uid,
                     'merchant_uid':rsp.merchant_uid,
-                    'printNum':printNum,
-                    'amount':amount,
-                    'userName':userName
+                    'caNum':caNum,
+                    'caColor':caColor,
+                    'caSize':caSize,
+                    'caStPage':caStPage,
+                    'caLsPage':caLsPage,
+                    'caTtPage':caTtPage,
+                    'caAmount':caAmount,
+                    'userName':username,
+                    'isbn':isbn
+                },success:function(data){
+                    if(data>0){
+                        let check=window.confirm("결제를 완료했습니다.");
+                        if(check){
+                            location.href="/print/boCart"; 
+                            
+                        } else{
+                            let isbn = $("#ipIsbn").val();
+                            console.log("도서 : ", isbn);
+                            location.href="/book/detail?isbn="+isbn; 
+                            
+                        }   
+                    }
                 }
             });
         } else {
