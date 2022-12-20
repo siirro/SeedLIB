@@ -29,6 +29,7 @@ import com.seed.lib.book.loan.BookLoanService;
 import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.book.loan.BookMutualLoanVO;
 import com.seed.lib.book.loan.BookReservationVO;
+import com.seed.lib.book.loan.MyReturnVO;
 import com.seed.lib.book.shelf.BookShelfService;
 import com.seed.lib.book.shelf.BookShelfVO;
 import com.seed.lib.member.MemberVO;
@@ -156,6 +157,14 @@ public class BookController {
 	@PostMapping("extension")
 	public int setExtensionAdd (@RequestBody BookLoanVO loVO) throws Exception {
 		int result = loanService.setExtension(loVO);
+		return result;
+	}	
+	
+	//반납
+	@ResponseBody
+	@PostMapping("return")
+	public int setReturnAdd (@RequestBody MyReturnVO returnVO) throws Exception {
+		int result = loanService.setReturn(returnVO);
 		return result;
 	}	
 	

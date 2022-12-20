@@ -166,4 +166,40 @@ $(".ExAlretBtn").click(function(){
 			}
 		})
 	});		
-
+//-------------------------------------------------
+//마이페이지에서 반납신청 눌렀을 때
+$("#ReturnAlretBtn").click(function(){
+	const MyReturnVO = {
+		userName : userName,
+		isbn : isbn,
+		loanNum : $(".loanNum").val()
+	}
+	
+	console.log(MyReturnVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/book/return",
+		data:JSON.stringify(bookLoanVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success:function(data){
+			switch (data){
+				case 2:
+					alert("해당 책을 이미 대출 중입니다.")
+					break;
+				case 1:
+					let done = window.confirm("도서를 대출했습니다.\n마이페이지에서 확인하시겠습니까?");
+					if(done){
+						location.href="/mypage/book/loan";
+					} else{
+                        location.href="../";
+                        location.reload();
+                    } 
+				}
+			},
+			error:function(){
+				console.log("ERROR");
+			}
+		})
+	});

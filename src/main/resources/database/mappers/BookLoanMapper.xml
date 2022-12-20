@@ -231,6 +231,28 @@
 		</collection>	
 	</resultMap>
 	
+	<!-- ================================== -->
+	<!-- 반납 신청 -->
+	<insert id="setReturn" parameterType="MyReturnVO">
+		INSERT INTO MYRETURN (LOANNUM, ISBN, USERNAME, RTDATE)
+			VALUES (#{loanNum}, #{isbn}, #{userName}, now())
+	</insert>
+	
+	<!-- 반납 상태 업데이트 -->
+	<update id="setRtOvUpdate" parameterType="BookLoanVO">
+		UPDATE LOAN SET OVERDUE = #{overDue} AND RTSTATUS = #{rtStatus}
+			WHERE LOANNUM = #{loanNum}
+	</update>
+	
+	<!-- 연체 여부 확인 -->
+	<select id="getNow" parameterType="MyReturnVO" resultType="java.sql.Date">
+		SELECT RTDATE FROM MYRETURN WHERE LOANNUM = #{loanNum}
+	</select>
+	
+	<select id="isOver" parameterType="BookLoanVO" resultType="java.sql.Date">
+		SELECT LOANLDATE FROM LOAN WHERE LOANNUM = #{loanNum}
+	</select>
+	
 	<!-- FROM 페이지 별로 설정 -->
 	<select id="getCount" resultType="Long" parameterType="BookLoanPager">
     	SELECT COUNT(ISBN) FROM LOAN WHERE USERNAME = #{userName}

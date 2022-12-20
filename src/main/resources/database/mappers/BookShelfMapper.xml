@@ -77,16 +77,7 @@
 	
 	<delete id="setBookDelete" parameterType="BookPickVO">
 		DELETE FROM PICK
-			WHERE SHNUM = #{shNum} AND
-			<if test="isbn != null and isbnL = null">
-				ISBN = #{isbn}
-			</if>
-			<if test="isbnL != null and isbn = null">
-				ISBN IN
-				<foreach collection="isbnL" item="isbn" separator="">
-					#{isbn},
-				</foreach>
-			</if>
+			WHERE SHNUM = #{shNum} AND ISBN = #{isbn}
 	</delete>
 	
 	
