@@ -739,10 +739,10 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<div class="btn_wrap center mb30">
-											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
+											<button type="button" id="applyBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">확인</button>
 										</div>
 										<!-- 입금 정보 -->
-										<div style="display:none" id="order">
+										<div style="display: flex;" id="order">
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
 													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
@@ -779,6 +779,7 @@
 																		<td id="tdTtpPrice"><span></span></td>
 																		<td id="tdPrinPay"><span></span></td>
 																		<td id="tdTtPay"><span id="prAmount"></span></td>
+																		<input type="hidden" name="caAmount" id="ipCaAmount">
 																	</tr>
 																</tbody>
 															</table>
@@ -788,9 +789,10 @@
 											</div>
 										</div>
 										<input type="hidden" id="prinImp" value="${imp}">
-										<!-- //입금 정보 -->
-										<div class="btn_wrap center mb30" id="payBtn2"></div>
 									</fieldset>
+									<div class="btn_wrap center mb30" style="display: none;">
+										<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+									</div>
 								</form>
 							</div>
 						</div>

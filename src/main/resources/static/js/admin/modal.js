@@ -197,18 +197,24 @@ $("#print").click(function(){
         }
     });
 
+    let bindingCheck = 0;
+
     $("#binding").on({
 
-        blur : function(){
+        change : function(){
 
             let bind = $("#binding").val();
             console.log("제본선택 : ", bind);
+
+            $("#tdPrinPay").text(0+"원");
 
             if(bind=='N'){
 
                 console.log("블러 제본하지않음");
                 console.log("값이 뭐니?",$(this).val());
                 $("#tdPrinPay").text(0+"원");
+
+                bindingCheck = 0;
 
             }else if(bind=='Y'){
                 // console.log("제본함")
@@ -236,10 +242,14 @@ $("#print").click(function(){
 
                 }
 
+                bindingCheck = 1;
+
             }else{
 
                 console.log("블러 나머지 값이 뭐니?",$(this).val());
                 $("#tdPrinPay").text(0+"원");
+
+                bindingCheck = 0;
 
             }
         
@@ -250,7 +260,7 @@ $("#print").click(function(){
     // 클릭횟수수
     let count = 0;
 
-    $("#payBtn").click(function(){
+    $("#applyBtn").click(function(){
 
         if(!check){
             // console.log("찍히닝?");
@@ -269,18 +279,16 @@ $("#print").click(function(){
             // 한번 클릭시 증가
             count++;
     
-            // 버튼 한번만 생기게 
             if(count==1){
-    
-                // 결제하기 버튼 생성
-                $("#payBtn2").append('<button type="button" id="printCaAdd" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">추가하기</button>');
+
+                // 결제내역 창 뜸
                 $("#order").css('display','flex').hide().fadeIn();
-    
+
             }
     
             // 1장 가격
             // 컬러 : 0-흑백 1-컬러, 크기 : 0-A4 1-B4
-            if(pgcolor===0 && pgsize===0){
+            if(pgcolor==0 && pgsize==0){
     
                 // 흑백&A4
                 $("#tdPa").text("70원");
@@ -316,21 +324,6 @@ $("#print").click(function(){
                 price = 0;
     
             };
-            
-            let bind = $("#binding").val();
-    
-            if(isNaN(bind)){
-                console.log("바인드 NaN");
-
-                bind = 0;
-    
-            }else if(bind==''){
-
-                console.log("바인드 비어있니? ", bind);
-
-                $("#tdPrinPay").text("0원");
-    
-            } 
     
             $("#tdTtpPrice").text(price+"원");
     
@@ -351,73 +344,80 @@ $("#print").click(function(){
 
             $("#tdTtPay").text(price+parseInt(printPay)+"원");
 
-            $("#printCaAdd").click(function(){
+            
+            // $("#printCaAdd").click(function(){
                 
-                // 컬러
-                let caColor = $("#prColor").val();
-                // 용지
-                let caSize = $("#prSize").val();
-                // 복사 시작
-                let caStPage = $("#ipCaStPage").val();
-                // 복사 마지막
-                let caLsPage = $("#ipCaLsPage").val();
-                // 복사 총 페이지
-                let caTtPage = $("#ipCaTtPage").val();
-                // 제본 총 금액
-                // 도서 isbn
-                console.log("값 확인!", caColor);
-                let isbn = $("#ipIsbn").val();
+            //     // 컬러
+            //     let caColor = $("#prColor").val();
+            //     console.log("색 : ", caColor);
+            //     // 용지
+            //     let caSize = $("#prSize").val();
+            //     console.log("사이즈 : ", caSize);
+            //     // 복사 시작
+            //     let caStPage = $("#ipCaStPage").val();
+            //     console.log("시작 페이지 : ", caStPage);
+            //     // 복사 마지막
+            //     let caLsPage = $("#ipCaLsPage").val();
+            //     console.log("마지막 페이지 : ", caLsPage);
+            //     // 복사 총 페이지
+            //     let caTtPage = $("#ipCaTtPage").val();
+            //     console.log("총 페이지 : ", caTtPage);
+            //     // 제본 총 금액
+            //     let caAmount = $("#ipCaAmount").val();
+            //     console.log("총 금액 : ", caAmount);
+            //     // 도서 isbn
+            //     let isbn = $("#ipIsbn").val();
+            //     console.log("도서 : ", isbn);
 
-                $.ajax({
-                    type: "POST",
-                    url: "boCart",
-                    data: {
-                        caColor: caColor,
-                        caSize: caSize,
-                        caStPage: caStPage,
-                        caLsPage: caLsPage,
-                        caTtPage: caTtPage,
-                        caAmount: amount,
-                        isbn: isbn
-                    },
-                    success: function(result){
+            //     // $.ajax({
+            //     //     type: "POST",
+            //     //     url: "/print/boCart",
+            //     //     data: {
+            //     //         caColor: caColor,
+            //     //         caSize: caSize,
+            //     //         caStPage: caStPage,
+            //     //         caLsPage: caLsPage,
+            //     //         caTtPage: caTtPage,
+            //     //         caAmount: caAmount,
+            //     //         isbn: isbn
+            //     //     },
+            //     //     success: function(result){
             
-                        if(result==0){
-                            alert("바구니 추가를 실패했습니다");
-                        }else if(result > 0){
+            //     //         if(result==0){
+            //     //             alert("바구니 추가를 실패했습니다");
+            //     //         }else if(result > 0){
             
-                            let check = window.confirm("바구니로 이동 하시겠습니까?")
+            //     //             console.log("성공");
+
+            //     //             // let check = window.confirm("바구니로 이동 하시겠습니까?")
             
-                            if(check){
+            //     //             // if(check){
                                 
-                                location.href="/print/boCart";
+            //     //             //     location.href="/print/boCart";
             
-                            }else {
+            //     //             // }else {
                             
-                                location.href="./";
+            //     //             //     console.log("취소");
             
-                            }
+            //     //             // }
             
-                        }
+            //     //         }
             
-                    }
-                });
+            //     //     }
+            //     // });
             
-                // $("#postFrm").submit();
+            //     $("#postFrm").submit();
 
-                let check = window.confirm("바구니로 이동 하시겠습니까?")
+            //     // let check = window.confirm("바구니로 이동 하시겠습니까?")
             
-                if(check){
+            //     // if(check){
                     
-                    location.href="/print/boCart";
+            //     //     location.href="/print/boCart";
+
+            //     //     return false;
+            //     // }
             
-                }else {
-                
-                    location.href="./";
-            
-                }
-            
-            });
+            // });
 
         }
 
