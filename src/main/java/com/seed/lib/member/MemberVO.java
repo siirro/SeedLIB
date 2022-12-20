@@ -36,8 +36,8 @@ public class MemberVO {
 	private Integer ovMyrCount;
 	private boolean dropStatus;
 	
+	// 제본 여러번
 	private List<BookPrintVO> bookPrintVOs;
-	private BookVO bookVO;
 	
 	private List<RoleVO> roleVOs;
 //	
