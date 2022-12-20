@@ -1,5 +1,10 @@
 package com.seed.lib.book.order;
 
+import java.util.List;
+
+import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
+
 import lombok.Data;
 
 @Data
@@ -36,7 +41,10 @@ public class BookPrintVO {
 	// 회원 아이디
 	private String userName;
 	
+	// 도서 고유번호
+	private Long isbn;
+	
 	// 도서
-	private String isbn;
+	private BookVO bookVO;
 	
 }

@@ -7,6 +7,7 @@ import com.seed.lib.book.like.MbBookLikeVO;
 import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.book.loan.BookMutualLoanVO;
 import com.seed.lib.book.loan.BookReservationVO;
+import com.seed.lib.book.order.BookPrintVO;
 import com.seed.lib.book.shelf.BookPickVO;
 import com.seed.lib.book.shelf.BookShelfVO;
 
@@ -36,4 +37,8 @@ public class BookVO {
 	private List<BookLoanVO> loanVOs;
 	private List<BookMutualLoanVO> muVOs;
 	private List<BookReservationVO> reVOs;
+	
+	// 제본 여러번
+	private List<BookPrintVO> bookPrintVOs;
+	
 }

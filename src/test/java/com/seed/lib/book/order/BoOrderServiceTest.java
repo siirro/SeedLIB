@@ -4,9 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.seed.lib.book.BookVO;
+import com.seed.lib.member.MemberVO;
 
 @SpringBootTest
 class BoOrderServiceTest {
@@ -17,17 +22,20 @@ class BoOrderServiceTest {
 	//@Test
 	void getBoCartListTest()throws Exception{
 		
-		BookPrintVO bookPrintVO = new BookPrintVO();
-		bookPrintVO.setUserName("member");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUserName("mbkoo");
 		
-		List<BookPrintVO> bookPrintVOs = boOrderService.getBoCartList(bookPrintVO);
+		// MemberVO memberVO2 = boOrderService.getBoCartList(memberVO);
 		
-		assertEquals(2,bookPrintVOs.size());
+		// assertNotNull(memberVO2);
 		
 	}
 	
 	//@Test
 	void setBoCartTest()throws Exception{
+		
+		BookVO bookVO = new BookVO();
+		bookVO.setIsbn(9780062882059L);
 		
 		BookPrintVO bookPrintVO = new BookPrintVO();
 		bookPrintVO.setCaStPage(20L);
@@ -35,7 +43,7 @@ class BoOrderServiceTest {
 		bookPrintVO.setCaTtPage(20L);
 		bookPrintVO.setCaAmount(3000L);
 		bookPrintVO.setUserName("member");
-		bookPrintVO.setIsbn("9780062882059");
+		//bookPrintVO.setBookVO(bookVO);
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		

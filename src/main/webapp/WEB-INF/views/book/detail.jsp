@@ -509,7 +509,7 @@
 					<!-- 책 디테일 끝 -->
 				</div>
 			</div>
-			<form id="postFrm" name="postFrm" class="pFrm"  method="post">
+			<form action="../print/boAdCart" id="postFrm" class="pFrm"  method="post">
 				<!-- 팝업 : 우편복사 신청 -->
 				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 					<div class="layer_popup basket_layer">
@@ -634,7 +634,8 @@
 																	<span>${bookVO.bookDate}</span>
 																</td>
 																<td>
-																	<span>${bookVO.isbn}</span>
+																	<input type="hidden" id="ipIsbn" name="isbn" value="${bookVO.isbn}">
+																	<span id="prinIsbn">${bookVO.isbn}</span>
 																</td>
 																<td>
 																	<div class="input_select_wrap2">
@@ -673,7 +674,7 @@
 																		<label for="copyNum">
 																			<span class="ir_text">복사 총 페이지</span>
 																		</label>
-																		<input type="text" disabled id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
+																		<input type="text" readonly id="ipCaTtPage" name="caTtPage" class="input_text" style="border: 1px solid #fff0" aria-label="복사 총 페이지" placeholder="총 페이지">
 																	</div>
 																</td>
 															</tr>
@@ -773,16 +774,10 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="hidden" disabled id="ipUserName" class="input_text" value="${member.userName}"/>
-																		<input type="text" disabled id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
+																		<input type="text" readonly id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : 01012345678</p>
-			
-																	<span class="input_check_wrap">
-																		<input type="checkbox" id="smsApply" name="smsApply" class="input_check" checked />
-																		<label for="smsApply">접수내역 알림 신청</label>
-																	</span>
 																</td>
 															</tr>
 															<tr>
@@ -791,7 +786,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="text" disabled id="ipEmail" name="email" class="input_text" value="${member.email}" style="border: 1px solid #fff0" aria-label="이메일"/>
+																		<input type="text" readonly id="ipEmail" name="email" class="input_text" value="${member.email}" style="border: 1px solid #fff0" aria-label="이메일"/>
 																		<label for="hpTel" class="placeholder">입력예: seedlib1234@naver.com</label>
 																	</div>
 																	<p class="notice_text">*입력 예 : seedlib1234@naver.com</p>
@@ -803,16 +798,7 @@
 																	</div>
 																</td>
 															</tr>
-															<tr>
-																<th scope="row">
-																	<label for="etc">기타 전달사항 <span class="option_item">(선택)</span></label>
-																</th>
-																<td>
-																	<div class="input_text_wrap">
-																		<input type="text" id="etc" name="etc" class="input_text" style="border: 1px solid #fff0" aria-label="기타 전달사항" />
-																	</div>
-																</td>
-															</tr> <!-- //우편복사 수령 정보 -->
+															<!-- //우편복사 수령 정보 -->
 														</tbody>
 													</table>
 												</div>
@@ -820,8 +806,7 @@
 										</div>
 										<!-- //신청정보 입력 -->
 										<div class="btn_wrap center mb30">
-											<button type="button" id="cartBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
-											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+											<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">장바구니 추가</button>
 										</div>
 										<!-- 입금 정보 -->
 										<div style="display:none" id="order">
@@ -869,7 +854,7 @@
 												</div>
 											</div>
 										</div>
-										<input type="hidden" id="imp" value="${imp}">
+										<input type="hidden" id="prinImp" value="${imp}">
 										<!-- //입금 정보 -->
 										<div class="btn_wrap center mb30" id="payBtn2"></div>
 									</fieldset>
@@ -885,38 +870,61 @@
 	</div>
 </div>
 	<c:import url="../temp/footer.jsp"></c:import> 
-	
-	<script>
-		$("#bookDelete").click(function(){
-			console.log("sdsdfjsdfsdfklsdf");
-			let check = window.confirm("삭제하시겠습니까?");
-			if(check){
-				let isbn = $(this).val();
-				console.log(isbn);
-					$.ajax({
-						type:"POST",
-						url:"/admin/book/boDelete",
-						dataType: "json",
-						data:{
-							isbn:isbn
-						},
-							success:function(data){
-								if(data.result>0){
-									alert(data.msg);
-									location.href="../";
-								}else{
-										alert(data.msg);
-										}        
-									},error:function(error){
-										console.log("errorㅠㅠ", error);
-										alert("서버 문제로 처리가 불가합니다");
-										location.reload();
-									}                
-								})
-				}else{
-					return;
-				}
-				})
-	</script>
+
+<script>
+	// 제본 결제!
+	const IMP = window.IMP;
+	let impKey = $("#prinImp").val();
+	console.log("임프키 : ", impKey);
+	IMP.init(impKey);
+
+	let merchant_uid = new Date().getTime();
+	let bookName = $("#prinBook").text();
+	console.log("프린 북 : ", bookName);
+	console.log("결제금액", amount);
+	let email = $("#ipEmail").val();
+	console.log("이메일 : ", email);
+	let userName = $("#ipUserName").val();
+	console.log("유저이름 : ",userName);
+	let phone = $("#ipPhone").val();
+	console.log("폰 : ",phone);
+
+	let printNum = '';
+	function requestPay() {
+		console.log(IMP);
+		//  IMP.request_pay(param, callback);
+		IMP.request_pay({ // param
+			pg: "html5_inicis",
+			pay_method: "card",
+			merchant_uid: merchant_uid,
+			name: bookName,
+			amount: amount,
+			buyer_email: email,
+			buyer_name: userName,
+			buyer_tel: phone
+		}, function (rsp) { // callback
+			if (rsp.success) {
+				// 결제 성공 시 로직,
+				console.log("결제 성공!");
+				$.ajax({
+					type: "POST",
+					url: "/print/boOrder",
+					data: {
+						'imp_uid':rsp.imp_uid,
+						'merchant_uid':rsp.merchant_uid,
+						'printNum':printNum,
+						'amount':amount,
+						'userName':userName
+					}
+				});
+			} else {
+				// 결제 실패 시 로직,
+				alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+				console.log("에러ㅠㅠ");
+			}
+		});
+	}
+</script>
+
 </body>
 </html>

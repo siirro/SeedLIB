@@ -6,14 +6,35 @@
 <mapper namespace="com.seed.lib.book.order.BoOrderMapper">
 
 	<!--                     바구니 제본 신청 목록                    -->
-	<select id="getBoCartList" parameterType="BookPrintVO" resultType="BookPrintVO">
-		SELECT * FROM CART WHERE USERNAME = #{userName}
+	<select id="getBoCartList" parameterType="MemberVO" resultMap="getBoCartListResult">
+		SELECT M.USERNAME, C.CANUM , C.CATTPAGE, C.CAAMOUNT , C.CASTATUS, B.ISBN, B.TITLE 
+		FROM MEMBER M
+			LEFT JOIN
+			CART C
+			ON M.USERNAME = C.USERNAME
+			LEFT JOIN
+			BOOK B
+			ON C.ISBN = B.ISBN
+		WHERE M.USERNAME = #{userName}
 	</select>
+	<resultMap type="MemberVO" id="getBoCartListResult">
+		<id column="USERNAME" property="userName"/>
+		<collection property="bookPrintVOs" javaType="List" ofType="BookPrintVO">
+			<id column="CANUM" property="caNum"/>
+			<result column="CATTPAGE" property="caTtPage"/>
+			<result column="CAAMOUNT" property="caAmount"/>
+			<result column="CASTATUS" property="caStatus"/>
+			<association property="bookVO" javaType="BookVO">
+				<id column="ISBN" property="isbn"/>
+				<result column="TITLE" property="title"/>
+			</association>
+		</collection>
+	</resultMap>
 
 	<!--                     바구니 제본 신청                     -->
 	<insert id="setBoCart" parameterType="BookPrintVO" useGeneratedKeys="true" keyProperty="caNum">
 		INSERT INTO CART (CANUM, CACOUNT, CACOLOR, CASIZE, CASTPAGE, CALSPAGE, CATTPAGE, CAAMOUNT, CASTATUS, USERNAME, ISBN)
-		VALUES (#{caNum}, #{caCount}, #{caColor}, #{caSize}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'N', #{userName}, #{isbn})
+		VALUES (#{caNum}, 0, #{caColor}, #{caSize}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'N', #{userName}, #{isbn})
 	</insert>
 	
 	<!--                     제본 결제                     -->

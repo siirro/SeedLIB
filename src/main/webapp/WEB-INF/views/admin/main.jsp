@@ -57,7 +57,7 @@
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="icon-card mb-30">
                 <div class="icon purple">
-                  <i class="lni lni-cart-full"></i>
+                  <i class="lni lni-list"></i>
                 </div>
                 <div class="content">
                   <h6 class="mb-10">공지사항</h6>
@@ -74,7 +74,7 @@
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="icon-card mb-30">
                 <div class="icon success">
-                  <i class="lni lni-dollar"></i>
+                  <i class="lni lni-book"></i>
                 </div>
                 <div class="content">
                   <h6 class="mb-10">도서</h6>
@@ -91,7 +91,7 @@
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="icon-card mb-30">
                 <div class="icon primary">
-                  <i class="lni lni-credit-cards"></i>
+                  <i class="lni lni-calendar"></i>
                 </div>
                 <div class="content">
                   <h6 class="mb-10">문화행사</h6>

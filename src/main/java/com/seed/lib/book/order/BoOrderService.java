@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seed.lib.member.MemberVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -15,8 +17,8 @@ public class BoOrderService {
 	private BoOrderMapper boOrderMapper;
 	
 	// 바구니 제본 신청 목록
-	public List<BookPrintVO> getBoCartList(BookPrintVO BookPrintVO)throws Exception{
-		return boOrderMapper.getBoCartList(BookPrintVO);
+	public MemberVO getBoCartList(MemberVO memberVO)throws Exception{
+		return boOrderMapper.getBoCartList(memberVO);
 	}
 	
 	// 바구니 제본 신청
