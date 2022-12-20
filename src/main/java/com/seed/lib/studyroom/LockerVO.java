@@ -17,4 +17,6 @@ public class LockerVO {
 	private int rentStat;
 	private String userName;
 	private int lockerLast;
+	
+	private MoneyBackVO moneyBackVO;
 }

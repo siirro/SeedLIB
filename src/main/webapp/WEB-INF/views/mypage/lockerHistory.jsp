@@ -57,7 +57,6 @@
 						<ul class="article-list reserve">
 							<c:choose>
 								<c:when test="${not empty locker}">
-								 <!-- <li>신청한 희망 도서는 ${hlist.size()} 권입니다</li> -->
 								</c:when>
 								<c:when test="${empty locker}">
 									<c:choose>
@@ -90,6 +89,17 @@
 										<li>
 											<span id="amount${list.lockerNum}" amount="${list.amount}">결제 금액: ${list.amount}</span>
 										</li>
+										<li>
+												<c:choose>	
+												<c:when test="${empty list.moneyBackVO}">
+													<span></span>
+												</c:when>
+												<c:when test="${not empty list.moneyBackVO}">
+													<span>환불일: ${list.moneyBackVO.backDate}</span>
+													<span>환불 금액 : ${list.moneyBackVO.backPrice}</span>
+												</c:when>
+											</c:choose>
+											</li>
 										<c:if test="${list.rentStat eq 0}">
 											<li class="status"><button class="cncl" data-num-cncl="${list.lockerNum}">환불 요청</button></li>
 										</c:if>										

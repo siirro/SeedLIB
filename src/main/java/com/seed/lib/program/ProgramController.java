@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +44,7 @@ public class ProgramController {
 	@GetMapping("detail")
 	public ModelAndView getDetail (HttpSession session, MemberVO memberVO, AdProgramVO apVO) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 		

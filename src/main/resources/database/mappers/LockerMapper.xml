@@ -37,10 +37,13 @@
 		ORDER BY RENTNUM DESC
 	</select>
 	
-	<select id="getLockerHistory" parameterType="HdPager" resultType="LockerVO">
-		SELECT * FROM LOCKERRENT 
+	<select id="getLockerHistory" parameterType="HdPager" resultMap="TotalLocker">
+		SELECT * FROM LOCKERRENT LR
+			LEFT JOIN
+			MONEYBACK MB
+			ON LR.RENTNUM= MB.RENTNUM
 		WHERE USERNAME=#{userName}
-		ORDER BY RENTNUM DESC
+		ORDER BY LR.RENTNUM DESC
 		LIMIT #{startRow}, #{perPage}
 	</select>
 	
@@ -68,8 +71,28 @@
 	
 	<insert id="setLockerCancelOne" parameterType="LockerCancelVO">
 		INSERT INTO MONEYBACK
-		(BACKPRICE, BACKDATE, MERCHANT_UID)
-		VALUES(#{cancel_request_amount}, SYSDATE(), #{rentNum})
+		(BACKPRICE, BACKDATE, RENTNUM, MERCHANT_UID)
+		VALUES(#{cancel_request_amount}, SYSDATE(), #{rentNum}, #{merchant_uid})
 	</insert>
+	
+	<resultMap type="LockerVO" id="TotalLocker">
+		<id column="RENTNUM" property="rentNum"/>
+		<result column="IMP_UID" property="imp_uid"/>
+		<result column="MERCHANT_UID" property="merchant_uid"/>
+		<result column="LOCKERNUM" property="lockerNum"/>
+		<result column="AMOUNT" property="amount"/>
+		<result column="STDATE" property="stDate"/>
+		<result column="ENDATE" property="enDate"/>
+		<result column="RENTDAYS" property="rentDays"/>
+		<result column="RENTSTAT" property="rentStat"/>
+		<result column="USERNAME" property="userName"/>
+		<result column="LOCKERLAST" property="lockerLast"/>
+		<association property="moneyBackVO">
+			<id column="BACKNUM" property="backNum"/>
+			<result column="BACKPRICE" property="backPrice"/>
+			<result column="BACKDATE" property="backDate"/>
+			<result column="MERCHANT_UID" property="merchant_uid"/>			
+		</association>
+	</resultMap>
 
 </mapper>    
