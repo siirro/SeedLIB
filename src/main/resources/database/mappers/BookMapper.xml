@@ -12,15 +12,15 @@
 
 	<!-- 도서 디테일 -->
 	<select id="getLibDetail" resultMap="getDetailResult" parameterType="BookVO">
-	SELECT b2.*, l.*
-	FROM book b
-		inner join booklib b2 
-		on b.ISBN = b2.ISBN 
-	
-		inner join library l
-		on l.LIBNUM  = b2.LIBNUM 
+	SELECT B2.*, L.*
+	FROM BOOK B
+		INNER JOIN BOOKLIB B2
+		ON B.ISBN = B2.ISBN
 		
-	WHERE b.ISBN = #{isbn}
+		INNER JOIN LIBRARY L
+		ON L.LIBNUM = B2.LIBNUM
+		
+	WHERE B.ISBN = #{isbn}
 	</select>
 	
 	<resultMap type="BookVO" id="getDetailResult">

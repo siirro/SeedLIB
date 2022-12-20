@@ -22,6 +22,9 @@
 		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfBookPager"/>
 		<typeAlias type="com.seed.lib.util.BookPager" alias="BookPager"/>
 		<typeAlias type="com.seed.lib.util.BookLoanPager" alias="BookLoanPager"/>
+		
+		<typeAlias type="com.seed.lib.program.MemberProgramVO" alias="MemberProgramVO"/>
+		<typeAlias type="com.seed.lib.util.ProgramPager" alias="ProgramPager"/>
 
   		<typeAlias type="com.seed.lib.hope.HopeVO" alias="HopeVO"/>
   		<typeAlias type="com.seed.lib.donation.DonationVO" alias="DonationVO"/>

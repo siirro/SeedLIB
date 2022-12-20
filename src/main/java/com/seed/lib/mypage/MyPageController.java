@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.book.loan.BookLoanService;
 import com.seed.lib.book.loan.BookLoanVO;
@@ -36,6 +37,7 @@ import com.seed.lib.hope.HopeService;
 import com.seed.lib.hope.HopeVO;
 import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.program.ProgramService;
 import com.seed.lib.studyroom.LockerCancelVO;
 import com.seed.lib.studyroom.LockerService;
 import com.seed.lib.studyroom.LockerVO;
@@ -44,6 +46,7 @@ import com.seed.lib.studyroom.StudyRoomService;
 import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.FullCalendarVO;
 import com.seed.lib.util.HdPager;
+import com.seed.lib.util.ProgramPager;
 import com.siot.IamportRestClient.response.AccessToken;
 import com.siot.IamportRestClient.response.IamportResponse;
 
@@ -67,6 +70,8 @@ public class MyPageController {
 	private MemberService memberService;
     @Autowired
   	private MypageService mypageService;
+    @Autowired
+    private ProgramService programService;
 	
 	
   
@@ -129,7 +134,7 @@ public class MyPageController {
 	@GetMapping("hopeList")
 	public ModelAndView setHList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -150,7 +155,7 @@ public class MyPageController {
 	@GetMapping("donList")
 	public ModelAndView setDList(HdPager hdPager, HttpSession session, MemberVO memberVO)throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -165,7 +170,7 @@ public class MyPageController {
 	public ModelAndView getSeatHistory (HttpSession session, MemberVO memberVO) throws Exception{
 		roomService.changeAllSeat();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -201,7 +206,7 @@ public class MyPageController {
 	public ModelAndView getLockerList(HttpSession session, HdPager hdPager, MemberVO memberVO) throws Exception{
 		lockerService.exitAllLocker();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
@@ -266,10 +271,13 @@ public class MyPageController {
 	
 	//대출 목록
 	@GetMapping("book/loan")
-	public ModelAndView getLoanList (HttpSession session, BookLoanPager pager) throws Exception{
+	public ModelAndView getLoanList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		ModelAndView mv = new ModelAndView();
-		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
@@ -293,10 +301,14 @@ public class MyPageController {
 	
 	//대출 이력 목록
 	@GetMapping("book/loanHistory")
-	public ModelAndView getLoanHistoryList (HttpSession session, BookLoanPager pager) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getLoanHistoryList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		ModelAndView mv = new ModelAndView();
 		
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
@@ -324,9 +336,6 @@ public class MyPageController {
 		// 2이면 불가능 -> 3 리턴
 		BookLoanVO loanVO = new BookLoanVO();
 		//만기일 변경
-		//Date date = loanVO.getLoanLDate().after();
-		//loanVO.setLoanLDate(date);
-		
 		//연장횟수 변경
 		loanVO.setExtension(loanVO.getExtension()+1);
 		return "redirect:./bookLoan";
@@ -334,10 +343,14 @@ public class MyPageController {
 	
 	//예약 목록
 	@GetMapping("book/reservation")
-	public ModelAndView getReList (HttpSession session, BookLoanPager pager) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getReList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		ModelAndView mv = new ModelAndView();
 		
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
@@ -358,10 +371,13 @@ public class MyPageController {
 	
 	//상호대차 목록
 	@GetMapping("book/mutual")
-	public ModelAndView getMuList (HttpSession session, BookLoanPager pager) throws Exception{
+	public ModelAndView getMuList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		ModelAndView mv = new ModelAndView();
-		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
@@ -380,4 +396,25 @@ public class MyPageController {
 		return mv;
 	}
 	
+	//프로그램 신청 목록
+	@GetMapping("program")
+	public ModelAndView getMyPro (HttpSession session, MemberVO memberVO, ProgramPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    org.springframework.security.core.Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
+		
+		ModelAndView mv = new ModelAndView();
+		
+		if(memberVO != null) {
+			mv.addObject("member", memberVO);
+					
+			//목록
+			pager.setUserName(memberVO.getUserName());
+			List<AdProgramVO> li = programService.getMyPro(pager);
+			mv.addObject("li", li);
+		}
+		return mv;
+	}
 }
