@@ -31,13 +31,13 @@
 		</collection>
 	</resultMap>
 
-	<!--                     바구니 제본 신청                     -->
+	<!--                     하나 결제                    -->
 	<insert id="setBoCart" parameterType="BookPrintVO" useGeneratedKeys="true" keyProperty="caNum">
 		INSERT INTO CART (CANUM, CACOUNT, CACOLOR, CASIZE, CASTPAGE, CALSPAGE, CATTPAGE, CAAMOUNT, CASTATUS, USERNAME, ISBN, IMP_UID, MERCHANT_UID)
-		VALUES (#{caNum}, 0, #{caColor}, #{caSize}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'N', #{userName}, #{isbn}, #{imp_uid}, #{merchant_uid})
+		VALUES (#{caNum}, 0, #{caColor}, #{caSize}, #{caStPage}, #{caLsPage}, #{caTtPage}, #{caAmount}, 'Y', #{userName}, #{isbn}, #{imp_uid}, #{merchant_uid})
 	</insert>
 	
-	<!--                     제본 결제                     -->
+	<!--                     제본 여러개                     -->
 	<insert id="setBoOrder" parameterType="BoOrderVO" useGeneratedKeys="true" keyProperty="ordNum">
 		INSERT INTO `ORDER` (ORDNUM, ORDTOTAL, ORDDATE, ORDSTATUS)
 		VALUES(#{ordNum}, 1, now(), 1)

@@ -726,7 +726,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="hidden" id="ipUserName" value="${member.name}">
+																		<input type="hidden" id="ipUserName" value="${member.userName}">
 																		<input type="text" readonly id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>

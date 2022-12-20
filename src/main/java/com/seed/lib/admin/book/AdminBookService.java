@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seed.lib.book.BookVO;
+import com.seed.lib.util.AdbookPager;
 
 @Service
 public class AdminBookService {
@@ -16,8 +17,10 @@ public class AdminBookService {
 	private AdminBookMapper adminBookMapper;
 	
 	// 도서 목록 조회
-	public List<BookVO> getAdBookList()throws Exception{
-		return adminBookMapper.getAdBookList();
+	public List<BookVO> getAdBookList(AdbookPager adbookPager)throws Exception{
+		adbookPager.makeRow();
+		adbookPager.getNum(null);
+		return adminBookMapper.getAdBookList(adbookPager);
 	}
 	
 	// 도서 등록

@@ -3,10 +3,10 @@ package com.seed.lib.util;
 import lombok.Data;
 
 @Data
-public class HdPager {
-	
+public class AdbookPager {
+
 	private Long page;
-	private Long perPage=10L;
+	private Long perPage=24L;
 	private Long startRow;
 	private Long lastRow;
 	private Long perBlock=3L;
@@ -98,7 +98,6 @@ public class HdPager {
 				next=true;
 			}
 		
-//		return 0L;
 	}
 	
 }

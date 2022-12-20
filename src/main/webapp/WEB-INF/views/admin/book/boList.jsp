@@ -38,7 +38,7 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="../main">Dashboard</a>
+                        <a href="../main">관리자페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item">
                         <a href="./boList">도서 관리</a>
@@ -60,39 +60,13 @@
           <div class="cards-styles">
             <!-- ========= card-style-2 start ========= -->
             <div class="row">
-              <div class="col-12">
-                <div class="title mt-30 mb-30">
-                  <h2>Cards</h2>
-                </div>
-              </div>
               <!-- end col -->
               <c:forEach items="${list}" var="bookVO">
               <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
-                <!-- <div class="card-style-2 mb-30">
-                  <div class="card-image">
-                    <a href="./boDetail?isbn=${bookVO.isbn}">
-                      <img
-                        src="${bookVO.image}"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <h4 class="bookList">
-                      <a 
-                      	style="
-                      	  overflow: hidden;
-						  text-overflow: ellipsis;
-                      	"
-                        href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}
-                      </a>
-                    </h4>
-                  </div>
-                </div> -->
                 <div class="card mb-3" style="border-radius: 4px; width: 12rem; overflow: hidden; padding: 5px;">
                   <img class="card-img-top" style="width: 100%; height: 220px;" src="${bookVO.image}" alt="Card image cap">
                   <div class="card-body" style="height: 93px; overflow: hidden; word-wrap: break-word;">
-                    <p class="card-text"><a style="color: #262d3f;" href="./boDetail?isbn=${bookVO.isbn}">${bookVO.title}</a></p>
+                    <p class="card-text"><a style="color: #262d3f;" href="../../book/detail?isbn=${bookVO.isbn}">${bookVO.title}</a></p>
                   </div>
                 </div>
               </div>

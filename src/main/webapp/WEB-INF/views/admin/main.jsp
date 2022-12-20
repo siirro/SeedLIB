@@ -30,7 +30,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>SeedLib Dashboard</h2>
+                  <h2>씨앗도서관 관리자페이지</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -39,7 +39,7 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#0">Dashboard</a>
+                        <a href="#0">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
                         SeedGraph

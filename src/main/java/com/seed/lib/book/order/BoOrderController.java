@@ -97,7 +97,7 @@ public class BoOrderController {
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
-		if(result==0) {
+		if(result==1) {
 			return 200;
 		}else {
 			
