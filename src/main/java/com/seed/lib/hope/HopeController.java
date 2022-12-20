@@ -52,8 +52,8 @@ public class HopeController {
 	    memberVO = mypageService.getMyPage(memberVO);
 	    log.info("mvo:{}",memberVO);
 	    ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("user", memberVO);
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("hope/setHope");
 		return mv;
 	}
 	

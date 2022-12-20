@@ -8,7 +8,6 @@
  <!-- 마이페이지 -->
 		
 		<select id="getMyPage" parameterType="MemberVO" resultType="MemberVO">
-			
 				SELECT *FROM MEMBER WHERE USERNAME= #{userName}
      	</select>
 					  
