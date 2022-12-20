@@ -40,7 +40,10 @@ public class BookPrintVO {
 	// 회원 아이디
 	private String userName;
 	
-	// 도서 여러개
+	// 도서 고유번호
+	private Long isbn;
+	
+	// 도서
 	private BookVO bookVO;
 	
 }

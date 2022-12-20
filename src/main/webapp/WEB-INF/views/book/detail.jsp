@@ -567,7 +567,7 @@
 																	<span>${bookVO.bookDate}</span>
 																</td>
 																<td>
-																	<input type="hidden" name="isbn" value="${bookVO.isbn}">
+																	<input type="hidden" id="ipIsbn" name="isbn" value="${bookVO.isbn}">
 																	<span id="prinIsbn">${bookVO.isbn}</span>
 																</td>
 																<td>
@@ -707,7 +707,6 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
-																		<input type="hidden" readonly id="ipUserName" name="userName" class="input_text" value="${member.userName}"/>
 																		<input type="text" readonly id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
@@ -780,7 +779,6 @@
 																		<td id="tdTtpPrice"><span></span></td>
 																		<td id="tdPrinPay"><span></span></td>
 																		<td id="tdTtPay"><span id="prAmount"></span></td>
-																		<input type="hidden" id="ipCaAmount" name="caAmount" value="">
 																	</tr>
 																</tbody>
 															</table>
