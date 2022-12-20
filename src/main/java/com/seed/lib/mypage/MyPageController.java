@@ -174,8 +174,7 @@ public class MyPageController {
 	    memberVO  = (MemberVO)authentication.getPrincipal();
 	    memberVO = mypageService.getMyPage(memberVO);
 	    ModelAndView mv = new ModelAndView();
-			String userName = memberVO.getUsername();
-			log.info(userName);
+			String userName = memberVO.getUserName();
 			List<StudyDetailVO> sdl = roomService.getSeatHistory(userName);
 			List<FullCalendarVO> cl = new ArrayList<>();
 			JSONArray js = new JSONArray();
@@ -190,12 +189,14 @@ public class MyPageController {
 				js.add(jsonObject);
 			}			
 			mv.addObject("cl", js);		
+			mv.addObject("memberVO", memberVO);		
 			return mv;
 	}
 	
 	@PostMapping("exitSeat")
 	@ResponseBody
 	public int exitMySeat(String exitNum, String userName) throws Exception{
+		log.info(userName);
 		StudyDetailVO detailVO = new StudyDetailVO();
 		detailVO.setUserName(userName);
 		detailVO.setSeatNum(Integer.parseInt(exitNum));

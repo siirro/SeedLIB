@@ -50,6 +50,7 @@
 		<div class="sVisualWrap">
 			<div class="sVisual">
 				<h3>통합검색</h3>
+				<h3>${member}</h3>
 			</div>
 		</div>
 		
@@ -68,11 +69,54 @@
 						<i class="arrow"></i>소장자료검색
 						<i class="arrow"></i>통합검색
 					</div>
-					
+
 					<div class="snsFarm">
-						<div class="snsBtnArea clearfix">
-							<a href="../print/boCart?isbn=" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seed'); return false;"><span class="blind">현재화면 프린트</span></a>
-						</div>
+						<ul class="snsBtnArea clearfix">
+							<c:set var="admin" value="false"></c:set>
+							<c:if test="${empty member}">
+										<li>
+										<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										<c:set var="admin" value="true"></c:set>
+										</li>	
+									</c:if>
+									<c:if test="${not empty member}">
+										<c:forEach items="${member.roleVOs}" var="r">
+												<c:if test="${r.roleName eq 'ROLE_ADMIN'}">
+													<li style="display: flex;">
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<a href="../admin/book/boUpdate?isbn=${bookVO.isbn}" id="bookUpdate" title="도서 수정" class="snsShare">
+																<img alt="수정" src="/images/refresh.png">
+															</a>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">수정</p>
+														</div>
+														<div style="display: flex; align-items: center; flex-direction: column;">
+															<button type="button" id="bookDelete" title="도서 삭제" class="snsShare" value="${bookVO.isbn}">
+																<img width="40px;" alt="삭제" src="/images/trash.png">
+															</buton>
+															<p style="color: #444444;font-size: 13px;height: 20px;margin-top: 10px;">삭제</p>
+														</div>
+													<c:set var="admin" value="true"></c:set>
+													</li>
+												</c:if>
+										</c:forEach>	
+									<c:if test="${admin eq 'false'}">
+											<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
+											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
+												<a href="#print" id="print" title="제본신청">
+													<img alt="책프린트" src="/images/printer.png">
+													<span class="">현재 책 프린트</span>
+												</a>
+											</div>
+										</c:if>
+									</c:if>
+							</li>
+						</ul>
 					</div>
 				</div> <!-- 상단 메뉴 끝 -->
 				

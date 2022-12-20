@@ -158,6 +158,7 @@
 		$(document).on("click","#exitBtn",function (info) {
 			let exitNum = $(this).parent().prev().text();
 			userName=$("#userName").val();
+			console.log(userName);
 			let check = window.confirm("퇴실하시겠습니까?");
 			if(check) {
 				$.ajax({

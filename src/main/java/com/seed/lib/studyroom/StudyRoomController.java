@@ -89,8 +89,13 @@ public class StudyRoomController {
 	}
 	
 	@GetMapping("roomPop/**")
-	public ModelAndView getRoomRev(String roomName, int seatNum) throws Exception{
+	public ModelAndView getRoomRev(String roomName, int seatNum, HttpSession session, MemberVO memberVO) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("memberVO", memberVO);
 		mv.addObject("seatNum", seatNum);
 		mv.addObject("roomName", roomName);
 		return mv;
@@ -120,8 +125,13 @@ public class StudyRoomController {
 	}
 	
 	@GetMapping("lockerPop")
-	public ModelAndView lockerPop(int lockerNum) throws Exception{
+	public ModelAndView lockerPop(int lockerNum, HttpSession session, MemberVO memberVO) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("memberVO", memberVO);
 		mv.addObject("imp",impKey);
 		mv.addObject("lockerNum", lockerNum);
 		return mv;
