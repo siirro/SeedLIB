@@ -63,7 +63,7 @@ public class ProgramController {
 			int count = programService.getMyCount(mpVO);
 			//상태가 1이면 신청 불가 | 0이면 신청가능 버튼
 			int state = programService.getMyState(mpVO);
-			
+			//인원 파악하기!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			if(count == 0) {
 				mv.addObject("can", 0);
 			}else {
