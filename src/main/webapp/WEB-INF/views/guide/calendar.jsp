@@ -31,6 +31,22 @@
                         <div class="navi"><a href="/" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 도서관 안내 <i class="arrow"></i>도서관 행사 일정<i class="arrow"></i>일정 안내</div>
                     </div> 
                     <div id="contents" class="contentArea">
+                        <div>
+                            <!--Real Contents Start-->
+                            <div style="display: flex; justify-content: center; padding: 10px 0;">
+                              <table style="width:210px;">
+                                <tbody>
+                                  <tr>
+                                    <td style="width:100px; text-align: center; " class="red">휴관일</td>
+                                    <td style="width: 10px;"></td>							
+                                    <td style="width:100px; text-align: center; " class="blue">행사</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div id='calendar'></div>
+                            <!-- End Of the Real Contents-->
+                        </div>
                     </div>
                 </div>
             </div>
