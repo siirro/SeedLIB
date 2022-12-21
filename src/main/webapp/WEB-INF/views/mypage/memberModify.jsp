@@ -95,17 +95,11 @@
                                                         <select name="phone" value="${my.phone}" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
                                                             
                                                                 <option value="010" selected="selected">010</option>
-                                                            
                                                                 <option value="011">011</option>
-                                                            
                                                                 <option value="016">016</option>
-                                                            
                                                                 <option value="017">017</option>
-                                                            
                                                                 <option value="018">018</option>
-                                                            
                                                                 <option value="019">019</option>
-                                                            
                                                         </select>
                                                         <span class="hyphen">-</span>
                                                         <input type="text" id="handphone2" name="phone" value="${my.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
@@ -118,6 +112,9 @@
                                                 <script type="text/javascript">
 													let wi = $("#dd").attr("wi")
 													console.log(wi);
+													
+													let hand2 = $("#handphone2").val()
+                                                    console.log(hand2);
 												</script>
                                             </tr>
                                             <tr>

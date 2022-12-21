@@ -66,22 +66,44 @@ public class BoOrderController {
 	
 	// 도서 바구니 추가	
 	@PostMapping("boAdCart")
-	public String setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
+	@ResponseBody
+	public int setBoAdCart(String imp_uid, 
+							  String merchant_uid, 
+							  String caNum,
+							  String caColor,
+							  String caSize,
+							  String caStPage,
+							  String caLsPage,
+							  String caTtPage,
+							  String caAmount,
+							  String userName,
+							  String isbn)throws Exception{
+		log.info("여기로 왔니?");
+		log.info("UID =====> {} ", imp_uid);
+		log.info("MERCHAN======> {} ", merchant_uid);
 		
-		MemberVO memberVO = new MemberVO();
-		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-		Authentication authentication = context.getAuthentication();
-		memberVO  = (MemberVO)authentication.getPrincipal();
-		memberVO = mypageService.getMyPage(memberVO);
-		log.info("mvo:{}",memberVO);
-		
-		bookPrintVO.setUserName(memberVO.getUsername());
+		BookPrintVO bookPrintVO = new BookPrintVO();	
+		bookPrintVO.setImp_uid(imp_uid);
+		bookPrintVO.setMerchant_uid(merchant_uid);
+		bookPrintVO.setCaNum(Long.parseLong(caNum));
+		bookPrintVO.setCaColor(caColor);
+		bookPrintVO.setCaSize(caSize);
+		bookPrintVO.setCaStPage(Long.parseLong(caStPage));
+		bookPrintVO.setCaLsPage(Long.parseLong(caLsPage));
+		bookPrintVO.setCaTtPage(Long.parseLong(caTtPage));
+		bookPrintVO.setCaAmount(Long.parseLong(caAmount));
+		bookPrintVO.setUserName(userName);
+		bookPrintVO.setIsbn(Long.parseLong(isbn));
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
+		if(result==1) {
+			return 200;
+		}else {
+			
+			return result;
+		}
 		
-		
-		return "search/simple";
 	}
 	
 }

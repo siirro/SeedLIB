@@ -10,7 +10,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/default.css">
@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="/css/admin/adcommon.css">
 	<link rel="stylesheet" href="/css/admin/modalutil.css">
 	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<!-- iamport.payment.js -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<!-- 프린트신청 팝업창 여는 버튼, 모달 창 버튼 js -->
@@ -77,7 +77,7 @@
 										<li>
 										<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
 											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-												<a href="#print" id="print" title="제본신청">
+												<a href="#" id="print2" title="제본신청">
 													<img alt="책프린트" src="/images/printer.png">
 													<span class="">현재 책 프린트</span>
 												</a>
@@ -108,7 +108,7 @@
 									<c:if test="${admin eq 'false'}">
 											<a href="#snsGroup" id="sns" title="SNS 공유하기(확장됨)" class="snsShare"><span class="blind">SNS 공유하기</span></a>
 											<div id="snsGroup" class="snsList clearfix" style="display: block; right: 45px; opacity: 1;">
-												<a href="#print" id="print" title="제본신청">
+												<a href="#" id="print" title="제본신청">
 													<img alt="책프린트" src="/images/printer.png">
 													<span class="">현재 책 프린트</span>
 												</a>
@@ -724,6 +724,7 @@
 																</th>
 																<td>
 																	<div class="input_text_wrap input_phone_wrap">
+																		<input type="hidden" id="ipUserName" value="${member.userName}">
 																		<input type="text" readonly id="ipPhone" name="phone" class="input_text" value="${member.phone}" style="border: 1px solid #fff0" aria-label="휴대폰번호" />
 																		<label for="hpTel" class="placeholder">입력예: 01012345678</label>
 																	</div>
@@ -759,7 +760,7 @@
 											<button type="button" id="applyBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">확인</button>
 										</div>
 										<!-- 입금 정보 -->
-										<div style="display: flex;" id="order">
+										<div style="display: none;" id="order">
 											<div class="post_info_wrap">
 												<div class="btn_wrap">
 													<button type="button" style="background: #02d4498f" class="btn">결제 내역</button>
@@ -807,8 +808,8 @@
 										</div>
 										<input type="hidden" id="prinImp" value="${imp}">
 									</fieldset>
-									<div class="btn_wrap center mb30" style="display: none;">
-										<button type="button" id="payBtn" class="btn btn_apply" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+									<div class="btn_wrap center mb30" id="payBtnWrap" style="display: none;">
+										<button type="button" id="payBtn" class="btn btn_apply" onclick="requestPay()" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
 									</div>
 								</form>
 							</div>
@@ -822,6 +823,7 @@
 	</div>
 </div>
 	<c:import url="../temp/footer.jsp"></c:import> 
+	
 	<script type="text/javascript" src="/js/bookDetail.js"></script>
     <script type="text/javascript" src="/js/bookLoan.js"></script>
 </body>

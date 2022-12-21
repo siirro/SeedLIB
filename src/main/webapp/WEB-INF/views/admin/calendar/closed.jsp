@@ -186,7 +186,7 @@
                 <div class="card-style-2 mb-30" style="width:100%;">
                   <div>
                       <!--Real Contents Start-->
-                      <div>
+                      <div style="display: flex; justify-content: center; padding: 10px 0;">
                         <table style="width:210px;">
                           <tbody>
                             <tr>

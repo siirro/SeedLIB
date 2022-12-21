@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.seed.lib.book.BookVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.AdbookPager;
 
 @SpringBootTest
 class AdminBookServiceTest {
@@ -19,8 +20,9 @@ class AdminBookServiceTest {
 	
 	//@Test
 	void getAdBookListTest() throws Exception{
+		AdbookPager adbookPager = new AdbookPager();
 		
-		List<BookVO> bookVOs = adminBookService.getAdBookList();
+		List<BookVO> bookVOs = adminBookService.getAdBookList(adbookPager);
 		
 		assertNotEquals(0, bookVOs.size());
 		

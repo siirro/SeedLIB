@@ -73,16 +73,15 @@
                       <img src="/images/logo200.png" alt="씨앗도서관"/>
                   </div> -->
                   <div class="card-content">
-                    <h4 style="color: #abce74;">${proVO.proTitle}</h4>
+                    <h4 style="color: #abce74; font-size: 27px;">${proVO.proTitle}</h4>
 
                     <div class="text-success">
 	                    <hr>
                     </div>
                     
-                    <h4>프로그램내용</h4>
+                    <h4 style="margin-bottom: 5px;">프로그램내용</h4>
                     <pre style="max-height: 400px;
-                    white-space: break-spaces;">
-                    	<c:out value="${proVO.proContents}"></c:out>
+                    white-space: break-spaces;"><c:out value="${proVO.proContents}"></c:out>
                     </pre>
                     
                     <div class="text-success">
@@ -170,163 +169,41 @@
                       <thead>
                         <tr>
                           <th></th>
-                          <th><h6>Account No</h6></th>
-                          <th><h6>Balance</h6></th>
-                          <th><h6>Action</h6></th>
+                          <th><h6>신청번호</h6></th>
+                          <th><h6>신청자</h6></th>
+                          <th><h6>상태</h6></th>
                         </tr>
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-1"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 508 2157</p>
-                          </td>
-                          <td>
-                            <p>$523</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-2"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 756 0987</p>
-                          </td>
-                          <td>
-                            <p>$123</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-3"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 098 8765</p>
-                          </td>
-                          <td>
-                            <p>$223</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-4"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 897 3242</p>
-                          </td>
-                          <td>
-                            <p>$323</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-5"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 654 0987</p>
-                          </td>
-                          <td>
-                            <p>$423</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="check-input-primary">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="checkbox-6"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <p>AC336 234 9804</p>
-                          </td>
-                          <td>
-                            <p>$523</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
+                       
+                       
+                       
+                       
+                       
+                       
+                          <tr>
+                            <td>
+                              <div class="check-input-primary">
+                                <input class="form-check-input" type="checkbox" id="checkbox-1"/>
+                              </div>
+                            </td>
+                            <td>
+                              <p>AC336 508 2157</p>
+                            </td>
+                            <td>
+                              <p>$523</p>
+                            </td>
+                            <td>
+                              <div class="action">
+                                <button class="text-danger">
+                                  <i class="lni lni-trash-can"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+             
+                        
                       </tbody>
                     </table>
                     <!-- end table -->
