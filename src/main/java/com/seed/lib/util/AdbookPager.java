@@ -18,6 +18,8 @@ public class AdbookPager {
 	private boolean pre;
 	private boolean next;
 	
+	private String search2;
+	
 	private Long searchType;
 	private String userName;
 	private String searchKeyword;
@@ -34,18 +36,11 @@ public class AdbookPager {
 		return this.page;
 	}
 	
-	public Long getSearchType() {
-		if(this.searchType==null) {
-			this.searchType=0L;
+	public String getSearch2() {
+		if(this.search2==null) {
+			this.search2="";
 		}
-		return this.searchType;
-	}
-	
-	public String getSearchKeyword() {
-		if(this.searchKeyword==null) {
-			this.searchKeyword="";
-		}
-		return this.searchKeyword;
+		return this.search2;
 	}
 	
 	public String getLibNum() {

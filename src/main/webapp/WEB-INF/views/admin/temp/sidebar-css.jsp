@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item nav-item-has-children">
               <a
-                href="#0"
+                href="/admin/member/adMemberList"
                 class="collapsed"
                 data-bs-toggle="collapse"
                 data-bs-target="#ddmenu_1"
@@ -64,7 +64,7 @@
             <span class="divider"><hr /></span>
             <li class="nav-item nav-item-has-children">
               <a
-                href="#0"
+                href="/admin/book/boList"
                 class="collapsed"
                 data-bs-toggle="collapse"
                 data-bs-target="#ddmenu_2"
@@ -136,7 +136,7 @@
             <span class="divider"><hr /></span>
             <li class="nav-item nav-item-has-children">
               <a
-                href="#0"
+                href="/admin/program/proList"
                 class="collapsed"
                 data-bs-toggle="collapse"
                 data-bs-target="#ddmenu_3"
@@ -170,7 +170,7 @@
             </li>
             <li class="nav-item nav-item-has-children">
               <a
-                href="#0"
+                href="/admin/calendar/closed"
                 class="collapsed"
                 data-bs-toggle="collapse"
                 data-bs-target="#ddmenu_4"
