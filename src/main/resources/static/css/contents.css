@@ -449,3 +449,8 @@
 	.findResult .findIdArea dl dt {float: left; width: 400px;}
 	.findResult .findIdArea dl dd {float: right;}
 }
+
+
+.detail-flex {
+	display: flex;;
+}

@@ -51,7 +51,7 @@ public class AdProgramVO {
 	
 	private String plTime;
 	
-	private List<MemberProgramVO> mpVOs;
+	private MemberProgramVO mpVO;
 	
 	
 	public void makeDate() {

@@ -72,21 +72,18 @@ public class ProgramService {
 	public int setDel (MemberProgramVO mpVO) throws Exception{
 		//신청 여부 판단 - 없으면 0
 		int c = programMapper.getMyCount(mpVO);
+		System.out.println("%%%%%%%%%%%% : "+c);
 		
 		if(c == 1) {
 			//신청상태가 1이면 취소 가능
 			int p = programMapper.getMyState(mpVO);
+			System.out.println("&&&&&&&&&&&&&& : "+p);
 			if(p >= 1) {
 				programMapper.setDel(mpVO);
 				return 1;				
-			}else {
-				//이미 취소
-				return 3;
-			}	
-		}else {
-			//신청 안함
-			return 2;
+			}
 		}
+		return 0;
 	}
 	
 	//신청상태 확인 - 1/0
