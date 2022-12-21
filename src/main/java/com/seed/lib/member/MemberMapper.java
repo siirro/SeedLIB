@@ -17,4 +17,7 @@ public interface MemberMapper {
 	// 연체 반납 횟수 증가
 	public int setOverCount(MemberVO memberVO)throws Exception;
 	
+	// 계정 잠금
+	public int setLocked(MemberVO memberVO)throws Exception;
+	
 }
