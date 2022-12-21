@@ -186,7 +186,7 @@
 	
 	<!-- 상호대차 목록 -->
 	<select id="getMuList" parameterType="BookLoanPager" resultMap="MuResult">
-		SELECT M.*, b.*
+		SELECT M.*, B.*
 			FROM MUTUALLOAN M
 				INNER JOIN BOOK B
 				ON B.ISBN = M.ISBN
