@@ -137,7 +137,7 @@
 				</li> 
 				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
+						<li id="gnb6_1"><a href="/mypage/myIndex">나의정보</a> </li> 
 						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
 						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
 						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 

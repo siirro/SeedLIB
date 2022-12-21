@@ -55,14 +55,7 @@
 
 				<div id="contents" class="contentArea">
 					
-<!--Forced tab Show Que-->
-<div class="ttabWrap">
-	<div id="virtSelect"><a href="#script">탭메뉴</a></div>
-	<ul id="ttab3" class="tnb clearfix">
-		<li class="ttabLast"></li>
-	</ul>
-</div>
-<!--Forced tab Show Que-->
+
 
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
@@ -74,9 +67,8 @@
 									<div class="myTop">
 										
 									<strong>${vo.name} </strong> 님, 안녕하세요.</div>
-										<div class="btnModify">
-											
-																						
+										
+										<div class="btnModify">										
 											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
 										</div>
 									</div>
