@@ -24,6 +24,8 @@ $("#LoanAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
+				case 3:
+					alert("도서 대출은 총 5권까지 가능합니다.")
 				case 2:
 					alert("해당 책을 이미 대출 중입니다.")
 					break;
@@ -32,7 +34,7 @@ $("#LoanAlretBtn").click(function(){
 					if(done){
 						location.href="/mypage/book/loan";
 					} else{
-                        location.href="../";
+                        location.reload();
                     } 
 				}
 			},
@@ -188,17 +190,8 @@ $(".ReturnAlretBtn").click(function(){
 					if(done){
 						location.href="/mypage/book/loanHistory";
 					} else{
-                        location.href="../";
                         location.reload();
                     }
-				case 1:
-					done = window.confirm("도서를 반납했습니다.");
-					if(done){
-						location.href="/mypage/book/loanHistory";
-					} else{
-                        location.href="../";
-                        location.reload();
-                    } 
 				}
 			},
 			error:function(){

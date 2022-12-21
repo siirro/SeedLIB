@@ -29,6 +29,7 @@ public interface BookLoanMapper {
 
 	//대출+예약 가능한 회원인지? - 해당 도서 대출중 판단
 	public int getBookLoan (BookLoanVO loVO) throws Exception;
+	public int getLoanCount (BookLoanVO loVO) throws Exception;
 	
 	//대출 가능한 회원인지? - 연체일 기간 지났는지 판단
 	public int getOverdue () throws Exception;

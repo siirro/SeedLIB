@@ -144,12 +144,11 @@
 		                                      	<c:forEach items="${li}" var="book">
 			                                      	<c:forEach var="lo" items="${book.loanVOs}">
 				                                      	<c:set var="sd" value="${lo.loanSDate}"/>
-				                                      	<c:set var="ld" value="${lo.loanLDate}"/>
 			                                        	<tr>
 		                                        			<td>${book.title}</td>
 		                                        			<td>${book.writer}</td>
 		                                        			<td>${sd}</td>
-		                                        			<td>${ld}</td>
+		                                        			<td>${rtDate}</td>
 		                                        			<td>
 					                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
 					                                      		<input type="hidden" class="loanNum" value="${lo.loanNum}">

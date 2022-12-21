@@ -30,6 +30,7 @@ import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.book.loan.BookLoanService;
 import com.seed.lib.book.loan.BookLoanVO;
+import com.seed.lib.book.loan.MyReturnVO;
 import com.seed.lib.donation.DonationService;
 import com.seed.lib.donation.DonationVO;
 import com.seed.lib.hope.HopeService;
@@ -274,29 +275,35 @@ public class MyPageController {
 	@GetMapping("book/loan")
 	public ModelAndView getLoanList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
 		ModelAndView mv = new ModelAndView();
 
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//대출 목록
-			pager.setUserName(memberVO.getUsername());
-			pager.setRtStatus(1);
-			List<BookVO> li = loanService.getLoanList(pager);
-			mv.addObject("li", li);
-			
-			//대출 중인 책 권수
-			BookLoanVO loVO = new BookLoanVO();
-			loVO.setRtStatus(1);
-			loVO.setUserName(memberVO.getUsername());
-			int count = loanService.getBookLoan(loVO);
-			mv.addObject("count", count);
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+	
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+						
+				//대출 목록
+				pager.setUserName(memberVO.getUsername());
+				pager.setRtStatus(1);
+				List<BookVO> li = loanService.getLoanList(pager);
+				mv.addObject("li", li);
+				
+				//대출 중인 책 권수
+				BookLoanVO loVO = new BookLoanVO();
+				loVO.setRtStatus(1);
+				loVO.setUserName(memberVO.getUsername());
+				int count = loanService.getLoanCount(loVO);
+				mv.addObject("count", count);
+				
+				//반납날짜
+				MyReturnVO returnVO = new MyReturnVO();
+				java.sql.Date rtDate = loanService.getNow(returnVO);
+				mv.addObject("rtDate", rtDate);
+			}
 		}
-		
 		return mv;
 	}
 	
@@ -304,28 +311,29 @@ public class MyPageController {
 	@GetMapping("book/loanHistory")
 	public ModelAndView getLoanHistoryList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//대출 목록
-			pager.setUserName(memberVO.getUsername());
-			pager.setRtStatus(0);
-			List<BookVO> li = loanService.getLoanList(pager);
-			mv.addObject("li", li);
-		
-			//대출 중인 책 권수
-			BookLoanVO loVO = new BookLoanVO();
-			loVO.setRtStatus(0);
-			loVO.setUserName(memberVO.getUsername());
-			int count = loanService.getBookLoan(loVO);
-			mv.addObject("count", count);
+
+		if(context != null) {
+		    Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+			
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+						
+				//대출 목록
+				pager.setUserName(memberVO.getUsername());
+				pager.setRtStatus(0);
+				List<BookVO> li = loanService.getLoanList(pager);
+				mv.addObject("li", li);
+			
+				//대출 중인 책 권수
+				BookLoanVO loVO = new BookLoanVO();
+				loVO.setRtStatus(0);
+				loVO.setUserName(memberVO.getUsername());
+				int count = loanService.getLoanCount(loVO);
+				mv.addObject("count", count);
+			}
 		}
 		return mv;
 	}
@@ -346,26 +354,27 @@ public class MyPageController {
 	@GetMapping("book/reservation")
 	public ModelAndView getReList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//예약 목록
-			pager.setUserName(memberVO.getUsername());
-			List<BookVO> li = loanService.getReList(pager);
-			mv.addObject("li", li);
-		
-			//예약 중인 책 권수
-			BookLoanVO loVO = new BookLoanVO();
-			loVO.setUserName(memberVO.getUsername());
-			int count = loanService.getReCount(loVO);
-			mv.addObject("count", count);
+
+		if(context != null) {
+		    Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+			
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+						
+				//예약 목록
+				pager.setUserName(memberVO.getUsername());
+				List<BookVO> li = loanService.getReList(pager);
+				mv.addObject("li", li);
+			
+				//예약 중인 책 권수
+				BookLoanVO loVO = new BookLoanVO();
+				loVO.setUserName(memberVO.getUsername());
+				int count = loanService.getReCount(loVO);
+				mv.addObject("count", count);
+			}
 		}
 		return mv;
 	}
@@ -374,25 +383,28 @@ public class MyPageController {
 	@GetMapping("book/mutual")
 	public ModelAndView getMuList (HttpSession session, MemberVO memberVO, BookLoanPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//상호대차 목록
-			pager.setUserName(memberVO.getUsername());
-			List<BookVO> li = loanService.getMuList(pager);
-			mv.addObject("li", li);
-		
-			//대출 중인 책 권수
-			BookLoanVO loVO = new BookLoanVO();
-			loVO.setUserName(memberVO.getUsername());
-			int count = loanService.getMuCount(loVO);
-			mv.addObject("count", count);
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+	
+			
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+						
+				//상호대차 목록
+				pager.setUserName(memberVO.getUsername());
+				List<BookVO> li = loanService.getMuList(pager);
+				mv.addObject("li", li);
+			
+				//대출 중인 책 권수
+				BookLoanVO loVO = new BookLoanVO();
+				loVO.setUserName(memberVO.getUsername());
+				int count = loanService.getMuCount(loVO);
+				mv.addObject("count", count);
+			}
 		}
 		return mv;
 	}
@@ -401,20 +413,21 @@ public class MyPageController {
 	@GetMapping("program")
 	public ModelAndView getMyPro (HttpSession session, MemberVO memberVO, ProgramPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//목록
-			pager.setUserName(memberVO.getUserName());
-			List<AdProgramVO> li = programService.getMyPro(pager);
-			mv.addObject("li", li);
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+	
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+						
+				//목록
+				pager.setUserName(memberVO.getUserName());
+				List<AdProgramVO> li = programService.getMyPro(pager);
+				mv.addObject("li", li);
+			}
 		}
 		return mv;
 	}
