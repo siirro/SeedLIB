@@ -33,7 +33,6 @@ $("#LoanAlretBtn").click(function(){
 						location.href="/mypage/book/loan";
 					} else{
                         location.href="../";
-                        location.reload();
                     } 
 				}
 			},
@@ -64,11 +63,10 @@ $("#ResAlretBtn").click(function(){
 				case 1:
 					let done = window.confirm("도서를 예약했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(done){
-						opener.location.href="/mypage/book/reservation";
+						location.href="/mypage/book/reservation";
 						break;
 					} else{
                         location.reload();
-                        opener.location.href="../"; 
                         break;
                     } 
 				}
@@ -104,11 +102,10 @@ $("#MuAlretBtn").click(function(){
 				case 1:
 					let check = window.confirm("도서를 상호대차 신청했습니다.\n마이페이지에서 확인하시겠습니까?");
 					if(check){
-						opener.location.href="/mypage/book/mutual";
+						location.href="/mypage/book/mutual";
 						break;
 					} else{
                         location.reload(); 
-                        opener.location.href="../";
                         break;
                     } 
 				}
@@ -166,15 +163,16 @@ $(".ExAlretBtn").click(function(){
 	});		
 //-------------------------------------------------
 //마이페이지에서 반납신청 눌렀을 때
-let isbnR = $(".isbnR").val();
 
-$("#ReturnAlretBtn").click(function(){
+$(".ReturnAlretBtn").click(function(){
 	const returnVO = {
 		userName : userName,
-		isbn : isbnR,
+		isbn : $(".isbnR").val(),
 		loanNum : $(".loanNum").val()
 	}
 	
+	console.log("isbnR : ", $(".isbnR").val());
+	console.log("loanNum : ", $(".loanNum").val());
 	console.log(returnVO);
 	
 	$.ajax({
@@ -185,16 +183,16 @@ $("#ReturnAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
-				case 2:
+				case 3:
 					let done = window.confirm("도서를 반납했습니다.");
 					if(done){
 						location.href="/mypage/book/loanHistory";
 					} else{
                         location.href="../";
                         location.reload();
-                    } 
+                    }
 				case 1:
-					done = window.confirm("도서를 반납했습니다.\n연체일만큼 도서를 대출할 수 없습니다.");
+					done = window.confirm("도서를 반납했습니다.");
 					if(done){
 						location.href="/mypage/book/loanHistory";
 					} else{

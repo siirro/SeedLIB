@@ -45,21 +45,22 @@ public class ProgramController {
 	@GetMapping("detail")
 	public ModelAndView getDetail (HttpSession session, MemberVO memberVO, AdProgramVO apVO) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-			
-			//신청 여부
-			//getMyState / getMyCount
-			MemberProgramVO mpVO = new MemberProgramVO();
-			mpVO.setUserName(memberVO.getUserName());
-			mpVO.setProNum(apVO.getProNum());
-			
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+				
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+				
+				//신청 여부
+				//getMyState / getMyCount
+				MemberProgramVO mpVO = new MemberProgramVO();
+				mpVO.setUserName(memberVO.getUserName());
+				mpVO.setProNum(apVO.getProNum());
+			}
 		}
 		
 		apVO = programService.getDetail(apVO);

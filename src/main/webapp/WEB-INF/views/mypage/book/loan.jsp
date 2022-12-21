@@ -14,6 +14,14 @@
     
     <link rel="stylesheet" href="/css/new_search.css">
     <link rel="stylesheet" href="/css/book/mypage.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/new_search.css">
+ 
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -89,13 +97,13 @@
 	                                        <option value="title">제목</option>
 	                                        <option value="writer">저자</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
+	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="20" maxlength="300">
 	                                </span>
 	                                <span class="bunch">
 	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
 	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
 	                                </span>
-	                                <span class="bunch">
+	                                <span class="bunch loan-search">
 	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
 	                                        <option value="title">제목</option>
 	                                        <option value="isbn">ISBN</option>
@@ -117,49 +125,51 @@
                                     </div>
                                 </div>
                                 
-                                <div class="listTable">
-	                                <table class="listTable-t">
-	                                    <thead>
-	                                        <tr>
-	                                            <th scope="col" class="th-title">제목</th>
-	                                            <th scope="col" >저자</th>
-	                                            <th scope="col" >대출일</th>
-	                                            <th scope="col" >반납 예정일</th>
-	                                            <th></th>
-	                                            <th scope="col" class="">연장횟수</th>
-	                                            <th></th>
-	                                        </tr>
-	                                    </thead>
-	                                    
-	                                    <tbody>
-	                                      	<c:forEach items="${li}" var="book">
-		                                      	<c:forEach var="lo" items="${book.loanVOs}">
-			                                      	<c:set var="sd" value="${lo.loanSDate}"/>
-			                                      	<c:set var="ld" value="${lo.loanLDate}"/>
-		                                        	<tr>
-	                                        			<td>${book.title}</td>
-	                                        			<td>${book.writer}</td>
-	                                        			<td>${sd}</td>
-	                                        			<td>${ld}</td>
-	                                        			<td>
-				                                      		<input type="text" class="isbnR" value="${book.isbn}">
-				                                      		<input type="text" class="loanNum" value="${lo.loanNum}">
-	                                        				<button type="button" class="btn white small" id="ReturnAlretBtn" title="도서반납">도서반납</button>
-	                                        			</td>
-	                                        			<td>${lo.extension}</td>
-	                                        			<td>
-	                                        				<input type="text" class="isbnC" value="${book.isbn}">
-	                                        				<button type="button" class="btn white small ExAlretBtn" title="대출연장">대출연장</button>
-	                                        			</td>
-		                                        		
-		                                        		<c:if test="${book} == null">
-		                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출 중인 도서가 없습니다.</td>
-		                                        		</c:if>
-		                                         	</tr>
-			                                	</c:forEach>
-	                                        </c:forEach>
-	                                    </tbody>
-	                                </table>
+                                <div class="thisBook-libraryList">
+                                	<div class="tblWrap tblScroller scrollTable">
+		                                <table class="tbl">
+		                                    <thead>
+		                                        <tr>
+		                                            <th scope="col" class="th-title">제목</th>
+		                                            <th scope="col" >저자</th>
+		                                            <th scope="col" >대출일</th>
+		                                            <th scope="col" >반납 예정일</th>
+		                                            <th></th>
+		                                            <th scope="col" class="">연장횟수</th>
+		                                            <th></th>
+		                                        </tr>
+		                                    </thead>
+		                                    
+		                                    <tbody>
+		                                      	<c:forEach items="${li}" var="book">
+			                                      	<c:forEach var="lo" items="${book.loanVOs}">
+				                                      	<c:set var="sd" value="${lo.loanSDate}"/>
+				                                      	<c:set var="ld" value="${lo.loanLDate}"/>
+			                                        	<tr>
+		                                        			<td>${book.title}</td>
+		                                        			<td>${book.writer}</td>
+		                                        			<td>${sd}</td>
+		                                        			<td>${ld}</td>
+		                                        			<td>
+					                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
+					                                      		<input type="hidden" class="loanNum" value="${lo.loanNum}">
+		                                        				<button type="button" class="btn white small ReturnAlretBtn" title="도서반납">도서반납</button>
+		                                        			</td>
+		                                        			<td>${lo.extension}</td>
+		                                        			<td>
+		                                        				<input type="hidden" class="isbnC" value="${book.isbn}">
+		                                        				<button type="button" class="btn white small ExAlretBtn" title="대출연장">대출연장</button>
+		                                        			</td>
+			                                        		
+			                                        		<c:if test="${book} == null">
+			                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출 중인 도서가 없습니다.</td>
+			                                        		</c:if>
+			                                         	</tr>
+				                                	</c:forEach>
+		                                        </c:forEach>
+		                                    </tbody>
+		                                </table>
+		                        	</div>
 	                            </div>
                         	</div>
                         </div>

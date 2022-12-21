@@ -182,24 +182,23 @@ public class BookLoanService {
 		Date n = loanMapper.getNow(returnVO); //반납일
 		Date o = loanMapper.isOver(returnVO); //대출만기일
 		
-		// o가 더 크면 true
+		// n이 더 크면 true
 		boolean m = n.after(o);
-		System.out.println("mmmmmmmmmmmmmmmmmmmmmmm : "+ m);
 		
-		if(m) {
+		loanVO.setRtStatus(0);
+		loanVO.setLoanNum(returnVO.getLoanNum());
+
+		if(!m) {
 			//반납상태 0 / 연체 0
-			loanVO.setRtStatus(0);
 			loanVO.setOverDue(0);
 			loanMapper.setRtOvUpdate(loanVO);
-			return 2;
+			return 3;
+		
 		}else {
 			//연체함
-			//반납상태 0 / 연체 1
-			loanVO.setRtStatus(0);
 			loanVO.setOverDue(1);
-			loanVO.setLoanNum(returnVO.getLoanNum());
 			loanMapper.setRtOvUpdate(loanVO);
-			return 1;
+			return 1;	
 		}
 	}
 	

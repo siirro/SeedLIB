@@ -42,27 +42,28 @@ public class BookShelfController {
 	@GetMapping("list")
 	public ModelAndView getShelfListP (HttpSession session, MemberVO memberVO, ShelfPager pager) throws Exception {
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
-					
-			//책꽂이 목록
-			pager.setUserName(memberVO.getUsername());
-			List<BookShelfVO> li = bookShelfService.getShelfListP(pager);
-			mv.addObject("li", li);
+	    
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+			memberVO  = (MemberVO)authentication.getPrincipal();
+			memberVO = mypageService.getMyPage(memberVO);
 			
-			//책꽂이 갯수
-			Long count = bookShelfService.getCount(pager);
-			mv.addObject("count", count);
-			
-			mv.addObject("pager", pager);
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+				
+				//책꽂이 목록
+				pager.setUserName(memberVO.getUsername());
+				List<BookShelfVO> li = bookShelfService.getShelfListP(pager);
+				mv.addObject("li", li);
+				
+				//책꽂이 갯수
+				Long count = bookShelfService.getCount(pager);
+				mv.addObject("count", count);
+				
+				mv.addObject("pager", pager);
+			}			
 		}
-		
 		return mv;
 	}
 	
@@ -72,14 +73,17 @@ public class BookShelfController {
 	@GetMapping("newShelf")
 	public ModelAndView setNewShelf (BookShelfVO shelfVO, MemberVO memberVO, HttpSession session) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-		
 		ModelAndView mv = new ModelAndView();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+			
+			
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+			}
 		}
 		return mv;
 	}
@@ -124,18 +128,21 @@ public class BookShelfController {
 	@GetMapping("addBook")
 	public ModelAndView setBookAdd (String userName, Long isbn, MemberVO memberVO, HttpSession session) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-		
 		ModelAndView mv = new ModelAndView();
-		BookPickVO pickVO = new BookPickVO();
-		
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
 			
-			pickVO.setIsbn(isbn);
-			mv.addObject("isbn", isbn);
+			BookPickVO pickVO = new BookPickVO();
+			
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+				
+				pickVO.setIsbn(isbn);
+				mv.addObject("isbn", isbn);
+			}
 		}
 		
 		//저장 화면에 제목 띄우는 용
@@ -178,22 +185,25 @@ public class BookShelfController {
 	@GetMapping("bookList")
 	public ModelAndView getBookList (Long num, HttpSession session, MemberVO memberVO, ShelfBookPager pager) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("member", memberVO);
+
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+		    memberVO  = (MemberVO)authentication.getPrincipal();
+		    memberVO = mypageService.getMyPage(memberVO);
+	
+			mv.addObject("member", memberVO);
+		}	
+			//책 리스트
+			List<BookVO> ar = bookShelfService.getBookList(pager);
+			mv.addObject("list", ar);
+			
+			//갯수
+			Long count = bookShelfService.getBookCount(pager);
+			mv.addObject("count", count);
+			
+			mv.addObject("pager", pager);
 		
-		//책 리스트
-		List<BookVO> ar = bookShelfService.getBookList(pager);
-		mv.addObject("list", ar);
-		
-		//갯수
-		Long count = bookShelfService.getBookCount(pager);
-		mv.addObject("count", count);
-		
-		mv.addObject("pager", pager);
 		return mv;
 	}
 }
