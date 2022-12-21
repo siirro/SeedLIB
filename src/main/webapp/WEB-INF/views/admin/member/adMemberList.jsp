@@ -125,7 +125,7 @@
                               <p>${MemberVO.name}</p>
                             </td>
                             <td class="min-width">
-                              <p><a href="./memberDetail?userNaeme=${MemberVO.userName}">${MemberVO.userName}</a></p>
+                              <p>${MemberVO.userName}</p>
                             </td>
                             <td class="min-width">
                               <p>${MemberVO.gender}</p>
@@ -152,11 +152,11 @@
                                     <i class="lni lni-pencil-alt"></i>
                                   </a>
                                 </button>
-<%--                                 <button>
+                                <button>
                                   <a href="./memberDelete?userName=${MemberVO.userName}" class="text-danger">
                                     <i class="lni lni-trash-can"></i>
                                   </a>
-                                </button> --%>
+                                </button>
                               </div>
                             </td>
                           </tr>

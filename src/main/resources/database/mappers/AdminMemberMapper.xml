@@ -37,7 +37,8 @@
 		<result column="ENABLED" property="enabled"/>
 		<result column="LOANSTATUS" property="loanStatus"/>
 		<result column="OVMYRCOUNT" property="ovMyrCount"/>
-		<result column="DROPSTATUS" property="dropStatus"/>
+		<result column="ACCOUNTNONLOCKED" property="accountNonLocked"/>
+		<result column="OVDATE" property="ovDate"/>
 		<collection property="roleVOs" javaType="List" ofType="RoleVO">
 			<result column="ROLENAME" property="roleName"/>
 		</collection>
