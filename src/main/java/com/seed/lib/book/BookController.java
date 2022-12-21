@@ -63,30 +63,33 @@ public class BookController {
 	@GetMapping("detail")
 	public ModelAndView getDetail (BookVO bookVO, MemberVO memberVO, HttpSession session) throws Exception{
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO  = (MemberVO)authentication.getPrincipal();
-	    memberVO = mypageService.getMyPage(memberVO);
-
 		ModelAndView mv = new ModelAndView();
-
-		// 비어있지 않다면 모델앤뷰에 넣기
-		if(memberVO != null) {
-			mv.addObject("member", memberVO);
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+			memberVO  = (MemberVO)authentication.getPrincipal();
+			memberVO = mypageService.getMyPage(memberVO);
 			
-			//유저 개인 좋아요 정보
-			MbBookLikeVO bookLikeVO = new MbBookLikeVO();
-			bookLikeVO.setUserName(memberVO.getUsername());
-			bookLikeVO.setIsbn(bookVO.getIsbn());
 			
-			boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
-			mv.addObject("isLikeExist", isLikeExist);
+			// 비어있지 않다면 모델앤뷰에 넣기
+			if(memberVO != null) {
+				mv.addObject("member", memberVO);
+				
+				//유저 개인 좋아요 정보
+				MbBookLikeVO bookLikeVO = new MbBookLikeVO();
+				bookLikeVO.setUserName(memberVO.getUsername());
+				bookLikeVO.setIsbn(bookVO.getIsbn());
+				
+				boolean isLikeExist = bookLikeService.getLikeExist(bookLikeVO);
+				mv.addObject("isLikeExist", isLikeExist);
+				
+				//책꽂이 존재 유무
+				BookShelfVO shelfVO = new BookShelfVO();
+				shelfVO.setUserName(memberVO.getUsername());
+				
+				boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
+				mv.addObject("isShelfExist", isShelfExist);
+			}
 			
-			//책꽂이 존재 유무
-			BookShelfVO shelfVO = new BookShelfVO();
-			shelfVO.setUserName(memberVO.getUsername());
-			
-			boolean isShelfExist = bookShelfService.getShelfExist(shelfVO);
-			mv.addObject("isShelfExist", isShelfExist);
 		}
 		
 		//도서 상세정보
