@@ -53,7 +53,7 @@ public class MailService {
 		content.append("<div style=\"width:100%\">");
 		content.append("<div style=\"max-width:650px;margin:0 auto;padding:10px 0;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;border:1px solid #e2e2e2\">");
 		content.append("<div align=\"center\" style=\"padding-right:0px;padding-left:0px\" class=\"logo-area\">");
-		content.append("<a href=\"#\" style=\"outline:none\" target=\"_blank\"> <img align=\"center\" border=\"0\" src=\"https://i.imgur.com/kuH9C1G.png\" alt=\"Logo\" title=\"Logo\" style=\"text-decoration-line: none; height: auto; border: none; width: 100%; max-width: 250px; display: block;\" width=\"250\"></a></div>");
+		content.append("<a href=\"#\" style=\"outline:none\" target=\"_blank\"> <img align=\"center\" border=\"0\" src=\"https://i.imgur.com/GRsj8XM.png\" alt=\"Logo\" title=\"Logo\" style=\"text-decoration-line: none; height: auto; border: none; width: 100%; max-width: 250px; display: block;\" width=\"250\"></a></div>");
 		content.append("<hr style=\"border:0;border-top:solid 1px #e2e2e2;width:90%;margin:10px auto\" class=\"horizontal-line\">");
 		content.append("<div style=\"max-width:90%;margin-left:auto;margin-right:auto;margin-top:40px\" class=\"nomal-paragraph\"><div style=\"margin-top:20px\">");
 		content.append("안녕하세요. "+userName+"회원님.");
