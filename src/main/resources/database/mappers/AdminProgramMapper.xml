@@ -3,6 +3,10 @@
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.program.AdProgramMapper">
+
+	<update id="setUpdateStatus" parameterType="AdProgramVO">
+		UPDATE PROGRAM SET RECSTATUS=#{recStatus} WHERE PRONUM=#{proNum}
+	</update>
 	
 	<!--                        행사삭제                        -->
 	<delete id="setProgramDelete" parameterType="AdProgramVO">
@@ -13,8 +17,8 @@
 	<update id="setProgramUpdate" parameterType="AdProgramVO">
 		UPDATE PROGRAM SET PROCATE=#{proCate}, RECSTATUS=#{recStatus}, PROTITLE=#{proTitle}, 
 						   PROCONTENTS=#{proContents}, TARGET=#{target}, TOTAL=#{total}, 
-						   PRSDATE=#{prsDate}, PRLDATE=#{prlDate}, PSDATE=#{psDate}, 
-						   PLDATE=#{plDate}, PROTEACHER=#{proTeacher}
+						   PRSDATE=#{prsDate}, PRLDATE=#{prlDate}, PSDATE=STR_TO_DATE(#{psDt}, '%Y-%m-%d %H:%i'), 
+						   PLDATE=STR_TO_DATE(#{plDt}, '%Y-%m-%d %H:%i'), PROTEACHER=#{proTeacher}
 		WHERE PRONUM=#{proNum}
 	</update>
 	
@@ -37,7 +41,15 @@
 	
 	<!--                        행사목록조회                        -->
 	<select id="getProgramList" parameterType="HdPager" resultType="AdProgramVO">
-		SELECT PRONUM, PROCATE, RECSTATUS, PROTITLE, TARGET, TOTAL, PRSDATE, PRLDATE, DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, PROTEACHER, PROPLACE FROM PROGRAM
+		SELECT PRONUM, PROCATE, RECSTATUS, PROTITLE, TARGET, TOTAL, PRSDATE, PRLDATE, DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, PROTEACHER, PROPLACE 
+		FROM PROGRAM
+		WHERE PROTITLE LIKE CONCAT('%', #{search}, '%')
+		<if  test= "search1 != ''">
+		AND PROCATE LIKE CONCAT('%', #{search1}, '%')
+		</if>
+		<if  test= "search2 != ''">
+		AND RECSTATUS LIKE CONCAT('%', #{search2}, '%')
+		</if>
 		ORDER BY PRONUM DESC
 		limit #{startRow}, #{perPage};
 	</select>
