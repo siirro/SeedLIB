@@ -12,7 +12,7 @@
 	<!--                     도서 목록                     -->
 	<select id="getAdBookList" parameterType="AdbookPager" resultType="BookVO">
 		SELECT * FROM BOOK
-		ORDER BY REGDATE ASC
+		ORDER BY REGDATE DESC
 		limit #{startRow}, #{perPage}
 	</select>
 	
