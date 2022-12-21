@@ -112,7 +112,7 @@
 	                                </div>
 	                                
 	                                <div class="listTable">
-		                                <table class="listTable-t">
+		                                <table class="listTable-t tbl">
 		                                    <thead>
 		                                        <tr>
 		                                            <th scope="col" class="th-title">이름</th>

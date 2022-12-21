@@ -33,10 +33,10 @@ $("#likeBtn").click(function(){
 			userName : userName
 		},
 		success : function(){
-			location.reload()
+			location.reload();
 		},
 		error : function(){
-			location.reload()
+			location.reload();
 		}
 	})
 });
@@ -52,10 +52,10 @@ $("#unlikeBtn").click(function(){
 			userName : userName
 		},
 		success : function(){
-			location.reload()
+			location.reload();
 		},
 		error : function(){
-			location.reload()
+			location.reload();
 		}
 	})
 });
@@ -104,15 +104,13 @@ $("#RealBookBtn").click(function(){
 					window.close();
 					break;
 				case 1:
-					let check = window.confirm("책꽂이에 책을 저장했습니다.\n마이페이지에서 확인하시겠습니까?");
+					let check = window.confirm("책꽂이에 책을 저장했습니다.");
 					if(check){
-						opener.location.href="/shelf/bookList";
 						window.close();
-						break;
+						location.reload();
 					} else{
-                        opener.location.href="../"; 
-                        window.close();
-                        break;
+						window.close();
+						location.reload();
                     } 
 				}
 			},
@@ -166,15 +164,13 @@ $("#RealShelfBtn").click(function(){
 					alert("해당 이름의 책꽂이가 이미 존재합니다.")
 					break;
 				case 1:
-					let check = window.confirm("책꽂이를 생성했습니다.\n마이페이지에서 확인하시겠습니까?");
+					let check = window.confirm("책꽂이를 생성했습니다.");
 					if(check){
-						opener.location.href="/shelf/list";
 						window.close();
-						break;
+						location.reload();
 					} else{
-                        opener.location.href="../"; 
-                        window.close();
-                        break;
+						window.close();
+                        location.reload();
                     } 
 				}
 			},

@@ -14,6 +14,13 @@
     
     <link rel="stylesheet" href="/css/new_search.css">
     <link rel="stylesheet" href="/css/book/mypage.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/new_search.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
     <script type="text/javascript" defer src="/js/bookDetail.js"></script>
@@ -118,13 +125,13 @@
                                 </div>
                                 
                                 <div class="listTable">
-	                                <table class="listTable-t">
+	                                <table class="listTable-t tbl">
 	                                    <thead>
 	                                        <tr>
 	                                            <th scope="col" class="th-title-2">제목</th>
-	                                            <th scope="col" >저자</th>
-	                                            <th scope="col" >대출일</th>
-	                                            <th scope="col" >반납일</th>
+	                                            <th scope="col" class="col-5">저자</th>
+	                                            <th scope="col" class="col-5">대출일</th>
+	                                            <th scope="col" class="col-5" >반납일</th>
 	                                        </tr>
 	                                    </thead>
 	                                    

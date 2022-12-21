@@ -204,8 +204,8 @@
 										</c:if>
 										
 										<c:if test="${empty member}">
-											<button type="button" class="btn white small LoginBtn">책꽂이 담기</button>
-											<button type="button" class="btn white small LoginBtn">좋아요</button>
+											<a href="/member/login"><button type="button" class="btn white small">책꽂이 담기</button></a>
+											<a href="/member/login"><button type="button" class="btn white small">좋아요</button></a>
 										</c:if>
 										<span>💚 ${like}</span>
 									</div>
@@ -327,16 +327,16 @@
 																		<c:if test="${empty member}">
 																			<c:if test="${where == 0}">
 																				<c:if test="${quan >= 1}">
-																					<button type="button" class="btn white small LoginBtn" title="대출신청">대출신청</button>
+																					<a href="/member/login"><button type="button" class="btn white small" title="대출신청">대출신청</button></a>
 																				</c:if>
 																				<c:if test="${quan == 0}">
-																					<button type="button" class="btn white small LoginBtn" title="예약신청">예약신청</button>
+																					<a href="/member/login"><button type="button" class="btn white small" title="예약신청">예약신청</button></a>
 																				</c:if>
 																			</c:if>	
 																			
 																			<c:if test="${where != 0}">
 																				<c:if test="${quan >= 1}">
-																					<button type="button" class="btn white small LoginBtn">상호대차</button>
+																					<a href="/member/login"><button type="button" class="btn white small">상호대차</button></a>
 																				</c:if>
 																				<c:if test="${quan == 0}">대출 불가능</c:if>
 																			</c:if>
