@@ -6,7 +6,7 @@
 <mapper namespace="com.seed.lib.book.shelf.BookShelfMapper">
 
 	<select id="getBookTitle" parameterType="BookVO" resultType="String">
-		select TITLE from book b where ISBN = #{isbn}
+		SELECT TITLE FROM BOOK B WHERE ISBN = #{isbn}
 	</select>
 
 	<select id="getShelfExist" parameterType="BookShelfVO" resultType="Integer">

@@ -13,7 +13,12 @@
 
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
+<style>
+	#searchBtn:hover {
+		cursor: pointer;
+	}
 
+</style>
 </head>
 
 <body>
@@ -150,7 +155,7 @@
 											
 											<label for="mainSearchKeyword" class="blind">검색어 입력</label>
 											<input type="text" onkeyup="enterkey()" title="검색어 입력" class="form-ele" id="totalSearchValue" name="search" style="height: 68px; font-size: 1.3rem; padding: 0px 20px;" placeholder="검색어를 입력하세요">
-											<a href="./search/simple" id="searchBtn" title="검색" class="btnSearch" style="text-align: center;">검색</a>
+											<a id="searchBtn" title="검색" class="btnSearch" style="text-align: center;">검색</a>
 										</div>
 									</div>
 
