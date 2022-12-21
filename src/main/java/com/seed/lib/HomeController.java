@@ -33,7 +33,7 @@ public class HomeController {
 	@Autowired
 	private StudyRoomService roomService;
 	@Autowired
-	private SearchService searchService;
+	private SearchService searchService;	
 	@Autowired
 	private MypageService mypageService;
 	
@@ -42,7 +42,7 @@ public class HomeController {
 		
 	
 @GetMapping("/")
-	public ModelAndView setHome(HttpSession session) throws Exception{
+	public ModelAndView setHome(HttpSession session, MemberVO memberVO) throws Exception{
 		Enumeration<String> en =session.getAttributeNames();
 		
 		while(en.hasMoreElements()) {
@@ -50,13 +50,20 @@ public class HomeController {
 			log.info("key=>{}",key);
 		}
 		
-		MemberVO memberVO =new MemberVO();
-		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-	    Authentication authentication = context.getAuthentication();
-	    memberVO = (MemberVO)authentication.getPrincipal();
-		memberVO= mypageService.getMyPage(memberVO);
-		
 		ModelAndView mv = new ModelAndView();
+		
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		if(context != null) {
+			Authentication authentication = context.getAuthentication();
+			memberVO  = (MemberVO)authentication.getPrincipal();
+			memberVO = mypageService.getMyPage(memberVO);
+			log.info("mv:{}", memberVO);
+			// 비어있지 않다면 모델앤뷰에 넣기
+			if(memberVO != null) {
+				mv.addObject("memberVO", memberVO);
+			}
+		}
+		
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();
 		List<BookVO> popularBook = searchService.getPopularBook();

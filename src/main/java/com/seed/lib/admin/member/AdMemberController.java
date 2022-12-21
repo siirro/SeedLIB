@@ -37,13 +37,31 @@ public class AdMemberController {
 		return mv;
 	}
 	
-	@PostMapping("adMemberList")
-	@ResponseBody
-	public int getAdMemberList(MemberVO memberVO)throws Exception{
+	@PostMapping("locked")
+	public ModelAndView setLocked(MemberVO memberVO)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
 		
 		int result = adMemberService.setLocked(memberVO);
 		
-		return result;
+		String title="실패..";
+		String text="계정 잠금이 실패 했습니다..";
+		String icon="error";
+		String url="./member/adMemberList";
+		if(result > 0) {
+			title="성공!!";
+			text="계정 잠금에 성공 했습니다!!";
+			icon="success";
+			url="./member/adMemberList";
+		}
+		
+		mv.addObject("icon", icon);
+		mv.addObject("title", title);
+		mv.addObject("text", text);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 	
 }

@@ -115,22 +115,7 @@
 					
 					
 					
-					
-					<!-- 페이징 -->
-					<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				    <li class="page-item ${pager.pre?'':'disabled'}">
-				      <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
-				    </li>
-					    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-							<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a> </li>
-						</c:forEach>
-					<li class="page-item ${pager.next?'':'disabled'}">
-				      <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
-				    </li>
-				  </ul>
-			</nav>
-					<!-- //페이징 -->
+
 					
 					<!-- 페이징 -->
 					<div class="pagingWrap">

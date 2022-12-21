@@ -109,13 +109,6 @@
                                                     </div>
                                                 </td>
                                                 
-                                                <script type="text/javascript">
-													let wi = $("#dd").attr("wi")
-													console.log(wi);
-													
-													let hand2 = $("#handphone2").val()
-                                                    console.log(hand2);
-												</script>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>
@@ -180,5 +173,23 @@
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<script src="/js/modify.js"></script>
+
+        <script type="text/javascript">
+
+                //폰번호 파싱된거 뿌리고 파싱된거 합쳐서 히든네임폰에 집어넣기
+        let hand2 = $("#phoneValue").val()
+                let num1 = hand2.substr(3,4);
+                let num2 = hand2.substr(7,4);
+                $("#handphone2").val(num1);
+                $("#handphone3").val(num2);
+
+                let phone1 = $("#handphone1").val();
+                let phone2 = $("#handphone2").val();
+                let phone3 = $("#handphone3").val();
+
+                let phone = phone1+phone2+phone3;
+
+                $("#phone").val(콜);
+        </script>
 </body>
 </html>

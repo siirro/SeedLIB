@@ -38,11 +38,11 @@
                 <div class="breadcrumb-wrapper mb-30">
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
+                      <li class="breadcrumb-item" >
                         <a href="#0">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        SeedGraph
+                        씨앗도서관
                       </li>
                     </ol>
                   </nav>
@@ -54,53 +54,27 @@
           </div>
           <!-- ========== title-wrapper end ========== -->
           <div class="row">
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="icon-card mb-30">
-                <div class="icon purple">
+            <div class="col">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon purple" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-list"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">공지사항</h6>
-                  <h3 class="text-bold mb-10">${dshBodList}</h3>
+                  <h5 class="mb-10">공지사항</h5>
+                  <h2 class="text-bold mb-10">${dshBodList}</h2>
                 </div>
               </div>
               <!-- End Icon Cart -->
             </div>
             <!-- End Col -->
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="icon-card mb-30">
-                <div class="icon success">
+            <div class="col">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon success" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-book"></i>
                 </div>
                 <div class="content">
-                  <h6 class="mb-10">도서</h6>
-                  <h3 class="text-bold mb-10">${dshBoList}</h3>
-                </div>
-              </div>
-              <!-- End Icon Cart -->
-            </div>
-            <!-- End Col -->
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="icon-card mb-30">
-                <div class="icon primary">
-                  <i class="lni lni-calendar"></i>
-                </div>
-                <div class="content">
-                  <h6 class="mb-10">문화행사</h6>
-                  <h3 class="text-bold mb-10">${dshProList}</h3>
-                </div>
-              </div>
-              <!-- End Icon Cart -->
-            </div>
-            <!-- End Col -->
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="icon-card mb-30">
-                <div class="icon orange">
-                  <i class="lni lni-user"></i>
-                </div>
-                <div class="content">
-                  <h6 class="mb-10">씨앗 회원</h6>
-                  <h3 class="text-bold mb-10">${dshMemList}</h3>
+                  <h5 class="mb-10">도서</h5>
+                  <h2 class="text-bold mb-10">${dshBoList}</h2>
                 </div>
               </div>
               <!-- End Icon Cart -->
@@ -109,53 +83,30 @@
           </div>
           <!-- End Row -->
           <div class="row">
-            <div class="col-lg-7">
-              <div class="card-style mb-30">
-                <div class="title d-flex flex-wrap justify-content-between">
-                  <div class="left">
-                    <h6 class="text-medium mb-10">연간 도서</h6>
-                    <h3 class="text-bold">$245,479</h3>
-                  </div>
-                  <div class="right">
-                  </div>
+            <div class="col">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon primary" style="margin-left: 30px; max-width: 68px; height: 68px;">
+                  <i class="lni lni-calendar"></i>
                 </div>
-                <!-- End Title -->
-                <div class="chart">
-                  <canvas
-                    id="Chart1"
-                    style="width: 100%; height: 400px"
-                  ></canvas>
+                <div class="content">
+                  <h5 class="mb-10">문화행사</h5>
+                  <h2 class="text-bold mb-10">${dshProList}</h2>
                 </div>
-                <!-- End Chart -->
               </div>
+              <!-- End Icon Cart -->
             </div>
             <!-- End Col -->
-            <div class="col-lg-5">
-              <div class="card-style mb-30">
-                <div
-                  class="
-                    title
-                    d-flex
-                    flex-wrap
-                    align-items-center
-                    justify-content-between
-                  "
-                >
-                  <div class="left">
-                    <h6 class="text-medium mb-30">연간 문화행사</h6>
-                  </div>
-                  <div class="right">
-                  </div>
+            <div class="col">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon orange" style="margin-left: 30px; max-width: 68px; height: 68px;">
+                  <i class="lni lni-user"></i>
                 </div>
-                <!-- End Title -->
-                <div class="chart">
-                  <canvas
-                    id="Chart2"
-                    style="width: 100%; height: 400px"
-                  ></canvas>
+                <div class="content">
+                  <h5 class="mb-10">씨앗 회원</h5>
+                  <h2 class="text-bold mb-10">${dshMemList}</h2>
                 </div>
-                <!-- End Chart -->
               </div>
+              <!-- End Icon Cart -->
             </div>
             <!-- End Col -->
           </div>
