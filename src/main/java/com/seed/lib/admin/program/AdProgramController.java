@@ -139,12 +139,19 @@ public class AdProgramController {
 
 		
 		if(programVO != null) {
-			
 			mv.addObject("proVO", programVO);
-			
 		}
 		
 		mv.setViewName("admin/program/proDetail");
+		
+		//프로그램 신청자
+		List<AdProgramVO> ar = programService.getMemberProgram(programVO);
+		
+		if(ar != null) {
+			mv.addObject("mP", ar);
+		}
+		
+		
 		
 		return mv;
 	}
