@@ -14,6 +14,7 @@
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
     
+    <script type="text/javascript" src="/js/admin/adMember.js"></script>
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
@@ -59,7 +60,7 @@
           <div class="tables-wrapper">
             <div class="row">
               <div class="col-lg-12">
-                <form action="./proList" method="get">
+                <!-- <form action="./proList" method="get"> -->
                   <div class="card-style mb-30">
                     <!-- <h6 class="mb-10">Data Table</h6> -->
                     <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
@@ -73,7 +74,7 @@
                           </span>
                         </div>
                         <div>
-                          <button type="submit" class="main-btn btn-sm rounded-md info-btn">
+                          <button type="button" class="main-btn btn-sm rounded-md info-btn">
                             검색
                             <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
                           </button>
@@ -114,52 +115,50 @@
                         </thead>
                         <tbody>
                           <c:forEach items="${memberList}" var="MemberVO">
-                          <tr>
-                            <td>
-                              <div class="employee-image">
-                                <!-- 이미지 어떤걸 넣을까 고민중 -->
-                                <img src="/images/logo200.png" alt="씨앗도서관"/>
-                              </div>
-                            </td>
-                            <td class="min-width">
-                              <p>${MemberVO.name}</p>
-                            </td>
-                            <td class="min-width">
-                              <p>${MemberVO.userName}</p>
-                            </td>
-                            <td class="min-width">
-                              <p>${MemberVO.gender}</p>
-                            </td>
-                            <td class="min-width">
-                              <fmt:formatDate value="${MemberVO.birth}" pattern="yyyy-MM-dd"/>
-                            </td>
-                            <td class="min-width">
-                              <p>${MemberVO.email}</p>
-                            </td>
-                            <td class="min-width">
-                              <fmt:formatDate value="${MemberVO.regDate}" pattern="yyy-MM-dd"/>
-                            </td>
-                            <td class="min-width">
-                              <p>${MemberVO.ovMyrCount}</p>
-                            </td>
-                            <td class="min-width">
-                              <span class="status-btn active-btn">${MemberVO.enabled}</span>
-                            </td>
-                            <td>
-                              <div class="action d-grid gap-2 d-md-flex justify-content-center">
-                                <button>
-                                  <a href="./memberUpdate?userName=${MemberVO.userName}" class="text-info">
-                                    <i class="lni lni-pencil-alt"></i>
-                                  </a>
-                                </button>
-                                <button>
-                                  <a href="./memberDelete?userName=${MemberVO.userName}" class="text-danger">
-                                    <i class="lni lni-trash-can"></i>
-                                  </a>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
+                          <form action="./locked" id="lockedForm" method="post">
+                            <tr>
+                              <td>
+                                <div class="employee-image">
+                                  <!-- 이미지 어떤걸 넣을까 고민중 -->
+                                  <img src="/images/logo200.png" alt="씨앗도서관"/>
+                                </div>
+                              </td>
+                              <td class="min-width">
+                                <p>${MemberVO.name}</p>
+                              </td>
+                              <td class="min-width">
+                                <input type="hidden" name="userName" value="${MemberVO.userName}">
+                                <p>${MemberVO.userName}</p>
+                              </td>
+                              <td class="min-width">
+                                <p>${MemberVO.gender}</p>
+                              </td>
+                              <td class="min-width">
+                                <fmt:formatDate value="${MemberVO.birth}" pattern="yyyy-MM-dd"/>
+                              </td>
+                              <td class="min-width">
+                                <p>${MemberVO.email}</p>
+                              </td>
+                              <td class="min-width">
+                                <fmt:formatDate value="${MemberVO.regDate}" pattern="yyy-MM-dd"/>
+                              </td>
+                              <td class="min-width">
+                                <p>${MemberVO.ovMyrCount}</p>
+                              </td>
+                              <td class="min-width">
+                                <span class="status-btn active-btn">${MemberVO.enabled}</span>
+                              </td>
+                              <td>
+                                <div class="action d-grid gap-2 d-md-flex justify-content-center">
+                                  <button onclick="memberLocked()">
+                                    <a class="text-info">
+                                      <i class="lni lni-pencil-alt"></i>
+                                    </a>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </form>
                           </c:forEach>
                           <!-- end table row -->
                         </tbody>
@@ -189,7 +188,7 @@
                     </nav>
                   </div>
                   <!-- end card -->
-                </form>
+                <!-- </form> -->
               </div>
               <!-- end col -->
             </div>
