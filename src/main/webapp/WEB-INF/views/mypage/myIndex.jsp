@@ -68,9 +68,7 @@
 										
 									<strong>${vo.name} </strong> 님, 안녕하세요.</div>
 										
-										<div class="btnModify">										
-											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
-										</div>
+										
 									</div>
 									<div class="myInfo">
 										<div class="memType">
@@ -87,6 +85,9 @@
 												<!-- <li><span>회원증번호</span> : </li>
 												<li class="mobileShow"><span class="emp1">※ 모바일회원증 캡처 이미지 사용 불가</span></li>-->
 											</ul>
+										</div>
+										<div class="btnModify">										
+											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
 										</div>
 									</div>
 
