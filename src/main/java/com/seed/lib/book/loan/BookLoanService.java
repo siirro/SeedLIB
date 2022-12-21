@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seed.lib.book.BookLibVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.book.LibVO;
+import com.seed.lib.member.MemberMapper;
+import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.BookLoanPager;
 import com.seed.lib.util.DateUtil;
 
@@ -25,6 +27,8 @@ public class BookLoanService {
 	@Autowired
 	private BookLoanMapper loanMapper;
 	
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	//가장 빠른 반납날짜 불러오기
 	public Date getRtDate (Long isbn) throws Exception{
@@ -198,6 +202,11 @@ public class BookLoanService {
 			//연체함
 			loanVO.setOverDue(1);
 			loanMapper.setRtOvUpdate(loanVO);
+			
+			MemberVO memberVO = new MemberVO();
+			memberVO.setUserName(loanVO.getUserName());
+			memberMapper.setOverCount(memberVO);
+			
 			return 1;	
 		}
 	}

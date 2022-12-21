@@ -75,6 +75,8 @@
 		</collection>
 		</resultMap>
 		
-
-		
+		<!--                      연체 반납 횟수 증가                      -->
+		<update id="setOverCount" parameterType="MemberVO">
+			UPDATE MEMBER SET OVMYRCOUNT = #{ovMyrCount} WHERE USERNAME = #{userName};
+		</update>
 </mapper>    

@@ -18,19 +18,20 @@ class MemberTest {
 	
 	@Test
 	void test() throws Exception {
-		MemberVO memberVO =new MemberVO();
-		memberVO.setUserName("adhyo");
-		memberVO.setPassword(passwordEncoder.encode("adhyo"));
-		memberVO.setName("admin");
-		memberVO.setEmail("adhyo@naver.com");
-		memberVO.setGender("여");
-		memberVO.setPhone("0102472389");
-		memberVO.setPost("aasf");
-		memberVO.setAddress1("asdf");
-		memberVO.setAddress2("aasdff");
-		memberVO.setBirth(null);
-		int result= mapper.setJoin(memberVO);
-		assertEquals(1, result);
+		for(int i=0; i<20; i++) {
+			MemberVO memberVO =new MemberVO();
+			memberVO.setUserName(i+i+"dosodoso");
+			memberVO.setPassword(passwordEncoder.encode("1"));
+			memberVO.setName("홍도서");
+			memberVO.setEmail("doso@naver.com");
+			memberVO.setGender("여");
+			memberVO.setPhone("0102472389");
+			memberVO.setPost("aasf");
+			memberVO.setAddress1("asdf");
+			memberVO.setAddress2("aasdff");
+			memberVO.setBirth(null);
+			int result= mapper.setJoin(memberVO);
+		}
 	
 	}
 

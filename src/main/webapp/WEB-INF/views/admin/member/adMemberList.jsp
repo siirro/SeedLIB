@@ -66,14 +66,6 @@
                       <div class="left">
                       </div>
                       <div class="right d-flex align-items-center">
-                        <div class="select-style-1" style="margin-bottom: 0;">
-                          <div class="select-position select-sm">
-                            <select name="kind">
-                              <option value="선택안함">선택안함</option>
-                              <option value="이름">이름</option>
-                            </select>
-                          </div>
-                        </div>
                         <div class="input-style-3" style="margin-bottom: 0px;">
                           <input type="text" placeholder="Search...." style="height: 46px;" />
                           <span class="icon">
@@ -109,7 +101,7 @@
                                         <option value="선택안함">회원상태</option>
                                         <option value="0">회원</option>
                                         <option value="1">회원탈퇴</option>
-                                        <option value="2">계정비활성화</option>
+                                        <option value="2">계정잠김</option>
                                       </select>
                                     </div>
                                   </div>
