@@ -59,9 +59,10 @@ public class AdProgramVO {
 		this.plDt = plDt+" "+plTime;
 	}
 	
-	private int mpNum;
-//	USERNAME
-//	PRONUM
-//	PROCHECK
-//	PROSTATE
+	//멤버프로그램 
+	private Long mpNum;
+	private String username;
+	private int proCheck;
+	private int proState;
+	private String name;
 }
