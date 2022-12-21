@@ -122,23 +122,6 @@
               dd = dd > 10 ? dd:'0' + dd;
               let dateString = yyyy+'-'+mm+'-'+dd
               return dateString;
-        }
-      
-      function makeCalendar(){
-        if($(".fc-bg-event").hasClass("room-0")){
-          let exitBtn = '<div style="display:flex; justify-content: center;" class="room">';		
-          exitBtn = exitBtn+'<button type="button" id="exitBtn" class="btn"">퇴실</button></div>';
-          $(".room-0 > .room").remove();
-          $(".room-0").append(exitBtn);
-          }	
-      
-          if($(".fc-bg-event").hasClass("room-1")){
-            let alreadyExit = '<div style="display:flex; justify-content: center;" class="room">';		
-            alreadyExit = alreadyExit+'<span class="studySuccess">열공 완!</span></div>';
-            $(".room-1 > .room").remove();
-            $(".room-1").append(alreadyExit);
-          }
-      
       }
       </script>
 </body>

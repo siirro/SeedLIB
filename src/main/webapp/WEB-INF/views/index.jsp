@@ -10,12 +10,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/images/favicon.png">
+<link rel="stylesheet" type="text/css" href="/css/calendar/calendar.css"/>
+<script src="/js/calendar/calendar.js"></script>
 
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 <style>
 	#searchBtn:hover {
 		cursor: pointer;
+	}
+
+	td .fc-day-mon{
+		background-color: #ff4c4c !important;
+	}
+	
+	.fc .fc-toolbar.fc-header-toolbar {
+    	margin-bottom: 0;
+	}		
+
+	td {
+    font-size: smaller !important;
+	font-weight: bolder;
 	}
 
 </style>
@@ -532,173 +547,20 @@
 				</script> -->
 
 				<!-- 달력 & 이용안내 -->
-				<div class="guideWrap">
-
+				<div class="guideWrap" style="margin-top: -50px;">
 					<!-- 도서관일정 -->
-					<div id="calendarWrap" class="schedule">
-						<div class="top">
-							<h5>도서관달력</h5>
-							<div class="guide">
-								<a href="#prev" onclick="fnCalendarSearchMonth('2022-10');" class="arrow prev"><span class="blind">이전 달 바로가기</span></a>
-								<a href="#next" onclick="fnCalendarSearchMonth('2022-12');" class="arrow next"><span class="blind">다음 달 바로가기</span></a>
-								<p class="year">2022.11</p>
+						<div id="calendarWrap" class="schedule">
+							<div style="display: flex; flex-direction: column; align-items: center; ">
+								<div id="calendar" style="width: 390px;">
+								</div>
+								<div class="guide_info">
+									<ul style="text-align: end;	margin-top: 5px;">
+										<li><i class="all"><span class="blind">원형 아이콘</span></i> 휴관일</li>
+										<li><a href="/guide/calendar">🟢도서관 일정 더보기</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
-
-						<div class="cont">
-							<div class="calendar">
-								<table>
-									<caption>휴관일 및 열람실개방휴관일 안내 일정표</caption>
-									<thead>
-										<tr>
-											<th scope="col" class="sun">일</th>
-											<th scope="col">월</th>
-											<th scope="col">화</th>
-											<th scope="col">수</th>
-											<th scope="col">목</th>
-											<th scope="col">금</th>
-											<th scope="col" class="sat">토</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<!-- 이렇게하면되나? 자바로 윤년 계산, 달별 일수 계산, -->
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td class="">
-												1
-											</td>
-											<td class="">
-												2
-											</td>
-											<td class="">
-												3
-											</td>
-											<td class="">
-												4
-											</td>
-											<td class="">
-												5
-											</td>
-												</tr>
-												<tr>
-											<td class="sun">
-												6
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-07" class="all" title="정기휴관일">7</a></div>
-											</td>
-											<td class="">
-												8
-											</td>
-											<td class="">
-												9
-											</td>
-											
-											<td class="">
-												10
-											</td>
-											
-											<td class="">
-												11
-											</td>
-											
-											<td class="">
-												12
-											</td>
-											</tr>
-
-											<tr>
-											<td class="sun">
-												13
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-14" class="holiday" title="정기휴관일">14</a></div>
-											</td>
-											<td class="">
-												15
-											</td>
-											<td class="">
-												16
-											</td>
-											<td class="">
-												17
-											</td>
-											<td class="">
-												18
-											</td>
-											<td class="">
-												19
-											</td>
-											</tr>
-
-											<tr>
-											<td class="sun">
-												20
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-21" class="all" title="정기휴관일">21</a></div>
-											</td>
-											<td class="">
-												22
-											</td>
-											<td class="">
-												23
-											</td>
-											<td class="">
-												24
-											</td>
-											<td class="">
-												25
-											</td>
-											<td class="">
-												26
-											</td>
-												</tr>
-												<tr>
-											<td class="sun">
-												27
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-28" class="holiday" title="정기휴관일">28</a></div>	
-											</td>
-											<td class="">
-												29
-											</td>
-											<td class="">
-												30
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-							<div class="guide_info">
-								<ul>
-									<li><i class="all"><span class="blind">원형 아이콘</span></i> 휴관일</li>
-									<li><i class="holiday"><span class="blind">사각형 아이콘</span></i> 열람실개방휴관일</li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="more"><a href="/seoksu/calendar.do?searchMonth=2022-11">
-							<span class="blind">도서관일정 더보기</span></a>
-						</div>
-
-					</div>
 					<!-- //도서관일정 -->
 
 					<!-- 이용안내 -->
@@ -723,7 +585,6 @@
 						</div>
 					</div>
 					<!-- //이용안내 -->
-
 				</div>
 				<!-- //달력 & 이용안내 -->
 			</div>
@@ -894,7 +755,43 @@
 <c:import url="./temp/footer.jsp"></c:import>
 <!-- //footer -->
 
-<script type="text/javascript"></script>
+<script>
+	let calendar;
+
+	document.addEventListener('DOMContentLoaded', function() {
+	//   let data = '${cl}';
+	//   let id = "";
+	//   data = JSON.parse(data);
+	  let calendarEl = document.getElementById('calendar');
+		  calendar = new FullCalendar.Calendar(calendarEl, {
+		  height: 340,
+		  fixedWeekCount:false,
+		  initialView: 'dayGridMonth',
+		//   events: data
+	  })
+	  
+	  calendar.render();
+  
+	  });
+  
+		$("#calendar").on("click", ".fc-next-button", function(){
+		console.log("dddd");
+	   })
+  
+	   $("#calendar").on("click", ".fc-prev-button", function(){
+		console.log("dddd");
+	   })
+  
+	function curDate(date){
+		  let yyyy = date.getFullYear();
+		  let mm = date.getMonth()+1;
+		  let dd = date.getDate();
+		  mm = mm > 10 ? mm:'0' + mm;
+		  dd = dd > 10 ? dd:'0' + dd;
+		  let dateString = yyyy+'-'+mm+'-'+dd
+		  return dateString;
+  }
+  </script>
 
 <!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
 <input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">
