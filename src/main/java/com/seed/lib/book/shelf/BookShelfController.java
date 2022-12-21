@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,7 @@ import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.book.loan.BookLoanVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 import com.seed.lib.util.ShelfBookPager;
 import com.seed.lib.util.ShelfPager;
 
@@ -30,15 +33,21 @@ public class BookShelfController {
 	@Autowired
 	private BookShelfService bookShelfService;
 	
+	@Autowired
+	private MypageService mypageService;
+	
 	//책꽂이 목록
 		//마이페이지 - Pager O
 		//shelf/list?userName=
 	@GetMapping("list")
-	public ModelAndView getShelfListP (HttpSession session, ShelfPager pager) throws Exception {
+	public ModelAndView getShelfListP (HttpSession session, MemberVO memberVO, ShelfPager pager) throws Exception {
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+		
 		ModelAndView mv = new ModelAndView();
 		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
 					
@@ -61,13 +70,14 @@ public class BookShelfController {
 		//동일한 이름 있을 시 생성 불가
 		//shelf/newshelf?userName=
 	@GetMapping("newShelf")
-	public ModelAndView setNewShelf (BookShelfVO shelfVO, HttpSession session) throws Exception{
+	public ModelAndView setNewShelf (BookShelfVO shelfVO, MemberVO memberVO, HttpSession session) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+		
 		ModelAndView mv = new ModelAndView();
 		
-		// 세션에서 한 유저의 정보를 꺼냄
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-
-		// 비어있지 않다면 모델앤뷰에 넣기
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
 		}
@@ -112,14 +122,15 @@ public class BookShelfController {
 		//동일한 책 있으면 저장 불가
 		//shelf/addBook?isbn= &userName=
 	@GetMapping("addBook")
-	public ModelAndView setBookAdd (String userName, Long isbn, HttpSession session) throws Exception{
+	public ModelAndView setBookAdd (String userName, Long isbn, MemberVO memberVO, HttpSession session) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+		
 		ModelAndView mv = new ModelAndView();
 		BookPickVO pickVO = new BookPickVO();
 		
-		// 세션에서 한 유저의 정보를 꺼냄
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
-
-		// 비어있지 않다면 모델앤뷰에 넣기
 		if(memberVO != null) {
 			mv.addObject("member", memberVO);
 			
@@ -165,12 +176,14 @@ public class BookShelfController {
 	//책꽂이 상세(책꽂이에 저장된 책 목록)
 		//shelf/bookList?shNum=
 	@GetMapping("bookList")
-	public ModelAndView getBookList (Long num, HttpSession session, ShelfBookPager pager) throws Exception{
+	public ModelAndView getBookList (Long num, HttpSession session, MemberVO memberVO, ShelfBookPager pager) throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    memberVO = mypageService.getMyPage(memberVO);
+
 		ModelAndView mv = new ModelAndView();
-		
-		//사용자 정보
-		MemberVO memberDTO = (MemberVO)session.getAttribute("member");
-		mv.addObject("member", memberDTO);
+		mv.addObject("member", memberVO);
 		
 		//책 리스트
 		List<BookVO> ar = bookShelfService.getBookList(pager);

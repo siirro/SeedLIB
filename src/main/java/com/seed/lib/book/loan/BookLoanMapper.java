@@ -31,7 +31,7 @@ public interface BookLoanMapper {
 	public int getBookLoan (BookLoanVO loVO) throws Exception;
 	
 	//대출 가능한 회원인지? - 연체일 기간 지났는지 판단
-	//public int getOverdue () throws Exception;
+	public int getOverdue () throws Exception;
 	
 	//대출 신청 (인서트)
 	public int setLoan (BookLoanVO loVO) throws Exception;
@@ -69,6 +69,18 @@ public interface BookLoanMapper {
 	
 	//상호대출 책 권수
 	public int getMuCount (BookLoanVO loVO) throws Exception;
+	
+//-----------------------------------------------------------------------
+	
+	//반납 - myreturn
+	public int setReturn (MyReturnVO returnVO) throws Exception;
+	
+	//반납 상태 업데이트 - Loan
+	public void setRtOvUpdate (BookLoanVO loanVO) throws Exception;
+	
+	//연체 여부 확인 - 반납일/대출만기일 비교
+	public Date getNow (MyReturnVO returnVO) throws Exception;
+	public Date isOver (MyReturnVO returnVO) throws Exception;
 	
 //-----------------------------------------------------------------------	
 	

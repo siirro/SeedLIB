@@ -84,41 +84,25 @@
 					<!-- 게시판 목록 -->
 					<div class="boardWrap">
 						<table class="board-list">
-							<caption>도서관소식 : 번호, 제목, 첨부, 작성일, 조회수로 구성된 게시물 목록</caption>
-							<colgroup>
-								<col class="no mobileHide">
-								
-								
-									<col class="lib">
-								
-								<col>
-								
-									<col class="attach mobileHide">
-								
-								<col class="date mobileHide">
-								<col class="hits mobileHide">
-							</colgroup>
+
+							<caption>도서관소식 : 번호, 제목, 작성일, 조회수로 구성된 게시물 목록</caption>
 							<thead>
+				
 								<tr>
-									<th scope="col" class="mobileHide">번호</th>
-									<th scope="col" class="mobileHide">제목</th>
-									<th scope="col" class="mobileHide">작성일</th>
-									<th scope="col" class="mobileHide">조회수</th>
+									<th scope="col" style="width: 10%;">번호</th>
+									<th scope="col" style="width: 60%;">제목</th>
+									<th scope="col" style="width: 20%;">작성일</th>
+									<th scope="col" style="width: 10%;">조회수</th>
+
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="vo">
 								<tr>
-									<input type="hidden" value= "${vo.boardNum}">
-									<td> <img src="../../../../images/ico_noice.png"></td>
+									<td>${vo.boardNum}</td>
 									<td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
-									<td>${vo.writer}</td>
 									<td>${vo.regDate}</td>
 									<td>${vo.hit}</td>
-									
-									<c:if test="${vo} == null">
-		                            <td class="message footable-last-column footable-first-column" colspan="11">게시물 정보가 없습니다.</td>
-		                             </c:if>
 								</tr>	
 						</c:forEach>
 							</tbody>

@@ -77,7 +77,7 @@
 	
 	<delete id="setBookDelete" parameterType="BookPickVO">
 		DELETE FROM PICK
-			WHERE ISBN = #{isbn} ANS SHNUM = #{shNum}
+			WHERE SHNUM = #{shNum} AND ISBN = #{isbn}
 	</delete>
 	
 	

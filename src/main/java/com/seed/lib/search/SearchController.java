@@ -119,7 +119,7 @@ public class SearchController {
 		log.info("getKind : {}", searchDetailPager.getKind());
 		
 		if(ar.size()==0) {
-			mv.addObject("message", "검색결과가가 없습니다.");
+			mv.addObject("message", "검색결과가 없습니다.");
 		}
 		
 		return mv;

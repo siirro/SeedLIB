@@ -56,7 +56,8 @@ $(".seatList").on("click",".resBtn",function(){
 })
 
 $("#revBtn").click(function(){
-    window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
+    console.log(userName);
+    let checkSeat = window.confirm("이용 종료 후 꼭 퇴실 체크를 하시기 바랍니다");
     const studyDetailVO={
         seatNum:$("#seatNum").attr("value"),
         roomNum:$("#roomNum").attr("value"),
@@ -64,7 +65,7 @@ $("#revBtn").click(function(){
     }
 
     console.log(studyDetailVO);
-
+if(checkSeat){
     $.ajax({
         type:"POST",
         url:"/studyroom/setSeat",
@@ -98,6 +99,9 @@ $("#revBtn").click(function(){
                 console.log("에러남ㅠㅠ");
             }
     })
+} else{
+    return;
+}
 })
 
 {/* <button class="resBtn" data-res-num="${r}">예약</button> */}

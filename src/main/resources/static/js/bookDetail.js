@@ -195,56 +195,13 @@ $(".LoginBtn").click(function(){
 		},
 		error : function(){
 			console.log("ERROR");
+			 window.close();
 		}
 	})
 });
 
 //-------------------------------------------------
-//소장도서관
-$(function(){
-	$('.listDropdown').on("click", function(){
-		if(!$(this).hasClass("on")) {
-			$(this).addClass('on');
-			$('.thisBook-libraryselecter').addClass('open');
-		} else {
-			$(this).removeClass('on');
-			$('.thisBook-libraryselecter').removeClass('open');
-		}
-	});
 
-	$("#collectionLibraryAll").click(function(){
-		$(this).prop('checked', true);
-		$('.thisBook-libraryselecter a').removeClass('on');
-		$('.thisBook-libraryList tbody tr').css('display','table-row');
-    });
-
-	$('.thisBook-libraryselecter a').on("click", function(){
-		if ($("#collectionLibraryAll").is(":checked")){
-			$("#collectionLibraryAll").prop('checked', false);
-			$('.thisBook-libraryList tbody tr').css('display','none');
-		}
-
-		var name = $(this).data("name");
-		if(!$(this).hasClass("on")) {
-			$(this).addClass("on").attr("title", "선택됨,해당 도서관의 책 소장정보 표시됨");
-			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','table-row');
-		} else {
-			$(this).removeClass("on").attr("title", "선택되지 않음");
-			$('.thisBook-libraryList tbody tr' + '.' + name).css('display','none');
-		}
-	});
-
-	$('.dropBookData #dataInfo').on("click", function(){
-	    if(!$(this).hasClass("on")) {
-	      $(this).addClass('on');
-	      $(this).parents('tr').siblings('tr').find('#dataInfo').removeClass('on');
-	      $('.dropBookData.dataInfo').addClass('open');
-	    } else {
-	      $(this).removeClass('on');
-	      $('.dropBookData.dataInfo').removeClass('open');
-	    }
-	  });
-});
 
 	function fnSerialVolList(speciesKey){
 		$("#serialCollectionVol").load("/search/include/detailSerialCollectionVolList.do", {speciesKey : speciesKey});

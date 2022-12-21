@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.member.MemberService;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +28,9 @@ public class BoOrderController {
 	
 	@Autowired
 	private BoOrderService boOrderService;
+	
+	@Autowired
+	private MypageService mypageService;
 	
 	@PostMapping("boOrder")
 	@ResponseBody
@@ -38,7 +45,14 @@ public class BoOrderController {
 		ModelAndView mv = new ModelAndView();
 		
 		BookPrintVO bookPrintVO = new BookPrintVO();
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		
+		MemberVO memberVO = new MemberVO();
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Authentication authentication = context.getAuthentication();
+		memberVO  = (MemberVO)authentication.getPrincipal();
+		memberVO = mypageService.getMyPage(memberVO);
+		log.info("mvo:{}",memberVO);
+		
 		
 //		bookPrintVO.setUserName(memberVO.getUserName());
 		
@@ -52,23 +66,22 @@ public class BoOrderController {
 	
 	// 도서 바구니 추가	
 	@PostMapping("boAdCart")
-	@ResponseBody
-	public int setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
+	public String setBoAdCart(BookPrintVO bookPrintVO, HttpSession session)throws Exception{
 		
-//		ModelAndView mv = new ModelAndView();
-		
-		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		MemberVO memberVO = new MemberVO();
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Authentication authentication = context.getAuthentication();
+		memberVO  = (MemberVO)authentication.getPrincipal();
+		memberVO = mypageService.getMyPage(memberVO);
+		log.info("mvo:{}",memberVO);
 		
 		bookPrintVO.setUserName(memberVO.getUsername());
-		
-		log.info("에이작스 했니?");
-		log.info("bookPrint {} ", bookPrintVO.getCaAmount());
-		log.info("bookPint {} ", bookPrintVO.getBookVO().getIsbn());
 		
 		int result = boOrderService.setBoCart(bookPrintVO);
 		
 		
-		return result;
+		
+		return "search/simple";
 	}
 	
 }

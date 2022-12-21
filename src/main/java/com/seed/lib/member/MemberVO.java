@@ -36,6 +36,7 @@ public class MemberVO implements UserDetails, OAuth2User{
 	private boolean loanStatus;
 	private Integer ovMyrCount;
 	private boolean dropStatus;
+	private Long ovDate;
 	
 	// 제본 여러번
 	private List<BookPrintVO> bookPrintVOs;
@@ -94,7 +95,13 @@ public class MemberVO implements UserDetails, OAuth2User{
 		// TODO Auto-generated method stub
 		return true;
 	}	
+	
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
+	
 
 	@Override
 	public boolean isEnabled() {

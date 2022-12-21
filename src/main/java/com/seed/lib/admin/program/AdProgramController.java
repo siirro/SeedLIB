@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seed.lib.util.DateUtil;
@@ -22,6 +23,18 @@ public class AdProgramController {
 
 	@Autowired
 	private AdProgramService programService;
+	
+	@GetMapping("proUpdateStatus")
+	@ResponseBody
+	public ModelAndView setUpdateStatus(AdProgramVO programVO)throws Exception{
+		log.info("프로프로programVO 프로넘과 렉스태이터스{}",programVO);
+		ModelAndView mv = new ModelAndView();
+		
+		programService.setUpdateStatus(programVO);
+		mv.setViewName("admin/program/proList");
+		return mv;
+	}
+
 	
 	// 문화프로그램 삭제
 	@GetMapping("proDelete")
@@ -77,17 +90,20 @@ public class AdProgramController {
 	
 	// 문화프로그램 수정(POST)
 	@PostMapping("proUpdate")
-	public ModelAndView setProgramUpdate(AdProgramVO programVO)throws Exception{
+	public ModelAndView setProgramUpdate(AdProgramVO programVO, String name, String teacher)throws Exception{
+			
+		log.info("프로그램VO {}", programVO);
 		
 		ModelAndView mv = new ModelAndView();
+		
 		int result = 0;
 		String title = "실패..";
 		String text = "프로그램수정을 실패했습니다!";
 		String icon = "error";
 		String button = "확인";
-		String url = "./program/proUpdate";
+		String url = "../program/proUpdate";
 		
-		result = programService.setProgramUpdate(programVO);
+		result = programService.setProgramUpdate(programVO, name, teacher);
 		
 		if(result > 0) {
 			
@@ -95,7 +111,7 @@ public class AdProgramController {
 			title = "성공!!";
 			text = "프로그램수정을 성공했습니다!";
 			icon = "success";
-			url="../program/proUpdate";
+			url="../program/proList";
 			mv.addObject("proVO", programVO);
 			
 		}

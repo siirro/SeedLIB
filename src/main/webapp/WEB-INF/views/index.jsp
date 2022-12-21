@@ -439,95 +439,42 @@
 							<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
 								<div class="swiper-slide swiper-slide-active" style="width: 750px;">
 									<ul class="cultureList clearfix">
+
+										<c:forEach items="${nP}" var="nP">
 										<li>
 											<a href="/seoksu/lectureDetail.do?lectureIdx=5607">
 												<dl>
-													<dt>석수도서관
-															<span class="ing">접수중</span>
+													<dt>${nP.proPlace}
+														<c:choose>
+															<c:when test="${nP.recStatus eq '예정'}">
+																<span class="ready">접수예정</span>
+															</c:when>
+															<c:when test="${nP.recStatus eq '접수중'}">
+																<span class="ing">접수중</span>
+															</c:when>
+															<c:when test="${nP.recStatus eq '마감'}">
+																<span class="end">마감</span>
+															</c:when>
+															<c:otherwise>
+																<span class="end">에러</span>
+															</c:otherwise>
+
+														</c:choose>
+															
+															
+															
 													</dt>
-													<dd class="title">[하반기] 창의쑥쑥 그림책 나라</dd>
+													<dd class="title">${nP.proTitle}</dd>
 													<dd class="info">
-														<span>대상 :</span>어린이
+														<span>대상 :</span>${nP.target}
 														<br>
-														<span>접수 :</span>2022.09.06 ~ 09.22
+														<span>접수 :</span>${nP.prsDate} ~ ${nP.prlDate}
 													</dd>
 												</dl>
 											</a>
 										</li>
+										</c:forEach>
 										
-										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5606">
-												<dl>
-													<dt>석수도서관
-															<span class="ready">접수예정</span>
-													</dt>
-													<dd class="title">[하반기] 시니어 유튜브 크리에이터</dd>
-													<dd class="info">
-														<span>대상 :</span>성인<br>
-														<span>접수 :</span>
-														2022.09.06 ~ 09.27</dd>
-												</dl>
-											</a>
-										</li>
-										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5605">
-												<dl>
-													<dt>석수도서관
-															<span class="end">마감</span>
-													</dt>
-													<dd class="title">[하반기] 영어 그림책 함께 읽기</dd>
-													<dd class="info">
-														<span>대상 :</span>어린이<br>
-														<span>접수 :</span>
-														2022.09.06 ~ 09.23
-													</dd>
-												</dl>
-											</a>
-										</li>
-										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5604">
-												<dl>
-													<dt>석수도서관
-															<span class="end">마감</span>
-													</dt>
-													<dd class="title">[하반기] 성인동화구연지도 (자격증반) </dd>
-													<dd class="info">
-														<span>대상 :</span>성인, 누구나<br>
-														<span>접수 :</span>
-														2022.09.06 ~ 09.14
-													</dd>
-												</dl>
-											</a>
-										</li>
-										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5603">
-												<dl>
-													<dt>석수도서관
-															<span class="end">마감</span>
-													</dt>
-													<dd class="title">[하반기] 생각이 자라는 미술 (B반)</dd>
-													<dd class="info">
-														<span>대상 :</span>유아<br>
-														<span>접수 :</span>
-														2022.09.06 ~ 09.14
-													</dd>
-												</dl>
-											</a>
-										</li>
-										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5602">
-												<dl>
-													<dt>석수도서관
-															<span class="end">마감</span>
-													</dt>
-													<dd class="title">[하반기] 생각이 자라는 미술 (A반)</dd>
-													<dd class="info">
-														<span>대상 :</span>유아<br>
-														<span>접수 :</span>2022.09.06 ~ 09.20
-													</dd>
-												</dl>
-											</a>
-										</li>
 									</ul>
 								</div>
 							</div>
@@ -818,9 +765,9 @@
 			<!-- 북리스트 -->
 			<div class="bookZone">
 				<ul class="tab book clearfix">
-					<li class="on"><a href="javascript:popularBook()">공공도서관 인기도서</a></li>
-					<li><a href="javascript:recommendBook();">추천도서</a></li>
-					<li><a href="javascript:accessionBook()">신착도서</a></li>
+					<li id="b1" class="on"><a href="javascript:popularBook()">공공도서관 인기도서</a></li>
+					<li id="b2"><a href="javascript:recommendBook();">추천도서</a></li>
+					<li id="b3"><a href="javascript:accessionBook()">신착도서</a></li>
 				</ul>
 				
 				<div id="popularBook" class="bookListWrap">
@@ -828,8 +775,8 @@
 						<c:forEach items="${popularBook}" var="list1">
 						<li>
 							<span class="cover">
-								<a href="/seoksu/libraryPopularBookDetail.do?isbn=9791161571188">
-									<img src="${list1.image}" alt="${list1.title}" onerror="javascript:fnImageLoadError(this); return false;">
+								<a href="./book/detail?isbn=${list1.isbn}">
+									<img src="${list1.image}" alt="${list1.title}">
 								</a>
 							</span>
 							<span class="txt">${list1.title}</span>
@@ -842,15 +789,15 @@
 					<ul class="bookList clearfix">
 						<li>
 							<span class="cover">
-								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
-									<img src="https://shopping-phinf.pstatic.net/main_3437283/34372834618.20221019120118.jpg" alt="걱정 많은 어른들을 위한 화학 이야기" onerror="javascript:fnNoImgBook(this);">
+								<a href="./book/detail?isbn=9791160947045">
+									<img src="https://image.aladin.co.kr/product/25965/67/cover200/k892737124_2.jpg" alt="사이보그가 되다">
 								</a>
 							</span>
-							<span class="txt">걱정 많은 어른들을 위한 화학 이야기</span>
+							<span class="txt">사이보그가 되다</span>
 						</li>
 						<li>
 							<span class="cover">
-								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+								<a href="./book/detail?isbn=9791165213183">
 									<img src="https://image.aladin.co.kr/product/25415/58/cover200/k032633114_1.jpg" alt="IT 엔지니어를 위한 네트워크 입문 =Introduction to networks for IT engineers" onerror="javascript:fnNoImgBook(this);">
 								</a>
 							</span>
@@ -858,7 +805,7 @@
 						</li>
 						<li>
 							<span class="cover">
-								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+								<a href="./book/detail?isbn=9791191043723">
 									<img src="https://image.aladin.co.kr/product/29396/69/cover/k402837513_1.jpg" alt="어느 날 내 죽음에 네가 들어왔다" onerror="javascript:fnNoImgBook(this);">
 								</a>
 							</span>
@@ -866,7 +813,7 @@
 						</li>
 						<li>
 							<span class="cover">
-								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+								<a href="./book/detail?isbn=9791191825084">
 									<img src="https://image.aladin.co.kr/product/27920/22/cover200/k122734505_2.jpg" alt="기묘한 미술관 :아름답고 서늘한 명화 속 미스터리" onerror="javascript:fnNoImgBook(this);">
 								</a>
 							</span>
@@ -874,7 +821,7 @@
 						</li>
 						<li>
 							<span class="cover">
-								<a href="/seoksu/recommendBookDetail.do?searchCategory=3&amp;recommendBookIdx=3926">
+								<a href="./book/detail?isbn=9788954646079">
 									<img src="http://image.aladin.co.kr/product/15533/81/cover/k852533629_1.jpg" alt="바깥은 여름 :김애란 소설" onerror="javascript:fnNoImgBook(this);">
 								</a>
 							</span>
@@ -888,8 +835,8 @@
 						<c:forEach items="${accessionBook}" var="list3" >
 						<li>
 							<span class="cover">
-								<a href="#link" onclick="fnAccessionBookDetail('106022579', '9788949162485', 'MO'); return false;">
-									<img src="${list3.image}" onerror="javascript:fnNoImgBook(this); return false;" alt="랑랑 형제 떡집">
+								<a href="./book/detail?isbn=${list3.isbn}">
+									<img src="${list3.image}" alt="${list3.title}">
 								</a>
 							</span>
 							<span class="txt">${list3.title}</span>
@@ -904,6 +851,10 @@
 			<script>
 				function popularBook() {
 					
+					$("#b1").addClass("on");
+					$("#b2").removeClass("on");
+					$("#b3").removeClass("on");
+
 					$("#recommendBook").hide();
 					$("#accessionBook").hide();
 					$("#popularBook").fadeIn();
@@ -911,6 +862,9 @@
 
 				function recommendBook() {
 					
+					$("#b2").addClass("on");
+					$("#b1").removeClass("on");
+					$("#b3").removeClass("on");
 					$("#accessionBook").hide();
 					$("#popularBook").hide();
 					$("#recommendBook").fadeIn();
@@ -918,6 +872,9 @@
 
 				function accessionBook() {
 
+					$("#b3").addClass("on");
+					$("#b2").removeClass("on");
+					$("#b1").removeClass("on");
 					$("#popularBook").hide();
 					$("#recommendBook").hide();
 					$("#accessionBook").fadeIn();

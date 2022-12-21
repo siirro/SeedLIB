@@ -58,8 +58,9 @@ class AdProgramServiceTest {
 		Date plDate = dateUtil.parseDate("2022-12-05 11:00:00");
 		programVO.setPrlDate(plDate);
 		programVO.setProTeacher("이유 선생님");
-		
-		int result = programService.setProgramUpdate(programVO);
+		String name="웅이";
+		String teacher = "선생";		
+		int result = programService.setProgramUpdate(programVO, name, teacher);
 		
 		assertEquals(1, result);
 		
