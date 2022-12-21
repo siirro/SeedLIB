@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,10 @@ public class InfoController {
 	
 	@Autowired
 	private SearchService searchService;
+	
+
+	@Value("${kakao.map.api.yr}")
+	private String kakaoJavaKey;
 	
 //	@GetMapping("bookStatus")
 //	public void getBookStat()throws Exception{
@@ -71,9 +76,14 @@ public class InfoController {
 		return "info/law";
 	}
 	
+
 	@GetMapping("map")
-	public String getMap()throws Exception{
-		return "info/map";
+	public ModelAndView getMap()throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("key", kakaoJavaKey);
+		mv.setViewName("info/map");
+		return mv;
 	}
 
 }
