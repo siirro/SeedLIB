@@ -61,7 +61,8 @@
 					<div class="boardWrap">
 					
 					<div>
-					<button type="button" id="update" class="btn btn-primary"><a href="./update">글수정</a></button>
+					<button type="button" id="update" class="btn btn-primary"><a href="./update?boardNum=${board.boardNum}">글수정</a></button>
+					<button type="button" id="delete" class="btn btn-primary"><a href="./delete?boardNum=${board.boardNum}">글삭제</a></button>
 					 </div>		
 						<table class="board-view">
 							<caption>도서관소식 상세화면 : 제목, 작성일, 조회수, 첨부파일, 내용으로 구성</caption>
@@ -72,23 +73,25 @@
 							<tbody>
 								<tr>
 									<th scope="row">제목</th>
-									<td>${boardVO.title}</td>
+									<td>${board.title}</td>
 								</tr>
 								
 								<tr>
 									<th scope="row">작성자</th>
-									<td>${boardVO.writer}</td>
+								<td>${board.writer}</td>
+									
+								
 								</tr>
 						
 						
 								<tr>
 									<th scope="row">작성일</th>
-									<td>${boardVO.regDate}</td>
+									<td>${board.regDate}</td>
 								</tr>
 								
 								<tr>
 									<th scope="row">조회수</th>
-									<td>${boardVO.hit}</td>
+									<td>${board.hit}</td>
 								</tr>
 								
 									<tr>
@@ -107,7 +110,7 @@
 								<tr>
 									<td colspan="2" class="content">
 									
-								   <strong> ${boardVO.contents} </strong>
+								   <strong> ${board.contents} </strong>
 
 									</td>
 								</tr>
@@ -124,7 +127,7 @@
 					</div>
 
 					<div class="btnGroup">
-						<a href="/" id="listBtn" class="btn list">목록</a>
+						<a href="/.list" id="listBtn" class="btn list">목록</a>
 					</div>
 					
 

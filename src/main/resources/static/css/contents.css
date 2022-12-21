@@ -3,7 +3,7 @@
 /* login */
 .loginWrap {text-align:center; padding: 7px; background:url(/include/image/contents/bg_pattern.png) 0 0;}
 .loginForm {background-color:#fff;}
-.loginGroup {display:inline-block; padding:70px 0 50px;}
+.loginGroup {display:inline-block; padding:70px 0 50px; width: 100%; max-width:500px;}
 .loginGroup .loginArea {position: relative; width: 100%; max-width: 500px; background: url(/include/image/contents/img_login.png) no-repeat 0 0;}
 .loginGroup .loginArea .inpArea {position: relative; width: calc(100% - 130px); height: 50px; border: 1px solid #ddd; box-sizing: border-box; background-color: #fff;}
 .loginGroup .loginArea .inpArea input {width: 100%; height: 48px; padding: 0 10px; line-height: 48px; border: none;}

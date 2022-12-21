@@ -86,11 +86,13 @@
                                                     <td><input type="text" id="title" name="title" class="form-ele full"></td>
                                                 </tr>
                                                 
-                                                <sec:authentication property="Principal" var="memberVO"/>
                                                 <tr>
                                                     <th scope="row">작성자</th>
-                                                    <td><input type=text readonly="readonly" name="writer" value=""></td>
+                                                    <td><input type=text readonly="readonly" name="writer" value="${vo.name}"></td>
+                                              
                                                 </tr>
+                                                
+
                                                 
                                                  <tr>
                                                    <th scope="row">첨부파일</th>
