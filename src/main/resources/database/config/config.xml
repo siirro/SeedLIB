@@ -18,6 +18,8 @@
 		<typeAlias type="com.seed.lib.book.loan.BookLoanVO" alias="BookLoanVO"/>
 		<typeAlias type="com.seed.lib.book.loan.BookMutualLoanVO" alias="BookMutualLoanVO"/>
 		<typeAlias type="com.seed.lib.book.loan.BookReservationVO" alias="BookReservationVO"/>
+		<typeAlias type="com.seed.lib.book.loan.MyReturnVO" alias="MyReturnVO"/>
+		
 		<typeAlias type="com.seed.lib.util.ShelfPager" alias="ShelfPager"/>
 		<typeAlias type="com.seed.lib.util.ShelfBookPager" alias="ShelfBookPager"/>
 		<typeAlias type="com.seed.lib.util.BookPager" alias="BookPager"/>

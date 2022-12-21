@@ -60,6 +60,8 @@ $("#ProDelAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
+				case 3:
+					break;
 				case 2:
 					break;
 				case 1:

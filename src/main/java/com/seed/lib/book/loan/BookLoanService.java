@@ -180,7 +180,7 @@ public class BookLoanService {
 		
 		//연체 여부 확인
 		Date n = loanMapper.getNow(returnVO); //반납일
-		Date o = loanMapper.isOver(loanVO); //대출만기일
+		Date o = loanMapper.isOver(returnVO); //대출만기일
 		
 		// o가 더 크면 true
 		boolean m = n.after(o);
@@ -197,6 +197,7 @@ public class BookLoanService {
 			//반납상태 0 / 연체 1
 			loanVO.setRtStatus(0);
 			loanVO.setOverDue(1);
+			loanVO.setLoanNum(returnVO.getLoanNum());
 			loanMapper.setRtOvUpdate(loanVO);
 			return 1;
 		}

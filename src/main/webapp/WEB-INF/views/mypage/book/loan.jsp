@@ -142,9 +142,9 @@
 	                                        			<td>${sd}</td>
 	                                        			<td>${ld}</td>
 	                                        			<td>
-				                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
+				                                      		<input type="text" class="isbnR" value="${book.isbn}">
 				                                      		<input type="text" class="loanNum" value="${lo.loanNum}">
-	                                        				<button type="button" class="btn white small" id="Btn" title="도서반납">도서반납</button>
+	                                        				<button type="button" class="btn white small" id="ReturnAlretBtn" title="도서반납">도서반납</button>
 	                                        			</td>
 	                                        			<td>${lo.extension}</td>
 	                                        			<td>

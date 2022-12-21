@@ -120,20 +120,18 @@
 											<dt>한국십진분류</dt>
 											<dd>
 												<span>
-													<a href="#search" onclick="fnSearchKdc('l600');">
-														<c:choose>
-															<c:when test="${bookVO.category eq 0}">총류</c:when>
-															<c:when test="${bookVO.category eq 1}">철학</c:when>
-															<c:when test="${bookVO.category eq 2}">종교</c:when>
-															<c:when test="${bookVO.category eq 3}">사회과학</c:when>
-															<c:when test="${bookVO.category eq 4}">자연과학</c:when>
-															<c:when test="${bookVO.category eq 5}">기술과학</c:when>
-															<c:when test="${bookVO.category eq 6}">예술</c:when>
-															<c:when test="${bookVO.category eq 7}">언어(어학)</c:when>
-															<c:when test="${bookVO.category eq 8}">문학</c:when>
-															<c:when test="${bookVO.category eq 9}">역사</c:when>
-														</c:choose>
-													</a>
+													<c:choose>
+														<c:when test="${bookVO.category eq 0}">총류</c:when>
+														<c:when test="${bookVO.category eq 1}">철학</c:when>
+														<c:when test="${bookVO.category eq 2}">종교</c:when>
+														<c:when test="${bookVO.category eq 3}">사회과학</c:when>
+														<c:when test="${bookVO.category eq 4}">자연과학</c:when>
+														<c:when test="${bookVO.category eq 5}">기술과학</c:when>
+														<c:when test="${bookVO.category eq 6}">예술</c:when>
+														<c:when test="${bookVO.category eq 7}">언어(어학)</c:when>
+														<c:when test="${bookVO.category eq 8}">문학</c:when>
+														<c:when test="${bookVO.category eq 9}">역사</c:when>
+													</c:choose>
 												</span>
 											</dd>
 										</dl>

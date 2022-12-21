@@ -80,7 +80,7 @@ public interface BookLoanMapper {
 	
 	//연체 여부 확인 - 반납일/대출만기일 비교
 	public Date getNow (MyReturnVO returnVO) throws Exception;
-	public Date isOver (BookLoanVO loanVO) throws Exception;
+	public Date isOver (MyReturnVO returnVO) throws Exception;
 	
 //-----------------------------------------------------------------------	
 	

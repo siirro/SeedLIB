@@ -37,13 +37,17 @@
 		            </div>
 		    
 		            <div id="contents" class="contentArea">
-		            	${can} - 0이면 신청가능 / 1이면 불가
-		            	${vo}
-		            	${vo.proNum}
-		            	${member.userName}
+		            	${vo} <br>
+		            	<input type="text" id="proNum" value="${vo.proNum}"> proNum : ${vo.proNum}<br> 
+		            	<input type="text" id="userName" value="${member.userName}"> userName : ${member.userName} <br>
 		            	<button type="button" class="btn white small" id="ProAlretBtn" title="신청">신청</button>
 		            </div>
 		        </div>
 		    </div>
 		</div>
 	</div>
+	
+	<c:import url="../temp/footer.jsp"></c:import> 
+	<script type="text/javascript" src="/js/program.js"></script>
+</body>
+</html>

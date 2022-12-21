@@ -38,6 +38,10 @@
 		    
 		            <div id="contents" class="contentArea">
 		            	${li}
+		            	<br>↓↓↓↓<br>
+		            	<c:forEach var="p" items="${li}">
+		            		<a href="/program/detail?proNum=${p.proNum}">${p.proTitle} 상세페이지</a>
+		            	</c:forEach>
 		            </div>
 		            
 		            <div>
