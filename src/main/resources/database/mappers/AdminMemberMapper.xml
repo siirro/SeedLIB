@@ -20,6 +20,9 @@
 				INNER JOIN
 				`ROLE` R
 				ON MR.ROLENUM = R.ROLENUM
+			<if test="search != null">
+				WHERE M.USERNAME LIKE CONCAT ('%', #{search}, '%')
+			</if>
 			ORDER BY M.USERNAME ASC, MR.ROLENUM DESC
 			limit #{startRow}, #{perPage}
 	</select>

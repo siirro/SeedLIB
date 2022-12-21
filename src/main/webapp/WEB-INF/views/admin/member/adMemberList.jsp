@@ -62,25 +62,26 @@
               <div class="col-lg-12">
                 <!-- <form action="./proList" method="get"> -->
                   <div class="card-style mb-30">
-                    <!-- <h6 class="mb-10">Data Table</h6> -->
-                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                      <div class="left">
-                      </div>
-                      <div class="right d-flex align-items-center">
-                        <div class="input-style-3" style="margin-bottom: 0px;">
-                          <input type="text" placeholder="Search...." style="height: 46px;" />
-                          <span class="icon">
-                            <i class="lni lni-search-alt"></i>
-                          </span>
+                    <form action="./adMemberList" method="get">
+                      <div class="d-flex flex-wrap justify-content-between align-items-center py-1 mb-2">
+                        <div class="left">
                         </div>
-                        <div>
-                          <button type="button" class="main-btn btn-sm rounded-md info-btn">
-                            검색
-                            <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
-                          </button>
+                        <div class="right d-flex align-items-center">
+                          <div class="input-style-3" style="margin-bottom: 0px; margin-right: 16px;">
+                            <input type="text" name="search" placeholder="아이디를 입력하세요" style="height: 46px;" />
+                            <span class="icon">
+                              <i style="transform: translateY(-5px);" class="lni lni-search-alt"></i>
+                            </span>
+                          </div>
+                          <div>
+                            <button type="submit" class="main-btn btn-sm rounded-md info-btn">
+                              검색
+                              <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                     <div class="table-wrapper table-responsive">
                       <table class="table text-center">
                         <thead>
@@ -98,11 +99,25 @@
                                 <div class="col-9">
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
-                                      <select name="kind">
-                                        <option value="선택안함">회원상태</option>
-                                        <option value="0">회원</option>
-                                        <option value="1">회원탈퇴</option>
-                                        <option value="2">계정잠김</option>
+                                      <select name="enabled">
+                                        <option value="선택안함">탈퇴상태</option>
+                                        <option value="0">회원탈퇴</option>
+                                        <option value="1">회원</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </h6></th>
+                            <th><h6>
+                              <div class="row justify-content-center">
+                                <div class="col-9">
+                                  <div class="select-style-1" style="margin-bottom: 0;">
+                                    <div class="select-position select-sm">
+                                      <select name="accountNonLocked">
+                                        <option value="선택안함">잠금상태</option>
+                                        <option value="0">계정잠김</option>
+                                        <option value="1">계정열림</option>
                                       </select>
                                     </div>
                                   </div>
@@ -147,6 +162,9 @@
                               </td>
                               <td class="min-width">
                                 <span class="status-btn active-btn">${MemberVO.enabled}</span>
+                              </td>
+                              <td class="min-width">
+                                <span class="status-btn active-btn">${MemberVO.accountNonLocked}</span>
                               </td>
                               <td>
                                 <div class="action d-grid gap-2 d-md-flex justify-content-center">
