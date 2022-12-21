@@ -122,7 +122,7 @@
 			</div>
 			<form action="../print/boAdCart" id="postFrm" class="pFrm"  method="post">
 				<!-- 팝업 : 우편복사 신청 -->
-				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:flex" id="grpBtns_apply">
+				<div class="layer_popup_wrap layer_popup_wrap3" data-layer="layer_post_copy" style="display:none" id="grpBtns_apply">
 					<div class="layer_popup basket_layer">
 						<div class="popup_header" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">
 							<h1 class="popup_title">복사 결제</h1>

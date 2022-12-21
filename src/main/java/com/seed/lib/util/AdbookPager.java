@@ -3,10 +3,10 @@ package com.seed.lib.util;
 import lombok.Data;
 
 @Data
-public class HdPager {
-	
+public class AdbookPager {
+
 	private Long page;
-	private Long perPage=10L;
+	private Long perPage=24L;
 	private Long startRow;
 	private Long lastRow;
 	private Long perBlock=3L;
@@ -21,10 +21,7 @@ public class HdPager {
 	private Long searchType;
 	private String userName;
 	private String searchKeyword;
-	private String libNum;
-	
-	private String search1;
-	private String search2;
+	private String libNum;	
 	
 	public void makeRow() {
 		this.startRow = (this.getPage()-1)*perPage;		
@@ -49,27 +46,6 @@ public class HdPager {
 			this.searchKeyword="";
 		}
 		return this.searchKeyword;
-	}
-	
-	public String getSearch() {
-		if(this.search==null) {
-			this.search="";
-		}
-		return this.search;
-	}
-	
-	public String getSearch1() {
-		if(this.search1==null) {
-			this.search1="";
-		}
-		return this.search1;
-	}
-	
-	public String getSearch2() {
-		if(this.search2==null) {
-			this.search2="";
-		}
-		return this.search2;
 	}
 	
 	public String getLibNum() {
@@ -122,7 +98,6 @@ public class HdPager {
 				next=true;
 			}
 		
-//		return 0L;
 	}
 	
 }

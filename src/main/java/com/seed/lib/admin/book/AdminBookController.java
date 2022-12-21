@@ -17,6 +17,7 @@ import com.seed.lib.book.BookService;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.donation.DonationVO;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.util.AdbookPager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,15 +34,16 @@ public class AdminBookController {
 	
 	// 도서 목록 조회
 	@GetMapping("boList")
-	public ModelAndView getAdBookList()throws Exception{
+	public ModelAndView getAdBookList(AdbookPager adbookPager)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-		List<BookVO> bookVOs = adminBookService.getAdBookList();
+		List<BookVO> bookVOs = adminBookService.getAdBookList(adbookPager);
 		
 		if(bookVOs.size() != 0) {
 			
 			mv.addObject("list", bookVOs);
+			mv.addObject("pager", adbookPager);
 			
 		}
 		
@@ -54,11 +56,11 @@ public class AdminBookController {
 	
 	// 도서 추가
 	@GetMapping("boAdd")
-	public String setBookAddFrm()throws Exception{
+	public String setBookAddFrm(AdbookPager adbookPager)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-	 	List<BookVO> bookVOs = adminBookService.getAdBookList();
+	 	List<BookVO> bookVOs = adminBookService.getAdBookList(adbookPager);
 	 	
 	 	mv.addObject("boList", bookVOs);
 	 	

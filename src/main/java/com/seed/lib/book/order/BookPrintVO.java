@@ -10,7 +10,12 @@ import lombok.Data;
 @Data
 public class BookPrintVO {
 
-
+	// 결제 번호
+	private String imp_uid;
+	
+	// 주문 번호
+	private String merchant_uid;
+	
 	// 제본 주문번호
 	private Long caNum;
 	
