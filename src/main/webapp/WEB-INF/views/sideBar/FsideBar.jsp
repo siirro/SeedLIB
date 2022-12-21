@@ -19,6 +19,7 @@
           <li id="lnb1_6"><a href="/mypage/seatHistory" id="seatHistory" class="seatHistory on">열람실 이용 내역</a></li> 
           <li id="lnb1_7"><a href="/mypage/lockerHistory" id="lockerHistory" class="lockerHistory on">사물함 대여 조회</a></li> 
           <li id="lnb1_8"><a href="/intro/menu/10015/contents/40002/contents.do" class="on">문화행사신청조회</a></li> 
+          <li id="lnb1_8"><a href="/print/boCart" class="boCart on">제본 서비스</a></li> 
          </ul>
         </div>
 

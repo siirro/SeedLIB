@@ -139,7 +139,7 @@
 						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
 						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 
 						<li id="gnb6_9"><a href="/mypage/program">문화행사신청조회</a> </li> 
-						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
+						<li id="gnb6_11"><a href="/print/boCart">제본 서비스</a></li>
 					</ul>
 				</li>
 			</ul>
