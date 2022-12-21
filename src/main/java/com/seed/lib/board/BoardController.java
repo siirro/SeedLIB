@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentHashMap.KeySetView;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
@@ -25,16 +28,21 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-
 	
-//	@GetMapping("delete")
-//	@ResponseBody
-//	public void FileDelete()throws Exception{
-//		
-//		
-//		
-//	}
-//	
+	@Autowired
+	private MypageService mypageService;
+	
+	
+	
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int FileDelete(BoardFileVO boardFileVO)throws Exception{
+		int result = boardService.FileDelete(boardFileVO);
+		
+		return result;
+		
+	}
+	
 	
 	@GetMapping("list")
 	public ModelAndView getList(BoardPager boardPager) throws Exception{
@@ -50,14 +58,14 @@ public class BoardController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(BoardVO boardVO) throws Exception{
+	public ModelAndView getDetail(HttpSession session, BoardVO boardVO) throws Exception{
 	
 	ModelAndView mv =new ModelAndView();
 	
 	boardVO=boardService.getDetail(boardVO);
 	
 	
-	mv.addObject("boardVO",boardVO);
+	mv.addObject("board",boardVO);
 	mv.setViewName("board/detail");
 		
 		return mv;
@@ -65,15 +73,22 @@ public class BoardController {
 	
 	
 	@GetMapping("add")
-	public String setAdd()throws Exception{
+	public ModelAndView setAdd(HttpSession session, ModelAndView mv , MemberVO memberVO)throws Exception{
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+		memberVO= mypageService.getMyPage(memberVO);
+		mv.addObject("vo", memberVO);
+		mv.setViewName("board/add");
 		
-	   return "board/add";
+	   return mv;
 	}
 	
 	
 	@PostMapping("add")
-	public String setAdd(BoardVO boardVO)throws Exception{
+	public String setAdd( BoardVO boardVO)throws Exception{
 		
+
 		int result = boardService.setAdd(boardVO);
 		
 		return "redirect:./list"; 
@@ -81,9 +96,16 @@ public class BoardController {
 	
 	
 	@GetMapping("update")
-	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv)throws Exception{
+	public ModelAndView setUpdate(HttpSession session,BoardVO boardVO, ModelAndView mv)throws Exception{
+		MemberVO memberVO =new MemberVO();
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
+		memberVO= mypageService.getMyPage(memberVO);
+		mv.addObject("vo", memberVO);
+		
 		boardVO = boardService.getDetail(boardVO);
-		mv.addObject("boardVO", boardVO);
+		mv.addObject("board", boardVO);
 		mv.setViewName("board/update");
 		return mv;
 

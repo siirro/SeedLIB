@@ -71,6 +71,7 @@ public class HomeController {
 		log.info("뉴프로그램 {}", newProgram);
 		mv.addObject("nP", newProgram);
 		mv.addObject("popular", ar);
+		mv.addObject("vo", memberVO);
 		mv.addObject("accessionBook", accessionBook);
 		mv.addObject("popularBook", popularBook);
 		mv.setViewName("index");

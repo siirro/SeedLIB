@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-    <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+        <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css">
@@ -17,8 +20,7 @@
 <c:import url="../temp/header2.jsp"></c:import>
 </head>
 <body>
-
-  <div class="wrap">
+    <div class="wrap">
 
 
         <div id="container" class="sub">
@@ -48,16 +50,8 @@
                 <div class="snsFarm">
                     <ul class="snsBtnArea clearfix">
                         <li>
-                            <a href="#snsGroup" id="sns" title="SNS 공유하기" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-                            <div id="snsGroup" class="snsList clearfix">
-                                <a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();"><span class="blind">단축URL</span></a>
-                                <a href="#sns2" id="sns2" title="QR코드 레이어팝업 열림" class="snsQr" data-tooltip="chartSns"><span class="blind">QR코드</span></a>
-                                <a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory"><span class="blind">카카오스토리</span></a>
-                                <a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter"><span class="blind">트위터</span></a>
-                                <a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook"><span class="blind">페이스북</span></a>
-                            </div>
+                            
                         </li>
-                        <li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seoksu'); return false;"><span class="blind">현재화면 프린트</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -65,14 +59,7 @@
           
                             <div id="content" class="contentArea">
                                 
-            <!--Forced tab Show Que-->
-            <div class="ttabWrap">
-                <div id="virtSelect"><a href="#script">탭메뉴</a></div>
-                <ul id="ttab3" class="tnb clearfix">
-                    <li class="ttabLast"></li>
-                </ul>
-            </div>
-            <!--Forced tab Show Que-->
+           
             
             <div id="popblackBG"></div>
                                 <!--Real Contents Start-->
@@ -88,28 +75,58 @@
                                                 <col>
                                             </colgroup>
                                             <tbody>
+                                              <input type="hidden" name="boardNum" value="${board.boardNum}">
+                                            
                                                 <tr>
                                                     <th scope="row"><label for="title">제목</label></th>
-                                                    <td><input type="text" id="title" name="title" value="${qnaVO.title}" class="form-ele full"></td>
+                                                    <td><input type="text" id="title" name="title" class="form-ele full" value="${board.title}"></td>
                                                 </tr>
-                                                 
+                                                
+                                                <tr>
+                                                    <th scope="row">작성자</th>
+                                                    <td><input type=text readonly="readonly" name="writer" value="${vo.name}"></td>
+                                              
+                                                </tr>
+                                                
+
+                                                
+                                                 <tr>
+                                                   <th scope="row">첨부파일</th>
+                                                     <td>
+                                                 <c:forEach items="${board.boardFileVOs}" var="fileVO">
+                                                 <p>
+													${fileVO.oriName}
+													<button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">X</button>
+												</p>
+													</c:forEach>
+													
+                                                     <button type="button" id="fileAdd" class="btn-primary">파일 선택</button>
+                                                     <div class="mb-3" id="fileResult" data-file-size="${board.boardFileVOs.size()}"></div>
+														
+										
+                                                    </td>
+                                               </tr>
+                                                    
                                                  </tbody>
                                              </table>
                                     
-                                                
-                                                
-                                                <div class="textarea">
-                                                   <textarea name="contents" value="${qnaVO.contents}" title="질문 내용 입력" id="contents1"></textarea>
+                                      <div class="textarea">
+                                                   <textarea name="contents" title="질문 내용 입력" id="contents1" style="width:100%; height:400px;" >${board.contents}</textarea>
                                                 </div>
                                                
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                                 
                                            
                                 
                                 <!-- //게시글 등록 -->
                                 <div class="btnGroup">
-                                    <a href="./list" id="listBtn" class="btn cncl">삭제</a>
-                                    <button type="submit" id="registBtn" class="btn themeBtn"> 수정</button>
+                                    <a href="./list" id="listBtn" class="btn cncl">취소</a>
+                                    <button type="submit" id="registBtn" class="btn themeBtn"> 등록</button>
                                 </div>
                             </form>
                                 <!-- End Of the Real Contents-->
@@ -124,20 +141,15 @@
 		  
 		  
     </div>
+  
     
 	<script src="/js/fileManager.js"></script>
     
   <script type="text/javascript">
-  $('#contents1').summernote({
-        placeholder: 'Hello Bootstrap 5',
-        tabsize: 4,
-        height: 250
-      });
-      
+
     </script>
     
+    
  
-</body>
-
 </body>
 </html>

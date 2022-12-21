@@ -77,7 +77,7 @@
 										</div>
 										<div class="myInfoList" style="margin: -10px 0 0 20px;">
 											<ul class="dot-list" style="margin: -10px 0 0 20px;">
-												<li><span>아이디</span> : ${vo.username} </li>
+												<li><span>아이디</span> : ${vo.userName} </li>
 												<li><span>회원가입일</span> : ${vo.regDate} </li>
 												<li><span>휴대폰번호</span> : ${vo.phone} </li>
 												

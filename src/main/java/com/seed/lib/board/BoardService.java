@@ -88,5 +88,19 @@ public class BoardService {
 		
 	}
 
+	
+
+	public int FileDelete(BoardFileVO boardFileVO)throws Exception{
+		boardFileVO = boardMapper.getDetailFile(boardFileVO);
+		int result = boardMapper.FileDelete(boardFileVO);
+		
+		if(result>0) {
+			File file = new File(path, boardFileVO.getFileName());
+			file.delete();
+		}
+		
+		return result;
+		
+	}
 }
 	
