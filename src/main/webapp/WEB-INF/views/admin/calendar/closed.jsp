@@ -163,7 +163,7 @@
                         <a href="../main">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item">
-                        <a href="./boList">일정 관리</a>
+                        <a href="./closed">일정 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
                         휴관일 등록
