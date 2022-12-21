@@ -26,6 +26,7 @@
    	   		compareLink.className += " current";
           function change(link){
             link = '"#'+link+'"';
-            $(link).className.add("cuttent ");
+            $(link).className.add("current ");
           }
+
          </script>

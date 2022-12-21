@@ -20,11 +20,11 @@ class MemberTest {
 	void test() throws Exception {
 		for(int i=0; i<20; i++) {
 			MemberVO memberVO =new MemberVO();
-			memberVO.setUserName(i+i+"dosodoso");
+			memberVO.setUserName("zz"+i+i+"zz");
 			memberVO.setPassword(passwordEncoder.encode("1"));
-			memberVO.setName("홍도서");
+			memberVO.setName("홍회상");
 			memberVO.setEmail("doso@naver.com");
-			memberVO.setGender("여");
+			memberVO.setGender("남");
 			memberVO.setPhone("0102472389");
 			memberVO.setPost("aasf");
 			memberVO.setAddress1("asdf");

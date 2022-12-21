@@ -234,6 +234,18 @@
 	if(hUrl.includes("search/")) {
 		$("#gnb1").addClass("active");
 	}
+	if(hUrl.includes("program/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("hope/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("donation/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("studyroom/")) {
+		$("#gnb2").addClass("active");
+	}
 	if(hUrl.includes("guide/")) {
 		$("#gnb3").addClass("active");
 	}
@@ -257,7 +269,7 @@
 		  compLink.className += " current";
   function change(currentLink){
 	currentLink = '"#'+currentLink+'2"';
-	$(currentLink).className.add("cuttent ");
+	$(currentLink).className.add("current ");
   }
  </script>
 
