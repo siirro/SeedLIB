@@ -21,7 +21,14 @@ public class AdProgramService {
 	
 	// 문화프로그램 신청 승인/거부
 	public int setUpdateProCheck(AdProgramVO programVO)throws Exception{
-		return programMapper.setUpdateProCheck(programVO);
+		programMapper.setUpdateProCheck(programVO);
+		if(programVO.getProCheck()==1) {
+			programVO.setProState(0);
+		} else if(programVO.getProCheck()==2) {
+			programVO.setProState(2);
+		}
+		
+		return programMapper.setUpdateProState(programVO);
 	}
 	
 	public List<AdProgramVO> getMemberProgram(AdProgramVO programVO)throws Exception{

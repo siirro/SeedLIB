@@ -272,6 +272,8 @@
                                   <c:choose>
                                     <c:when test="${mp.proState eq 0}"><div class="center1" style="color: red; font-size: 13px;">취소</div></c:when>
                                     <c:when test="${mp.proState eq 1}"><div class="center1" style="color: #54bb65; font-size: 13px;">신청중</div></c:when>
+                                    <c:when test="${mp.proState eq 2}"><div class="center1" style="color: #54bb65; font-size: 13px;">완료</div></c:when>
+
                                     <c:otherwise>에러</c:otherwise>
                                   </c:choose>
                                 </p>
@@ -304,7 +306,7 @@
                                 url: "./updateProCheck",
                                 traditional: true,
                                 data: {
-                                  mpNum: mpNum,
+                                  mpNum: num,
                                   proNum: proNum1,
                                   proCheck: status
                                 },

@@ -79,7 +79,7 @@
 
 
 		<div id="headerInner">
-			<h1 id="logo"><a href="/"><img src="/images/logo200.png" alt="씨앗도서관"></a></h1>
+			<h1 id="logo"><a href="/"><img src="/images/logo200.png" style="margin-top: 4px; margin-left: 11px;" alt="씨앗도서관"></a></h1>
 <!-- 			<a href="#searchBoxOpen" id="btnSearchTop"><span class="blind">검색창열기</span></a>
  -->			<a href="/search" id="btnSearchTop"><span class="blind">검색창열기</span></a>
 		</div>
