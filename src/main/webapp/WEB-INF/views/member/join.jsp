@@ -25,7 +25,6 @@
                     <div class="inputIdPw">
                         <p class="inputId"><label for="input_ID">아이디(<span>*</span>)<span class="accessibility">필수항목</span></label>
                         <input id="input_ID" name="userName" title="아이디 (영문 소문자,숫자 5~15자 이내)" type="text" required="required" minlength="5" maxlength="15" placeholder="5~15자(영문(소대문자), 숫자로 조합)">
-                        <button type="button" title="중복확인" class="loginBtn1" id="login_chk">중복확인</button>
                         <div id="userNameResult"> </div>
 <!--                           
                           <span class="error" id="error_web_id" style="display: none;">ID중복확인 실시하지 않았습니다.</span>
@@ -33,9 +32,9 @@
                         
                         </p>
                         <p class="inputPw"><label for="password">비밀번호(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="5" maxlength="15" placeholder="10~15자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
+                        <input name="password" title="비밀번호 (영문,숫자,특수문자 중 2종류 이상 조합 10~15자 이내)" id="password" type="password" minlength="4" maxlength="8" placeholder="4~8자(영문,숫자, 특수문자 중 2종류 이상 조합)" required="required"></p>
                         <p class="inputPwRe"><label for="passwordChk">비밀번호확인(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                        <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="15" required="required"></p>
+                        <input name="passwordChk" title="비밀번호확인" id="passwordChk" type="password" maxlength="8" required="required"></p>
                         <div id="passwordChkResult"> </div>
 
                         
@@ -83,12 +82,11 @@
                                 
                                 
                             </p>
-                            <p class="info">* 휴대폰번호는 예약도서 도착안내 문자발송 등에 이용됩니다. (필수)</p>
                         </div>
                         <div>
                             <p>
                                 <label for="tel">긴급연락처(<span>*</span>)<span class="accessibility">필수항목</span></label>
-                                <select name="tel_no_1" title="전화번호 국번 선택" id="tel" class="tel" required="required">
+                                <select name="tel_no_1" title="전화번호 국번 선택" id="tel" class="tel"">
                                     <option value="">선택</option>
                                     <option value="02">02</option>
                                     <option value="031">031</option>
@@ -114,8 +112,8 @@
                                     <option value="018">018</option>
                                     <option value="019">019</option>
                                 </select>
-                                <input id="tel_no_2" name="tel_no_2" class="phone" title="전화번호 앞자리" onkeyup="fnCheckkNum('tel_no_2');" type="text" value="" maxlength="4" placeholder="앞-4자리" required="required">
-                                <input id="tel_no_3" name="tel_no_3" class="phone" title="전화번호 뒷자리" onkeyup="fnCheckkNum('tel_no_3');" type="text" value="" maxlength="4" placeholder="뒤-4자리" required="required">
+                                <input id="tel_no_2" name="tel_no_2" class="phone" title="전화번호 앞자리" onkeyup="fnCheckkNum('tel_no_2');" type="text" value="" maxlength="4" placeholder="앞-4자리" ">
+                                <input id="tel_no_3" name="tel_no_3" class="phone" title="전화번호 뒷자리" onkeyup="fnCheckkNum('tel_no_3');" type="text" value="" maxlength="4" placeholder="뒤-4자리" ">
                                 
                             
                             </p>
@@ -165,7 +163,7 @@
                              <input type="button" class="loginBtn1" id="idCheckBtn" value="우편번호검색" target="epost" onclick="joinPostcode()" title="우편번호검색 새창으로열림" style="width: 120px;">
                              
       					     <input type="text" id="address" name="address1" placeholder="기본주소(*)" title="기본주소" onclick="fn_useAddrSrch();" class="textInput" value="">                                
-                             </p><!--id="addrs"  -->
+                             </p>
              
                             <p class="addressInput"><label for="addrs_detail">상세주소(<span>*</span>)<span class="accessibility">필수항목</span></label>
                            <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="" required="required">                      

@@ -33,13 +33,14 @@
 					
 				<sec:authorize access="isAuthenticated()">
 							
-							
 						
-										<li><a href="/member/logout" id="login">로그아웃</a></li>							
-										<li><a href="/print/boCart">내바구니</a></li>
+					<li><a href="/member/logout" id="login">로그아웃</a></li>							
+					<li><a href="/print/boCart">내바구니</a></li>
 										
 							<sec:authorize access="hasRole('ADMIN')"> 
+									
 									<li><a href="/admin/main">관리자페이지</a></li>
+									
 							</sec:authorize>
 							
 				</sec:authorize >
@@ -49,8 +50,6 @@
 							<li><a href="/member/agree">회원가입</a></li>
 						</sec:authorize>
 
-						
-						
 						 
 						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>

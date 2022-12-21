@@ -84,12 +84,13 @@
 						<div class="pageSearch">
 							<div class="schForm w1">
 								
-								<select name="searchCondition" id="searchCondition" title="검색방법 선택" class="schSel">
+								<select name="kind" id="searchCondition" title="검색방법 선택" class="schSel1">
 									<option value="title">제목</option>
 									<option value="contents">내용</option>
 								</select>
-								<input type="text" name="searchKeyword" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
-								<a href="#link" id="searchBtn" class="btn input">검색</a>
+								
+								<input type="text" name="search" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
+								<button type="button" class="btn input" id="searchBtn"> 검색</button>
 							</div>
 						</div>
 					</fieldset>
@@ -120,57 +121,26 @@
 								</tr>
 							</thead>
 							<tbody>
+								<c:forEach items="${list}" var="vo">
 								
-									
 										<tr>
 											<td class="mobileHide">
-												2159
+												${vo.wishNum}
 											</td>
 											
 											<td class="title">
-												<a href="#javascript" onclick="javascript:fnDetail('23077'); return false;">3,4층 복도 소음</a>
+												<a href="detail?wishNum=${vo.wishNum}" >${vo.title}</a>
 												
-												 <img src="/include/image/board/ico_lock.png" alt="비밀글">
 											</td>
-											<td>
-												김*정
-											</td>
-											<td class="mobileHide">2022-12-14</td>
-
-											
-
-											<td class="state">
-												
-														완료
-													
-											</td>
+											<td>${vo.writer}</td>
+											<td class="mobileHide">${vo.regDate}</td>
+											<td class="state">대기</td>
 										</tr>
 									
-										<tr>
-											<td class="mobileHide">
-												2158
-											</td>
-											
-											<td class="title">
-												<a href="#javascript" onclick="javascript:fnDetail('23037'); return false;">안녕하세요. 책구입 관련 문의드립니다.</a>
-												
-												 <img src="/include/image/board/ico_lock.png" alt="비밀글">
-											</td>
-											<td>
-												박*주
-											</td>
-											<td class="mobileHide">2022-12-09</td>
-
-											
-
-											<td class="state">
-												
-														완료
-													
-											</td>
-										</tr>
-									
-			
+									<c:if test="${vo} == null">
+		                            <td class="message footable-last-column footable-first-column" colspan="11">게시물 정보가 없습니다.</td>
+		                             </c:if>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -180,20 +150,13 @@
 					<div class="pagingWrap">
 						
 							<p class="paging">
-								<a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
-<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
-<span class="current">1</span>
-<a href="javascript:fnList(2);">2</a>
-<a href="javascript:fnList(3);">3</a>
-<a href="javascript:fnList(4);">4</a>
-<a href="javascript:fnList(5);">5</a>
-<a href="javascript:fnList(6);">6</a>
-<a href="javascript:fnList(7);">7</a>
-<a href="javascript:fnList(8);">8</a>
-<a href="javascript:fnList(9);">9</a>
-<a href="javascript:fnList(10);">10</a>
-<a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
-<a href="javascript:fnList(216);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
+<a href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging prev ${pager.pre?'':'disabled'}"><span class="blind">이전 10개 보기</span></a>
+<span class="current ${pager.pre?'':'disabled'}">
+		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+			</c:forEach>
+</span>
+<a href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging next"><span class="blind  ${pager.next?'':'disabled'}">다음 10개 보기</span></a>
 
 
 							</p>

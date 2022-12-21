@@ -8,7 +8,7 @@
 
 			 <delete id="setDelete" parameterType="QnaVO">
 			
-			     DELETE QNA WHERE QNANUM=#{qnaNum}
+			     DELETE FROM QNA WHERE QNANUM=#{qnaNum}
 			  
 			  </delete>
 			  

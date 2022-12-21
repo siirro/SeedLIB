@@ -70,7 +70,7 @@ public class SecurityConfig {
 				      .authorizeRequests()
 					.antMatchers("/").permitAll()
 					.antMatchers("/admin").hasRole("ADMIN")
-					.antMatchers("/mypage").hasAnyRole("ADMIN","MEMBER")
+					//.antMatchers("/mypage").hasAnyRole("ADMIN","MEMBER")
 					.antMatchers("/login").permitAll()
 					.antMatchers("/logout").permitAll()
 					

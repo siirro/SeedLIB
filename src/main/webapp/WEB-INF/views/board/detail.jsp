@@ -142,34 +142,6 @@
 						<a href="/" id="listBtn" class="btn list">목록</a>
 					</div>
 					
-					
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="prevNext">
-	
-			<dt class="prev">이전글</dt>
-			<dd class="listx">이전글이 없습니다.</dd>
-		
-	
-			<dt class="next"><a href="#javascript" onclick="fnDetail('22983');">다음글</a></dt>
-			<dd class="listx"><a href="#javascript" onclick="fnDetail('22983');">어린이도서관 ★송년의 달★ 행사 운영 안내</a></dd>
-		
-</dl>
 
 					<!-- End Of the Real Contents-->
 				</div>

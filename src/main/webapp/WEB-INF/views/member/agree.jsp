@@ -276,20 +276,20 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>씨앗도서관 회원정보</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">구로아카데미 (책이음서비스)</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1">구로아카데미 (씨앗도서관)</strong></td>
                                                     <td>이용자 (정보주체동의)</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 회원의 책이음 서비스 이용</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 서비스 이용</strong></td>
                                                     <td>이름, 주소, 생년월일, 회원번호, 휴대폰, 이메일</td>
                                                     <td>책이음 서비스 탈퇴시까지</td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>씨앗도서관 회원정보</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1"> 구로아카데미 (씨앗시민카드)</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1"> 구로아카데미 (씨앗도서관)</strong></td>
                                                     <td>이용자 (정보주체동의)</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 회원의 씨앗시민카드 서비스 이용</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1"> 씨앗도서관 서비스 이용</strong></td>
                                                     <td>회원번호, 도서이용현황</td>
-                                                    <td>씨앗시민카드 탈퇴시까지</td>
+                                                    <td>씨앗도서관 탈퇴시까지</td>
                                                 </tr>
                                             </tbody>
                                         </table>

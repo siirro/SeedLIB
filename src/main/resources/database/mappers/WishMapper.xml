@@ -6,19 +6,28 @@
 <mapper namespace="com.seed.lib.board.wishboard.WishMapper">
 
 
-			<!-- <sql id="search">	
-	 		<choose>
+			<sql id="search">
+			WHERE
+			<choose>
 				<when test="kind=='title'">TITLE</when>
-				<when test="kind=='contents'">COTNENTS</when>
+				<when test="kind=='contents'">CONTENTS</when>
 				<otherwise>CONTENTS</otherwise>
-			 </choose>
+			</choose>
 			LIKE CONCAT('%', #{search}, '%')
-			</sql> -->
+			</sql>
+			
+				<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
+				SELECT COUNT(WISHNUM)
+				FROM WISHBOARD
+				<include refid="search"></include>
+				ORDER BY WISHNUM DESC
+			</select>
+			
 
 
 			 <delete id="setDelete" parameterType="wishVO">
 			
-			     DELETE WISHBOARD WHERE WISHNUM=#{wishNum}
+			     DELETE FROM WISHBOARD WHERE WISHNUM=#{wishNum}
 			  
 			  </delete>
 			  
@@ -44,11 +53,9 @@
 			
 				
 					SELECT * FROM WISHBOARD 
-					ORDER BY WISHNUM DESC
-		 		<!-- 	 <include refid="search"></include>
-		 			
-					limit #{startRow}, #{perPage}
-			-->		
+					<include refid="search"></include>
+					ORDER BY WISHNUM DESC 
+					LIMIT #{startRow}, #{perPage}
 					
 			</select>
 			

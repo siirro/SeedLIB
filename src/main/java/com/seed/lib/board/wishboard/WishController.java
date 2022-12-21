@@ -14,6 +14,7 @@ import com.seed.lib.board.BoardService;
 import com.seed.lib.board.BoardVO;
 import com.seed.lib.board.qna.QnaService;
 import com.seed.lib.board.qna.QnaVO;
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Controller
@@ -26,13 +27,13 @@ public class WishController {
 	private WishService wishService;
 
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(BoardPager boardPager) throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		List<WishVO> ar = wishService.getList(pager);
+		List<WishVO> ar = wishService.getList(boardPager);
 		mv.addObject("list",ar);
-		mv.addObject("pager",pager);
+		mv.addObject("pager",boardPager);
 		mv.setViewName("wish/list");
 		
 		return mv;

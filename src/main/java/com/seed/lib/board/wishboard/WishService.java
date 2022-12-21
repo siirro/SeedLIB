@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Service
@@ -15,8 +16,11 @@ public class WishService {
 	private WishMapper wishMapper ;
 	
 	
-	public List<WishVO> getList(Pager pager)throws Exception{
-		return wishMapper.getList(pager);
+	public List<WishVO> getList(BoardPager boardPager)throws Exception{
+		boardPager.makeRow();
+		boardPager.getNum(wishMapper.getTotalCount(boardPager));
+		
+		return wishMapper.getList(boardPager);
 	}
 	
 	public WishVO getDetail(WishVO wishVO)throws Exception{

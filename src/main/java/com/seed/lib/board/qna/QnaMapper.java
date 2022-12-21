@@ -17,9 +17,7 @@ public interface QnaMapper {
 	public int setAdd(QnaVO qnaVO) throws Exception;
 		
 	public Long getTotalCount(BoardPager boardPager) throws Exception;
-	
-	public int setHit(QnaVO qnaVO) throws Exception;
-	
+		
 	public int setUpdate(QnaVO qnaVO) throws Exception;
 	
 	public int setDelete(QnaVO qnaVO) throws Exception;

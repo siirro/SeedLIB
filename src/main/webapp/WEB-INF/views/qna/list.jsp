@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+        <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +76,7 @@
 											</div>
 							
 								        </li>
+								        
 								</c:forEach>        
 								        
 					</ul>
@@ -82,25 +85,11 @@
 				
 					
 					<div class="add">
+					<sec:authorize access="hasRole('ADMIN')">
 					<button type="button" class="btn btn-primary"><a href="./add"> 글쓰기</a></button>
+					</sec:authorize>
 					</div>
 					
-					
-					<!-- 페이징 -->
-					<div class="pagingWrap">
-						
-							<p class="paging">
-								<span class="current">1</span>
-<a href="javascript:fnList(2);">2</a>
-<a href="javascript:fnList(3);">3</a>
-<a href="javascript:fnList(4);">4</a>
-<a href="javascript:fnList(5);">5</a>
-
-
-							</p>
-						
-					</div>
-					<!-- //페이징 -->
 
 					<!-- End Of the Real Contents-->
 

@@ -93,14 +93,14 @@
 									</tr>
 									<tr>
 										<th scope="row">작성자</th>
-										<td>안다은</td>
+										<td><input type="text" id="" name="writer" class="form-ele full"></td>
 									</tr>
 									
 										<tr>
 											<th scope="row">공개여부</th>
 											<td>
-												<label for="secretN"><input type="radio" name="secretYn" id="secretN" value="N"> 공개</label>
-												<label for="secretY"><input type="radio" name="secretYn" id="secretY" value="Y" checked="checked"> 비공개</label>
+												<label for="secretN"><input type="radio" name="secret" id="secretN" value="true"></label>
+												<label for="secretY"><input type="radio" name="secret" id="secretY" value="false" checked="checked"> 비공개</label>
 											</td>
 										</tr>
 									
@@ -116,13 +116,13 @@
 								</tbody>
 							</table>
 						</div>
-					</form>
+					
 					<!-- //게시글 등록 -->
 					<div class="btnGroup">
-						<a href="#none" id="listBtn" class="btn cncl">취소</a>
-						<a href="#none" id="registBtn" class="btn themeBtn">등록</a>
-					</div>
-
+						<a href="./list" id="listBtn" class="btn cncl">취소</a>
+						 <button type="submit" id="registBtn" class="btn themeBtn"> 등록</button>
+						</div>
+					</form>
 					<!-- End Of the Real Contents-->
 				</div>
 			</div>

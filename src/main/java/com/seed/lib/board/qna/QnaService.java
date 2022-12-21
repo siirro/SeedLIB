@@ -25,7 +25,6 @@ public class QnaService {
 	
 	
 	public QnaVO getDetail(QnaVO qnaVO)throws Exception{
-		qnaMapper.setHit(qnaVO);
 		return qnaMapper.getDetail(qnaVO);
 
 	}
