@@ -84,7 +84,7 @@ public class SecurityConfig {
 				.formLogin()
 					.loginPage("/member/login")
 					.usernameParameter("userName")
-					.defaultSuccessUrl("/")
+					//.defaultSuccessUrl("/")
 					.successHandler(loginSuccess)
 					//.failureUrl("/member/login?error=true&message=LoginFail")
 					.failureHandler(loginFail)
