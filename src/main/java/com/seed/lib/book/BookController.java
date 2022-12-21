@@ -141,8 +141,8 @@ public class BookController {
 	//예약 신청
 	@ResponseBody
 	@PostMapping("reservation")
-	public int setReservationAdd (@RequestBody BookLoanVO loVO) throws Exception {
-		int result = loanService.setReservation(loVO);
+	public int setReservationAdd (@RequestBody BookReservationVO reVO) throws Exception {
+		int result = loanService.setReservation(reVO);
 		//대출 신청한 다음은 1 리턴
 		return result;
 	}

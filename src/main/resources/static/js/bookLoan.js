@@ -24,6 +24,8 @@ $("#LoanAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
+				case 3:
+					alert("도서 대출은 총 5권까지 가능합니다.")
 				case 2:
 					alert("해당 책을 이미 대출 중입니다.")
 					break;
@@ -32,7 +34,7 @@ $("#LoanAlretBtn").click(function(){
 					if(done){
 						location.href="/mypage/book/loan";
 					} else{
-                        location.href="../";
+                        location.reload();
                     } 
 				}
 			},
@@ -45,14 +47,15 @@ $("#LoanAlretBtn").click(function(){
 //-------------------------------------------------
 //디테일 페이지에서 예약신청 눌렀을 때
 $("#ResAlretBtn").click(function(){
-	const bookLoanVO = {
+	const reVO = {
 		isbn : isbn,
-		userName : userName
+		userName : userName,
+		enableDate : $(".enableDate").val()
 	}
 	$.ajax({
 		type : "POST",
 		url : "/book/reservation",
-		data:JSON.stringify(bookLoanVO),
+		data:JSON.stringify(reVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success:function(data){
@@ -188,17 +191,8 @@ $(".ReturnAlretBtn").click(function(){
 					if(done){
 						location.href="/mypage/book/loanHistory";
 					} else{
-                        location.href="../";
                         location.reload();
                     }
-				case 1:
-					done = window.confirm("도서를 반납했습니다.");
-					if(done){
-						location.href="/mypage/book/loanHistory";
-					} else{
-                        location.href="../";
-                        location.reload();
-                    } 
 				}
 			},
 			error:function(){

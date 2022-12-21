@@ -74,7 +74,6 @@
                         				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
                         				
                         				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
-                        				<li class="tab-li"><a href="mypage/infographics" title="독서통계">독서통계</a></li>
                         			</ul>
                         		</div>
                         	</div>
@@ -131,7 +130,6 @@
 	                                            <th scope="col" class="th-title-2">제목</th>
 	                                            <th scope="col" class="col-5">저자</th>
 	                                            <th scope="col" class="col-5">대출일</th>
-	                                            <th scope="col" class="col-5" >반납일</th>
 	                                        </tr>
 	                                    </thead>
 	                                    
@@ -139,12 +137,10 @@
 	                                      	<c:forEach items="${li}" var="book">
 		                                      	<c:forEach var="lo" items="${book.loanVOs}">
 			                                      	<c:set var="sd" value="${lo.loanSDate}"/>
-			                                      	<c:set var="ld" value="${lo.loanLDate}"/>
 		                                        	<tr>
 	                                        			<td>${book.title}</td>
 	                                        			<td>${book.writer}</td>
 	                                        			<td>${sd}</td>
-	                                        			<td>${ld}</td>
 		                                        		
 		                                        		<c:if test="${book} == null">
 		                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출한 도서가 없습니다.</td>
@@ -164,6 +160,6 @@
 			</div>
 		</div>
 	</div>
-
+	<c:import url="../temp/footer.jsp"></c:import> 
 </body>
 </html>
