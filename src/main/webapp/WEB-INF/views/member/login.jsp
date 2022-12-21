@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="Spring" uri="http://www.springframework.org/tags" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,6 +83,8 @@
                                             <input type="checkbox" name="rememberId" class="remember" id="rememberMe">
                                             <label class="" for="">ID 기억하기</label>
                                             </div>
+                                            
+                                           <div > </div>
                                            
                                             <div class="member_confirm_line"></div>
                                             <div class="checkArea clearfix">

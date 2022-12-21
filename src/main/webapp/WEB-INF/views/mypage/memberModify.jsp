@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    
     
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+ <link rel="icon" href="/images/favicon.png">
+	<title>회원정보수정 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/sub.css">
 <link rel="stylesheet" href="/css/default.css">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
@@ -77,7 +80,6 @@
                             <div class="memberWrap">
 
                                 <form action="./memberModify" id="registForm" name="registForm" method="post">
-                                <sec:authentication property="Principal" var="vo"/>
                                 
                                 <input type="hidden" id="handphone" name="handphone">
                                 <input type="hidden" id="eMail" name="eMail">
@@ -92,17 +94,17 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10">성명</th>
-                                                <td>${vo.name}</td>
+                                                <td>${my.name}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="memId">아이디</label></th>
-                                                <td>${vo.username}</td>                                              
-                                                  <input type="hidden" name="username" value="${vo.username}">
+                                                <td>${my.userName}</td>                                              
+                                                  <input type="hidden" name="username" value="${my.userName}">
                                             </tr>
                                             <tr class="mobileShowTr">
                                                 <th scope="row" class="ta_l pl10">비밀번호</th>
                                                 <td><a href="/intro/mypage/memberPwdModifyCheck.do" class="btn small white">비밀번호변경</a></td>
-                                                <input type="hidden" name="password" value="${vo.password}">
+                                                <input type="hidden" name="password" value="${my.password}">
 
                                             </tr>
                                             <tr>
@@ -111,7 +113,7 @@
                                                     <div class="numericForm clearfix">
                                                         
                                                         
-                                                        <select name="phone" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
+                                                        <select name="phone" value="${my.phone}" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
                                                             
                                                                 <option value="010" selected="selected">010</option>
                                                             
@@ -127,20 +129,25 @@
                                                             
                                                         </select>
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone2" name="phone" value="${vo.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
+                                                        <input type="text" id="handphone2" name="phone" value="${my.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone3" name="phone" value="${vo.phone}" title="휴대폰번호 끝자리" maxlength="4" class="numeric" required="required">
+                                                        <input type="text" id="handphone3" name="phone" value="${my.phone}" title="휴대폰번호 끝자리" maxlength="4" class="numeric" required="required">
                                                         <label for="smsUseYn" class="ml10"><input type="checkbox" name="smsUseYn" id="smsUseYn" value="Y" checked="checked"> SMS 수신동의</label>
                                                     </div>
                                                 </td>
+                                                
+                                                <script type="text/javascript">
+													let wi = $("#dd").attr("wi")
+													console.log(wi);
+												</script>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>
                                                 <td>
                                                     
-                                                    <input type="text" id="email1" name="email" value="${vo.email}" title="이메일 입력" class="form-ele auto eng-mode"  required="required">
+                                                    <input type="text" id="email1" name="email" value="${my.email}" title="이메일 입력" class="form-ele auto eng-mode"  required="required">
                                                     @<br class="mobileShow3">
-                                                    <input type="text"   id="email2" name="email" value="${vo.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
+                                                    <input type="text"   id="email2" name="email" value="${my.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
                     
                                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
                                                         
@@ -173,10 +180,10 @@
                                             <tr>
                                                 <th scope="row" class="ta_l pl10">주소 <span class="essential themeFC">*</span></th>
                                                 <td>
-                                                    <input type="text" id="postcode" name="post" title="자택 우편번호" value="${vo.post}" readonly="readonly" class="form-ele short readonly"  required="required">
+                                                    <input type="text" id="postcode" name="post" title="자택 우편번호" value="${my.post}" readonly="readonly" class="form-ele short readonly"  required="required">
                                                     <input type="button" id="idCheckBtn" title="새창 열림" class="btn input btnPop" target="epost"   value= "주소검색" onclick="joinPostcode()"><br>
-                                                    <input type="text" id="address" name="address1"  placeholder="기본주소(*)" value="${vo.address1}" title="자택 기본 주소" class="form-ele full mt05"  required="required">
-                                                       <br> <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="${vo.address2}" required="required">                      
+                                                    <input type="text" id="address" name="address1"  placeholder="기본주소(*)" value="${my.address1}" title="자택 기본 주소" class="form-ele full mt05"  required="required">
+                                                       <br> <input type="text" id="detailAddess" name="address2" placeholder="상세주소(*)" title="상세주소" class="textInput textInput2" value="${my.address2}" required="required">                      
 
                                           
                                                 </td>
@@ -208,6 +215,6 @@
 
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
+	<script src="/js/modify.js"></script>
 </body>
 </html>

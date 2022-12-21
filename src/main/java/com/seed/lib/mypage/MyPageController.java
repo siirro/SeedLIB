@@ -109,9 +109,11 @@ public class MyPageController {
 	@GetMapping("memberModify")
 	public ModelAndView setUpdate(HttpSession session, MemberVO memberVO,ModelAndView mv)throws Exception {
 		
-		memberVO= (MemberVO)session.getAttribute("memberVO");
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
 		memberVO = mypageService.getMyPage(memberVO);
-		mv.addObject("vo", memberVO);
+		mv.addObject("my", memberVO);
 		mv.setViewName("mypage/memberModify");
 		return mv;
 	}
@@ -120,11 +122,10 @@ public class MyPageController {
 	public ModelAndView setUpdate(HttpSession session,MemberVO memberVO)throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
-		memberVO= (MemberVO)session.getAttribute("memberVO");
-		memberVO = mypageService.getMyPage(memberVO);
 		
+		memberVO = mypageService.getMyPage(memberVO);
 		int result = memberService.setUpdate(memberVO);
-		mv.setViewName("redirect:myIndex?userName="+memberVO.getUsername());
+		mv.setViewName("redirect:myIndex?userName="+memberVO.getUserName());
 		
 		return mv;
 		
