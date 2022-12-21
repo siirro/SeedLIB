@@ -95,7 +95,13 @@ public class MemberVO implements UserDetails, OAuth2User{
 		// TODO Auto-generated method stub
 		return true;
 	}	
+	
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
+	
 
 
 
