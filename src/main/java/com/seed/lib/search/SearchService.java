@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.Pager;
 import com.seed.lib.util.SearchDetailPager;
@@ -19,6 +20,10 @@ public class SearchService {
 	
 	@Autowired
 	private SearchMapper searchMapper;
+	
+	public List<AdProgramVO> getNewProgram()throws Exception{
+		return searchMapper.getNewProgram();
+	}
 	
 	public List<BookVO> getAccessionBook()throws Exception{
 		return searchMapper.getAccessionBook();

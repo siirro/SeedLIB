@@ -5,6 +5,13 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
+<select id="getNewProgram" resultType="AdprogramVO">
+SELECT PRONUM, PROCATE, RECSTATUS, PROTITLE, TARGET, TOTAL, PRSDATE, PRLDATE, DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, PROTEACHER, PROPLACE 
+		FROM PROGRAM
+		ORDER BY PRONUM DESC
+		limit 0, 6
+</select>
+
 <select id="getAccessionBook" resultType="BookVO">
 SELECT * FROM BOOK
 ORDER BY REGDATE DESC

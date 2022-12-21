@@ -19,16 +19,24 @@ public class AdProgramService {
 	@Autowired
 	private AdProgramMapper programMapper;
 	
+	public int setUpdateStatus(AdProgramVO programVO)throws Exception{
+		return programMapper.setUpdateStatus(programVO);
+	}
+
+	
 	// 프로그램 삭제
 	public int setProgramDelete(AdProgramVO programVO)throws Exception{
 		return programMapper.setProgramDelete(programVO);
 	}
 	
 	// 프로그램 상세정보 수정
-	public int setProgramUpdate(AdProgramVO programVO)throws Exception{
+	public int setProgramUpdate(AdProgramVO programVO, String name, String teacher)throws Exception{
 		
-		programVO = programMapper.getProgramDetail(programVO);
+		log.info("서비스프로그램VO {}", programVO);
+		programVO.makeDate();
 		
+//		programVO = programMapper.getProgramDetail(programVO);
+		programVO.setProTeacher(name+" "+teacher);
 		int result=0;
 		
 		if(programVO != null) {
@@ -62,9 +70,10 @@ public class AdProgramService {
 		programVO.makeDate();
 		
 		// 강사님 이름 합침 000강사, 000선생님 등
-		programVO.setProTeacher(name+teacher);
+		programVO.setProTeacher(name+" "+teacher);
 		// 장소는 기본값으로 씨앗도서관 넣어줌
 		programVO.setProPlace("씨앗도서관");
+		programVO.setRecStatus("예정");
 		
 		return programMapper.setProgramAdd(programVO);
 	}

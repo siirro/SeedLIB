@@ -25,7 +25,10 @@ public class HdPager {
 	private Long searchType;
 	private String userName;
 	private String searchKeyword;
-	private String libNum;	
+	private String libNum;
+	
+	private String search1;
+	private String search2;
 	
 	public void makeRow() {
 		this.startRow = (this.getPage()-1)*perPage;		
@@ -50,6 +53,27 @@ public class HdPager {
 			this.searchKeyword="";
 		}
 		return this.searchKeyword;
+	}
+	
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		return this.search;
+	}
+	
+	public String getSearch1() {
+		if(this.search1==null) {
+			this.search1="";
+		}
+		return this.search1;
+	}
+	
+	public String getSearch2() {
+		if(this.search2==null) {
+			this.search2="";
+		}
+		return this.search2;
 	}
 	
 	public String getLibNum() {
