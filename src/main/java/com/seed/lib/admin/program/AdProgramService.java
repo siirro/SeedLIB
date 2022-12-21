@@ -19,6 +19,11 @@ public class AdProgramService {
 	@Autowired
 	private AdProgramMapper programMapper;
 	
+	// 문화프로그램 신청 승인/거부
+	public int setUpdateProCheck(AdProgramVO programVO)throws Exception{
+		return programMapper.setUpdateProCheck(programVO);
+	}
+	
 	public List<AdProgramVO> getMemberProgram(AdProgramVO programVO)throws Exception{
 		return programMapper.getMemberProgram(programVO);
 	}
