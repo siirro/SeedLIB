@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+        <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,40 +57,39 @@
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->
 
+				<div>
 				
 					<ul class="faqList">
-						
-						
+						<c:forEach items="${list}" var="qna">
+									
 									<li class="q1">
 										<div class="q">
 											<span class="ico themeBG">Q</span>
-											<p><a href="#faq" title="축소됨">123</a></p>
+											<input type="hidden" value="${qna.qnaNum}">
+											<p><a href="#faq" title="축소됨">${qna.title}</a></p>
 										</div>
+										
 									
 										<div class="a" tabindex="0" style="display: none;">
 											<span class="ico themeBG1">A</span>
-											<p><a href="#faq" title="내용">123</a></p> 
+											<p><a href="#faq" title="내용">${qna.contents}</a></p> 
 											</div>
-								        </li>
 							
+								        </li>
+								        
+								</c:forEach>        
+								        
 					</ul>
-									
-
-					<!-- 페이징 -->
-					<div class="pagingWrap">
 						
-							<p class="paging">
-								<span class="current">1</span>
-<a href="javascript:fnList(2);">2</a>
-<a href="javascript:fnList(3);">3</a>
-<a href="javascript:fnList(4);">4</a>
-<a href="javascript:fnList(5);">5</a>
-
-
-							</p>
-						
+				</div>		
+				
+					
+					<div class="add">
+					<sec:authorize access="hasRole('ADMIN')">
+					<button type="button" class="btn btn-primary"><a href="./add"> 글쓰기</a></button>
+					</sec:authorize>
 					</div>
-					<!-- //페이징 -->
+					
 
 					<!-- End Of the Real Contents-->
 

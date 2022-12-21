@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.FileManager;
 import com.seed.lib.util.Pager;
 
@@ -29,11 +30,14 @@ public class BoardService {
 	
 
 	
-	public List<BoardVO> getList(Pager pager)throws Exception{
-		return boardMapper.getList(pager);
+	public List<BoardVO> getList(BoardPager boardPager)throws Exception{
+		boardPager.makeRow();
+		boardPager.getNum(boardMapper.getTotalCount(boardPager));
+		return boardMapper.getList(boardPager);	
 	}
 	
 	public BoardVO getDetail(BoardVO boardVO)throws Exception{
+		boardMapper.setHit(boardVO);
 		return boardMapper.getDetail(boardVO);
 
 	}

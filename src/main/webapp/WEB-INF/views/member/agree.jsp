@@ -276,20 +276,20 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>씨앗도서관 회원정보</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">구로아카데미 (책이음서비스)</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1">구로아카데미 (씨앗도서관)</strong></td>
                                                     <td>이용자 (정보주체동의)</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 회원의 책이음 서비스 이용</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 서비스 이용</strong></td>
                                                     <td>이름, 주소, 생년월일, 회원번호, 휴대폰, 이메일</td>
                                                     <td>책이음 서비스 탈퇴시까지</td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>씨앗도서관 회원정보</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1"> 구로아카데미 (씨앗시민카드)</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1"> 구로아카데미 (씨앗도서관)</strong></td>
                                                     <td>이용자 (정보주체동의)</td>
-                                                    <td><strong style="font-size:17px;color:#126ec1">씨앗도서관 회원의 씨앗시민카드 서비스 이용</strong></td>
+                                                    <td><strong style="font-size:17px;color:#126ec1"> 씨앗도서관 서비스 이용</strong></td>
                                                     <td>회원번호, 도서이용현황</td>
-                                                    <td>씨앗시민카드 탈퇴시까지</td>
+                                                    <td>씨앗도서관 탈퇴시까지</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -312,7 +312,7 @@
                                     <div tabindex="0">
                                         씨앗도서관은 가입자에게 보다 양질의 서비스 제공을 위하여 개인정보보호법 제26조에 의거 귀하의 개인정보를 외부에 위탁하여 처리하고자 합니다.<br>
                                         <br>
-                                        - 개인정보 취급 수탁자 : ㈜씨앗도서 <br>
+                                        - 개인정보 취급 수탁자 : ㈜씨앗도서관 <br>
                                         - 위탁기간 : 유지보수 용역 기간<br>
                                         - 개인정보 취급 수탁업무: 씨앗도서관 홈페이지 및 자료관리시스템 유지보수업무 수행<br>
                                         <br>
@@ -344,7 +344,7 @@
     </div>
     
     <script src="/js/agree.js"></script>
-<a href="./join">테스트</a>
+
 
 </body>
 </html>

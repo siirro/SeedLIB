@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,18 +73,20 @@
 									<option value="title">제목</option>
 									<option value="contents">내용</option>
 								</select>
+								
 								<input type="text" name="search" id="searchKeyword" value="" title="검색어 입력" class="schKwd" placeholder="검색어 입력">
-								<a href="#link" id="searchBtn" class="btn input">검색</a>
+								<button type="button" class="btn input" id="searchBtn"> 검색</button>
 							</div>
 						</div>
 					</fieldset>
 					</form>
 					<!-- //게시판 검색 -->
+					
 
 					<!-- 게시판 목록 -->
 					<div class="boardWrap">
 						<table class="board-list">
-							<caption>도서관소식 : 번호, 제목, 첨부, 작성일, 조회수로 구성된 게시물 목록</caption>
+							<caption>도서관소식 : 번호, 제목, 작성일, 조회수로 구성된 게시물 목록</caption>
 							<colgroup>
 								<col class="no mobileHide">
 								
@@ -98,24 +101,32 @@
 								<col class="hits mobileHide">
 							</colgroup>
 							<thead>
-								<tr>
-								    <th scope="col" class="mobileHide">선택</th>
+				
+									<tr>
 									<th scope="col" class="mobileHide">번호</th>
-									<th scope="col" class="mobileHide">제목</th>
-									<th scope="col" class="mobileHide">첨부</th>
+									
+									
+									<th scope="col">제목</th>
+									
+									
 									<th scope="col" class="mobileHide">작성일</th>
 									<th scope="col" class="mobileHide">조회수</th>
+								
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="vo">
+								<input type="hidden" value= "${vo.boardNum}">
+								
 								<tr>
-									<td><input type="checkbox"></td>
-									<td>${vo.boardNum}</td>
+									<td> <img src="../../../../images/ico_notice.png"></td>
 									<td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
-									<td> <img src="../../../../images/ico_attach.png"> </td>
 									<td>${vo.regDate}</td>
 									<td>${vo.hit}</td>
+									
+									<c:if test="${vo} == null">
+		                            <td class="message footable-last-column footable-first-column" colspan="11">게시물 정보가 없습니다.</td>
+		                             </c:if>
 								</tr>	
 						</c:forEach>
 							</tbody>
@@ -124,31 +135,31 @@
 				  <div>
 					
 					<!-- //게시판 목록 -->
-					<div>
-					<button type="button" class="btn btn-primary"><a href="./add"> 글쓰기</a></button>
-					<span><button type="button" class="btn btn-denger">전체선택</button></span>
-					<span><button type="button" class="btn btn-primary">삭제</button></span>
-				</div>
-					
-					
 					
 					
 					
 					<!-- 페이징 -->
-					<c:if test="not empty list">
 					<div class="pagingWrap">
-						<input type="hidden" name="page" value="${pager.page}">
+						
 							<p class="paging">
-								<a href="./list?page=1" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span>맨 첫 페이지로 가기</a>
-								<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span> 이전 10개 보기</a>
-								<span class="current">1</span>
-								
-								<a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
-								<a href="javascript:fnList(354);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
-                 			</p>	
-					</div>
-					</c:if>
+							<a href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging prev ${pager.pre?'':'disabled'}"><span class="blind">이전 10개 보기</span></a>
+							<span class="current ${pager.pre?'':'disabled'}">
+									    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+											<a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+										</c:forEach>
+							</span>
+							<a href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging next"><span class="blind  ${pager.next?'':'disabled'}">다음 10개 보기</span></a>
+
+
+							</p>
+						
+<%-- 						<sec:authorize access="hasRole('ADMIN')">
+ --%>						<a href="./add" id="registBtn" class="btn write themeBtn">글쓰기</a>
+<%-- 						</sec:authorize>
+ --%>					</div>
 					<!-- //페이징 -->
+					
+					
 
 					<!-- End Of the Real Contents-->
 

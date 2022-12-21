@@ -96,10 +96,6 @@ public class MemberVO implements UserDetails, OAuth2User{
 		return true;
 	}	
 
-	 @Override
-	    public boolean isEnabled() {
-	        return true;
-	    }
 
 
 

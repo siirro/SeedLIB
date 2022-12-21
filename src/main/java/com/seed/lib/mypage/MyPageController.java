@@ -1,6 +1,5 @@
 package com.seed.lib.mypage;
 
-//import java.sql.Date;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,11 +76,11 @@ public class MyPageController {
   
   
     @GetMapping("myIndex")
-	public ModelAndView getMyPage(HttpSession session) throws Exception{
+	public ModelAndView getMyPage(HttpSession session, MemberVO memberVO) throws Exception{
 		ModelAndView mv =new ModelAndView();
-	 
-		MemberVO memberVO =(MemberVO)session.getAttribute("memberVO");
-	   
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+	    Authentication authentication = context.getAuthentication();
+	    memberVO  = (MemberVO)authentication.getPrincipal();
 		memberVO= mypageService.getMyPage(memberVO);
 
 		mv.addObject("vo", memberVO);
@@ -108,10 +107,8 @@ public class MyPageController {
 		}
 	
 	@GetMapping("memberModify")
-	public ModelAndView setUpdate(HttpSession session)throws Exception {
-	
-		ModelAndView mv =new ModelAndView();
-		MemberVO memberVO =new MemberVO();
+	public ModelAndView setUpdate(HttpSession session, MemberVO memberVO,ModelAndView mv)throws Exception {
+		
 		memberVO= (MemberVO)session.getAttribute("memberVO");
 		memberVO = mypageService.getMyPage(memberVO);
 		mv.addObject("vo", memberVO);
@@ -120,9 +117,12 @@ public class MyPageController {
 	}
 	
 	@PostMapping("memberModify")
-	public ModelAndView setUpdate(MemberVO memberVO)throws Exception{
+	public ModelAndView setUpdate(HttpSession session,MemberVO memberVO)throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
+		memberVO= (MemberVO)session.getAttribute("memberVO");
+		memberVO = mypageService.getMyPage(memberVO);
+		
 		int result = memberService.setUpdate(memberVO);
 		mv.setViewName("redirect:myIndex?userName="+memberVO.getUsername());
 		

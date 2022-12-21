@@ -6,23 +6,27 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.seed.lib.board.wishboard.WishMapper;
+import com.seed.lib.board.wishboard.WishService;
+import com.seed.lib.board.wishboard.WishVO;
+
 @SpringBootTest
 class BoardMapperTest  {
 	@Autowired
-	private BoardService boardService;
+	private WishService wishService;
 
 	@Test
 	public void BoardMapperTest()throws Exception {
-		BoardVO boardVO =new BoardVO();
+		WishVO wishVO =new WishVO();
 		
 		for(int i=0; i<30; i++) {
-		boardVO.setTitle("title"+i);
-		boardVO.setWriter("writer"+i);
-		boardVO.setContents("contents"+i);
+			wishVO.setTitle("title"+i);
+			wishVO.setWriter("writer"+i);
+			wishVO.setContents("contents"+i);
 		
 
-		int result = boardService.setAdd(boardVO);
-		assertEquals(30, result);
+		int result = wishService.setAdd(wishVO);
+		assertEquals(1, result);
 		
 		
 		}

@@ -30,13 +30,20 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-						<sec:authorize access="isAuthenticated()">
-							<li><a href="/member/logout">로그아웃</a></li>
-							<li><a href="/mypage/myIndex">마이페이지</a></li>
-					    </sec:authorize>
-					     
-					     <sec:authorize access="!isAuthenticated()">
-					
+					<sec:authorize access="isAuthenticated()">
+							
+							
+						
+										<li><a href="/member/logout" id="login">로그아웃</a></li>							
+										<li><a href="/print/boCart">내바구니</a></li>
+										
+							<sec:authorize access="hasRole('ADMIN')"> 
+									<li><a href="/admin/main">관리자페이지</a></li>
+							</sec:authorize>
+							
+				</sec:authorize >
+				
+						<sec:authorize access="!isAuthenticated()">	
 							<li><a href="/member/login">로그인</a></li>
 							<li><a href="/member/agree">회원가입</a></li>
 						</sec:authorize>

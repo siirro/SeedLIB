@@ -1051,4 +1051,6 @@ p.story {float: left; width: 100%; margin-top: 35px; padding-top: 30px; border-t
 	.photoThumbView .slideshow img {display: block; width: inherit; margin: 0 auto;}
 
 	.book-list .thumb .cover {min-width: 148px;}
+	
+	.add{margin-top:20px; margin-left:880px;}
 }

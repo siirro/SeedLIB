@@ -49,16 +49,8 @@
                 <div class="snsFarm">
                     <ul class="snsBtnArea clearfix">
                         <li>
-                            <a href="#snsGroup" id="sns" title="SNS 공유하기" class="snsShare"><span class="blind">SNS 공유하기</span></a>
-                            <div id="snsGroup" class="snsList clearfix">
-                                <a href="#sns1" id="sns1" title="단축URL 복사하기" class="snsUrl" onclick="fnShorturlCopy();"><span class="blind">단축URL</span></a>
-                                <a href="#sns2" id="sns2" title="QR코드 레이어팝업 열림" class="snsQr" data-tooltip="chartSns"><span class="blind">QR코드</span></a>
-                                <a href="#sns3" id="sns3" onclick="javascript:fnShareKakaoStory('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="카카오스토리에 공유하기 새창열림" class="snsStory"><span class="blind">카카오스토리</span></a>
-                                <a href="#sns4" id="sns4" onclick="javascript:fnShareTwitter('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="트위터에 공유하기 새창열림" class="snsTwitter"><span class="blind">트위터</span></a>
-                                <a href="#sns5" id="sns5" onclick="javascript:fnShareFaceBook('https://lib.anyang.go.kr/seoksu/menu/10157/bbs/20003/bbsPostRegist.do?searchCategory=&amp;currentPageNo=1&amp;postIdx=0'); return false;" title="페이스북에 공유하기 새창열림" class="snsFacebook"><span class="blind">페이스북</span></a>
-                            </div>
+                            
                         </li>
-                        <li class="mobileHide"><a href="#print" id="pprint" title="인쇄" class="snsPrint" onclick="javascript:fnPrintPopup('seoksu'); return false;"><span class="blind">현재화면 프린트</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +89,7 @@
                                                 <sec:authentication property="Principal" var="memberVO"/>
                                                 <tr>
                                                     <th scope="row">작성자</th>
-                                                    <td><input type=text readonly="readonly" name="writer" value="${memberVO.name}"></td>
+                                                    <td><input type=text readonly="readonly" name="writer" value=""></td>
                                                 </tr>
                                                 
                                                  <tr>

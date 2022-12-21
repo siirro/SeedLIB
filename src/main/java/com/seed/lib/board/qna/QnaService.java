@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Service
@@ -14,9 +16,13 @@ public class QnaService {
 	private QnaMapper qnaMapper ;
 	
 	
-	public List<QnaVO> getList(Pager pager)throws Exception{
-		return qnaMapper.getList(pager);
+	public List<QnaVO> getList(BoardPager boardPager)throws Exception{
+		boardPager.makeRow();
+		boardPager.getNum(qnaMapper.getTotalCount(boardPager));
+		return qnaMapper.getList(boardPager);	
+		
 	}
+	
 	
 	public QnaVO getDetail(QnaVO qnaVO)throws Exception{
 		return qnaMapper.getDetail(qnaVO);

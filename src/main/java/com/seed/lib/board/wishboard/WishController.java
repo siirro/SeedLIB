@@ -1,4 +1,4 @@
-package com.seed.lib.board.qna;
+package com.seed.lib.board.wishboard;
 
 import java.util.List;
 
@@ -10,39 +10,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.board.BoardService;
 import com.seed.lib.board.BoardVO;
-import com.seed.lib.member.MemberVO;
+import com.seed.lib.board.qna.QnaService;
+import com.seed.lib.board.qna.QnaVO;
 import com.seed.lib.util.BoardPager;
 import com.seed.lib.util.Pager;
 
 @Controller
-@RequestMapping("/qna/*")
-public class QnaController {
-
+@RequestMapping("/wish/*")
+public class WishController {
+	
+	
 
 	@Autowired
-	private QnaService qnaService;
+	private WishService wishService;
 
 	@GetMapping("list")
 	public ModelAndView getList(BoardPager boardPager) throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		List<QnaVO> ar = qnaService.getList(boardPager);
+		List<WishVO> ar = wishService.getList(boardPager);
 		mv.addObject("list",ar);
 		mv.addObject("pager",boardPager);
-		mv.setViewName("qna/list");
+		mv.setViewName("wish/list");
 		
 		return mv;
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(QnaVO qnaVO) throws Exception{
+	public ModelAndView getDetail(WishVO wishVO) throws Exception{
 	
 	ModelAndView mv =new ModelAndView();
-	qnaVO= qnaService.getDetail(qnaVO);
-	mv.addObject("qnaVO",qnaVO);
-	mv.setViewName("qna/detail");
+	wishVO= wishService.getDetail(wishVO);
+	
+	
+	mv.addObject("wishVO",wishVO);
+	mv.setViewName("wish/detail");
 		
 		return mv;
 	} 
@@ -51,38 +56,38 @@ public class QnaController {
 	@GetMapping("add")
 	public String setAdd()throws Exception{
 		
-	   return "qna/add";
+	   return "wish/add";
 	}
 	
 	
 	@PostMapping("add")
-	public String setAdd(QnaVO qnaVO)throws Exception{
+	public String setAdd(WishVO wishVO)throws Exception{
 		
-		int result = qnaService.setAdd(qnaVO);
+		int result = wishService.setAdd(wishVO);
 		
 		return "redirect:./list"; 
 	}
 	
 	
 	@GetMapping("update")
-	public ModelAndView setUpdate(QnaVO qnaVO, ModelAndView mv)throws Exception{
-		qnaVO= qnaService.getDetail(qnaVO);
-		mv.addObject("qnaVO", qnaVO);
-		mv.setViewName("qna/update");
+	public ModelAndView setUpdate(WishVO wishVO, ModelAndView mv)throws Exception{
+		wishVO= wishService.getDetail(wishVO);
+		mv.addObject("wishVO", wishVO);
+		mv.setViewName("wish/update");
 		return mv;
 
 	}
 
 	@PostMapping("update")
-	public String setUpdate(QnaVO qnaVO) throws Exception{
-		int result = qnaService.setUdate(qnaVO);
+	public String setUpdate(WishVO wishVO) throws Exception{
+		int result = wishService.setUdate(wishVO);
 
-		return "redirect:/qna/detail?qnaNum="+qnaVO.getQnaNum();
+		return "redirect:/wish/detail?wishNum="+wishVO.getWishNum();
 	}
 
 	@GetMapping("delete")
 	@ResponseBody
-	public int setDelete(QnaVO qnaVO) throws Exception{
-		return qnaService.setDelete(qnaVO);
+	public int setDelete(WishVO wishVO) throws Exception{
+		return wishService.setDelete(wishVO);
 	}
 }

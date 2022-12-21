@@ -5,17 +5,24 @@
 
 <mapper namespace="com.seed.lib.board.BoardMapper">
 
-<!-- 
-			<sql id="search">	
-	 		<choose>
+		<sql id="search">
+		WHERE
+			<choose>
 				<when test="kind=='title'">TITLE</when>
-				<when test="kind=='contents'">COTNENTS</when>
+				<when test="kind=='contents'">CONTENTS</when>
 				<otherwise>CONTENTS</otherwise>
-			 </choose>
+			</choose>
 			LIKE CONCAT('%', #{search}, '%')
 			</sql>
 
- -->
+
+			<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
+				SELECT COUNT(BOARDNUM)
+				FROM BOARD
+				<include refid="search"></include>
+				ORDER BY BOARDNUM DESC
+			</select>
+
 			<delete id="FileDelete" parameterType="BoardFileVO">
 			
 			DELETE FROM BOARDFILE WHERE FILENUM=#{fileNum}
@@ -42,7 +49,7 @@
 			 
 			 <delete id="setDelete" parameterType="BoardVO">
 			
-			     DELETE BOARD WHERE BOARDNUM=#{boardNum}
+			     DELETE FROM BOARD WHERE BOARDNUM=#{boardNum}
 			  
 			  </delete>
 			  
@@ -62,16 +69,18 @@
 			
 			</insert>
 			
+			<update id="setHit" parameterType="BoardVO">
+				UPDATE BOARD 
+				SET HIT=HIT+1
+				WHERE BOARDNUM=#{boardNum}
+			</update>
 			
-			
-			<select id="getList" parameterType="BoardVO" resultType="BoardVO">
-			
-				
-					SELECT * FROM BOARD 
-					ORDER BY BOARDNUM DESC
-		<!-- 		 <include refid="search"></include>
-					limit #{startRow}, #{perPage}
-			-->		
+			<select id="getList" parameterType="BoardPager" resultType="BoardVO">
+						
+				SELECT * FROM BOARD 	 
+					<include refid="search"></include>
+					ORDER BY BOARDNUM DESC 
+					LIMIT #{startRow}, #{perPage}
 					
 			</select>
 			
