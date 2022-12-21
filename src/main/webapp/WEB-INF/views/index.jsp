@@ -721,7 +721,7 @@
 								<dd>평일 09시~18시 / 주말 09시~17시</dd>
 							</dl>
 						</div>
-						<div class="more"><a href="/seoksu/40034/contents.do">
+						<div class="more"><a href="/guide/time">
 							<span class="blind">이용안내 더보기</span></a>
 						</div>
 					</div>

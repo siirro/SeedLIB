@@ -44,7 +44,6 @@ public class HomeController {
 		while(en.hasMoreElements()) {
 			String key = en.nextElement();
 			log.info("key=>{}",key);
-			
 		}
 		
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
@@ -53,7 +52,6 @@ public class HomeController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
-		
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();
 		List<BookVO> popularBook = searchService.getPopularBook();
