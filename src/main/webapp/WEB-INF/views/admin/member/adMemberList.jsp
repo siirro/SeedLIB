@@ -170,17 +170,17 @@
                       <ul class="pagination justify-content-end">
                         <c:if test="${pager.pre}">
                           <li class="page-item">
-                            <a class="page-link text-success" href="./proList?page=${pager.startNum-1}" aria-label="Previous">
+                            <a class="page-link text-success" href="./adMemberList?page=${pager.startNum-1}" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                           </li>
                         </c:if>
                         <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                          <li class="page-item"><a class="page-link text-success" href="./proList?page=${i}">${i}</a></li>
+                          <li class="page-item"><a class="page-link text-success" href="./adMemberList?page=${i}">${i}</a></li>
                         </c:forEach>
                         <c:if test="${pager.next}">
                           <li class="page-item">
-                            <a class="page-link text-success" href="./proList?page=${pager.lastNum+1}" aria-label="Next">
+                            <a class="page-link text-success" href="./adMemberList?page=${pager.lastNum+1}" aria-label="Next">
                               <span aria-hidden="true">&raquo;</span>
                             </a>
                           </li>
