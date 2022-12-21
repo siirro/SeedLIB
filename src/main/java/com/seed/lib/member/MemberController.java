@@ -131,12 +131,12 @@ public class MemberController {
 		
 	}
 	
-//	@GetMapping("logout")
-//	public String getLogout(HttpSession session)throws Exception{
-//		session.invalidate();
-//		
-//		return "redirect:../";
-//	}
+	@GetMapping("logoutResult")
+	public String getLogout(HttpSession session)throws Exception{
+		session.invalidate();
+		
+		return "redirect:../";
+	}
 
 
 	

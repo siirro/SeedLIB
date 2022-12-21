@@ -112,6 +112,7 @@ public class MyPageController {
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
 	    Authentication authentication = context.getAuthentication();
 	    memberVO  = (MemberVO)authentication.getPrincipal();
+	    
 		memberVO = mypageService.getMyPage(memberVO);
 		mv.addObject("my", memberVO);
 		mv.setViewName("mypage/memberModify");
@@ -119,13 +120,13 @@ public class MyPageController {
 	}
 	
 	@PostMapping("memberModify")
-	public ModelAndView setUpdate(HttpSession session,MemberVO memberVO)throws Exception{
+	public ModelAndView setUpdate(MemberVO memberVO)throws Exception{
 		
 		ModelAndView mv =new ModelAndView();
 		
-		memberVO = mypageService.getMyPage(memberVO);
+		//memberVO = mypageService.getMyPage(memberVO);
 		int result = memberService.setUpdate(memberVO);
-		mv.setViewName("redirect:myIndex?userName="+memberVO.getUserName());
+		mv.setViewName("redirect:myIndex");
 		
 		return mv;
 		

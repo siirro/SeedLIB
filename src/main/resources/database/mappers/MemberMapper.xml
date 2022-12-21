@@ -7,7 +7,7 @@
 	
 	
 				<delete id="setDelete" parameterType="MemberVO">
-					DELETE MEMBER WHERE USERNAME=#{userName}
+					UPDATE MEMBER SET ENABLED=0 WHERE USERNAME=#{userName} 
 				</delete>
 							  
 			<update id="setUpdate" parameterType="MemberVO">

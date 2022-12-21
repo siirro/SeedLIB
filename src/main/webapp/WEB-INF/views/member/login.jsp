@@ -80,7 +80,7 @@
                                             
                                             
                                             <div class=rememberme>
-                                            <input type="checkbox" name="rememberId" class="remember" id="rememberMe">
+                                            <input type="checkbox" name="rememberId" class="remember" id="rememberMe" >
                                             <label class="" for="">ID 기억하기</label>
                                             </div>
                                             
