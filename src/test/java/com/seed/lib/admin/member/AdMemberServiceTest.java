@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.seed.lib.book.loan.BookLoanService;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.util.HdPager;
 
@@ -16,6 +17,9 @@ class AdMemberServiceTest {
 
 	@Autowired
 	private AdMemberService adMemberService;
+	
+	@Autowired
+	private BookLoanService bookLoanService;
 	
 	//@Test
 	void getAdMemberListTest() throws Exception {

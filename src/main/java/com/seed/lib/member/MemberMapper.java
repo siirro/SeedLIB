@@ -13,4 +13,8 @@ public interface MemberMapper {
 	public int setJoin(MemberVO memberVO) throws Exception;
 	public int setUpdate(MemberVO memberVO) throws Exception;
 	public int setDelete(MemberVO memberVO) throws Exception;
+	
+	// 연체 반납 횟수 증가
+	public int setOverCount(MemberVO memberVO)throws Exception;
+	
 }
