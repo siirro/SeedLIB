@@ -42,7 +42,7 @@
                         <a href="#0">관리자 페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        SeedGraph
+                        씨앗도서관
                       </li>
                     </ol>
                   </nav>
@@ -55,8 +55,8 @@
           <!-- ========== title-wrapper end ========== -->
           <div class="row">
             <div class="col">
-              <div class="icon-card mb-30" style="height: 200px;">
-                <div class="icon purple" style="max-width: 68px; height: 68px;">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon purple" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-list"></i>
                 </div>
                 <div class="content">
@@ -68,8 +68,8 @@
             </div>
             <!-- End Col -->
             <div class="col">
-              <div class="icon-card mb-30" style="height: 200px;">
-                <div class="icon success" style="max-width: 68px; height: 68px;">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon success" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-book"></i>
                 </div>
                 <div class="content">
@@ -84,8 +84,8 @@
           <!-- End Row -->
           <div class="row">
             <div class="col">
-              <div class="icon-card mb-30" style="height: 200px;">
-                <div class="icon primary" style="max-width: 68px; height: 68px;">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon primary" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-calendar"></i>
                 </div>
                 <div class="content">
@@ -97,8 +97,8 @@
             </div>
             <!-- End Col -->
             <div class="col">
-              <div class="icon-card mb-30" style="height: 200px;">
-                <div class="icon orange" style="max-width: 68px; height: 68px;">
+              <div class="icon-card mb-30" style="margin-right: 10px; height: 200px;">
+                <div class="icon orange" style="margin-left: 30px; max-width: 68px; height: 68px;">
                   <i class="lni lni-user"></i>
                 </div>
                 <div class="content">
