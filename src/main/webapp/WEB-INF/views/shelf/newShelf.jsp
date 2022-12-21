@@ -36,7 +36,7 @@
         <hr style="margin-top: 30px;"> 
           
         <div class="shelf-con">
-            <div class="shelfCon">
+            <div class="shelfConS">
 	            <div class="shelfName">
 	            	<span>📗 새 책꽂이 명 : </span>
 	            	<input type="text" id="shName">

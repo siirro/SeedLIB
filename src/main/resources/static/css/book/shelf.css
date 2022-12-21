@@ -88,10 +88,16 @@
 	width: 60%
 }
 
-.shelfCon {
+.shelfConS {
 	display: flex;
     align-items: flex-start;
     flex-direction: column;
+}
+
+.shelfCon {
+	display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .shelfMemo {

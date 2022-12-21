@@ -95,11 +95,7 @@
 	                                        <option value="title">제목</option>
 	                                        <option value="writer">저자</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
-	                                </span>
-	                                <span class="bunch">
-	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="50" maxlength="100">
 	                                </span>
 	                                <span class="bunch">
 	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
@@ -160,6 +156,6 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="../temp/footer.jsp"></c:import> 
+	<c:import url="../../temp/footer.jsp"></c:import> 
 </body>
 </html>

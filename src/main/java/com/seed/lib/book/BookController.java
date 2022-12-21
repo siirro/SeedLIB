@@ -147,6 +147,15 @@ public class BookController {
 		return result;
 	}
 	
+	//예약 신청
+	@ResponseBody
+	@PostMapping("reDelete")
+	public int setReservationDelete (@RequestBody BookReservationVO reVO) throws Exception {
+		int result = loanService.setReDelete(reVO);
+		return result;
+	}
+	
+	
 	//상호대차 신청
 	@ResponseBody
 	@PostMapping("mutual")

@@ -77,10 +77,6 @@
 					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
 				</choose>
 				
-				<if test="dateA != null and dateB != null">
-					AND L.REGDATE BETWEEN #{dateA} AND #{dateB}
-				</if>
-				
 			ORDER BY
 			<choose>
 				<when test="sortHow == 'title'">B.TITLE</when>
@@ -126,6 +122,11 @@
 		WHERE ISBN = #{isbn} AND USERNAME = #{userName}
 	</update>
 	
+	<!-- 예약자 있는지 -->
+	<select id="getRePe" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(RVNUM) FROM RESERVATION WHERE ISBN = #{isbn}
+	</select>
+	
 	<!-- ================================== -->
 	
 	<!-- 예약 신청 -->
@@ -133,6 +134,10 @@
 		INSERT INTO RESERVATION (ISBN, USERNAME, ENABLEDATE, REGDATE)
 			VALUES (#{isbn}, #{userName}, #{enableDate}, now())
 	</insert>
+	
+	<delete id="setReDelete" parameterType="BookLoanVO">
+		DELETE FROM RESERVATION WHERE ISBN = #{isbn} AND USERNAME = #{userName}
+	</delete>
 	
 	<!-- 예약 목록 -->
 	<select id="getReList" parameterType="BookLoanPager" resultMap="ReResult">
@@ -146,10 +151,6 @@
 					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
 					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
 				</choose>
-				
-				<if test="dateA != null and dateB != null">
-					AND E.REGDATE BETWEEN #{dateA} AND #{dateB}
-				</if>
 				
 			ORDER BY
 			<choose>
@@ -196,10 +197,6 @@
 					<when test="select == 'title'">AND B.TITLE LIKE CONCAT ('%', #{search}, '%')</when>
 					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
 				</choose>
-				
-				<if test="dateA != null and dateB != null">
-					AND M.REGDATE BETWEEN #{dateA} AND #{dateB}
-				</if>
 				
 			ORDER BY
 			<choose>
