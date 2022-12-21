@@ -123,8 +123,8 @@
 	<!-- 대출 연장 신청 -->
 	<update id="setExtension" parameterType="BookLoanVO">
 		UPDATE LOAN SET EXTENSION
-				= (SELECT EXTENSION FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}) +1
-					AND LOANLDATE
+				= (SELECT EXTENSION FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}) +1,
+				LOANLDATE
 				= (SELECT date_add(
 					(SELECT LOANLDATE FROM LOAN WHERE ISBN = #{isbn} AND USERNAME = #{userName}), interval 7 DAY))
 		WHERE ISBN = #{isbn} AND USERNAME = #{userName}
@@ -230,6 +230,28 @@
 			<result column="libNum" property="libNum"/>
 		</collection>	
 	</resultMap>
+	
+	<!-- ================================== -->
+	<!-- 반납 신청 -->
+	<insert id="setReturn" parameterType="MyReturnVO">
+		INSERT INTO MYRETURN (LOANNUM, ISBN, RTDATE)
+			VALUES (#{loanNum}, #{isbn}, now())
+	</insert>
+	
+	<!-- 반납 상태 업데이트 -->
+	<update id="setRtOvUpdate" parameterType="BookLoanVO">
+		UPDATE LOAN SET OVERDUE = #{overDue} AND RTSTATUS = #{rtStatus}
+			WHERE LOANNUM = #{loanNum}
+	</update>
+	
+	<!-- 연체 여부 확인 -->
+	<select id="getNow" parameterType="MyReturnVO" resultType="java.sql.Date">
+		SELECT RTDATE FROM MYRETURN WHERE LOANNUM = #{loanNum}
+	</select>
+	
+	<select id="isOver" parameterType="MyReturnVO" resultType="java.sql.Date">
+		SELECT LOANLDATE FROM LOAN WHERE LOANNUM = #{loanNum}
+	</select>
 	
 	<!-- FROM 페이지 별로 설정 -->
 	<select id="getCount" resultType="Long" parameterType="BookLoanPager">

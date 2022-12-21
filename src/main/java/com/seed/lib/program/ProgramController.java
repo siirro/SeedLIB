@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,20 +60,6 @@ public class ProgramController {
 			mpVO.setUserName(memberVO.getUserName());
 			mpVO.setProNum(apVO.getProNum());
 			
-			//카운트 0이면 신청 가능
-			int count = programService.getMyCount(mpVO);
-			//상태가 1이면 신청 불가 | 0이면 신청가능 버튼
-			int state = programService.getMyState(mpVO);
-			
-			if(count == 0) {
-				mv.addObject("can", 0);
-			}else {
-				if(state == 0) {
-					mv.addObject("can", 0);
-				}else {
-					mv.addObject("can", 1);
-				}
-			}
 		}
 		
 		apVO = programService.getDetail(apVO);
@@ -84,7 +71,7 @@ public class ProgramController {
 	//프로그램 신청하기
 	@ResponseBody
 	@PostMapping("add")
-	public int setAdd (MemberProgramVO mpVO) throws Exception{
+	public int setAdd (@RequestBody MemberProgramVO mpVO) throws Exception{
 		int result = programService.setAdd(mpVO);
 		return result;
 	}
@@ -93,7 +80,7 @@ public class ProgramController {
 	//신청취소
 	@ResponseBody
 	@PostMapping("delete")
-	public int setDel (MemberProgramVO mpVO) throws Exception{
+	public int setDel (@RequestBody MemberProgramVO mpVO) throws Exception{
 		int result = programService.setAdd(mpVO);
 		return result;
 	}

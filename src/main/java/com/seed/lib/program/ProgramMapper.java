@@ -26,10 +26,10 @@ public interface ProgramMapper {
 	public int setUpdate (MemberProgramVO mpVO) throws Exception;
 	
 	//신청상태 확인 - 1/0
-	public int getMyState (MemberProgramVO mpVO) throws Exception;
+	public Integer getMyState (MemberProgramVO mpVO) throws Exception;
 	
 	//신청여부 확인 - 잇없 카운트
-	public int getMyCount (MemberProgramVO mpVO) throws Exception;
+	public Integer getMyCount (MemberProgramVO mpVO) throws Exception;
 	
 	//신청취소
 	public int setDel (MemberProgramVO mpVO) throws Exception;
