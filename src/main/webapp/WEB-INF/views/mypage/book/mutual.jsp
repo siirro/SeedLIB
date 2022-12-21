@@ -67,7 +67,6 @@
                         				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
                         				
                         				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
-                        				<li class="tab-li"><a href="mypage/infographics" title="독서통계">독서통계</a></li>
                         			</ul>
                         		</div>
                         	</div>
@@ -111,6 +110,7 @@
                                 </div>
                                 
                                 <div class="listTable">
+                                	<strong>상호대차 도서 열람은 해당 도서관에 문의바랍니다.</strong>
 	                                <table class="listTable-t tbl">
 	                                    <thead>
 	                                        <tr>
@@ -118,7 +118,6 @@
 	                                            <th scope="col" >저자</th>
 	                                            <th scope="col">대출 도서관</th>
 	                                            <th scope="col" >대출일</th>
-	                                            <th></th>
 	                                        </tr>
 	                                    </thead>
 	                                    
@@ -141,10 +140,6 @@
 															</c:choose>
 	                                        			</td>
 	                                        			<td>${rd}</td>
-	                                        			<td class="padding-x">
-				                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
-	                                        				<button type="button" class="btn white small" id="Btn" title="반납">반납</button>
-	                                        			</td>
 		                                        		
 		                                        		<c:if test="${book} == null">
 		                                                	<td class="message footable-last-column footable-first-column" colspan="11">상호대차 중인 도서가 없습니다.</td>
@@ -164,6 +159,6 @@
 			</div>
 		</div>
 	</div>
-
+	<c:import url="../../temp/footer.jsp"></c:import> 
 </body>
 </html>

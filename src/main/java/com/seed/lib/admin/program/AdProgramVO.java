@@ -61,8 +61,9 @@ public class AdProgramVO {
 	
 	//멤버프로그램 
 	private Long mpNum;
-	private String username;
+	private String userName;
 	private int proCheck;
 	private int proState;
 	private String name;
+	private int rowNum;
 }
