@@ -146,17 +146,15 @@ $(".ExAlretBtn").click(function(){
 		success:function(data){
 			switch (data){
 				case 3:
-					alert("대출 연장은 총 3번까지 가능합니다.")
+					alert("대출 연장은 총 2번까지 가능합니다.")
 					break;
 				case 1:
 					let check = window.confirm("대출 연장을 완료했습니다.");
 					if(check){
 						location.reload(); 
-                        opener.location.href="../";
 						break;
 					} else{
                         location.reload(); 
-                        opener.location.href="../";
                         break;
                     } 
 				}
@@ -166,4 +164,47 @@ $(".ExAlretBtn").click(function(){
 			}
 		})
 	});		
+//-------------------------------------------------
+//마이페이지에서 반납신청 눌렀을 때
+let isbnR = $(".isbnR").val();
 
+$("#ReturnAlretBtn").click(function(){
+	const returnVO = {
+		userName : userName,
+		isbn : isbnR,
+		loanNum : $(".loanNum").val()
+	}
+	
+	console.log(returnVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/book/return",
+		data:JSON.stringify(returnVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success:function(data){
+			switch (data){
+				case 2:
+					let done = window.confirm("도서를 반납했습니다.");
+					if(done){
+						location.href="/mypage/book/loanHistory";
+					} else{
+                        location.href="../";
+                        location.reload();
+                    } 
+				case 1:
+					done = window.confirm("도서를 반납했습니다.\n연체일만큼 도서를 대출할 수 없습니다.");
+					if(done){
+						location.href="/mypage/book/loanHistory";
+					} else{
+                        location.href="../";
+                        location.reload();
+                    } 
+				}
+			},
+			error:function(){
+				console.log("ERROR");
+			}
+		})
+	});

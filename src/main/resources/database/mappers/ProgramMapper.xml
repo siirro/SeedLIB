@@ -93,13 +93,13 @@
 	</update>
 
 	<!-- 신청 상태 확인 -->
-	<select id="getMyState" parameterType="MemberProgramVO">
+	<select id="getMyState" parameterType="MemberProgramVO" resultType="Integer">
 		SELECT PROSTATE FROM MEMBERPROGRAM
 			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
 	</select>
 	
 	<!-- 신청여부 확인 -->
-	<select id="getMyCount" parameterType="MemberProgramVO">
+	<select id="getMyCount" parameterType="MemberProgramVO" resultType="Integer">
 		SELECT COUNT(MPNUM) FROM MEMBERPROGRAM
 			WHERE USERNAME = #{userName} AND PRONUM = #{proNum}
 	</select>
