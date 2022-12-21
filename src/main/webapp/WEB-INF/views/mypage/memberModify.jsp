@@ -99,7 +99,7 @@
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="memId">아이디</label></th>
                                                 <td>${my.userName}</td>                                              
-                                                  <input type="hidden" name="username" value="${my.userName}">
+                                                  <input type="hidden" name="userName" value="${my.userName}">
                                             </tr>
                                             <tr class="mobileShowTr">
                                                 <th scope="row" class="ta_l pl10">비밀번호</th>
@@ -113,7 +113,7 @@
                                                     <div class="numericForm clearfix">
                                                         
                                                         
-                                                        <select name="phone" value="${my.phone}" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
+                                                        <select value="" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
                                                             
                                                                 <option value="010" selected="selected">010</option>
                                                                 <option value="011">011</option>
@@ -123,19 +123,35 @@
                                                                 <option value="019">019</option>
                                                         </select>
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone2" name="phone" value="${my.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
+                                                        <input type="text" id="handphone2" value="" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
                                                         <span class="hyphen">-</span>
-                                                        <input type="text" id="handphone3" name="phone" value="${my.phone}" title="휴대폰번호 끝자리" maxlength="4" class="numeric" required="required">
+                                                        <input type="text" id="handphone3" value="" title="휴대폰번호 끝자리" maxlength="4" class="numeric" required="required">
                                                         <label for="smsUseYn" class="ml10"><input type="checkbox" name="smsUseYn" id="smsUseYn" value="Y" checked="checked"> SMS 수신동의</label>
                                                     </div>
                                                 </td>
+                                                <input type="hidden" id="phone" name="phone">
+                                                <input type="hidden" id="phoneValue" value="${my.phone}">
                                                 
                                                 <script type="text/javascript">
-													let wi = $("#dd").attr("wi")
-													console.log(wi);
-													
-													let hand2 = $("#handphone2").val()
-                                                    console.log(hand2);
+
+                                                    //폰번호 파싱된거 뿌리고 파싱된거 합쳐서 히든네임폰에 집어넣기
+													let hand2 = $("#phoneValue").val()
+                                                    let num1 = hand2.substr(3,4);
+                                                    let num2 = hand2.substr(7,4);
+                                                    $("#handphone2").val(num1);
+                                                    $("#handphone3").val(num2);
+
+                                                    let phone1 = $("#handphone1").val();
+                                                    let phone2 = $("#handphone2").val();
+                                                    let phone3 = $("#handphone3").val();
+
+                                                    let phone = phone1+phone2+phone3;
+
+                                                    $("#phone").val(phone);
+
+
+
+
 												</script>
                                             </tr>
                                             <tr>

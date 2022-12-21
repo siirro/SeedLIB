@@ -71,7 +71,7 @@
 										
 										
 									</div>
-									<div class="myInfo">
+									<div class="myInfo" style="background: white;">
 										<div class="memType">
 											
 													<strong class="member typeB">준회원</strong>
