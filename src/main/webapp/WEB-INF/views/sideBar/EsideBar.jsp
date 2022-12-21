@@ -7,8 +7,6 @@
     <ul id="lnb" class="lnb"> 
     <li id="lnb1_1"><a href="/board/list" class="on">공지사항</a> </li>
     <li id="lnb1_2"><a href="/qna/list" id="hopeInfo" class="">자주하는질문</a>
-    <li id="lnb1_3"><a href="/wish/list" id="donInfo" class="donInfo setDon on">도서관에게바란다</a> </li> 
-      <li id="lnb1_4"><a href="#" id="roomList" class="roomList roomInfo on">분실물센터</a>
 
 
       <!-- class="current on" -->

@@ -51,7 +51,7 @@
 	<insert id="setLibOne" parameterType="Map">
 		INSERT INTO BOOKLIB
 		(BLIBNUM, LIBNUM, ISBN, QUANTITY, ABLE)
-		VALUES(0, #{libNum}, #{isbn}, 1, 1)
+		VALUES(null, #{libNum}, #{isbn}, 1, 1)
 	</insert>
 	
 	<update id="setBookUpdate"  parameterType="BookVO">
