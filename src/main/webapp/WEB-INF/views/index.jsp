@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+
 <!DOCTYPE html>
 <html>
 
@@ -381,13 +383,27 @@
 					<c:when test="${empty memberVO}">
 						<!-- 회원 로그인 -->
 						<div class="serviceZone before">
+						<sec:authorize access="!isAuthenticated()">	
 							<h5>회원 로그인</h5>
 							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
 							<ul class="clearfix">
+							
 								<li><a href="/member/login">로그인</a></li>
 								<li><a href="/member/agree">회원가입</a></li>
-							</ul>
 							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+								
+								</sec:authorize>
+							<sec:authorize access="isAuthenticated()">	
+							<h5>준회원</h5>
+							
+							<p><strong>${vo.name}</strong>님, 안녕하세요</p>
+							<br>
+								<li><span>아이디</span> : ${vo.username} </li>
+								<li><span>회원가입일</span> : ${vo.regDate} </li>
+								<li><span>휴대폰번호</span> : ${vo.phone} </li>
+							</ul>
+						</sec:authorize>
+							
 						</div>
 						<!-- //회원 로그인 -->
 

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import com.nimbusds.jose.proc.SecurityContext;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.search.PopularVO;
@@ -32,6 +34,8 @@ public class HomeController {
 	private StudyRoomService roomService;
 	@Autowired
 	private SearchService searchService;
+	@Autowired
+	private MypageService mypageService;
 	
 
 
@@ -46,10 +50,11 @@ public class HomeController {
 			log.info("key=>{}",key);
 		}
 		
+		MemberVO memberVO =new MemberVO();
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
-		if(context != null) {
-		log.info("context=>{}",context);
-		}
+	    Authentication authentication = context.getAuthentication();
+	    memberVO = (MemberVO)authentication.getPrincipal();
+		memberVO= mypageService.getMyPage(memberVO);
 		
 		ModelAndView mv = new ModelAndView();
 		List<PopularVO> ar = searchService.getPopularWord();
@@ -59,6 +64,7 @@ public class HomeController {
 		log.info("뉴프로그램 {}", newProgram);
 		mv.addObject("nP", newProgram);
 		mv.addObject("popular", ar);
+		mv.addObject("vo", memberVO);
 		mv.addObject("accessionBook", accessionBook);
 		mv.addObject("popularBook", popularBook);
 		mv.setViewName("index");

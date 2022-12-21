@@ -34,7 +34,7 @@ public class BoardController {
 	
 	
 	
-	@GetMapping("fileDelete")
+	@PostMapping("fileDelete")
 	@ResponseBody
 	public int FileDelete(BoardFileVO boardFileVO)throws Exception{
 		int result = boardService.FileDelete(boardFileVO);

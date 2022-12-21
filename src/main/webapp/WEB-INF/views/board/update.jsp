@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css">
@@ -93,14 +93,16 @@
                                                  <tr>
                                                    <th scope="row">첨부파일</th>
                                                      <td>
+                                                 <c:forEach items="${board.boardFileVOs}" var="fileVO">
+                                                 <p>
+													${fileVO.oriName}
+													<button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">X</button>
+												</p>
+													</c:forEach>
+													
                                                      <button type="button" id="fileAdd" class="btn-primary">파일 선택</button>
                                                      <div class="mb-3" id="fileResult" data-file-size="${board.boardFileVOs.size()}"></div>
-                                                     <c:forEach items="${board.boardFileVOs}" var="fileVO">
-														<p>
-															${fileVO.oriName}
-															<button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">X</button>
-														</p>
-													</c:forEach>
+														
 										
                                                     </td>
                                                </tr>
@@ -109,10 +111,15 @@
                                              </table>
                                     
                                       <div class="textarea">
-                                                   <textarea name="contents" title="질문 내용 입력" id="contents1" value="${board.contents}"></textarea>
+                                                   <textarea name="contents" title="질문 내용 입력" id="contents1" style="width:100%; height:400px;" >${board.contents}</textarea>
                                                 </div>
                                                
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                                 
                                            
                                 
@@ -134,10 +141,13 @@
 		  
 		  
     </div>
+  
     
 	<script src="/js/fileManager.js"></script>
     
+  <script type="text/javascript">
 
+    </script>
     
     
  

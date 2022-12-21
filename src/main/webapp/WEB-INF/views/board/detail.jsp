@@ -71,6 +71,7 @@
 							<col>
 							</colgroup>
 							<tbody>
+							
 								<tr>
 									<th scope="row">제목</th>
 									<td>${board.title}</td>
