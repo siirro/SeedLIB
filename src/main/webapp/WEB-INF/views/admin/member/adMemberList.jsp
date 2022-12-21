@@ -94,36 +94,7 @@
                             <th><h6>이메일</h6></th>
                             <th><h6>회원가입일</h6></th>
                             <th><h6>연체반납횟수</h6></th>
-                            <th><h6>
-                              <div class="row justify-content-center">
-                                <div class="col-9">
-                                  <div class="select-style-1" style="margin-bottom: 0;">
-                                    <div class="select-position select-sm">
-                                      <select name="enabled">
-                                        <option value="선택안함">탈퇴상태</option>
-                                        <option value="0">회원탈퇴</option>
-                                        <option value="1">회원</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </h6></th>
-                            <th><h6>
-                              <div class="row justify-content-center">
-                                <div class="col-9">
-                                  <div class="select-style-1" style="margin-bottom: 0;">
-                                    <div class="select-position select-sm">
-                                      <select name="accountNonLocked">
-                                        <option value="선택안함">잠금상태</option>
-                                        <option value="0">계정잠김</option>
-                                        <option value="1">계정열림</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </h6></th>
+                            <th><h6>회원상태</h6></th>
                             <th><h6>계정비활성화</h6></th>
                           </tr>
                           <!-- end table row-->
@@ -160,15 +131,28 @@
                               <td class="min-width">
                                 <p>${MemberVO.ovMyrCount}</p>
                               </td>
-                              <td class="min-width">
-                                <span class="status-btn active-btn">${MemberVO.enabled}</span>
-                              </td>
-                              <td class="min-width">
-                                <span class="status-btn active-btn">${MemberVO.accountNonLocked}</span>
+                              <td>
+                                <c:choose>
+                                  <c:when test="${MemberVO.enabled eq 'true' and MemberVO.accountNonLocked eq 'true'}">
+                                    <span id="changeBtn" class="status-btn success-btn">
+                                      회원
+                                    </span>
+                                  </c:when>
+                                  <c:when test="${MemberVO.enabled eq 'false'}">
+                                    <span id="changeBtn" class="status-btn close-btn">
+                                      회원탈퇴
+                                    </span>
+                                  </c:when>
+                                  <c:otherwise>
+                                    <span id="changeBtn" class="status-btn info-btn">
+                                      회원잠금
+                                    </span>
+                                  </c:otherwise>
+                                </c:choose>
                               </td>
                               <td>
                                 <div class="action d-grid gap-2 d-md-flex justify-content-center">
-                                  <button onclick="memberLocked()">
+                                  <button type="button" onclick="memberLocked()">
                                     <a class="text-info">
                                       <i class="lni lni-pencil-alt"></i>
                                     </a>
