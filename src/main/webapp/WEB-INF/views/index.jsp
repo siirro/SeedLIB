@@ -378,7 +378,7 @@
 				<!-- //공지사항 -->
 
 				<c:choose>
-					<c:when test="${empty memberVO}">
+					<c:when test="${memberVO.name eq null}">
 						<!-- 회원 로그인 -->
 						<div class="serviceZone before">
 							<h5>회원 로그인</h5>
@@ -390,11 +390,8 @@
 							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
 						</div>
 						<!-- //회원 로그인 -->
-
-				
 					</c:when>
-					<c:otherwise>
-
+					<c:when test="${memberVO.name ne null}">
 						<!-- 미니 내정보 -->
 						<div class="serviceZone">
 							<h5>서비스 이용현황</h5>
@@ -424,7 +421,7 @@
 						</div>
 						<!-- 미니 내정보 -->
 
-					</c:otherwise>
+					</c:when>
 				</c:choose>
 
 

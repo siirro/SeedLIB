@@ -251,6 +251,7 @@ public class MyPageController {
 				cancelVO.setRentNum(lockerService.getLockerOne(merchant_uid).getRentNum());
 				cancelVO.setReason(reason);
 				cancelVO.setCancel_request_amount(Integer.parseInt(cancel_request_amount));
+				cancelVO.setMerchant_uid(merchant_uid);
 
 				int cancelResult = lockerService.setLockerCancelOne(cancelVO);
 				return lockerService.setLockerCancelOne(cancelVO);

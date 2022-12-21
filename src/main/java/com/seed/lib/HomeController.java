@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import com.nimbusds.jose.proc.SecurityContext;
 import com.seed.lib.member.MemberVO;
+import com.seed.lib.mypage.MypageService;
 import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.search.PopularVO;
@@ -31,14 +33,16 @@ public class HomeController {
 	@Autowired
 	private StudyRoomService roomService;
 	@Autowired
-	private SearchService searchService;
+	private SearchService searchService;	
+	@Autowired
+	private MypageService mypageService;
 	
 
 
 		
 	
 @GetMapping("/")
-	public ModelAndView setHome(HttpSession session) throws Exception{
+	public ModelAndView setHome(HttpSession session, MemberVO memberVO) throws Exception{
 		Enumeration<String> en =session.getAttributeNames();
 		
 		while(en.hasMoreElements()) {
@@ -46,12 +50,20 @@ public class HomeController {
 			log.info("key=>{}",key);
 		}
 		
+		ModelAndView mv = new ModelAndView();
+		
 		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
 		if(context != null) {
-		log.info("context=>{}",context);
+			Authentication authentication = context.getAuthentication();
+			memberVO  = (MemberVO)authentication.getPrincipal();
+			memberVO = mypageService.getMyPage(memberVO);
+			log.info("mv:{}", memberVO);
+			// 비어있지 않다면 모델앤뷰에 넣기
+			if(memberVO != null) {
+				mv.addObject("memberVO", memberVO);
+			}
 		}
 		
-		ModelAndView mv = new ModelAndView();
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();
 		List<BookVO> popularBook = searchService.getPopularBook();
