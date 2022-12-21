@@ -42,15 +42,7 @@
 
 
 				<div id="contents" class="contentArea">
-					
-<!--Forced tab Show Que-->
-<div class="ttabWrap">
-	<div id="virtSelect"><a href="#script">탭메뉴</a></div>
-	<ul id="ttab3" class="tnb clearfix">
-		<li class="ttabLast"></li>
-	</ul>
-</div>
-<!--Forced tab Show Que-->
+
 
 <div id="popblackBG"></div>
 					<!--Real Contents Start-->

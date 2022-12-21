@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-    <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,11 +80,11 @@
 					</fieldset>
 					</form>
 					<!-- //게시판 검색 -->
-					
 
 					<!-- 게시판 목록 -->
 					<div class="boardWrap">
 						<table class="board-list">
+
 							<caption>도서관소식 : 번호, 제목, 작성일, 조회수로 구성된 게시물 목록</caption>
 							<thead>
 				
@@ -94,19 +93,16 @@
 									<th scope="col" style="width: 60%;">제목</th>
 									<th scope="col" style="width: 20%;">작성일</th>
 									<th scope="col" style="width: 10%;">조회수</th>
+
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="vo">
-								<input type="hidden" value= "${vo.boardNum}">
-								
 								<tr>
 									<td>${vo.boardNum}</td>
 									<td><a href="detail?boardNum=${vo.boardNum}">${vo.title}</a></td>
 									<td>${vo.regDate}</td>
 									<td>${vo.hit}</td>
-									
-	
 								</tr>	
 						</c:forEach>
 							</tbody>
@@ -118,28 +114,41 @@
 					
 					
 					
+					
+					
+					<!-- 페이징 -->
+					<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item ${pager.pre?'':'disabled'}">
+				      <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
+				    </li>
+					    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a> </li>
+						</c:forEach>
+					<li class="page-item ${pager.next?'':'disabled'}">
+				      <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
+				    </li>
+				  </ul>
+			</nav>
+					<!-- //페이징 -->
+					
 					<!-- 페이징 -->
 					<div class="pagingWrap">
 						
 							<p class="paging">
-							<a href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging prev ${pager.pre?'':'disabled'}"><span class="blind">이전 10개 보기</span></a>
-							<span class="current ${pager.pre?'':'disabled'}">
-									    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-											<a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
-										</c:forEach>
-							</span>
-							<a href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging next"><span class="blind  ${pager.next?'':'disabled'}">다음 10개 보기</span></a>
+								<a href="javascript:fnList(1);" class="btn-paging first"><span class="blind">맨 첫 페이지로 가기</span></a>
+<a href="javascript:fnList(1);" class="btn-paging prev"><span class="blind">이전 10개 보기</span></a>
+<span class="current">1</span>
+<a href="javascript:fnList(11);" class="btn-paging next"><span class="blind">다음 10개 보기</span></a>
+<a href="javascript:fnList(216);" class="btn-paging last"><span class="blind">맨 마지막 페이지로 가기</span></a>
 
 
 							</p>
 						
-<%-- 						<sec:authorize access="hasRole('ADMIN')">
- --%>						<a href="./add" id="registBtn" class="btn write themeBtn">글쓰기</a>
-<%-- 						</sec:authorize>
- --%>					</div>
+
+						<a href="./add" id="registBtn" class="btn write themeBtn">글쓰기</a>
+					</div>
 					<!-- //페이징 -->
-					
-					
 
 					<!-- End Of the Real Contents-->
 

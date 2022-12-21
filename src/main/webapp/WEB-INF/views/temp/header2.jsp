@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
+        <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
     
 <!-- CSS & JQUERY -->
 <link rel="stylesheet" href="/css/common.css">
@@ -36,7 +37,6 @@
 						
 										<li><a href="/member/logout" id="login">로그아웃</a></li>							
 										<li><a href="/print/boCart">내바구니</a></li>
-										
 							<sec:authorize access="hasRole('ADMIN')"> 
 									<li><a href="/admin/main">관리자페이지</a></li>
 							</sec:authorize>
@@ -136,7 +136,7 @@
 					
 				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb6_1"><a href="#">나의정보</a> </li> 
+						<li id="gnb6_1"><a href="/mypage/myIndex">나의정보</a> </li> 
 						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
 						<li id="gnb6_3"><a href="/mypage/bookMutual">상호대차조회</a> </li> 
 						<li id="gnb6_4"><a href="/shelf/list">관심도서목록</a> </li> 
