@@ -240,13 +240,13 @@
 	
 	<!-- 반납 상태 업데이트 -->
 	<update id="setRtOvUpdate" parameterType="BookLoanVO">
-		UPDATE LOAN SET OVERDUE = #{overDue} AND RTSTATUS = #{rtStatus}
+		UPDATE LOAN SET OVERDUE = #{overDue}, RTSTATUS = #{rtStatus}
 			WHERE LOANNUM = #{loanNum}
 	</update>
 	
 	<!-- 연체 여부 확인 -->
 	<select id="getNow" parameterType="MyReturnVO" resultType="java.sql.Date">
-		SELECT RTDATE FROM MYRETURN WHERE LOANNUM = #{loanNum}
+		SELECT RTDATE FROM MYRETURN WHERE LOANNUM = #{loanNum} AND ISBN = #{isbn}
 	</select>
 	
 	<select id="isOver" parameterType="MyReturnVO" resultType="java.sql.Date">
