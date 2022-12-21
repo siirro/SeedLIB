@@ -19,7 +19,7 @@ public class AdminBookService {
 	// 도서 목록 조회
 	public List<BookVO> getAdBookList(AdbookPager adbookPager)throws Exception{
 		adbookPager.makeRow();
-		adbookPager.getNum(null);
+		adbookPager.getNum(adminBookMapper.getAdBookTotalCount(adbookPager));
 		return adminBookMapper.getAdBookList(adbookPager);
 	}
 	

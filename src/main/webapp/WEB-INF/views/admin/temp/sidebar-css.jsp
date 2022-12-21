@@ -59,9 +59,6 @@
                 <li>
                   <a href="/admin/member/adMemberList">회원 목록</a>
                 </li>
-                <li>
-                  <a href="#">Blank Page</a>
-                </li>
               </ul>
             </li>
             <span class="divider"><hr /></span>

@@ -12,6 +12,9 @@ import com.seed.lib.util.AdbookPager;
 @Mapper
 public interface AdminBookMapper {
 	
+	// 도서목록 페이징처리 - 전체 수
+	public Long getAdBookTotalCount(AdbookPager adbookPager)throws Exception;
+	
 	// 도서 목록 조회
 	public List<BookVO> getAdBookList(AdbookPager adbookPager)throws Exception;
 
