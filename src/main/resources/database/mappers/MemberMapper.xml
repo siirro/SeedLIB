@@ -35,8 +35,8 @@
 	
 
 			<insert id="setJoin" parameterType="MemberVO">
-			INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, DROPSTATUS)
-			VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 0, 0, 0, 0)
+			INSERT INTO MEMBER (USERNAME, PASSWORD, NAME, GENDER, EMAIL, BIRTH, PHONE, POST, ADDRESS1, ADDRESS2, REGDATE, ENABLED, LOANSTATUS, OVMYRCOUNT, ACCOUNTNONLOCKED)
+			VALUES ( #{userName}, #{password}, #{name},#{gender}, #{email}, #{birth}, #{phone}, #{post}, #{address1}, #{address2},now(), 1, 0, 0, 1)
 			</insert> 
 
 
@@ -69,7 +69,7 @@
 		<result column="enabled" property="enabled"/>
 		<result column="loanstatus" property="loanStatus"/>
 		<result column="ovmyrcount" property="ovMyrCount"/>
-		<result column="dropstatus" property="dropStatus"/>
+		<result column="accountNonLocked" property="accountNonLocked"/>
 		<collection property="roleVOs" javaType="List" ofType="RoleVO">
 			<result column="roleName" property="roleName"/>
 		</collection>

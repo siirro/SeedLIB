@@ -35,7 +35,7 @@ public class MemberVO implements UserDetails, OAuth2User{
 	private boolean enabled;
 	private boolean loanStatus;
 	private Integer ovMyrCount;
-	private boolean dropStatus;
+	private boolean accountNonLocked;
 	private Long ovDate;
 	
 	// 제본 여러번
@@ -87,7 +87,7 @@ public class MemberVO implements UserDetails, OAuth2User{
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return true;
+		return this.accountNonLocked;
 	}
 
 	@Override
@@ -96,13 +96,13 @@ public class MemberVO implements UserDetails, OAuth2User{
 		return true;
 	}	
 	
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
 
 	
 
+	@Override
+	public boolean isEnabled() {
+		return this.enabled;
+	}
 
 
 		@Override

@@ -89,7 +89,7 @@ public class FileManager extends AbstractView{
 	  
 	   
 	   
-	   return "fileName";
+	   return fileName;
    }
 
 	   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

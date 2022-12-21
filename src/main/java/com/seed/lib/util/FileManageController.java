@@ -18,9 +18,10 @@ public class FileManageController {
 	@GetMapping("/fileDown/{p}")
 	public ModelAndView fileDown(@PathVariable(name="p") String path, BoardFileVO boardFileVO)throws Exception {
 		ModelAndView mv =new ModelAndView();
+
 		boardFileVO= boardService.getFileDetail(boardFileVO);
 		mv.addObject("fileVO", boardFileVO);
-		mv.addObject("path", "qna");
+		mv.addObject("path", path);
 		mv.setViewName("fileManager");
 		
 		return mv;
