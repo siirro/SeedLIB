@@ -4,6 +4,12 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.program.AdProgramMapper">
 
+	<select id="getMemberProgram" parameterType="AdProgramVO">
+		SELECT * FROM PROGRAM P
+		INNER JOIN MEMBERPROGRAM MP
+		WHERE P.PRONUM=${proNum}
+	</select>
+
 	<update id="setUpdateStatus" parameterType="AdProgramVO">
 		UPDATE PROGRAM SET RECSTATUS=#{recStatus} WHERE PRONUM=#{proNum}
 	</update>

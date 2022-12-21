@@ -109,22 +109,13 @@
                                                 <th scope="row" class="ta_l pl10"><label for="cellNumber">핸드폰 번호 <span class="essential themeFC">*</span></label></th>
                                                 <td>
                                                     <div class="numericForm clearfix">
-                                                        
-                                                        
                                                         <select name="phone" id="handphone1" title="핸드폰번호 앞자리" class="form-ele short" required="required">
-                                                            
                                                                 <option value="010" selected="selected">010</option>
-                                                            
                                                                 <option value="011">011</option>
-                                                            
                                                                 <option value="016">016</option>
-                                                            
                                                                 <option value="017">017</option>
-                                                            
                                                                 <option value="018">018</option>
-                                                            
                                                                 <option value="019">019</option>
-                                                            
                                                         </select>
                                                         <span class="hyphen">-</span>
                                                         <input type="text" id="handphone2" name="phone" value="${vo.phone}" title="휴대폰번호 중간자리" maxlength="4" class="numeric" required="required">
@@ -133,6 +124,11 @@
                                                         <label for="smsUseYn" class="ml10"><input type="checkbox" name="smsUseYn" id="smsUseYn" value="Y" checked="checked"> SMS 수신동의</label>
                                                     </div>
                                                 </td>
+
+                                                <script>
+                                                    let hand2 = $("#handphone2").val()
+                                                    console.log(hand2);
+                                                </script>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>

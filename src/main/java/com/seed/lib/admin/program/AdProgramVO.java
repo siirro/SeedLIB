@@ -58,4 +58,10 @@ public class AdProgramVO {
 		this.psDt = psDt+" "+psTime;
 		this.plDt = plDt+" "+plTime;
 	}
+	
+	private int mpNum;
+//	USERNAME
+//	PRONUM
+//	PROCHECK
+//	PROSTATE
 }

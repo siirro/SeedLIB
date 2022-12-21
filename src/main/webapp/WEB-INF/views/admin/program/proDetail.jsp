@@ -79,10 +79,9 @@
 	                    <hr>
                     </div>
                     
-                    <h4>프로그램내용</h4>
+                    <h4 style="margin-bottom: 5px;">프로그램내용</h4>
                     <pre style="max-height: 400px;
-                    white-space: break-spaces;">
-                    	<c:out value="${proVO.proContents}"></c:out>
+                    white-space: break-spaces;"><c:out value="${proVO.proContents}"></c:out>
                     </pre>
                     
                     <div class="text-success">

@@ -85,10 +85,10 @@
                             </select>
                           </div>
                         </div> -->
-                        <div class="input-style-3" style="margin-bottom: 0px;">
-                          <input type="text" name="search" placeholder="Search...." style="height: 46px;" />
+                        <div class="input-style-3" style="margin-bottom: 0px; margin-right: 16px;">
+                          <input type="text" name="search" placeholder="제목을 입력하세요" style="height: 46px;" />
                           <span class="icon">
-                            <i class="lni lni-search-alt"></i>
+                            <i style="transform: translateY(-5px);" class="lni lni-search-alt"></i>
                           </span>
                         </div>
                         <div>
