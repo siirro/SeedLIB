@@ -142,6 +142,8 @@
 		                             </c:if>
 							</c:forEach>
 							</tbody>
+							
+							
 						</table>
 					</div>
 					
@@ -150,11 +152,11 @@
 					<div class="pagingWrap">
 						
 							<p class="paging">
-<a href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging prev ${pager.pre?'':'disabled'}"><span class="blind">이전 10개 보기</span></a>
-<span class="current ${pager.pre?'':'disabled'}">
-		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
-			</c:forEach>
+							<a href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging prev ${pager.pre?'':'disabled'}"><span class="blind">이전 10개 보기</span></a>
+							<span class="current ${pager.pre?'':'disabled'}">
+									    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+											<a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+										</c:forEach>
 </span>
 <a href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" class="btn-paging next"><span class="blind  ${pager.next?'':'disabled'}">다음 10개 보기</span></a>
 
@@ -174,5 +176,7 @@
 	</div>
 		<!-- footer -->
 <c:import url="../temp/footer.jsp"></c:import>
+
+
 </body>
 </html>

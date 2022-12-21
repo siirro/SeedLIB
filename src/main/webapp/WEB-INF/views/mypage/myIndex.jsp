@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+ <link rel="icon" href="/images/favicon.png">
+	<title>마이페이지 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/contents.css">
 <link rel="stylesheet" href="/css/layout.css">
