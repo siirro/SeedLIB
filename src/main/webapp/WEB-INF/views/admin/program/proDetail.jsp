@@ -176,7 +176,12 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                        <c:forEach>
+                       
+                       
+                       
+                       
+                       
+                       
                           <tr>
                             <td>
                               <div class="check-input-primary">
@@ -197,7 +202,7 @@
                               </div>
                             </td>
                           </tr>
-                        </c:forEach>
+             
                         
                       </tbody>
                     </table>

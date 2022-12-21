@@ -23,6 +23,7 @@ public class HdPager {
 	private String searchKeyword;
 	private String libNum;
 	
+	private String search;
 	private String search1;
 	private String search2;
 	
