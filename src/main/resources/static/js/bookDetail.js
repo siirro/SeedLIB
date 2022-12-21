@@ -181,20 +181,28 @@ $("#RealShelfBtn").click(function(){
 	});
 	
 //-------------------------------------------------
-//로그인 창 띄우기
-$(".LoginBtn").click(function(){
+//검색
+function bookSearch () {
 	$.ajax({
-		type : "GET",
-		url : "../../member/loginPop",
-		success : function(){
-			window.open('/member/loginPop', "로그인", strOption);
+		method : "GET",
+		url : "https://dapi.kakao.com/v3/search/book?target=isbn",
+		data : {
+			query : isbn
 		},
-		error : function(){
-			console.log("ERROR");
-			 window.close();
-		}
+		headers : {
+			Authorization: "KakaoAK fa0fea361e13f848d372ac3702c5fd3f"
+		},
 	})
-});
+		.done(function(res){
+			console.log(res);
+			console.log(res.documents[0].contents);
+			$("#bookInformation").append(res.documents[0].contents);
+			$("#htitle").append("<span>도서정보 상세보기 클릭 ☞"
+								+"<a href='" +res.documents[0].url+ "'target='_blank'>"
+								+"<img src='https://search.pstatic.net/sunny/?src=https%3A%2F%2Fwww.kakaocorp.com%2Fpage%2Ffavicon.ico&type=f30_30_png_expire24' alt='카카오'>"
+								+"</a>제공</span>");
+		});
+}
 
 //-------------------------------------------------
 
