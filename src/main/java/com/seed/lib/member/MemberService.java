@@ -1,6 +1,7 @@
 package com.seed.lib.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
@@ -12,7 +13,8 @@ public class MemberService {
 	@Autowired 
 	private MemberMapper memberMapper;
 	
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	
 	public Integer getIdCheck(MemberVO memberVO)throws Exception{
@@ -26,7 +28,7 @@ public class MemberService {
 	}
 	
 	public int setJoin(MemberVO memberVO)throws Exception {			
-	
+		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
 		int result = memberMapper.setJoin(memberVO);
 		result = memberMapper.setMemberRole(memberVO);
 		

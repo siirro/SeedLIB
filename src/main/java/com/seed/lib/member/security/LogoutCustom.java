@@ -21,7 +21,7 @@ public class LogoutCustom implements LogoutHandler {
 	
 	
 	
-	@Value("${kakaokey1}")
+	@Value("${spring.security.oauth2.client.registration.kakao.client-id}")
 	private String kakaoKey;
 	
 	@Value("${redirecturi}")
@@ -36,7 +36,7 @@ public class LogoutCustom implements LogoutHandler {
 		if(social !=null) {
 		if(social.equals("kakao")) {
 			try {
-				response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id=kakaoKey&logout_redirect_uri=redirecturi");
+				response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id="+kakaoKey+"&logout_redirect_uri="+redirecturi);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

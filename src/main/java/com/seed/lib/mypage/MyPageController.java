@@ -124,10 +124,9 @@ public class MyPageController {
 		
 		ModelAndView mv =new ModelAndView();
 		
-		memberVO = mypageService.getMyPage(memberVO);
+		//memberVO = mypageService.getMyPage(memberVO);
 		int result = memberService.setUpdate(memberVO);
-		mv.addObject("mo", result);
-		mv.setViewName("redirect:myIndex?userName="+memberVO.getUserName());
+		mv.setViewName("redirect:myIndex");
 		
 		return mv;
 		

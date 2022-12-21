@@ -73,6 +73,8 @@ public class SecurityConfig {
 					//.antMatchers("/mypage").hasAnyRole("ADMIN","MEMBER")
 					.antMatchers("/login").permitAll()
 					.antMatchers("/logout").permitAll()
+					.antMatchers("/hope/setHope").hasRole("MEMBER")
+
 					
 					.anyRequest().permitAll()
 					.and() //마침 지점
@@ -80,8 +82,8 @@ public class SecurityConfig {
 				.formLogin()
 					.loginPage("/member/login")
 					.usernameParameter("userName")
-					.defaultSuccessUrl("/")
-					//.successHandler(loginSuccess)
+					//defaultSuccessUrl("/")
+					.successHandler(loginSuccess)
 					//.failureUrl("/member/login?error=true&message=LoginFail")
 					.failureHandler(loginFail)
 					.permitAll()
@@ -96,13 +98,6 @@ public class SecurityConfig {
 					.deleteCookies("JSESSIONID")
 					.permitAll()
 
-					.and()
-				.rememberMe()	
-				.rememberMeParameter("rememberMe")
-				.tokenValiditySeconds(300)
-				.key("rememberMe")
-				.userDetailsService(memberSecurityService)
-				.authenticationSuccessHandler(loginSuccess)
 					.and()
 					.oauth2Login() //Social Login 설정
 					.userInfoEndpoint()
