@@ -125,7 +125,7 @@
                               <p>${MemberVO.name}</p>
                             </td>
                             <td class="min-width">
-                              <p><a href="./memberDetail?userNaeme=${MemberVO.userName}">${MemberVO.userName}</a></p>
+                              <p>${MemberVO.userName}</p>
                             </td>
                             <td class="min-width">
                               <p>${MemberVO.gender}</p>
@@ -152,11 +152,11 @@
                                     <i class="lni lni-pencil-alt"></i>
                                   </a>
                                 </button>
-<%--                                 <button>
+                                <button>
                                   <a href="./memberDelete?userName=${MemberVO.userName}" class="text-danger">
                                     <i class="lni lni-trash-can"></i>
                                   </a>
-                                </button> --%>
+                                </button>
                               </div>
                             </td>
                           </tr>
@@ -170,17 +170,17 @@
                       <ul class="pagination justify-content-end">
                         <c:if test="${pager.pre}">
                           <li class="page-item">
-                            <a class="page-link text-success" href="./proList?page=${pager.startNum-1}" aria-label="Previous">
+                            <a class="page-link text-success" href="./adMemberList?page=${pager.startNum-1}" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                           </li>
                         </c:if>
                         <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                          <li class="page-item"><a class="page-link text-success" href="./proList?page=${i}">${i}</a></li>
+                          <li class="page-item"><a class="page-link text-success" href="./adMemberList?page=${i}">${i}</a></li>
                         </c:forEach>
                         <c:if test="${pager.next}">
                           <li class="page-item">
-                            <a class="page-link text-success" href="./proList?page=${pager.lastNum+1}" aria-label="Next">
+                            <a class="page-link text-success" href="./adMemberList?page=${pager.lastNum+1}" aria-label="Next">
                               <span aria-hidden="true">&raquo;</span>
                             </a>
                           </li>
