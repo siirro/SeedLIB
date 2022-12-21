@@ -21,6 +21,8 @@ class AdMemberServiceTest {
 	@Autowired
 	private BookLoanService bookLoanService;
 	
+	
+	
 	//@Test
 	void getAdMemberListTest() throws Exception {
 		HdPager hdPager = new HdPager();
