@@ -224,10 +224,6 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row"><label for="price">정가</label></th>
-                                                            <td><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly id="price" name="price" value="" class="form-control"></td>
-                                                        </tr>
-                                                        <tr>
                                                           <th scope="row"><label for="requestReason">카테고리</label><span class="essential themeFC">*</span></th>
                                                           <td><div class="select-position">
                                                             <select name="category" id="category">

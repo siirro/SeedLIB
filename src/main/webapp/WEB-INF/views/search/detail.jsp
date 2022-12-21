@@ -217,7 +217,6 @@
                                                         <ol>
                                                             <li class="tlqkf"><a id="btn_haveInfo${status.count}" onclick="bookInfo1(${list.isbn})" class="btn_haveInfo" title="소장정보 축소됨" data-id="${status.count}">소장정보</a></li>
                                                             <li><a id="btn_sergeInfo${status.count}" class="btn_sergeInfo" title="서지정보 축소됨">서지정보</a></li>
-                                                            <li><button class="btn" title="찜하기 새창열림" style="padding: 0px 15px; height: 30px; background-color: #fff; color: #00e3ae; border: 1px solid #00e3ae;">찜</a></li>
                                                         </ol>
                                                     </div>
 
