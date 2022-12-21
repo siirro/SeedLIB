@@ -294,7 +294,7 @@
 																	<td>
 																		<c:choose>
 																			<c:when test="${where == 0}">
-																				<c:if test="${rtDate != null}">${rtDate}</c:if>
+																				<c:if test="${rtDate != null}"><input type="text" class="enableDate" value="${rtDate}">${rtDate}</c:if>
 																				<c:if test="${rtDate == null}">-</c:if>
 																			</c:when>
 																			<c:otherwise>해당 도서관으로 문의 바랍니다.</c:otherwise>

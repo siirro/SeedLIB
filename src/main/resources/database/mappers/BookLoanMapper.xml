@@ -46,18 +46,12 @@
 	
 	<!-- 대출 가능한 회원인지? - 해당 도서 상호대차 중인지 -->
 	<select id="getMuCount" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(MUNUM) FROM MUTUALLOAN WHERE USERNAME = #{userName}
-			<if test="isbn != null">
-				AND ISBN = #{isbn}
-			</if>
+		SELECT COUNT(MUNUM) FROM MUTUALLOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
 	<!-- 대출 가능한 회원인지? - 해당 도서 예약 중인지 -->
 	<select id="getReCount" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(RVNUM) FROM RESERVATION WHERE USERNAME = #{userName}
-			<if test="isbn != null">
-				AND ISBN = #{isbn}
-			</if>
+		SELECT COUNT(RVNUM) FROM RESERVATION WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
 	

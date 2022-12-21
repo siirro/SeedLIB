@@ -297,11 +297,6 @@ public class MyPageController {
 				loVO.setUserName(memberVO.getUsername());
 				int count = loanService.getLoanCount(loVO);
 				mv.addObject("count", count);
-				
-				//반납날짜
-				MyReturnVO returnVO = new MyReturnVO();
-				java.sql.Date rtDate = loanService.getNow(returnVO);
-				mv.addObject("rtDate", rtDate);
 			}
 		}
 		return mv;
@@ -375,7 +370,7 @@ public class MyPageController {
 				int count = loanService.getReCount(loVO);
 				mv.addObject("count", count);
 			}
-		}
+		}	
 		return mv;
 	}
 	

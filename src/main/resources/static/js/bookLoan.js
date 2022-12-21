@@ -47,14 +47,15 @@ $("#LoanAlretBtn").click(function(){
 //-------------------------------------------------
 //디테일 페이지에서 예약신청 눌렀을 때
 $("#ResAlretBtn").click(function(){
-	const bookLoanVO = {
+	const reVO = {
 		isbn : isbn,
-		userName : userName
+		userName : userName,
+		enableDate : $(".enableDate").val()
 	}
 	$.ajax({
 		type : "POST",
 		url : "/book/reservation",
-		data:JSON.stringify(bookLoanVO),
+		data:JSON.stringify(reVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success:function(data){

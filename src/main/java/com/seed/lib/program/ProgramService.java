@@ -40,7 +40,7 @@ public class ProgramService {
 	//프로그램 신청하기
 	public int setAdd (MemberProgramVO mpVO) throws Exception{
 		// 중복 신청 확인
-			//-> 신청상태가 1이면 신청불가(return 2)
+			//-> 신청상태가 1,2이면 신청불가(return 2)
 			//-> 신청상태 0이면 update
 			//-> 아예 신청한 이력 없으면 신청가능
 		int c = programMapper.getMyCount(mpVO);
@@ -57,7 +57,7 @@ public class ProgramService {
 		}else if(c==1){
 			int p = programMapper.getMyState(mpVO);
 			//신청상태가 1 -> 불가
-			if(p == 1) {
+			if(p >= 1) {
 				return 2;				
 			
 			//신청상태가 0 -> update
@@ -76,7 +76,7 @@ public class ProgramService {
 		if(c == 1) {
 			//신청상태가 1이면 취소 가능
 			int p = programMapper.getMyState(mpVO);
-			if(p == 1) {
+			if(p >= 1) {
 				programMapper.setDel(mpVO);
 				return 1;				
 			}else {
