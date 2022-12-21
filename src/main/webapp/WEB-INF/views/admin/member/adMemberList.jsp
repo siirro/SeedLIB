@@ -39,7 +39,7 @@
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="../main">Dashboard</a>
+                        <a href="../main">관리자페이지 메인</a>
                       </li>
                       <li class="breadcrumb-item"><a href="./proList">회원 관리</a></li>
                       <li class="breadcrumb-item active" aria-current="page">
@@ -64,8 +64,6 @@
                     <!-- <h6 class="mb-10">Data Table</h6> -->
                     <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
                       <div class="left">
-                        <h6>Data Table</h6>
-                        <p>Show <span>10</span> entries</p>
                       </div>
                       <div class="right d-flex align-items-center">
                         <div class="select-style-1" style="margin-bottom: 0;">
@@ -73,8 +71,6 @@
                             <select name="kind">
                               <option value="선택안함">선택안함</option>
                               <option value="이름">이름</option>
-                              <option value="접수기간">접수기간</option>
-                              <option value="행사기간">행사기간</option>
                             </select>
                           </div>
                         </div>
@@ -110,9 +106,10 @@
                                   <div class="select-style-1" style="margin-bottom: 0;">
                                     <div class="select-position select-sm">
                                       <select name="kind">
-                                        <option value="선택안함">회원탈퇴상태</option>
-                                        <option value="회원">회원</option>
-                                        <option value="회원탈퇴">회원탈퇴</option>
+                                        <option value="선택안함">회원상태</option>
+                                        <option value="0">회원</option>
+                                        <option value="1">회원탈퇴</option>
+                                        <option value="2">계정비활성화</option>
                                       </select>
                                     </div>
                                   </div>

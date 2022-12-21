@@ -8,6 +8,7 @@
   		<typeAlias type="com.seed.lib.admin.program.AdProgramVO" alias="AdProgramVO"/>
   		<typeAlias type="com.seed.lib.book.order.BookPrintVO" alias="BookPrintVO"/>
   		<typeAlias type="com.seed.lib.book.order.BoOrderVO" alias="BoOrderVO"/>
+  		<typeAlias type="com.seed.lib.util.AdbookPager" alias="AdbookPager"/>
   		
   		<typeAlias type="com.seed.lib.book.BookVO" alias="BookVO"/>
   		<typeAlias type="com.seed.lib.book.LibVO" alias="LibVO"/>
