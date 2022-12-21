@@ -19,6 +19,10 @@ public class AdProgramService {
 	@Autowired
 	private AdProgramMapper programMapper;
 	
+	public List<AdProgramVO> getMemberProgram(AdProgramVO programVO)throws Exception{
+		return programMapper.getMemberProgram(programVO);
+	}
+	
 	public int setUpdateStatus(AdProgramVO programVO)throws Exception{
 		return programMapper.setUpdateStatus(programVO);
 	}

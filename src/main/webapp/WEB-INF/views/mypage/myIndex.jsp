@@ -87,7 +87,7 @@
 												<li class="mobileShow"><span class="emp1">※ 모바일회원증 캡처 이미지 사용 불가</span></li>-->
 											</ul>
 										</div>
-										<div class="btnModify">										
+										<div class="btnModify">							
 											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
 										</div>
 									</div>
