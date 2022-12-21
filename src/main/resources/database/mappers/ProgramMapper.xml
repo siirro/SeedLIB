@@ -161,12 +161,13 @@
 					</choose>
 				</if>
 		</if>
-		
-		ORDER BY
-			<choose>
-				<when test="sort == 'old'"> P.PLDATE ASC</when>
-				<when test="sort == 'new'"> P.PLDATE DESC</when>
-			</choose>
+		<if test="sort != null">
+			ORDER BY
+				<choose>
+					<when test="sort == 'old'"> P.PLDATE ASC</when>
+					<when test="sort == 'new'"> P.PLDATE DESC</when>
+				</choose>
+		</if>
 		LIMIT #{startNum}, #{perPage}
 	</select>
 	

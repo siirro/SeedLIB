@@ -67,7 +67,6 @@
                         				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
                         				
                         				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
-                        				<li class="tab-li"><a href="mypage/infographics" title="독서통계">독서통계</a></li>
                         			</ul>
                         		</div>
                         	</div>
@@ -116,7 +115,6 @@
 	                                        <tr>
 	                                            <th scope="col" class="th-title">제목</th>
 	                                            <th scope="col" >저자</th>
-	                                            <th scope="col" >대출일</th>
 	                                            <th scope="col" >대출 예정일</th>
 	                                            <th></th>
 	                                        </tr>
@@ -125,12 +123,10 @@
 	                                    <tbody>
 	                                      	<c:forEach items="${li}" var="book">
 		                                      	<c:forEach var="lo" items="${book.reVOs}">
-			                                      	<c:set var="rd" value="${lo.regDate}"/>
 			                                      	<c:set var="ed" value="${lo.enableDate}"/>
 		                                        	<tr>
 	                                        			<td>${book.title}</td>
 	                                        			<td>${book.writer}</td>
-	                                        			<td>${rd}</td>
 	                                        			<td>${ed}</td>
 	                                        			<td>
 				                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
@@ -155,6 +151,6 @@
 			</div>
 		</div>
 	</div>
-
+	<c:import url="../temp/footer.jsp"></c:import> 
 </body>
 </html>

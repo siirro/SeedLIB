@@ -29,9 +29,9 @@
     <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
     
     <link rel="icon" href="/images/favicon.png">
-	<title>대출 이력 : 씨앗도서관 ☘️ </title>
+	<title>문화행사 : 씨앗도서관 ☘️ </title>
 	
-	<c:import url="../../temp/header.jsp"></c:import>
+	<c:import url="../temp/header.jsp"></c:import>
 </head>
 
 
@@ -44,7 +44,7 @@
 		</div>
 		
 		<div id="contentGroup">
-			<c:import url="../../sideBar/FsideBar.jsp"></c:import>
+			<c:import url="../sideBar/FsideBar.jsp"></c:import>
 		
 			<div class="content">
 				<div class="naviandtitle">
@@ -75,6 +75,7 @@
                         				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
                         				
                         				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
+                        				<li class="tab-li"><a href="mypage/infographics" title="독서통계">독서통계</a></li>
                         			</ul>
                         		</div>
                         	</div>

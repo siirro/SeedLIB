@@ -33,29 +33,25 @@
 	
 	
 	<!-- isbn 없이 마이페이지에서 사용 -->
-	<!-- 대출 가능한 회원인지? - 해당 도서 대출 중인지 -->
+	<!-- 대출 가능한 회원인지? - 대출 권수 5권 -->
 	<select id="getBookLoan" parameterType="BookLoanVO" resultType="Integer">
 		SELECT COUNT(LOANNUM) FROM LOAN
-		WHERE USERNAME = #{userName} AND RTSTATUS = #{rtStatus}
-			<if test="isbn != null">
-				AND ISBN = #{isbn}
-			</if>
+		WHERE USERNAME = #{userName} AND RTSTATUS = 1
+	</select>
+	
+	<select id="getLoanCount" parameterType="BookLoanVO" resultType="Integer">
+		SELECT COUNT(LOANNUM) FROM LOAN
+		WHERE USERNAME = #{userName} AND RTSTATUS = #{rtStatus} AND ISBN = #{isbn}
 	</select>
 	
 	<!-- 대출 가능한 회원인지? - 해당 도서 상호대차 중인지 -->
 	<select id="getMuCount" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(MUNUM) FROM MUTUALLOAN WHERE USERNAME = #{userName}
-			<if test="isbn != null">
-				AND ISBN = #{isbn}
-			</if>
+		SELECT COUNT(MUNUM) FROM MUTUALLOAN WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
 	<!-- 대출 가능한 회원인지? - 해당 도서 예약 중인지 -->
 	<select id="getReCount" parameterType="BookLoanVO" resultType="Integer">
-		SELECT COUNT(RVNUM) FROM RESERVATION WHERE USERNAME = #{userName}
-			<if test="isbn != null">
-				AND ISBN = #{isbn}
-			</if>
+		SELECT COUNT(RVNUM) FROM RESERVATION WHERE USERNAME = #{userName} AND ISBN = #{isbn}
 	</select>
 	
 	
@@ -184,8 +180,8 @@
 	
 	<!-- 상호대차 신청 -->
 	<insert id="setMutual" parameterType="BookLoanVO">
-		INSERT INTO MUTUALLOAN (ISBN, USERNAME, REGDATE)
-			VALUES (#{isbn}, #{userName}, now())
+		INSERT INTO MUTUALLOAN (ISBN, USERNAME, REGDATE, LIBNUM)
+			VALUES (#{isbn}, #{userName}, now(), #{libNum})
 	</insert>
 	
 	<!-- 상호대차 목록 -->

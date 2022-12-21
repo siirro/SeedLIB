@@ -43,25 +43,33 @@ public class BookLoanService {
 		// 0이면 대출 가능 -> setLoan -> 저장 후 1 리턴
 		// 2이면 해당 도서 대출 중 -> 불가
 		//중복 대출, 예약, 상호대차 확인
-		int l = loanMapper.getBookLoan(loVO);
+		loVO.setRtStatus(1);
+				
+		int c = loanMapper.getBookLoan(loVO);
+		
+		int l = loanMapper.getLoanCount(loVO);
 		int m = loanMapper.getMuCount(loVO);
 		int r = loanMapper.getReCount(loVO);
 		
-		if(l==0 && m==0 && r==0) {
-			Long isbn = loVO.getIsbn();
-			Long libNum = loVO.getLibNum();
-			
-			//대출하기 SQL
-			loanMapper.setLoan(loVO);
-			
-			//대출 횟수
-			loanMapper.setCountUpdate(isbn);
-			
-			//대출 가능 권수
-			loanMapper.setQuanUpdate(isbn, libNum);
-			return 1;		
+		if(c < 5) {
+			if(l==0 && m==0 && r==0) {
+				Long isbn = loVO.getIsbn();
+				Long libNum = loVO.getLibNum();
+				
+				//대출하기 SQL
+				loanMapper.setLoan(loVO);
+				
+				//대출 횟수
+				loanMapper.setCountUpdate(isbn);
+				
+				//대출 가능 권수
+				loanMapper.setQuanUpdate(isbn, libNum);
+				return 1;		
+			}else {
+				return 2;
+			}			
 		}else {
-			return 2;
+			return 3;			
 		}
 	}
 	
@@ -91,6 +99,10 @@ public class BookLoanService {
 	public int getBookLoan (BookLoanVO loVO) throws Exception{
 		return loanMapper.getBookLoan(loVO);
 	}
+	
+	public int getLoanCount (BookLoanVO loVO) throws Exception{
+		return loanMapper.getLoanCount(loVO);
+	}
 
 //-----------------------------------------------------------------------	
 	
@@ -100,20 +112,20 @@ public class BookLoanService {
 	}
 	
 	//예약 신청
-	public int setReservation (BookLoanVO loVO) throws Exception{
+	public int setReservation (BookReservationVO reVO) throws Exception{
 		// 1이면 해당 도서 대출 중 -> 예약 불가
 		// 0이면 예약 가능 -> setReservation -> 저장 후 1 리턴
 		// 2이면 해당 도서 예약 중 -> 불가
-		int l = loanMapper.getBookLoan(loVO);
+		BookLoanVO loVO = new BookLoanVO();
+		loVO.setRtStatus(1);
+		
+		int l = loanMapper.getLoanCount(loVO);
 		int m = loanMapper.getMuCount(loVO);
 		int r = loanMapper.getReCount(loVO);
 		
 		if(l==0 && m==0 && r==0) {
-			Long isbn = loVO.getIsbn();
-			Long libNum = loVO.getLibNum();
-			
-			//상호대차
-			return loanMapper.setReservation(loVO);
+			loanMapper.setReservation(reVO);
+			return 1;
 		}else {
 			return 2;
 		}
@@ -139,26 +151,32 @@ public class BookLoanService {
 		// 0이면 대출 가능 -> Mapper -> 저장 후 1 리턴
 		// 2이면 해당 도서 대출 중 -> 불가
 		//중복 대출, 예약, 상호대차 확인
-		int l = loanMapper.getBookLoan(loVO);
+		loVO.setRtStatus(1);
+		
+		int c = loanMapper.getBookLoan(loVO);
+		
+		int l = loanMapper.getLoanCount(loVO);
 		int m = loanMapper.getMuCount(loVO);
 		int r = loanMapper.getReCount(loVO);
 		
-		if(l==0 && m==0 && r==0) {
-			Long isbn = loVO.getIsbn();
-			Long libNum = loVO.getLibNum();
-			
-			//상호대차
-			loanMapper.setMutual(loVO);
-			
-			//대출 횟수
-			loanMapper.setCountUpdate(isbn);
-			
-			//대출 가능 권수
-			loanMapper.setQuanUpdate(isbn, libNum);
-			return 1;
-		}else {
-			return 2;
-		}
+		if(c < 5) {
+			if(l==0 && m==0 && r==0) {
+				Long isbn = loVO.getIsbn();
+				Long libNum = loVO.getLibNum();
+				
+				//상호대차
+				loanMapper.setMutual(loVO);
+				
+				//대출 횟수
+				loanMapper.setCountUpdate(isbn);
+				
+				//대출 가능 권수
+				loanMapper.setQuanUpdate(isbn, libNum);
+				return 1;
+			}else {
+				return 2;
+			}
+		}return 3;
 	}
 	
 	//목록
@@ -202,15 +220,13 @@ public class BookLoanService {
 			//연체함
 			loanVO.setOverDue(1);
 			loanMapper.setRtOvUpdate(loanVO);
-			
-			MemberVO memberVO = new MemberVO();
-			memberVO.setUserName(loanVO.getUserName());
-			memberMapper.setOverCount(memberVO);
-			
-			return 1;	
+			return 3;	
 		}
 	}
 	
+	public Date getNow (MyReturnVO returnVO) throws Exception{
+		return loanMapper.getNow(returnVO);
+	}
 //-----------------------------------------------------------------------		
 	public Long getCount (BookLoanPager pager) throws Exception{
 		return loanMapper.getCount(pager);
