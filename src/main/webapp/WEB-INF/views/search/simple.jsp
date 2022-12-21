@@ -169,8 +169,6 @@
                                                             <tr>
                                                                 <th scope="col">도서관</th>
                                                                 <th scope="col">대출상태</th>
-                                                                <th scope="col">반납예정일</th>
-                                                                <th scope="col">대출 및 예약</th>
                                                                 <th scope="col">자료실</th>
                                                             </tr>
                                                         </thead>
@@ -227,10 +225,6 @@
                                                             <tr>
                                                                 <th scope="row">ISBN사항</th>
                                                                 <td class="ta_l">${list.isbn} 03190 ￦14000</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">수상주기</th>
-                                                                <td class="ta_l"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -520,7 +514,8 @@ let kw = '${param.search}'
                         }
                         
                         // let dsffs = '<tr class="MA"><td></td><td>대출중<br>(예약가능)<br>(예약:1명)</td><td>2022.11.25</td><td></td><td></td></tr>';
-                        cnrk += '<tr class="MA"><td>'+item.libVOs[i].libName+'</td><td>'+ableMsg+'</td><td>반납예정일</td><td>'+cc+'</td><td></td></tr>';
+                        // cnrk += '<tr class="MA"><td>'+item.libVOs[i].libName+'</td><td>'+ableMsg+'</td><td>반납예정일</td><td>'+cc+'</td><td></td></tr>';
+                        cnrk += '<tr class="MA"><td>'+item.libVOs[i].libName+'</td><td>'+ableMsg+'</td><td>2층 일반 자료실</td></tr>';
                         
                     }
                     $(".cnrkgktpdy").html(cnrk);

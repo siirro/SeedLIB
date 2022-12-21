@@ -9,6 +9,10 @@ import com.seed.lib.util.HdPager;
 @Mapper
 public interface AdProgramMapper {
 	
+	// 문화프로그램 신청 승인/거부
+	public int setUpdateProState(AdProgramVO programVO)throws Exception;
+	public int setUpdateProCheck(AdProgramVO programVO)throws Exception;
+	
 	// 문화프로그램 신청자 목록
 	public List<AdProgramVO> getMemberProgram(AdProgramVO programVO)throws Exception;
 	

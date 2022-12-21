@@ -126,29 +126,17 @@
                                                     <input type="text"   id="email2" name="email" value="${my.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
                     
                                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
-                                                        
-                                                            <option value="daum.net">daum.net</option>
-                                                        
-                                                            <option value="dreamwiz.com">dreamwiz.com</option>
-                                                        
-                                                            <option value="gmail.com">gmail.com</option>
-                                                        
-                                                            <option value="hanmail.net">hanmail.net</option>
-                                                        
-                                                            <option value="hotmail.com">hotmail.com</option>
-                                                        
-                                                            <option value="korea.com">korea.com</option>
-                                                        
-                                                            <option value="lycos.co.kr">lycos.co.kr</option>
-                                                        
-                                                            <option value="msn.com">msn.com</option>
-                                                        
-                                                            <option value="nate.com">nate.com</option>
-                                                        
-                                                            <option value="naver.com" selected="selected">naver.com</option>
-                                                        
-                                                            <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                                        
+                                                        <option value="daum.net">daum.net</option>
+                                                        <option value="dreamwiz.com">dreamwiz.com</option>
+                                                        <option value="gmail.com">gmail.com</option>
+                                                        <option value="hanmail.net">hanmail.net</option>
+                                                        <option value="hotmail.com">hotmail.com</option>
+                                                        <option value="korea.com">korea.com</option>
+                                                        <option value="lycos.co.kr">lycos.co.kr</option>
+                                                        <option value="msn.com">msn.com</option>
+                                                        <option value="nate.com">nate.com</option>
+                                                        <option value="naver.com" selected="selected">naver.com</option>
+                                                        <option value="yahoo.co.kr">yahoo.co.kr</option>
                                                         <option value="etc">직접입력</option>
                                                     </select>
                                                 </td>
