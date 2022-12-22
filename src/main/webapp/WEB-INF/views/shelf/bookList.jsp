@@ -16,19 +16,23 @@
     <link rel="stylesheet" href="/css/book/mypage.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
-    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
-    
+   
     <link rel="icon" href="/images/favicon.png">
     
 	<title>책꽂이 : 씨앗도서관 ☘️ </title>
+	
+	<style type="text/css">
+		.bookshelftitle{
+			width: 20rem;
+		}
+	</style>
 </head>
 
 <c:import url="../temp/header.jsp"></c:import>
 
 <body>
 	<input type="hidden" id="userName" value="${member.userName}">
+	<input type="hidden" id="shNum" value="${param.shNum}">
 	<div id="container" class="sub">	
 		<div class="sVisualWrap">
 			<div class="sVisual">
@@ -75,24 +79,17 @@
                         
                         <div class="divContent">
                         	<div class="divContent">
-                        		<div class="shelfInfo">
-                        			shName Shmemo edit
-                        		</div>
                         	
 	                        	<div class="loanSearch">
 	                        		<p>선택조건으로 조회</p>
-	                        		<form id="form" name="form" action="/mypage/book/loan" method="get">
+	                        		<form id="form" name="form" action="/shelf/bookList" method="get">
 	                        			<span class="bunch">
 		                                    <select id="select" name="select" class="selectBox1" title="검색항목">
 		                                        <option value="title">제목</option>
 		                                        <option value="writer">작가</option>
 		                                        <option value="isbn">ISBN</option>
 		                                    </select>
-		                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
-		                                </span>
-		                                <span class="bunch">
-		                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="생성기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-		                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="생성기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+		                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="50" maxlength="100">
 		                                </span>
 		                                <span class="bunch">
 		                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
@@ -118,11 +115,10 @@
 	                                </div>
 	                                
 	                                <div class="listTable">
-		                                <table class="listTable-t">
+		                                <table class="listTable-t tbl">
 		                                    <thead>
 		                                        <tr>
-		                                        	<th></th>
-		                                            <th scope="col" class="th-title">제목</th>
+		                                            <th scope="col" class="bookshelftitle">제목</th>
 		                                            <th scope="col" >작가</th>
 		                                            <th scope="col" >저장일</th>
 		                                            <th></th>
@@ -134,13 +130,11 @@
 		                                      		<c:forEach items="${bo.bookPickVOs}" var="pi">
 			                                      		<c:set value="${pi.regDate}" var="rd"/>
 			                                        	<tr>
-			                                        		<td></td>
-		                                        			<td><a href="">${bo.title}</a></td>
+		                                        			<td><a href="/book/detail?isbn=${bo.isbn}">${bo.title}</a></td>
 		                                        			<td>${bo.writer}</td>
 		                                        			<td>${rd}</td>
 		                                        			<td>
-		                                        				<input type="text" class="" value="${pi.pickNum}">
-		                                        				<button type="button" class="btn white small ExAlretBtn" title="삭제">삭제</button>
+		                                        				<button type="button" class="btn white small delBookBtn" data-num="${bo.isbn}" title="삭제">삭제</button>
 		                                        			</td>
 			                                        		
 			                                        		<c:if test="${bo} == null">
@@ -159,7 +153,12 @@
                 </div>
             </div>
         </div>
+        <c:import url="../temp/footer.jsp"></c:import> 
     </div>
+	<script type="text/javascript" src="/js/bookDetail.js"></script>
+	<script type="text/javascript" src="/js/bookLoan.js"></script>
+    
+    
 
 </body>
 </html>

@@ -61,30 +61,50 @@
 		                    <p id="divTitle" class="fl">신청한 문화행사</p>
                         </div>
                         
+                       	<div class="divTabMenu1">
+                       		<div>
+                       			<ul>
+                       				<li class="selected tab-li"><a href="/mypage/book/loan" title="대출">대출</a></li>
+                       				<li class="tab-li"><a href="/mypage/book/reservation" title="예약">예약</a></li>
+                       				<li class="tab-li"><a href="/mypage/book/mutual" title="상호대차">상호대차</a></li>
+                       			
+                       				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
+                       				
+                       				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
+                       			</ul>
+                       		</div>
+                       	</div>
+                        
                         <div class="divContent">
                         	<div class="loanSearch">
                         		<p>선택조건으로 조회</p>
-                        		<form id="form" name="form" action="/mypage/book/loan" method="get">
+                        		<form id="form" name="form" action="/mypage/program" method="get">
                         			<span class="bunch">
 	                                    <select id="select" name="select" class="selectBox1" title="검색항목">
 	                                        <option value="title">제목</option>
-	                                        <option value="writer">저자</option>
+	                                        <option value="content">내용</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="20" maxlength="300">
-	                                </span>
-	                                <span class="bunch">
-	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="45" maxlength="300">
 	                                </span>
 	                                <span class="bunch loan-search">
-	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
-	                                        <option value="title">제목</option>
-	                                        <option value="isbn">ISBN</option>
-	                                        <option value="loan_date">대출일</option>
+	                                    <select id="target" name="target" class="selectBox1" title="대상">
+	                                        <option value="유아">유아</option>
+	                                        <option value="어린이">어린이</option>
+	                                        <option value="청소년">청소년</option>
+	                                        <option value="성인">성인</option>
 	                                    </select>
-	                                    <select id="sort" name="sort" class="selectBox1" title="정렬 순서">
-	                                        <option value="asc">오름차순</option>
-	                                        <option value="desc">내림차순</option>
+	                                    <select id="category" name="category" class="selectBox1" title="분류">
+	                                        <option value="정기강좌">정기강좌</option>
+	                                        <option value="이벤트">이벤트</option>
+	                                        <option value="특강">특강</option>
+	                                        <option value="독서회">독서회</option>
+	                                        <option value="기타">기타</option>
+	                                    </select>
+	                                    <select id="status" name="status" class="selectBox1" title="분류">
+	                                        <option value="예정">예정</option>
+	                                        <option value="접수중"></option>
+	                                        <option value="마감"></option>
+	                                        <option value="종료"></option>
 	                                    </select>
 	                                </span>
 	                                <input type="submit" class="btnType5" title="조회" value="조회">

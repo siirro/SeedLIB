@@ -78,10 +78,8 @@ public class ProgramService {
 			//신청상태가 1이면 취소 가능
 			int p = programMapper.getMyState(mpVO);
 			System.out.println("&&&&&&&&&&&&&& : "+p);
-			if(p >= 1) {
-				programMapper.setDel(mpVO);
-				return 1;				
-			}
+			programMapper.setDel(mpVO);
+			return 1;	
 		}
 		return 0;
 	}
