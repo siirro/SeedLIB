@@ -136,7 +136,16 @@
     </div>
     
 	<script src="/js/fileManager.js"></script>
+    <script type="text/javascript">
+    $('#contents1').summernote({
+        tabsize: 4,
+        height: 250
+      });
     
+    $('#contents1').summernote('code', '${vo.contents}')
+    
+    
+	</script>
  
 </body>
 </html>

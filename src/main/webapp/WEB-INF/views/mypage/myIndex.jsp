@@ -95,16 +95,7 @@
 								</div>
 							</div>
 
-							<h4 class="stitle">서비스 이용현황</h4>
-							<ul class="myState clearfix">
 							
-								<li>
-									<a href="/intro/lectureApplyList.do">
-										<strong class="tit">신청중인<br>문화행사</strong>
-										<span class="num">0</span>
-									</a>
-								</li>
-							</ul>
 						</div>
 					</div>
 					<!-- End Of the Real Contents-->
