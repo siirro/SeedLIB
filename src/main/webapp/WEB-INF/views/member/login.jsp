@@ -6,7 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
+<link rel="shortcut icon" href="/images/favicon.png">
+<title> 게시글작성 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/member/loginsub.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/contents.css">
