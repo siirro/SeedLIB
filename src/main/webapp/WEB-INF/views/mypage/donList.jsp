@@ -93,7 +93,7 @@
 								 			<li>[${pager.searchKeyword}] 의 검색 결과가 없습니다</li>
 										</c:when>
 										<c:when test="${empty pager.searchKeyword}">
-								 			<li style="text-align: center;">신청한 희망 도서가 없습니다</li>
+								 			<li style="text-align: center;">신청한 기증 도서가 없습니다</li>
 										</c:when>
 									</c:choose>		
 								</c:when>

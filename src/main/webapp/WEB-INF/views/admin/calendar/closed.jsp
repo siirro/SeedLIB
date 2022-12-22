@@ -73,9 +73,13 @@
       background-color: #ff4c4c !important;
     }
 
-    a {
+    .fc-scrollgrid > a {
       color: #795548 !important;
     }
+
+    /* a {
+      color: #795548 !important;
+    } */
 
     .red{
 			border-radius: 5px;

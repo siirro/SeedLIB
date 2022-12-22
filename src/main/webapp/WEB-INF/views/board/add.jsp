@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <!-- header  -->
@@ -86,11 +86,13 @@
                                                     <td><input type="text" id="title" name="title" class="form-ele full"></td>
                                                 </tr>
                                                 
-                                                <sec:authentication property="Principal" var="memberVO"/>
                                                 <tr>
                                                     <th scope="row">작성자</th>
-                                                    <td><input type=text readonly="readonly" name="writer" value=""></td>
+                                                    <td><input type=text readonly="readonly" name="writer" value="${vo.name}"></td>
+                                              
                                                 </tr>
+                                                
+
                                                 
                                                  <tr>
                                                    <th scope="row">첨부파일</th>
@@ -106,7 +108,7 @@
                                                 
                                                 
                                                 <div class="textarea">
-                                                   <textarea name="contents" title="질문 내용 입력" id="contents1"></textarea>
+                                                   <textarea name="contents" title="질문 내용 입력" id="contents1" style="width:100%; height:400px;" ></textarea>
                                                 </div>
                                                
                                     </div>
@@ -128,21 +130,22 @@
 
 		<!-- footer -->
 		<c:import url="../temp/footer.jsp"></c:import>
+		
 		  
 		  
     </div>
     
 	<script src="/js/fileManager.js"></script>
-    
-  <script type="text/javascript">
-  $('#contents1').summernote({
-        placeholder: 'Hello Bootstrap 5',
+    <script type="text/javascript">
+    $('#contents1').summernote({
         tabsize: 4,
         height: 250
       });
-      
-    </script>
     
+    $('#contents1').summernote('code', '${vo.contents}')
+    
+    
+	</script>
  
 </body>
 </html>

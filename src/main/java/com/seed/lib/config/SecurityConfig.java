@@ -69,11 +69,13 @@ public class SecurityConfig {
 				         .disable()
 				      .authorizeRequests()
 					.antMatchers("/").permitAll()
-					.antMatchers("/admin/*").hasRole("ADMIN")
-					//.antMatchers("/mypage").hasAnyRole("ADMIN","MEMBER")
+					.antMatchers("/admin/**").hasRole("ADMIN")
+					.antMatchers("/mypage/**").hasAnyRole("MEMBER","ADMIN")
 					.antMatchers("/login").permitAll()
 					.antMatchers("/logout").permitAll()
-					.antMatchers("/hope/setHope").hasRole("MEMBER")
+					.antMatchers("/hope/setHope").hasAnyRole("MEMBER","ADMIN")
+					.antMatchers("/donation/setDon").hasAnyRole("MEMBER","ADMIN")
+					
 
 					
 					.anyRequest().permitAll()
@@ -82,7 +84,7 @@ public class SecurityConfig {
 				.formLogin()
 					.loginPage("/member/login")
 					.usernameParameter("userName")
-					//defaultSuccessUrl("/")
+					//.defaultSuccessUrl("/")
 					.successHandler(loginSuccess)
 					//.failureUrl("/member/login?error=true&message=LoginFail")
 					.failureHandler(loginFail)

@@ -4,10 +4,24 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seed.lib.admin.program.AdProgramMapper">
 
+<update id="setUpdateProState" parameterType="AdProgramVO">
+	UPDATE MEMBERPROGRAM SET PROSTATE=#{proState} WHERE MPNUM=#{mpNum}
+</update>
+
+<update id="setUpdateProCheck" parameterType="AdProgramVO">
+	UPDATE MEMBERPROGRAM SET PROCHECK=#{proCheck} WHERE MPNUM=#{mpNum}
+</update>
+
 	<select id="getMemberProgram" parameterType="AdProgramVO" resultType="AdProgramVO">
-		SELECT * FROM PROGRAM P
-		INNER JOIN MEMBERPROGRAM MP
-		WHERE P.PRONUM=${proNum}
+SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, N.*
+FROM
+(SELECT MP.MPNUM, MP.USERNAME, MP.PROCHECK, MP.PROSTATE, M.NAME FROM PROGRAM P
+INNER JOIN MEMBERPROGRAM MP
+ON P.PRONUM = MP.PRONUM
+INNER JOIN MEMBER M
+ON MP.USERNAME = M.USERNAME
+WHERE P.PRONUM=${proNum}) N,
+(SELECT @ROWNUM := 0 ) B
 	</select>
 
 	<update id="setUpdateStatus" parameterType="AdProgramVO">

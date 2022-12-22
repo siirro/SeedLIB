@@ -71,15 +71,13 @@
 										
 										
 									</div>
-									<div class="myInfo">
-										<div class="memType">
-											
-													<strong class="member typeB">준회원</strong>
-												
+									<div class="myInfo" style="background: white;">
+										<div class="memType" style="margin: -10px 0 0 20px;">
+											<strong class="member typeB">준회원</strong>
 										</div>
-										<div class="myInfoList">
-											<ul class="dot-list">
-												<li><span>아이디</span> : ${vo.username} </li>
+										<div class="myInfoList" style="margin: -10px 0 0 20px;">
+											<ul class="dot-list" style="margin: -10px 0 0 20px;">
+												<li><span>아이디</span> : ${vo.userName} </li>
 												<li><span>회원가입일</span> : ${vo.regDate} </li>
 												<li><span>휴대폰번호</span> : ${vo.phone} </li>
 												
@@ -88,7 +86,7 @@
 											</ul>
 										</div>
 										<div class="btnModify">							
-											<a href="/mypage/memberModify" class="btn white">회원정보수정</a>
+											<a href="/mypage/memberModify" class="btn white" style="transform: translate(3px, -58px);">회원정보수정</a>
 										</div>
 									</div>
 
@@ -97,16 +95,7 @@
 								</div>
 							</div>
 
-							<h4 class="stitle">서비스 이용현황</h4>
-							<ul class="myState clearfix">
 							
-								<li>
-									<a href="/intro/lectureApplyList.do">
-										<strong class="tit">신청중인<br>문화행사</strong>
-										<span class="num">0</span>
-									</a>
-								</li>
-							</ul>
 						</div>
 					</div>
 					<!-- End Of the Real Contents-->

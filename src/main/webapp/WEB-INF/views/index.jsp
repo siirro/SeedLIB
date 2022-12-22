@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+
 <!DOCTYPE html>
 <html>
 
@@ -10,12 +12,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/images/favicon.png">
+<link rel="stylesheet" type="text/css" href="/css/calendar/calendar.css"/>
+<script src="/js/calendar/calendar.js"></script>
 
 <title>꿈이 싹트는 정원 : 씨앗도서관</title>
 
 <style>
 	#searchBtn:hover {
 		cursor: pointer;
+	}
+
+	td .fc-day-mon{
+		background-color: #ff4c4c !important;
+	}
+	
+	.fc .fc-toolbar.fc-header-toolbar {
+    	margin-bottom: 0;
+	}		
+
+	td {
+    font-size: smaller !important;
+	font-weight: bolder;
 	}
 
 </style>
@@ -378,53 +395,73 @@
 				<!-- //공지사항 -->
 
 				<c:choose>
-					<c:when test="${empty memberVO}">
+					<c:when test="${memberVO.name eq null}">
 						<!-- 회원 로그인 -->
 						<div class="serviceZone before">
+						<sec:authorize access="!isAuthenticated()">	
 							<h5>회원 로그인</h5>
 							<p>로그인을 하시면 더욱 편리하게<br class="mobileHide"> 이용할 수 있습니다.</p>
 							<ul class="clearfix">
+							
 								<li><a href="/member/login">로그인</a></li>
 								<li><a href="/member/agree">회원가입</a></li>
+							
+								
+								</sec:authorize>
+							<sec:authorize access="isAuthenticated()">	
+							<h5>준회원</h5>
+							
+							<p><strong>${vo.name}</strong>님, 안녕하세요</p>
+							<br>
+								<li><span>아이디</span> : ${vo.username} </li>
+								<li><span>회원가입일</span> : ${vo.regDate} </li>
+								<li><span>휴대폰번호</span> : ${vo.phone} </li>
 							</ul>
-							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+						</sec:authorize>
+							
 						</div>
 						<!-- //회원 로그인 -->
-
-				
 					</c:when>
-					<c:otherwise>
-
+					<c:when test="${memberVO.name ne null}">
 						<!-- 미니 내정보 -->
 						<div class="serviceZone">
 							<h5>서비스 이용현황</h5>
 							<ul class="myInfo clearfix">
 								<li><p><strong>${memberVO.name} 님,</strong><br> 반갑습니다.</p></li>
-								<li><p><strong><c:if test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">관리자</c:if></strong></p></li>
+								<li><p><strong>
+									<c:choose>
+										<c:when test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">
+											관리자
+										</c:when>
+										<c:when test="${memberVO.roleVOs[0].roleName eq 'ROLE_MEMBER'}">
+											정회원
+										</c:when>
+								</c:choose>
+							</strong></p></li>
 							</ul>
 							<div class="myInfoList">
 								<dl>
 									<dt>도서대출현황</dt>
-									<dd>0</dd>
+									<dd>${loanCount}</dd>
 								</dl>
 								<dl>
 									<dt>도서예약현황</dt>
-									<dd>0</dd>
+									<dd>${revCount}</dd>
 								</dl>
 								<dl>
 									<dt>수강신청현황</dt>
-									<dd>0</dd>
+									<dd>${proCount}</dd>
 								</dl>
 								<dl>
 									<dt>희망도서 신청현황</dt>
-									<dd>0</dd>
+									<dd>${hopCount}</dd>
 								</dl>
 							</div>
 							<div class="more"><a href="/mypage/myIndex" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
 						</div>
 						<!-- 미니 내정보 -->
 
-					</c:otherwise>
+					</c:when>
 				</c:choose>
 
 
@@ -535,173 +572,20 @@
 				</script> -->
 
 				<!-- 달력 & 이용안내 -->
-				<div class="guideWrap">
-
+				<div class="guideWrap" style="margin-top: -50px;">
 					<!-- 도서관일정 -->
-					<div id="calendarWrap" class="schedule">
-						<div class="top">
-							<h5>도서관달력</h5>
-							<div class="guide">
-								<a href="#prev" onclick="fnCalendarSearchMonth('2022-10');" class="arrow prev"><span class="blind">이전 달 바로가기</span></a>
-								<a href="#next" onclick="fnCalendarSearchMonth('2022-12');" class="arrow next"><span class="blind">다음 달 바로가기</span></a>
-								<p class="year">2022.11</p>
+						<div id="calendarWrap" class="schedule">
+							<div style="display: flex; flex-direction: column; align-items: center; ">
+								<div id="calendar" style="width: 390px;">
+								</div>
+								<div class="guide_info">
+									<ul style="text-align: end;	margin-top: 5px;">
+										<li><i class="all"><span class="blind">원형 아이콘</span></i> 휴관일</li>
+										<li><a href="/guide/calendar">🟢도서관 일정 더보기</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
-
-						<div class="cont">
-							<div class="calendar">
-								<table>
-									<caption>휴관일 및 열람실개방휴관일 안내 일정표</caption>
-									<thead>
-										<tr>
-											<th scope="col" class="sun">일</th>
-											<th scope="col">월</th>
-											<th scope="col">화</th>
-											<th scope="col">수</th>
-											<th scope="col">목</th>
-											<th scope="col">금</th>
-											<th scope="col" class="sat">토</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<!-- 이렇게하면되나? 자바로 윤년 계산, 달별 일수 계산, -->
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td class="">
-												1
-											</td>
-											<td class="">
-												2
-											</td>
-											<td class="">
-												3
-											</td>
-											<td class="">
-												4
-											</td>
-											<td class="">
-												5
-											</td>
-												</tr>
-												<tr>
-											<td class="sun">
-												6
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-07" class="all" title="정기휴관일">7</a></div>
-											</td>
-											<td class="">
-												8
-											</td>
-											<td class="">
-												9
-											</td>
-											
-											<td class="">
-												10
-											</td>
-											
-											<td class="">
-												11
-											</td>
-											
-											<td class="">
-												12
-											</td>
-											</tr>
-
-											<tr>
-											<td class="sun">
-												13
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-14" class="holiday" title="정기휴관일">14</a></div>
-											</td>
-											<td class="">
-												15
-											</td>
-											<td class="">
-												16
-											</td>
-											<td class="">
-												17
-											</td>
-											<td class="">
-												18
-											</td>
-											<td class="">
-												19
-											</td>
-											</tr>
-
-											<tr>
-											<td class="sun">
-												20
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-21" class="all" title="정기휴관일">21</a></div>
-											</td>
-											<td class="">
-												22
-											</td>
-											<td class="">
-												23
-											</td>
-											<td class="">
-												24
-											</td>
-											<td class="">
-												25
-											</td>
-											<td class="">
-												26
-											</td>
-												</tr>
-												<tr>
-											<td class="sun">
-												27
-											</td>
-											<td class="">
-														<div><a href="/seoksu/calendar.do?searchMonth=2022-11&amp;searchYmd=2022-11-28" class="holiday" title="정기휴관일">28</a></div>	
-											</td>
-											<td class="">
-												29
-											</td>
-											<td class="">
-												30
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-											<td>
-												<div></div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-							<div class="guide_info">
-								<ul>
-									<li><i class="all"><span class="blind">원형 아이콘</span></i> 휴관일</li>
-									<li><i class="holiday"><span class="blind">사각형 아이콘</span></i> 열람실개방휴관일</li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="more"><a href="/seoksu/calendar.do?searchMonth=2022-11">
-							<span class="blind">도서관일정 더보기</span></a>
-						</div>
-
-					</div>
 					<!-- //도서관일정 -->
 
 					<!-- 이용안내 -->
@@ -721,12 +605,11 @@
 								<dd>평일 09시~18시 / 주말 09시~17시</dd>
 							</dl>
 						</div>
-						<div class="more"><a href="/seoksu/40034/contents.do">
+						<div class="more"><a href="/guide/time">
 							<span class="blind">이용안내 더보기</span></a>
 						</div>
 					</div>
 					<!-- //이용안내 -->
-
 				</div>
 				<!-- //달력 & 이용안내 -->
 			</div>
@@ -897,7 +780,43 @@
 <c:import url="./temp/footer.jsp"></c:import>
 <!-- //footer -->
 
-<script type="text/javascript"></script>
+<script>
+	let calendar;
+
+	document.addEventListener('DOMContentLoaded', function() {
+	//   let data = '${cl}';
+	//   let id = "";
+	//   data = JSON.parse(data);
+	  let calendarEl = document.getElementById('calendar');
+		  calendar = new FullCalendar.Calendar(calendarEl, {
+		  height: 340,
+		  fixedWeekCount:false,
+		  initialView: 'dayGridMonth',
+		//   events: data
+	  })
+	  
+	  calendar.render();
+  
+	  });
+  
+		$("#calendar").on("click", ".fc-next-button", function(){
+		console.log("dddd");
+	   })
+  
+	   $("#calendar").on("click", ".fc-prev-button", function(){
+		console.log("dddd");
+	   })
+  
+	function curDate(date){
+		  let yyyy = date.getFullYear();
+		  let mm = date.getMonth()+1;
+		  let dd = date.getDate();
+		  mm = mm > 10 ? mm:'0' + mm;
+		  dd = dd > 10 ? dd:'0' + dd;
+		  let dateString = yyyy+'-'+mm+'-'+dd
+		  return dateString;
+  }
+  </script>
 
 <!-- <input type="hidden" name="pbInitNo1" id="pbInitNo1" value="0">
 <input type="hidden" name="pbInitNo2" id="pbInitNo2" value="0">

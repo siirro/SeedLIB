@@ -109,13 +109,6 @@
                                                     </div>
                                                 </td>
                                                 
-                                                <script type="text/javascript">
-													let wi = $("#dd").attr("wi")
-													console.log(wi);
-													
-													let hand2 = $("#handphone2").val()
-                                                    console.log(hand2);
-												</script>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ta_l pl10"><label for="eMail">이메일 <span class="essential themeFC">*</span></label></th>
@@ -126,29 +119,17 @@
                                                     <input type="text"   id="email2" name="email" value="${my.email}" class="form-ele auto readonly" title="이메일 도메인 입력"  required="required">
                     
                                                     <select name="domainList" id="domainList" title="이메일 도메인 선택" class="form-ele auto min">
-                                                        
-                                                            <option value="daum.net">daum.net</option>
-                                                        
-                                                            <option value="dreamwiz.com">dreamwiz.com</option>
-                                                        
-                                                            <option value="gmail.com">gmail.com</option>
-                                                        
-                                                            <option value="hanmail.net">hanmail.net</option>
-                                                        
-                                                            <option value="hotmail.com">hotmail.com</option>
-                                                        
-                                                            <option value="korea.com">korea.com</option>
-                                                        
-                                                            <option value="lycos.co.kr">lycos.co.kr</option>
-                                                        
-                                                            <option value="msn.com">msn.com</option>
-                                                        
-                                                            <option value="nate.com">nate.com</option>
-                                                        
-                                                            <option value="naver.com" selected="selected">naver.com</option>
-                                                        
-                                                            <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                                        
+                                                        <option value="daum.net">daum.net</option>
+                                                        <option value="dreamwiz.com">dreamwiz.com</option>
+                                                        <option value="gmail.com">gmail.com</option>
+                                                        <option value="hanmail.net">hanmail.net</option>
+                                                        <option value="hotmail.com">hotmail.com</option>
+                                                        <option value="korea.com">korea.com</option>
+                                                        <option value="lycos.co.kr">lycos.co.kr</option>
+                                                        <option value="msn.com">msn.com</option>
+                                                        <option value="nate.com">nate.com</option>
+                                                        <option value="naver.com" selected="selected">naver.com</option>
+                                                        <option value="yahoo.co.kr">yahoo.co.kr</option>
                                                         <option value="etc">직접입력</option>
                                                     </select>
                                                 </td>
@@ -192,5 +173,23 @@
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<script src="/js/modify.js"></script>
+
+        <script type="text/javascript">
+
+                //폰번호 파싱된거 뿌리고 파싱된거 합쳐서 히든네임폰에 집어넣기
+        let hand2 = $("#phoneValue").val()
+                let num1 = hand2.substr(3,4);
+                let num2 = hand2.substr(7,4);
+                $("#handphone2").val(num1);
+                $("#handphone3").val(num2);
+
+                let phone1 = $("#handphone1").val();
+                let phone2 = $("#handphone2").val();
+                let phone3 = $("#handphone3").val();
+
+                let phone = phone1+phone2+phone3;
+
+                $("#phone").val(콜);
+        </script>
 </body>
 </html>

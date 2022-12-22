@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
-        <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
-    
+    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@  taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!-- CSS & JQUERY -->
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/default.css">
@@ -31,14 +30,15 @@
 				<div id="siteMenu" class="siteMenu clearfix">
 					<ul class="clearfix" style="text-shadow: 1px 1px 0px rgb(100 136 190 / 67%)">
 					
-					<sec:authorize access="isAuthenticated()">
-							
+				<sec:authorize access="isAuthenticated()">
 							
 						
-										<li><a href="/member/logout" id="login">로그아웃</a></li>							
-										<li><a href="/print/boCart">내바구니</a></li>
+					<li><a href="/member/logout" id="login">로그아웃</a></li>							
+										
 							<sec:authorize access="hasRole('ADMIN')"> 
+									
 									<li><a href="/admin/main">관리자페이지</a></li>
+									
 							</sec:authorize>
 							
 				</sec:authorize >
@@ -47,7 +47,8 @@
 							<li><a href="/member/login">로그인</a></li>
 							<li><a href="/member/agree">회원가입</a></li>
 						</sec:authorize>
-						
+
+						 
 						<li class="mobileHide"><a href="/policy/siteMap">사이트맵</a></li>
 					</ul>
 				</div>
@@ -76,7 +77,7 @@
 
 
 		<div id="headerInner">
-			<h1 id="logo"><a href="/"><img src="/images/logo200.png" alt="씨앗도서관"></a></h1>
+			<h1 id="logo"><a href="/"><img src="/images/logo200.png" style="margin-top: 4px; margin-left: 16px;" alt="씨앗도서관"></a></h1>
 <!-- 			<a href="#searchBoxOpen" id="btnSearchTop"><span class="blind">검색창열기</span></a>
  -->			<a href="/search" id="btnSearchTop"><span class="blind">검색창열기</span></a>
 		</div>
@@ -96,7 +97,7 @@
 
 				<li id="gnb2" class="hehehe"> <a href="/seoksu/menu/10123/contents/40005/contents.do"> <em>문화참여</em> </a> 
 					<ul style="display: none;"> 
-						<li id="gnb2_1"><a href="/seoksu/menu/10124/program/30015/lectureList.do">문화행사신청</a> </li> 
+						<li id="gnb2_1"><a href="/program/list">문화행사신청</a> </li> 
 						<li id="gnb2_2"><a href="/hope/hopeInfo" id="hopeInfo2" class="hopeInfo2 setHope2 on">희망도서신청</a></li>
 						<li id="gnb2_3"><a href="/donation/donInfo" id="donInfo2" class="donInfo2 setDon2 on">소장도서기증</a></li> 
 						<li id="gnb2_4"><a href="/studyroom/roomList" id="roomList2" class="roomList2 roomInfo2 on">열람실 조회/예약</a></li> 
@@ -104,11 +105,11 @@
 					</ul> 
 				</li> 
 				
-				<li id="gnb4" class="hehehe"> <a href="/guide/manners"> <em>도서관안내</em> </a> 
+				<li id="gnb3" class="hehehe"> <a href="/guide/manners"> <em>도서관안내</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb3_1"><a href="/guide/manners">도서관예절</a> </li> 
 						<li id="gnb3_2"><a href="/guide/time">이용시간</a> </li> 
-						<li id="gnb3_3"><a href="/seoksu/menu/10137/program/30019/calendar.do">휴관일안내</a> </li> 
+						<li id="gnb3_3"><a href="/guide/calendar">도서관행사일정</a> </li> 
 						<li id="gnb3_4"><a href="/guide/rule">대여규칙</a> </li> 
 						<li id="gnb3_5"><a href="/guide/convenience">편의시설</a> </li> 
 					</ul> 
@@ -127,30 +128,22 @@
 				<li id="gnb5" class="hehehe"> <a href="/board/list"> <em>도서관소식</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb5_1"><a href="/board/list">공지사항</a> </li> 
-						<li id="gnb5_2"><a href="/seoksu/menu/10134/bbs/20002/bbsPostList.do">자주하는질문</a> </li> 
-						<li id="gnb5_3"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">도서관에바란다</a> </li>
-						<li id="gnb5_4"><a href="/seoksu/menu/10157/bbs/20003/bbsPostList.do">자유게시판</a> </li>
-						<li id="gnb5_5"><a href="/seoksu/menu/10158/bbs/20004/bbsPostList.do">분실물센터</a> </li> 
+						<li id="gnb5_2"><a href="/qna/list">자주하는질문</a> </li> 
 					</ul> 
 				</li> 
-					
 				<li id="gnb6" class="hehehe"> <a href="/mypage/myIndex"> <em>마이페이지</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb6_1"><a href="/mypage/myIndex">나의정보</a> </li> 
-						<li id="gnb6_2"><a href="/mypage/bookLoan">도서이용내역</a> </li> 
-						<li id="gnb6_3"><a href="/mypage/bookMutual">상호대차조회</a> </li> 
-						<li id="gnb6_4"><a href="/shelf/list">관심도서목록</a> </li> 
-						<li id="gnb6_5"><a href="/mypage/hopeList" id="hopeList2" class="hopeList2 on">희망도서신청조회</a> </li> 
-						<li id="gnb6_6"><a href="/mypage/donList" id="donList2" class="donList2 on">도서기증신청조회</a> </li> 
-						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li> 
-						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li> 
-						<li id="gnb6_9"><a href="/seoksu/menu/10183/program/30015/mypage/lectureApplyList.do">문화행사신청조회</a> </li> 
-						<li id="gnb6_10"><a href="/seoksu/menu/10186/bbs/20003/mypage/bbsPostList.do">나의게시글조회</a> </li> 
+						<li id="gnb6_2"><a href="/mypage/book/loan">도서이용내역</a> </li>
+						<li id="gnb6_7"><a href="/mypage/seatHistory" id="seatHistory2" class="seatHistory2 on">열람실 이용 내역</a></li>
+						<li id="gnb6_8"><a href="/mypage/lockerHistory" id="lockerHistory2" class="lockerHistory2 on">사물함 대여 조회</a></li>
+						<li id="gnb6_9"><a href="/mypage/program">문화행사신청조회</a> </li> 
+						<li id="gnb6_11"><a href="/print/boCart">제본 서비스</a></li>
 					</ul>
-				</li> 
+				</li>
 			</ul>
 			
-			<div id="submenuArea" style="width: 1357px; left: 0px;"></div>
+			<div id="submenuArea" style="left: 0px;"></div>
 		</div>
 	</div>
 </div>
@@ -234,9 +227,31 @@
 </script>
 <script>
 	let hUrl = document.location.href;
-	if(hUrl.includes("search")) {
+	if(hUrl.includes("search/")) {
 		$("#gnb1").addClass("active");
 	}
+	if(hUrl.includes("program/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("hope/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("donation/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("studyroom/")) {
+		$("#gnb2").addClass("active");
+	}
+	if(hUrl.includes("guide/")) {
+		$("#gnb3").addClass("active");
+	}
+	if(hUrl.includes("info/")) {
+		$("#gnb4").addClass("active");
+	}
+	if(hUrl.includes("mypage/")) {
+		$("#gnb6").addClass("active");
+	}
+
 </script>
 
 <script>
@@ -250,8 +265,16 @@
 		  compLink.className += " current";
   function change(currentLink){
 	currentLink = '"#'+currentLink+'2"';
-	$(currentLink).className.add("cuttent ");
+	$(currentLink).className.add("current ");
   }
  </script>
 
 <script src="/js/indexcopy.js"></script>
+
+<script type="text/javascript">
+$("#kakao").click(function(){
+	$.get("https://developers.kakao.com/logout",function(){
+		location.reload();
+	})
+})
+</script>

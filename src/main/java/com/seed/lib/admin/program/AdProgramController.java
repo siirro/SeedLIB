@@ -24,10 +24,23 @@ public class AdProgramController {
 	@Autowired
 	private AdProgramService programService;
 	
+	@GetMapping("updateProCheck")
+	@ResponseBody
+	public int setUpdateProCheck(AdProgramVO programVO)throws Exception{
+//		ModelAndView mv = new ModelAndView("JsonView");
+		
+		log.info("=====프로그램VO {}", programVO);
+		
+		int result = programService.setUpdateProCheck(programVO);
+//		mv.addObject(null, mv)
+//		mv.setViewName("admin/program/proDetail?proNum="+programVO.getProNum());
+		return result;
+	}
+	
 	@GetMapping("proUpdateStatus")
 	@ResponseBody
 	public ModelAndView setUpdateStatus(AdProgramVO programVO)throws Exception{
-		log.info("프로프로programVO 프로넘과 렉스태이터스{}",programVO);
+//		log.info("프로프로programVO 프로넘과 렉스태이터스{}",programVO);
 		ModelAndView mv = new ModelAndView();
 		
 		programService.setUpdateStatus(programVO);
@@ -145,13 +158,18 @@ public class AdProgramController {
 		mv.setViewName("admin/program/proDetail");
 		
 		//프로그램 신청자
+//		log.info("프로디테일전프로그램VO {}",programVO);
+
 		List<AdProgramVO> ar = programService.getMemberProgram(programVO);
 		
-		if(ar != null) {
+		if(ar.size()>0) {
 			mv.addObject("mP", ar);
+			mv.addObject("count", ar.size());
+		} else {
+			mv.addObject("mPmsg", "신청자가 없습니다.");
 		}
 		
-		
+//		log.info("프로디테일 {}",ar);
 		
 		return mv;
 	}

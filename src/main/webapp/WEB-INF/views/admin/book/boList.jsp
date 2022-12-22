@@ -55,7 +55,26 @@
             <!-- end row -->
           </div>
           <!-- ========== title-wrapper end ========== -->
-
+          <form action="./boList" method="get">
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-1 mb-2">
+              <div class="left">
+              </div>
+              <div class="right d-flex align-items-center">
+                <div class="input-style-3" style="margin-bottom: 0px; margin-right: 16px;">
+                  <input type="text" name="search2" placeholder="제목을 입력하세요" style="height: 46px;" />
+                  <span class="icon">
+                    <i style="transform: translateY(-5px);" class="lni lni-search-alt"></i>
+                  </span>
+                </div>
+                <div>
+                  <button type="submit" class="main-btn btn-sm rounded-md info-btn">
+                    검색
+                    <span class="icon"><i class="lni lni-checkmark ms-1"></i></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
           <!-- ========== cards-styles start ========== -->
           <div class="cards-styles">
             <!-- ========= card-style-2 start ========= -->

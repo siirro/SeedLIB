@@ -179,6 +179,6 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="../temp/footer.jsp"></c:import> 
+	<c:import url="../../temp/footer.jsp"></c:import> 
 </body>
 </html>

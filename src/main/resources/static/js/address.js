@@ -24,9 +24,9 @@ function joinPostcode() {
             
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
             if(roadAddr !== ''){
-                document.getElementById("extraAddress").value = extraRoadAddr;
+                document.getElementById("detailAddess").value = extraRoadAddr;
             } else {
-                document.getElementById("extraAddress").value = '';
+                document.getElementById("detailAddess").value = '';
             }
 
             
