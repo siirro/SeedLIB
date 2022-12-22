@@ -57,7 +57,7 @@
 			 
 			 <update id="setUpdate" parameterType="BoardVO">
 			
-			 UPDATE BOARD SET TITLE= #{title}, CONTENTS={contents} WHERE BOARDNUM=#{boardNum}
+			 UPDATE BOARD SET TITLE=#{title}, CONTENTS=#{contents} WHERE BOARDNUM=#{boardNum}
 			
 			 </update>
 			 

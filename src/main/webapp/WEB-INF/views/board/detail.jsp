@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <link rel="shortcut icon" href="/images/favicon.png">
 <title> 도서관소식 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
@@ -97,19 +98,29 @@
 									<td>${board.hit}</td>
 								</tr>
 								
+								
+								
 									<tr>
 										<th scope="row">첨부파일</th>
-                     					 <c:forEach items="${boardVO.boardFileVOs}" var="files">
+										 <c:choose>
+										
+										 <c:when test="${not empty board}">
+                     					 <c:forEach items="${board.boardFileVOs}" var="files">
 										<td>
                           				  <span class="material-symbols-outlined">
                                           <a href="/fileDown/qna/?fileNum=${files.fileNum}"></span>
-                                            ${files.oriName}</a>
-										
+                                            ${files.oriName}</a>					
 										</td>
 										 </c:forEach>
+										</c:when>
+											<c:otherwise>
+												<td>
+			                    				<input type="text" readonly value="없음">
+		                   						</td>
+		                   					</c:otherwise>
+									 </c:choose>
 										
 									</tr>
-								
 								<tr>
 									<td colspan="2" class="content">
 									
