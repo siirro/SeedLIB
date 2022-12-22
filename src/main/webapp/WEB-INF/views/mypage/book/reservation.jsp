@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="/css/book/mypage.css">
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
-    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
     
     <link rel="icon" href="/images/favicon.png">
 	<title>예약 이력 : 씨앗도서관 ☘️ </title>
@@ -81,11 +78,7 @@
 	                                        <option value="title">제목</option>
 	                                        <option value="writer">저자</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
-	                                </span>
-	                                <span class="bunch">
-	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+	                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="50" maxlength="100">
 	                                </span>
 	                                <span class="bunch">
 	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
@@ -129,8 +122,7 @@
 	                                        			<td>${book.writer}</td>
 	                                        			<td>${ed}</td>
 	                                        			<td>
-				                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
-	                                        				<button type="button" class="btn white small" id="Btn" title="예약취소">예약취소</button>
+	                                        				<button type="button" class="btn white small ReDelAlretBtn" data-res-isbn="${book.isbn}" title="예약취소">예약취소</button>
 	                                        			</td>
 		                                        		
 		                                        		<c:if test="${book} == null">
@@ -152,5 +144,8 @@
 		</div>
 	</div>
 	<c:import url="../../temp/footer.jsp"></c:import> 
+	
+	<script type="text/javascript" src="/js/bookDetail.js"></script>
+    <script type="text/javascript" src="/js/bookLoan.js"></script>
 </body>
 </html>

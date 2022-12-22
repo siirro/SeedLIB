@@ -71,7 +71,7 @@ public class BookShelfService {
 	}
 		
 	//책꽂이 삭제
-	public BookShelfVO setShelfDelete (BookShelfVO shelfVO) throws Exception{
+	public int setShelfDelete (BookShelfVO shelfVO) throws Exception{
 		return bookShelfMapper.setShelfDelete(shelfVO);
 	}
 	

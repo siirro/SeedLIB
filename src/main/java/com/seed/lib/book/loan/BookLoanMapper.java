@@ -45,6 +45,9 @@ public interface BookLoanMapper {
 	
 	//대출 연장 - 최대 2번
 	public int setExtension (BookLoanVO loVO) throws Exception;
+	
+	//책 예약자 있는지 확인
+	public int getRePe (BookLoanVO loVO) throws Exception;
 
 //-----------------------------------------------------------------------	
 	
@@ -59,6 +62,9 @@ public interface BookLoanMapper {
 	
 	//예약한 책 권수
 	public int getReCount (BookLoanVO loVO) throws Exception;
+	
+	//예약 취소
+	public int setReDelete (BookReservationVO reVO) throws Exception;
 
 //-----------------------------------------------------------------------	
 	

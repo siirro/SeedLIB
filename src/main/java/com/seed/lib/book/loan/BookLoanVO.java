@@ -26,6 +26,10 @@ public class BookLoanVO {
 	
 	private Long libNum;
 	
+
+	//대출 권수 조절
+	private String qu;
+	
 	private List<BookMutualLoanVO> muVOs;
 	private List<BookReservationVO> reVOs;
 	private List<MyReturnVO> returnVO;

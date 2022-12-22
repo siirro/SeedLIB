@@ -24,9 +24,6 @@
  
     
     <script type="text/javascript" defer src="/js/common.js"></script>
-    <script type="text/javascript" defer src="/js/bookDetail.js"></script>
-    <script type="text/javascript" defer src="/js/bookLoan.js"></script>
-    <script type="text/javascript" defer src="/js/bookLikeShelf.js"></script>
     
     <link rel="icon" href="/images/favicon.png">
 	<title>문화행사 : 씨앗도서관 ☘️ </title>
@@ -48,70 +45,66 @@
 		
 			<div class="content">
 				<div class="naviandtitle">
-					<h3>도서 이용 내역</h3>
+					<h3>문화행사 신청 내역</h3>
 					<div class="navi">
 						<a href="../" title="홈으로 이동" class="home">
 							<span class="blind">홈</span>
 						</a>
 						<i class="arrow"></i> 마이페이지
-						<i class="arrow"></i>도서 이용 내역
+						<i class="arrow"></i>문화행사 신청 내역
 					</div>
 				</div>
 				
 				<div id="divWrapper">
                     <section id="divContents">
                         <div class="sub-title cf box">
-		                    <p id="divTitle" class="fl">대출 현황</p>
+		                    <p id="divTitle" class="fl">신청한 문화행사</p>
                         </div>
                         
-                        <div>
-                        	<div class="divTabMenu1">
-                        		<div>
-                        			<ul>
-                        				<li class="selected tab-li"><a href="/mypage/book/loan" title="대출">대출</a></li>
-                        				<li class="tab-li"><a href="/mypage/book/reservation" title="예약">예약</a></li>
-                        				<li class="tab-li"><a href="/mypage/book/mutual" title="상호대차">상호대차</a></li>
-                        			
-                        				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
-                        				
-                        				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
-                        				<li class="tab-li"><a href="mypage/infographics" title="독서통계">독서통계</a></li>
-                        			</ul>
-                        		</div>
-                        	</div>
-                        	
-                        	<div class="divTabMenu2">
-                        		<ul class="tab">
-                        			<li class="on"><a href="/mypage/book/loan">대출 현황</a></li>
-                        			<li><a href="/mypage/book/loanHistory">이전 대출내역</a></li>
-                        		</ul>
-                        	</div>
-                        </div>
+                       	<div class="divTabMenu1">
+                       		<div>
+                       			<ul>
+                       				<li class="selected tab-li"><a href="/mypage/book/loan" title="대출">대출</a></li>
+                       				<li class="tab-li"><a href="/mypage/book/reservation" title="예약">예약</a></li>
+                       				<li class="tab-li"><a href="/mypage/book/mutual" title="상호대차">상호대차</a></li>
+                       			
+                       				<li class="tab-li"><a href="/mypage/program" title="프로그램 신청내역">프로그램 신청내역</a></li>
+                       				
+                       				<li class="tab-li"><a href="/shelf/list" title="책꽂이">책꽂이</a></li>
+                       			</ul>
+                       		</div>
+                       	</div>
                         
                         <div class="divContent">
                         	<div class="loanSearch">
                         		<p>선택조건으로 조회</p>
-                        		<form id="form" name="form" action="/mypage/book/loan" method="get">
+                        		<form id="form" name="form" action="/mypage/program" method="get">
                         			<span class="bunch">
 	                                    <select id="select" name="select" class="selectBox1" title="검색항목">
 	                                        <option value="title">제목</option>
-	                                        <option value="writer">저자</option>
+	                                        <option value="content">내용</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="20" maxlength="300">
-	                                </span>
-	                                <span class="bunch">
-	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="45" maxlength="300">
 	                                </span>
 	                                <span class="bunch loan-search">
-	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
-	                                        <option value="title">제목</option>
-	                                        <option value="isbn">ISBN</option>
-	                                        <option value="loan_date">대출일</option>
+	                                    <select id="target" name="target" class="selectBox1" title="대상">
+	                                        <option value="유아">유아</option>
+	                                        <option value="어린이">어린이</option>
+	                                        <option value="청소년">청소년</option>
+	                                        <option value="성인">성인</option>
 	                                    </select>
-	                                    <select id="sort" name="sort" class="selectBox1" title="정렬 순서">
-	                                        <option value="asc">오름차순</option>
-	                                        <option value="desc">내림차순</option>
+	                                    <select id="category" name="category" class="selectBox1" title="분류">
+	                                        <option value="정기강좌">정기강좌</option>
+	                                        <option value="이벤트">이벤트</option>
+	                                        <option value="특강">특강</option>
+	                                        <option value="독서회">독서회</option>
+	                                        <option value="기타">기타</option>
+	                                    </select>
+	                                    <select id="status" name="status" class="selectBox1" title="분류">
+	                                        <option value="예정">예정</option>
+	                                        <option value="접수중"></option>
+	                                        <option value="마감"></option>
+	                                        <option value="종료"></option>
 	                                    </select>
 	                                </span>
 	                                <input type="submit" class="btnType5" title="조회" value="조회">
@@ -130,43 +123,45 @@
 		                                <table class="tbl">
 		                                    <thead>
 		                                        <tr>
-		                                            <th scope="col" class="th-title">제목</th>
-		                                            <th scope="col" >저자</th>
-		                                            <th scope="col" >대출일</th>
-		                                            <th scope="col" >반납 예정일</th>
+		                                            <th scope="col" class="th-title">행사명</th>
+		                                            <th scope="col" >강사</th>
+		                                            <th scope="col" >장소</th>
+		                                            <th scope="col" >기간</th>
+		                                            <th scope="col" >신청 상태</th>
 		                                            <th></th>
-		                                            <th scope="col" class="">연장횟수</th>
-		                                            <th></th>
+		                                            <th scope="col">승인 상태</th>
 		                                        </tr>
 		                                    </thead>
-		                                    
 		                                    <tbody>
-		                                      	<c:forEach items="${li}" var="book">
-			                                      	<c:forEach var="lo" items="${book.loanVOs}">
-				                                      	<c:set var="sd" value="${lo.loanSDate}"/>
-				                                      	<c:set var="sl" value="${lo.loanLDate}"/>
-			                                        	<tr>
-		                                        			<td>${book.title}</td>
-		                                        			<td>${book.writer}</td>
-		                                        			<td>${sd}</td>
-		                                        			<td>${sl}</td>
-		                                        			<td>
-					                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
-					                                      		<input type="hidden" class="loanNum" value="${lo.loanNum}">
-		                                        				<button type="button" class="btn white small ReturnAlretBtn" title="도서반납">도서반납</button>
-		                                        			</td>
-		                                        			<td>${lo.extension}</td>
-		                                        			<td>
-		                                        				<input type="hidden" class="isbnC" value="${book.isbn}">
-		                                        				<button type="button" class="btn white small ExAlretBtn" title="대출연장">대출연장</button>
-		                                        			</td>
-			                                        		
-			                                        		<c:if test="${book} == null">
-			                                                	<td class="message footable-last-column footable-first-column" colspan="11">대출 중인 도서가 없습니다.</td>
-			                                        		</c:if>
-			                                         	</tr>
-				                                	</c:forEach>
-		                                        </c:forEach>
+		                                      	<c:forEach items="${li}" var="p">
+		                                      		<c:set var="m" value="${p.mpVO}" />
+		                                        	<tr>
+	                                        			<td>${p.proTitle}</td>
+	                                        			<td>${p.proTeacher}</td>
+	                                        			<td>${p.proPlace}</td>
+	                                        			<td>${p.psDate} ~ ${p.plDate}</td>
+	                                        			<td>
+	                                        				<c:choose>
+																<c:when test="${m.proState eq 0}">신청 취소</c:when>
+																<c:when test="${m.proState eq 1}">신청 중</c:when>
+																<c:when test="${m.proState eq 2}">신청 완료</c:when>
+															</c:choose>
+	                                        			</td>
+	                                        			<td>
+	                                        				<c:if test="${m.proState > 0}">
+	                                        					<button type="button" class="btn white small ProDelAlretBtn" data-res-num="${p.proNum}" title="신청 취소">신청 취소</button>
+	                                        				</c:if>
+	                                        				<c:if test="${m.proState eq 0}">-</c:if>
+	                                        			</td>
+	                                        			<td>
+	                                        				<c:choose>
+																<c:when test="${m.proCheck eq 0}">대기</c:when>
+																<c:when test="${m.proCheck eq 1}">거부</c:when>
+																<c:when test="${m.proCheck eq 2}">완료</c:when>
+															</c:choose>
+	                                        			</td>
+		                                         	</tr>
+			                                	</c:forEach>
 		                                    </tbody>
 		                                </table>
 		                        	</div>
@@ -181,5 +176,6 @@
 		</div>
 	</div>
 	<c:import url="../temp/footer.jsp"></c:import> 
+	<script type="text/javascript" src="/js/program.js"></script>
 </body>
 </html>

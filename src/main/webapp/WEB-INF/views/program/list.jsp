@@ -11,6 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/images/favicon.png">
     <title>문화행사 : 씨앗도서관 ☘</title>
+    
+    <style type="text/css">
+    	.pro-logo {
+    		padding:10px;
+    		padding-right : 10px;
+    	}
+    </style>
 </head>
 
 <body>
@@ -35,14 +42,86 @@
 		                    <i class="arrow"></i> 문화행사/참여 <i class="arrow"></i>문화행사 신청
 		                </div>
 		            </div>
-		    
-		            <div id="contents" class="contentArea">
-		            	${li}
-		            	<br>↓↓↓↓<br>
-		            	<c:forEach var="p" items="${li}">
-		            		<a href="/program/detail?proNum=${p.proNum}">${p.proTitle} 상세페이지</a>
-		            	</c:forEach>
+		            
+		            	<form name="searchForm" id="searchForm" method="get">
+							<fieldset>
+								<legend class="blind">수강신청 검색 영역</legend>
+								<div class="pageSearch">
+									<ul class="selList clearfix">
+										<li>
+											<select name="searchStatusCd" id="statusCd" title="접수상태 선택" class="form-ele">
+												<option value="">접수상태</option>
+												<option value="ready">예정</option>
+												<option value="apply">접수중</option>
+												<option value="finish">마감</option>
+												<option value="end">종료</option>
+											</select>
+										</li>
+										<li>
+											<select name="targetCd" id="targetCd" title="대상 선택" class="form-ele">
+												<option value="">대상</option>
+													<option value="infant">유아</option>
+													<option value="child">어린이</option>												
+													<option value="teen">청소년</option>												
+													<option value="adult">성인</option>											
+													<option value="all">누구나</option>
+												
+											</select>
+										</li>
+										<li>
+											<select name="categoryIdx" id="categoryIdx" title="행사구분 선택" class="form-ele">
+												<option value="">행사구분</option>												
+													<option value="6">정기강좌</option>												
+													<option value="7">특강</option>												
+													<option value="8">이벤트</option>												
+													<option value="9">독서회</option>												
+													<option value="10">기타</option>												
+											</select>
+										</li>
+									</ul>
+									<div class="schForm mt05">
+										<select name="searchCondition" id="searchCondition" title="검색유형 선택" class="schSel">
+											<option value="title">행사명</option>
+											<option value="contents">내용</option>
+										</select>
+										<input type="text" name="searchKeyword" id="searchKeyword" title="검색어 입력" class="schKwd3" placeholder="검색어를 입력해 주세요" value="">
+										<a href="#javascript" id="searchBtn" class="btn input">검색</a>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+		            	
+		            	
+		            	<div class="lectureWrap">
+								<ul class="lecture-list">	
+									<c:forEach var="p" items="${li}">								
+										<li>
+											<div class="title">
+												<a href="/program/detail?proNum=${p.proNum}"><i class="type themeBG themeBD">기타</i>
+													${p.proTitle}</a>
+												<i>${p.target}</i>	
+											</div>
+											<div class="info">
+												<span>행사기간 : ${p.psDate} ~ ${p.plDate}
+												</span>
+											</div>
+											<div class="info">
+												<span>접수기간 : ${p.prsDate} ~ ${p.prlDate}
+												</span>
+											</div>
+											<div class="info">
+												<span>신청현황 : 833/${p.total}</span>
+											</div>
+											<div class="tblBtn sFinish">${p.recStatus}</div>	
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
 		            </div>
+		            
+		            
+		            
+		   
 		            
 		            <div>
 		            	<c:if test="${not empty li}">

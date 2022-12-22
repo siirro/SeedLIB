@@ -46,6 +46,7 @@ $("#LoanAlretBtn").click(function(){
 	
 //-------------------------------------------------
 //디테일 페이지에서 예약신청 눌렀을 때
+console.log("!111111111111");
 $("#ResAlretBtn").click(function(){
 	const reVO = {
 		isbn : isbn,
@@ -122,21 +123,14 @@ $("#MuAlretBtn").click(function(){
 //-------------------------------------------------
 //마이페이지에서 연장신청 눌렀을 때
 
-//class
-let isbnC = $(".isbnC").val();
-console.log("isbnC : ", isbnC);
-
 $(".ExAlretBtn").click(function(){
 	
 	const bookLoanVO = {
-		isbn : isbnC,
+		isbn : $(this).attr("data-res-num"),
 		userName : userName
 	}
 	
-	console.log("isbnCC", isbnC);
-	console.log("isbn", isbn);
-	console.log(bookLoanVO);
-	
+console.log("isbnC : ", bookLoanVO);
 	$.ajax({
 		type : "POST",
 		url : "/book/extension",
@@ -145,6 +139,9 @@ $(".ExAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
+				case 4:
+					alert("예약자가 있어 대출 연장이 불가능합니다.")
+					break;
 				case 3:
 					alert("대출 연장은 총 2번까지 가능합니다.")
 					break;
@@ -170,12 +167,10 @@ $(".ExAlretBtn").click(function(){
 $(".ReturnAlretBtn").click(function(){
 	const returnVO = {
 		userName : userName,
-		isbn : $(".isbnR").val(),
-		loanNum : $(".loanNum").val()
+		isbn : $(this).attr("data-res-isbn"),
+		loanNum : $(this).attr("data-res-num")
 	}
 	
-	console.log("isbnR : ", $(".isbnR").val());
-	console.log("loanNum : ", $(".loanNum").val());
 	console.log(returnVO);
 	
 	$.ajax({
@@ -195,6 +190,35 @@ $(".ReturnAlretBtn").click(function(){
                     }
 				}
 			},
+			error:function(){
+				console.log("ERROR");
+			}
+		})
+	});
+
+//-------------------------------------------------
+//마이페이지에서 예약 취소신청 눌렀을 때
+
+$(".ReDelAlretBtn").click(function(){
+	const returnVO = {
+		userName : userName,
+		isbn : $(this).attr("data-res-isbn")
+	}
+	
+	console.log(returnVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/book/reDelete",
+		data:JSON.stringify(returnVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success:function(data){
+			let done = window.confirm("도서 예약을 취소했습니다.");
+				if(done){
+					location.reload();
+                }
+            },
 			error:function(){
 				console.log("ERROR");
 			}

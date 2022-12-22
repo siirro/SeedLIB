@@ -96,11 +96,7 @@
 	                                        <option value="title">제목</option>
 	                                        <option value="writer">저자</option>
 	                                    </select>
-	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="20" maxlength="300">
-	                                </span>
-	                                <span class="bunch">
-	                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="대출기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-	                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="대출기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+	                                    <input id="search" name="search" class="inputTextType1 sw loan-search" title="검색어 입력" type="text" value="" size="50" maxlength="300">
 	                                </span>
 	                                <span class="bunch loan-search">
 	                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
@@ -150,14 +146,11 @@
 		                                        			<td>${sd}</td>
 		                                        			<td>${sl}</td>
 		                                        			<td>
-					                                      		<input type="hidden" class="isbnR" value="${book.isbn}">
-					                                      		<input type="hidden" class="loanNum" value="${lo.loanNum}">
-		                                        				<button type="button" class="btn white small ReturnAlretBtn" title="도서반납">도서반납</button>
+		                                        				<button type="button" class="btn white small ReturnAlretBtn" data-res-num="${lo.loanNum}" data-res-isbn="${book.isbn}" title="도서반납">도서반납</button>
 		                                        			</td>
 		                                        			<td>${lo.extension}</td>
 		                                        			<td>
-		                                        				<input type="hidden" class="isbnC" value="${book.isbn}">
-		                                        				<button type="button" class="btn white small ExAlretBtn" title="대출연장">대출연장</button>
+		                                        				<button type="button" class="btn white small ExAlretBtn" data-res-num="${book.isbn}" title="대출연장">대출연장</button>
 		                                        			</td>
 			                                        		
 			                                        		<c:if test="${book} == null">
@@ -178,7 +171,7 @@
 				</div>
 			</div>
 		</div>
+		<c:import url="../../temp/footer.jsp"></c:import> 
 	</div>
-	<c:import url="../../temp/footer.jsp"></c:import> 
 </body>
 </html>

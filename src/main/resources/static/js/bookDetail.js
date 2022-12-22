@@ -180,6 +180,65 @@ $("#RealShelfBtn").click(function(){
 		})
 	});
 	
+//책꽂이 삭제
+$(".delShelfBtn").click(function(){
+	const shelfVO = {
+		shName : $(this).attr("data-num"),
+		userName : userName
+	}
+	
+	console.log(shelfVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/shelf/deleteShelf",
+		data:JSON.stringify(shelfVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		
+		success : function(data){
+			let done = window.confirm("책꽂이를 삭제했습니다.");
+					if(done){
+						location.reload();
+					} else{
+                        location.reload();
+                    }
+		},
+		error : function(){
+			console.log("-");
+		}
+	})
+});	
+
+//책 삭제
+$(".delBookBtn").click(function(){
+	const pickVO = {
+		shNum : $("#shNum").val(),
+		isbn :  $(this).attr("data-num")
+	}
+	
+	console.log(pickVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/shelf/deleteBook",
+		data:JSON.stringify(pickVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		
+		success : function(data){
+			let done = window.confirm("책을 삭제했습니다.");
+					if(done){
+						location.reload();
+					} else{
+                        location.reload();
+                    }
+		},
+		error : function(){
+			console.log("-");
+		}
+	})
+});	
 //-------------------------------------------------
 //검색
 function bookSearch () {
