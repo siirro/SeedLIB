@@ -195,10 +195,7 @@
               </a>
               <ul id="ddmenu_4" class="collapse dropdown-nav">
                 <li>
-                  <a href="/admin/calendar/closed"> 휴관일 등록 </a>
-                </li>
-                <li>
-                  <a href="/admin/program/proAdd"> 문화의 날 등록 </a>
+                  <a href="/admin/calendar/closed"> 일정 등록 </a>
                 </li>
               </ul>
             </li>

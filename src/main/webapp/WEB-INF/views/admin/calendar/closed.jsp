@@ -155,7 +155,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>휴관일 등록</h2>
+                  <h2>일정 등록</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -170,7 +170,7 @@
                         <a href="./closed">일정 관리</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        휴관일 등록
+                        일정 등록
                       </li>
                     </ol>
                   </nav>
@@ -293,7 +293,7 @@
                   title:eventTitle,
                   start:eventStart,
                   end:eventEnd,
-                  allDay:allDay
+                  allDay:true
                 },success:function(data){
                   if(data>0){
                     alert("일정 추가했습니다");

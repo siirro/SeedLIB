@@ -96,7 +96,7 @@
 					</ul> 
 				</li> 
 
-				<li id="gnb2" class="hehehe"> <a href="/seoksu/menu/10123/contents/40005/contents.do"> <em>문화참여</em> </a> 
+				<li id="gnb2" class="hehehe"> <a href="/program/list"> <em>문화참여</em> </a> 
 					<ul style="display: none;"> 
 						<li id="gnb2_1"><a href="/program/list">문화행사신청</a> </li> 
 						<li id="gnb2_2"><a href="/hope/hopeInfo" id="hopeInfo2" class="hopeInfo2 setHope2 on">희망도서신청</a></li>
@@ -248,6 +248,12 @@
 	}
 	if(hUrl.includes("info/")) {
 		$("#gnb4").addClass("active");
+	}
+	if(hUrl.includes("board/")) {
+		$("#gnb5").addClass("active");
+	}
+	if(hUrl.includes("qna/")) {
+		$("#gnb5").addClass("active");
 	}
 	if(hUrl.includes("mypage/")) {
 		$("#gnb6").addClass("active");

@@ -8,13 +8,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
     <link rel="icon" href="/images/favicon.png">
     <title>회원 목록 : 씨앗도서관 ☘</title>
 
     <!-- ========== All CSS files linkup & sidebar ========= -->
     <c:import url="../temp/sidebar-css.jsp"></c:import>
     
-    <script type="text/javascript" src="/js/admin/adMember.js"></script>
+    <script defer type="text/javascript" src="/js/admin/adMember.js"></script>
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
@@ -101,7 +103,7 @@
                         </thead>
                         <tbody>
                           <c:forEach items="${memberList}" var="MemberVO">
-                          <form action="./locked" id="lockedForm" method="post">
+                          <form action="./locked" class="lockedForm${MemberVO.username}" method="post">
                             <tr>
                               <td>
                                 <div class="employee-image">
