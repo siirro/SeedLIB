@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+ <link rel="shortcut icon" href="/images/favicon.png">
+<title> 게시글수정 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/sub.css">
@@ -93,6 +94,7 @@
                                                 
                                                  <tr>
                                                    <th scope="row">첨부파일</th>
+                                                   
                                                      <td>
                                                  <c:forEach items="${board.boardFileVOs}" var="fileVO">
                                                  <p>
@@ -102,10 +104,11 @@
 													</c:forEach>
 													
                                                      <button type="button" id="fileAdd" class="btn-primary">파일 선택</button>
-                                                     <div class="mb-3" id="fileResult" data-file-size="${board.boardFileVOs.size()}"></div>
+                                                     <div class="mb-3" id="fileAddResult" data-file-size="${board.boardFileVOs.size()}"></div>
 														
 										
                                                     </td>
+                                                  
                                                </tr>
                                                     
                                                  </tbody>
