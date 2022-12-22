@@ -35,6 +35,10 @@
 	font-weight: bolder;
 	}
 
+	#slide > li:hover{
+		cursor: pointer;
+	}
+
 </style>
 </head>
 
@@ -246,10 +250,10 @@
 					</div>
 
 					<ul id="slide" class="slidee" style="height: 340px;">
-						<li><img src="/images/main/l_winterNight.png" alt="뭐지1" class="slide"></li>
-						<li><img src="/images/main/l_coloring.png" alt="뭐지2" class="slide"></li>
-						<li><img src="/images/main/l_seed.png" alt="뭐지3" class="slide"></li>
-						<li><img src="/images/main/l_ding.png" alt="뭐지4" class="slide"></li>
+						<li><img onclick="location.href='/program/detail?proNum=5'" src="/images/main/l_winterNight.png" alt="뭐지1" class="slide"></li>
+						<li><img onclick="location.href='/program/detail?proNum=3'" src="/images/main/l_coloring.png" alt="뭐지2" class="slide"></li>
+						<li><img onclick="location.href='/program/detail?proNum=6'" src="/images/main/l_seed.png" alt="뭐지3" class="slide"></li>
+						<li><img onclick="location.href='/program/detail?proNum=4'" src="/images/main/l_ding.png" alt="뭐지4" class="slide"></li>
 					</ul>
 
 
@@ -346,51 +350,20 @@
 				<div class="noticeZone">
 					<h5>공지사항</h5>
 					<ul class="articleList">
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22902">
-						<span class="lib samdeokFB">[삼덕]</span>
-							2022년 삼덕도서관 송년의 달 행사 안내
-						</a>
-					</li>
+					<c:forEach items="${nN}" var="nN">
+						<li>
+							<a href="/board/detail?boardNum=${nN.boardNum}">
+							<span class="lib childFB">[씨앗]</span>
+								${nN.title}
+							</a>
+						</li>
+					</c:forEach>
 				
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22901">
-						<span class="lib allFB">[공통]</span>
-							2022년 제6회 선물축제 독서퀴즈 안내
-						</a>
-					</li>
-				
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22899">
-						<span class="lib seoksuFB">[석수]</span>
-							🎄2022 석수도서관 송년의 달 행사 운영 안내🎄
-						</a>
-					</li>
-				
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22898">
-						<span class="lib hogyeFB">[호계]</span>
-							2022년 11월 호계도서관 도전! 어린이 독서퀴즈 당첨자 발표
-						</a>
-					</li>
-				
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22896">
-						<span class="lib pyeongchonFB">[평촌]</span>
-							유아 동화구연 「내 마음에 동화」&nbsp; &lt;미니 공연&gt; 신청 안내
-						</a>
-					</li>
-				
-					<li>
-						<a href="/intro/20001/bbsPostDetail.do?postIdx=22885">
-						<span class="lib childFB">[어린이]</span>
-							2022년 어린이도서관 희망도서 신청접수 마감 안내
-						</a>
-					</li>
+					
 				
 					
 					</ul>
-					<div class="more"><a href="/intro/20001/bbsPostList.do" title="공지사항 더보기"><span class="blind">더보기</span></a></div>
+					<div class="more"><a href="/board/list" title="공지사항 더보기"><span class="blind">더보기</span></a></div>
 				</div>
 				<!-- //공지사항 -->
 
@@ -484,7 +457,7 @@
 
 										<c:forEach items="${nP}" var="nP">
 										<li>
-											<a href="/seoksu/lectureDetail.do?lectureIdx=5607">
+											<a href="/program/detail?proNum=${nP.proNum}">
 												<dl>
 													<dt>${nP.proPlace}
 														<c:choose>
@@ -572,7 +545,7 @@
 				</script> -->
 
 				<!-- 달력 & 이용안내 -->
-				<div class="guideWrap" style="margin-top: -50px;">
+				<div class="guideWrap" style="margin-top: 35px;">
 					<!-- 도서관일정 -->
 						<div id="calendarWrap" class="schedule">
 							<div style="display: flex; flex-direction: column; align-items: center; ">

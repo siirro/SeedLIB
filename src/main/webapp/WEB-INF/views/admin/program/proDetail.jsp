@@ -216,11 +216,11 @@
                                       data-bs-toggle="modal" data-bs-target="#exampleModal${mp.mpNum}">대기</span>
                                     </c:when>
                                     <c:when test="${mp.proCheck eq 1}">
-                                      <span id="changeBtn" class="status-btn success-btn row" proNum="${mp.proCheck}"
+                                      <span id="changeBtn" class="status-btn close-btn row" proNum="${mp.proCheck}"
                                       data-bs-toggle="modal" data-bs-target="#exampleModal${mp.mpNum}">거부</span>
                                     </c:when>
                                     <c:when test="${mp.proCheck eq 2}">
-                                      <span id="changeBtn" class="status-btn success-btn row" proNum="${mp.proCheck}"
+                                      <span id="changeBtn" class="status-btn active-btn row" proNum="${mp.proCheck}"
                                       data-bs-toggle="modal" data-bs-target="#exampleModal${mp.mpNum}">완료</span>
                                     </c:when>
                                     <c:otherwise>
@@ -272,7 +272,7 @@
                                   <c:choose>
                                     <c:when test="${mp.proState eq 0}"><div class="center1" style="color: red; font-size: 13px;">취소</div></c:when>
                                     <c:when test="${mp.proState eq 1}"><div class="center1" style="color: #54bb65; font-size: 13px;">신청중</div></c:when>
-                                    <c:when test="${mp.proState eq 2}"><div class="center1" style="color: #54bb65; font-size: 13px;">완료</div></c:when>
+                                    <c:when test="${mp.proState eq 2}"><div class="center1" style="color: blue; font-size: 13px;">완료</div></c:when>
 
                                     <c:otherwise>에러</c:otherwise>
                                   </c:choose>
