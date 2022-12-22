@@ -5,6 +5,12 @@
 
 <mapper namespace="com.seed.lib.search.SearchMapper">
 
+<select id="getNewNotice" resultType="BoardVO">
+SELECT * FROM BOARD
+ORDER BY REGDATE DESC
+LIMIT 0, 6
+</select>
+
 <select id="getNewProgram" resultType="AdprogramVO">
 SELECT PRONUM, PROCATE, RECSTATUS, PROTITLE, TARGET, TOTAL, PRSDATE, PRLDATE, DATE_FORMAT(PSDATE,'%Y-%m-%d %H:%i') as psDt, DATE_FORMAT(PLDATE,'%Y-%m-%d %H:%i') as plDt, PROTEACHER, PROPLACE 
 		FROM PROGRAM

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.mypage.MypageService;
 import com.seed.lib.admin.program.AdProgramVO;
+import com.seed.lib.board.BoardVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.hope.HopeService;
 import com.seed.lib.search.PopularVO;
@@ -85,6 +86,13 @@ public class HomeController {
 		mv.addObject("accessionBook", accessionBook);
 		mv.addObject("popularBook", popularBook);
 		mv.setViewName("index");
+		
+		
+		//메인용 새공지 시작 충돌주의 나도껴줘
+		List<BoardVO> newNotice = searchService.getNewNotice();
+		mv.addObject("nN", newNotice);
+		//메인용 새공지 끝 충돌주의 나도껴줘
+		
 		return mv;
 	}
 	
@@ -92,4 +100,8 @@ public class HomeController {
 	public String setTest() {
 		return "test";
 	}
+	
+	
+//	셋홈에 추가해줘 221222
+	
 }

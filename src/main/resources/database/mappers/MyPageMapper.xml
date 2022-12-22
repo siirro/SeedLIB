@@ -29,7 +29,7 @@
 		<result column="phone" property="phone"/>
 		<result column="address1" property="address1"/>
 		<result column="regdate" property="regDate"/>
-		<result column="address1" property="address1"/>
+		<result column="address2" property="address2"/>
 		<result column="enabled" property="enabled"/>
 		<result column="loanstatus" property="loanStatus"/>
 		<result column="ovmyrcount" property="ovMyrCount"/>
