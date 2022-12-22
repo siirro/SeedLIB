@@ -267,4 +267,16 @@
 		<result column="LIBNAME" property="libName"/>
 	</association>
 </resultMap>
+
+
+<!-- 메인페이지 -->
+<select id="getLoanList" parameterType="String" resultType="int">
+	SELECT COUNT(*)
+	FROM LOAN L
+		INNER JOIN BOOK B
+		ON B.ISBN = L.ISBN
+	WHERE L.USERNAME = #{userName}
+		AND RTSTATUS = 1
+</select>
+
 </mapper>    

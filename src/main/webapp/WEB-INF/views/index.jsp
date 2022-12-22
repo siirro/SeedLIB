@@ -442,7 +442,7 @@
 							<div class="myInfoList">
 								<dl>
 									<dt>도서대출현황</dt>
-									<dd>0</dd>
+									<dd>${loanCount}</dd>
 								</dl>
 								<dl>
 									<dt>도서예약현황</dt>

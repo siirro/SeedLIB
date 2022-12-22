@@ -19,6 +19,7 @@ import com.seed.lib.member.MemberVO;
 import com.seed.lib.mypage.MypageService;
 import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.book.BookVO;
+import com.seed.lib.hope.HopeService;
 import com.seed.lib.search.PopularVO;
 import com.seed.lib.search.SearchService;
 
@@ -36,7 +37,8 @@ public class HomeController {
 	private SearchService searchService;	
 	@Autowired
 	private MypageService mypageService;
-	
+	@Autowired
+	private HopeService hopeService;
 
 
 		
@@ -61,6 +63,8 @@ public class HomeController {
 			// 비어있지 않다면 모델앤뷰에 넣기
 			if(memberVO != null) {
 				mv.addObject("memberVO", memberVO);
+				int loanCount = hopeService.getLoanList(memberVO.getUsername());
+				mv.addObject("loanCount", loanCount);
 			}
 		}
 		
