@@ -61,8 +61,10 @@
 					<div class="boardWrap">
 					
 					<div>
+					<sec:authorize access="hasRole('ADMIN')">
 					<button type="button" id="update" class="btn btn-primary"><a href="./update?boardNum=${board.boardNum}">글수정</a></button>
 					<button type="button" id="delete" class="btn btn-primary"><a href="./delete?boardNum=${board.boardNum}">글삭제</a></button>
+					</sec:authorize>
 					 </div>		
 						<table class="board-view">
 							<caption>도서관소식 상세화면 : 제목, 작성일, 조회수, 첨부파일, 내용으로 구성</caption>

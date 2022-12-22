@@ -66,7 +66,9 @@
                               
                                 <!-- 게시글 등록 -->
             
-                                <form action="./add" name="registForm" id="registForm" method="post" enctype="multipart/form-data">
+                                <form action="./update" name="registForm" id="registForm" method="post" enctype="multipart/form-data">
+                                 <input type="hidden" name="boardNum" value="${board.boardNum}">
+                                
                                     <div class="boardWrap">
                                         <table class="board-view">
                                             <caption> 공지사항 </caption>
@@ -75,7 +77,6 @@
                                                 <col>
                                             </colgroup>
                                             <tbody>
-                                              <input type="hidden" name="boardNum" value="${board.boardNum}">
                                             
                                                 <tr>
                                                     <th scope="row"><label for="title">제목</label></th>
@@ -146,8 +147,18 @@
 	<script src="/js/fileManager.js"></script>
     
   <script type="text/javascript">
+  $('#contents1').summernote('code', '${board.contents}')
 
-    </script>
+  
+  $('#contents1').summernote({
+      tabsize: 4,
+      height: 250
+    });
+  
+  
+  
+	</script>
+
     
     
  
