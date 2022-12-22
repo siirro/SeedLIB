@@ -38,4 +38,11 @@ public interface HopeMapper {
 	public int setHopeOne(BookVO bookVO) throws Exception;
 	public int setLibOne(Map<String, Object> map) throws Exception;
 	public int setAdminHopeStat(HopeVO hopeVO) throws Exception;
+	
+	//메인
+	public int getLoanList(String userName) throws Exception;
+	public int getRevList(String userName) throws Exception;
+	public int getProList(String userName) throws Exception;
+	public int getHopList(String userName) throws Exception;
+	
 }

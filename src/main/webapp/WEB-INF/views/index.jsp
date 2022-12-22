@@ -405,7 +405,7 @@
 							
 								<li><a href="/member/login">로그인</a></li>
 								<li><a href="/member/agree">회원가입</a></li>
-							<a href="/intro/memberFindIdCertify.do"><i></i>ID/PW 찾기</a>
+							
 								
 								</sec:authorize>
 							<sec:authorize access="isAuthenticated()">	
@@ -442,19 +442,19 @@
 							<div class="myInfoList">
 								<dl>
 									<dt>도서대출현황</dt>
-									<dd>0</dd>
+									<dd>${loanCount}</dd>
 								</dl>
 								<dl>
 									<dt>도서예약현황</dt>
-									<dd>0</dd>
+									<dd>${revCount}</dd>
 								</dl>
 								<dl>
 									<dt>수강신청현황</dt>
-									<dd>0</dd>
+									<dd>${proCount}</dd>
 								</dl>
 								<dl>
 									<dt>희망도서 신청현황</dt>
-									<dd>0</dd>
+									<dd>${hopCount}</dd>
 								</dl>
 							</div>
 							<div class="more"><a href="/mypage/myIndex" title="이용현황 더보기"><span class="blind">더보기</span></a></div>
