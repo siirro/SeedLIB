@@ -64,7 +64,13 @@ public class HomeController {
 			if(memberVO != null) {
 				mv.addObject("memberVO", memberVO);
 				int loanCount = hopeService.getLoanList(memberVO.getUsername());
+				int revCount = hopeService.getRevList(memberVO.getUsername());
+				int proCount = hopeService.getProList(memberVO.getUsername());
+				int hopCount = hopeService.getHopList(memberVO.getUsername());
 				mv.addObject("loanCount", loanCount);
+				mv.addObject("revCount", revCount);
+				mv.addObject("proCount", proCount);
+				mv.addObject("hopCount", hopCount);
 			}
 		}
 		

@@ -41,5 +41,8 @@ public interface HopeMapper {
 	
 	//메인
 	public int getLoanList(String userName) throws Exception;
+	public int getRevList(String userName) throws Exception;
+	public int getProList(String userName) throws Exception;
+	public int getHopList(String userName) throws Exception;
 	
 }

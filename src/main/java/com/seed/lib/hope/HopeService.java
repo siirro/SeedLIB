@@ -119,4 +119,16 @@ public class HopeService {
 	public int getLoanList(String userName) throws Exception{
 		return hopeMapper.getLoanList(userName);
 	}
+	
+	public int getRevList(String userName) throws Exception{
+		return hopeMapper.getRevList(userName);
+	}
+	
+	public int getProList(String userName) throws Exception{
+		return hopeMapper.getProList(userName);
+	}
+	
+	public int getHopList(String userName) throws Exception{
+		return hopeMapper.getHopList(userName);
+	}
 }

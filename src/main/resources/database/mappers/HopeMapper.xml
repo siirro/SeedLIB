@@ -279,4 +279,37 @@
 		AND RTSTATUS = 1
 </select>
 
+<select id="getRevList" parameterType="String" resultType="int">
+SELECT COUNT(*)
+	FROM RESERVATION E
+		INNER JOIN BOOK B
+		ON B.ISBN = E.ISBN
+	WHERE E.USERNAME = #{userName}
+</select>
+
+<select id="getProList" parameterType="String" resultType="int">
+	SELECT COUNT(*)
+	FROM PROGRAM P
+		INNER JOIN MEMBERPROGRAM MP	
+	ON P.PRONUM = MP.PRONUM	
+	WHERE MP.USERNAME = #{userName}	
+</select>
+
+<select id="getHopList" parameterType="String" resultType="int">
+	SELECT COUNT(H.HOPNUM) FROM HOPE H
+			INNER JOIN
+			HOSTAT HS
+			ON H.HOPNUM=HS.HOPNUM
+				INNER JOIN
+				STATUS S
+				ON HS.STATNUM=S.STATNUM 
+			INNER JOIN
+			HOPLIB HL
+			ON H.HOPNUM=HL.HOPNUM
+				INNER JOIN
+				LIBRARY L
+				ON HL.LIBNUM=L.LIBNUM
+		WHERE USERNAME=#{userName}
+</select>
+
 </mapper>    
