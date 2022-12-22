@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <link rel="shortcut icon" href="/images/favicon.png">
 <title> 도서관소식 : 씨앗도서관 ☘️ </title>
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/default.css">
