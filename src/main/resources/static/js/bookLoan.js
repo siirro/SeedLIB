@@ -61,7 +61,7 @@ $("#ResAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
-				case 2:
+				case 3:
 					alert("해당 책을 이미 대출 중입니다.")
 					break;
 				case 1:
