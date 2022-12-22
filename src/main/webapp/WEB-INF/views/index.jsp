@@ -428,7 +428,16 @@
 							<h5>서비스 이용현황</h5>
 							<ul class="myInfo clearfix">
 								<li><p><strong>${memberVO.name} 님,</strong><br> 반갑습니다.</p></li>
-								<li><p><strong><c:if test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">관리자</c:if></strong></p></li>
+								<li><p><strong>
+									<c:choose>
+										<c:when test="${memberVO.roleVOs[0].roleName eq 'ROLE_ADMIN'}">
+											관리자
+										</c:when>
+										<c:when test="${memberVO.roleVOs[0].roleName eq 'ROLE_MEMBER'}">
+											정회원
+										</c:when>
+								</c:choose>
+							</strong></p></li>
 							</ul>
 							<div class="myInfoList">
 								<dl>
