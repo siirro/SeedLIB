@@ -134,7 +134,7 @@ public class BookLoanService {
 			loanMapper.setReservation(reVO);
 			return 1;
 		}else {
-			return 2;
+			return 3;
 		}
 	}
 	
