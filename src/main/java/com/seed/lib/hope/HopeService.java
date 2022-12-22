@@ -115,4 +115,8 @@ public class HopeService {
 			}
 		}
 	}
+	
+	public int getLoanList(String userName) throws Exception{
+		return hopeMapper.getLoanList(userName);
+	}
 }
