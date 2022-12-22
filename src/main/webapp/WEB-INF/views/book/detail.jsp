@@ -809,7 +809,7 @@
 										<input type="hidden" id="prinImp" value="${imp}">
 									</fieldset>
 									<div class="btn_wrap center mb30" id="payBtnWrap" style="display: none;">
-										<button type="button" id="payBtn" class="btn btn_apply" onclick="requestPay()" style="background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
+										<button type="button" id="payBtn" class="btn btn_apply" onclick="requestPay()" style="transform: translateX(410px); background-image: linear-gradient(to right, #9be15d, #00e3ae)">결제하기</button>
 									</div>
 								</form>
 							</div>

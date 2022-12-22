@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.seed.lib.admin.program.AdProgramVO;
+import com.seed.lib.board.BoardVO;
 import com.seed.lib.book.BookVO;
 import com.seed.lib.util.Pager;
 import com.seed.lib.util.SearchDetailPager;
@@ -13,6 +14,7 @@ import com.seed.lib.util.SearchDetailPager;
 @Mapper
 public interface SearchMapper {
 	
+	public List<BoardVO> getNewNotice()throws Exception;
 	public List<AdProgramVO> getNewProgram()throws Exception;
 	public List<BookVO> getAccessionBook()throws Exception;
 	public List<BookVO> getPopularBook()throws Exception;
