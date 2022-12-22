@@ -82,7 +82,7 @@ public class ProgramController {
 	@ResponseBody
 	@PostMapping("delete")
 	public int setDel (@RequestBody MemberProgramVO mpVO) throws Exception{
-		int result = programService.setAdd(mpVO);
+		int result = programService.setDel(mpVO);
 		return result;
 	}
 	

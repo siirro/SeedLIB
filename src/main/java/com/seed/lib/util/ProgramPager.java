@@ -80,7 +80,7 @@ public class ProgramPager {
 		}
 		
 		//5. curBlock으로 startNum , lastNum 구하기
-		this.startNum = (curBlock-1)*this.getPerBlock()+1;
+		this.startNum = (curBlock-1)*this.getPerBlock();
 		this.lastNum = curBlock*this.getPerBlock();
 		
 		//6. curBlock이 마지막block(totalBlock과 같을 때)

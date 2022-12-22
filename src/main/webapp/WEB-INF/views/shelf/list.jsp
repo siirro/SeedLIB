@@ -77,17 +77,13 @@
                         	<div class="divContent">
 	                        	<div class="loanSearch">
 	                        		<p>선택조건으로 조회</p>
-	                        		<form id="form" name="form" action="/mypage/book/loan" method="get">
+	                        		<form id="form" name="form" action="/shelf/list" method="get">
 	                        			<span class="bunch">
 		                                    <select id="select" name="select" class="selectBox1" title="검색항목">
 		                                        <option value="name">이름</option>
 		                                        <option value="memo">메모</option>
 		                                    </select>
-		                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="20" maxlength="100">
-		                                </span>
-		                                <span class="bunch">
-		                                    <input id="dateA" name="dtf" class="datePicker hasDatepicker" title="생성기간검색 시작일(20160101)" type="text" value="" size="8" maxlength="8"> ~
-		                                    <input id="dateB" name="dtt" class="datePicker hasDatepicker" title="생성기간검색 종료일(20160131)" type="text" value="" size="8" maxlength="8">
+		                                    <input id="search" name="search" class="inputTextType1 sw" title="검색어 입력" type="text" value="" size="50" maxlength="100">
 		                                </span>
 		                                <span class="bunch">
 		                                    <select id="sortHow" name="sortHow" class="selectBox1" title="정렬 검색항목">
@@ -129,8 +125,7 @@
 	                                        			<td>${sh.shMemo}</td>
 	                                        			<td>${sh.creDate}</td>
 	                                        			<td>
-	                                        				<input type="text" class="" value="${sh.shNum}">
-	                                        				<button type="button" class="btn white small ExAlretBtn" title="삭제">삭제</button>
+	                                        				<button type="button" class="btn white small delShelfBtn" data-num="${sh.shName}" title="삭제">삭제</button>
 	                                        			</td>
 		                                        		
 		                                        		<c:if test="${sh} == null">
@@ -148,7 +143,9 @@
                 </div>
             </div>
         </div>
+        <c:import url="../temp/footer.jsp"></c:import> 
     </div>
-
+	<script type="text/javascript" src="/js/bookDetail.js"></script>
+	<script type="text/javascript" src="/js/bookLoan.js"></script>
 </body>
 </html>
