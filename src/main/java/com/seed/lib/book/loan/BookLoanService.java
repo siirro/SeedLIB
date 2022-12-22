@@ -83,16 +83,23 @@ public class BookLoanService {
 	
 	//대출 연장 - 최대 2번
 	public int setExtension (BookLoanVO loVO) throws Exception{
-		// 연장 횟수가 0, 1일때만 신청 가능
-		//	-> setExtension -> 저장(연장횟수, 반납일) 리턴 -> 1 리턴
-		// 2이면 불가능 -> 3 리턴
-		int count = loanMapper.getExCount(loVO);
-		if(count < 2) {
-			loanMapper.setExtension(loVO);
-			return 1;
+		//예약자 있으면 신청 불가능
+		int pe = loanMapper.getRePe(loVO);
+		if (pe == 0) {
+			// 연장 횟수가 0, 1일때만 신청 가능
+			//	-> setExtension -> 저장(연장횟수, 반납일) 리턴 -> 1 리턴
+			// 2이면 불가능 -> 3 리턴
+			int count = loanMapper.getExCount(loVO);
+			if(count < 2) {
+				loanMapper.setExtension(loVO);
+				return 1;
+			}else {
+				return 3;
+			}			
 		}else {
-			return 3;
+			return 4;
 		}
+		
 	}
 	
 	//대출한 책 권수
@@ -127,7 +134,7 @@ public class BookLoanService {
 			loanMapper.setReservation(reVO);
 			return 1;
 		}else {
-			return 2;
+			return 3;
 		}
 	}
 	
@@ -142,6 +149,11 @@ public class BookLoanService {
 	//예약한 책 권수
 	public int getReCount (BookLoanVO loVO) throws Exception{
 		return loanMapper.getReCount(loVO);
+	}
+	
+	//예약 취소
+	public int setReDelete (BookReservationVO reVO) throws Exception{
+		return loanMapper.setReDelete(reVO);
 	}
 
 //-----------------------------------------------------------------------	
@@ -209,7 +221,7 @@ public class BookLoanService {
 		
 		loanVO.setRtStatus(0);
 		loanVO.setLoanNum(returnVO.getLoanNum());
-
+		
 		if(!m) {
 			//반납상태 0 / 연체 0
 			loanVO.setOverDue(0);

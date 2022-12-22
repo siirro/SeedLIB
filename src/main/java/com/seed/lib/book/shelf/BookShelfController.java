@@ -101,11 +101,10 @@ public class BookShelfController {
 		//마이페이지 - 책꽂이 상세페이지 - 삭제버튼
 		//shelf/deleteShelf?shNum=
 	@PostMapping("deleteShelf")
-	public String setShelfDelete (Long num) throws Exception{
-		BookShelfVO bookShelfVO = new BookShelfVO();
-		bookShelfVO.setShNum(bookShelfVO.getShNum());
-		//삭제 완료 팝업창
-		return "redirect:./list";
+	@ResponseBody
+	public int setShelfDelete (@RequestBody BookShelfVO shelfVO) throws Exception{
+		int result = bookShelfService.setShelfDelete(shelfVO);
+		return result;
 	}
 	
 	
@@ -166,17 +165,10 @@ public class BookShelfController {
 	//책꽂이에서 책 삭제
 		//마이페이지 - 책꽂이 상세페이지 - 선택 삭제 버튼
 	@PostMapping("deleteBook")
-	public ModelAndView setBookDelete (Long num) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		//책꽂이 번호
-		BookPickVO pickVO = new BookPickVO();
-		pickVO.setShNum(num);
+	@ResponseBody
+	public int setBookDelete (@RequestBody BookPickVO pickVO) throws Exception{
 		int result = bookShelfService.setBookDelete(pickVO);
-		
-		//삭제 성공 팝업, 책꽂이 상세페이지로 돌아감 
-		mv.setViewName("shelf/bookList?shNum="+result);
-		return mv;
+		return result;
 	}
 	
 	

@@ -42,7 +42,6 @@
 
 
 <body>
-
 	<input type="hidden" id="isbn" value="${bookVO.isbn}">
 	<input type="hidden" id="userName" value="${member.userName}">
 
@@ -143,9 +142,6 @@
 									<img alt="" src="${bookVO.image}">
 								</div>
 								<div class="book_name" id="title">${bookVO.title}</div>
-								<a href="#link" class="btn_optionView">
-									<span class="blind">책정보 더보기</span>
-								</a>
 								
 								<!-- 간략보기 -->
 								<div class="simpleView viewTab open">
@@ -294,7 +290,7 @@
 																	<td>
 																		<c:choose>
 																			<c:when test="${where == 0}">
-																				<c:if test="${rtDate != null}"><input type="text" class="enableDate" value="${rtDate}">${rtDate}</c:if>
+																				<c:if test="${rtDate != null}"><input type="hidden" class="enableDate" value="${rtDate}">${rtDate}</c:if>
 																				<c:if test="${rtDate == null}">-</c:if>
 																			</c:when>
 																			<c:otherwise>해당 도서관으로 문의 바랍니다.</c:otherwise>
@@ -367,18 +363,13 @@
 							
 							<!-- 책 소개 -->
 							<div class="dropBookData" id="tabGo2">
-								<h5 class="htitle">책소개
-									<span>도서정보 상세보기 클릭 ☞
-										<a href="https://search.shopping.naver.com/book/catalog/32439434396" target="_blank">
-											<img src="/images/link_n.png" alt="네이버">
-										</a>
-									제공</span>
+								<h5 class="htitle" id="htitle">책소개
+									
 								</h5>
 								<div class="dropContainerBox">
-									<div class="bookInformation">
-										내용
+									<div class="bookInformation" id="bookInformation">
+										
 									</div>
-									<button type="button" class="mobMoreView"><span>더보기</span></button>
 								</div>
 							</div>
 							
@@ -393,13 +384,13 @@
 												
 												<c:forEach var="sc" items="${cate}">
 													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
-														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
+														<a href="/book/detail?isbn=${sc.isbn}">
 														<div class="bookImg" style="height: 161px;">
 															<img alt="" src="${sc.image}" onerror="javascript:fnNoImgBook(this); return false;">
 														</div>
 														<div class="bookData">
 															<div class="book_dataInner">
-																<p class="book_name" title="Sheep on a farm "><strong>${sc.title}</strong></p>
+																<p class="book_name" title="${sc.title}"><strong>${sc.title}</strong></p>
 																<p class="book_writers">
 																	<span class="bk_writer">${sc.writer}</span>
 																	<span class="bk_publish">${sc.publisher}<br>${sc.bookDate}</span>
@@ -410,17 +401,13 @@
 													</div>
 												</c:forEach>
 											</div>
-											<!-- Add Arrows -->
-											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
-											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-											</div>
 										</div>
 									</div>	
 								</div>
 															
 							<!-- 같은 작가 도서 -->
 							<div id="tabGo4" class="dropBookData">
+								<hr style="margin-top: 30px;">
 								<h5 class="htitle">같은 작가의 자료</h5>
 								
 								<div class="dropContainerBox">
@@ -430,13 +417,13 @@
 												
 												<c:forEach var="sw" items="${wri}">
 													<div class="swiper-slide swiper-slide-active" style="width: 138.333px; margin-right: 20px;">
-														<a href="javascript:;" onclick="fnDetail('19238264', '9781404280502:', 'MO');">
+														<a href="/book/detail?isbn=${sw.isbn}">
 														<div class="bookImg" style="height: 161px;">
 															<img alt="" src="${sw.image}" onerror="javascript:fnNoImgBook(this); return false;">
 														</div>
 														<div class="bookData">
 															<div class="book_dataInner">
-																<p class="book_name" title="Sheep on a farm "><strong>${sw.title}</strong></p>
+																<p class="book_name" title="${sw.title}"><strong>${sw.title}</strong></p>
 																<p class="book_writers">
 																	<span class="bk_writer">${sw.writer}</span>
 																	<span class="bk_publish">${sw.publisher}<br>${sw.bookDate}</span>
@@ -446,11 +433,6 @@
 														</a>
 													</div>
 												</c:forEach>
-											</div>
-											<!-- Add Arrows -->
-											<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
-											<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 											</div>
 										</div>
 									</div>	
@@ -822,9 +804,14 @@
 		</div>
 	</div>
 </div>
+</div>
 	<c:import url="../temp/footer.jsp"></c:import> 
+</div>
 	
 	<script type="text/javascript" src="/js/bookDetail.js"></script>
     <script type="text/javascript" src="/js/bookLoan.js"></script>
+    <script type="text/javascript">
+    	bookSearch();
+    </script>
 </body>
 </html>

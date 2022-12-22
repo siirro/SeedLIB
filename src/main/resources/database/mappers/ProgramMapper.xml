@@ -19,7 +19,8 @@
 			<result column="plDate" property="plDate"/>
 			<result column="proTeacher" property="proTeacher"/>
 			<result column="proPlace" property="proPlace"/>
-		<collection property="mpVOs" javaType="List" ofType="MemberProgramVO">
+			<result column="recStatus" property="recStatus"/>
+		<collection property="mpVO" javaType="MemberProgramVO">
 			<id column="mpNum" property="mpNum"/>
 				<result column="userName" property="userName"/>
 				<result column="proCheck" property="proCheck"/>
@@ -126,10 +127,6 @@
 		FROM PROGRAM P
 			INNER JOIN MEMBERPROGRAM MP		
 		WHERE MP.USERNAME = #{userName}
-			<choose>
-				<when test="status == '종료'">AND P.RECSTATUS = '종료'</when>
-				<otherwise>AND P.RECSTATUS != '종료'</otherwise>
-			</choose>
 			
 			<if test="search != null">
 				<choose>

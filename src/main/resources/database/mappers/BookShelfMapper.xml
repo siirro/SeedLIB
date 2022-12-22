@@ -33,10 +33,6 @@
 					<when test="select == 'name'">AND S.NAME LIKE CONCAT ('%', #{search}, '%')</when>
 					<when test="select == 'memo'">AND S.MEMO LIKE CONCAT ('%', #{search}, '%')</when>
 				</choose>
-				
-				<if test="dateA != null and dateB != null">
-					AND S.CREDATE BETWEEN #{dateA} AND #{dateB}
-				</if>
 			ORDER BY
    			<choose>
    				<when test="sortHow == 'name'">S.NAME</when>
@@ -56,9 +52,9 @@
 	</insert>
 	
 	
-	<delete id="setShelfDelete" parameterType="BookVO">
-		delete from shelf
-			where shName = #{shName} and username= #{userName}
+	<delete id="setShelfDelete" parameterType="BookShelfVO">
+		DELETE FROM SHELF
+			WHERE SHNAME = #{shName} AND USERNAME = #{userName}
 	</delete>
 	
 	
@@ -96,10 +92,6 @@
 					<when test="select == 'writer'">AND B.WRITER LIKE CONCAT ('%', #{search}, '%')</when>
 					<otherwise>AND B.ISBN LIKE CONCAT ('%', #{search}, '%')</otherwise>
 				</choose>
-				
-				<if test="dateA != null and dateB != null">
-					AND P.REGDATE BETWEEN #{dateA} AND #{dateB}
-				</if>
 			ORDER BY
    			<choose>
    				<when test="sortHow == 'title'">B.TITLE</when>

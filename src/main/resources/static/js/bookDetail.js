@@ -180,21 +180,88 @@ $("#RealShelfBtn").click(function(){
 		})
 	});
 	
-//-------------------------------------------------
-//로그인 창 띄우기
-$(".LoginBtn").click(function(){
+//책꽂이 삭제
+$(".delShelfBtn").click(function(){
+	const shelfVO = {
+		shName : $(this).attr("data-num"),
+		userName : userName
+	}
+	
+	console.log(shelfVO);
+	
 	$.ajax({
-		type : "GET",
-		url : "../../member/loginPop",
-		success : function(){
-			window.open('/member/loginPop', "로그인", strOption);
+		type : "POST",
+		url : "/shelf/deleteShelf",
+		data:JSON.stringify(shelfVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		
+		success : function(data){
+			let done = window.confirm("책꽂이를 삭제했습니다.");
+					if(done){
+						location.reload();
+					} else{
+                        location.reload();
+                    }
 		},
 		error : function(){
-			console.log("ERROR");
-			 window.close();
+			console.log("-");
 		}
 	})
-});
+});	
+
+//책 삭제
+$(".delBookBtn").click(function(){
+	const pickVO = {
+		shNum : $("#shNum").val(),
+		isbn :  $(this).attr("data-num")
+	}
+	
+	console.log(pickVO);
+	
+	$.ajax({
+		type : "POST",
+		url : "/shelf/deleteBook",
+		data:JSON.stringify(pickVO),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		
+		success : function(data){
+			let done = window.confirm("책을 삭제했습니다.");
+					if(done){
+						location.reload();
+					} else{
+                        location.reload();
+                    }
+		},
+		error : function(){
+			console.log("-");
+		}
+	})
+});	
+//-------------------------------------------------
+//검색
+function bookSearch () {
+	$.ajax({
+		method : "GET",
+		url : "https://dapi.kakao.com/v3/search/book?target=isbn",
+		data : {
+			query : isbn
+		},
+		headers : {
+			Authorization: "KakaoAK fa0fea361e13f848d372ac3702c5fd3f"
+		},
+	})
+		.done(function(res){
+			console.log(res);
+			console.log(res.documents[0].contents);
+			$("#bookInformation").append(res.documents[0].contents);
+			$("#htitle").append("<span>도서정보 상세보기 클릭 ☞"
+								+"<a href='" +res.documents[0].url+ "'target='_blank'>"
+								+"<img src='https://search.pstatic.net/sunny/?src=https%3A%2F%2Fwww.kakaocorp.com%2Fpage%2Ffavicon.ico&type=f30_30_png_expire24' alt='카카오'>"
+								+"</a>제공</span>");
+		});
+}
 
 //-------------------------------------------------
 

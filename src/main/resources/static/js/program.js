@@ -1,9 +1,7 @@
 
 
-const proNum = $("#proNum").val();
 const userName = $("#userName").val();
 
-console.log(proNum);
 console.log(userName);
 //-------------------------------------------------
 //디테일 페이지에서 신청 눌렀을 때
@@ -44,10 +42,10 @@ $("#ProAlretBtn").click(function(){
 	
 //-------------------------------------------------
 //디테일 페이지에서 신청취소 눌렀을 때
-$("#ProDelAlretBtn").click(function(){
+$(".ProDelAlretBtn").click(function(){
 	const mpVO = {
 		userName : userName,
-		proNum : proNum
+		proNum : $(this).attr("data-res-num")
 	}
 	
 	console.log(mpVO);
@@ -60,10 +58,6 @@ $("#ProDelAlretBtn").click(function(){
 		dataType: "json",
 		success:function(data){
 			switch (data){
-				case 3:
-					break;
-				case 2:
-					break;
 				case 1:
 					let done = window.confirm("행사 신청이 취소되었습니다.");
 					if(done){
