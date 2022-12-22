@@ -93,6 +93,7 @@
                                                 
                                                  <tr>
                                                    <th scope="row">첨부파일</th>
+                                                   
                                                      <td>
                                                  <c:forEach items="${board.boardFileVOs}" var="fileVO">
                                                  <p>
@@ -106,6 +107,7 @@
 														
 										
                                                     </td>
+                                                  
                                                </tr>
                                                     
                                                  </tbody>
