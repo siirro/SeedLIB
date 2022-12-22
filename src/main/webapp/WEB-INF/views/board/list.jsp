@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,8 +132,9 @@
 
 							</p>
 						
-
+						<sec:authorize access="hasRole('ADMIN')">
 						<a href="./add" id="registBtn" class="btn write themeBtn">글쓰기</a>
+						</sec:authorize>
 					</div>
 					<!-- //페이징 -->
 
