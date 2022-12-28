@@ -171,6 +171,15 @@
                                     })
 
 
+                                    //이메일 셀렉트
+                                    $(".haha").each(function(index, item){
+                                        if($(item).prop("checked")){
+                                            $("#email2").val($(item).val());
+                                            
+                                        }
+                                    })
+                                    
+                                    //이메일 파싱
                                     let hand3 = $("#emailValue").val()
                                     let em = hand3.split("@");
 
@@ -194,22 +203,24 @@
                                     const haha = document.getElementsByClassName('haha');
                                     let h = $("#email2").val();
 
+                                    
+
                                     // for(let i=0;i<haha.length;i++){
                                     //     if(h.includes(haha[i].getAttribute("value"))) {
-                                    //         haha[i]. += ' selected';
+                                    //         haha[i].setAttribute = 'checked';
                                     //         break;
                                     //     }
                                     // }
 
-                                    let status = "";
-                                            // console.log($("input[class='check"+num+"']:checked").val())
-                                            $(".check"+num).each(function(index, item){
-                                              console.log(item);
-                                              if($(item).prop("checked")){
-                                                status = $(item).val();
-                                                console.log(status);
-                                              }
-                                            })
+                                    // let status = "";
+                                    //         // console.log($("input[class='check"+num+"']:checked").val())
+                                    //         $(".check"+num).each(function(index, item){
+                                    //           console.log(item);
+                                    //           if($(item).prop("checked")){
+                                    //             status = $(item).val();
+                                    //             console.log(status);
+                                    //           }
+                                    //         })
 
                                         
                                 

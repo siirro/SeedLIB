@@ -123,26 +123,7 @@
 		            
 		   
 		            
-		            <div>
-		            	<c:if test="${not empty li}">
-	                        <div class="pagingWrap">
-	                            <!-- <input type="hidden" name="page" value="${pager.page}"> -->
-	                            <p class="paging">
-	                                <a href="?select=${pager.select}&search=${pager.search}&kind=${pager.kind}&page=1" class="btn-paging first ${pager.page eq 1?'disabledLink':''}"><span class="blind">맨 첫 페이지로 가기</span></a>
-	                                
-	                                <a href="?select=${pager.select}&search=${pager.search}&kind=${pager.kind}&page=${pager.startNum-1}" class="btn-paging prev ${pager.page eq 1?'disabledLink':''}"><span class="blind">이전 10개 보기</span></a>
-	                                
-	                                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-	                                    <!-- <span class="current">1</span> -->
-	                                    <a href="?search=${pager.search}&kind=${pager.kind}&page=${i}" id="ppaaggee${i}">${i}</a>
-	                                    
-	                                </c:forEach>
-	                                <a href="?search=${pager.search}&kind=${pager.kind}&page=${pager.lastNum+1}" class="btn-paging next ${pager.next?'':'disabledLink'}"><span class="blind">다음 10개 보기</span></a>
-	                                <a href="?search=${pager.search}&kind=${pager.kind}&page=${pager.totalPage1}" class="btn-paging last ${pager.page eq pager.totalPage1?'disabledLink':''}"><span class="blind">맨 마지막 페이지로 가기</span></a>
-	                                </p>
-	                        </div>
-                        </c:if>
-		            </div>
+		            
 		        </div>
 		    </div>
 		</div>

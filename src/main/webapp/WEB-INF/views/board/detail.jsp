@@ -40,6 +40,7 @@
 
 
 <div class="naviandtitle">
+	<h3>공지사항</h3>
 	<div class="navi"><a href="/intro/index.do" title="홈으로 이동" class="home"><span class="blind">홈</span></a><i class="arrow"></i> 도서관소식 <i class="arrow"></i>공지사항</div>
 	
 </div>
@@ -105,13 +106,15 @@
 										 <c:choose>
 										
 										 <c:when test="${not empty board}">
-                     					 <c:forEach items="${board.boardFileVOs}" var="files">
 										<td>
+                     					 <c:forEach items="${board.boardFileVOs}" var="files">
+										
                           				  <span class="material-symbols-outlined">
                                           <a href="/fileDown/qna/?fileNum=${files.fileNum}"></span>
                                             ${files.oriName}</a>					
-										</td>
+										
 										 </c:forEach>
+										</td>
 										</c:when>
 											<c:otherwise>
 												<td>
@@ -141,7 +144,7 @@
 					</div>
 
 					<div class="btnGroup">
-						<a href="/.list" id="listBtn" class="btn list">목록</a>
+						<a href="/board/list" id="listBtn" class="btn list">목록</a>
 					</div>
 					
 

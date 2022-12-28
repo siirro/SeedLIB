@@ -49,8 +49,8 @@
 		            </div>
 		    
 		            <div id="contents" class="contentArea">
-		            	<input type="text" id="proNum" value="${vo.proNum}"> proNum : ${vo.proNum}<br> 
-		            	<input type="text" id="userName" value="${member.userName}"> userName : ${member.userName} <br>
+		            	<input type="hidden" id="proNum" value="${vo.proNum}">
+		            	<input type="hidden" id="userName" value="${member.userName}">
 		            	
 		            	<div id="contents" class="contentArea">
 		            		<div class="detail-flex">

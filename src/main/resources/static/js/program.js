@@ -15,7 +15,7 @@ $("#ProAlretBtn").click(function(){
 	
 	$.ajax({
 		type : "POST",
-		url : "/program/add",
+		url : "./add",
 		data:JSON.stringify(mpVO),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
