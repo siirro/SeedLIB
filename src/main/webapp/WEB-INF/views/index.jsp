@@ -757,15 +757,15 @@
 	let calendar;
 
 	document.addEventListener('DOMContentLoaded', function() {
-	//   let data = '${cl}';
-	//   let id = "";
-	//   data = JSON.parse(data);
+	  let data = '${cl}';
+	  let id = "";
+	  data = JSON.parse(data);
 	  let calendarEl = document.getElementById('calendar');
 		  calendar = new FullCalendar.Calendar(calendarEl, {
 		  height: 340,
 		  fixedWeekCount:false,
 		  initialView: 'dayGridMonth',
-		//   events: data
+		  events: data
 	  })
 	  
 	  calendar.render();

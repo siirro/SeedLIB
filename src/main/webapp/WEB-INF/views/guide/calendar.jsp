@@ -90,7 +90,6 @@
     <!-- //footer -->
     <script>
         let calendar;
-
         document.addEventListener('DOMContentLoaded', function() {
           let data = '${cl}';
           let id = "";
