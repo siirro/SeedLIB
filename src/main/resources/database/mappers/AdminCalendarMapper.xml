@@ -11,7 +11,7 @@
 	<insert id="setSchedule" parameterType="AdminCalendarVO">
 		INSERT INTO SCHEDULE
 		(TITLE, START, END)
-		VALUES(#{title}, #{start}, #{end});
+		VALUES(#{title}, STR_TO_DATE(#{start}, '%Y-%m-%d %H:%i'), STR_TO_DATE(#{end}, '%Y-%m-%d %H:%i'));
 	</insert>
 	
 </mapper>

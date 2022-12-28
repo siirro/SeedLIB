@@ -222,9 +222,10 @@ public class AdProgramController {
 			url="../program/proList";
 			/////////////////////////////////////
 			AdminCalendarVO calendarVO = new AdminCalendarVO();
+//			programVO.makeDate();
 			calendarVO.setTitle(programVO.getProTitle());
-			calendarVO.setStart(programVO.getPlDate().toString());
-			calendarVO.setEnd(programVO.getPsDate().toString());
+			calendarVO.setStart(programVO.getPsDt());
+			calendarVO.setEnd(programVO.getPlDt());
 			calendarService.setSchedule(calendarVO);
 		}
 		
