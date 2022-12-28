@@ -180,5 +180,13 @@ public class BookController {
 		return result;
 	}	
 	
+/////////////////////////////////////////////////////////////////////////////	
+	//삭제
+	@PostMapping("bookDelete")
+	@ResponseBody
+	public int setDeleteBook(String isbn) throws Exception{
+		
+		return 0;
+	}
 	
 }

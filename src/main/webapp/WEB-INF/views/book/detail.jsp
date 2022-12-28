@@ -141,7 +141,7 @@
 								<div class="bookImg">
 									<img alt="" src="${bookVO.image}">
 								</div>
-								<div class="book_name" id="title">${bookVO.title}</div>
+								<div class="book_name" id="title" val="${bookVO.title}">${bookVO.title}</div>
 								
 								<!-- 간략보기 -->
 								<div class="simpleView viewTab open">
@@ -813,5 +813,30 @@
     <script type="text/javascript">
     	bookSearch();
     </script>
+	<script>
+		$("#bookDelete").click(function(){
+			const title = $("#title").attr("val");
+			const isbn = $(this).attr("value");
+			console.log(title,isbn);
+			let check = window.confirm("해당 도서: "+title+" 를 삭제하시겠습니까?");
+			if(check){
+				$.ajax({
+					type:"POST",
+					url:"/admin/book/boDelete",
+					data:{
+						isbn:isbn
+					},success:function(data){
+						console.log(data.msg);
+						alert(data.msg);
+						location.href="../";
+					},error:function(data){
+						alert(data.msg);
+					}
+				});
+			}else{
+				return;
+			}
+		})
+	</script>
 </body>
 </html>

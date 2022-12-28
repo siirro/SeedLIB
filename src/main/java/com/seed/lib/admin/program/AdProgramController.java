@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.seed.lib.admin.calendar.AdminCalendarService;
+import com.seed.lib.admin.calendar.AdminCalendarVO;
 import com.seed.lib.util.DateUtil;
 import com.seed.lib.util.HdPager;
 
@@ -23,6 +25,9 @@ public class AdProgramController {
 
 	@Autowired
 	private AdProgramService programService;
+	
+	@Autowired
+	private AdminCalendarService calendarService;
 	
 	@GetMapping("updateProCheck")
 	@ResponseBody
@@ -209,14 +214,18 @@ public class AdProgramController {
 		result = programService.setProgramAdd(programVO, name, teacher);
 		
 		if(result > 0) {
-			
 			result = 1;
 			title = "성공!!";
 			text = "프로그램등록을 성공했습니다!";
 			icon = "success";
 			button = "확인";
 			url="../program/proList";
-			
+			/////////////////////////////////////
+			AdminCalendarVO calendarVO = new AdminCalendarVO();
+			calendarVO.setTitle(programVO.getProTitle());
+			calendarVO.setStart(programVO.getPlDate().toString());
+			calendarVO.setEnd(programVO.getPsDate().toString());
+			calendarService.setSchedule(calendarVO);
 		}
 		
 		mv.addObject("title", title);

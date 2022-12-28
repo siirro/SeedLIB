@@ -33,7 +33,7 @@ let hMemoCheck = false;
 function getKey(){
     $.ajax({
             type:"GET",
-            url:"http://localhost:81/hope/searchHope",
+            url:"/hope/searchHope",
             async:false,
             data:{
                 result:1
