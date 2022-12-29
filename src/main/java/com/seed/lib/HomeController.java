@@ -1,9 +1,12 @@
 package com.seed.lib;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
@@ -17,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 //import com.nimbusds.jose.proc.SecurityContext;
 import com.seed.lib.member.MemberVO;
 import com.seed.lib.mypage.MypageService;
+import com.seed.lib.admin.calendar.AdminCalendarService;
+import com.seed.lib.admin.calendar.AdminCalendarVO;
 import com.seed.lib.admin.program.AdProgramVO;
 import com.seed.lib.board.BoardVO;
 import com.seed.lib.book.BookVO;
@@ -25,6 +30,7 @@ import com.seed.lib.search.PopularVO;
 import com.seed.lib.search.SearchService;
 
 import com.seed.lib.studyroom.StudyRoomService;
+import com.seed.lib.util.FullCalendarVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +46,8 @@ public class HomeController {
 	private MypageService mypageService;
 	@Autowired
 	private HopeService hopeService;
-
+	@Autowired
+	private AdminCalendarService calendarService;
 
 		
 	
@@ -74,6 +81,20 @@ public class HomeController {
 				mv.addObject("hopCount", hopCount);
 			}
 		}
+		//달력
+		List<FullCalendarVO> cl = new ArrayList<>();
+		List<AdminCalendarVO> al = calendarService.getSchedule();
+		JSONArray js = new JSONArray();
+		for(AdminCalendarVO a: al) {
+			FullCalendarVO calendarVO = new FullCalendarVO();
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("id", a.getId());
+			jsonObject.put("title", a.getTitle());
+			jsonObject.put("start", a.getStart());
+			jsonObject.put("end", a.getEnd());
+			js.add(jsonObject);
+		}			
+		mv.addObject("cl", js);		
 		
 		List<PopularVO> ar = searchService.getPopularWord();
 		List<BookVO> accessionBook = searchService.getAccessionBook();

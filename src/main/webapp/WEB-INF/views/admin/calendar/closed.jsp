@@ -127,15 +127,19 @@
             <tr>
                 <th scope="row"><label for="eventStart">시작일자</label><span class="essential themeFC">*</span></th>
                 <td><input type="date" id="eventStart" name="start" value="" class="form-control"></td>
+                <th scope="row"><label for="eventStart">시작시간</label><span class="essential themeFC">*</span></th>
+                <td><input type="time" id="eventStaTime" name="startTime" value="" class="form-control"></td>
             </tr>
             <tr>
                 <th scope="row"><label for="eventEnd">종료일자</label><span class="essential themeFC">*</span></th>
                 <td><input type="date" id="eventEnd" name="end" value="" class="form-control"></td>
+                <th scope="row"><label for="eventStart">종료시간</label><span class="essential themeFC">*</span></th>
+                <td><input type="time" id="eventEndTime" name="endTime" value="" class="form-control"></td>
             </tr>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" id="eventBtn" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" id="eventBtn" class="btn btn-primary">일정 등록</button>
           </div>
         </div>
       </div>
@@ -272,6 +276,10 @@
       let date = new Date();
         $("#eventStart").attr("min", curDate(date));
 
+        $("#eventStart").change(function(){
+          $("#eventEnd").attr("min",  $("#eventStart").val());
+        })
+
         
         $("#calendar").on("click",".fc-scrollgrid-sync-inner",function (info) {
           let start = $(this).parent().attr("data-date");
@@ -285,16 +293,23 @@
               let eventStart = $("#eventStart").val();
               let eventEnd =  $("#eventEnd").val();
               let eventTitle = $("#eventTitle").val(); 
+              let eventStaTime = $("#eventStaTime").val();
+              let eventEndTime = $("#eventEndTime").val();
               console.log(eventTitle,eventStart,eventEnd);
-              $.ajax({
-                type:"POST",
-                url:"/admin/calendar/addEvent",
-                data:{
+              const calendarVO = {
                   title:eventTitle,
                   start:eventStart,
                   end:eventEnd,
-                  allDay:true
-                },success:function(data){
+                  startTime:eventStaTime,
+                  endTime:eventEndTime
+              }
+              $.ajax({
+                type:"POST",
+                url:"/admin/calendar/addEvent",
+                data:JSON.stringify(calendarVO),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success:function(data){
                   if(data>0){
                     alert("일정 추가했습니다");
                     location.reload();

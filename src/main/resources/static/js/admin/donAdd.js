@@ -34,7 +34,7 @@ let date = new Date();
 function getKey(){
     $.ajax({
             type:"GET",
-            url:"http://localhost:81/donation/searchDon",
+            url:"/donation/searchDon",
             async:false,
             data:{
                 result:1

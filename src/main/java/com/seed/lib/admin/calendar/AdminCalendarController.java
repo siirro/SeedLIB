@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,8 +39,8 @@ public class AdminCalendarController {
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("id", a.getId());
 			jsonObject.put("title", a.getTitle());
-			jsonObject.put("start", a.getStart()+" 10:00:00");
-			jsonObject.put("end", a.getEnd()+" 24:00:00");
+			jsonObject.put("start", a.getStart());
+			jsonObject.put("end", a.getEnd());
 			//jsonObject.put("display", "background");
 			js.add(jsonObject);
 		}			
@@ -49,11 +50,11 @@ public class AdminCalendarController {
 	
 	@PostMapping("addEvent")
 	@ResponseBody
-	public int setSchedule (String title, String start, String end) throws Exception{
-		AdminCalendarVO calendarVO = new AdminCalendarVO();
-		calendarVO.setTitle(title);
-		calendarVO.setStart(start);
-		calendarVO.setEnd(end);
+	public int setSchedule (@RequestBody AdminCalendarVO calendarVO) throws Exception{
+		calendarVO.makeDate();		
+		calendarVO.setTitle(calendarVO.getTitle());
+		calendarVO.setStart(calendarVO.getStart());
+		calendarVO.setEnd(calendarVO.getEnd());
 		log.info("calendar:{}", calendarVO);
 		return calendarService.setSchedule(calendarVO);
 	}
